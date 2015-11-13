@@ -13,7 +13,7 @@ public class mouseMoved {
 		Dimension size = Display.frame.getSize();
 		int frameX = Display.frame.getX();
 		int frameY = Display.frame.getY();
-		//asfiasdwfijio
+		
 		try {
 			robot = new Robot();
 		} catch (AWTException ex) {
