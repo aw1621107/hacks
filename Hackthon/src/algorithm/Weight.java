@@ -1,3 +1,5 @@
+package algorithm;
+
 public enum Weight {
 	NOT_REQUIRED,
 	NOT_REQUIRED_WEAKLY_PREFERRED,
