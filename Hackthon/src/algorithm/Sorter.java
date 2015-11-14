@@ -10,10 +10,11 @@ public class Sorter {
 
 	public static String compatmajors;
 	public static String compatdegree;
+private static int jobpoints = 0;
 
 	public static int good = 0;
 	public static int bad = 0;
-	private static int jobpoints = 0;
+	
 	public static String job = "";
 	private static Keywordfindrer kyfn = new Keywordfindrer();
 
@@ -26,8 +27,9 @@ public class Sorter {
 		input = "Economics; mathematics";
 		System.out.println(compatmajors);
 		
+		input = "MASTER";
 		finddegree();
-		input = "master";
+		
 		System.out.println(compatdegree);
 	}
 
@@ -68,7 +70,8 @@ public class Sorter {
 			degree += "doctorate;";
 			break;
 		}
-
+		
+		degree.trim();
 		String[] temp3 = degree.split(";");
 		String compatible = "";
 		for (int i = 0; i < temp3.length; i++) {
@@ -79,7 +82,7 @@ public class Sorter {
 			}
 
 		}
-		System.out.println(compatible);
+		compatdegree = compatible;
 	}
 
 	public static void findMajors() {
