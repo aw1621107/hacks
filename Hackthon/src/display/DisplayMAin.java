@@ -2,8 +2,7 @@ package display;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,8 +15,7 @@ public class DisplayMAin {
 	private static JFrame frame = new JFrame();
 	public static String tempout = "";
 	public static int num_of_out = 0;
-	
-	
+
 	public static void main(String[] args) {
 
 		frame.setSize(HEIGHT, WIDTH);
@@ -25,12 +23,9 @@ public class DisplayMAin {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
-		
-	
+
 		frame.setVisible(true);
-		
-		
-		
+
 	}
 
 	public static void adder() {
