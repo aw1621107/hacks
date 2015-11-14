@@ -28,30 +28,37 @@ public class Sorter {
 		final DegreeLevel level = DegreeLevel.valueOf(input);
 		switch (level) {
 		case UNKNOWN:
-			degree = "unkown";
+			degree += "unknown";
 			break;
 		case DONT_CARE:
-			degree = "does not care";
+			degree += "does not care";
 			break;
 		case NONE:
-			degree = "none";
+			degree += "none";
 			break;
 		case ASSOCIATE_IN_PROGRESS:
-			degree = ""
+			degree += "associate in progress";
 			break;
 		case ASSOCIATE:
+			degree += "associate";
 			break;
 		case BACHELOR_IN_PROGRESS:
+			degree += "bachelor in progress";
 			break;
 		case BACHELOR:
+			degree += "bachelor";
 			break;
 		case MASTER_IN_PROGRESS:
+			degree += "master in progress";
 			break;
 		case MASTER:
+			degree += "master";
 			break;
 		case DOCTORATE_IN_PROGRESS:
+			degree += "doctorate in progress";
 			break;
 		case DOCTORATE:
+			degree += "doctorate";
 			break;
 		}
 
