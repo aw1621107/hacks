@@ -1,5 +1,7 @@
 package algorithm;
 
+import java.math.BigDecimal;
+
 public class GPA {
 	final BigDecimal gpa;
 	final GPARange type;
@@ -15,3 +17,4 @@ public class GPA {
 		GREATER_THAN,
 		AT_LEAST;
 	}
+}

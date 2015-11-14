@@ -1,3 +1,5 @@
+package algorithm;
+
 public enum SkillType {
 	AGILE(),
 	C(),

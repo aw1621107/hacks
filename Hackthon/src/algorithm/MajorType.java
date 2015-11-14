@@ -1,5 +1,6 @@
 package algorithm;
 
+import java.util.EnumSet;
 import java.util.Set;
 
 public enum MajorType {
@@ -38,10 +39,10 @@ public enum MajorType {
 
 	private Set<MajorType> related;
 
-	private MajorType(MajorType related...) {
-		related = EnumSet.noneOf(MajorType.class);
+	private MajorType(MajorType... related) {
+		this.related = EnumSet.noneOf(MajorType.class);
 		for (MajorType type : related) {
-			related.add(type);
+			this.related.add(type);
 		}
 	}
 	// Need way to categorize "hard science"

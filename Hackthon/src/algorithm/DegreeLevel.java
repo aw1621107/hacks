@@ -1,6 +1,6 @@
 package algorithm;
 
-public enum DegreeType {
+public enum DegreeLevel {
 	UNKNOWN,
 	DONT_CARE,
 	NONE,

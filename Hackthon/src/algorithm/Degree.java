@@ -5,7 +5,7 @@ public class Degree {
 	final MajorType major;
 
 	public Degree(DegreeLevel level, MajorType major) {
-		this.type = type;
+		this.level = level;
 		this.major = major;
 	}
 }

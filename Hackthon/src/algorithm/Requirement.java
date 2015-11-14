@@ -14,9 +14,9 @@ public class Requirement<T> {
 
 	@Override
 	public boolean equals(Object o) {
-		if (!(o instanceof Requirement)) { return; }
+		if (!(o instanceof Requirement)) { return false; }
 		Requirement<?> other = (Requirement<?>) o;
-		return weight == other.weight && required.equals(o.required);
+		return weight == other.weight && required.equals(other.required);
 	}
 
 	@Override
