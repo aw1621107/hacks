@@ -2,7 +2,8 @@ package algorithm;
 
 public class Keywordfindrer extends Sorter {
 
-		
+	private int goodtemp = 0;
+	private int badtemp = 0;
 	
 	
 	static void goodfind() {
@@ -22,10 +23,12 @@ public class Keywordfindrer extends Sorter {
 			System.out.println(i);
 			if (Sorter.temp.contentEquals(bad[i])) {
 				System.out.println(bad[i]);
+				
 			}
 
 		}
-
+		Sorter.bad = badtemp;
 	}
+
 
 }
