@@ -7,7 +7,9 @@ public class Sorter {
 	public static String input = "Economics; mathematics";
 
 	public static String degree = "";
-	public static String compatmajors = "";
+
+	public static String compatmajors;
+	public static String compatdegree;
 
 	public static int good = 0;
 	public static int bad = 0;
@@ -16,67 +18,68 @@ public class Sorter {
 	private static Keywordfindrer kyfn = new Keywordfindrer();
 
 	private static String[] posstudentMajor = { "Economics", "mathematics", "Finance", "Analytics", "Science", "Communications", "Business", "International" };
-	private static String[] posibledegree;
+	private static String[] posibledegree = { "unknown", "does not care", "none", "associate in progress", "associate", "bachelor in progress", "bachelor", "master in progress", "master", "doctorate in progress" };
 
 	public static void main(String[] args) {
 
 		findMajors();
-
+		input = "Economics; mathematics";
+		System.out.println(compatmajors);
+		
+		finddegree();
+		input = "master";
+		System.out.println(compatdegree);
 	}
 
 	public static void finddegree() {
-		final DegreeLevel level = DegreeLevel.valueOf(input);
+		DegreeLevel level = DegreeLevel.valueOf(input);
 		switch (level) {
 		case UNKNOWN:
-			degree += "unknown";
+			degree += "unknown;";
 			break;
 		case DONT_CARE:
-			degree += "does not care";
+			degree += "does not care;";
 			break;
 		case NONE:
-			degree += "none";
+			degree += "none;";
 			break;
 		case ASSOCIATE_IN_PROGRESS:
-			degree += "associate in progress";
-			break;	
+			degree += "associate in progress;";
+			break;
 		case ASSOCIATE:
-			degree += "associate";
+			degree += "associate;";
 			break;
 		case BACHELOR_IN_PROGRESS:
-			degree += "bachelor in progress";
+			degree += "bachelor in progress;";
 			break;
 		case BACHELOR:
-			degree += "bachelor";
+			degree += "bachelor;";
 			break;
 		case MASTER_IN_PROGRESS:
-			degree += "master in progress";
+			degree += "master in progress;";
 			break;
 		case MASTER:
-			degree += "master";
+			degree += "master;";
 			break;
 		case DOCTORATE_IN_PROGRESS:
-			degree += "doctorate in progress";
+			degree += "doctorate in progress;";
 			break;
 		case DOCTORATE:
-			degree += "doctorate";
+			degree += "doctorate;";
 			break;
 		}
-		
-		St 
-		String compatible;
-		for (int i = 0; i < ; i++) {
-			int temp3 = input.indexOf(posstudentMajor[i]);
-			if (temp3 >= 0) {
+
+		String[] temp3 = degree.split(";");
+		String compatible = "";
+		for (int i = 0; i < temp3.length; i++) {
+			int temp31 = input.indexOf(posibledegree[i]);
+			if (temp31 >= 0) {
 				jobpoints++;
-				compatible += posstudentMajor[i] + ";";
+				compatible += posibledegree[i] + ";";
 			}
 
 		}
-		String temp4[] = temp2.split(";");
-		for (int i = 0; i < temp4.length; i++) {
-			System.out.println(temp4[i]);
-		}
-		
+		System.out.println(compatible);
 	}
 
 	public static void findMajors() {
@@ -91,10 +94,8 @@ public class Sorter {
 			}
 
 		}
-		String temp4[] = temp2.split(";");
-		for (int i = 0; i < temp4.length; i++) {
-			System.out.println(temp4[i]);
-		}
+		compatmajors = temp2;
+		
 	}
 
 	private static void keyfinder() {
