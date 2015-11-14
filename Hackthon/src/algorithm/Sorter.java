@@ -19,7 +19,7 @@ private static int jobpoints = 0;
 	private static Keywordfindrer kyfn = new Keywordfindrer();
 
 	private static String[] posstudentMajor = { "Economics", "mathematics", "Finance", "Analytics", "Science", "Communications", "Business", "International" };
-	private static String[] posibledegree = { "unknown", "does not care", "none", "associate in progress", "associate", "bachelor in progress", "bachelor", "master in progress", "master", "doctorate in progress" };
+	private static String[] posibledegree = { "unknown", "does_not_care", "none", "associate_in_progress", "associate", "bachelor_in_progress", "bachelor", "master_in_progress", "master", "doctorate_in_progress" };
 
 	public static void main(String[] args) {
 
@@ -27,7 +27,7 @@ private static int jobpoints = 0;
 		input = "Economics; mathematics";
 		System.out.println(compatmajors);
 		
-		input = "MASTER";
+		input = "UNKNOWN";
 		finddegree();
 		
 		System.out.println(compatdegree);
@@ -37,42 +37,49 @@ private static int jobpoints = 0;
 		DegreeLevel level = DegreeLevel.valueOf(input);
 		switch (level) {
 		case UNKNOWN:
-			degree += "unknown;";
+			degree += "unknown; ";
 			break;
 		case DONT_CARE:
-			degree += "does not care;";
+			degree += "does_not_care; ";
 			break;
 		case NONE:
 			degree += "none;";
 			break;
 		case ASSOCIATE_IN_PROGRESS:
-			degree += "associate in progress;";
+			degree += "associate_in_progress; ";
 			break;
 		case ASSOCIATE:
 			degree += "associate;";
 			break;
 		case BACHELOR_IN_PROGRESS:
-			degree += "bachelor in progress;";
+			degree += "bachelor_in_progress; ";
 			break;
 		case BACHELOR:
-			degree += "bachelor;";
+			degree += "bachelor; ";
 			break;
 		case MASTER_IN_PROGRESS:
-			degree += "master in progress;";
+			degree += "master_in_progress; ";
 			break;
 		case MASTER:
-			degree += "master;";
+			degree += "master; ";
 			break;
 		case DOCTORATE_IN_PROGRESS:
-			degree += "doctorate in progress;";
+			degree += "doctorate_in_progress; ";
 			break;
 		case DOCTORATE:
-			degree += "doctorate;";
+			degree += "doctorate; ";
+			break;
+			default :
+				System.out.print("check_switch ");
 			break;
 		}
 		
-		degree.trim();
-		String[] temp3 = degree.split(";");
+		
+		String[] temp3 = degree.split(" ");
+		
+		
+		
+		System.out.print(degree);
 		String compatible = "";
 		for (int i = 0; i < temp3.length; i++) {
 			int temp31 = input.indexOf(posibledegree[i]);
