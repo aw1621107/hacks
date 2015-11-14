@@ -1,10 +1,11 @@
 package algorithm;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Sorter {
 
-	public static String temp = "Economics";
+	public static String temp = "Economics, ";
 
 	public static int good = 0;
 	public static int bad = 0;
@@ -12,34 +13,33 @@ public class Sorter {
 
 	private static Keywordfindrer kyfn = new Keywordfindrer();
 
+	private String[] posstudentMajor = { "Economics", "mathematics", "Finance", "Analytics", "Science", "Analytics", "Communications", "Business", "International" };
 	public static void main(String[] args) {
 
-		String[] studentMajor = { "Economics", "mathematics", "Finance", "Analytics", "Science", "Analytics", "Communications", "Business", "International" };
 		
+		findMajors();
 	}
 
-	public static String[] findMajors(String studentMajor, String jobMajors) {
-
-		studentMajor = studentMajor.toLowerCase();
-		jobMajors = jobMajors.toLowerCase();
+	public static void findMajors() {
+		String[] temp2 = temp.split(";");
 		
-		String[] studentMajors = studentMajor.split("; ");
-		
-		String[] matches = new String[studentMajors.length];
-
 		int counter = 0;
+		for (int i = 0; i <= temp2.length; i++) {
+			
+			
+			int index = temp.indexOf(temp2);
 
-		for (String major : studentMajors) {
-
-			int index = jobMajors.indexOf(major);
 			String before = " ";
 			String after = " ";
+
 			if (index > 0) {
 				before = jobMajors.substring(index - 1, index);
 			}
+			
 			if (index + major.length() < jobMajors.length()) {
 				after = jobMajors.substring(index + major.length() + 1, index + major.length() + 2);
 			}
+			
 			if (((before.compareTo("a") < 0) || (before.compareTo("z") > 0)) && ((after.compareTo("a") < 0) || (after.compareTo("z") > 0))) {
 				matches[counter] = major;
 				counter++;
@@ -49,7 +49,7 @@ public class Sorter {
 		for (int i = 0; i < counter; i++) {
 			onlyMatches[i] = matches[i];
 		}
-		return onlyMatches;
+	
 	}
 
 	/*
