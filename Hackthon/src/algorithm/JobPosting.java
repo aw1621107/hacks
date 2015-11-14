@@ -1,5 +1,7 @@
 package algorithm;
 
+import java.util.Set;
+
 public class JobPosting {
 	final EducationRequirement eduRequirements;
 	final Set<Requirement<SkillType>> skills;
