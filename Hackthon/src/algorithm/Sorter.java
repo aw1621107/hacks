@@ -5,8 +5,11 @@ public class Sorter {
 	
 	private static String temp = "";
 
-	private static int good = 0;
-	private static int bad =  0;
+	public static int good = 0;
+	public static int bad =  0;
+	public static String job = "";
+	
+	private static Keywordfindrer kyfn = new Keywordfindrer();
 	
 	public static void main(String[] args) {
 		if (temp.contentEquals("Economics") || temp.contentEquals("mathematics") || temp.contentEquals("Finance")) {
@@ -30,4 +33,10 @@ public class Sorter {
 		 */
 	}
 
+	private static void keyfinder(){
+		kyfn.goodfind();
+		kyfn.badfinder();
+	}
+	
+	
 }
