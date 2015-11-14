@@ -1,77 +1,44 @@
 package algorithm;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 public class Sorter {
 
-	public static String temp = "Economics, ";
+	public static String temp = "Economics; mathematics";
 
 	public static int good = 0;
 	public static int bad = 0;
+	private static int majorpoints = 0;
 	public static String job = "";
-
 	private static Keywordfindrer kyfn = new Keywordfindrer();
 
-	private String[] posstudentMajor = { "Economics", "mathematics", "Finance", "Analytics", "Science", "Analytics", "Communications", "Business", "International" };
+	private static String[] posstudentMajor = { "Economics", "mathematics", "Finance", "Analytics", "Science", "Analytics", "Communications", "Business", "International" };
+
 	public static void main(String[] args) {
 
-		
 		findMajors();
 	}
 
 	public static void findMajors() {
-		String[] temp2 = temp.split(";");
-		
-		int counter = 0;
-		for (int i = 0; i <= temp2.length; i++) {
-			
-			
-			int index = temp.indexOf(temp2);
+		temp.trim();
+		String temp2 = "";
 
-			String before = " ";
-			String after = " ";
+		for (int i = 0; i < posstudentMajor.length; i++) {
 
-			if (index > 0) {
-				before = jobMajors.substring(index - 1, index);
+			int temp3 = temp.indexOf(posstudentMajor[i]);
+
+			if (temp3 >= 0) {
+
+				// System.out.println(temp3 + " " + posstudentMajor[i]);
+				majorpoints++;
+				temp2 += posstudentMajor[i] + ";";
 			}
-			
-			if (index + major.length() < jobMajors.length()) {
-				after = jobMajors.substring(index + major.length() + 1, index + major.length() + 2);
-			}
-			
-			if (((before.compareTo("a") < 0) || (before.compareTo("z") > 0)) && ((after.compareTo("a") < 0) || (after.compareTo("z") > 0))) {
-				matches[counter] = major;
-				counter++;
-			}
+
 		}
-		String[] onlyMatches = new String[counter];
-		for (int i = 0; i < counter; i++) {
-			onlyMatches[i] = matches[i];
+		String temp4[] = temp2.split(";");
+		for (int i = 0; i < temp4.length; i++) {
+			System.out.println(temp4[i]);
 		}
-	
 	}
 
-	/*
-	 * if (temp.contentEquals("Economics") || temp.contentEquals("mathematics")
-	 * || temp.contentEquals("Finance")) {
-	 * 
-	 * } else if (temp.contains("Analytics")) {
-	 * 
-	 * } else if (temp.contains(","")) {
-	 * 
-	 * } else if (temp.contentEquals("Communications")) {
-	 * 
-	 * } else if (temp.contentEquals("Business")) {
-	 * 
-	 * } else if (temp.contentEquals("Science;")) {
-	 * 
-	 * } else if (temp.contentEquals("International")) {
-	 * 
-	 * }
-	 * 
-	 * /* education intern develper analyist engineer
-	 */
 
 	private static void keyfinder() {
 		kyfn.goodfind();
