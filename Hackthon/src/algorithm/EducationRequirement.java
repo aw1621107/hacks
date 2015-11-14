@@ -3,18 +3,15 @@ package algorithm;
 import java.util.Set;
 
 public class EducationRequirement {
-	final Set<Requirement<Major>> majors;
-	final Requirement<GPA> gpa;
 	final Set<Requirement<Degree>> degrees;
+	final Requirement<GPA> gpa;
 	final Requirement<YearMonth> gradDate;
 
-	public EducationRequirement(Set<Requirement<Major>> majors,
+	public EducationRequirement(Set<Requirement<Degree>> degrees,
 	                            Requirement<GPA> gpa,
-	                            Set<Requirement<Degree>> degrees,
 	                            Requirement<YearMonth> gradDate) {
-		this.majors = majors;
-		this.gpa = gpa;
 		this.degrees = degrees;
+		this.gpa = gpa;
 		this.gradDate = gradDate;
 	}
 }
