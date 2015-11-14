@@ -65,9 +65,13 @@ public enum MajorType {
 	THEATRE();
 
 	private Set<MajorType> related;
+	static {
+		for (MajorType t : MajorType.values()) {
+			t.related = EnumSet.noneOf(MajorType.class);
+		}
+	}
 
 	private MajorType(MajorType... related) {
-		this.related = EnumSet.noneOf(MajorType.class);
 		for (MajorType type : related) {
 			this.related.add(type);
 		}
