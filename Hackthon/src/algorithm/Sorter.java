@@ -6,8 +6,8 @@ public class Sorter {
 
 	public static String input = "Economics; mathematics";
 
-	public static String degree;
-	public static String compatmajors;
+	public static String degree = "";
+	public static String compatmajors = "";
 
 	public static int good = 0;
 	public static int bad = 0;
@@ -37,9 +37,10 @@ public class Sorter {
 			degree = "none";
 			break;
 		case ASSOCIATE_IN_PROGRESS:
-			degree = ""
+			degree = "ASSOCIATE IN PROGRESS";
 			break;
 		case ASSOCIATE:
+			
 			break;
 		case BACHELOR_IN_PROGRESS:
 			break;
@@ -54,7 +55,22 @@ public class Sorter {
 		case DOCTORATE:
 			break;
 		}
+		
+		St 
+		String compatible;
+		for (int i = 0; i < ; i++) {
+			int temp3 = input.indexOf(posstudentMajor[i]);
+			if (temp3 >= 0) {
+				jobpoints++;
+				compatible += posstudentMajor[i] + ";";
+			}
 
+		}
+		String temp4[] = temp2.split(";");
+		for (int i = 0; i < temp4.length; i++) {
+			System.out.println(temp4[i]);
+		}
+		
 	}
 
 	public static void findMajors() {
