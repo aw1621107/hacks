@@ -1,16 +1,15 @@
-package data;
+package algorithm;
+
+import java.util.Set;
 
 public class Major {
 	private final MajorType type;
-	private final Weight weight;
 
-	public Major(MajorType type, Weight weight) {
+	public Major(MajorType type) {
 		this.type = type;
-		this.weight = weight;
 	}
 
 	public MajorType getType() { return type; }
-	public Weight getWeight() { return weight; }
 
 	public enum MajorType {
 		ACCOUNTING(),
