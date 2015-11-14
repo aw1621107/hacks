@@ -1,0 +1,6 @@
+public enum Weight {
+	NONE,
+	PREFERRED_NOT_REQUIRED,
+	REQUIRED,
+	PREFERRED_REQUIRED;
+
