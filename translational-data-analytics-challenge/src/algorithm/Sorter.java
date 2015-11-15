@@ -24,7 +24,7 @@ public class Sorter {
 		input = "Economics; mathematics";
 		System.out.println(compatmajors);
 
-		input = "DONT_CARE";
+		input = "master";
 		finddegree();
 		System.out.println(compatdegree);
 

@@ -29,7 +29,7 @@ public class Companysorter {
 	//list of jobs (requirments)
 
 	private static String[] keywordstowant={"quantitative", "hands-on", "communication", "learn", "lead", "collaborate", "experience", "problem solving"," technical", "passion", "team", "interest", "analyze", "flexible","motivated"};
-	
+	private static int[] countnum={0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0,0, 0, 0,0};
 	public static String jobname = "";
 	public static String[] jobnames;
 	public static String envirment = "";
@@ -45,7 +45,7 @@ public class Companysorter {
 		SheetData data = inputer.readToStructs(Paths.get("C:", "Users", "dogbi_000" , "Downloads", "Copy of TDA Jobs Data Test.xls" ));
 		
 
-		for (int i = 1; i < 242; i++) {
+		for (int i = 0; i < 242; i++) {
 		
 			row = data.rows.get(i).row;
 			
@@ -60,9 +60,9 @@ public class Companysorter {
 			
 			System.out.println();
 			
-			//cell3 = data.rows.get(i).cellContents.get(2);//type of emploment
+			cell3 = data.rows.get(i).cellContents.get(2);//type of emploment
 			
-			//cell4 = data.rows.get(i).cellContents.get(3);
+			cell4 = data.rows.get(i).cellContents.get(3);//required majors
 			//fourthcell();
 			
 			cell5 = data.rows.get(i).cellContents.get(4);//compare to skillsneeded
@@ -89,6 +89,11 @@ public class Companysorter {
 		}
 		jobnames = jobname.split(";");
 		skills = skill.split(";");
+		System.out.println();
+		for (int z= 0; z <keywordstowant.length; z++){
+		System.out.print(keywordstowant[z] + " ");
+		System.out.print(countnum[z] + " times, ");
+		}
 	}
 
 	private static void secondcell(){
@@ -105,6 +110,7 @@ public class Companysorter {
 			for (int j =0; j<keywordstowant.length; j++ ){
 				if (temp2.endsWith(keywordstowant[j])){
 					skill += keywordstowant[j] + ",";
+					countnum[j]++;
 				}
 			}
 			cell2 = cell2.substring(temp +1);
@@ -115,9 +121,9 @@ public class Companysorter {
 	}
 	private static void fourthcell(){
 		cell4.toUpperCase();
-		String tempinput = "";
-		MajorType major = MajorType.valueOf(tempinput);
-		switch (major){
+		String tempinput =cell4;
+		MajorType majortemp = MajorType.valueOf(tempinput);
+		switch (majortemp){
 		case ACCOUNTING:
 			mayjor +="ACCOUNTING";
 			break;
