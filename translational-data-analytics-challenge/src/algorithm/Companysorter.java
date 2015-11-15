@@ -45,7 +45,7 @@ public class Companysorter {
 		SheetData data = inputer.readToStructs(Paths.get("C:", "Users", "dogbi_000" , "Downloads", "Copy of TDA Jobs Data Test.xls" ));
 		
 
-		for (int i = 1; i < 5; i++) {
+		for (int i = 1; i < 242; i++) {
 		
 			row = data.rows.get(i).row;
 			
@@ -54,31 +54,32 @@ public class Companysorter {
 			jobname += cell1 +" row# "+ row + ";";
 			
 			
-			
 			cell2 = data.rows.get(i).cellContents.get(1);
 			
 			secondcell();
 			
 			System.out.println();
 			
-			
-			cell3 = data.rows.get(i).cellContents.get(2);//type of emploment
+			//cell3 = data.rows.get(i).cellContents.get(2);//type of emploment
 			
 			//cell4 = data.rows.get(i).cellContents.get(3);
+			//fourthcell();
 			
 			cell5 = data.rows.get(i).cellContents.get(4);//compare to skillsneeded
-			
 			fithcell();
 			//companyscorse[i] = tempscore;
 			System.out.println(jobname);
-			jobname = "";
+			
 			//jobnames = jobname.split(";");
 			
 			
 			System.out.println("key things that commpanies want : ");
 			System.out.println(skill);
+			System.out.println("prefered majors are : ");
+			//System.out.print(mayjor);
 			
-			
+			jobname = "";
+			skill = "";
 			cell1 = "";
 			cell2 = "";
 			cell3 = "";
@@ -112,138 +113,195 @@ public class Companysorter {
 		
 		
 	}
-	private static void thirdcell(){
+	private static void fourthcell(){
+		cell4.toUpperCase();
 		String tempinput = "";
 		MajorType major = MajorType.valueOf(tempinput);
 		switch (major){
 		case ACCOUNTING:
+			mayjor +="ACCOUNTING";
 			break;
 		case ACTUARIAL_SCIENCE :
+			mayjor +="ACTUARIAL_SCIENCE";
 			break;
 		case AERONAUTICAL_ASTRONAUTICAL_ENGINEERING:
+			mayjor +="AERONAUTICAL_ASTRONAUTICAL_ENGINEERING";
 			break;
 		case AGRIBUSINESS_APPLIED:
+			mayjor +="AGRIBUSINESS_APPLIED";
 			break;
 		case AGRICULTURAL_ENVIRONMENTAL_DEVELOPMENTAL:
+			mayjor +="AGRICULTURAL_ENVIRONMENTAL_DEVELOPMENTAL";
 			break;
 		case ANTHROPOLOGY:
+			mayjor +="ANTHROPOLOGY";
 			break;
 		case ARABIC:
+			mayjor +="ARABIC";
 			break;
 		case BIOLOGY:
+			mayjor +="BIOLOGY";
 			break;
 		case BUSINESS:
+			mayjor +="BUSINESS";
 			break;
 		case BUSINESS_ADMINISTRATION:
+			mayjor +="BUSINESS_ADMINISTRATION";
 			break;
 		case CHEMISTRY:
+			mayjor +="BUSINESS_ADMINISTRATION";
 			break;
 		case CHINESE:
+			mayjor +="CHINESE";
 			break;
 		case CIVIL_ENGINEERING:
+			mayjor +="CIVIL_ENGINEERING";
 			break;
 		case COMMUNICATION:
+			mayjor +="COMMUNICATION";
 			break;
 		case COMPUTER_INFORMATION_SCIENCE:
+			mayjor +="COMPUTER_INFORMATION_SCIENCE";
 			break;
 		case COMPUTER_SCIENCE_ENGINEERING: 
+			mayjor +="COMPUTER_SCIENCE_ENGINEERING";
 			break;
 		case CONSTITUTIONAL_LAW :
+			mayjor +="CONSTITUTIONAL_LAW";
 			break;
 		case CONSUMER_FAMILY_FINANCIAL_SERVICES:
+			mayjor +="CONSUMER_FAMILY_FINANCIAL_SERVICES";
 			break;
 		case DATA_ANALYSIS:
-			break;
-		case DATA_ANALYTICS:
+			mayjor +="DATA_ANALYSIS";
 			break;
 		case ECONOMICS:
+			mayjor +="ECONOMICS";
 			break;
 		case ECONOMICS_BUSINESS:
+			mayjor +="ECONOMICS_BUSINESS";
 			break;
 		case ELECTRICAL_COMPUTER_ENGINEERING:
+			mayjor +="ELECTRICAL_COMPUTER_ENGINEERING";
 			break;
 		case ENGINEERING:
+			mayjor +="ENGINEERING";
 			break;
 		case ENGINEERING_PHYSICS:
+			mayjor +="ENGINEERING_PHYSICS";
 			break;
 		case ENGINEERING_SCIENCES: 
+			mayjor +="ENGINEERING_SCIENCES";
 			break;
 		case ENGLISH:
+			mayjor +="ENGLISH";
 			break;
 		case ENTREPRENEURSHIP:
+			mayjor +="ENTREPRENEURSHIP";
 			break;
 		case ENVIRONMENT_ECONOMY_DEVELOPMENT_SUSTAINABILITY:
+			mayjor +="ENVIRONMENT_ECONOMY_DEVELOPMENT_SUSTAINABILITY";
 			break;
 		case FINANCE :
+			mayjor +="FINANCE";
 			break;
 		case FINANCIAL_MATHEMATICS:
+			mayjor +="FINANCIAL_MATHEMATICS";
 			break;
 		case FRENCH:
+			mayjor +="FRENCH";
 			break;
 		case GENDER_STUDIES:
+			mayjor +="GENDER_STUDIES";
 			break;
 		case GEOGRAPHICAL_INFORMATION_SCIENCE :
+			mayjor +="GEOGRAPHICAL_INFORMATION_SCIENCE";
 			break;
 		case GEOMATICS_ENGINEERING:
+			mayjor +="GEOMATICS_ENGINEERING";
 			break;
 		case GERMAN:
 			break;
 		case HEALTH_INFORMATION_MANAGEMENT_SYSTEMS:
+			mayjor +="HEALTH_INFORMATION_MANAGEMENT_SYSTEMS";
 			break;
 		case HISTORY :
 			break;
 		case INDUSTRIAL_SYSTEMS_ENGINEERING:
+			mayjor +="INDUSTRIAL_SYSTEMS_ENGINEERING";
 			break;
 		case INFORMATION_SYSTEMS:
+			mayjor +="INFORMATION_SYSTEMS";
 			break;
 		case INTERNATIONAL_STUDIES:
+			mayjor +="INTERNATIONAL_STUDIES";
 			break;
 		case LANDSCAPE_DESIGN_MANAGEMENT:
+			mayjor +="LANDSCAPE_DESIGN_MANAGEMENT";
 			break;
 		case LEADERSHIP_STUDIES:
+			mayjor +="LEADERSHIP_STUDIES";
 			break;
 		case LINGUISTICS:
+			mayjor +="LINGUISTICS";
 			break;
 		case MATHEMATICAL_SCIENCES:
+			mayjor +="MATHEMATICAL_SCIENCES";
 			break;
 		case MATHEMATICS:
+			mayjor +="MATHEMATICS";
 			break;
 		case MECHANICAL_ENGINEERING:
+			mayjor +="MECHANICAL_ENGINEERING";
 			break;
 		case ORGANIZATIONAL_COMMUNICATION:
+			mayjor +="ORGANIZATIONAL_COMMUNICATION";
 			break;
 		case PHILOSOPHY :
+			mayjor +="PHILOSOPHY";
 			break;
 		case PHYSICS:
+			mayjor +="PHYSICS";
 			break;
 		case POLITICAL_SCIENCE:
+			mayjor +="POLITICAL_SCIENCE";
 			break;
 		case PUBLIC_HEALTH:
+			mayjor +="PUBLIC_HEALTH";
 			break;
 		case PSYCHOLOGY :
+			mayjor +="PSYCHOLOGY";
 			break;
 		case SOCIOLOGY:
+			mayjor +="SOCIOLOGY";
 			break;
 		case SOMALI:
+			mayjor +="SOMALI";
 			break;
 		case SPANISH:
+			mayjor +="STATISTICS";
 			break;
 		case SPANISH_FOR_BUSINESS:
+			mayjor +="STATISTICS";
 			break;
 		case STATISTICS:
+			mayjor +="STATISTICS";
 			break;
 		case STRATEGIC_COMMUNICATION:
+			mayjor +="STRATEGIC_COMMUNICATION";
 			break;
 		case STRATEGIC_COMMUNICATIONS:
+			mayjor +="STRATEGIC_COMMUNICATIONS";
 			break;
 		case THEATRE:
+			mayjor +="THEATRE";
 			break;
 		default:
 			System.out.println("check major switch statement");
 			break;
 		}
 	}
-	private static void forthcell(){
+	private static void thirdcell(){
 		
 	}
 	private static void fithcell(){
