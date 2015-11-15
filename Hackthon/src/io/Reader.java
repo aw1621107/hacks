@@ -3,6 +3,14 @@ package io;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -22,48 +30,46 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import algorithm.MajorType;
+import io.SheetData.RowData;
 
 public class Reader {
-	public static void main(String[] args) throws EncryptedDocumentException, InvalidFormatException, IOException {
+	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+	private static final String DB_URL = "jdbc:mysql://localhost/";
+	private static final String user = "awang";
+	private static final String pass = "";
+	
+	static {
+		try {
+			Class.forName(JDBC_DRIVER);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void main(String[] args) throws EncryptedDocumentException, InvalidFormatException, IOException, SQLException {
 		final Path path = Paths.get("/Users", "awang", "Downloads", "TDA Students Test.xlsx");
 		new Reader().readToStructs(path);
 	}
-	public List<List<String>> read(final Path path) throws EncryptedDocumentException, InvalidFormatException, IOException {
-		final Workbook inputFile = WorkbookFactory.create(path.toFile());
-		final List<List<String>> rows = new ArrayList<>();
-		for (Sheet s : inputFile) {
-			for (Row r : s) {
-				final List<String> cells = new ArrayList<>();
-				for (Cell c : r) {
-					cells.add(c.toString());
-				}
-				rows.add(cells);
-			}
-		}
-		System.out.println(rows);
-		return rows;
-	}
 
-	public void readToStructs(final Path path) throws EncryptedDocumentException, InvalidFormatException, IOException {
+	public SheetData readToStructs(final Path path) throws EncryptedDocumentException, InvalidFormatException, IOException {
 		final Workbook wb = WorkbookFactory.create(path.toFile());
 		final Sheet sheet = wb.getSheetAt(0); // Assume one sheet
-		int max = -1;
+		List<RowData> results = new ArrayList<>();
+		List<String> headers = new ArrayList<>();
+		Row headerRow = sheet.getRow(0);
+		for (int col = 0; col <= headerRow.getLastCellNum(); col++) {
+			Cell cell = headerRow.getCell(col);
+			headers.add(cell == null ? "" : cell.toString());
+		}
 		for (int r = 1; r <= sheet.getLastRowNum(); r++) {
 			final Row row = sheet.getRow(r);
-			String[] majorString = cellToStrings(row.getCell(0));
-			Cell gradDateCell = row.getCell(2);
-			String gradDateString = gradDateCell == null ? "" : gradDateCell.toString().trim();
-
-			Set<MajorType> majors = Arrays.stream(majorString)
-					.map(String::toUpperCase)
-					.map(String::trim)
-					.filter(s -> !s.isEmpty())
-					.map(s -> s.replaceAll("\\s+", "_"))
-					.map(MajorType::valueOf)
-					.collect(Collectors.toSet());
-			YearMonth gradDate = YearMonth.parse(gradDateString, DateTimeFormatter.ofPattern("", Locale.US));
-			System.out.println(majors);
+			final List<String> rowContents = new ArrayList<>();
+			for (int col = 0; col <= headerRow.getLastCellNum(); col++) {
+				Cell cell = row.getCell(col);
+				rowContents.add(cell == null ? "" : cell.toString());
+			}
+			results.add(new RowData(r, rowContents));
 		}
+		return new SheetData(headers, results);		
 	}
 	
 	private static final String[] EMPTY = new String[] {};
