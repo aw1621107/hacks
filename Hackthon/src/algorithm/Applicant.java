@@ -18,7 +18,7 @@ public class Applicant {
 	                 Set<Degree> priorDegrees,
 	                 Collection<PreviousEmployment> previousEmployment,
 	                 Set<SkillType> skills) {
-		this.major = major;
+		this.majors = majors;
 		this.minors = minors;
 		this.gradDate = gradDate;
 		this.priorDegrees = priorDegrees;
