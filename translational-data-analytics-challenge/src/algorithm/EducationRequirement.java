@@ -1,16 +1,17 @@
 package algorithm;
 
-import java.time.YearMonth;
 import java.util.Set;
+
+import com.sun.org.apache.xerces.internal.impl.dv.xs.YearMonthDV;
 
 public class EducationRequirement {
 	final Set<Requirement<Degree>> degrees;
 	final Requirement<GPA> gpa;
-	final Requirement<YearMonth> gradDate;
+	final Requirement<YearMonthDV> gradDate;
 
 	public EducationRequirement(Set<Requirement<Degree>> degrees,
 	                            Requirement<GPA> gpa,
-	                            Requirement<YearMonth> gradDate) {
+	                            Requirement<YearMonthDV> gradDate) {
 		this.degrees = degrees;
 		this.gpa = gpa;
 		this.gradDate = gradDate;

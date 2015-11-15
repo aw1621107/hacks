@@ -37,6 +37,14 @@ public class DisplayMain extends JFrame/* implements ActionListener */ {
 
 	public static void main(String[] args) {
 
+		
+		
+		
+		
+		
+		
+		
+		
 		JScrollBar vbar = new JScrollBar(JScrollBar.VERTICAL, 30, 40, 0, 300);
 
 		//panil.setLayout(new FlowLayout());

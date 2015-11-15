@@ -14,8 +14,7 @@ public class Sorter {
 	public static int bad = 0;
 
 	public static String job = "";
-	private static Keywordfindrer kyfn = new Keywordfindrer();
-
+	
 	private static String[] posstudentMajor = { "Economics", "mathematics", "Finance", "Analytics", "Science", "Communications", "Business", "International" };
 	private static String[] posibledegree = { "unknown", "does_not_care", "none", "associate_in_progress", "associate", "bachelor_in_progress", "bachelor", "master_in_progress", "master", "doctorate_in_progress" };
 
@@ -124,9 +123,5 @@ public class Sorter {
 
 	}
 
-	private static void keyfinder() {
-		kyfn.goodfind();
-		kyfn.badfinder();
-	}
-
+	
 }

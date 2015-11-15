@@ -1,8 +1,9 @@
 package algorithm;
 
-import java.time.YearMonth;
 import java.util.Collection;
 import java.util.Set;
+
+import com.sun.org.apache.xerces.internal.impl.dv.xs.YearMonthDV;
 
 import algorithm.Degree;
 import algorithm.MajorType;
@@ -12,14 +13,14 @@ import algorithm.SkillType;
 public class Applicant {
 	final Set<MajorType> majors;
 	final Set<MajorType> minors;
-	final YearMonth gradDate;
+	final YearMonthDV gradDate;
 	final Set<Degree> priorDegrees;
 	final Collection<PreviousEmployment> previousEmployment;
 	final Set<SkillType> skills;
 
 	public Applicant(Set<MajorType> majors,
 	                 Set<MajorType> minors,
-	                 YearMonth gradDate,
+	                 YearMonthDV gradDate,
 	                 Set<Degree> priorDegrees,
 	                 Collection<PreviousEmployment> previousEmployment,
 	                 Set<SkillType> skills) {
