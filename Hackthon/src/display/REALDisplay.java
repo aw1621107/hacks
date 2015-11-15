@@ -1,11 +1,15 @@
 package display;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 
-static class REALDisplay implements ActionListener{
 
-	public void actionPerformed (ActionEvent e){
+public class REALDisplay {
+	
+	public static void main(String[] args) {
 		
+		DisplayMain ds = new DisplayMain();
+		JFrame frame = new JFrame();
+		t6
+		//ds.setVisible(true);
 	}
 }

@@ -22,13 +22,24 @@ public class DisplayMain extends JFrame implements ActionListener {
 
 	public static String tempout = "this is a test";
 
-	private static JLabel lable = new JLabel(tempout);
+	// private static JLabel lable = new JLabel(tempout);
 
-	public static void main(String[] args) {
-		display();
-	}
+	// private static JButton button2 = new JButton("5 (LINE_END)");
+
+	// private JButton button = new JButton();
+
+	public static void main(String [] args) {
+		JFrame frame = new JFrame();
 		
-	public void display(){	
+		frame.setLayout(new FlowLayout());
+		frame.setSize(HEIGHT, WIDTH);
+		frame.setTitle(TITLE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
+		frame.setVisible(true);
+		
+
 		// Container pane = aFrame.getContentPane()...
 		JButton button = new JButton("Button 1 (PAGE_START)");
 		frame.add(button, BorderLayout.PAGE_START);
@@ -44,51 +55,31 @@ public class DisplayMain extends JFrame implements ActionListener {
 
 		button = new JButton("Long-Named Button 4 (PAGE_END)");
 		frame.add(button, BorderLayout.PAGE_END);
-
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("does it work");
+			}
+		;});
+		
+		
+		
+		
+		
+		
+		
+		
 		JButton button2 = new JButton("5 (LINE_END)");
-
-		button2.addActionListener(this);
+		
 		frame.add(button, BorderLayout.LINE_END);
-
-		// JTextArea textArea = new JTextArea(5, 20);
-		// JScrollPane scrollPane = new JScrollPane(textArea);
-		// textArea.setEditable(false);
-		frame.setLayout(new FlowLayout());
-
-		frame.setSize(HEIGHT, WIDTH);
-		frame.setTitle(TITLE);
-		// frame.add(textArea);
-
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLocationRelativeTo(null);
-		frame.setResizable(false);
-
-		frame.setVisible(true);
-
-	}
-
-	public static void adder() {
-		JButton button = new JButton("Button 1 (PAGE_START)");
-		frame.add(button, BorderLayout.PAGE_START);
-
-		// Make the center component big, since that's the
-		// typical usage of BorderLayout.
-		button = new JButton("Button 2 (CENTER)");
-		button.setPreferredSize(new Dimension(200, 100));
-		frame.add(button, BorderLayout.CENTER);
-
-		button = new JButton("Button 3 (LINE_START)");
-		frame.add(button, BorderLayout.LINE_START);
-
-		button = new JButton("Long-Named Button 4 (PAGE_END)");
-		frame.add(button, BorderLayout.PAGE_END);
-
-		button = new JButton("5 (LINE_END)");
-		frame.add(button, BorderLayout.LINE_END);
-
-	}
-
+		button2.addActionListener(new ActionListener(){
 	public void actionPerformed(ActionEvent e) {
-
+		System.out.println("does it work");
 	}
+;});}
+// JTextArea textArea = new JTextArea(5, 20);
+// JScrollPane scrollPane = new JScrollPane(textArea);
+// textArea.setEditable(false);// frame.add(textArea);
+
 }
+
+
