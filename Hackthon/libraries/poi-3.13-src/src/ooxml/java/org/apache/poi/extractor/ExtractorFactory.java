@@ -164,7 +164,7 @@ public class ExtractorFactory {
 	   // Check for the normal Office core document
        PackageRelationshipCollection core =
             pkg.getRelationshipsByType(CORE_DOCUMENT_REL);
-       
+
        // If nothing was found, try some of the other OOXML-based core types
        if (core.size() == 0) {
            // Could it be an OOXML-Strict one?
@@ -178,7 +178,7 @@ public class ExtractorFactory {
                throw new IllegalArgumentException("Text extraction not supported for Visio OOXML files");
            }
        }
-       
+
        // Should just be a single core document, complain if not
        if (core.size() != 1) {
            throw new IllegalArgumentException("Invalid OOXML Package received - expected 1 core document, found " + core.size());
@@ -212,7 +212,7 @@ public class ExtractorFactory {
           }
        }
 
-       // special handling for SlideShow-Theme-files, 
+       // special handling for SlideShow-Theme-files,
        if(XSLFRelation.THEME_MANAGER.getContentType().equals(corePart.getContentType())) {
            return new XSLFPowerPointExtractor(new XSLFSlideShow(pkg));
        }

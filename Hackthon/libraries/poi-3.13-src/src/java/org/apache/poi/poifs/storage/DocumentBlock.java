@@ -164,7 +164,7 @@ public final class DocumentBlock extends BigBlock {
         if(blocks == null || blocks.length == 0) {
            return null;
         }
-        
+
         // Key things about the size of the block
         POIFSBigBlockSize bigBlockSize = blocks[0].bigBlockSize;
         int BLOCK_SHIFT = bigBlockSize.getHeaderValue();

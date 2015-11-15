@@ -49,27 +49,27 @@ public class TestXSSFDataValidation extends BaseTestDataValidation {
 		XSSFWorkbook wb1 = XSSFTestDataSamples.openSampleWorkbook("DataValidations-49244.xlsx");
 		Sheet sheet = wb1.getSheetAt(0);
 		List<XSSFDataValidation> dataValidations = ((XSSFSheet)sheet).getDataValidations();
-		
+
 /**
  * 		For each validation type, there are two cells with the same validation. This tests
  * 		application of a single validation definition to multiple cells.
- * 		
+ *
  * 		For list ( 3 validations for explicit and 3 for formula )
- * 			- one validation that allows blank. 
+ * 			- one validation that allows blank.
  * 			- one that does not allow blank.
  * 			- one that does not show the drop down arrow.
  * 		= 2
- * 
+ *
  * 		For number validations ( integer/decimal and text length ) with 8 different types of operators.
- *		= 50  
- * 
+ *		= 50
+ *
  * 		= 52 ( Total )
  */
 		assertEquals(52,dataValidations.size());
 
 		DataValidationHelper dataValidationHelper = sheet.getDataValidationHelper();
 		int[] validationTypes = new int[]{ValidationType.INTEGER,ValidationType.DECIMAL,ValidationType.TEXT_LENGTH};
-		
+
 		int[] singleOperandOperatorTypes = new int[]{
 				OperatorType.LESS_THAN,OperatorType.LESS_OR_EQUAL,
 				OperatorType.GREATER_THAN,OperatorType.GREATER_OR_EQUAL,
@@ -78,14 +78,14 @@ public class TestXSSFDataValidation extends BaseTestDataValidation {
 		int[] doubleOperandOperatorTypes = new int[]{
 				OperatorType.BETWEEN,OperatorType.NOT_BETWEEN
 		};
-		
+
 		BigDecimal value  = new BigDecimal("10"),value2 = new BigDecimal("20");
 		BigDecimal dvalue = new BigDecimal("10.001"),dvalue2 = new BigDecimal("19.999");
 		final int lastRow = sheet.getLastRowNum();
 		int offset = lastRow + 3;
-		
+
 		int lastKnownNumValidations = dataValidations.size();
-		
+
 		Row row = sheet.createRow(offset++);
 		Cell cell = row.createCell(0);
 		DataValidationConstraint explicitListValidation = dataValidationHelper.createExplicitListConstraint(new String[]{"MA","MI","CA"});
@@ -95,56 +95,56 @@ public class TestXSSFDataValidation extends BaseTestDataValidation {
 		setOtherValidationParameters(dataValidation);
 		sheet.addValidationData(dataValidation);
 		lastKnownNumValidations++;
-		
+
 		row = sheet.createRow(offset++);
 		cell = row.createCell(0);
 
 		cellRangeAddressList = new CellRangeAddressList();
 		cellRangeAddressList.addCellRangeAddress(cell.getRowIndex(), cell.getColumnIndex(), cell.getRowIndex(), cell.getColumnIndex());
-		
+
 		Cell firstCell =  row.createCell(1);firstCell.setCellValue("UT");
 		Cell secondCell = row.createCell(2);secondCell.setCellValue("MN");
 		Cell thirdCell  = row.createCell(3);thirdCell.setCellValue("IL");
-		
+
 		int rowNum = row.getRowNum() + 1;
 		String listFormula = new StringBuilder("$B$").append(rowNum).append(":").append("$D$").append(rowNum).toString();
 		DataValidationConstraint formulaListValidation = dataValidationHelper.createFormulaListConstraint(listFormula);
-		
+
 		dataValidation = dataValidationHelper.createValidation(formulaListValidation, cellRangeAddressList);
 		setOtherValidationParameters(dataValidation);
 		sheet.addValidationData(dataValidation);
 		lastKnownNumValidations++;
-		
+
 		offset++;
 		offset++;
-		
+
 		for (int i = 0; i < validationTypes.length; i++) {
 			int validationType = validationTypes[i];
 			offset = offset + 2;
-			final Row row0 = sheet.createRow(offset++);			
+			final Row row0 = sheet.createRow(offset++);
 			Cell cell_10 = row0.createCell(0);
 			cell_10.setCellValue(validationType==ValidationType.DECIMAL ? "Decimal " : validationType==ValidationType.INTEGER ? "Integer" : "Text Length");
 			offset++;
 			for (int j = 0; j < singleOperandOperatorTypes.length; j++) {
 				int operatorType = singleOperandOperatorTypes[j];
 				final Row row1 = sheet.createRow(offset++);
-				
+
 				//For Integer (> and >=) we add 1 extra cell for validations whose formulae reference other cells.
 				final Row row2 = i==0 && j < 2 ? sheet.createRow(offset++) : null;
-				
+
 				cell_10 = row1.createCell(0);
-				cell_10.setCellValue(XSSFDataValidation.operatorTypeMappings.get(operatorType).toString());				
+				cell_10.setCellValue(XSSFDataValidation.operatorTypeMappings.get(operatorType).toString());
 				Cell cell_11 = row1.createCell(1);
 				Cell cell_21 = row1.createCell(2);
 				Cell cell_22 = i==0 && j < 2 ? row2.createCell(2) : null;
-				
+
 				Cell cell_13 = row1.createCell(3);
-				
-				
-				cell_13.setCellType(Cell.CELL_TYPE_NUMERIC);				
+
+
+				cell_13.setCellType(Cell.CELL_TYPE_NUMERIC);
 				cell_13.setCellValue(validationType==ValidationType.DECIMAL ? dvalue.doubleValue() : value.intValue());
 
-				
+
 				//First create value based validation;
 				DataValidationConstraint constraint = dataValidationHelper.createNumericConstraint(validationType,operatorType, value.toString(), null);
 				cellRangeAddressList = new CellRangeAddressList();
@@ -153,7 +153,7 @@ public class TestXSSFDataValidation extends BaseTestDataValidation {
 				setOtherValidationParameters(validation);
 				sheet.addValidationData(validation);
 				assertEquals(++lastKnownNumValidations,((XSSFSheet)sheet).getDataValidations().size());
-				
+
 				//Now create real formula based validation.
 				String formula1 = new CellReference(cell_13.getRowIndex(),cell_13.getColumnIndex()).formatAsString();
 				constraint = dataValidationHelper.createNumericConstraint(validationType,operatorType, formula1, null);
@@ -164,7 +164,7 @@ public class TestXSSFDataValidation extends BaseTestDataValidation {
 					setOtherValidationParameters(validation);
 					sheet.addValidationData(validation);
 					assertEquals(++lastKnownNumValidations, ((XSSFSheet) sheet).getDataValidations().size());
-					
+
 					cellRangeAddressList = new CellRangeAddressList();
 					cellRangeAddressList.addCellRangeAddress(new CellRangeAddress(cell_22.getRowIndex(), cell_22.getRowIndex(), cell_22.getColumnIndex(), cell_22.getColumnIndex()));
 					validation = dataValidationHelper.createValidation(constraint, cellRangeAddressList);
@@ -172,7 +172,7 @@ public class TestXSSFDataValidation extends BaseTestDataValidation {
 					sheet.addValidationData(validation);
 					assertEquals(++lastKnownNumValidations, ((XSSFSheet) sheet).getDataValidations().size());
 				} else if(i==0 && j==1 ){
-					cellRangeAddressList = new CellRangeAddressList();					
+					cellRangeAddressList = new CellRangeAddressList();
 					cellRangeAddressList.addCellRangeAddress(new CellRangeAddress(cell_21.getRowIndex(), cell_21.getRowIndex(), cell_21.getColumnIndex(), cell_21.getColumnIndex()));
 					cellRangeAddressList.addCellRangeAddress(new CellRangeAddress(cell_22.getRowIndex(), cell_22.getRowIndex(), cell_22.getColumnIndex(), cell_22.getColumnIndex()));
 					validation = dataValidationHelper.createValidation(constraint, cellRangeAddressList);
@@ -192,26 +192,26 @@ public class TestXSSFDataValidation extends BaseTestDataValidation {
 			for (int j = 0; j < doubleOperandOperatorTypes.length; j++) {
 				int operatorType = doubleOperandOperatorTypes[j];
 				final Row row1 = sheet.createRow(offset++);
-				
+
 				cell_10 = row1.createCell(0);
-				cell_10.setCellValue(XSSFDataValidation.operatorTypeMappings.get(operatorType).toString());				
-				
+				cell_10.setCellValue(XSSFDataValidation.operatorTypeMappings.get(operatorType).toString());
+
 				Cell cell_11 = row1.createCell(1);
 				Cell cell_21 = row1.createCell(2);
-				
+
 				Cell cell_13 = row1.createCell(3);
 				Cell cell_14 = row1.createCell(4);
-				
-				
+
+
 				String value1String = validationType==ValidationType.DECIMAL ? dvalue.toString() : value.toString();
-				cell_13.setCellType(Cell.CELL_TYPE_NUMERIC);				
+				cell_13.setCellType(Cell.CELL_TYPE_NUMERIC);
 				cell_13.setCellValue(validationType==ValidationType.DECIMAL ? dvalue.doubleValue() : value.intValue());
 
 				String value2String = validationType==ValidationType.DECIMAL ? dvalue2.toString() : value2.toString();
 				cell_14.setCellType(Cell.CELL_TYPE_NUMERIC);
 				cell_14.setCellValue(validationType==ValidationType.DECIMAL ? dvalue2.doubleValue() : value2.intValue());
-				
-				
+
+
 				//First create value based validation;
 				DataValidationConstraint constraint = dataValidationHelper.createNumericConstraint(validationType,operatorType, value1String, value2String);
 				cellRangeAddressList = new CellRangeAddressList();
@@ -220,8 +220,8 @@ public class TestXSSFDataValidation extends BaseTestDataValidation {
 				setOtherValidationParameters(validation);
 				sheet.addValidationData(validation);
 				assertEquals(++lastKnownNumValidations,((XSSFSheet)sheet).getDataValidations().size());
-				
-				
+
+
 				//Now create real formula based validation.
 				String formula1 = new CellReference(cell_13.getRowIndex(),cell_13.getColumnIndex()).formatAsString();
 				String formula2 = new CellReference(cell_14.getRowIndex(),cell_14.getColumnIndex()).formatAsString();
@@ -229,9 +229,9 @@ public class TestXSSFDataValidation extends BaseTestDataValidation {
 				cellRangeAddressList = new CellRangeAddressList();
 				cellRangeAddressList.addCellRangeAddress(new CellRangeAddress(cell_21.getRowIndex(),cell_21.getRowIndex(),cell_21.getColumnIndex(),cell_21.getColumnIndex()));
 				validation = dataValidationHelper.createValidation(constraint, cellRangeAddressList);
-				
+
 				setOtherValidationParameters(validation);
-				sheet.addValidationData(validation);	
+				sheet.addValidationData(validation);
 				assertEquals(++lastKnownNumValidations,((XSSFSheet)sheet).getDataValidations().size());
 			}
 		}
@@ -260,16 +260,16 @@ public class TestXSSFDataValidation extends BaseTestDataValidation {
             XSSFSheet sheet = wb.createSheet();
             List<XSSFDataValidation> lst = sheet.getDataValidations();    //<-- works
             assertEquals(0, lst.size());
-    
+
             //create the cell that will have the validation applied
             sheet.createRow(0).createCell(0);
-    
+
             DataValidationHelper dataValidationHelper = sheet.getDataValidationHelper();
             DataValidationConstraint constraint = dataValidationHelper.createCustomConstraint("SUM($A$1:$A$1) <= 3500");
             CellRangeAddressList addressList = new CellRangeAddressList(0, 0, 0, 0);
             DataValidation validation = dataValidationHelper.createValidation(constraint, addressList);
             sheet.addValidationData(validation);
-    
+
             // this line caused XmlValueOutOfRangeException , see Bugzilla 3965
             lst = sheet.getDataValidations();
             assertEquals(1, lst.size());
@@ -283,10 +283,10 @@ public class TestXSSFDataValidation extends BaseTestDataValidation {
         XSSFWorkbook wb = new XSSFWorkbook();
         try {
             XSSFSheet sheet = wb.createSheet();
-    
+
             final XSSFDataValidation validation = createValidation(sheet);
             sheet.addValidationData(validation);
-    
+
             final List<XSSFDataValidation> dataValidations = sheet.getDataValidations();
             assertEquals(true, dataValidations.get(0).getCtDdataValidation().getAllowBlank());
         } finally {
@@ -299,12 +299,12 @@ public class TestXSSFDataValidation extends BaseTestDataValidation {
         XSSFWorkbook wb = new XSSFWorkbook();
         try {
             XSSFSheet sheet = wb.createSheet();
-    
+
             final XSSFDataValidation validation = createValidation(sheet);
             validation.getCtDdataValidation().setAllowBlank(false);
-    
+
             sheet.addValidationData(validation);
-    
+
             final List<XSSFDataValidation> dataValidations = sheet.getDataValidations();
             assertEquals(false, dataValidations.get(0).getCtDdataValidation().getAllowBlank());
         } finally {
@@ -317,12 +317,12 @@ public class TestXSSFDataValidation extends BaseTestDataValidation {
         XSSFWorkbook wb = new XSSFWorkbook();
         try {
             XSSFSheet sheet = wb.createSheet();
-    
+
             final XSSFDataValidation validation = createValidation(sheet);
             validation.getCtDdataValidation().setAllowBlank(true);
-    
+
             sheet.addValidationData(validation);
-    
+
             final List<XSSFDataValidation> dataValidations = sheet.getDataValidations();
             assertEquals(true, dataValidations.get(0).getCtDdataValidation().getAllowBlank());
         } finally {

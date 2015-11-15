@@ -259,7 +259,7 @@ public final class TestValueRecordsAggregate {
 		assertNotEquals("found bug 44449 (Wrong SharedFormulaRecord was used).", "\"second formula\"", cellFormula);
 
 		assertEquals("Something else wrong with this test case", "\"first formula\"", cellFormula);
-		
+
 		wb.close();
 	}
 	private static String getFormulaFromFirstCell(HSSFSheet s, int rowIx) {
@@ -306,7 +306,7 @@ public final class TestValueRecordsAggregate {
 
 		return crc.getValue();
 	}
-	
+
     @Test
 	public void testRemoveNewRow_bug46312() {
 		// To make bug occur, rowIndex needs to be >= ValueRecordsAggregate.records.length

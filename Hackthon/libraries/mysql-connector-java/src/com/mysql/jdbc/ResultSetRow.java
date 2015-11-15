@@ -38,7 +38,7 @@ import java.util.TimeZone;
 /**
  * Classes that implement this interface represent one row of data from the MySQL server that might be stored in different ways depending on whether the result
  * set was streaming (so they wrap a reusable packet), or whether the result set was cached or via a server-side cursor (so they represent a byte[][]).
- * 
+ *
  * Notice that <strong>no</strong> bounds checking is expected for implementors of this interface, it happens in ResultSetImpl.
  */
 public abstract class ResultSetRow {
@@ -62,12 +62,12 @@ public abstract class ResultSetRow {
     /**
      * Returns data at the given index as an InputStream with no
      * character conversion.
-     * 
+     *
      * @param columnIndex
      *            of the column value (starting at 0) to return.
      * @return the value at the given index as an InputStream or null
      *         if null.
-     * 
+     *
      * @throws SQLException
      *             if an error occurs while retrieving the value.
      */
@@ -76,7 +76,7 @@ public abstract class ResultSetRow {
     /**
      * Returns the value at the given column (index starts at 0) "raw" (i.e.
      * as-returned by the server).
-     * 
+     *
      * @param index
      *            of the column value (starting at 0) to return.
      * @return the value for the given column (including NULL if it is)
@@ -275,7 +275,7 @@ public abstract class ResultSetRow {
 
     /**
      * Returns the value at the given column (index starts at 0) as an int. *
-     * 
+     *
      * @param index
      *            of the column value (starting at 0) to return.
      * @return the value for the given column (returns 0 if NULL, use isNull()
@@ -287,7 +287,7 @@ public abstract class ResultSetRow {
 
     /**
      * Returns the value at the given column (index starts at 0) as a long. *
-     * 
+     *
      * @param index
      *            of the column value (starting at 0) to return.
      * @return the value for the given column (returns 0 if NULL, use isNull()
@@ -646,17 +646,17 @@ public abstract class ResultSetRow {
      * Returns the value at the given column (index starts at 0) as a
      * java.lang.String with the requested encoding, using the given
      * MySQLConnection to find character converters.
-     * 
+     *
      * @param index
      *            of the column value (starting at 0) to return.
      * @param encoding
      *            the Java name for the character encoding
      * @param conn
      *            the connection that created this result set row
-     * 
+     *
      * @return the value for the given column (including NULL if it is) as a
      *         String
-     * 
+     *
      * @throws SQLException
      *             if an error occurs while retrieving the value.
      */
@@ -665,7 +665,7 @@ public abstract class ResultSetRow {
     /**
      * Convenience method for turning a byte[] into a string with the given
      * encoding.
-     * 
+     *
      * @param encoding
      *            the Java encoding name for the byte[] -> char conversion
      * @param conn
@@ -677,9 +677,9 @@ public abstract class ResultSetRow {
      *            where to start the decoding
      * @param length
      *            how many bytes to decode
-     * 
+     *
      * @return the String as decoded from bytes with the given encoding
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -1178,13 +1178,13 @@ public abstract class ResultSetRow {
     /**
      * Could the column value at the given index (which starts at 0) be
      * interpreted as a floating-point number (has +/-/E/e in it)?
-     * 
+     *
      * @param index
      *            of the column value (starting at 0) to check.
-     * 
+     *
      * @return true if the column value at the given index looks like it might
      *         be a floating-point number, false if not.
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -1192,12 +1192,12 @@ public abstract class ResultSetRow {
 
     /**
      * Is the column value at the given index (which starts at 0) NULL?
-     * 
+     *
      * @param index
      *            of the column value (starting at 0) to check.
-     * 
+     *
      * @return true if the column value is NULL, false if not.
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -1205,14 +1205,14 @@ public abstract class ResultSetRow {
 
     /**
      * Returns the length of the column at the given index (which starts at 0).
-     * 
+     *
      * @param index
      *            of the column value (starting at 0) for which to return the
      *            length.
      * @return the length of the requested column, 0 if null (clients of this
      *         interface should use isNull() beforehand to determine status of
      *         NULL values in the column).
-     * 
+     *
      * @throws SQLException
      */
     public abstract long length(int index) throws SQLException;
@@ -1220,12 +1220,12 @@ public abstract class ResultSetRow {
     /**
      * Sets the given column value (only works currently with
      * ByteArrayRowHolder).
-     * 
+     *
      * @param index
      *            index of the column value (starting at 0) to set.
      * @param value
      *            the (raw) value to set
-     * 
+     *
      * @throws SQLException
      *             if an error occurs, or the concrete RowHolder doesn't support
      *             this operation.

@@ -65,7 +65,7 @@ public final class XSLFChart extends POIXMLDocumentPart {
 	protected XSLFChart(PackagePart part, PackageRelationship rel) throws IOException, XmlException {
 		super(part, rel);
 
-		chartSpace = ChartSpaceDocument.Factory.parse(part.getInputStream()).getChartSpace(); 
+		chartSpace = ChartSpaceDocument.Factory.parse(part.getInputStream()).getChartSpace();
 		chart = chartSpace.getChart();
 	}
 

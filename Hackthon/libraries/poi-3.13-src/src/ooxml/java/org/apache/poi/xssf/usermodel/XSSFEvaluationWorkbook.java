@@ -46,7 +46,7 @@ public final class XSSFEvaluationWorkbook extends BaseXSSFEvaluationWorkbook {
 	public EvaluationSheet getSheet(int sheetIndex) {
 		return new XSSFEvaluationSheet(_uBook.getSheetAt(sheetIndex));
 	}
-	
+
     public Ptg[] getFormulaTokens(EvaluationCell evalCell) {
         XSSFCell cell = ((XSSFEvaluationCell)evalCell).getXSSFCell();
         XSSFEvaluationWorkbook frBook = XSSFEvaluationWorkbook.create(_uBook);

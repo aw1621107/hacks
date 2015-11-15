@@ -14,7 +14,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 package org.apache.poi.hssf.record;
 
 import org.apache.poi.util.LittleEndianInput;
@@ -22,9 +22,9 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * ftEnd (0x0000)<p/>
- * 
+ *
  * The end data record is used to denote the end of the subrecords.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class EndSubRecord extends SubRecord {
@@ -38,7 +38,7 @@ public final class EndSubRecord extends SubRecord {
 
     /**
      * @param in unused (since this record has no data)
-     * @param size 
+     * @param size
      */
     public EndSubRecord(LittleEndianInput in, int size) {
         if ((size & 0xFF) != ENCODED_SIZE) { // mask out random crap in upper byte
@@ -77,7 +77,7 @@ public final class EndSubRecord extends SubRecord {
 
     public Object clone() {
         EndSubRecord rec = new EndSubRecord();
-    
+
         return rec;
     }
 }

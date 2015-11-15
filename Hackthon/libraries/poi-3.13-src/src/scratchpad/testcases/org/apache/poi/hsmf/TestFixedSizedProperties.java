@@ -73,23 +73,23 @@ public final class TestFixedSizedProperties {
        fsMessageFails = new NPOIFSFileSystem(samples.getFile(messageFails));
 
        mapiMessageSucceeds = new MAPIMessage(fsMessageSucceeds);
-       mapiMessageFails = new MAPIMessage(fsMessageFails);        
-      
+       mapiMessageFails = new MAPIMessage(fsMessageFails);
+
        messageDateFormat = new SimpleDateFormat("E, d MMM yyyy HH:mm:ss", Locale.ROOT);
-       messageDateFormat.setTimeZone(LocaleUtil.TIMEZONE_UTC);       
+       messageDateFormat.setTimeZone(LocaleUtil.TIMEZONE_UTC);
 
        userTimeZone = LocaleUtil.getUserTimeZone();
        LocaleUtil.setUserTimeZone(LocaleUtil.TIMEZONE_UTC);
    }
-   
-   
+
+
    @AfterClass
    public static void closeFS() throws Exception {
        LocaleUtil.setUserTimeZone(userTimeZone);
        fsMessageSucceeds.close();
        fsMessageFails.close();
    }
-   
+
    /**
     * Check we can find a sensible number of properties on a few
     * of our test files
@@ -97,24 +97,24 @@ public final class TestFixedSizedProperties {
    @Test
    public void testPropertiesFound() throws Exception {
        Map<MAPIProperty,List<PropertyValue>> props;
-       
+
        props = mapiMessageSucceeds.getMainChunks().getProperties();
        assertTrue(props.toString(), props.size() > 10);
-       
+
        props = mapiMessageFails.getMainChunks().getProperties();
        assertTrue(props.toString(), props.size() > 10);
    }
-   
+
    /**
     * Check we find properties of a variety of different types
     */
    @Test
    public void testPropertyValueTypes() throws Exception {
        Chunks mainChunks = mapiMessageSucceeds.getMainChunks();
-       
+
        // Ask to have the values looked up
        Map<MAPIProperty,List<PropertyValue>> props = mainChunks.getProperties();
-       HashSet<Class<? extends PropertyValue>> seenTypes = 
+       HashSet<Class<? extends PropertyValue>> seenTypes =
                new HashSet<Class<? extends PropertyValue>>();
        for (List<PropertyValue> pvs : props.values()) {
            for (PropertyValue pv : pvs) {
@@ -125,7 +125,7 @@ public final class TestFixedSizedProperties {
        assertTrue(seenTypes.toString(), seenTypes.contains(LongPropertyValue.class));
        assertTrue(seenTypes.toString(), seenTypes.contains(TimePropertyValue.class));
        assertFalse(seenTypes.toString(), seenTypes.contains(ChunkBasedPropertyValue.class));
-       
+
        // Ask for the raw values
        seenTypes.clear();
        for (PropertyValue pv : mainChunks.getRawProperties().values()) {
@@ -169,7 +169,7 @@ public final class TestFixedSizedProperties {
        PrintStream stream = new PrintStream(new ByteArrayOutputStream());
        HSMFDump dump = new HSMFDump(fsMessageSucceeds);
        dump.dump(stream);
-   }	
+   }
 
    /**
     * Test to see if we can read the Date Chunk with HSMFDump.
@@ -189,19 +189,19 @@ public final class TestFixedSizedProperties {
        // Check via the message date
        Calendar clientSubmitTime = mapiMessageSucceeds.getMessageDate();
        assertEquals(
-               "Fri, 22 Jun 2012 18:32:54", 
+               "Fri, 22 Jun 2012 18:32:54",
                messageDateFormat.format(clientSubmitTime.getTime()));
-       
+
        // Fetch the property value directly
        Map<MAPIProperty,List<PropertyValue>> props =
                mapiMessageSucceeds.getMainChunks().getProperties();
-       List<PropertyValue> pv = props.get(MAPIProperty.CLIENT_SUBMIT_TIME); 
+       List<PropertyValue> pv = props.get(MAPIProperty.CLIENT_SUBMIT_TIME);
        assertNotNull(pv);
        assertEquals(1, pv.size());
-       
+
        clientSubmitTime = (Calendar)pv.get(0).getValue();
        assertEquals(
-               "Fri, 22 Jun 2012 18:32:54", 
+               "Fri, 22 Jun 2012 18:32:54",
                messageDateFormat.format(clientSubmitTime.getTime()));
    }
 }

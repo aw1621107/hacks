@@ -62,7 +62,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * For a more advanced implementation of SAX event parsing
  * of XLSX files, see {@link XSSFEventBasedExcelExtractor}
  * and {@link XSSFSheetXMLHandler}. Note that some use cases,
- * it may be possible to simply use those with a custom 
+ * it may be possible to simply use those with a custom
  * {@link SheetContentsHandler} and no SAX code needed of
  * your own!
  */
@@ -182,7 +182,7 @@ public class XLSX2CSV {
                     nextDataType = xssfDataType.FORMULA;
                 else if (cellStyleStr != null) {
                     // It's a number, but almost certainly one
-                    //  with a special style or format 
+                    //  with a special style or format
                     XSSFCellStyle style = null;
                     if (cellStyleStr != null) {
                         int styleIndex = Integer.parseInt(cellStyleStr);

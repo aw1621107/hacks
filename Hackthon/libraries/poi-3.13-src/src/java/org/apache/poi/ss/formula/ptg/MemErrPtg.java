@@ -21,7 +21,7 @@ import org.apache.poi.util.LittleEndianInput;
 import org.apache.poi.util.LittleEndianOutput;
 
 /**
- * 
+ *
  * @author andy
  * @author Jason Height (jheight at chariot dot net dot au)
  * @author Daniel Noll (daniel at nuix dot com dot au)

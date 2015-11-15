@@ -32,10 +32,10 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
 /**
  * Class to extract the text from a Word Document.
- * 
+ *
  * You should use either getParagraphText() or getText() unless you have a
  * strong reason otherwise.
- * 
+ *
  * @author Nick Burch
  */
 public final class WordExtractor extends POIOLE2TextExtractor
@@ -44,7 +44,7 @@ public final class WordExtractor extends POIOLE2TextExtractor
 
     /**
      * Create a new Word Extractor
-     * 
+     *
      * @param is
      *            InputStream containing the word file
      */
@@ -55,7 +55,7 @@ public final class WordExtractor extends POIOLE2TextExtractor
 
     /**
      * Create a new Word Extractor
-     * 
+     *
      * @param fs
      *            POIFSFileSystem containing the word file
      */
@@ -81,7 +81,7 @@ public final class WordExtractor extends POIOLE2TextExtractor
 
     /**
      * Create a new Word Extractor
-     * 
+     *
      * @param doc
      *            The HWPFDocument to extract from
      */

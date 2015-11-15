@@ -40,7 +40,7 @@ public final class IOUtils {
     /**
      * Peeks at the first 8 bytes of the stream. Returns those bytes, but
      *  with the stream unaffected. Requires a stream that supports mark/reset,
-     *  or a PushbackInputStream. If the stream has &gt;0 but &lt;8 bytes, 
+     *  or a PushbackInputStream. If the stream has &gt;0 but &lt;8 bytes,
      *  remaining bytes will be zero.
      * @throws EmptyFileException if the stream is empty
      */
@@ -192,13 +192,13 @@ public final class IOUtils {
             }
         }
         return sum.getValue();
-    }    
-    
-    
+    }
+
+
     /**
      * Quietly (no exceptions) close Closable resource. In case of error it will
      * be printed to {@link IOUtils} class logger.
-     * 
+     *
      * @param closeable
      *            resource to close
      */

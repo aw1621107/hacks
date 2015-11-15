@@ -99,8 +99,8 @@ public class XSSFExportToXml implements Comparator<String>{
      * @param os OutputStream in which will contain the output XML
      * @param validate if true, validates the XML againts the XML Schema
      * @throws SAXException
-     * @throws TransformerException  
-     * @throws ParserConfigurationException 
+     * @throws TransformerException
+     * @throws ParserConfigurationException
      */
     public void exportToXML(OutputStream os, boolean validate) throws SAXException, ParserConfigurationException, TransformerException {
         exportToXML(os, "UTF-8", validate);
@@ -113,8 +113,8 @@ public class XSSFExportToXml implements Comparator<String>{
      * @param encoding the output charset encoding
      * @param validate if true, validates the XML againts the XML Schema
      * @throws SAXException
-     * @throws ParserConfigurationException 
-     * @throws TransformerException 
+     * @throws ParserConfigurationException
+     * @throws TransformerException
      * @throws InvalidFormatException
      */
     public void exportToXML(OutputStream os, String encoding, boolean validate) throws SAXException, ParserConfigurationException, TransformerException{
@@ -166,7 +166,7 @@ public class XSSFExportToXml implements Comparator<String>{
                         Node currentNode = getNodeByXPath(xpath,doc.getFirstChild(),doc,false);
                         STXmlDataType.Enum dataType = simpleXmlCell.getXmlDataType();
                         mapCellOnNode(cell,currentNode,dataType);
-                        
+
                         //remove nodes which are empty in order to keep the output xml valid
                         if("".equals(currentNode.getTextContent()) && currentNode.getParentNode() != null) {
                         	currentNode.getParentNode().removeChild(currentNode);
@@ -261,7 +261,7 @@ public class XSSFExportToXml implements Comparator<String>{
             Schema schema = factory.newSchema(source);
             Validator validator = schema.newValidator();
             validator.validate(new DOMSource(xml));
-            
+
             //if no exceptions where raised, the document is valid
             return true;
         } catch(IOException e) {
@@ -291,8 +291,8 @@ public class XSSFExportToXml implements Comparator<String>{
                }
            }
            break;
-        
-        case XSSFCell.CELL_TYPE_NUMERIC: 
+
+        case XSSFCell.CELL_TYPE_NUMERIC:
              if (DateUtil.isCellDateFormatted(cell)) {
                   value = getFormattedDate(cell);
               } else {
@@ -468,7 +468,7 @@ public class XSSFExportToXml implements Comparator<String>{
         if(returnNode != null) {
             return returnNode;
 		}
-		
+
         return node.getAttributes().getNamedItem("ref");
 	}
 

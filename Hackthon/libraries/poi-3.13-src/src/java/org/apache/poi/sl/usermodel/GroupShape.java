@@ -31,7 +31,7 @@ public interface GroupShape<
      * @return the coordinate space of this group
      */
     Rectangle getInteriorAnchor();
-    
+
     /**
      * Sets the coordinate space of this group.  All children are constrained
      * to these coordinates.

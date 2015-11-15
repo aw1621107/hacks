@@ -100,7 +100,7 @@ public class TestXMLSlideShow {
 
       assertNotNull(xml.getNotesMaster());
    }
-	
+
    @Test
    public void testMetadataBasics() throws Exception {
       XMLSlideShow xml = new XMLSlideShow(pack);
@@ -115,32 +115,32 @@ public class TestXMLSlideShow {
       assertEquals(null, xml.getProperties().getCoreProperties().getTitle());
       assertEquals(null, xml.getProperties().getCoreProperties().getUnderlyingProperties().getSubjectProperty().getValue());
    }
-   
+
    @Test
    public void testComments() throws Exception {
       // Default sample file has none
       XMLSlideShow xml = new XMLSlideShow(pack);
-      
+
       assertEquals(null, xml.getCommentAuthors());
-      
+
       for (XSLFSlide slide : xml.getSlides()) {
          assertEquals(null, slide.getComments());
       }
-      
+
       // Try another with comments
       OPCPackage packComments = OPCPackage.open(slTests.openResourceAsStream("45545_Comment.pptx"));
       XMLSlideShow xmlComments = new XMLSlideShow(packComments);
-      
+
       // Has one author
       assertNotNull(xmlComments.getCommentAuthors());
       assertEquals(1, xmlComments.getCommentAuthors().getCTCommentAuthorsList().sizeOfCmAuthorArray());
       assertEquals("XPVMWARE01", xmlComments.getCommentAuthors().getAuthorById(0).getName());
-      
+
       // First two slides have comments
       int i = -1;
       for (XSLFSlide slide : xmlComments.getSlides()) {
          i++;
-         
+
          if(i == 0) {
             assertNotNull(slide.getComments());
             assertEquals(1, slide.getComments().getNumberOfComments());

@@ -30,11 +30,11 @@ public final class TestRKUtil extends TestCase {
 	 */
 	public void testDecode() {
 
-		int[] values = { 1074266112, 1081384961, 1081397249, 
+		int[] values = { 1074266112, 1081384961, 1081397249,
 				0x3FF00000, 0x405EC001, 0x02F1853A, 0x02F1853B, 0xFCDD699A,
 		};
 		double[] rvalues = { 3.0, 3.3, 3.33,
-				1, 1.23, 12345678, 123456.78, -13149594, 
+				1, 1.23, 12345678, 123456.78, -13149594,
 		};
 
 		for (int j = 0; j < values.length; j++) {

@@ -30,7 +30,7 @@ import org.apache.poi.util.POILogger;
 /**
  * Collection of convenience chunks for the
  *  Recip(ient) part of an outlook file.
- * 
+ *
  * If a message has multiple recipients, there will be
  *  several of these.
  */
@@ -38,17 +38,17 @@ public final class RecipientChunks implements ChunkGroupWithProperties {
    private static POILogger logger = POILogFactory.getLogger(RecipientChunks.class);
 
    public static final String PREFIX = "__recip_version1.0_#";
-   
+
    public static final MAPIProperty RECIPIENT_NAME   = MAPIProperty.DISPLAY_NAME;
    public static final MAPIProperty DELIVERY_TYPE    = MAPIProperty.ADDRTYPE;
    public static final MAPIProperty RECIPIENT_EMAIL_ADDRESS = MAPIProperty.EMAIL_ADDRESS;
    public static final MAPIProperty RECIPIENT_SEARCH        = MAPIProperty.SEARCH_KEY;
    public static final MAPIProperty RECIPIENT_SMTP_ADDRESS  = MAPIProperty.SMTP_ADDRESS;
    public static final MAPIProperty RECIPIENT_DISPLAY_NAME  = MAPIProperty.RECIPIENT_DISPLAY_NAME;
-   
+
    /** Our 0 based position in the list of recipients */
    public int recipientNumber;
-   
+
    /** TODO */
    public ByteChunk recipientSearchChunk;
    /**
@@ -57,13 +57,13 @@ public final class RecipientChunks implements ChunkGroupWithProperties {
     *  if an external person
     */
    public StringChunk recipientNameChunk;
-   /** 
+   /**
     * The email address of the recipient, which
     *  could be in SMTP or SEARCH format, but
     *  isn't always present...
     */
    public StringChunk recipientEmailChunk;
-   /** 
+   /**
     * The smtp destination email address of
     *  the recipient, but isn't always present...
     */
@@ -84,7 +84,7 @@ public final class RecipientChunks implements ChunkGroupWithProperties {
     *  pointers to the data of variable sized ones
     */
    private PropertiesChunk recipientProperties;
-   
+
    public RecipientChunks(String name) {
       recipientNumber = -1;
       int splitAt = name.lastIndexOf('#');
@@ -97,7 +97,7 @@ public final class RecipientChunks implements ChunkGroupWithProperties {
          }
       }
    }
-   
+
    /**
     * Tries to find their name,
     *  in whichever chunk holds it.
@@ -109,27 +109,27 @@ public final class RecipientChunks implements ChunkGroupWithProperties {
       if(recipientDisplayNameChunk != null) {
          return recipientDisplayNameChunk.getValue();
       }
-      
+
       // Can't find it
       return null;
    }
-   
+
    /**
     * Tries to find their email address, in
     *  whichever chunk holds it given the
     *  delivery type.
     */
    public String getRecipientEmailAddress() {
-      // If we have this, it really has the email 
+      // If we have this, it really has the email
       if(recipientSMTPChunk != null) {
          return recipientSMTPChunk.getValue();
       }
-      
+
       // This might be a real email, or might be
       //  in CN=... format
       if(recipientEmailChunk != null) {
          String email = recipientEmailChunk.getValue();
-         int cne = email.indexOf("/CN="); 
+         int cne = email.indexOf("/CN=");
          if(cne == -1) {
             // Normal smtp address
             return email;
@@ -138,7 +138,7 @@ public final class RecipientChunks implements ChunkGroupWithProperties {
             return email.substring(cne+4);
          }
       }
-      
+
       // Might be in the name field, check there
       if(recipientNameChunk != null) {
          String name = recipientNameChunk.getValue();
@@ -150,8 +150,8 @@ public final class RecipientChunks implements ChunkGroupWithProperties {
             return name;
          }
       }
-      
-      // Check the search chunk, see if it's 
+
+      // Check the search chunk, see if it's
       //  encoded as a SMTP destination in there.
       if(recipientSearchChunk != null) {
          String search = recipientSearchChunk.getAs7bitString();
@@ -159,11 +159,11 @@ public final class RecipientChunks implements ChunkGroupWithProperties {
             return search.substring(search.indexOf("SMTP:") + 5);
          }
       }
-      
+
       // Can't find it
       return null;
    }
-   
+
    /** Holds all the chunks that were found. */
    private List<Chunk> allChunks = new ArrayList<Chunk>();
 
@@ -179,7 +179,7 @@ public final class RecipientChunks implements ChunkGroupWithProperties {
    public Chunk[] getChunks() {
       return getAll();
    }
-	
+
    /**
     * Called by the parser whenever a chunk is found.
     */
@@ -210,7 +210,7 @@ public final class RecipientChunks implements ChunkGroupWithProperties {
       // And add to the main list
       allChunks.add(chunk);
    }
-   
+
    public void chunksComplete() {
       if (recipientProperties != null) {
          recipientProperties.matchVariableSizedPropertiesToChunks();

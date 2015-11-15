@@ -43,7 +43,7 @@ public enum HashAlgorithm {
     public final int hashSize;
     public final String jceHmacId;
     public final boolean needsBouncyCastle;
-    
+
     HashAlgorithm(String jceId, int ecmaId, String ecmaString, int hashSize, String jceHmacId, boolean needsBouncyCastle) {
         this.jceId = jceId;
         this.ecmaId = ecmaId;
@@ -52,21 +52,21 @@ public enum HashAlgorithm {
         this.jceHmacId = jceHmacId;
         this.needsBouncyCastle = needsBouncyCastle;
     }
-    
+
     public static HashAlgorithm fromEcmaId(int ecmaId) {
         for (HashAlgorithm ha : values()) {
             if (ha.ecmaId == ecmaId) return ha;
         }
         throw new EncryptedDocumentException("hash algorithm not found");
-    }    
-    
+    }
+
     public static HashAlgorithm fromEcmaId(String ecmaString) {
         for (HashAlgorithm ha : values()) {
             if (ha.ecmaString.equals(ecmaString)) return ha;
         }
         throw new EncryptedDocumentException("hash algorithm not found");
     }
-    
+
     public static HashAlgorithm fromString(String string) {
         for (HashAlgorithm ha : values()) {
             if (ha.ecmaString.equalsIgnoreCase(string) || ha.jceId.equalsIgnoreCase(string)) return ha;

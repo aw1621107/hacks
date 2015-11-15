@@ -18,9 +18,9 @@
 /* ====================================================================
    This product contains an ASLv2 licensed version of the OOXML signer
    package from the eID Applet project
-   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt  
+   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt
    Copyright (C) 2008-2014 FedICT.
-   ================================================================= */ 
+   ================================================================= */
 
 package org.apache.poi.poifs.crypt.dsig.facets;
 
@@ -58,7 +58,7 @@ import org.w3c.dom.Document;
 public abstract class SignatureFacet implements SignatureConfigurable {
 
     private static final POILogger LOG = POILogFactory.getLogger(SignatureFacet.class);
-    
+
     public static final String XML_NS = XMLConstants.XMLNS_ATTRIBUTE_NS_URI;
     public static final String XML_DIGSIG_NS = XMLSignature.XMLNS;
     public static final String OO_DIGSIG_NS = PackageNamespaces.DIGITAL_SIGNATURE;
@@ -76,7 +76,7 @@ public abstract class SignatureFacet implements SignatureConfigurable {
      * This method is being invoked by the XML signature service engine during
      * pre-sign phase. Via this method a signature facet implementation can add
      * signature facets to an XML signature.
-     * 
+     *
      * @param document the signature document to be used for imports
      * @param references list of reference definitions
      * @param objects objects to be signed/included in the signature document
@@ -105,11 +105,11 @@ public abstract class SignatureFacet implements SignatureConfigurable {
     protected XMLSignatureFactory getSignatureFactory() {
         return signatureConfig.getSignatureFactory();
     }
-    
+
     protected Transform newTransform(String canonicalizationMethod) throws XMLSignatureException {
         return newTransform(canonicalizationMethod, null);
     }
-    
+
     protected Transform newTransform(String canonicalizationMethod, TransformParameterSpec paramSpec)
     throws XMLSignatureException {
         try {
@@ -118,7 +118,7 @@ public abstract class SignatureFacet implements SignatureConfigurable {
             throw new XMLSignatureException("unknown canonicalization method: "+canonicalizationMethod, e);
         }
     }
-    
+
     protected Reference newReference(String uri, List<Transform> transforms, String type, String id, byte digestValue[])
     throws XMLSignatureException {
         return newReference(uri, transforms, type, id, digestValue, signatureConfig);
@@ -149,17 +149,17 @@ public abstract class SignatureFacet implements SignatureConfigurable {
         } else {
             reference = sigFac.newReference(uri, digestMethod, transforms, type, id, digestValue);
         }
-        
+
         brokenJvmWorkaround(reference);
 
         return reference;
     }
-    
+
     // helper method ... will be removed soon
     public static void brokenJvmWorkaround(Reference reference) {
         DigestMethod digestMethod = reference.getDigestMethod();
         String digestMethodUri = digestMethod.getAlgorithm();
-        
+
         // workaround for https://bugzilla.redhat.com/show_bug.cgi?id=1155012
         // overwrite standard message digest, if a digest <> SHA1 is used
         Provider bcProv = Security.getProvider("BC");

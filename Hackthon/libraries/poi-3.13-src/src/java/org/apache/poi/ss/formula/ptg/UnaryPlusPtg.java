@@ -24,7 +24,7 @@ package org.apache.poi.ss.formula.ptg;
  */
 public final class UnaryPlusPtg extends ValueOperatorPtg {
     public final static byte sid  = 0x12;
-    
+
     private final static String ADD = "+";
 
     public static final ValueOperatorPtg instance = new UnaryPlusPtg();
@@ -32,7 +32,7 @@ public final class UnaryPlusPtg extends ValueOperatorPtg {
     private UnaryPlusPtg() {
     	// enforce singleton
     }
-    
+
     protected byte getSid() {
     	return sid;
     }
@@ -40,8 +40,8 @@ public final class UnaryPlusPtg extends ValueOperatorPtg {
     public int getNumberOfOperands() {
         return 1;
     }
-    
-   /** implementation of method from OperationsPtg*/  
+
+   /** implementation of method from OperationsPtg*/
     public String toFormulaString(String[] operands) {
         StringBuffer buffer = new StringBuffer();
         buffer.append(ADD);

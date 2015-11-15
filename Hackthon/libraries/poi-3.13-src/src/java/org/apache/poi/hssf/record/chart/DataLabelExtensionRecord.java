@@ -24,22 +24,22 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * DATALABEXT - Chart Data Label Extension (0x086A) <br/>
- * 
+ *
  * @author Patrick Cheng
  */
 public final class DataLabelExtensionRecord extends StandardRecord {
 	public static final short sid = 0x086A;
-	
+
 	private int rt;
 	private int grbitFrt;
 	private byte[] unused = new byte[8];
-	
+
 	public DataLabelExtensionRecord(RecordInputStream in) {
 		rt = in.readShort();
 		grbitFrt = in.readShort();
 		in.readFully(unused);
 	}
-	
+
 	@Override
 	protected int getDataSize() {
 		return 2 + 2 + 8;

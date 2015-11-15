@@ -45,7 +45,7 @@ public final class FormulaRecord extends CellRecord {
 	/**
 	 * Manages the cached formula result values of other types besides numeric.
 	 * Excel encodes the same 8 bytes that would be field_4_value with various NaN
-	 * values that are decoded/encoded by this class. 
+	 * values that are decoded/encoded by this class.
 	 */
 	static final class SpecialCachedValue {
 		/** deliberately chosen by Excel in order to encode other values within Double NaNs */
@@ -68,7 +68,7 @@ public final class FormulaRecord extends CellRecord {
 		}
 
 		/**
-		 * @return <code>null</code> if the double value encoded by <tt>valueLongBits</tt> 
+		 * @return <code>null</code> if the double value encoded by <tt>valueLongBits</tt>
 		 * is a normal (non NaN) double value.
 		 */
 		public static SpecialCachedValue create(long valueLongBits) {
@@ -343,12 +343,12 @@ public final class FormulaRecord extends CellRecord {
 		out.writeInt(field_6_zero); // may as well write original data back so as to minimise differences from original
 		field_8_parsed_expr.serialize(out);
 	}
-	
+
 	@Override
 	protected String getRecordName() {
 		return "FORMULA";
 	}
-	
+
 	@Override
 	protected void appendValueText(StringBuilder sb) {
 		sb.append("  .value	 = ");

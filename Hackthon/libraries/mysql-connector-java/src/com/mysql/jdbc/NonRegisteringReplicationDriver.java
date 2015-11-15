@@ -38,7 +38,7 @@ public class NonRegisteringReplicationDriver extends NonRegisteringDriver {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.sql.Driver#connect(java.lang.String, java.util.Properties)
      */
     @Override

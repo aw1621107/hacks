@@ -226,7 +226,7 @@ public class VariantSupport extends Variant
              * 45583 clearly show that this approach does not always work. The
              * workaround below attempts to gracefully handle such cases instead
              * of throwing exceptions.
-             * 
+             *
              * August 20, 2009
              */
             // l1 = LittleEndian.getInt(src, o1); o1 += LittleEndian.INT_SIZE;

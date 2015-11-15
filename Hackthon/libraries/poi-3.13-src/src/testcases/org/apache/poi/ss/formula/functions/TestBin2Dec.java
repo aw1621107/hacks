@@ -68,17 +68,17 @@ public final class TestBin2Dec extends TestCase {
 
     public void testEvalOperationEvaluationContext() {
         OperationEvaluationContext ctx = createContext();
-        
+
         ValueEval[] args = new ValueEval[] { ctx.getRefEval(0, 0) };
         ValueEval result = new Bin2Dec().evaluate(args, ctx);
 
         assertEquals(NumberEval.class, result.getClass());
         assertEquals("0", ((NumberEval) result).getStringValue());
     }
-    
+
     public void testEvalOperationEvaluationContextFails() {
         OperationEvaluationContext ctx = createContext();
-        
+
         ValueEval[] args = new ValueEval[] { ctx.getRefEval(0, 0), ctx.getRefEval(0, 0) };
         ValueEval result = new Bin2Dec().evaluate(args, ctx);
 
@@ -91,19 +91,19 @@ public final class TestBin2Dec extends TestCase {
         wb.createSheet();
         HSSFEvaluationWorkbook workbook = HSSFEvaluationWorkbook.create(wb);
         WorkbookEvaluator workbookEvaluator = new WorkbookEvaluator(workbook, new IStabilityClassifier() {
-            
+
             public boolean isCellFinal(int sheetIndex, int rowIndex, int columnIndex) {
                 return true;
             }
         }, null);
-        OperationEvaluationContext ctx = new OperationEvaluationContext(workbookEvaluator, 
+        OperationEvaluationContext ctx = new OperationEvaluationContext(workbookEvaluator,
                 workbook, 0, 0, 0, null);
         return ctx;
     }
 
     public void testRefs() {
         OperationEvaluationContext ctx = createContext();
-        
+
         ValueEval[] args = new ValueEval[] { ctx.getRefEval(0, 0) };
         ValueEval result = new Bin2Dec().evaluate(args, -1, -1);
 

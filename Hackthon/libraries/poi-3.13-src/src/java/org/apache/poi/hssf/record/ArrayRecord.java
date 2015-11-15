@@ -94,8 +94,8 @@ public final class ArrayRecord extends SharedValueRecordBase {
 		}
 		sb.append("]");
 		return sb.toString();
-	}	
-    
+	}
+
     public Object clone() {
         ArrayRecord rec = new ArrayRecord(_formula.copy(), getRange());
 

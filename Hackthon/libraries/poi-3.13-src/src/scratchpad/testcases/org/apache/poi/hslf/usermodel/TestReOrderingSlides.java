@@ -273,11 +273,11 @@ public final class TestReOrderingSlides {
 		s1 = ss_three.getSlides().get(0);
         s2 = ss_three.getSlides().get(1);
         s3 = ss_three.getSlides().get(2);
-		
+
 		assertEquals(1, s1.getSlideNumber());
         assertEquals(2, s2.getSlideNumber());
         assertEquals(3, s3.getSlideNumber());
-        
+
         assertEquals("Slide 3", ((HSLFTextShape)s1.getShapes().get(0)).getText());
         assertEquals("Slide 1", ((HSLFTextShape)s3.getShapes().get(0)).getText());
 

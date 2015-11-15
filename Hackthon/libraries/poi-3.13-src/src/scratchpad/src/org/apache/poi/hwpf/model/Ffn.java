@@ -185,7 +185,7 @@ public final class Ffn
   public boolean equals(Object other) {
       if (!(other instanceof Ffn)) return false;
       Ffn o = (Ffn)other;
-      
+
       return (
              o._cbFfnM1 == this._cbFfnM1
           && o._info == this._info

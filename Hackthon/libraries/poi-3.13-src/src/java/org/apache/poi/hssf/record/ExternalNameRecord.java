@@ -98,7 +98,7 @@ public final class ExternalNameRecord extends StandardRecord {
 	public String getText() {
 		return field_4_name;
 	}
-	
+
     public void setText(String str) {
         field_4_name = str;
     }
@@ -127,7 +127,7 @@ public final class ExternalNameRecord extends StandardRecord {
 	@Override
 	protected int getDataSize(){
 		int result = 2 + 4;  // short and int
-        result += StringUtil.getEncodedSize(field_4_name) - 1; //size is byte, not short 
+        result += StringUtil.getEncodedSize(field_4_name) - 1; //size is byte, not short
 
         if(!isOLELink() && !isStdDocumentNameIdentifier()){
             if(isAutomaticLink()){
@@ -167,7 +167,7 @@ public final class ExternalNameRecord extends StandardRecord {
     public ExternalNameRecord() {
         field_2_ixals = 0;
     }
-    
+
     public ExternalNameRecord(RecordInputStream in) {
 		field_1_option_flag = in.readShort();
 		field_2_ixals       = in.readShort();
@@ -186,7 +186,7 @@ public final class ExternalNameRecord extends StandardRecord {
                    //body specifies DDE data item
                    int nColumns = in.readUByte() + 1;
                    int nRows = in.readShort() + 1;
-   
+
                    int totalCount = nRows * nColumns;
                    _ddeValues = ConstantValueParser.parse(in, totalCount);
                    _nColumns = nColumns;

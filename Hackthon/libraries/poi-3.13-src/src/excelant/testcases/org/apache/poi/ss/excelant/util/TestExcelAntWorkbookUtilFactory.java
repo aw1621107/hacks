@@ -25,7 +25,7 @@ import org.junit.Test;
 
 /**
  * Tests for the ExcelAntWorbookUtilFactory.
- * 
+ *
  * @author Jon Svede (jon [at] loquatic [dot] com)
  * @author Brian Bush (brian [dot] bush [at] nrel [dot] gov)
  *
@@ -34,8 +34,8 @@ public class TestExcelAntWorkbookUtilFactory {
 
     private static final String mortgageCalculatorWorkbookFile =
         BuildFileTest.getDataDir() + "/spreadsheet/mortgage-calculation.xls" ;
-	
-	
+
+
 	/**
 	 * Simple test to determine if the factory properly returns an non-null
 	 * instance of the ExcelAntWorkbookUtil class.
@@ -44,29 +44,29 @@ public class TestExcelAntWorkbookUtilFactory {
 	public void testGetNewWorkbookUtilInstance() {
 		ExcelAntWorkbookUtil util = ExcelAntWorkbookUtilFactory.getInstance(
 				                              mortgageCalculatorWorkbookFile) ;
-		
+
 		assertNotNull(util) ;
 	}
-	
-	
+
+
 	/**
 	 * Test whether or not the factory will properly return the same reference
 	 * to an ExcelAnt WorkbookUtil when two different Strings, that point to
-	 * the same resource, are passed in. 
+	 * the same resource, are passed in.
 	 */
     @Test
 	public void testVerifyEquivalence() {
 		String sameFileName = BuildFileTest.getDataDir() + "/spreadsheet/mortgage-calculation.xls" ;
-		
+
 		ExcelAntWorkbookUtil util = ExcelAntWorkbookUtilFactory.getInstance(
                 mortgageCalculatorWorkbookFile) ;
 
 		ExcelAntWorkbookUtil util2 = ExcelAntWorkbookUtilFactory.getInstance(
 				                       sameFileName) ;
-		
+
 		assertNotNull(util) ;
 		assertNotNull(util2) ;
-		
+
 		assertEquals(util, util2) ;
 	}
 }

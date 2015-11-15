@@ -172,7 +172,7 @@ public final class TestXSSFComment extends BaseTestCellComment  {
         assertEquals(8.5, rPr.getSzArray(0).getVal(), 0);
         assertEquals(IndexedColors.BLUE_GREY.getIndex(), rPr.getColorArray(0).getIndexed());
         assertEquals("Tahoma", rPr.getRFontArray(0).getVal());
-        
+
         assertNotNull(XSSFTestDataSamples.writeOutAndReadBack(wb));
     }
 
@@ -242,24 +242,24 @@ public final class TestXSSFComment extends BaseTestCellComment  {
                         + ", 0";
                 vmlShape2.getClientDataArray(0).setAnchorArray(0, position);
             }
-            
+
             String ref = new CellReference(ca.getRow1(), ca.getCol1()).formatAsString();
             XSSFComment shape2 = new XSSFComment(comments, comments.newComment(ref), vmlShape2);
-        
+
             assertEquals(shape1.getAuthor(), shape2.getAuthor());
             assertEquals(shape1.getClientAnchor(), shape2.getClientAnchor());
             assertEquals(shape1.getColumn(), shape2.getColumn());
             assertEquals(shape1.getRow(), shape2.getRow());
             assertEquals(shape1.getCTComment().toString(), shape2.getCTComment().toString());
             assertEquals(shape1.getCTComment().getRef(), shape2.getCTComment().getRef());
-            
+
             /*CommentsTable table1 = shape1.getCommentsTable();
             CommentsTable table2 = shape2.getCommentsTable();
             assertEquals(table1.getCTComments().toString(), table2.getCTComments().toString());
             assertEquals(table1.getNumberOfComments(), table2.getNumberOfComments());
             assertEquals(table1.getRelations(), table2.getRelations());*/
-            
-            assertEquals("The vmlShapes should have equal content afterwards", 
+
+            assertEquals("The vmlShapes should have equal content afterwards",
                     vmlShape1.toString().replaceAll("_x0000_s\\d+", "_x0000_s0000"), vmlShape2.toString().replaceAll("_x0000_s\\d+", "_x0000_s0000"));
         } finally {
             wb.close();
@@ -295,7 +295,7 @@ public final class TestXSSFComment extends BaseTestCellComment  {
             comment.setString(str);
             comment.setAuthor("Apache POI");
 
-            /* fixed the problem as well 
+            /* fixed the problem as well
              * comment.setColumn(cell.getColumnIndex());
              * comment.setRow(cell.getRowIndex());
              */

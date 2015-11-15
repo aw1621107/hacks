@@ -443,7 +443,7 @@ public final class TestPropertyTable extends TestCase {
       // Fake up a header
       HeaderBlock header_block = new HeaderBlock(POIFSConstants.SMALLER_BIG_BLOCK_SIZE_DETAILS);
       header_block.setPropertyStart(0);
-      
+
 		// get property table from the document
 		PropertyTable table = new PropertyTable(header_block, data_blocks);
 

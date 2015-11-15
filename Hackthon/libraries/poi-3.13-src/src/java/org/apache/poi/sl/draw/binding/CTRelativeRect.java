@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_RelativeRect complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_RelativeRect">
  *   &lt;complexContent>
@@ -40,8 +40,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_RelativeRect", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main")
@@ -58,11 +58,11 @@ public class CTRelativeRect {
 
     /**
      * Gets the value of the l property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public int getL() {
         if (l == null) {
@@ -74,11 +74,11 @@ public class CTRelativeRect {
 
     /**
      * Sets the value of the l property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setL(int value) {
         this.l = value;
@@ -94,11 +94,11 @@ public class CTRelativeRect {
 
     /**
      * Gets the value of the t property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public int getT() {
         if (t == null) {
@@ -110,11 +110,11 @@ public class CTRelativeRect {
 
     /**
      * Sets the value of the t property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setT(int value) {
         this.t = value;
@@ -130,11 +130,11 @@ public class CTRelativeRect {
 
     /**
      * Gets the value of the r property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public int getR() {
         if (r == null) {
@@ -146,11 +146,11 @@ public class CTRelativeRect {
 
     /**
      * Sets the value of the r property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setR(int value) {
         this.r = value;
@@ -166,11 +166,11 @@ public class CTRelativeRect {
 
     /**
      * Gets the value of the b property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public int getB() {
         if (b == null) {
@@ -182,11 +182,11 @@ public class CTRelativeRect {
 
     /**
      * Sets the value of the b property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setB(int value) {
         this.b = value;

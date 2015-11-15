@@ -203,7 +203,7 @@ public abstract class BaseTestSheetShiftRows extends TestCase {
         // by shifting rows...
         if(!(wb instanceof HSSFWorkbook)) {
         	assertEquals(2, sheet.getLastRowNum());
-        	
+
         	// Verify comments are in the position expected
         	assertNull("Had: " + (sheet.getCellComment(0,0) == null ? "null" : sheet.getCellComment(0,0).getString()),
         			sheet.getCellComment(0,0));

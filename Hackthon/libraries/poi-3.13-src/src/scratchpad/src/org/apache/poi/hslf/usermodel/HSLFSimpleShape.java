@@ -177,7 +177,7 @@ public abstract class HSLFSimpleShape extends HSLFShape implements SimpleShape<H
         EscherSimpleProperty prop = getEscherProperty(opt, EscherProperties.LINESTYLE__LINESTYLE);
         return (prop == null) ? LineCompound.SINGLE : LineCompound.fromNativeId(prop.getPropertyValue());
     }
-    
+
     /**
      * Sets the line compound style
      *
@@ -214,7 +214,7 @@ public abstract class HSLFSimpleShape extends HSLFShape implements SimpleShape<H
             public double getLineWidth() {
                 return HSLFSimpleShape.this.getLineWidth();
             }
-            
+
         };
     }
 
@@ -350,10 +350,10 @@ public abstract class HSLFSimpleShape extends HSLFShape implements SimpleShape<H
         if (name == null || !name.matches("adj([1-9]|10)?")) {
             throw new IllegalArgumentException("Adjust value '"+name+"' not supported.");
         }
-        
+
         name = name.replace("adj", "");
         if ("".equals(name)) name = "1";
-        
+
         short escherProp;
         switch (Integer.parseInt(name)) {
             case 1: escherProp = EscherProperties.GEOMETRY__ADJUSTVALUE; break;
@@ -368,7 +368,7 @@ public abstract class HSLFSimpleShape extends HSLFShape implements SimpleShape<H
             case 10: escherProp = EscherProperties.GEOMETRY__ADJUST10VALUE; break;
             default: throw new RuntimeException();
         }
-        
+
         int adjval = getEscherProperty(escherProp, -1);
         return (adjval == -1) ? null : new Guide(name, "val "+adjval);
     }
@@ -383,7 +383,7 @@ public abstract class HSLFSimpleShape extends HSLFShape implements SimpleShape<H
             logger.log(POILogger.WARN, "No preset shape definition for shapeType: "+name);
             return null;
         }
-        
+
         return geom;
     }
 
@@ -396,7 +396,7 @@ public abstract class HSLFSimpleShape extends HSLFShape implements SimpleShape<H
         int offY = (prop == null) ? 0 : prop.getPropertyValue();
         return Math.toDegrees(Math.atan2(offY, offX));
     }
-    
+
     public double getShadowDistance() {
         AbstractEscherOptRecord opt = getEscherOptRecord();
         EscherSimpleProperty prop = getEscherProperty(opt, EscherProperties.SHADOWSTYLE__OFFSETX);
@@ -412,13 +412,13 @@ public abstract class HSLFSimpleShape extends HSLFShape implements SimpleShape<H
     public Color getShadowColor(){
         Color clr = getColor(EscherProperties.SHADOWSTYLE__COLOR, EscherProperties.SHADOWSTYLE__OPACITY, -1);
         return clr == null ? Color.black : clr;
-    }    
-    
+    }
+
     public Shadow<HSLFShape,HSLFTextParagraph> getShadow() {
         AbstractEscherOptRecord opt = getEscherOptRecord();
         EscherProperty shadowType = opt.lookup(EscherProperties.SHADOWSTYLE__TYPE);
         if (shadowType == null) return null;
-        
+
         return new Shadow<HSLFShape,HSLFTextParagraph>(){
             public SimpleShape<HSLFShape,HSLFTextParagraph> getShadowParent() {
                 return HSLFSimpleShape.this;
@@ -440,7 +440,7 @@ public abstract class HSLFSimpleShape extends HSLFShape implements SimpleShape<H
             public SolidPaint getFillStyle() {
                 return DrawPaint.createSolidPaint(getShadowColor());
             }
-            
+
         };
     }
 

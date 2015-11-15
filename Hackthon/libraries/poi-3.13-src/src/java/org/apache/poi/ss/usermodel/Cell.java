@@ -116,7 +116,7 @@ public interface Cell {
      * <p>If what you want to do is get a String value for your
      *  numeric cell, <i>stop!</i>. This is not the way to do it.
      *  Instead, for fetching the string value of a numeric or boolean
-     *  or date cell, use {@link DataFormatter} instead.</p> 
+     *  or date cell, use {@link DataFormatter} instead.</p>
      *
      * @throws IllegalArgumentException if the specified cell type is invalid
      * @throws IllegalStateException if the current value cannot be converted to the new type

@@ -39,7 +39,7 @@ public final class Intercept extends Fixed2ArgFunction {
 	public Intercept() {
 		func = new LinearRegressionFunction(FUNCTION.INTERCEPT);
 	}
-	
+
 	public ValueEval evaluate(int srcRowIndex, int srcColumnIndex,
 			ValueEval arg0, ValueEval arg1) {
 		return func.evaluate(srcRowIndex, srcColumnIndex, arg0, arg1);

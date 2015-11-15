@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * STARTOBJECT - Chart Future Record Type Start Object (0x0854)<br/>
- * 
+ *
  * @author Patrick Cheng
  */
 public final class ChartStartObjectRecord extends StandardRecord {

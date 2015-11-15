@@ -49,17 +49,17 @@ public class FileBackedDataSource extends DataSource {
    public FileBackedDataSource(RandomAccessFile srcFile, boolean readOnly) {
        this(srcFile.getChannel(), readOnly);
        this.srcFile = srcFile;
-   }   
-   
+   }
+
    public FileBackedDataSource(FileChannel channel, boolean readOnly) {
       this.channel = channel;
       this.writable = !readOnly;
    }
-   
+
    public boolean isWriteable() {
        return this.writable;
    }
-   
+
    public FileChannel getChannel() {
        return this.channel;
    }
@@ -69,7 +69,7 @@ public class FileBackedDataSource extends DataSource {
       if(position >= size()) {
          throw new IllegalArgumentException("Position " + position + " past the end of the file");
       }
-      
+
       // Do we read or map (for read/write?
       ByteBuffer dst;
       int worked = -1;

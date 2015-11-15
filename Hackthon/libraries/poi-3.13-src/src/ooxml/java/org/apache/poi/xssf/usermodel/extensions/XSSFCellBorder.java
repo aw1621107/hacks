@@ -65,7 +65,7 @@ public class XSSFCellBorder {
     public void setThemesTable(ThemesTable themes) {
        this._theme = themes;
     }
-    
+
     /**
      * The enumeration value indicating the side being used for a cell border.
      */
@@ -115,8 +115,8 @@ public class XSSFCellBorder {
      */
     public XSSFColor getBorderColor(BorderSide side) {
         CTBorderPr borderPr = getBorder(side);
-        
-        if(borderPr != null && borderPr.isSetColor()) { 
+
+        if(borderPr != null && borderPr.isSetColor()) {
             XSSFColor clr = new XSSFColor(borderPr.getColor());
             if(_theme != null) {
                _theme.inheritFromThemeAsRequired(clr);

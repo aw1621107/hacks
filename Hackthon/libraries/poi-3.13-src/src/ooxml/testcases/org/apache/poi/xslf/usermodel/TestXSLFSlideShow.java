@@ -56,7 +56,7 @@ public class TestXSLFSlideShow {
         XMLSlideShow ppt2 = XSLFTestDataSamples.writeOutAndReadBack(ppt);
         assertEquals(2, ppt2.getSlides().size());
         rels =  ppt2.getSlides().get(0).getRelations();
-        
+
         ppt2.close();
         ppt.close();
     }
@@ -81,7 +81,7 @@ public class TestXSLFSlideShow {
 
         XMLSlideShow ppt2 = XSLFTestDataSamples.writeOutAndReadBack(ppt);
         assertEquals(1, ppt2.getSlides().size());
-        
+
         ppt2.close();
         ppt.close();
     }
@@ -129,7 +129,7 @@ public class TestXSLFSlideShow {
         final String names[] = {
               "Blank", "Title Only", "Section Header", "Picture with Caption", "Title and Content"
             , "Title Slide", "Title and Vertical Text", "Vertical Title and Text", "Comparison"
-            , "Two Content", "Content with Caption"                
+            , "Two Content", "Content with Caption"
         };
         XMLSlideShow ppt = XSLFTestDataSamples.openSampleDocument("layouts.pptx");
         for (String name : names) {
@@ -139,7 +139,7 @@ public class TestXSLFSlideShow {
               SlideLayout.BLANK, SlideLayout.TITLE_ONLY, SlideLayout.SECTION_HEADER
             , SlideLayout.PIC_TX, SlideLayout.TITLE_AND_CONTENT, SlideLayout.TITLE
             , SlideLayout.VERT_TX, SlideLayout.VERT_TITLE_AND_TX, SlideLayout.TWO_TX_TWO_OBJ
-            , SlideLayout.TWO_OBJ, SlideLayout.OBJ_TX                
+            , SlideLayout.TWO_OBJ, SlideLayout.OBJ_TX
         };
         for (SlideLayout sl : layTypes){
             assertNotNull(ppt.getSlideMasters().get(0).getLayout(sl));

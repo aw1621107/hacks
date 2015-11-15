@@ -84,7 +84,7 @@ public final class TestHSSFComment extends BaseTestCellComment {
         comment = cell.getCellComment();
         assertEquals("c6", comment.getString().getString());
     }
-    
+
     @Test
     public void testBug56380InsertComments() throws Exception {
         HSSFWorkbook workbook = new HSSFWorkbook();
@@ -92,7 +92,7 @@ public final class TestHSSFComment extends BaseTestCellComment {
         Drawing drawing = sheet.createDrawingPatriarch();
         int noOfRows = 1025;
         String comment = "c";
-        
+
         for(int i = 0; i < noOfRows; i++) {
             Row row = sheet.createRow(i);
             Cell cell = row.createCell(0);
@@ -109,14 +109,14 @@ public final class TestHSSFComment extends BaseTestCellComment {
         } finally {
             fs.close();
         }*/
-        
+
         // save and recreate the workbook from the saved file
         HSSFWorkbook workbookBack = HSSFTestDataSamples.writeOutAndReadBack(workbook);
         sheet = workbookBack.getSheetAt(0);
-        
+
         // assert that the comments are created properly after reading back in
         checkComments(sheet, noOfRows, comment);
-        
+
         workbook.close();
         workbookBack.close();
     }
@@ -128,11 +128,11 @@ public final class TestHSSFComment extends BaseTestCellComment {
             Sheet sheet = workbook.createSheet();
             Drawing drawing = sheet.createDrawingPatriarch();
             String comment = "c";
-    
+
             for(int rowNum = 0;rowNum < 258;rowNum++) {
             	sheet.createRow(rowNum);
             }
-            
+
             // should still work, for some reason DrawingManager2.allocateShapeId() skips the first 1024...
             for(int count = 1025;count < 65535;count++) {
             	int rowNum = count / 255;
@@ -140,13 +140,13 @@ public final class TestHSSFComment extends BaseTestCellComment {
                 Cell cell = sheet.getRow(rowNum).createCell(cellNum);
                 try {
                 	Comment commentObj = insertComment(drawing, cell, comment + cellNum);
-                	
+
                 	assertEquals(count, ((HSSFComment)commentObj).getNoteRecord().getShapeId());
                 } catch (IllegalArgumentException e) {
                 	throw new IllegalArgumentException("While adding shape number " + count, e);
                 }
-            }        	
-            
+            }
+
             // this should now fail to insert
             Row row = sheet.createRow(257);
             Cell cell = row.createCell(0);
@@ -168,24 +168,24 @@ public final class TestHSSFComment extends BaseTestCellComment {
 
     private Comment insertComment(Drawing drawing, Cell cell, String message) {
         CreationHelper factory = cell.getSheet().getWorkbook().getCreationHelper();
-        
+
         ClientAnchor anchor = factory.createClientAnchor();
         anchor.setCol1(cell.getColumnIndex());
         anchor.setCol2(cell.getColumnIndex() + 1);
         anchor.setRow1(cell.getRowIndex());
         anchor.setRow2(cell.getRowIndex() + 1);
-        anchor.setDx1(100); 
+        anchor.setDx1(100);
         anchor.setDx2(100);
         anchor.setDy1(100);
         anchor.setDy2(100);
-            
+
         Comment comment = drawing.createCellComment(anchor);
-        
+
         RichTextString str = factory.createRichTextString(message);
         comment.setString(str);
         comment.setAuthor("fanfy");
         cell.setCellComment(comment);
-        
+
         return comment;
-    }    
+    }
 }

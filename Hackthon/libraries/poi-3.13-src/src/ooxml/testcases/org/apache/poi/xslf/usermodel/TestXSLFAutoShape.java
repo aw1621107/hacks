@@ -104,7 +104,7 @@ public class TestXSLFAutoShape {
         assertEquals(TextDirection.VERTICAL, shape.getTextDirection());
         shape.setTextDirection(null);
         assertEquals(TextDirection.HORIZONTAL, shape.getTextDirection());
-        
+
         ppt.close();
     }
 
@@ -206,7 +206,7 @@ public class TestXSLFAutoShape {
         p.setTextAlign(null);
         assertEquals(TextAlign.LEFT, p.getTextAlign());
         assertFalse(p.getXmlObject().getPPr().isSetAlgn());
-        
+
         ppt.close();
     }
 
@@ -278,7 +278,7 @@ public class TestXSLFAutoShape {
         assertEquals("POI", r.getRawText());
         r.setText(null);
         assertNull(r.getRawText());
-        
+
         ppt.close();
     }
 
@@ -298,7 +298,7 @@ public class TestXSLFAutoShape {
             shape.setShapeType(tp);
             assertEquals(tp, shape.getShapeType());
         }
-        
+
         ppt.close();
     }
 }

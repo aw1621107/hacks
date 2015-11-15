@@ -46,19 +46,19 @@ public final class HeaderBlock implements HeaderBlockConstants {
 	 */
 	private final POIFSBigBlockSize bigBlockSize;
 
-	/** 
+	/**
 	 * Number of big block allocation table blocks (int).
 	 * (Number of FAT Sectors in Microsoft parlance).
 	 */
 	private int _bat_count;
 
-	/** 
+	/**
 	 * Start of the property set block (int index of the property set
 	 * chain's first big block).
 	 */
 	private int _property_start;
 
-	/** 
+	/**
 	 * start of the small block allocation table (int index of small
 	 * block allocation table's first big block)
 	 */
@@ -69,7 +69,7 @@ public final class HeaderBlock implements HeaderBlockConstants {
 	 */
 	private int _sbat_count;
 
-	/** 
+	/**
 	 * Big block index for extension to the big block allocation table
 	 */
 	private int _xbat_start;
@@ -78,13 +78,13 @@ public final class HeaderBlock implements HeaderBlockConstants {
 	 * (Number of DIFAT Sectors in Microsoft parlance)
 	 */
 	private int _xbat_count;
-	
+
 	/**
 	 * The data. Only ever 512 bytes, because 4096 byte
 	 *  files use zeros for the extra header space.
 	 */
 	private final byte[] _data;
-	
+
    private static final byte _default_value = ( byte ) 0xFF;
 
 	/**
@@ -99,7 +99,7 @@ public final class HeaderBlock implements HeaderBlockConstants {
 	   // (For 4096 sized blocks, the remaining 3584 bytes are zero)
 		// Then, process the contents
 		this(readFirst512(stream));
-		
+
 		// Fetch the rest of the block if needed
 		if(bigBlockSize.getBigBlockSize() != 512) {
 		   int rest = bigBlockSize.getBigBlockSize() - 512;
@@ -107,14 +107,14 @@ public final class HeaderBlock implements HeaderBlockConstants {
 		   IOUtils.readFully(stream, tmp);
 		}
 	}
-	
+
 	public HeaderBlock(ByteBuffer buffer) throws IOException {
 	   this(IOUtils.toByteArray(buffer, POIFSConstants.SMALLER_BIG_BLOCK_SIZE));
 	}
-	
+
 	private HeaderBlock(byte[] data) throws IOException {
 	   this._data = data;
-	   
+
 		// verify signature
 		long signature = LittleEndian.getLong(_data, _signature_offset);
 
@@ -127,7 +127,7 @@ public final class HeaderBlock implements HeaderBlockConstants {
 				_data[3] == OOXML_FILE_HEADER[3]) {
 				throw new OfficeXmlFileException("The supplied data appears to be in the Office 2007+ XML. You are calling the part of POI that deals with OLE2 Office Documents. You need to call a different part of POI to process this data (eg XSSF instead of HSSF)");
 			}
-			
+
             if (_data[0] == 0x09 && _data[1] == 0x00 && // sid=0x0009
                 _data[2] == 0x04 && _data[3] == 0x00 && // size=0x0004
                 _data[4] == 0x00 && _data[5] == 0x00 && // unused
@@ -183,7 +183,7 @@ public final class HeaderBlock implements HeaderBlockConstants {
       _xbat_start = new IntegerField(_xbat_start_offset, _data).get();
       _xbat_count = new IntegerField(_xbat_count_offset, _data).get();
 	}
-	
+
    /**
     * Create a single instance initialized with default values
     */
@@ -194,7 +194,7 @@ public final class HeaderBlock implements HeaderBlockConstants {
       // Our data is always 512 big no matter what
       _data = new byte[ POIFSConstants.SMALLER_BIG_BLOCK_SIZE ];
       Arrays.fill(_data, _default_value);
-      
+
       // Set all the default values
       new LongField(_signature_offset, _signature, _data);
       new IntegerField(0x08, 0, _data);
@@ -204,14 +204,14 @@ public final class HeaderBlock implements HeaderBlockConstants {
       new ShortField(0x18, ( short ) 0x3b, _data);
       new ShortField(0x1a, ( short ) 0x3, _data);
       new ShortField(0x1c, ( short ) -2, _data);
-       
+
       new ShortField(0x1e, bigBlockSize.getHeaderValue(), _data);
       new IntegerField(0x20, 0x6, _data);
       new IntegerField(0x24, 0, _data);
       new IntegerField(0x28, 0, _data);
       new IntegerField(0x34, 0, _data);
       new IntegerField(0x38, 0x1000, _data);
-      
+
       // Initialise the variables
       _bat_count = 0;
       _sbat_count = 0;
@@ -220,7 +220,7 @@ public final class HeaderBlock implements HeaderBlockConstants {
       _sbat_start = POIFSConstants.END_OF_CHAIN;
       _xbat_start = POIFSConstants.END_OF_CHAIN;
    }
-   
+
 	private static byte[] readFirst512(InputStream stream) throws IOException {
       // Grab the first 512 bytes
       // (For 4096 sized blocks, the remaining 3584 bytes are zero)
@@ -273,7 +273,7 @@ public final class HeaderBlock implements HeaderBlockConstants {
 	public int getSBATCount() {
 	   return _sbat_count;
 	}
-	
+
    /**
     * Set start of small block allocation table
     *
@@ -301,7 +301,7 @@ public final class HeaderBlock implements HeaderBlockConstants {
 	}
    /**
     * Sets the number of BAT blocks that are used.
-    * This is the number used in both the BAT and XBAT. 
+    * This is the number used in both the BAT and XBAT.
     */
    public void setBATCount(final int count) {
       _bat_count = count;
@@ -331,7 +331,7 @@ public final class HeaderBlock implements HeaderBlockConstants {
 	public void setBATArray(int[] bat_array) {
 	   int count = Math.min(bat_array.length, _max_bats_in_header);
 	   int blank = _max_bats_in_header - count;
-	   
+
       int offset = _bat_array_offset;
 	   for(int i=0; i<count; i++) {
 	      LittleEndian.putInt(_data, offset, bat_array[i]);
@@ -375,7 +375,7 @@ public final class HeaderBlock implements HeaderBlockConstants {
 	public POIFSBigBlockSize getBigBlockSize() {
 		return bigBlockSize;
 	}
-	
+
    /**
     * Write the block's data to an OutputStream
     *
@@ -388,17 +388,17 @@ public final class HeaderBlock implements HeaderBlockConstants {
    void writeData(final OutputStream stream)
        throws IOException
    {
-      // Update the counts and start positions 
+      // Update the counts and start positions
       new IntegerField(_bat_count_offset,      _bat_count, _data);
       new IntegerField(_property_start_offset, _property_start, _data);
       new IntegerField(_sbat_start_offset,     _sbat_start, _data);
       new IntegerField(_sbat_block_count_offset, _sbat_count, _data);
       new IntegerField(_xbat_start_offset,      _xbat_start, _data);
       new IntegerField(_xbat_count_offset,      _xbat_count, _data);
-      
+
       // Write the main data out
       stream.write(_data, 0, 512);
-      
+
       // Now do the padding if needed
       for(int i=POIFSConstants.SMALLER_BIG_BLOCK_SIZE; i<bigBlockSize.getBigBlockSize(); i++) {
          stream.write(0);

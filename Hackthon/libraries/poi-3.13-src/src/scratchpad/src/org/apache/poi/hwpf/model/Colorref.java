@@ -21,7 +21,7 @@ import org.apache.poi.util.LittleEndian;
 
 /**
  * 24-bit color structure
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 @Internal

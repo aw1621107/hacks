@@ -19,33 +19,33 @@ package org.apache.poi.ss.usermodel;
 
 /**
  * Contains raw Excel error codes (as defined in OOO's excelfileformat.pdf (2.5.6)
- * 
+ *
  * @deprecated Use {@link FormulaError} instead where possible
  */
 public class ErrorConstants {
     protected ErrorConstants() {
         // no instances of this class
     }
-    
+
     /** <b>#NULL!</b>  - Intersection of two cell ranges is empty */
     public static final int ERROR_NULL = 0x00;
     /** <b>#DIV/0!</b> - Division by zero */
     public static final int ERROR_DIV_0 = 0x07;
     /** <b>#VALUE!</b> - Wrong type of operand */
-    public static final int ERROR_VALUE = 0x0F; 
+    public static final int ERROR_VALUE = 0x0F;
     /** <b>#REF!</b> - Illegal or deleted cell reference */
-    public static final int ERROR_REF = 0x17;  
+    public static final int ERROR_REF = 0x17;
     /** <b>#NAME?</b> - Wrong function or range name */
-    public static final int ERROR_NAME = 0x1D; 
+    public static final int ERROR_NAME = 0x1D;
     /** <b>#NUM!</b> - Value range overflow */
-    public static final int ERROR_NUM = 0x24; 
+    public static final int ERROR_NUM = 0x24;
     /** <b>#N/A</b> - Argument or function not available */
     public static final int ERROR_NA = 0x2A;
-    
-    
+
+
     /**
-     * @return Standard Excel error literal for the specified error code. 
-     * @throws IllegalArgumentException if the specified error code is not one of the 7 
+     * @return Standard Excel error literal for the specified error code.
+     * @throws IllegalArgumentException if the specified error code is not one of the 7
      * standard error codes
      */
     public static final String getText(int errorCode) {
@@ -60,13 +60,13 @@ public class ErrorConstants {
         }
         throw new IllegalArgumentException("Bad error code (" + errorCode + ")");
     }
-    
+
     /**
-     * @return <code>true</code> if the specified error code is a standard Excel error code. 
+     * @return <code>true</code> if the specified error code is a standard Excel error code.
      */
     public static final boolean isValidCode(int errorCode) {
-        // This method exists because it would be bad to force clients to catch 
-        // IllegalArgumentException if there were potential for passing an invalid error code.  
+        // This method exists because it would be bad to force clients to catch
+        // IllegalArgumentException if there were potential for passing an invalid error code.
         switch(errorCode) {
             case ERROR_NULL:
             case ERROR_DIV_0:

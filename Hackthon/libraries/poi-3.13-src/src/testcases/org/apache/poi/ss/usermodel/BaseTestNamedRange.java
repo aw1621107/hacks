@@ -107,7 +107,7 @@ public abstract class BaseTestNamedRange {
                 // expected during successful test
             }
         }
-        
+
         wb.close();
     }
 
@@ -125,7 +125,7 @@ public abstract class BaseTestNamedRange {
 
         assertEquals("\u03B1", name2.getNameName());
         assertEquals("Test!$D$3:$E$8", name2.getRefersToFormula());
-        
+
         wb2.close();
         wb1.close();
     }
@@ -151,7 +151,7 @@ public abstract class BaseTestNamedRange {
 
         wb.removeName(0);
         assertEquals(1, wb.getNumberOfNames());
-        
+
         wb.close();
     }
 
@@ -202,7 +202,7 @@ public abstract class BaseTestNamedRange {
             if("aaa".equals(wb.getNameAt(i).getNameName())) cnt++;
         }
         assertEquals(3, cnt);
-        
+
         wb.close();
     }
 
@@ -253,7 +253,7 @@ public abstract class BaseTestNamedRange {
          Name nm2 = wb2.getNameAt(wb2.getNameIndex("RangeTest2"));
          assertTrue("Name is "+nm2.getNameName(),"RangeTest2".equals(nm2.getNameName()));
          assertTrue("Reference is "+nm2.getRefersToFormula(),(wb2.getSheetName(1)+"!$A$1:$O$21").equals(nm2.getRefersToFormula()));
-         
+
          wb2.close();
          wb1.close();
      }
@@ -274,7 +274,7 @@ public abstract class BaseTestNamedRange {
 
         assertNotNull("Print Area not defined for first sheet", retrievedPrintArea);
         assertEquals("'" + sheetName + "'!$A$1:$B$1", retrievedPrintArea);
-        
+
         workbook.close();
     }
 
@@ -295,7 +295,7 @@ public abstract class BaseTestNamedRange {
 
          assertNotNull("Print Area not defined for first sheet", retrievedPrintArea);
          assertEquals("'" + sheetName + "'!" + reference, retrievedPrintArea);
-         
+
          workbook.close();
      }
 
@@ -317,7 +317,7 @@ public abstract class BaseTestNamedRange {
          String retrievedPrintArea = wb2.getPrintArea(0);
          assertNotNull("Print Area not defined for first sheet", retrievedPrintArea);
          assertEquals("References Match", "'" + sheetName + "'!$A$1:$B$1", retrievedPrintArea);
-         
+
          wb2.close();
          wb1.close();
     }
@@ -369,7 +369,7 @@ public abstract class BaseTestNamedRange {
         retrievedPrintArea = wb2.getPrintArea(2);
         assertNotNull("Print Area Not Found (Sheet 3)", retrievedPrintArea);
         assertEquals("Sheet3!" + reference3, retrievedPrintArea);
-        
+
         wb2.close();
         wb1.close();
     }
@@ -390,7 +390,7 @@ public abstract class BaseTestNamedRange {
 
         assertNotNull("Print Area not defined for first sheet", retrievedPrintArea);
         assertEquals("'" + sheetName + "'!$A$1:$B$1", retrievedPrintArea);
-        
+
         workbook.close();
     }
 
@@ -409,7 +409,7 @@ public abstract class BaseTestNamedRange {
         String retrievedPrintArea = workbook.getPrintArea(0);
         assertNotNull("Print Area not defined for first sheet", retrievedPrintArea);
         assertEquals("'Test Print Area'!$A$1:$B$1,'Test Print Area'!$D$1:$F$2", retrievedPrintArea);
-        
+
         workbook.close();
     }
 
@@ -469,7 +469,7 @@ public abstract class BaseTestNamedRange {
         nm = wb2.getNameAt(wb2.getNameIndex("AnotherTest"));
         assertTrue("Name is "+nm.getNameName(),"AnotherTest".equals(nm.getNameName()));
         assertTrue("Reference is "+nm.getRefersToFormula(),newNamedRange2.getRefersToFormula().equals(nm.getRefersToFormula()));
-        
+
         wb2.close();
         wb1.close();
     }
@@ -512,7 +512,7 @@ public abstract class BaseTestNamedRange {
         Cell c = r.getCell(cref.getCol());
         String contents = c.getRichStringCellValue().getString();
         assertEquals("Contents of cell retrieved by its named reference", contents, cellValue);
-        
+
         wb.close();
     }
 
@@ -549,7 +549,7 @@ public abstract class BaseTestNamedRange {
         Cell c = r.getCell(cref.getCol());
         String contents = c.getRichStringCellValue().getString();
         assertEquals("Contents of cell retrieved by its named reference", contents, cvalue);
-        
+
         wb.close();
     }
 
@@ -576,7 +576,7 @@ public abstract class BaseTestNamedRange {
         Name n = wb.createName();
         n.setNameName("UPSState");
         String formula = n.getRefersToFormula();
-        
+
         // bug 46973: fails here with IllegalArgumentException
         // ptgs must not be null
 
@@ -595,7 +595,7 @@ public abstract class BaseTestNamedRange {
         n.setRefersToFormula("if(A1,\"#REF!\", \"\")");
 
         assertFalse("Identified bug in recoginising formulas referring to deleted cells", n.isDeleted());
-        
+
         wb.close();
     }
 
@@ -613,7 +613,7 @@ public abstract class BaseTestNamedRange {
 
         n.setFunction(false);
         assertFalse(n.isFunctionName());
-        
+
         wb.close();
     }
 
@@ -640,7 +640,7 @@ public abstract class BaseTestNamedRange {
         } catch(Exception e){
             assertEquals("The workbook already contains this name: sale_1", e.getMessage());
         }
-        
+
         wb.close();
     }
 }

@@ -54,7 +54,7 @@ public final class TestHSSFConditionalFormatting extends BaseTestConditionalForm
     public void testRead() {
         testRead("WithConditionalFormatting.xls");
     }
-    
+
     public void testReadOffice2007() {
         testReadOffice2007("NewStyleConditionalFormattings.xls");
     }
@@ -72,10 +72,10 @@ public final class TestHSSFConditionalFormatting extends BaseTestConditionalForm
         }
 
         wb.removeSheetAt(1);*/
-        
+
         // initially it is good
         writeTemp53691(wb, "agood");
-        
+
         // clone sheet corrupts it
         Sheet sheet = wb.cloneSheet(0);
         writeTemp53691(wb, "bbad");
@@ -83,26 +83,26 @@ public final class TestHSSFConditionalFormatting extends BaseTestConditionalForm
         // removing the sheet makes it good again
         wb.removeSheetAt(wb.getSheetIndex(sheet));
         writeTemp53691(wb, "cgood");
-        
+
         // cloning again and removing the conditional formatting makes it good again
         sheet = wb.cloneSheet(0);
-        removeConditionalFormatting(sheet);        
+        removeConditionalFormatting(sheet);
         writeTemp53691(wb, "dgood");
-        
+
         // cloning the conditional formatting manually makes it bad again
         cf = sheet.getSheetConditionalFormatting();
         SheetConditionalFormatting scf = wb.getSheetAt(0).getSheetConditionalFormatting();
         for (int j = 0; j < scf.getNumConditionalFormattings(); j++) {
             cf.addConditionalFormatting(scf.getConditionalFormattingAt(j));
-        }        
+        }
         writeTemp53691(wb, "ebad");
 
         // remove all conditional formatting for comparing BIFF output
-        removeConditionalFormatting(sheet);        
-        removeConditionalFormatting(wb.getSheetAt(0));        
+        removeConditionalFormatting(sheet);
+        removeConditionalFormatting(wb.getSheetAt(0));
         writeTemp53691(wb, "fgood");
     }
-    
+
     private void removeConditionalFormatting(Sheet sheet) {
         SheetConditionalFormatting cf = sheet.getSheetConditionalFormatting();
         for (int j = 0; j < cf.getNumConditionalFormattings(); j++) {
@@ -115,7 +115,7 @@ public final class TestHSSFConditionalFormatting extends BaseTestConditionalForm
         // assert that we can write/read it in memory
         Workbook wbBack = HSSFITestDataProvider.instance.writeOutAndReadBack(wb);
         assertNotNull(wbBack);
-        
+
         /* Just necessary for local testing... */
         /*OutputStream out = new FileOutputStream("C:\\temp\\53691" + suffix + ".xls");
         try {

@@ -118,7 +118,7 @@ public class XSLFPictureShape extends XSLFSimpleShape
         }
         return _data;
     }
-    
+
     /**
      * For an external linked picture, return the last-seen
      *  path to the picture.
@@ -129,13 +129,13 @@ public class XSLFPictureShape extends XSLFSimpleShape
             // Internal picture, nothing to return
             return null;
         }
-        
+
         String rId = getBlipLink();
         if (rId == null) {
             // No link recorded, nothing we can do
             return null;
         }
-        
+
         PackagePart p = getSheet().getPackagePart();
         PackageRelationship rel = p.getRelationship(rId);
         if (rel != null) {

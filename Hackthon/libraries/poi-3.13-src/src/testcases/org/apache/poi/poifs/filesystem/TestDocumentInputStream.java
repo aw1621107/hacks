@@ -51,7 +51,7 @@ public final class TestDocumentInputStream extends TestCase {
         {
             _workbook_data[ j ] = ( byte ) (j * j);
         }
-        
+
         // Create the Old POIFS Version
         RawDataBlock[]       rawBlocks = new RawDataBlock[ blocks ];
         ByteArrayInputStream stream    =
@@ -68,11 +68,11 @@ public final class TestDocumentInputStream extends TestCase {
             document.getDocumentProperty(),
             new DirectoryNode(
                 new DirectoryProperty("Root Entry"), (POIFSFileSystem)null, null));
-        
+
         // Now create the NPOIFS Version
         byte[] _workbook_data_only = new byte[_workbook_size];
         System.arraycopy(_workbook_data, 0, _workbook_data_only, 0, _workbook_size);
-        
+
         NPOIFSFileSystem npoifs = new NPOIFSFileSystem();
         // Make it easy when debugging to see what isn't the doc
         byte[] minus1 = new byte[512];
@@ -80,7 +80,7 @@ public final class TestDocumentInputStream extends TestCase {
         npoifs.getBlockAt(-1).put(minus1);
         npoifs.getBlockAt(0).put(minus1);
         npoifs.getBlockAt(1).put(minus1);
-        
+
         // Create the NPOIFS document
         _workbook_n = (DocumentNode)npoifs.createDocument(
               new ByteArrayInputStream(_workbook_data_only),
@@ -94,13 +94,13 @@ public final class TestDocumentInputStream extends TestCase {
     public void testConstructor() throws IOException {
         DocumentInputStream ostream = new ODocumentInputStream(_workbook_o);
         DocumentInputStream nstream = new NDocumentInputStream(_workbook_n);
-        
+
         assertEquals(_workbook_size, _workbook_o.getSize());
         assertEquals(_workbook_size, _workbook_n.getSize());
 
         assertEquals(_workbook_size, ostream.available());
         assertEquals(_workbook_size, nstream.available());
-        
+
         ostream.close();
         nstream.close();
     }
@@ -116,7 +116,7 @@ public final class TestDocumentInputStream extends TestCase {
         assertEquals(_workbook_size, nstream.available());
         ostream.close();
         nstream.close();
-        
+
         try {
            ostream.available();
            fail("Should have caught IOException");
@@ -137,7 +137,7 @@ public final class TestDocumentInputStream extends TestCase {
     public void testMarkFunctions() throws IOException {
         byte[] buffer = new byte[ _workbook_size / 5 ];
         byte[] small_buffer = new byte[212];
-       
+
         DocumentInputStream[] streams = new DocumentInputStream[] {
               new DocumentInputStream(_workbook_o),
               new NDocumentInputStream(_workbook_n)
@@ -147,54 +147,54 @@ public final class TestDocumentInputStream extends TestCase {
            stream.read(buffer);
            for (int j = 0; j < buffer.length; j++) {
               assertEquals(
-                    "checking byte " + j, 
+                    "checking byte " + j,
                     _workbook_data[ j ], buffer[ j ]
               );
            }
            assertEquals(_workbook_size - buffer.length, stream.available());
-           
+
            // Reset, and check the available goes back to being the
            //  whole of the stream
            stream.reset();
            assertEquals(_workbook_size, stream.available());
-           
-           
+
+
            // Read part of a block
            stream.read(small_buffer);
            for (int j = 0; j < small_buffer.length; j++) {
               assertEquals(
-                    "checking byte " + j, 
+                    "checking byte " + j,
                     _workbook_data[ j ], small_buffer[ j ]
               );
            }
            assertEquals(_workbook_size - small_buffer.length, stream.available());
            stream.mark(0);
-           
+
            // Read the next part
            stream.read(small_buffer);
            for (int j = 0; j < small_buffer.length; j++) {
               assertEquals(
-                    "checking byte " + j, 
+                    "checking byte " + j,
                     _workbook_data[ j+small_buffer.length ], small_buffer[ j ]
               );
            }
            assertEquals(_workbook_size - 2*small_buffer.length, stream.available());
-           
+
            // Reset, check it goes back to where it was
            stream.reset();
            assertEquals(_workbook_size - small_buffer.length, stream.available());
-           
-           // Read 
+
+           // Read
            stream.read(small_buffer);
            for (int j = 0; j < small_buffer.length; j++) {
               assertEquals(
-                    "checking byte " + j, 
+                    "checking byte " + j,
                     _workbook_data[ j+small_buffer.length ], small_buffer[ j ]
               );
            }
            assertEquals(_workbook_size - 2*small_buffer.length, stream.available());
-           
-           
+
+
            // Now read at various points
            Arrays.fill(small_buffer, ( byte ) 0);
            stream.read(small_buffer, 6, 8);
@@ -215,11 +215,11 @@ public final class TestDocumentInputStream extends TestCase {
                  exp = _workbook_data[pos];
                  pos++;
               }
-              
+
               assertEquals("checking byte " + j, exp, small_buffer[j]);
            }
         }
-           
+
         // Now repeat it with spanning multiple blocks
         streams = new DocumentInputStream[] {
               new DocumentInputStream(_workbook_o),
@@ -231,24 +231,24 @@ public final class TestDocumentInputStream extends TestCase {
            stream.read(buffer);
            for (int j = 0; j < buffer.length; j++) {
               assertEquals(
-                    "checking byte " + j, 
+                    "checking byte " + j,
                     _workbook_data[ j ], buffer[ j ]
               );
            }
            assertEquals(_workbook_size - buffer.length, stream.available());
-           
+
            // Read all of it again, check it began at the start again
            stream.reset();
            assertEquals(_workbook_size, stream.available());
-           
+
            stream.read(buffer);
            for (int j = 0; j < buffer.length; j++) {
               assertEquals(
-                    "checking byte " + j, 
+                    "checking byte " + j,
                     _workbook_data[ j ], buffer[ j ]
               );
            }
-           
+
            // Mark our position, and read another whole buffer
            stream.mark(12);
            stream.read(buffer);
@@ -259,11 +259,11 @@ public final class TestDocumentInputStream extends TestCase {
               assertEquals("checking byte " + j, _workbook_data[ j ],
                     buffer[ j - buffer.length ]);
            }
-           
+
            // Reset, should go back to only one buffer full read
            stream.reset();
            assertEquals(_workbook_size - buffer.length, stream.available());
-           
+
            // Read the buffer again
            stream.read(buffer);
            assertEquals(_workbook_size - (2 * buffer.length),
@@ -298,10 +298,10 @@ public final class TestDocumentInputStream extends TestCase {
              assertEquals("checking remaining after reading byte " + j,
                    remaining, stream.available());
           }
-          
+
           // Ensure we fell off the end
           assertEquals(-1, stream.read());
-          
+
           // Check that after close we can no longer read
           stream.close();
           try {
@@ -459,7 +459,7 @@ public final class TestDocumentInputStream extends TestCase {
           {
              assertEquals("byte " + j, 0, buffer[ j ]);
           }
-          
+
           assertEquals(-1, stream.read(buffer, 0, 1));
           stream.close();
           try {
@@ -502,20 +502,20 @@ public final class TestDocumentInputStream extends TestCase {
           assertEquals(0, stream.available());
        }
     }
-    
+
     /**
      * Test that we can read files at multiple levels down the tree
      */
     public void testReadMultipleTreeLevels() throws Exception {
        final POIDataSamples _samples = POIDataSamples.getPublisherInstance();
        File sample = _samples.getFile("Sample.pub");
-       
+
        DocumentInputStream stream;
-       
+
        NPOIFSFileSystem npoifs = new NPOIFSFileSystem(sample);
        try {
            OPOIFSFileSystem  opoifs = new OPOIFSFileSystem(new FileInputStream(sample));
-           
+
            // Ensure we have what we expect on the root
            assertEquals(npoifs, npoifs.getRoot().getNFileSystem());
            assertEquals(npoifs, npoifs.getRoot().getFileSystem());
@@ -523,7 +523,7 @@ public final class TestDocumentInputStream extends TestCase {
            assertEquals(null,   opoifs.getRoot().getFileSystem());
            assertEquals(opoifs, opoifs.getRoot().getOFileSystem());
            assertEquals(null,   opoifs.getRoot().getNFileSystem());
-           
+
            // Check inside
            for(DirectoryNode root : new DirectoryNode[] { opoifs.getRoot(), npoifs.getRoot() }) {
               // Top Level
@@ -531,14 +531,14 @@ public final class TestDocumentInputStream extends TestCase {
               assertEquals(true, top.isDocumentEntry());
               stream = root.createDocumentInputStream(top);
               stream.read();
-              
+
               // One Level Down
               DirectoryNode escher = (DirectoryNode)root.getEntry("Escher");
               Entry one = escher.getEntry("EscherStm");
               assertEquals(true, one.isDocumentEntry());
               stream = escher.createDocumentInputStream(one);
               stream.read();
-              
+
               // Two Levels Down
               DirectoryNode quill = (DirectoryNode)root.getEntry("Quill");
               DirectoryNode quillSub = (DirectoryNode)quill.getEntry("QuillSub");

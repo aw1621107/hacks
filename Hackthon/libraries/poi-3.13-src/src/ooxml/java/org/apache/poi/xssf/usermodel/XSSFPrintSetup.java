@@ -41,7 +41,7 @@ public class XSSFPrintSetup implements PrintSetup {
 
     protected XSSFPrintSetup(CTWorksheet worksheet) {
         this.ctWorksheet = worksheet;
-        
+
         if(ctWorksheet.isSetPageSetup()) {
            this.pageSetup = ctWorksheet.getPageSetup();
         } else {
@@ -120,7 +120,7 @@ public class XSSFPrintSetup implements PrintSetup {
     public void setLeftToRight(boolean ltor) {
         if (ltor)
             setPageOrder(PageOrder.OVER_THEN_DOWN);
-        else 
+        else
             setPageOrder(PageOrder.DOWN_THEN_OVER);
     }
 
@@ -132,7 +132,7 @@ public class XSSFPrintSetup implements PrintSetup {
     public void setLandscape(boolean ls) {
         if (ls)
             setOrientation(PrintOrientation.LANDSCAPE);
-        else 
+        else
             setOrientation(PrintOrientation.PORTRAIT);
     }
 

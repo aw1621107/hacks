@@ -27,7 +27,7 @@ public class DrawSlide extends DrawSheet {
     public DrawSlide(Slide<?,?> slide) {
         super(slide);
     }
-    
+
     public void draw(Graphics2D graphics) {
         Background<?,?> bg = sheet.getBackground();
         if(bg != null) {

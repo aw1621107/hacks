@@ -35,12 +35,12 @@ public enum EncryptionMode {
     /* @see <a href="http://msdn.microsoft.com/en-us/library/dd925810(v=office.12).aspx">2.3.4.10 \EncryptionInfo Stream (Agile Encryption)</a> */
     agile("org.apache.poi.poifs.crypt.agile.AgileEncryptionInfoBuilder", 4, 4, 0x40)
     ;
-    
+
     public final String builder;
     public final int versionMajor;
     public final int versionMinor;
     public final int encryptionFlags;
-    
+
     EncryptionMode(String builder, int versionMajor, int versionMinor, int encryptionFlags) {
         this.builder = builder;
         this.versionMajor = versionMajor;

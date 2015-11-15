@@ -20,7 +20,7 @@ package org.apache.poi.ss.formula.function;
 import junit.framework.TestCase;
 
 /**
- * 
+ *
  * @author Josh Micich
  */
 public final class TestFunctionMetadataRegistry extends TestCase {

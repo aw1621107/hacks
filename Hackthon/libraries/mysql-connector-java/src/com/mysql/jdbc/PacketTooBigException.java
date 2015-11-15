@@ -34,7 +34,7 @@ public class PacketTooBigException extends SQLException {
 
     /**
      * Creates a new PacketTooBigException object.
-     * 
+     *
      * @param packetSize
      *            the size of the packet that was going to be sent
      * @param maximumPacketSize

@@ -84,12 +84,12 @@ class EscapeProcessor {
 
     /**
      * Escape process one string
-     * 
+     *
      * @param sql
      *            the SQL to escape process.
-     * 
+     *
      * @return the SQL after it has been escape processed.
-     * 
+     *
      * @throws java.sql.SQLException
      * @throws SQLException
      */
@@ -414,13 +414,13 @@ class EscapeProcessor {
 
                         /*
                          * Use the full format because number format will not work for "between" clauses.
-                         * 
+                         *
                          * Ref. Mysql Docs
-                         * 
+                         *
                          * You can specify DATETIME, DATE and TIMESTAMP values using any of a common set of formats:
-                         * 
+                         *
                          * As a string in either 'YYYY-MM-DD HH:MM:SS' or 'YY-MM-DD HH:MM:SS' format.
-                         * 
+                         *
                          * Thanks to Craig Longman for pointing out this bug
                          */
 
@@ -493,7 +493,7 @@ class EscapeProcessor {
 
     /**
      * Re-writes {fn convert (expr, type)} as cast(expr AS type)
-     * 
+     *
      * @param functionToken
      * @throws SQLException
      */
@@ -605,10 +605,10 @@ class EscapeProcessor {
     /**
      * Removes all whitespace from the given String. We use this to make escape
      * token comparison white-space ignorant.
-     * 
+     *
      * @param toCollapse
      *            the string to remove the whitespace from
-     * 
+     *
      * @return a string with _no_ whitespace.
      */
     private static String removeWhitespace(String toCollapse) {

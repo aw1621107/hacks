@@ -52,18 +52,18 @@ import org.junit.Test;
 public class TestHSSFDateUtil {
 
     static TimeZone userTimeZone;
-    
+
     @BeforeClass
     public static void setCEST() {
         userTimeZone = LocaleUtil.getUserTimeZone();
         LocaleUtil.setUserTimeZone(TimeZone.getTimeZone("CEST"));
     }
-    
+
     @AfterClass
     public static void resetTimeZone() {
         LocaleUtil.setUserTimeZone(userTimeZone);
     }
-    
+
     /**
      * Checks the date conversion functions in the HSSFDateUtil class.
      */
@@ -108,7 +108,7 @@ public class TestHSSFDateUtil {
     public void excelConversionOnDSTStart() {
         Calendar cal = LocaleUtil.getLocaleCalendar(2004,MARCH,28,0,0,0);
         for (int hour = 0; hour < 24; hour++) {
-            
+
             // Skip 02:00 CET as that is the Daylight change time
             // and Java converts it automatically to 03:00 CEST
             if (hour == 2) {
@@ -118,7 +118,7 @@ public class TestHSSFDateUtil {
             cal.set(Calendar.HOUR_OF_DAY, hour);
             Date javaDate = cal.getTime();
 
-            
+
             double excelDate = HSSFDateUtil.getExcelDate(javaDate, false);
             double difference = excelDate - Math.floor(excelDate);
             int differenceInHours = (int) (difference * 24 * 60 + 0.5) / 60;
@@ -208,7 +208,7 @@ public class TestHSSFDateUtil {
         try {
             Calendar cal = LocaleUtil.getLocaleCalendar(2002,JANUARY,1,12,1,1);
             Date expected = cal.getTime();
-    
+
             // Iterating over the hours exposes any rounding issues.
             for (int hour = -12; hour <= 12; hour++)
             {
@@ -217,24 +217,24 @@ public class TestHSSFDateUtil {
                 cal.set(Calendar.HOUR_OF_DAY, 12);
                 double excelDate = HSSFDateUtil.getExcelDate(cal, false);
                 Date javaDate = HSSFDateUtil.getJavaDate(excelDate);
-    
+
                 // Should match despite time-zone
                 assertEquals("Checking timezone " + id, expected.getTime(), javaDate.getTime());
             }
-            
-            // Check that the timezone aware getter works correctly 
+
+            // Check that the timezone aware getter works correctly
             TimeZone cet = TimeZone.getTimeZone("Europe/Copenhagen");
             TimeZone ldn = TimeZone.getTimeZone("Europe/London");
-            
+
             // 12:45 on 27th April 2012
             double excelDate = 41026.53125;
-            
+
             // Same, no change
             assertEquals(
                   HSSFDateUtil.getJavaDate(excelDate, false).getTime(),
                   HSSFDateUtil.getJavaDate(excelDate, false, cet).getTime()
             );
-            
+
             // London vs Copenhagen, should differ by an hour
             Date cetDate = HSSFDateUtil.getJavaDate(excelDate, false);
             Date ldnDate = HSSFDateUtil.getJavaDate(excelDate, false, ldn);
@@ -283,7 +283,7 @@ public class TestHSSFDateUtil {
                 "dd\\ mm\\.yyyy AM", "dd\\ mm\\.yyyy pm",
                  "dd\\ mm\\.yyyy\\-dd", "[h]:mm:ss",
                  "mm/dd/yy", "\"mm\"/\"dd\"/\"yy\"",
-                 "m\\/d\\/yyyy", 
+                 "m\\/d\\/yyyy",
 
                 // These crazy ones are valid
                 "yyyy-mm-dd;@", "yyyy/mm/dd;@",
@@ -350,7 +350,7 @@ public class TestHSSFDateUtil {
     /**
      * Test that against a real, test file, we still do everything
      *  correctly
-     * @throws IOException 
+     * @throws IOException
      */
     @Test
     public void onARealFile() throws IOException {
@@ -409,7 +409,7 @@ public class TestHSSFDateUtil {
         assertFalse(HSSFDateUtil.isInternalDateFormat(cell.getCellStyle().getDataFormat()));
         assertTrue(HSSFDateUtil.isADateFormat(style.getDataFormat(), style.getDataFormatString()));
         assertTrue(HSSFDateUtil.isCellDateFormatted(cell));
-        
+
         workbook.close();
     }
 
@@ -417,7 +417,7 @@ public class TestHSSFDateUtil {
     public void excelDateBorderCases() throws ParseException {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.ROOT);
         df.setTimeZone(LocaleUtil.getUserTimeZone());
-        
+
         assertEquals(1.0, DateUtil.getExcelDate(df.parse("1900-01-01")), 0.00001);
         assertEquals(31.0, DateUtil.getExcelDate(df.parse("1900-01-31")), 0.00001);
         assertEquals(32.0, DateUtil.getExcelDate(df.parse("1900-02-01")), 0.00001);
@@ -540,7 +540,7 @@ public class TestHSSFDateUtil {
     /**
      * User reported a datetime issue in POI-2.5:
      *  Setting Cell's value to Jan 1, 1900 without a time doesn't return the same value set to
-     * @throws IOException 
+     * @throws IOException
      */
     @Test
     public void bug19172() throws IOException
@@ -559,22 +559,22 @@ public class TestHSSFDateUtil {
         Date returnedValue = cell.getDateCellValue();
 
         assertEquals(valueToTest.getTime(), returnedValue.getTime());
-        
+
         workbook.close();
     }
 
     /**
-     * DateUtil.isCellFormatted(Cell) should not true for a numeric cell 
+     * DateUtil.isCellFormatted(Cell) should not true for a numeric cell
      * that's formatted as ".0000"
      */
     @Test
     public void bug54557() throws Exception {
        final String format = ".0000";
        boolean isDateFormat = HSSFDateUtil.isADateFormat(165, format);
-       
+
        assertEquals(false, isDateFormat);
     }
-    
+
     @Test
     public void bug56269() throws Exception {
         double excelFraction = 41642.45833321759d;

@@ -54,7 +54,7 @@ public class FromHowTo {
 		OPCPackage pkg = OPCPackage.open(filename);
 		XSSFReader r = new XSSFReader( pkg );
 		SharedStringsTable sst = r.getSharedStringsTable();
-		
+
 		XMLReader parser = fetchSheetParser(sst);
 
 		Iterator<InputStream> sheets = r.getSheetsData();
@@ -78,18 +78,18 @@ public class FromHowTo {
 		return parser;
 	}
 
-	/** 
-	 * See org.xml.sax.helpers.DefaultHandler javadocs 
+	/**
+	 * See org.xml.sax.helpers.DefaultHandler javadocs
 	 */
 	private static class SheetHandler extends DefaultHandler {
 		private SharedStringsTable sst;
 		private String lastContents;
 		private boolean nextIsString;
-		
+
 		private SheetHandler(SharedStringsTable sst) {
 			this.sst = sst;
 		}
-		
+
 		public void startElement(String uri, String localName, String name,
 				Attributes attributes) throws SAXException {
 			// c => cell
@@ -107,7 +107,7 @@ public class FromHowTo {
 			// Clear contents cache
 			lastContents = "";
 		}
-		
+
 		public void endElement(String uri, String localName, String name)
 				throws SAXException {
 			// Process the last contents as required.
@@ -130,7 +130,7 @@ public class FromHowTo {
 			lastContents += new String(ch, start, length);
 		}
 	}
-	
+
 	public static void main(String[] args) throws Exception {
 		FromHowTo howto = new FromHowTo();
 		howto.processOneSheet(args[0]);

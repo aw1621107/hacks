@@ -27,11 +27,11 @@ import org.apache.poi.util.HexRead;
 
 /**
  * Tests for {@link ViewFieldsRecord}
- * 
+ *
  * @author Josh Micich
  */
 public final class TestViewFieldsRecord extends TestCase {
-	
+
 	public void testUnicodeFlag_bug46693() {
 		byte[] data = HexRead.readFromString("01 00 01 00 01 00 04 00 05 00 00 6D 61 72 63 6F");
 		RecordInputStream in = TestcaseRecordInputStream.create(ViewFieldsRecord.sid, data);
@@ -42,9 +42,9 @@ public final class TestViewFieldsRecord extends TestCase {
 		assertEquals(0, in.remaining());
 		assertEquals(4+data.length, rec.getRecordSize());
 	}
-	
+
 	public void testSerialize() {
-		// This hex data was produced by changing the 'Custom Name' property, 
+		// This hex data was produced by changing the 'Custom Name' property,
 		// available under 'Field Settings' from the 'PivotTable Field List' (Excel 2007)
 		confirmSerialize("00 00 01 00 01 00 00 00 FF FF");
 		confirmSerialize("01 00 01 00 01 00 04 00 05 00 00 6D 61 72 63 6F");

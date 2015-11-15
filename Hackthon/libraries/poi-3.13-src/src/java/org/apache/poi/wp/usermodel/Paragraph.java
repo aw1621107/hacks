@@ -130,7 +130,7 @@ public interface Paragraph {
     /**
      * Returns number of tabs stops defined for paragraph. Must be >= 0 and <=
      * 64.
-     * 
+     *
      * @return number of tabs stops defined for paragraph. Must be >= 0 and <=
      *         64
      */
@@ -138,7 +138,7 @@ public interface Paragraph {
 
     /**
      * Returns array of positions of itbdMac tab stops
-     * 
+     *
      * @return array of positions of itbdMac tab stops
      */
 //    public int[] getTabStopsPositions();

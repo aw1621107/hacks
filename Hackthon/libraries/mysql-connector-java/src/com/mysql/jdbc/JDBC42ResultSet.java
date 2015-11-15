@@ -50,7 +50,7 @@ public class JDBC42ResultSet extends JDBC4ResultSet {
 
     /**
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param columnIndex
      * @param type
      * @return
@@ -86,7 +86,7 @@ public class JDBC42ResultSet extends JDBC4ResultSet {
 
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType. (Not updatable)
-     * 
+     *
      * @param columnIndex
      * @param x
      * @param targetSqlType
@@ -98,7 +98,7 @@ public class JDBC42ResultSet extends JDBC4ResultSet {
 
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
-     * 
+     *
      * @param columnIndex
      * @param x
      * @param targetSqlType
@@ -111,7 +111,7 @@ public class JDBC42ResultSet extends JDBC4ResultSet {
 
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
-     * 
+     *
      * @param columnLabel
      * @param x
      * @param targetSqlType
@@ -123,7 +123,7 @@ public class JDBC42ResultSet extends JDBC4ResultSet {
 
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
-     * 
+     *
      * @param columnLabel
      * @param x
      * @param targetSqlType

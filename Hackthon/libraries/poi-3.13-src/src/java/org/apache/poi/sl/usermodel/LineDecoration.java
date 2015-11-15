@@ -28,13 +28,13 @@ public interface LineDecoration {
         DIAMOND(4),
         OVAL(5),
         ARROW(6);
-        
+
         public final int ooxmlId;
-        
+
         DecorationShape(int ooxmlId) {
             this.ooxmlId = ooxmlId;
         }
-    
+
         public static DecorationShape fromOoxmlId(int ooxmlId) {
             for (DecorationShape ds : values()) {
                 if (ds.ooxmlId == ooxmlId) return ds;
@@ -42,18 +42,18 @@ public interface LineDecoration {
             return null;
         }
     }
-    
+
     enum DecorationSize {
         SMALL(1),
         MEDIUM(2),
         LARGE(3);
-        
+
         public final int ooxmlId;
-        
+
         DecorationSize(int ooxmlId) {
             this.ooxmlId = ooxmlId;
         }
-        
+
         public static DecorationSize fromOoxmlId(int ooxmlId) {
             for (DecorationSize ds : values()) {
                 if (ds.ooxmlId == ooxmlId) return ds;
@@ -61,32 +61,32 @@ public interface LineDecoration {
             return null;
         }
     }
-    
+
     /**
      * @return the line start shape
      */
     DecorationShape getHeadShape();
-    
+
     /**
      * @return the width of the start shape
      */
     DecorationSize getHeadWidth();
-    
+
     /**
      * @return the length of the start shape
      */
     DecorationSize getHeadLength();
-    
+
     /**
      * @return the line end shape
      */
     DecorationShape getTailShape();
-    
+
     /**
      * @return the width of the end shape
      */
     DecorationSize getTailWidth();
-    
+
     /**
      * @return the length of the end shape
      */

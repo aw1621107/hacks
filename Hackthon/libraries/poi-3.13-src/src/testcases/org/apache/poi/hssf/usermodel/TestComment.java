@@ -150,7 +150,7 @@ public class TestComment extends TestCase {
         assertEquals(((HSSFComment) patriarch.getChildren().get(0)).getString().getString(), "comment1");
         assertEquals(((HSSFComment) patriarch.getChildren().get(1)).getString().getString(), "comment2");
         assertEquals(((HSSFComment) patriarch.getChildren().get(2)).getString().getString(), "comment3");
-        
+
         wb.close();
         wbBack.close();
         wbBack2.close();
@@ -205,7 +205,7 @@ public class TestComment extends TestCase {
         assertEquals(comment.getColumn(), 32);
         assertEquals(comment.getRow(), 42);
         assertEquals(comment.isVisible(), true);
-        
+
         wb.close();
         wbBack.close();
         wbBack2.close();
@@ -243,7 +243,7 @@ public class TestComment extends TestCase {
 
         assertNotNull(sh.findCellComment(5, 4));
         assertNull(sh.findCellComment(5, 5));
-        
+
         wb.close();
         wbBack.close();
     }
@@ -263,7 +263,7 @@ public class TestComment extends TestCase {
         assertNotNull(shape);
 
         assertEquals(comment.getOptRecord().getEscherProperties().size(), 10);
-        
+
         wb.close();
     }
 
@@ -284,19 +284,19 @@ public class TestComment extends TestCase {
         assertEquals(2024, spRecord.getShapeId(), 2024);
         assertEquals(2024, comment.getShapeId(), 2024);
         assertEquals(2024, comment.getNoteRecord().getShapeId());
-        
+
         wb.close();
     }
-    
+
     public void testAttemptToSave2CommentsWithSameCoordinates(){
         Object err = null;
-        
+
         HSSFWorkbook wb = new HSSFWorkbook();
         HSSFSheet sh = wb.createSheet();
         HSSFPatriarch patriarch = sh.createDrawingPatriarch();
         patriarch.createCellComment(new HSSFClientAnchor());
         patriarch.createCellComment(new HSSFClientAnchor());
-        
+
         try{
             HSSFTestDataSamples.writeOutAndReadBack(wb);
         } catch (IllegalStateException e){

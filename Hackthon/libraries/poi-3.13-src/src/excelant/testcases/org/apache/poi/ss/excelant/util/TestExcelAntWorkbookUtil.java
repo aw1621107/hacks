@@ -35,13 +35,13 @@ import org.apache.tools.ant.BuildException;
 import junit.framework.TestCase;
 
 public class TestExcelAntWorkbookUtil extends TestCase {
-	
+
     private static final String mortgageCalculatorFileName =
         BuildFileTest.getDataDir() + "/spreadsheet/excelant.xls" ;
 
 	private ExcelAntWorkbookUtilTestHelper fixture ;
-		
-	
+
+
 	@Override
 	public void tearDown() {
 		fixture = null ;
@@ -50,7 +50,7 @@ public class TestExcelAntWorkbookUtil extends TestCase {
 	public void testStringConstructor() {
 		fixture = new ExcelAntWorkbookUtilTestHelper(
 				                                  mortgageCalculatorFileName);
-		
+
 		assertNotNull(fixture);
 	}
 
@@ -60,30 +60,30 @@ public class TestExcelAntWorkbookUtil extends TestCase {
 				                                  "notexistingFile" ));
 			fail("Should catch exception here");
 		} catch (BuildException e) {
-			assertTrue(e.getMessage().contains("notexistingFile"));			
+			assertTrue(e.getMessage().contains("notexistingFile"));
 		}
 	}
-	
+
 	public void testWorkbookConstructor() throws InvalidFormatException, IOException {
         File workbookFile = new File(mortgageCalculatorFileName);
         FileInputStream fis = new FileInputStream(workbookFile);
         Workbook workbook = WorkbookFactory.create(fis);
 
 		fixture = new ExcelAntWorkbookUtilTestHelper(workbook);
-		
+
 		assertNotNull(fixture);
 	}
-	
+
 	public void testAddFunction() {
 		fixture = new ExcelAntWorkbookUtilTestHelper(
                 mortgageCalculatorFileName);
 
 		assertNotNull(fixture);
-		
+
 		fixture.addFunction("h2_ZFactor", new CalculateMortgageFunction());
-		
+
 		UDFFinder functions = fixture.getFunctions();
-		
+
 		assertNotNull(functions);
 		assertNotNull(functions.findFunction("h2_ZFactor"));
 	}
@@ -93,11 +93,11 @@ public class TestExcelAntWorkbookUtil extends TestCase {
                 mortgageCalculatorFileName);
 
         assertNotNull(fixture);
-        
+
         fixture.addFunction("h2_ZFactor", CalculateMortgageFunction.class.getName());
-        
+
         UDFFinder functions = fixture.getFunctions();
-        
+
         assertNotNull(functions);
         assertNotNull(functions.findFunction("h2_ZFactor"));
     }
@@ -107,11 +107,11 @@ public class TestExcelAntWorkbookUtil extends TestCase {
                 mortgageCalculatorFileName);
 
         assertNotNull(fixture);
-        
+
         fixture.addFunction("h2_ZFactor", String.class.getName());
-        
+
         UDFFinder functions = fixture.getFunctions();
-        
+
         assertNotNull(functions);
         assertNull(functions.findFunction("h2_ZFactor"));
     }
@@ -119,35 +119,35 @@ public class TestExcelAntWorkbookUtil extends TestCase {
 	public void testGetWorkbook() {
 		fixture = new ExcelAntWorkbookUtilTestHelper(
                 mortgageCalculatorFileName);
-		
+
 		assertNotNull(fixture);
-		
+
 		Workbook workbook = fixture.getWorkbook();
-		
+
 		assertNotNull(workbook);
 	}
-	
+
 	public void testFileName() {
 		fixture = new ExcelAntWorkbookUtilTestHelper(
                 mortgageCalculatorFileName);
-		
+
 		assertNotNull(fixture);
 
 		String fileName = fixture.getFileName();
-		
+
 		assertNotNull(fileName);
-		
+
 		assertEquals(mortgageCalculatorFileName, fileName);
-		
+
 	}
-	
+
 	public void testGetEvaluator() {
 		fixture = new ExcelAntWorkbookUtilTestHelper(
                 mortgageCalculatorFileName);
-		
+
 		FormulaEvaluator evaluator = fixture.getEvaluator(
 				                                  mortgageCalculatorFileName);
-		
+
 		assertNotNull(evaluator);
  	}
 
@@ -156,32 +156,32 @@ public class TestExcelAntWorkbookUtil extends TestCase {
                 mortgageCalculatorFileName);
 
         fixture.addFunction("h2_ZFactor", new CalculateMortgageFunction());
-        
+
         FormulaEvaluator evaluator = fixture.getEvaluator(
                                                   mortgageCalculatorFileName);
-        
+
         assertNotNull(evaluator);
     }
-	
+
 	public void testGetEvaluatorXLSX() {
 		fixture = new ExcelAntWorkbookUtilTestHelper(
                 BuildFileTest.getDataDir() + "/spreadsheet/sample.xlsx");
-		
+
 		FormulaEvaluator evaluator = fixture.getEvaluator(
 				BuildFileTest.getDataDir() + "/spreadsheet/sample.xlsx");
-		
+
 		assertNotNull(evaluator);
  	}
 
     public void testGetEvaluatorXLSXWithFunction() {
         fixture = new ExcelAntWorkbookUtilTestHelper(
                 BuildFileTest.getDataDir() + "/spreadsheet/sample.xlsx");
-        
+
         fixture.addFunction("h2_ZFactor", new CalculateMortgageFunction());
-        
+
         FormulaEvaluator evaluator = fixture.getEvaluator(
                 BuildFileTest.getDataDir() + "/spreadsheet/sample.xlsx");
-        
+
         assertNotNull(evaluator);
     }
 
@@ -193,8 +193,8 @@ public class TestExcelAntWorkbookUtil extends TestCase {
 		fixture = new ExcelAntWorkbookUtilTestHelper(
                 mortgageCalculatorFileName);
 
-		ExcelAntEvaluationResult result = fixture.evaluateCell(cell, 
-				                                                expectedValue, 
+		ExcelAntEvaluationResult result = fixture.evaluateCell(cell,
+				                                                expectedValue,
 				                                                precision);
 
 		//System.out.println(result);
@@ -206,7 +206,7 @@ public class TestExcelAntWorkbookUtil extends TestCase {
 		assertFalse(result.evaluationCompleteWithError());
 		assertTrue(result.didTestPass());
 	}
-	
+
     public void testEvaluateCellFailedPrecision() {
         String cell = "'MortgageCalculator'!B4" ;
         double expectedValue = 790.79 ;
@@ -215,8 +215,8 @@ public class TestExcelAntWorkbookUtil extends TestCase {
         fixture = new ExcelAntWorkbookUtilTestHelper(
                 mortgageCalculatorFileName);
 
-        ExcelAntEvaluationResult result = fixture.evaluateCell(cell, 
-                                                                expectedValue, 
+        ExcelAntEvaluationResult result = fixture.evaluateCell(cell,
+                                                                expectedValue,
                                                                 precision);
 
         //System.out.println(result);
@@ -228,7 +228,7 @@ public class TestExcelAntWorkbookUtil extends TestCase {
         assertFalse(result.evaluationCompleteWithError());
         assertFalse(result.didTestPass());
     }
-    
+
     public void testEvaluateCellWithError() {
         String cell = "'ErrorCell'!A1" ;
         double expectedValue = 790.79 ;
@@ -237,8 +237,8 @@ public class TestExcelAntWorkbookUtil extends TestCase {
         fixture = new ExcelAntWorkbookUtilTestHelper(
                 mortgageCalculatorFileName);
 
-        ExcelAntEvaluationResult result = fixture.evaluateCell(cell, 
-                                                                expectedValue, 
+        ExcelAntEvaluationResult result = fixture.evaluateCell(cell,
+                                                                expectedValue,
                                                                 precision);
 
         System.out.println(result);
@@ -250,35 +250,35 @@ public class TestExcelAntWorkbookUtil extends TestCase {
         assertTrue(result.evaluationCompleteWithError());
         assertFalse(result.didTestPass());
     }
-    
+
 	public void testGetSheets() {
 		fixture = new ExcelAntWorkbookUtilTestHelper(
                 mortgageCalculatorFileName);
-		
+
 		List<String> sheets = fixture.getSheets();
-		
+
 		assertNotNull(sheets);
-		assertEquals(sheets.size(), 3); 
+		assertEquals(sheets.size(), 3);
 	}
-	
+
 	public void testSetString() {
 		String cell = "'MortgageCalculator'!C14" ;
 		String cellValue = "testString" ;
-		
+
 		fixture = new ExcelAntWorkbookUtilTestHelper(
                 mortgageCalculatorFileName);
-		
+
 		fixture.setStringValue(cell, cellValue);
-		
+
 		String value = fixture.getCellAsString(cell);
-		
+
 		assertNotNull(value);
 		assertEquals(cellValue, value);
 	}
-	
+
     public void testSetNotExistingSheet() {
         String cell = "'NotexistingSheet'!C14" ;
-        
+
         fixture = new ExcelAntWorkbookUtilTestHelper(
                 mortgageCalculatorFileName);
         try {
@@ -292,67 +292,67 @@ public class TestExcelAntWorkbookUtil extends TestCase {
     public void testSetFormula() {
         String cell = "'MortgageCalculator'!C14" ;
         String cellValue = "SUM(B14:B18)" ;
-        
+
         fixture = new ExcelAntWorkbookUtilTestHelper(
                 mortgageCalculatorFileName);
-        
+
         fixture.setFormulaValue(cell, cellValue);
-        
+
         double value = fixture.getCellAsDouble(cell);
-        
+
         assertNotNull(value);
         assertEquals(0.0, value);
     }
-    
+
     public void testSetDoubleValue() {
         String cell = "'MortgageCalculator'!C14" ;
         double cellValue = 1.2;
-        
+
         fixture = new ExcelAntWorkbookUtilTestHelper(
                 mortgageCalculatorFileName);
-        
+
         fixture.setDoubleValue(cell, cellValue);
-        
+
         Double value = fixture.getCellAsDouble(cell);
-        
+
         assertNotNull(value);
         assertEquals(cellValue, value);
     }
-    
+
 	public void testSetDate() {
 		String cell = "'MortgageCalculator'!C14" ;
 		Date cellValue = new Date();
-		
+
 		fixture = new ExcelAntWorkbookUtilTestHelper(
                 mortgageCalculatorFileName);
-		
+
 		fixture.setDateValue(cell, cellValue);
-		
+
 		double value = fixture.getCellAsDouble(cell);
-		
+
 		assertNotNull(value);
 		assertEquals(DateUtil.getExcelDate(cellValue, false), value);
 	}
 
 	public void testGetNonexistingString() {
 		String cell = "'MortgageCalculator'!C33" ;
-		
+
 		fixture = new ExcelAntWorkbookUtilTestHelper(
                 mortgageCalculatorFileName);
-		
+
 		String value = fixture.getCellAsString(cell);
-		
+
 		assertEquals("", value);
 	}
 
 	public void testGetNonexistingDouble() {
 		String cell = "'MortgageCalculator'!C33" ;
-		
+
 		fixture = new ExcelAntWorkbookUtilTestHelper(
                 mortgageCalculatorFileName);
-		
+
 		double value = fixture.getCellAsDouble(cell);
-		
+
 		assertEquals(0.0, value);
 	}
 }

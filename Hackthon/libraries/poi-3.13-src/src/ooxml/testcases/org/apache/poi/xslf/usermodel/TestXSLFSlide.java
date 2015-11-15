@@ -34,7 +34,7 @@ import org.junit.Test;
  * @author Yegor Kozlov
  */
 public class TestXSLFSlide {
-    
+
     @Test
     public void testReadShapes(){
         XMLSlideShow  ppt = XSLFTestDataSamples.openSampleDocument("shapes.pptx");
@@ -114,7 +114,7 @@ public class TestXSLFSlide {
         assertFalse(slide.getFollowMasterGraphics());
         slide.setFollowMasterGraphics(true);
         assertTrue(slide.getFollowMasterGraphics());
-        
+
         ppt.close();
     }
 
@@ -172,7 +172,7 @@ public class TestXSLFSlide {
         XSLFPictureShape sh4 = (XSLFPictureShape)shapes2.get(1);
         XSLFPictureShape srcPic = (XSLFPictureShape)src.getSlides().get(4).getShapes().get(1);
         assertArrayEquals(sh4.getPictureData().getData(), srcPic.getPictureData().getData());
-        
+
         ppt.close();
     }
 
@@ -189,7 +189,7 @@ public class TestXSLFSlide {
             }
         }
         assertEquals(30, ppt.getSlides().size());
-        
+
         ppt.close();
-    }    
+    }
 }

@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * <p>Java class for CT_PolarAdjustHandle complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_PolarAdjustHandle">
  *   &lt;complexContent>
@@ -48,8 +48,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_PolarAdjustHandle", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main", propOrder = {
@@ -76,11 +76,11 @@ public class CTPolarAdjustHandle {
 
     /**
      * Gets the value of the pos property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTAdjPoint2D }
-     *     
+     *
      */
     public CTAdjPoint2D getPos() {
         return pos;
@@ -88,11 +88,11 @@ public class CTPolarAdjustHandle {
 
     /**
      * Sets the value of the pos property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTAdjPoint2D }
-     *     
+     *
      */
     public void setPos(CTAdjPoint2D value) {
         this.pos = value;
@@ -104,11 +104,11 @@ public class CTPolarAdjustHandle {
 
     /**
      * Gets the value of the gdRefR property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getGdRefR() {
         return gdRefR;
@@ -116,11 +116,11 @@ public class CTPolarAdjustHandle {
 
     /**
      * Sets the value of the gdRefR property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setGdRefR(String value) {
         this.gdRefR = value;
@@ -132,11 +132,11 @@ public class CTPolarAdjustHandle {
 
     /**
      * Gets the value of the minR property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getMinR() {
         return minR;
@@ -144,11 +144,11 @@ public class CTPolarAdjustHandle {
 
     /**
      * Sets the value of the minR property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setMinR(String value) {
         this.minR = value;
@@ -160,11 +160,11 @@ public class CTPolarAdjustHandle {
 
     /**
      * Gets the value of the maxR property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getMaxR() {
         return maxR;
@@ -172,11 +172,11 @@ public class CTPolarAdjustHandle {
 
     /**
      * Sets the value of the maxR property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setMaxR(String value) {
         this.maxR = value;
@@ -188,11 +188,11 @@ public class CTPolarAdjustHandle {
 
     /**
      * Gets the value of the gdRefAng property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getGdRefAng() {
         return gdRefAng;
@@ -200,11 +200,11 @@ public class CTPolarAdjustHandle {
 
     /**
      * Sets the value of the gdRefAng property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setGdRefAng(String value) {
         this.gdRefAng = value;
@@ -216,11 +216,11 @@ public class CTPolarAdjustHandle {
 
     /**
      * Gets the value of the minAng property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getMinAng() {
         return minAng;
@@ -228,11 +228,11 @@ public class CTPolarAdjustHandle {
 
     /**
      * Sets the value of the minAng property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setMinAng(String value) {
         this.minAng = value;
@@ -244,11 +244,11 @@ public class CTPolarAdjustHandle {
 
     /**
      * Gets the value of the maxAng property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getMaxAng() {
         return maxAng;
@@ -256,11 +256,11 @@ public class CTPolarAdjustHandle {
 
     /**
      * Sets the value of the maxAng property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setMaxAng(String value) {
         this.maxAng = value;

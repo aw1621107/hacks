@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_Ratio complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_Ratio">
  *   &lt;complexContent>
@@ -38,8 +38,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_Ratio", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main")
@@ -52,7 +52,7 @@ public class CTRatio {
 
     /**
      * Gets the value of the n property.
-     * 
+     *
      */
     public long getN() {
         return n;
@@ -60,7 +60,7 @@ public class CTRatio {
 
     /**
      * Sets the value of the n property.
-     * 
+     *
      */
     public void setN(long value) {
         this.n = value;
@@ -72,7 +72,7 @@ public class CTRatio {
 
     /**
      * Gets the value of the d property.
-     * 
+     *
      */
     public long getD() {
         return d;
@@ -80,7 +80,7 @@ public class CTRatio {
 
     /**
      * Sets the value of the d property.
-     * 
+     *
      */
     public void setD(long value) {
         this.d = value;

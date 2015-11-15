@@ -42,7 +42,7 @@ public abstract class AreaEvalBase implements AreaEval {
 
 		_nColumns = _lastColumn - _firstColumn + 1;
 		_nRows = _lastRow - _firstRow + 1;
-		
+
 		if (sheets != null) {
 		    _firstSheet = sheets.getFirstSheetIndex();
 		    _lastSheet = sheets.getLastSheetIndex();
@@ -77,14 +77,14 @@ public abstract class AreaEvalBase implements AreaEval {
 	public final int getLastRow() {
 		return _lastRow;
 	}
-	
+
 	public int getFirstSheetIndex() {
 	    return _firstSheet;
     }
     public int getLastSheetIndex() {
         return _lastSheet;
     }
-    
+
     public final ValueEval getAbsoluteValue(int row, int col) {
 		int rowOffsetIx = row - _firstRow;
 		int colOffsetIx = col - _firstColumn;

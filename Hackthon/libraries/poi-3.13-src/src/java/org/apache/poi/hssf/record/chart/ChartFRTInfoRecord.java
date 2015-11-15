@@ -25,7 +25,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * CHARTFRTINFO - Chart Future Record Type Info (0x0850)<br/>
- * 
+ *
  * @author Patrick Cheng
  */
 public final class ChartFRTInfoRecord extends StandardRecord {

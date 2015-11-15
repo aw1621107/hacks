@@ -25,11 +25,11 @@ import junit.framework.TestCase;
 public final class TestEvilUnclosedBRFixingInputStream extends TestCase {
    public void testOK() throws Exception {
       byte[] ok = "<p><div>Hello There!</div> <div>Tags!</div></p>".getBytes("UTF-8");
-      
+
       EvilUnclosedBRFixingInputStream inp = new EvilUnclosedBRFixingInputStream(
             new ByteArrayInputStream(ok)
       );
-      
+
       ByteArrayOutputStream bout = new ByteArrayOutputStream();
       boolean going = true;
       while(going) {
@@ -41,19 +41,19 @@ public final class TestEvilUnclosedBRFixingInputStream extends TestCase {
             going = false;
          }
       }
-      
+
       byte[] result = bout.toByteArray();
       assertEquals(ok, result);
    }
-   
+
    public void testProblem() throws Exception {
       byte[] orig = "<p><div>Hello<br>There!</div> <div>Tags!</div></p>".getBytes("UTF-8");
       byte[] fixed = "<p><div>Hello<br/>There!</div> <div>Tags!</div></p>".getBytes("UTF-8");
-      
+
       EvilUnclosedBRFixingInputStream inp = new EvilUnclosedBRFixingInputStream(
             new ByteArrayInputStream(orig)
       );
-      
+
       ByteArrayOutputStream bout = new ByteArrayOutputStream();
       boolean going = true;
       while(going) {
@@ -65,25 +65,25 @@ public final class TestEvilUnclosedBRFixingInputStream extends TestCase {
             going = false;
          }
       }
-      
+
       byte[] result = bout.toByteArray();
       assertEquals(fixed, result);
    }
-   
+
    /**
     * Checks that we can copy with br tags around the buffer boundaries
     */
    public void testBufferSize() throws Exception {
       byte[] orig = "<p><div>Hello<br> <br>There!</div> <div>Tags!<br><br></div></p>".getBytes("UTF-8");
       byte[] fixed = "<p><div>Hello<br/> <br/>There!</div> <div>Tags!<br/><br/></div></p>".getBytes("UTF-8");
-      
+
       // Vary the buffer size, so that we can end up with the br in the
       //  overflow or only part in the buffer
       for(int i=5; i<orig.length; i++) {
          EvilUnclosedBRFixingInputStream inp = new EvilUnclosedBRFixingInputStream(
                new ByteArrayInputStream(orig)
          );
-         
+
          ByteArrayOutputStream bout = new ByteArrayOutputStream();
          boolean going = true;
          while(going) {
@@ -95,7 +95,7 @@ public final class TestEvilUnclosedBRFixingInputStream extends TestCase {
                going = false;
             }
          }
-         
+
          byte[] result = bout.toByteArray();
          assertEquals(fixed, result);
       }

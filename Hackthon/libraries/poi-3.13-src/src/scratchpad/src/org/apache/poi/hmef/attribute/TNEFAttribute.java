@@ -37,7 +37,7 @@ public class TNEFAttribute {
    private final int type;
    private final byte[] data;
    private final int checksum;
-   
+
    /**
     * Constructs a single new attribute from the id, type,
     *  and the contents of the stream
@@ -45,14 +45,14 @@ public class TNEFAttribute {
    protected TNEFAttribute(int id, int type, InputStream inp) throws IOException {
       this.type = type;
       int length = LittleEndian.readInt(inp);
-      
+
       property = TNEFProperty.getBest(id, type);
       data = new byte[length];
       IOUtils.readFully(inp, data);
-      
+
       checksum = LittleEndian.readUShort(inp);
    }
-   
+
    /**
     * Creates a new TNEF Attribute by reading data from
     *  the stream within a {@link HMEFMessage}
@@ -60,7 +60,7 @@ public class TNEFAttribute {
    public static TNEFAttribute create(InputStream inp) throws IOException {
       int id   = LittleEndian.readUShort(inp);
       int type = LittleEndian.readUShort(inp);
-      
+
       // Create as appropriate
       if(id == TNEFProperty.ID_MAPIPROPERTIES.id ||
             id == TNEFProperty.ID_ATTACHMENT.id) {
@@ -73,7 +73,7 @@ public class TNEFAttribute {
       if(type == TNEFProperty.TYPE_DATE) {
          return new TNEFDateAttribute(id, type, inp);
       }
-      return new TNEFAttribute(id, type, inp); 
+      return new TNEFAttribute(id, type, inp);
    }
 
    public TNEFProperty getProperty() {
@@ -87,9 +87,9 @@ public class TNEFAttribute {
    public byte[] getData() {
       return data;
    }
-   
+
    public String toString() {
-      return "Attribute " + property.toString() + ", type=" + type + 
-             ", data length=" + data.length; 
+      return "Attribute " + property.toString() + ", type=" + type +
+             ", data length=" + data.length;
    }
 }

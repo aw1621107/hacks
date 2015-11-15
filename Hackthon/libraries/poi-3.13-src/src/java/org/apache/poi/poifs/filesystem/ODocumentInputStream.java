@@ -46,9 +46,9 @@ public final class ODocumentInputStream extends DocumentInputStream {
 
 	/**
 	 * Create an InputStream from the specified DocumentEntry
-	 * 
+	 *
 	 * @param document the DocumentEntry to be read
-	 * 
+	 *
 	 * @exception IOException if the DocumentEntry cannot be opened (like, maybe it has
 	 *                been deleted?)
 	 */
@@ -60,7 +60,7 @@ public final class ODocumentInputStream extends DocumentInputStream {
 		if (documentNode.getDocument() == null) {
          throw new IOException("Cannot open internal document storage");
 		}
-		      
+
 		_current_offset = 0;
 		_marked_offset = 0;
 		_document_size = document.getSize();
@@ -71,7 +71,7 @@ public final class ODocumentInputStream extends DocumentInputStream {
 
 	/**
 	 * Create an InputStream from the specified Document
-	 * 
+	 *
 	 * @param document the Document to be read
 	 */
 	public ODocumentInputStream(OPOIFSDocument document) {

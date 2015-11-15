@@ -40,19 +40,19 @@ public final class NDocumentOutputStream extends OutputStream {
 	private NPOIFSDocument _document;
 	/** and its Property */
 	private DocumentProperty _property;
-	
+
 	/** our buffer, when null we're into normal blocks */
-	private ByteArrayOutputStream _buffer = 
+	private ByteArrayOutputStream _buffer =
 	        new ByteArrayOutputStream(POIFSConstants.BIG_BLOCK_MINIMUM_DOCUMENT_SIZE);
-	
+
 	/** our main block stream, when we're into normal blocks */
 	private NPOIFSStream _stream;
 	private OutputStream _stream_output;
-	
+
 	/**
 	 * Create an OutputStream from the specified DocumentEntry.
 	 * The specified entry will be emptied.
-	 * 
+	 *
 	 * @param document the DocumentEntry to be written
 	 */
 	public NDocumentOutputStream(DocumentEntry document) throws IOException {
@@ -61,16 +61,16 @@ public final class NDocumentOutputStream extends OutputStream {
 		}
 		_document_size = 0;
 		_closed = false;
-		
+
 		_property = (DocumentProperty)((DocumentNode)document).getProperty();
-		
+
 		_document = new NPOIFSDocument((DocumentNode)document);
 		_document.free();
 	}
-	
+
 	/**
 	 * Create an OutputStream to create the specified new Entry
-	 * 
+	 *
 	 * @param parent Where to create the Entry
 	 * @param name Name of the new entry
 	 */
@@ -86,13 +86,13 @@ public final class NDocumentOutputStream extends OutputStream {
         _property = (DocumentProperty)((DocumentNode)doc).getProperty();
         _document = new NPOIFSDocument((DocumentNode)doc);
 	}
-	
+
     private void dieIfClosed() throws IOException {
         if (_closed) {
             throw new IOException("cannot perform requested operation on a closed stream");
         }
     }
-    
+
     private void checkBufferSize() throws IOException {
         // Have we gone over the mini stream limit yet?
         if (_buffer.size() > POIFSConstants.BIG_BLOCK_MINIMUM_DOCUMENT_SIZE) {
@@ -107,7 +107,7 @@ public final class NDocumentOutputStream extends OutputStream {
 
     public void write(int b) throws IOException {
         dieIfClosed();
-        
+
         if (_buffer != null) {
             _buffer.write(b);
             checkBufferSize();
@@ -118,7 +118,7 @@ public final class NDocumentOutputStream extends OutputStream {
 
     public void write(byte[] b) throws IOException {
         dieIfClosed();
-        
+
         if (_buffer != null) {
             _buffer.write(b);
             checkBufferSize();
@@ -129,7 +129,7 @@ public final class NDocumentOutputStream extends OutputStream {
 
     public void write(byte[] b, int off, int len) throws IOException {
         dieIfClosed();
-        
+
         if (_buffer != null) {
             _buffer.write(b, off, len);
             checkBufferSize();
@@ -156,7 +156,7 @@ public final class NDocumentOutputStream extends OutputStream {
             _property.updateSize(_document_size);
             _property.setStartBlock(_stream.getStartBlock());
         }
-        
+
         // No more!
         _closed = true;
     }

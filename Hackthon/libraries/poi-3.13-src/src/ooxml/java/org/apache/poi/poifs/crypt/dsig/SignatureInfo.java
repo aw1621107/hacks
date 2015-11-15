@@ -18,9 +18,9 @@
 /* ====================================================================
    This product contains an ASLv2 licensed version of the OOXML signer
    package from the eID Applet project
-   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt  
+   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt
    Copyright (C) 2008-2014 FedICT.
-   ================================================================= */ 
+   ================================================================= */
 
 package org.apache.poi.poifs.crypt.dsig;
 
@@ -102,9 +102,9 @@ import org.w3c.dom.events.EventTarget;
 /**
  * <p>This class is the default entry point for XML signatures and can be used for
  * validating an existing signed office document and signing a office document.</p>
- * 
+ *
  * <p><b>Validating a signed office document</b></p>
- * 
+ *
  * <pre>
  * OPCPackage pkg = OPCPackage.open(..., PackageAccess.READ);
  * SignatureConfig sic = new SignatureConfig();
@@ -114,9 +114,9 @@ import org.w3c.dom.events.EventTarget;
  * boolean isValid = si.validate();
  * ...
  * </pre>
- * 
+ *
  * <p><b>Signing an office document</b></p>
- * 
+ *
  * <pre>
  * // loading the keystore - pkcs12 is used here, but of course jks &amp; co are also valid
  * // the keystore needs to contain a private key and it's certificate having a
@@ -127,19 +127,19 @@ import org.w3c.dom.events.EventTarget;
  * FileInputStream fis = new FileInputStream(file);
  * keystore.load(fis, password);
  * fis.close();
- * 
+ *
  * // extracting private key and certificate
  * String alias = "xyz"; // alias of the keystore entry
  * Key key = keystore.getKey(alias, password);
  * X509Certificate x509 = (X509Certificate)keystore.getCertificate(alias);
- * 
+ *
  * // filling the SignatureConfig entries (minimum fields, more options are available ...)
  * SignatureConfig signatureConfig = new SignatureConfig();
  * signatureConfig.setKey(keyPair.getPrivate());
  * signatureConfig.setSigningCertificateChain(Collections.singletonList(x509));
  * OPCPackage pkg = OPCPackage.open(..., PackageAccess.READ_WRITE);
  * signatureConfig.setOpcPackage(pkg);
- * 
+ *
  * // adding the signature document to the package
  * SignatureInfo si = new SignatureInfo();
  * si.setSignatureConfig(signatureConfig);
@@ -150,14 +150,14 @@ import org.w3c.dom.events.EventTarget;
  * // write the changes back to disc
  * pkg.close();
  * </pre>
- * 
+ *
  * <p><b>Implementation notes:</b></p>
- * 
+ *
  * <p>Although there's a XML signature implementation in the Oracle JDKs 6 and higher,
  * compatibility with IBM JDKs is also in focus (... but maybe not thoroughly tested ...).
  * Therefore we are using the Apache Santuario libs (xmlsec) instead of the built-in classes,
  * as the compatibility seems to be provided there.</p>
- * 
+ *
  * <p>To use SignatureInfo and its sibling classes, you'll need to have the following libs
  * in the classpath:</p>
  * <ul>
@@ -170,39 +170,39 @@ public class SignatureInfo implements SignatureConfigurable {
 
     private static final POILogger LOG = POILogFactory.getLogger(SignatureInfo.class);
     private static boolean isInitialized = false;
-    
+
     private SignatureConfig signatureConfig;
 
     public class SignaturePart {
         private final PackagePart signaturePart;
         private X509Certificate signer;
         private List<X509Certificate> certChain;
-        
+
         private SignaturePart(PackagePart signaturePart) {
             this.signaturePart = signaturePart;
         }
-        
+
         /**
          * @return the package part containing the signature
          */
         public PackagePart getPackagePart() {
             return signaturePart;
         }
-        
+
         /**
          * @return the signer certificate
          */
         public X509Certificate getSigner() {
             return signer;
         }
-        
+
         /**
          * @return the certificate chain of the signer
          */
         public List<X509Certificate> getCertChain() {
             return certChain;
         }
-        
+
         /**
          * Helper method for examining the xml signature
          *
@@ -214,10 +214,10 @@ public class SignatureInfo implements SignatureConfigurable {
             // TODO: check for XXE
             return SignatureDocument.Factory.parse(signaturePart.getInputStream());
         }
-        
+
         /**
          * @return true, when the xml signature is valid, false otherwise
-         * 
+         *
          * @throws EncryptedDocumentException if the signature can't be extracted or if its malformed
          */
         @SuppressWarnings("unchecked")
@@ -230,15 +230,15 @@ public class SignatureInfo implements SignatureConfigurable {
                 for (int i=0; i<nl.getLength(); i++) {
                     ((Element)nl.item(i)).setIdAttribute("Id", true);
                 }
-                
+
                 DOMValidateContext domValidateContext = new DOMValidateContext(keySelector, doc);
                 domValidateContext.setProperty("org.jcp.xml.dsig.validateManifests", Boolean.TRUE);
                 domValidateContext.setURIDereferencer(signatureConfig.getUriDereferencer());
                 brokenJvmWorkaround(domValidateContext);
-    
+
                 XMLSignatureFactory xmlSignatureFactory = signatureConfig.getSignatureFactory();
                 XMLSignature xmlSignature = xmlSignatureFactory.unmarshalXMLSignature(domValidateContext);
-                
+
                 // TODO: replace with property when xml-sec patch is applied
                 for (Reference ref : (List<Reference>)xmlSignature.getSignedInfo().getReferences()) {
                     SignatureFacet.brokenJvmWorkaround(ref);
@@ -252,14 +252,14 @@ public class SignatureInfo implements SignatureConfigurable {
                         }
                     }
                 }
-                
+
                 boolean valid = xmlSignature.validate(domValidateContext);
 
                 if (valid) {
                     signer = keySelector.getSigner();
                     certChain = keySelector.getCertChain();
                 }
-                
+
                 return valid;
             } catch (Exception e) {
                 String s = "error in marshalling and validating the signature";
@@ -268,14 +268,14 @@ public class SignatureInfo implements SignatureConfigurable {
             }
         }
     }
-    
+
     /**
      * Constructor initializes xml signature environment, if it hasn't been initialized before
      */
     public SignatureInfo() {
-        initXmlProvider();        
+        initXmlProvider();
     }
-    
+
     /**
      * @return the signature config
      */
@@ -310,13 +310,13 @@ public class SignatureInfo implements SignatureConfigurable {
      */
     public void confirmSignature() throws XMLSignatureException, MarshalException {
         Document document = DocumentHelper.createDocument();
-        
+
         // operate
         DigestInfo digestInfo = preSign(document, null);
 
         // setup: key material, signature value
         byte[] signatureValue = signDigest(digestInfo.digestValue);
-        
+
         // operate: postSign
         postSign(document, signatureValue);
     }
@@ -331,7 +331,7 @@ public class SignatureInfo implements SignatureConfigurable {
     public byte[] signDigest(byte digest[]) {
         Cipher cipher = CryptoFunctions.getCipher(signatureConfig.getKey(), CipherAlgorithm.rsa
             , ChainingMode.ecb, null, Cipher.ENCRYPT_MODE, "PKCS1Padding");
-            
+
         try {
             ByteArrayOutputStream digestInfoValueBuf = new ByteArrayOutputStream();
             digestInfoValueBuf.write(signatureConfig.getHashMagic());
@@ -343,7 +343,7 @@ public class SignatureInfo implements SignatureConfigurable {
             throw new EncryptedDocumentException(e);
         }
     }
-    
+
     /**
      * @return a signature part for each signature document.
      * the parts can be validated independently.
@@ -354,11 +354,11 @@ public class SignatureInfo implements SignatureConfigurable {
             public Iterator<SignaturePart> iterator() {
                 return new Iterator<SignaturePart>() {
                     OPCPackage pkg = signatureConfig.getOpcPackage();
-                    Iterator<PackageRelationship> sigOrigRels = 
+                    Iterator<PackageRelationship> sigOrigRels =
                         pkg.getRelationshipsByType(PackageRelationshipTypes.DIGITAL_SIGNATURE_ORIGIN).iterator();
                     Iterator<PackageRelationship> sigRels = null;
                     PackagePart sigPart = null;
-                    
+
                     public boolean hasNext() {
                         while (sigRels == null || !sigRels.hasNext()) {
                             if (!sigOrigRels.hasNext()) return false;
@@ -372,13 +372,13 @@ public class SignatureInfo implements SignatureConfigurable {
                         }
                         return true;
                     }
-                    
+
                     public SignaturePart next() {
                         PackagePart sigRelPart = null;
                         do {
                             try {
                                 if (!hasNext()) throw new NoSuchElementException();
-                                sigRelPart = sigPart.getRelatedPart(sigRels.next()); 
+                                sigRelPart = sigPart.getRelatedPart(sigRels.next());
                                 LOG.log(POILogger.DEBUG, "XML Signature part", sigRelPart);
                             } catch (InvalidFormatException e) {
                                 LOG.log(POILogger.WARN, "Reference to signature is invalid.", e);
@@ -386,7 +386,7 @@ public class SignatureInfo implements SignatureConfigurable {
                         } while (sigPart == null);
                         return new SignaturePart(sigRelPart);
                     }
-                    
+
                     public void remove() {
                         throw new UnsupportedOperationException();
                     }
@@ -394,14 +394,14 @@ public class SignatureInfo implements SignatureConfigurable {
             }
         };
     }
-    
+
     /**
-     * Initialize the xml signing environment and the bouncycastle provider 
+     * Initialize the xml signing environment and the bouncycastle provider
      */
     protected static synchronized void initXmlProvider() {
         if (isInitialized) return;
         isInitialized = true;
-        
+
         try {
             Init.init();
             RelationshipTransformService.registerDsigProvider();
@@ -410,7 +410,7 @@ public class SignatureInfo implements SignatureConfigurable {
             throw new RuntimeException("Xml & BouncyCastle-Provider initialization failed", e);
         }
     }
-    
+
     /**
      * Helper method for adding informations before the signing.
      * Normally {@link #confirmSignature()} is sufficient to be used.
@@ -419,7 +419,7 @@ public class SignatureInfo implements SignatureConfigurable {
     public DigestInfo preSign(Document document, List<DigestInfo> digestInfos)
     throws XMLSignatureException, MarshalException {
         signatureConfig.init(false);
-        
+
         // it's necessary to explicitly set the mdssi namespace, but the sign() method has no
         // normal way to interfere with, so we need to add the namespace under the hand ...
         EventTarget target = (EventTarget)document;
@@ -430,7 +430,7 @@ public class SignatureInfo implements SignatureConfigurable {
             }
             SignatureMarshalListener.setListener(target, creationListener, true);
         }
-        
+
         /*
          * Signature context construction.
          */
@@ -445,9 +445,9 @@ public class SignatureInfo implements SignatureConfigurable {
         }
         xmlSignContext.setDefaultNamespacePrefix("");
         // signatureConfig.getNamespacePrefixes().get(XML_DIGSIG_NS));
-        
+
         brokenJvmWorkaround(xmlSignContext);
-        
+
         XMLSignatureFactory signatureFactory = signatureConfig.getSignatureFactory();
 
         /*
@@ -530,7 +530,7 @@ public class SignatureInfo implements SignatureConfigurable {
 
             // ds:Reference with external digest value
             if (domReference.getDigestValue() != null) continue;
-            
+
             domReference.digest(xmlSignContext);
         }
 
@@ -549,8 +549,8 @@ public class SignatureInfo implements SignatureConfigurable {
 
         MessageDigest md = CryptoFunctions.getMessageDigest(signatureConfig.getDigestAlgo());
         byte[] digestValue = md.digest(octets);
-        
-        
+
+
         String description = signatureConfig.getSignatureDescription();
         return new DigestInfo(digestValue, signatureConfig.getDigestAlgo(), description);
     }
@@ -601,7 +601,7 @@ public class SignatureInfo implements SignatureConfigurable {
         Map<String,String> namespaceMap = new HashMap<String,String>();
         for(Map.Entry<String,String> entry : signatureConfig.getNamespacePrefixes().entrySet()){
             namespaceMap.put(entry.getValue(), entry.getKey());
-        }        
+        }
         xo.setSaveSuggestedPrefixes(namespaceMap);
         xo.setUseDefaultNamespace();
 
@@ -622,12 +622,12 @@ public class SignatureInfo implements SignatureConfigurable {
         } catch (InvalidFormatException e) {
             throw new MarshalException(e);
         }
-        
+
         PackagePart sigPart = pkg.getPart(sigPartName);
         if (sigPart == null) {
             sigPart = pkg.createPart(sigPartName, ContentTypes.DIGITAL_SIGNATURE_XML_SIGNATURE_PART);
         }
-        
+
         try {
             OutputStream os = sigPart.getOutputStream();
             SignatureDocument sigDoc = SignatureDocument.Factory.parse(document);
@@ -636,22 +636,22 @@ public class SignatureInfo implements SignatureConfigurable {
         } catch (Exception e) {
             throw new MarshalException("Unable to write signature document", e);
         }
-        
+
         PackagePart sigsPart = pkg.getPart(sigsPartName);
         if (sigsPart == null) {
             // touch empty marker file
             sigsPart = pkg.createPart(sigsPartName, ContentTypes.DIGITAL_SIGNATURE_ORIGIN_PART);
         }
-        
+
         PackageRelationshipCollection relCol = pkg.getRelationshipsByType(PackageRelationshipTypes.DIGITAL_SIGNATURE_ORIGIN);
         for (PackageRelationship pr : relCol) {
             pkg.removeRelationship(pr.getId());
         }
         pkg.addRelationship(sigsPartName, TargetMode.INTERNAL, PackageRelationshipTypes.DIGITAL_SIGNATURE_ORIGIN);
-        
+
         sigsPart.addRelationship(sigPartName, TargetMode.INTERNAL, PackageRelationshipTypes.DIGITAL_SIGNATURE);
     }
-    
+
     /**
      * Helper method for null lists, which are converted to empty lists
      *
@@ -668,7 +668,7 @@ public class SignatureInfo implements SignatureConfigurable {
         Provider bcProv = Security.getProvider("BC");
         if (bcProv != null) {
             context.setProperty("org.jcp.xml.dsig.internal.dom.SignatureProvider", bcProv);
-        }        
+        }
     }
 
     private void brokenJvmWorkaround(XMLValidateContext context) {
@@ -676,6 +676,6 @@ public class SignatureInfo implements SignatureConfigurable {
         Provider bcProv = Security.getProvider("BC");
         if (bcProv != null) {
             context.setProperty("org.jcp.xml.dsig.internal.dom.SignatureProvider", bcProv);
-        }        
+        }
     }
 }

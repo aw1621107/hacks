@@ -59,7 +59,7 @@ public final class TestFormulasFromSpreadsheet {
     private static Sheet sheet;
     private static HSSFFormulaEvaluator evaluator;
     private static Locale userLocale;
-    
+
     /**
 	 * This class defines constants for navigating around the test data spreadsheet used for these tests.
 	 */
@@ -122,9 +122,9 @@ public final class TestFormulasFromSpreadsheet {
         workbook = HSSFTestDataSamples.openSampleWorkbook(SS.FILENAME);
         sheet = workbook.getSheetAt( 0 );
         evaluator = new HSSFFormulaEvaluator(workbook);
-        
+
         List<Object[]> data = new ArrayList<Object[]>();
-        
+
         processFunctionGroup(data, SS.START_OPERATORS_ROW_INDEX, null);
         processFunctionGroup(data, SS.START_FUNCTIONS_ROW_INDEX, null);
         // example for debugging individual functions/operators:
@@ -133,7 +133,7 @@ public final class TestFormulasFromSpreadsheet {
 
         return data;
     }
-    
+
     /**
      * @param startRowIndex row index in the spreadsheet where the first function/operator is found
      * @param testFocusFunctionName name of a single function/operator to test alone.

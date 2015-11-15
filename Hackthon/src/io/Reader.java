@@ -29,11 +29,11 @@ import algorithm.MajorType;
 import io.SheetData.RowData;
 
 public class Reader {
-	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	private static final String DB_URL = "jdbc:mysql://localhost/";
 	private static final String user = "awang";
 	private static final String pass = "";
-	
+
 	static {
 		try {
 			Class.forName(JDBC_DRIVER);
@@ -65,9 +65,9 @@ public class Reader {
 			}
 			results.add(new RowData(r, rowContents));
 		}
-		return new SheetData(headers, results);		
+		return new SheetData(headers, results);
 	}
-	
+
 	private static final String[] EMPTY = new String[] {};
 	private String[] cellToStrings(Cell cell) {
 		if (cell == null) {

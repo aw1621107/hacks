@@ -18,9 +18,9 @@
 /* ====================================================================
    This product contains an ASLv2 licensed version of the OOXML signer
    package from the eID Applet project
-   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt  
+   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt
    Copyright (C) 2008-2014 FedICT.
-   ================================================================= */ 
+   ================================================================= */
 
 package org.apache.poi.poifs.crypt.dsig.services;
 
@@ -68,7 +68,7 @@ import org.w3c.dom.Node;
 
 /**
  * JSR105 implementation of the RelationshipTransform transformation.
- * 
+ *
  * <p>
  * Specs: http://openiso.org/Ecma/376/Part2/12.2.4#26
  * </p>
@@ -80,7 +80,7 @@ public class RelationshipTransformService extends TransformService {
     private final List<String> sourceIds;
 
     private static final POILogger LOG = POILogFactory.getLogger(RelationshipTransformService.class);
-    
+
     /**
      * Relationship Transform parameter specification class.
      */
@@ -93,8 +93,8 @@ public class RelationshipTransformService extends TransformService {
             return !sourceIds.isEmpty();
         }
     }
-    
-    
+
+
     public RelationshipTransformService() {
         super();
         LOG.log(POILogger.DEBUG, "constructor");
@@ -103,7 +103,7 @@ public class RelationshipTransformService extends TransformService {
 
     /**
      * Register the provider for this TransformService
-     * 
+     *
      * @see javax.xml.crypto.dsig.TransformService
      */
     public static synchronized void registerDsigProvider() {
@@ -119,8 +119,8 @@ public class RelationshipTransformService extends TransformService {
             Security.addProvider(p);
         }
     }
-    
-    
+
+
     @Override
     public void init(TransformParameterSpec params) throws InvalidAlgorithmParameterException {
         LOG.log(POILogger.DEBUG, "init(params)");
@@ -139,7 +139,7 @@ public class RelationshipTransformService extends TransformService {
         LOG.log(POILogger.DEBUG, "parent java type: " + parent.getClass().getName());
         DOMStructure domParent = (DOMStructure) parent;
         Node parentNode = domParent.getNode();
-        
+
         try {
             TransformDocument transDoc = TransformDocument.Factory.parse(parentNode);
             XmlObject xoList[] = transDoc.getTransform().selectChildren(RelationshipReferenceDocument.type.getDocumentElementName());
@@ -163,7 +163,7 @@ public class RelationshipTransformService extends TransformService {
         Element parentNode = (Element)domParent.getNode();
         // parentNode.setAttributeNS(XML_NS, "xmlns:mdssi", XML_DIGSIG_NS);
         Document doc = parentNode.getOwnerDocument();
-        
+
         for (String sourceId : this.sourceIds) {
             RelationshipReferenceDocument relRef = RelationshipReferenceDocument.Factory.newInstance();
             relRef.addNewRelationshipReference().setSourceId(sourceId);
@@ -172,7 +172,7 @@ public class RelationshipTransformService extends TransformService {
             parentNode.appendChild(n);
         }
     }
-    
+
     public AlgorithmParameterSpec getParameterSpec() {
         LOG.log(POILogger.DEBUG, "getParameterSpec");
         return null;
@@ -184,7 +184,7 @@ public class RelationshipTransformService extends TransformService {
         OctetStreamData octetStreamData = (OctetStreamData) data;
         LOG.log(POILogger.DEBUG, "URI: " + octetStreamData.getURI());
         InputStream octetStream = octetStreamData.getOctetStream();
-        
+
         RelationshipsDocument relDoc;
         try {
             relDoc = RelationshipsDocument.Factory.parse(octetStream);
@@ -192,7 +192,7 @@ public class RelationshipTransformService extends TransformService {
             throw new TransformException(e.getMessage(), e);
         }
         LOG.log(POILogger.DEBUG, "relationships document", relDoc);
-        
+
         CTRelationships rels = relDoc.getRelationships();
         List<CTRelationship> relList = rels.getRelationshipList();
         Iterator<CTRelationship> relIter = rels.getRelationshipList().iterator();
@@ -211,10 +211,10 @@ public class RelationshipTransformService extends TransformService {
                 }
             }
         }
-        
+
         // TODO: remove non element nodes ???
         LOG.log(POILogger.DEBUG, "# Relationship elements", relList.size());
-        
+
         XmlSort.sort(rels, new Comparator<XmlCursor>(){
             public int compare(XmlCursor c1, XmlCursor c2) {
                 String id1 = ((CTRelationship)c1.getObject()).getId();

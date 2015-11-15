@@ -23,7 +23,7 @@ import junit.framework.TestCase;
 import org.apache.poi.hssf.HSSFTestDataSamples;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 /**
- * 
+ *
  */
 public final class TestUnicodeNameRecord extends TestCase {
 

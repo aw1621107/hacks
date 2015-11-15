@@ -48,7 +48,7 @@ public class ThemesTable extends POIXMLDocumentPart {
        HLINK(10,"Hlink"),
        FOLHLINK(11,"FolHlink"),
        UNKNOWN(-1,null);
-       
+
        public static ThemeElement byId(int idx) {
            if (idx >= values().length || idx < 0) return UNKNOWN;
            return values()[idx];
@@ -70,7 +70,7 @@ public class ThemesTable extends POIXMLDocumentPart {
         theme = ThemeDocument.Factory.newInstance();
         theme.addNewTheme().addNewThemeElements();
     }
-    
+
     /**
      * Construct a ThemesTable.
      * @param part A PackagePart.
@@ -78,7 +78,7 @@ public class ThemesTable extends POIXMLDocumentPart {
      */
     public ThemesTable(PackagePart part, PackageRelationship rel) throws IOException {
         super(part, rel);
-        
+
         try {
            theme = ThemeDocument.Factory.parse(part.getInputStream());
         } catch(XmlException e) {
@@ -131,9 +131,9 @@ public class ThemesTable extends POIXMLDocumentPart {
         } else {
             return null;
         }
-        return new XSSFColor(rgb);        
+        return new XSSFColor(rgb);
     }
-    
+
     /**
      * If the colour is based on a theme, then inherit
      *  information (currently just colours) from it as
@@ -157,10 +157,10 @@ public class ThemesTable extends POIXMLDocumentPart {
 
        // All done
     }
-    
+
     /**
      * Write this table out as XML.
-     * 
+     *
      * @param out The stream to write to.
      * @throws IOException if an error occurs while writing.
      */

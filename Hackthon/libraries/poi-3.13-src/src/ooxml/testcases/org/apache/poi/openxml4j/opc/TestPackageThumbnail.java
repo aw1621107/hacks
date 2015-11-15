@@ -25,7 +25,7 @@ import org.apache.poi.openxml4j.OpenXML4JTestDataSamples;
 
 /**
  * Test the addition of thumbnail in a package.
- * 
+ *
  * @author Julien Chable
  */
 public final class TestPackageThumbnail extends TestCase {
@@ -46,7 +46,7 @@ public final class TestPackageThumbnail extends TestCase {
     		p.addThumbnail(imagePath);
     		// Save the package in the output directory
     		p.save(outputFile);
-    
+
     		// Open the newly created file to check core properties saved values.
     		OPCPackage p2 = OPCPackage.open(outputFile.getAbsolutePath(), PackageAccess.READ);
     		try {

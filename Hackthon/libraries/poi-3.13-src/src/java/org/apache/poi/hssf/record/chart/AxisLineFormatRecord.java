@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The axis line format record defines the axis type details.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class AxisLineFormatRecord extends StandardRecord {
@@ -54,7 +54,7 @@ public final class AxisLineFormatRecord extends StandardRecord {
         buffer.append("    .axisType             = ")
             .append("0x").append(HexDump.toHex(  getAxisType ()))
             .append(" (").append( getAxisType() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/AXISLINEFORMAT]\n");
         return buffer.toString();
@@ -75,7 +75,7 @@ public final class AxisLineFormatRecord extends StandardRecord {
 
     public Object clone() {
         AxisLineFormatRecord rec = new AxisLineFormatRecord();
-    
+
         rec.field_1_axisType = field_1_axisType;
         return rec;
     }
@@ -86,7 +86,7 @@ public final class AxisLineFormatRecord extends StandardRecord {
     /**
      * Get the axis type field for the AxisLineFormat record.
      *
-     * @return  One of 
+     * @return  One of
      *        AXIS_TYPE_AXIS_LINE
      *        AXIS_TYPE_MAJOR_GRID_LINE
      *        AXIS_TYPE_MINOR_GRID_LINE
@@ -101,7 +101,7 @@ public final class AxisLineFormatRecord extends StandardRecord {
      * Set the axis type field for the AxisLineFormat record.
      *
      * @param field_1_axisType
-     *        One of 
+     *        One of
      *        AXIS_TYPE_AXIS_LINE
      *        AXIS_TYPE_MAJOR_GRID_LINE
      *        AXIS_TYPE_MINOR_GRID_LINE

@@ -36,7 +36,7 @@ import org.apache.poi.util.HexDump;
 import org.apache.poi.util.IntList;
 
 /**
- * A very low level debugging tool, for printing out core 
+ * A very low level debugging tool, for printing out core
  *  information on the headers and FAT blocks.
  * You probably only want to use this if you're trying
  *  to understand POIFS, or if you're trying to track
@@ -88,7 +88,7 @@ public class POIFSHeaderDumper {
                 new PropertyTable(header_block, data_blocks);
 
         // Mini Fat
-        BlockAllocationTableReader sbatReader = 
+        BlockAllocationTableReader sbatReader =
                 SmallBlockTableReader._getSmallDocumentBlockReader(
                         bigBlockSize, data_blocks, properties.getRoot(),
                         header_block.getSBATStart()
@@ -104,7 +104,7 @@ public class POIFSHeaderDumper {
         System.out.println(" Block size: " + header_block.getBigBlockSize().getBigBlockSize());
         System.out.println(" BAT (FAT) header blocks: " + header_block.getBATArray().length);
         System.out.println(" BAT (FAT) block count: " + header_block.getBATCount());
-        if (header_block.getBATCount() > 0) 
+        if (header_block.getBATCount() > 0)
             System.out.println(" BAT (FAT) block 1 at: " + header_block.getBATArray()[0]);
         System.out.println(" XBAT (FAT) block count: " + header_block.getXBATCount());
         System.out.println(" XBAT (FAT) block 1 at: " + header_block.getXBATIndex());
@@ -162,7 +162,7 @@ public class POIFSHeaderDumper {
         System.out.println("Mini Stream starts at " + properties.getRoot().getStartBlock());
         System.out.println("Mini Stream length is " + properties.getRoot().getSize());
         System.out.println();
-        
+
         System.out.println("Properties and their block start:");
         displayProperties(properties.getRoot(), "");
         System.out.println("");

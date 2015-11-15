@@ -148,7 +148,7 @@ public final class TestIndirect {
 //			confirm(feA, c, "INDIRECT(\"Sheet1!A65537\")", ErrorEval.REF_INVALID); // bad row
 //		}
 		confirm(feA, c, "INDIRECT(\"Sheet1!A 1\")", ErrorEval.REF_INVALID); // space in cell ref
-		
+
 		wbA.close();
 	}
 
@@ -172,7 +172,7 @@ public final class TestIndirect {
 		// 2 level recursion
 		confirm(feB, cellB, "INDIRECT(\"[MyBook]Sheet2!A1\")", 50); // set up (and check) first level
 		confirm(feA, cellA, "INDIRECT(\"'[Figures for January]Sheet1'!A11\")", 50); // points to cellB
-		
+
 		wbB.close();
 		wbA.close();
 	}
@@ -187,7 +187,7 @@ public final class TestIndirect {
 		}
 		assertEquals(expectedResult, cv.getNumberValue(), 0.0);
 	}
-	
+
 	private static void confirm(FormulaEvaluator fe, Cell cell, String formula,
 			ErrorEval expectedResult) {
 		fe.clearAllCachedResultValues();

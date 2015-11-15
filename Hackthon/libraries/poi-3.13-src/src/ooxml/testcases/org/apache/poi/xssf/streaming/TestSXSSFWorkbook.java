@@ -90,7 +90,7 @@ public final class TestSXSSFWorkbook extends BaseTestWorkbook {
     	try {
         	xssfWorkbook = (XSSFWorkbook) SXSSFITestDataProvider.instance.writeOutAndReadBack(wb);
         	assertTrue(wb.dispose());
-    
+
             wb = new SXSSFWorkbook(xssfWorkbook);
         	assertEquals(1, wb.getNumberOfSheets());
         	Sheet sheet  = wb.getSheetAt(0);
@@ -110,7 +110,7 @@ public final class TestSXSSFWorkbook extends BaseTestWorkbook {
         Field f = SXSSFWorkbook.class.getDeclaredField("_sharedStringSource");
         f.setAccessible(true);
         SharedStringsTable sss = (SharedStringsTable)f.get(wb);
-        
+
         assertNotNull(sss);
 
         Row row = wb.createSheet("S1").createRow(0);

@@ -80,7 +80,7 @@ public final class ListData
 
     /**
      * Gets the level associated to a particular List at a particular index.
-     * 
+     *
      * @param index
      *            1-based index
      * @return a list level

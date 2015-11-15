@@ -20,19 +20,19 @@ import java.util.Locale;
 
 public class JvmBugs {
     private static final POILogger LOG = POILogFactory.getLogger(JvmBugs.class);
-    
+
     /**
      * The LineBreakMeasurer is used for calculating text bounds.
      * The last official JDK 6 version (1.6.0_45) and also JDK 7 (1.7.0_21)
      * for Windows are affected. For JDK 7 - update to a more recent version.
      * For JDK 6 - replace the fontmanager.dll with the previous release.
-     * 
+     *
      * For performance reasons, this method only checks for a windows jvm
      * with version 1.6.0_45 and 1.7.0_21.
-     * 
+     *
      * Set system property "org.apache.poi.JvmBugs.LineBreakMeasurer.ignore" to "true"
      * to bypass this check and use the normal fonts.
-     * 
+     *
      * @return true, if jvm is bugged, caller code should use Lucida Sans
      * instead of Calibri and Lucida Bright instead of Cambria
      *

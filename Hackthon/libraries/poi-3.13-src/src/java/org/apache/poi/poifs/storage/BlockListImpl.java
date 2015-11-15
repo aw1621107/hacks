@@ -138,7 +138,7 @@ abstract class BlockListImpl implements BlockList {
         }
         _bat = bat;
     }
-    
+
     /**
      * Returns the count of the number of blocks
      */

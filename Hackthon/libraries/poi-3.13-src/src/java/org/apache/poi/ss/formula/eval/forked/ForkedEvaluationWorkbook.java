@@ -113,7 +113,7 @@ final class ForkedEvaluationWorkbook implements EvaluationWorkbook {
 	public EvaluationSheet getSheet(int sheetIndex) {
 		return getSharedSheet(getSheetName(sheetIndex));
 	}
-	
+
 	public ExternalName getExternalName(int externSheetIndex, int externNameIndex) {
 	   return _masterBook.getExternalName(externSheetIndex, externNameIndex);
 	}

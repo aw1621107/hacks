@@ -60,7 +60,7 @@ public final class TestReadWriteChart {
 
         assertTrue(records.get(0) instanceof BOFRecord);
         assertTrue(records.get(records.size() - 1) instanceof EOFRecord);
-        
+
         workbook.close();
     }
 }

@@ -36,32 +36,32 @@ import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTTableStyleInfo;
  * Demonstrates how to create a simple table using Apache POI.
  */
 public class CreateTable {
-        
-    public static void main(String[] args) throws FileNotFoundException, 
+
+    public static void main(String[] args) throws FileNotFoundException,
             IOException {
-        
+
         Workbook wb = new XSSFWorkbook();
         XSSFSheet sheet = (XSSFSheet) wb.createSheet();
-        
-        //Create 
+
+        //Create
         XSSFTable table = sheet.createTable();
-        table.setDisplayName("Test");       
+        table.setDisplayName("Test");
         CTTable cttable = table.getCTTable();
-        
+
         //Style configurations
         CTTableStyleInfo style = cttable.addNewTableStyleInfo();
         style.setName("TableStyleMedium2");
         style.setShowColumnStripes(false);
         style.setShowRowStripes(true);
-        
+
         //Set which area the table should be placed in
-        AreaReference reference = new AreaReference(new CellReference(0, 0), 
+        AreaReference reference = new AreaReference(new CellReference(0, 0),
                 new CellReference(2,2));
         cttable.setRef(reference.formatAsString());
         cttable.setId(1);
         cttable.setName("Test");
         cttable.setTotalsRowCount(1);
-        
+
         CTTableColumns columns = cttable.addNewTableColumns();
         columns.setCount(3);
         CTTableColumn column;
@@ -84,7 +84,7 @@ public class CreateTable {
                 }
             }
         }
-        
+
         FileOutputStream fileOut = new FileOutputStream("ooxml-table.xlsx");
         wb.write(fileOut);
         fileOut.close();

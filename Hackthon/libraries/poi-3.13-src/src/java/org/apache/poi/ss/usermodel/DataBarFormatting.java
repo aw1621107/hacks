@@ -20,7 +20,7 @@
 package org.apache.poi.ss.usermodel;
 
 /**
- * High level representation for the DataBar Formatting 
+ * High level representation for the DataBar Formatting
  *  component of Conditional Formatting settings
  */
 public interface DataBarFormatting {
@@ -34,7 +34,7 @@ public interface DataBarFormatting {
      *  or from Right-to-Left
      */
     void setLeftToRight(boolean ltr);
-    
+
     /**
      * Should Icon + Value be displayed, or only the Icon?
      */
@@ -43,24 +43,24 @@ public interface DataBarFormatting {
      * Control if only the Icon is shown, or Icon + Value
      */
     void setIconOnly(boolean only);
-    
+
     /**
      * How much of the cell width, in %, should be given to
      *  the min value?
      */
     int getWidthMin();
     void setWidthMin(int width);
-    
+
     /**
      * How much of the cell width, in %, should be given to
      *  the max value?
      */
     int getWidthMax();
     void setWidthMax(int width);
-    
+
     Color getColor();
     void setColor(Color color);
-    
+
     /**
      * The threshold that defines "everything from here down is minimum"
      */

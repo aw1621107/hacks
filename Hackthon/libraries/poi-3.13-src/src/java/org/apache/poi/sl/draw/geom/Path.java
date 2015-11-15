@@ -51,11 +51,11 @@ public class Path {
     public Path(CTPath2D spPath){
         _fill = spPath.getFill() != STPathFillMode.NONE;
         _stroke = spPath.isStroke();
-        _w = spPath.isSetW() ? spPath.getW() : -1;	
-        _h = spPath.isSetH() ? spPath.getH() : -1;	
-        
+        _w = spPath.isSetW() ? spPath.getW() : -1;
+        _h = spPath.isSetH() ? spPath.getH() : -1;
+
         commands = new ArrayList<PathCommand>();
-        
+
         for(Object ch : spPath.getCloseOrMoveToOrLnTo()){
             if(ch instanceof CTPath2DMoveTo){
                 CTAdjPoint2D pt = ((CTPath2DMoveTo)ch).getPt();
@@ -106,7 +106,7 @@ public class Path {
     public boolean isFilled(){
         return _fill;
     }
-    
+
     public long getW(){
     	return _w;
     }

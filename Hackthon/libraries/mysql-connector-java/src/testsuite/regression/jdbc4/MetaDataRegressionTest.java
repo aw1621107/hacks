@@ -40,7 +40,7 @@ import testsuite.BaseTestCase;
 public class MetaDataRegressionTest extends BaseTestCase {
     /**
      * Creates a new MetaDataRegressionTest.
-     * 
+     *
      * @param name
      *            the name of the test
      */
@@ -50,7 +50,7 @@ public class MetaDataRegressionTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -60,7 +60,7 @@ public class MetaDataRegressionTest extends BaseTestCase {
     /**
      * Tests fix for BUG#68307 - getFunctionColumns() returns incorrect "COLUMN_TYPE" information. This is a JDBC4
      * feature.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -122,7 +122,7 @@ public class MetaDataRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#44451 - getTables does not return resultset with expected columns.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -170,7 +170,7 @@ public class MetaDataRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#69298 - Different outcome from DatabaseMetaData.getFunctions() when using I__S.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -408,7 +408,7 @@ public class MetaDataRegressionTest extends BaseTestCase {
     /**
      * Tests fix for BUG#17248345 - GETFUNCTIONCOLUMNS() METHOD RETURNS COLUMNS OF PROCEDURE. (this happens when
      * functions and procedures have a common name)
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -509,9 +509,9 @@ public class MetaDataRegressionTest extends BaseTestCase {
     /*
      * Tests DatabaseMetaData.getSQLKeywords().
      * (Related to BUG#70701 - DatabaseMetaData.getSQLKeywords() doesn't match MySQL 5.6 reserved words)
-     * 
+     *
      * The keywords list that this method returns depends on JDBC version.
-     * 
+     *
      * @throws Exception if the test fails.
      */
     public void testReservedWords() throws Exception {
@@ -528,9 +528,9 @@ public class MetaDataRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#20504139 - GETFUNCTIONCOLUMNS() AND GETPROCEDURECOLUMNS() RETURNS ERROR FOR VALID INPUTS.
-     * 
+     *
      * Test duplicated in testsuite.regression.MetaDataRegressionTest.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -662,13 +662,13 @@ public class MetaDataRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#19803348 - GETPROCEDURES() RETURNS INCORRECT O/P WHEN USEINFORMATIONSCHEMA=FALSE.
-     * 
+     *
      * Composed by two parts:
      * 1. Confirm that getProcedures() and getProcedureColumns() aren't returning more results than expected (as per reported bug).
      * 2. Confirm that the results from getProcedures() and getProcedureColumns() are in the right order (secondary bug).
-     * 
+     *
      * Test duplicated in testsuite.regression.MetaDataRegressionTest.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -789,9 +789,9 @@ public class MetaDataRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#20727196 - GETPROCEDURECOLUMNS() RETURNS EXCEPTION FOR FUNCTION WHICH RETURNS ENUM/SET TYPE.
-     * 
+     *
      * Test duplicated in testsuite.regression.MetaDataRegressionTest.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */

@@ -25,7 +25,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The common object data record is used to store all common preferences for an excel object.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class CommonObjectDataSubRecord extends SubRecord {
@@ -67,7 +67,7 @@ public final class CommonObjectDataSubRecord extends SubRecord {
     public final static short OBJECT_TYPE_RESERVED8          = 28;
     public final static short OBJECT_TYPE_RESERVED9          = 29;
     public final static short OBJECT_TYPE_MICROSOFT_OFFICE_DRAWING = 30;
-    
+
     private  short      field_1_objectType;
     private  int        field_2_objectId;
     private  short      field_3_option;
@@ -101,31 +101,31 @@ public final class CommonObjectDataSubRecord extends SubRecord {
         buffer.append("    .objectType           = ")
             .append("0x").append(HexDump.toHex(  getObjectType ()))
             .append(" (").append( getObjectType() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .objectId             = ")
             .append("0x").append(HexDump.toHex(  getObjectId ()))
             .append(" (").append( getObjectId() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .option               = ")
             .append("0x").append(HexDump.toHex(  getOption ()))
             .append(" (").append( getOption() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
-        buffer.append("         .locked                   = ").append(isLocked()).append('\n'); 
-        buffer.append("         .printable                = ").append(isPrintable()).append('\n'); 
-        buffer.append("         .autofill                 = ").append(isAutofill()).append('\n'); 
-        buffer.append("         .autoline                 = ").append(isAutoline()).append('\n'); 
+        buffer.append(System.getProperty("line.separator"));
+        buffer.append("         .locked                   = ").append(isLocked()).append('\n');
+        buffer.append("         .printable                = ").append(isPrintable()).append('\n');
+        buffer.append("         .autofill                 = ").append(isAutofill()).append('\n');
+        buffer.append("         .autoline                 = ").append(isAutoline()).append('\n');
         buffer.append("    .reserved1            = ")
             .append("0x").append(HexDump.toHex(  getReserved1 ()))
             .append(" (").append( getReserved1() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .reserved2            = ")
             .append("0x").append(HexDump.toHex(  getReserved2 ()))
             .append(" (").append( getReserved2() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .reserved3            = ")
             .append("0x").append(HexDump.toHex(  getReserved3 ()))
             .append(" (").append( getReserved3() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/ftCmo]\n");
         return buffer.toString();
@@ -155,7 +155,7 @@ public final class CommonObjectDataSubRecord extends SubRecord {
 
     public Object clone() {
         CommonObjectDataSubRecord rec = new CommonObjectDataSubRecord();
-    
+
         rec.field_1_objectType = field_1_objectType;
         rec.field_2_objectId = field_2_objectId;
         rec.field_3_option = field_3_option;
@@ -169,7 +169,7 @@ public final class CommonObjectDataSubRecord extends SubRecord {
     /**
      * Get the object type field for the CommonObjectData record.
      *
-     * @return  One of 
+     * @return  One of
      *        OBJECT_TYPE_GROUP
      *        OBJECT_TYPE_LINE
      *        OBJECT_TYPE_RECTANGLE
@@ -211,7 +211,7 @@ public final class CommonObjectDataSubRecord extends SubRecord {
      * Set the object type field for the CommonObjectData record.
      *
      * @param field_1_objectType
-     *        One of 
+     *        One of
      *        OBJECT_TYPE_GROUP
      *        OBJECT_TYPE_LINE
      *        OBJECT_TYPE_RECTANGLE

@@ -71,7 +71,7 @@ public final class FunctionMetadata {
 		return _parameterClassCodes.clone();
 	}
 	/**
-	 * Some varags functions (like VLOOKUP) have a specific limit to the number of arguments that 
+	 * Some varags functions (like VLOOKUP) have a specific limit to the number of arguments that
 	 * can be passed.  Other functions (like SUM) don't have such a limit.  For those functions,
 	 * the spreadsheet version determines the maximum number of arguments that can be passed.
 	 * @return <code>true</code> if this function can the maximum number of arguments allowable by

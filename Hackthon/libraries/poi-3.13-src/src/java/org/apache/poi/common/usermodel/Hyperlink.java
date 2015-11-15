@@ -40,7 +40,7 @@ public interface Hyperlink {
      */
     public static final int LINK_FILE = 4;
 
-    
+
     /**
      * Hyperlink address. Depending on the hyperlink type it can be URL, e-mail, path to a file, etc.
      *

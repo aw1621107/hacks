@@ -43,7 +43,7 @@ public class XSLFCommonSlideData {
     public XSLFCommonSlideData(CTCommonSlideData data) {
         this.data = data;
     }
-    
+
     @SuppressWarnings("deprecation")
     public List<DrawingTextBody> getDrawingText() {
         CTGroupShape gs = data.getSpTree();
@@ -105,9 +105,9 @@ public class XSLFCommonSlideData {
             if (ctTextBody==null) {
                 continue;
             }
-            
+
             DrawingTextBody textBody;
-            CTApplicationNonVisualDrawingProps nvpr = shape.getNvSpPr().getNvPr(); 
+            CTApplicationNonVisualDrawingProps nvpr = shape.getNvSpPr().getNvPr();
             if(nvpr.isSetPh()) {
                textBody = new DrawingTextPlaceholder(ctTextBody, nvpr.getPh());
             } else {

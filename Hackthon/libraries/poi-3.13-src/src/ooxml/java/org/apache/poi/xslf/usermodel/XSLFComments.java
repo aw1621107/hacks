@@ -31,7 +31,7 @@ import java.io.IOException;
 @Beta
 public class XSLFComments extends POIXMLDocumentPart {
     private final CTCommentList _comments;
-    
+
     /**
      * Create a new set of slide comments
      */
@@ -56,15 +56,15 @@ public class XSLFComments extends POIXMLDocumentPart {
            CmLstDocument.Factory.parse(getPackagePart().getInputStream());
         _comments = doc.getCmLst();
     }
-    
+
     public CTCommentList getCTCommentsList() {
        return _comments;
     }
-    
+
     public int getNumberOfComments() {
        return _comments.sizeOfCmArray();
     }
-    
+
     public CTComment getCommentAt(int pos) {
        return _comments.getCmArray(pos);
     }

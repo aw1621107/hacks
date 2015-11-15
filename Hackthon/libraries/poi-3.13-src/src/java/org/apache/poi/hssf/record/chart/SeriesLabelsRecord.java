@@ -26,7 +26,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The series label record defines the type of label associated with the data format record.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class SeriesLabelsRecord extends StandardRecord {
@@ -59,13 +59,13 @@ public final class SeriesLabelsRecord extends StandardRecord {
         buffer.append("    .formatFlags          = ")
             .append("0x").append(HexDump.toHex(  getFormatFlags ()))
             .append(" (").append( getFormatFlags() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
-        buffer.append("         .showActual               = ").append(isShowActual()).append('\n'); 
-        buffer.append("         .showPercent              = ").append(isShowPercent()).append('\n'); 
-        buffer.append("         .labelAsPercentage        = ").append(isLabelAsPercentage()).append('\n'); 
-        buffer.append("         .smoothedLine             = ").append(isSmoothedLine()).append('\n'); 
-        buffer.append("         .showLabel                = ").append(isShowLabel()).append('\n'); 
-        buffer.append("         .showBubbleSizes          = ").append(isShowBubbleSizes()).append('\n'); 
+        buffer.append(System.getProperty("line.separator"));
+        buffer.append("         .showActual               = ").append(isShowActual()).append('\n');
+        buffer.append("         .showPercent              = ").append(isShowPercent()).append('\n');
+        buffer.append("         .labelAsPercentage        = ").append(isLabelAsPercentage()).append('\n');
+        buffer.append("         .smoothedLine             = ").append(isSmoothedLine()).append('\n');
+        buffer.append("         .showLabel                = ").append(isShowLabel()).append('\n');
+        buffer.append("         .showBubbleSizes          = ").append(isShowBubbleSizes()).append('\n');
 
         buffer.append("[/ATTACHEDLABEL]\n");
         return buffer.toString();
@@ -86,7 +86,7 @@ public final class SeriesLabelsRecord extends StandardRecord {
 
     public Object clone() {
         SeriesLabelsRecord rec = new SeriesLabelsRecord();
-    
+
         rec.field_1_formatFlags = field_1_formatFlags;
         return rec;
     }

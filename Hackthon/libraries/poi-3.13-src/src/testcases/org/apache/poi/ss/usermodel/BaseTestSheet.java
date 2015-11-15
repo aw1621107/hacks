@@ -41,7 +41,7 @@ public abstract class BaseTestSheet {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
-    
+
     private final ITestDataProvider _testDataProvider;
 
     protected BaseTestSheet(ITestDataProvider testDataProvider) {
@@ -87,7 +87,7 @@ public abstract class BaseTestSheet {
         assertSame(row2_ovrewritten, row2_ovrewritten_ref);
         assertEquals(100.0, row2_ovrewritten_ref.getCell(0).getNumericCellValue(), 0.0);
     }
-    
+
     @Test
     public void createRowBeforeFirstRow() {
         final Workbook workbook = _testDataProvider.createWorkbook();
@@ -100,7 +100,7 @@ public abstract class BaseTestSheet {
             // expected
         }
     }
-    
+
     protected void createRowAfterLastRow(SpreadsheetVersion version) {
         final Workbook workbook = _testDataProvider.createWorkbook();
         final Sheet sh = workbook.createSheet();
@@ -437,7 +437,7 @@ public abstract class BaseTestSheet {
         assertEquals(40000, sheet.getColumnWidth(10));
     }
 
-    
+
     @Test
     public void defaultRowHeight() {
         Workbook workbook = _testDataProvider.createWorkbook();
@@ -707,7 +707,7 @@ public abstract class BaseTestSheet {
         Workbook wb = _testDataProvider.createWorkbook();
         Sheet sheet = wb.createSheet();
         assertFalse(sheet.getProtect());
-        sheet.protectSheet("Test");  
+        sheet.protectSheet("Test");
         assertTrue(sheet.getProtect());
         sheet.protectSheet(null);
         assertFalse(sheet.getProtect());
@@ -764,13 +764,13 @@ public abstract class BaseTestSheet {
         assertNull(sheet.getPaneInformation());
     }
 
-    
+
     @Test
     public void getRepeatingRowsAndColumns() {
         Workbook wb = _testDataProvider.openSampleWorkbook(
-            "RepeatingRowsCols." 
+            "RepeatingRowsCols."
             + _testDataProvider.getStandardFileNameExtension());
-        
+
         checkRepeatingRowsAndColumns(wb.getSheetAt(0), null, null);
         checkRepeatingRowsAndColumns(wb.getSheetAt(1), "1:1", null);
         checkRepeatingRowsAndColumns(wb.getSheetAt(2), null, "A:A");
@@ -797,32 +797,32 @@ public abstract class BaseTestSheet {
         Sheet sheet1 = wb.createSheet("Sheet1");
         Sheet sheet2 = wb.createSheet("Sheet2");
         Sheet sheet3 = wb.createSheet("Sheet3");
-        
+
         checkRepeatingRowsAndColumns(sheet1, null, null);
-        
+
         sheet1.setRepeatingRows(CellRangeAddress.valueOf("4:5"));
         sheet2.setRepeatingColumns(CellRangeAddress.valueOf("A:C"));
         sheet3.setRepeatingRows(CellRangeAddress.valueOf("1:4"));
         sheet3.setRepeatingColumns(CellRangeAddress.valueOf("A:A"));
-        
+
         checkRepeatingRowsAndColumns(sheet1, "4:5", null);
         checkRepeatingRowsAndColumns(sheet2, null, "A:C");
         checkRepeatingRowsAndColumns(sheet3, "1:4", "A:A");
-        
+
         // write out, read back, and test refrain...
         wb = _testDataProvider.writeOutAndReadBack(wb);
         sheet1 = wb.getSheetAt(0);
         sheet2 = wb.getSheetAt(1);
         sheet3 = wb.getSheetAt(2);
-        
+
         checkRepeatingRowsAndColumns(sheet1, "4:5", null);
         checkRepeatingRowsAndColumns(sheet2, null, "A:C");
         checkRepeatingRowsAndColumns(sheet3, "1:4", "A:A");
-        
-        // check removing repeating rows and columns       
+
+        // check removing repeating rows and columns
         sheet3.setRepeatingRows(null);
         checkRepeatingRowsAndColumns(sheet3, null, "A:A");
-        
+
         sheet3.setRepeatingColumns(null);
         checkRepeatingRowsAndColumns(sheet3, null, null);
     }
@@ -845,11 +845,11 @@ public abstract class BaseTestSheet {
     public void baseZoom() {
         Workbook wb = _testDataProvider.createWorkbook();
         Sheet sheet = wb.createSheet();
-        
+
         // here we can only verify that setting some zoom values works, range-checking is different between the implementations
         sheet.setZoom(3,4);
     }
-    
+
     @Test
     public void baseShowInPane() {
         Workbook wb = _testDataProvider.createWorkbook();
@@ -881,7 +881,7 @@ public abstract class BaseTestSheet {
         CellRangeAddress range = CellRangeAddress.valueOf("A4:B55000");
         AutoFilter filter = sheet.setAutoFilter(range);
         assertNotNull(filter);
-        
+
         wb.close();
     }
 
@@ -893,13 +893,13 @@ public abstract class BaseTestSheet {
         CellRangeAddress range = CellRangeAddress.valueOf("A4:B75000");
         AutoFilter filter = sheet.setAutoFilter(range);
         assertNotNull(filter);
-        
+
         wb.close();
     }
 
     /**
      * XSSFSheet autoSizeColumn() on empty RichTextString fails
-     * @throws IOException 
+     * @throws IOException
      */
     @Test
     public void bug48325() throws IOException {
@@ -916,9 +916,9 @@ public abstract class BaseTestSheet {
         cell.setCellValue(rts);
 
         sheet.autoSizeColumn(0);
-        
+
         assertNotNull(_testDataProvider.writeOutAndReadBack(wb));
-        
+
         wb.close();
     }
 
@@ -934,9 +934,9 @@ public abstract class BaseTestSheet {
 
         assertNotNull(sheet.getCellComment(9, 2));
         assertEquals("test C10 author", sheet.getCellComment(9, 2).getAuthor());
-        
+
         assertNotNull(_testDataProvider.writeOutAndReadBack(workbook));
-        
+
         workbook.close();
     }
 
@@ -949,9 +949,9 @@ public abstract class BaseTestSheet {
         sheet.addMergedRegion(region);
         assertEquals("B2:D4", sheet.getMergedRegion(0).formatAsString());
         assertEquals(1, sheet.getNumMergedRegions());
-        
+
         assertNotNull(_testDataProvider.writeOutAndReadBack(workbook));
-        
+
         workbook.close();
     }
 
@@ -981,8 +981,8 @@ public abstract class BaseTestSheet {
         assertNotNull(sh);
         assertEquals(ROW_COUNT-1, sh.getLastRowNum());
     }
-    
-    
+
+
     @Test
     public void testRightToLeft() throws IOException {
         Workbook wb = _testDataProvider.createWorkbook();
@@ -993,7 +993,7 @@ public abstract class BaseTestSheet {
         assertTrue(sheet.isRightToLeft());
         sheet.setRightToLeft(false);
         assertFalse(sheet.isRightToLeft());
-        
+
         wb.close();
     }
 }

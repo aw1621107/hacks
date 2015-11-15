@@ -51,16 +51,16 @@ public class HSMFFileHandler extends POIFSFileHandler {
 		// write out the file
 		File file = TempFile.createTempFile("StressTest", ".msg");
 		writeToFile(mapi, file);
-		
+
 		MAPIMessage read = new MAPIMessage(file.getAbsolutePath());
 		assertNotNull(read.getAttachmentFiles());
 		assertNotNull(read.getDisplayBCC());
 		assertNotNull(read.getMessageDate());
 		*/
-		
+
 		// writing is not yet supported... handlePOIDocument(mapi);
 	}
-	
+
 //	private void writeToFile(MAPIMessage mapi, File file)
 //			throws FileNotFoundException, IOException {
 //		OutputStream stream = new FileOutputStream(file);

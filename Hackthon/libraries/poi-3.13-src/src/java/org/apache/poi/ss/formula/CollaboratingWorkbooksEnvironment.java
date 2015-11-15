@@ -28,10 +28,10 @@ import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.util.Internal;
 
 /**
- * Manages a collection of {@link WorkbookEvaluator}s, in order to support 
+ * Manages a collection of {@link WorkbookEvaluator}s, in order to support
  * evaluation of formulas across spreadsheets.
  *
- * <p>For POI internal use only - use</p> 
+ * <p>For POI internal use only - use</p>
  */
 @Internal
 public final class CollaboratingWorkbooksEnvironment {
@@ -70,8 +70,8 @@ public final class CollaboratingWorkbooksEnvironment {
         if (evaluatorsByName.size() < 1) {
             throw new IllegalArgumentException("Must provide at least one collaborating worbook");
         }
-        WorkbookEvaluator[] evaluators = 
-                evaluatorsByName.values().toArray(new WorkbookEvaluator[evaluatorsByName.size()]); 
+        WorkbookEvaluator[] evaluators =
+                evaluatorsByName.values().toArray(new WorkbookEvaluator[evaluatorsByName.size()]);
         new CollaboratingWorkbooksEnvironment(evaluatorsByName, evaluators);
     }
     public static void setupFormulaEvaluator(Map<String,FormulaEvaluator> evaluators) {
@@ -81,7 +81,7 @@ public final class CollaboratingWorkbooksEnvironment {
             if (eval instanceof WorkbookEvaluatorProvider) {
                 evaluatorsByName.put(wbName, ((WorkbookEvaluatorProvider)eval)._getWorkbookEvaluator());
             } else {
-                throw new IllegalArgumentException("Formula Evaluator " + eval + 
+                throw new IllegalArgumentException("Formula Evaluator " + eval +
                                                    " provides no WorkbookEvaluator access");
             }
         }

@@ -21,7 +21,7 @@ import org.apache.poi.hwpf.usermodel.ParagraphProperties;
 
 /**
  * Tab descriptor. Part of {@link ParagraphProperties}.
- * 
+ *
  * @author vlsergey
  */
 public class TabDescriptor extends TBDAbstractType

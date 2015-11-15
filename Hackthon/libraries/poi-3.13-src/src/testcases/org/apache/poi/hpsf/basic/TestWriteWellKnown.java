@@ -109,7 +109,7 @@ public class TestWriteWellKnown {
                  */
                 if (dir.hasEntry(DocumentSummaryInformation.DEFAULT_STREAM_NAME)) {
                     final DocumentSummaryInformation dsi = getDocumentSummaryInformation(poifs);
-    
+
                     /* Execute the get... methods. */
                     dsi.getByteCount();
                     dsi.getByteOrder();
@@ -195,7 +195,7 @@ public class TestWriteWellKnown {
         cal.set(2002, 8, 8, 8, 8, 8);
         P_LAST_SAVE_DATE_TIME = cal.getTime();
     }
-    
+
     /**
      * <p>This test method test the writing of properties in the well-known
      * property set streams "SummaryInformation" and
@@ -246,7 +246,7 @@ public class TestWriteWellKnown {
     @Test
     public void testWriteWellKnown() throws Exception {
         POIDataSamples _samples = POIDataSamples.getHPSFInstance();
-        
+
         final File doc1 = TempFile.createTempFile("POI_HPSF_Test1.", ".tmp");
         final File doc2 = TempFile.createTempFile("POI_HPSF_Test2.", ".tmp");
         final File doc3 = TempFile.createTempFile("POI_HPSF_Test3.", ".tmp");
@@ -256,14 +256,14 @@ public class TestWriteWellKnown {
         IOUtils.copy(fis, fos);
         fos.close();
         fis.close();
-        
+
         CustomProperties cps1 = write1stFile(doc1, doc2);
         CustomProperties cps2 = write2ndFile(doc2, doc3);
         write3rdFile(doc3, null);
-        
+
         assertEquals(cps1, cps2);
     }
-    
+
     /*
      * Write all properties supported by HPSF to the summary information
      * (e.g. author, edit date, application name) and to the document
@@ -342,17 +342,17 @@ public class TestWriteWellKnown {
         cps.put("min_Long", MIN_LONG);
         cps.put("max_Double", MAX_DOUBLE);
         cps.put("min_Double", MIN_DOUBLE);
-        
+
         // Check the keys went in
         assertTrue(cps.containsKey("Schl\u00fcssel \u00e4"));
         assertTrue(cps.containsKey("Boolean"));
-        
+
         // Check the values went in
         assertEquals("Wert \u00e4", cps.get("Schl\u00fcssel \u00e4"));
         assertEquals(Boolean.TRUE, cps.get("Boolean"));
         assertTrue(cps.containsValue(Boolean.TRUE));
         assertTrue(cps.containsValue("Wert \u00e4"));
-        
+
         // Check that things that aren't in aren't in
         assertFalse(cps.containsKey("False Boolean"));
         assertFalse(cps.containsValue(Boolean.FALSE));
@@ -360,7 +360,7 @@ public class TestWriteWellKnown {
         // Save as our custom properties
         dsi.setCustomProperties(cps);
 
-        
+
         /* Write the summary information stream and the document summary
          * information stream to the POI filesystem. */
         si.write(poifs.getRoot(), SummaryInformation.DEFAULT_STREAM_NAME);
@@ -372,10 +372,10 @@ public class TestWriteWellKnown {
         poifs.writeFilesystem(out);
         out.close();
         poifs.close();
-        
+
         return cps;
     }
-    
+
     /*
      * Open <em>doc2</em> for reading and check summary information and
      * document summary information. All properties written before must be
@@ -496,10 +496,10 @@ public class TestWriteWellKnown {
         poifs.writeFilesystem(out);
         out.close();
         poifs.close();
-        
+
         return cps;
     }
-    
+
     /*
      * Open <em>doc3</em> for reading and check summary information
      * and document summary information. All properties removed before must not
@@ -559,7 +559,7 @@ public class TestWriteWellKnown {
         assertEquals(0, dsi.getSlideCount());
         assertTrue(dsi.wasNull());
         poifs.close();
-        
+
         return dsi.getCustomProperties();
     }
 
@@ -570,7 +570,7 @@ public class TestWriteWellKnown {
         dis.close();
         return si;
     }
-    
+
     private static DocumentSummaryInformation getDocumentSummaryInformation(NPOIFSFileSystem poifs) throws Exception {
         DocumentInputStream dis = poifs.createDocumentInputStream(DocumentSummaryInformation.DEFAULT_STREAM_NAME);
         PropertySet ps = new PropertySet(dis);
@@ -579,8 +579,8 @@ public class TestWriteWellKnown {
         return dsi;
     }
 
-    
-    
+
+
     /**
      * <p>Tests the simplified custom properties by reading them from the
      * available test files.</p>
@@ -617,11 +617,11 @@ public class TestWriteWellKnown {
                         dsi = PropertySetFactory.newDocumentSummaryInformation();
                     }
                     final CustomProperties cps = dsi.getCustomProperties();
-    
+
                     if (cps == null)
                         /* The document does not have custom properties. */
                         return;
-    
+
                     for (CustomProperty cp : cps.values()) {
                         cp.getName();
                         cp.getValue();

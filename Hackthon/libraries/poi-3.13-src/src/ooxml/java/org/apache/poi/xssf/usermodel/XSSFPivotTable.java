@@ -261,7 +261,7 @@ public class XSSFPivotTable extends POIXMLDocumentPart {
         rowFields.addNewField().setX(columnIndex);
         rowFields.setCount(rowFields.sizeOfFieldArray());
     }
-    
+
     @Beta
     @SuppressWarnings("deprecation")
     public List<Integer> getRowLabelColumns() {
@@ -275,7 +275,7 @@ public class XSSFPivotTable extends POIXMLDocumentPart {
             return Collections.emptyList();
         }
     }
-    
+
     /**
      * Add a column label using data from the given column and specified function
      * @param columnIndex the index of the column to be used as column label.

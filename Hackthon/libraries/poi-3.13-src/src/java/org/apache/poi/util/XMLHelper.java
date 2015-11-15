@@ -27,7 +27,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 public final class XMLHelper
 {
     private static POILogger logger = POILogFactory.getLogger(XMLHelper.class);
-    
+
     /**
      * Creates a new DocumentBuilderFactory, with sensible defaults
      */
@@ -41,7 +41,7 @@ public final class XMLHelper
         trySetSAXFeature(factory, "http://apache.org/xml/features/nonvalidating/load-dtd-grammar", false);
         return factory;
     }
-    
+
     private static void trySetSAXFeature(DocumentBuilderFactory documentBuilderFactory, String feature, boolean enabled) {
         try {
             documentBuilderFactory.setFeature(feature, enabled);
@@ -51,6 +51,6 @@ public final class XMLHelper
             logger.log(POILogger.WARN, "Cannot set SAX feature because outdated XML parser in classpath", feature, ame);
         }
     }
-    
+
 
 }

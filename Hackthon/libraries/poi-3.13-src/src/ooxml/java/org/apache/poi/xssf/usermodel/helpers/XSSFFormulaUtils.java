@@ -121,7 +121,7 @@ public final class XSSFFormulaUtils {
             if (!formula.equals(updatedFormula)) name.setRefersToFormula(updatedFormula);
         }
     }
-    
+
     private void updatePtg(Ptg ptg, String oldName, String newName) {
         if (ptg instanceof Pxg) {
             Pxg pxg = (Pxg)ptg;

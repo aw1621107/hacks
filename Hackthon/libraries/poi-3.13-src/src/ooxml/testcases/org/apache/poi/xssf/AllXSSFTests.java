@@ -46,7 +46,7 @@ import org.junit.runners.Suite;
     TestStylesTable.class,
     TestCellReference.class,
     TestCTColComparator.class,
-    TestNumericRanges.class,       
+    TestNumericRanges.class,
     TestCellFormatPart.class
 })
 public final class AllXSSFTests {

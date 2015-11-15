@@ -67,7 +67,7 @@ public final class Sumifs implements FreeRefFunction {
             I_MatchPredicate[] mp = new I_MatchPredicate[ae.length];
             for(int i = 1, k=0; i < args.length; i += 2, k++){
                 ae[k] = convertRangeArg(args[i]);
-                
+
                 mp[k] = Countif.createCriteriaPredicate(args[i+1], ec.getRowIndex(), ec.getColumnIndex());
             }
 
@@ -103,7 +103,7 @@ public final class Sumifs implements FreeRefFunction {
      */
     private void validateCriteria(I_MatchPredicate[] criteria) throws EvaluationException {
         for(I_MatchPredicate predicate : criteria) {
-            
+
             // check for errors in predicate and return immediately using this error code
             if(predicate instanceof ErrorMatcher) {
                 throw new EvaluationException(ErrorEval.valueOf(((ErrorMatcher)predicate).getValue()));

@@ -324,7 +324,7 @@ public abstract class XWPFHeaderFooter extends POIXMLDocumentPart implements IBo
         paragraphs.add(paragraph);
         return paragraph;
     }
-    
+
     /**
      * add a new paragraph at position of the cursor
      *

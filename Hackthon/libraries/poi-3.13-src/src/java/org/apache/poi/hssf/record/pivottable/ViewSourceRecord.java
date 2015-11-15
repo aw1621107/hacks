@@ -24,18 +24,18 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * SXVS - View Source (0x00E3)<br/>
- * 
+ *
  * @author Patrick Cheng
  */
 public final class ViewSourceRecord extends StandardRecord {
 	public static final short sid = 0x00E3;
 
 	private int vs;
-	
+
 	public ViewSourceRecord(RecordInputStream in) {
 		vs = in.readShort();
 	}
-	
+
 	@Override
 	protected void serialize(LittleEndianOutput out) {
 		out.writeShort(vs);

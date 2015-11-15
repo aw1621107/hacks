@@ -79,7 +79,7 @@ public class FormulaViewer
         is.close();
         fs.close();
     }
-    
+
     private void listFormula(FormulaRecord record) {
         String sep="~";
         Ptg[] tokens= record.getParsedExpression();
@@ -89,12 +89,12 @@ public class FormulaViewer
             token = tokens[numptgs-1];
             if (token instanceof FuncPtg) {
                 numArg = String.valueOf(numptgs-1);
-            } else { 
+            } else {
             	numArg = String.valueOf(-1);
             }
-            
+
             StringBuffer buf = new StringBuffer();
-            
+
             if (token instanceof ExpPtg) return;
             buf.append(((OperationPtg) token).toFormulaString());
             buf.append(sep);
@@ -109,7 +109,7 @@ public class FormulaViewer
                     buf.append("ARRAY");
                     break;
             }
-            
+
             buf.append(sep);
             if (numptgs>1) {
                 token = tokens[numptgs-2];
@@ -173,11 +173,11 @@ public class FormulaViewer
                     break;
             }
             buf.append(' ');
-        } 
+        }
         return buf.toString();
     }
-    
-    
+
+
     private static String composeFormula(FormulaRecord record)
     {
        return  HSSFFormulaParser.toFormulaString((HSSFWorkbook)null, record.getParsedExpression());
@@ -195,7 +195,7 @@ public class FormulaViewer
     {
         this.file = file;
     }
-    
+
     public void setList(boolean list) {
         this.list=list;
     }

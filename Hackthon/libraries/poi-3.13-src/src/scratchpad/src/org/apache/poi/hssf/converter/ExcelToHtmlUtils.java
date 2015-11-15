@@ -40,7 +40,7 @@ public class ExcelToHtmlUtils extends AbstractExcelUtils
      * Creates a map (i.e. two-dimensional array) filled with ranges. Allow fast
      * retrieving {@link CellRangeAddress} of any cell, if cell is contained in
      * range.
-     * 
+     *
      * @see #getMergedRange(CellRangeAddress[][], int, int)
      */
     public static CellRangeAddress[][] buildMergedRangesMap( HSSFSheet sheet )

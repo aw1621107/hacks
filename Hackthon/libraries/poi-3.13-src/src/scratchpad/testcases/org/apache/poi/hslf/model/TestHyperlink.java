@@ -42,7 +42,7 @@ public final class TestHyperlink {
 
         HSLFSlide slide = ppt.getSlides().get(0);
         List<HSLFTextParagraph> para = slide.getTextParagraphs().get(1);
-        
+
         String rawText = toExternalString(getRawText(para), para.get(0).getRunType());
         String expected =
             "This page has two links:\n"+
@@ -52,7 +52,7 @@ public final class TestHyperlink {
             "\n"+
             "In addition, its notes has one link";
         assertEquals(expected, rawText);
-        
+
         List<HSLFHyperlink> links = HSLFHyperlink.find(para);
         assertNotNull(links);
         assertEquals(2, links.size());
@@ -68,7 +68,7 @@ public final class TestHyperlink {
         slide = ppt.getSlides().get(1);
         para = slide.getTextParagraphs().get(1);
         rawText = toExternalString(getRawText(para), para.get(0).getRunType());
-        expected = 
+        expected =
             "I have the one link:\n" +
             "Jakarta HSSF";
         assertEquals(expected, rawText);

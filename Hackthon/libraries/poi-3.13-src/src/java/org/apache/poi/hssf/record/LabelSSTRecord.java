@@ -59,7 +59,7 @@ public final class LabelSSTRecord extends CellRecord {
     public int getSSTIndex() {
         return field_4_sst_index;
     }
-    
+
     @Override
     protected String getRecordName() {
     	return "LABELSST";

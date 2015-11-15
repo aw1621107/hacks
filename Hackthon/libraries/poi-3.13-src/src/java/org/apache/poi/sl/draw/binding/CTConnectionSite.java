@@ -26,9 +26,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_ConnectionSite complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_ConnectionSite">
  *   &lt;complexContent>
@@ -41,8 +41,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_ConnectionSite", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main", propOrder = {
@@ -57,11 +57,11 @@ public class CTConnectionSite {
 
     /**
      * Gets the value of the pos property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTAdjPoint2D }
-     *     
+     *
      */
     public CTAdjPoint2D getPos() {
         return pos;
@@ -69,11 +69,11 @@ public class CTConnectionSite {
 
     /**
      * Sets the value of the pos property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTAdjPoint2D }
-     *     
+     *
      */
     public void setPos(CTAdjPoint2D value) {
         this.pos = value;
@@ -85,11 +85,11 @@ public class CTConnectionSite {
 
     /**
      * Gets the value of the ang property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getAng() {
         return ang;
@@ -97,11 +97,11 @@ public class CTConnectionSite {
 
     /**
      * Sets the value of the ang property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setAng(String value) {
         this.ang = value;

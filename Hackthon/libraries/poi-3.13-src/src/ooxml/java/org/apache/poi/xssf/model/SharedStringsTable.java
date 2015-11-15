@@ -108,7 +108,7 @@ public class SharedStringsTable extends POIXMLDocumentPart {
 
     /**
      * Read this shared strings table from an XML file.
-     * 
+     *
      * @param is The input stream containing the XML document.
      * @throws IOException if an error occurs while reading.
      */
@@ -203,7 +203,7 @@ public class SharedStringsTable extends POIXMLDocumentPart {
 
     /**
      * Write this table out as XML.
-     * 
+     *
      * @param out The stream to write to.
      * @throws IOException if an error occurs while writing.
      */

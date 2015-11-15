@@ -33,38 +33,38 @@ public class TestXSSFHeaderFooter extends TestCase {
 		String withFont = "I&22 am a&\"Arial,bold\" test header";
 		String withOtherAnds = "I am a&P test header&&";
 		String withOtherAnds2 = "I am a&P test header&a&b";
-		
+
 		assertEquals(simple, XSSFOddHeader.stripFields(simple));
 		assertEquals(simple, XSSFOddHeader.stripFields(withPage));
 		assertEquals(simple, XSSFOddHeader.stripFields(withLots));
 		assertEquals(simple, XSSFOddHeader.stripFields(withFont));
 		assertEquals(simple + "&&", XSSFOddHeader.stripFields(withOtherAnds));
 		assertEquals(simple + "&a&b", XSSFOddHeader.stripFields(withOtherAnds2));
-		
+
 		// Now test the default strip flag
 		XSSFEvenHeader head = new XSSFEvenHeader(CTHeaderFooter.Factory.newInstance());
 		head.setCenter("Center");
 		head.setLeft("In the left");
-	
+
 		assertEquals("In the left", head.getLeft());
 		assertEquals("Center", head.getCenter());
 		assertEquals("", head.getRight());
-		
+
 		head.setLeft("Top &P&F&D Left");
 		assertEquals("Top &P&F&D Left", head.getLeft());
 		assertFalse(head.areFieldsStripped());
-		
+
 		head.setAreFieldsStripped(true);
 		assertEquals("Top  Left", head.getLeft());
 		assertTrue(head.areFieldsStripped());
-		
+
 		// Now even more complex
 		head.setCenter("HEADER TEXT &P&N&D&T&Z&F&F&A&V");
 		assertEquals("HEADER TEXT &V", head.getCenter());
 	}
 
 	public void testGetSetCenterLeftRight() {
-		
+
 		XSSFOddFooter footer = new XSSFOddFooter(CTHeaderFooter.Factory.newInstance());
 		assertEquals("", footer.getCenter());
 		footer.setCenter("My first center section");
@@ -75,7 +75,7 @@ public class TestXSSFHeaderFooter extends TestCase {
 		footer.setRight("Finally the right section is added");
 		assertEquals("And add a left one", footer.getLeft());
 		assertEquals("Finally the right section is added", footer.getRight());
-		
+
 		// Test changing the three sections value
 		footer.setCenter("Second center version");
 		footer.setLeft("Second left version");
@@ -83,8 +83,8 @@ public class TestXSSFHeaderFooter extends TestCase {
 		assertEquals("Second center version", footer.getCenter());
 		assertEquals("Second left version", footer.getLeft());
 		assertEquals("Second right version", footer.getRight());
-		
+
 	}
-	
+
 	// TODO Rest of tests
 }

@@ -27,7 +27,7 @@ import org.apache.poi.hsmf.exceptions.ChunkNotFoundException;
 
 /**
  * Tests to verify that we can read attachments from msg file
- * 
+ *
  * @author Nicolas Bureau
  */
 public class TestFileWithAttachmentsRead extends TestCase {
@@ -36,7 +36,7 @@ public class TestFileWithAttachmentsRead extends TestCase {
 
    /**
     * Initialize this test, load up the attachment_test_msg.msg mapi message.
-    * 
+    *
     * @throws Exception
     */
    public TestFileWithAttachmentsRead() throws IOException {
@@ -47,15 +47,15 @@ public class TestFileWithAttachmentsRead extends TestCase {
 
    /**
     * Test to see if we can retrieve attachments.
-    * 
+    *
     * @throws ChunkNotFoundException
-    * 
+    *
     */
    public void testRetrieveAttachments() {
        // Simple file
        AttachmentChunks[] attachments = twoSimpleAttachments.getAttachmentFiles();
        assertEquals(2, attachments.length);
-       
+
        // Other file
        attachments = pdfMsgAttachments.getAttachmentFiles();
        assertEquals(2, attachments.length);
@@ -94,14 +94,14 @@ public class TestFileWithAttachmentsRead extends TestCase {
       assertEquals(null, attachment.attachMimeTag);
       assertEquals(89, attachment.attachData.getValue().length);
    }
-   
+
    /**
     * Test that we can handle both PDF and MSG attachments
     */
    public void testReadMsgAttachments() throws Exception {
        AttachmentChunks[] attachments = pdfMsgAttachments.getAttachmentFiles();
        assertEquals(2, attachments.length);
-       
+
        AttachmentChunks attachment;
 
        // Second is a PDF
@@ -112,7 +112,7 @@ public class TestFileWithAttachmentsRead extends TestCase {
        assertEquals(null, attachment.attachMimeTag);
        assertEquals(null, attachment.attachmentDirectory);
        assertEquals(13539, attachment.attachData.getValue().length);
-       
+
        // First in a nested message
        attachment = pdfMsgAttachments.getAttachmentFiles()[0];
        assertEquals("Test Attachment", attachment.attachFileName.toString());
@@ -121,7 +121,7 @@ public class TestFileWithAttachmentsRead extends TestCase {
        assertEquals(null, attachment.attachMimeTag);
        assertEquals(null, attachment.attachData);
        assertNotNull(attachment.attachmentDirectory);
-       
+
        // Check we can see some bits of it
        MAPIMessage nested = attachment.attachmentDirectory.getAsEmbededMessage();
        assertEquals(1, nested.getRecipientNamesList().length);

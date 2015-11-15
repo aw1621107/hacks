@@ -37,7 +37,7 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
     public BaseTestConditionalFormatting(ITestDataProvider testDataProvider){
         _testDataProvider = testDataProvider;
     }
-    
+
     protected abstract void assertColour(String hexExpected, Color actual);
 
     public void testBasic() {
@@ -288,7 +288,7 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
             assertTrue(e.getMessage().startsWith("Specified CF index 0 is outside the allowable range"));
         }
     }
-    
+
     public void testCreateCF() {
         Workbook workbook = _testDataProvider.createWorkbook();
         Sheet sheet = workbook.createSheet();
@@ -550,7 +550,7 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
         ConditionalFormatting cf = null;
         ConditionalFormattingRule cr = null;
 
-        
+
         // Sanity check data
         assertEquals("Values", s.getRow(0).getCell(0).toString());
         assertEquals("10.0", s.getRow(2).getCell(0).toString());
@@ -561,7 +561,7 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
         int numCF12 = 15;
         int numCFEX = 0; // TODO This should be 2, but we don't support CFEX formattings yet, see #58149
         assertEquals(numCF+numCF12+numCFEX, sheetCF.getNumConditionalFormattings());
-        
+
         int fCF = 0, fCF12 = 0, fCFEX = 0;
         for (int i=0; i<sheetCF.getNumConditionalFormattings(); i++) {
             cf = sheetCF.getConditionalFormattingAt(i);
@@ -584,16 +584,16 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
         assertEquals(numCF, fCF);
         assertEquals(numCF12, fCF12);
         assertEquals(numCFEX, fCFEX);
-        
-        
+
+
         // Check the rules / values in detail
-        
-        
+
+
         // Highlight Positive values - Column C
         cf = sheetCF.getConditionalFormattingAt(0);
         assertEquals(1, cf.getFormattingRanges().length);
         assertEquals("C2:C17", cf.getFormattingRanges()[0].formatAsString());
-        
+
         assertEquals(1, cf.getNumberOfRules());
         cr = cf.getRule(0);
         assertEquals(ConditionType.CELL_VALUE_IS, cr.getConditionTypeType());
@@ -611,13 +611,13 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
             assertColour("006100", cr.getFontFormatting().getFontColor());
             assertColour("C6EFCE", cr.getPatternFormatting().getFillBackgroundColorColor());
         }
-        
-        
+
+
         // Highlight 10-30 - Column D
         cf = sheetCF.getConditionalFormattingAt(1);
         assertEquals(1, cf.getFormattingRanges().length);
         assertEquals("D2:D17", cf.getFormattingRanges()[0].formatAsString());
-        
+
         assertEquals(1, cf.getNumberOfRules());
         cr = cf.getRule(0);
         assertEquals(ConditionType.CELL_VALUE_IS, cr.getConditionTypeType());
@@ -636,63 +636,63 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
             assertColour("FFC7CE", cr.getPatternFormatting().getFillBackgroundColorColor());
         }
 
-        
+
         // Data Bars - Column E
         cf = sheetCF.getConditionalFormattingAt(2);
         assertEquals(1, cf.getFormattingRanges().length);
         assertEquals("E2:E17", cf.getFormattingRanges()[0].formatAsString());
         assertDataBar(cf, "FF63C384");
-        
-        
+
+
         // Colours Red->Yellow->Green - Column F
         cf = sheetCF.getConditionalFormattingAt(3);
         assertEquals(1, cf.getFormattingRanges().length);
         assertEquals("F2:F17", cf.getFormattingRanges()[0].formatAsString());
         assertColorScale(cf, "F8696B", "FFEB84", "63BE7B");
 
-        
+
         // Colours Blue->White->Red - Column G
         cf = sheetCF.getConditionalFormattingAt(4);
         assertEquals(1, cf.getFormattingRanges().length);
         assertEquals("G2:G17", cf.getFormattingRanges()[0].formatAsString());
         assertColorScale(cf, "5A8AC6", "FCFCFF", "F8696B");
 
-        
+
         // Icons : Default - Column H, percentage thresholds
         cf = sheetCF.getConditionalFormattingAt(5);
         assertEquals(1, cf.getFormattingRanges().length);
         assertEquals("H2:H17", cf.getFormattingRanges()[0].formatAsString());
         assertIconSetPercentages(cf, IconSet.GYR_3_TRAFFIC_LIGHTS, 0d, 33d, 67d);
-        
-        
+
+
         // Icons : 3 signs - Column I
         cf = sheetCF.getConditionalFormattingAt(6);
         assertEquals(1, cf.getFormattingRanges().length);
         assertEquals("I2:I17", cf.getFormattingRanges()[0].formatAsString());
         assertIconSetPercentages(cf, IconSet.GYR_3_SHAPES, 0d, 33d, 67d);
-        
-        
+
+
         // Icons : 3 traffic lights 2 - Column J
         cf = sheetCF.getConditionalFormattingAt(7);
         assertEquals(1, cf.getFormattingRanges().length);
         assertEquals("J2:J17", cf.getFormattingRanges()[0].formatAsString());
         assertIconSetPercentages(cf, IconSet.GYR_3_TRAFFIC_LIGHTS_BOX, 0d, 33d, 67d);
-        
-        
+
+
         // Icons : 4 traffic lights - Column K
         cf = sheetCF.getConditionalFormattingAt(8);
         assertEquals(1, cf.getFormattingRanges().length);
         assertEquals("K2:K17", cf.getFormattingRanges()[0].formatAsString());
         assertIconSetPercentages(cf, IconSet.GYRB_4_TRAFFIC_LIGHTS, 0d, 25d, 50d, 75d);
 
-        
+
         // Icons : 3 symbols with backgrounds - Column L
         cf = sheetCF.getConditionalFormattingAt(9);
         assertEquals(1, cf.getFormattingRanges().length);
         assertEquals("L2:L17", cf.getFormattingRanges()[0].formatAsString());
         assertIconSetPercentages(cf, IconSet.GYR_3_SYMBOLS_CIRCLE, 0d, 33d, 67d);
 
-        
+
         // Icons : 3 flags - Column M2 Only
         cf = sheetCF.getConditionalFormattingAt(10);
         assertEquals(1, cf.getFormattingRanges().length);
@@ -705,51 +705,51 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
         assertEquals("M2:M17", cf.getFormattingRanges()[0].formatAsString());
         assertIconSetPercentages(cf, IconSet.GYR_3_FLAGS, 0d, 33d, 67d);
 
-        
+
         // Icons : 3 symbols 2 (no background) - Column N
         cf = sheetCF.getConditionalFormattingAt(12);
         assertEquals(1, cf.getFormattingRanges().length);
         assertEquals("N2:N17", cf.getFormattingRanges()[0].formatAsString());
         assertIconSetPercentages(cf, IconSet.GYR_3_SYMBOLS, 0d, 33d, 67d);
 
-        
+
         // Icons : 3 arrows - Column O
         cf = sheetCF.getConditionalFormattingAt(13);
         assertEquals(1, cf.getFormattingRanges().length);
         assertEquals("O2:O17", cf.getFormattingRanges()[0].formatAsString());
         assertIconSetPercentages(cf, IconSet.GYR_3_ARROW, 0d, 33d, 67d);
 
-        
-        // Icons : 5 arrows grey - Column P    
+
+        // Icons : 5 arrows grey - Column P
         cf = sheetCF.getConditionalFormattingAt(14);
         assertEquals(1, cf.getFormattingRanges().length);
         assertEquals("P2:P17", cf.getFormattingRanges()[0].formatAsString());
         assertIconSetPercentages(cf, IconSet.GREY_5_ARROWS, 0d, 20d, 40d, 60d, 80d);
 
-        
+
         // Icons : 3 stars (ext) - Column Q
         // TODO Support EXT formattings
 
-        
+
         // Icons : 4 ratings - Column R
         cf = sheetCF.getConditionalFormattingAt(15);
         assertEquals(1, cf.getFormattingRanges().length);
         assertEquals("R2:R17", cf.getFormattingRanges()[0].formatAsString());
         assertIconSetPercentages(cf, IconSet.RATINGS_4, 0d, 25d, 50d, 75d);
 
-        
+
         // Icons : 5 ratings - Column S
         cf = sheetCF.getConditionalFormattingAt(16);
         assertEquals(1, cf.getFormattingRanges().length);
         assertEquals("S2:S17", cf.getFormattingRanges()[0].formatAsString());
         assertIconSetPercentages(cf, IconSet.RATINGS_5, 0d, 20d, 40d, 60d, 80d);
 
-        
+
         // Custom Icon+Format - Column T
         cf = sheetCF.getConditionalFormattingAt(17);
         assertEquals(1, cf.getFormattingRanges().length);
         assertEquals("T2:T17", cf.getFormattingRanges()[0].formatAsString());
-        
+
         // TODO Support IconSet + Other CFs with 2 rules
 //        assertEquals(2, cf.getNumberOfRules());
 //        cr = cf.getRule(0);
@@ -764,12 +764,12 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
 //            assertEquals("MOD(ROW($T2),2)=1", cr.getFormula1());
 //        }
 //        assertEquals(null, cr.getFormula2());
-        
-        
+
+
         // Mixed icons - Column U
         // TODO Support EXT formattings
     }
-    
+
     private void assertDataBar(ConditionalFormatting cf, String color) {
         assertEquals(1, cf.getNumberOfRules());
         ConditionalFormattingRule cr = cf.getRule(0);
@@ -780,16 +780,16 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
         assertEquals(ComparisonOperator.NO_COMPARISON, cr.getComparisonOperation());
         assertEquals(null, cr.getFormula1());
         assertEquals(null, cr.getFormula2());
-        
+
         DataBarFormatting databar = cr.getDataBarFormatting();
         assertNotNull(databar);
         assertEquals(false, databar.isIconOnly());
         assertEquals(true, databar.isLeftToRight());
         assertEquals(0, databar.getWidthMin());
         assertEquals(100, databar.getWidthMax());
-        
+
         assertColour(color, databar.getColor());
-        
+
         ConditionalFormattingThreshold th;
         th = databar.getMinThreshold();
         assertEquals(RangeType.MIN, th.getRangeType());
@@ -800,24 +800,24 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
         assertEquals(null, th.getValue());
         assertEquals(null, th.getFormula());
     }
-    
+
     private void assertIconSetPercentages(ConditionalFormatting cf, IconSet iconset, Double...vals) {
         assertEquals(1, cf.getNumberOfRules());
         ConditionalFormattingRule cr = cf.getRule(0);
         assertIconSetPercentages(cr, iconset, vals);
-    }        
+    }
     private void assertIconSetPercentages(ConditionalFormattingRule cr, IconSet iconset, Double...vals) {
         assertEquals(ConditionType.ICON_SET, cr.getConditionTypeType());
         assertEquals(ComparisonOperator.NO_COMPARISON, cr.getComparisonOperation());
         assertEquals(null, cr.getFormula1());
         assertEquals(null, cr.getFormula2());
-        
+
         IconMultiStateFormatting icon = cr.getMultiStateFormatting();
         assertNotNull(icon);
         assertEquals(iconset, icon.getIconSet());
         assertEquals(false, icon.isIconOnly());
         assertEquals(false, icon.isReversed());
-        
+
         assertNotNull(icon.getThresholds());
         assertEquals(vals.length, icon.getThresholds().length);
         for (int i=0; i<vals.length; i++) {
@@ -828,18 +828,18 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
             assertEquals(null, th.getFormula());
         }
     }
-    
+
     private void assertColorScale(ConditionalFormatting cf, String... colors) {
         assertEquals(1, cf.getNumberOfRules());
         ConditionalFormattingRule cr = cf.getRule(0);
         assertColorScale(cr, colors);
-    }        
+    }
     private void assertColorScale(ConditionalFormattingRule cr, String... colors) {
         assertEquals(ConditionType.COLOR_SCALE, cr.getConditionTypeType());
         assertEquals(ComparisonOperator.NO_COMPARISON, cr.getComparisonOperation());
         assertEquals(null, cr.getFormula1());
         assertEquals(null, cr.getFormula2());
-        
+
         ColorScaleFormatting color = cr.getColorScaleFormatting();
         assertNotNull(color);
         assertNotNull(color.getColors());
@@ -847,7 +847,7 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
         assertEquals(colors.length, color.getNumControlPoints());
         assertEquals(colors.length, color.getColors().length);
         assertEquals(colors.length, color.getThresholds().length);
-        
+
         // Thresholds should be Min / (evenly spaced) / Max
         int steps = 100 / (colors.length-1);
         for (int i=0; i<colors.length; i++) {
@@ -862,7 +862,7 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
             }
             assertEquals(null, th.getFormula());
         }
-        
+
         // Colors should match
         for (int i=0; i<colors.length; i++) {
             assertColour(colors[i], color.getColors()[i]);
@@ -885,7 +885,7 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
 
         assertEquals(-1, fontFmt.getFontHeight()); // not modified
         fontFmt.setFontHeight(200);
-        assertEquals(200, fontFmt.getFontHeight()); 
+        assertEquals(200, fontFmt.getFontHeight());
         fontFmt.setFontHeight(100);
         assertEquals(100, fontFmt.getFontHeight());
 
@@ -1041,21 +1041,21 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
         assertEquals(BorderFormatting.BORDER_THIN, r1fp.getBorderLeft());
         assertEquals(BorderFormatting.BORDER_HAIR, r1fp.getBorderRight());
     }
-    
+
     public void testCreateIconFormatting() {
         Workbook workbook = _testDataProvider.createWorkbook();
         Sheet sheet = workbook.createSheet();
 
         SheetConditionalFormatting sheetCF = sheet.getSheetConditionalFormatting();
-        ConditionalFormattingRule rule1 = 
+        ConditionalFormattingRule rule1 =
                 sheetCF.createConditionalFormattingRule(IconSet.GYRB_4_TRAFFIC_LIGHTS);
         IconMultiStateFormatting iconFmt = rule1.getMultiStateFormatting();
-        
+
         assertEquals(IconSet.GYRB_4_TRAFFIC_LIGHTS, iconFmt.getIconSet());
         assertEquals(4, iconFmt.getThresholds().length);
         assertEquals(false, iconFmt.isIconOnly());
         assertEquals(false, iconFmt.isReversed());
-        
+
         iconFmt.setIconOnly(true);
         iconFmt.getThresholds()[0].setRangeType(RangeType.MIN);
         iconFmt.getThresholds()[1].setRangeType(RangeType.NUMBER);
@@ -1063,21 +1063,21 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
         iconFmt.getThresholds()[2].setRangeType(RangeType.PERCENT);
         iconFmt.getThresholds()[2].setValue(75d);
         iconFmt.getThresholds()[3].setRangeType(RangeType.MAX);
-        
+
         CellRangeAddress [] regions = { CellRangeAddress.valueOf("A1:A5") };
         sheetCF.addConditionalFormatting(regions, rule1);
-        
+
         // Save, re-load and re-check
         workbook = _testDataProvider.writeOutAndReadBack(workbook);
         sheetCF = sheet.getSheetConditionalFormatting();
         assertEquals(1, sheetCF.getNumConditionalFormattings());
-        
+
         ConditionalFormatting cf = sheetCF.getConditionalFormattingAt(0);
         assertEquals(1, cf.getNumberOfRules());
         rule1 = cf.getRule(0);
         assertEquals(ConditionType.ICON_SET, rule1.getConditionTypeType());
         iconFmt = rule1.getMultiStateFormatting();
-        
+
         assertEquals(IconSet.GYRB_4_TRAFFIC_LIGHTS, iconFmt.getIconSet());
         assertEquals(4, iconFmt.getThresholds().length);
         assertEquals(true, iconFmt.isIconOnly());
@@ -1092,39 +1092,39 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
         assertEquals(75d,  iconFmt.getThresholds()[2].getValue());
         assertEquals(null, iconFmt.getThresholds()[3].getValue());
     }
-    
+
     public void testCreateColorScaleFormatting() {
         Workbook workbook = _testDataProvider.createWorkbook();
         Sheet sheet = workbook.createSheet();
 
         SheetConditionalFormatting sheetCF = sheet.getSheetConditionalFormatting();
-        ConditionalFormattingRule rule1 = 
+        ConditionalFormattingRule rule1 =
                 sheetCF.createConditionalFormattingColorScaleRule();
         ColorScaleFormatting clrFmt = rule1.getColorScaleFormatting();
-        
+
         assertEquals(3, clrFmt.getNumControlPoints());
         assertEquals(3, clrFmt.getColors().length);
         assertEquals(3, clrFmt.getThresholds().length);
-        
+
         clrFmt.getThresholds()[0].setRangeType(RangeType.MIN);
         clrFmt.getThresholds()[1].setRangeType(RangeType.NUMBER);
         clrFmt.getThresholds()[1].setValue(10d);
         clrFmt.getThresholds()[2].setRangeType(RangeType.MAX);
-        
+
         CellRangeAddress [] regions = { CellRangeAddress.valueOf("A1:A5") };
         sheetCF.addConditionalFormatting(regions, rule1);
-        
+
         // Save, re-load and re-check
         workbook = _testDataProvider.writeOutAndReadBack(workbook);
         sheetCF = sheet.getSheetConditionalFormatting();
         assertEquals(1, sheetCF.getNumConditionalFormattings());
-        
+
         ConditionalFormatting cf = sheetCF.getConditionalFormattingAt(0);
         assertEquals(1, cf.getNumberOfRules());
         rule1 = cf.getRule(0);
         clrFmt = rule1.getColorScaleFormatting();
         assertEquals(ConditionType.COLOR_SCALE, rule1.getConditionTypeType());
-        
+
         assertEquals(3, clrFmt.getNumControlPoints());
         assertEquals(3, clrFmt.getColors().length);
         assertEquals(3, clrFmt.getThresholds().length);
@@ -1136,7 +1136,7 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
         assertEquals(10d,  clrFmt.getThresholds()[1].getValue());
         assertEquals(null, clrFmt.getThresholds()[2].getValue());
     }
-    
+
     public void testCreateDataBarFormatting() {
         Workbook workbook = _testDataProvider.createWorkbook();
         Sheet sheet = workbook.createSheet();
@@ -1145,33 +1145,33 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
         ExtendedColor color = workbook.getCreationHelper().createExtendedColor();
         color.setARGBHex(colorHex);
         SheetConditionalFormatting sheetCF = sheet.getSheetConditionalFormatting();
-        ConditionalFormattingRule rule1 = 
+        ConditionalFormattingRule rule1 =
                 sheetCF.createConditionalFormattingRule(color);
         DataBarFormatting dbFmt = rule1.getDataBarFormatting();
-        
+
         assertEquals(false, dbFmt.isIconOnly());
         assertEquals(true, dbFmt.isLeftToRight());
         assertEquals(0,   dbFmt.getWidthMin());
         assertEquals(100, dbFmt.getWidthMax());
         assertColour(colorHex, dbFmt.getColor());
-        
+
         dbFmt.getMinThreshold().setRangeType(RangeType.MIN);
         dbFmt.getMaxThreshold().setRangeType(RangeType.MAX);
-        
+
         CellRangeAddress [] regions = { CellRangeAddress.valueOf("A1:A5") };
         sheetCF.addConditionalFormatting(regions, rule1);
-        
+
         // Save, re-load and re-check
         workbook = _testDataProvider.writeOutAndReadBack(workbook);
         sheetCF = sheet.getSheetConditionalFormatting();
         assertEquals(1, sheetCF.getNumConditionalFormattings());
-        
+
         ConditionalFormatting cf = sheetCF.getConditionalFormattingAt(0);
         assertEquals(1, cf.getNumberOfRules());
         rule1 = cf.getRule(0);
         dbFmt = rule1.getDataBarFormatting();
         assertEquals(ConditionType.DATA_BAR, rule1.getConditionTypeType());
-        
+
         assertEquals(false, dbFmt.isIconOnly());
         assertEquals(true, dbFmt.isLeftToRight());
         assertEquals(0,   dbFmt.getWidthMin());
@@ -1183,7 +1183,7 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
         assertEquals(null, dbFmt.getMinThreshold().getValue());
         assertEquals(null, dbFmt.getMaxThreshold().getValue());
     }
-    
+
     public void testBug55380() {
         Workbook wb = _testDataProvider.createWorkbook();
         Sheet sheet = wb.createSheet();
@@ -1191,6 +1191,6 @@ public abstract class BaseTestConditionalFormatting extends TestCase {
             CellRangeAddress.valueOf("C9:D30"), CellRangeAddress.valueOf("C7:C31")
         };
         ConditionalFormattingRule rule = sheet.getSheetConditionalFormatting().createConditionalFormattingRule("$A$1>0");
-        sheet.getSheetConditionalFormatting().addConditionalFormatting(ranges, rule);        
+        sheet.getSheetConditionalFormatting().addConditionalFormatting(ranges, rule);
     }
 }

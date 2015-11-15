@@ -49,7 +49,7 @@ public class IndexRecord extends StandardRecord {
         field_2_first_row     = in.readInt();
         field_3_last_row_add1 = in.readInt();
         field_4_zero      = in.readInt();
-        
+
         int nCells = in.remaining() / 4;
         field_5_dbcells = new IntList(nCells);
         for(int i=0; i<nCells; i++) {
@@ -137,13 +137,13 @@ public class IndexRecord extends StandardRecord {
         return 16 // 4 ints
         	+ getNumDbcells() * 4;
     }
-    
-    /** 
+
+    /**
      * @return the size of an INdexRecord when it needs to index the specified number of blocks
      */
     public static int getRecordSizeForBlockCount(int blockCount) {
         return 20 + 4 * blockCount;
-    }  
+    }
 
     public short getSid() {
         return sid;

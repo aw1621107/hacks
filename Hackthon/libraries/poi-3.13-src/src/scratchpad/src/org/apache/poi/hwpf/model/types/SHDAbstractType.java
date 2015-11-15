@@ -26,16 +26,16 @@ import org.apache.poi.util.LittleEndian;
  * The Shd structure specifies the colors and pattern that are used for background shading. <p>Class
         and
         fields descriptions are quoted from Word (.doc) Binary File Format by Microsoft Corporation
-    
+
  * <p>
  * NOTE: This source is automatically generated please do not modify this file.  Either subclass or
  *       remove the record in src/types/definitions.
  * <p>
- * This class is internal. It content or properties may change without notice 
+ * This class is internal. It content or properties may change without notice
  * due to changes in our knowledge of internal Microsoft Word binary structures.
 
  * @author Sergey Vladimirov; according to Word (.doc) Binary File Format by Microsoft Corporation.
-    
+
  */
 @Internal
 public abstract class SHDAbstractType

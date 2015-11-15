@@ -78,7 +78,7 @@ public final class CHPX extends BytePropertyNode<CHPX>
     }
 
   public String toString() {
-      return "CHPX from " + getStart() + " to " + getEnd() + 
+      return "CHPX from " + getStart() + " to " + getEnd() +
          " (in bytes " + getStartBytes() + " to " + getEndBytes() + ")";
   }
 }

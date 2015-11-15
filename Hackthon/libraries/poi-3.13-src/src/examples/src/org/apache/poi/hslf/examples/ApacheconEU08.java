@@ -465,7 +465,7 @@ public final class ApacheconEU08 {
             tp.get(i).getTextRuns().get(0).setFontSize(24d);
             tp.get(i).setIndentLevel(1);
         }
-        
+
         box2.setAnchor(new Rectangle(36, 126, 648, 400));
         slide.addShape(box2);
     }

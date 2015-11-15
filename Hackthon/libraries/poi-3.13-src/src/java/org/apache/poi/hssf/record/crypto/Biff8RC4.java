@@ -37,7 +37,7 @@ final class Biff8RC4 implements Biff8Cipher {
 	private static final int RC4_REKEYING_INTERVAL = 1024;
 
 	private Cipher _rc4;
-	
+
 	/**
 	 * This field is used to keep track of when to change the {@link Cipher}
 	 * instance. The change occurs every 1024 bytes. Every byte passed over is
@@ -61,10 +61,10 @@ final class Biff8RC4 implements Biff8Cipher {
 		rekeyForNextBlock();
 		_streamPos = initialOffset;
 		_shouldSkipEncryptionOnCurrentRecord = false;
-		
+
 	    encryptBytes(new byte[initialOffset], 0, initialOffset);
 	}
-	
+
 
 	private void rekeyForNextBlock() {
 		_currentKeyIndex = _streamPos / RC4_REKEYING_INTERVAL;
@@ -74,7 +74,7 @@ final class Biff8RC4 implements Biff8Cipher {
 
 	private void encryptBytes(byte data[], int offset, final int bytesToRead)  {
 	    if (bytesToRead == 0) return;
-	    
+
 	    if (_shouldSkipEncryptionOnCurrentRecord) {
             // even when encryption is skipped, we need to update the cipher
 	        byte dataCpy[] = new byte[bytesToRead];
@@ -82,14 +82,14 @@ final class Biff8RC4 implements Biff8Cipher {
 	        data = dataCpy;
 	        offset = 0;
 	    }
-	    
+
         try {
             _rc4.update(data, offset, bytesToRead, data, offset);
         } catch (ShortBufferException e) {
             throw new EncryptedDocumentException("input buffer too small", e);
         }
 	}
-	
+
 	public void startRecord(int currentSid) {
 		_shouldSkipEncryptionOnCurrentRecord = isNeverEncryptedRecord(currentSid);
 	}
@@ -128,7 +128,7 @@ final class Biff8RC4 implements Biff8Cipher {
 	public void skipTwoBytes() {
 	    xor(_buffer.array(), 0, 2);
 	}
-	
+
 	public void xor(byte[] buf, int pOffset, int pLen) {
 		int nLeftInBlock;
 		nLeftInBlock = _nextRC4BlockStart - _streamPos;
@@ -188,7 +188,7 @@ final class Biff8RC4 implements Biff8Cipher {
         xor(_buffer.array(), 0, 8);
         return _buffer.getLong(0);
 	}
-	
+
 	public void setNextRecordSize(int recordSize) {
 	    /* no-op */
 	}

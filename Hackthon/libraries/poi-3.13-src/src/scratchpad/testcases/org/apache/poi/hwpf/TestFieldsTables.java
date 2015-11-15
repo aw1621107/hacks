@@ -29,9 +29,9 @@ import org.apache.poi.hwpf.model.PlexOfField;
 /**
  * Test case for the fields tables, this test is based on the test-fields.doc
  * file instead of the usual test.doc.
- * 
+ *
  * @author Cedric Bosdonnat <cbosdonnat@novell.com>
- * 
+ *
  */
 public class TestFieldsTables extends HWPFTestCase
 {

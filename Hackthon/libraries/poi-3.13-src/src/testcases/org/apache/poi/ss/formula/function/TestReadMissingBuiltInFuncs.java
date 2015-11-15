@@ -89,7 +89,7 @@ public final class TestReadMissingBuiltInFuncs {
 		}
 		assertEquals("DATEDIF(NOW(),NOW(),\"d\")", formula);
 	}
-	
+
 	@Test
 	public void testDdb() {
 		String formula = getCellFormula(1);
@@ -98,7 +98,7 @@ public final class TestReadMissingBuiltInFuncs {
 		}
 		assertEquals("DDB(1,1,1,1,1)", formula);
 	}
-	
+
 	@Test
 	public void testAtan() {
 		String formula = getCellFormula(2);
@@ -136,7 +136,7 @@ public final class TestReadMissingBuiltInFuncs {
 		}
 		assertEquals("DBCS(\"abc\")", formula);
 	}
-	
+
 	@Test
 	public void testIsnontext() {
 		String formula;
@@ -151,7 +151,7 @@ public final class TestReadMissingBuiltInFuncs {
 		}
 		assertEquals("ISNONTEXT(\"abc\")", formula);
 	}
-	
+
 	@Test
 	public void testDproduct() {
 		String formula = getCellFormula(6);

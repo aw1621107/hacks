@@ -120,7 +120,7 @@ public interface ClientAnchor {
 
     /**
      * Returns the x coordinate within the first cell.
-     * 
+     *
      * Note - XSSF and HSSF have a slightly different coordinate
      *  system, values in XSSF are larger by a factor of
      *  {@link org.apache.poi.util.Units#EMU_PER_PIXEL}

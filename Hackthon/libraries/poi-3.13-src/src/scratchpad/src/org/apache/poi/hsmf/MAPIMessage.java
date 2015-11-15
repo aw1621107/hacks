@@ -58,16 +58,16 @@ import org.apache.poi.util.POILogger;
 
 /**
  * Reads an Outlook MSG File in and provides hooks into its data structure.
- * 
+ *
  * If you want to develop with HSMF, you might find it worth getting
  *  some of the microsoft public documentation, such as:
- *  
+ *
  * [MS-OXCMSG]: Message and Attachment Object Protocol Specification
  */
 public class MAPIMessage extends POIDocument {
    /** For logging problems we spot with the file */
    private POILogger logger = POILogFactory.getLogger(MAPIMessage.class);
-   
+
    private Chunks mainChunks;
    private NameIdChunks nameIdChunks;
    private RecipientChunks[] recipientChunks;
@@ -214,7 +214,7 @@ public class MAPIMessage extends POIDocument {
             throw new ChunkNotFoundException();
          }
       }
-      
+
       try {
          MAPIRtfAttribute rtf = new MAPIRtfAttribute(
                MAPIProperty.RTF_COMPRESSED, Types.BINARY.getId(), chunk.getValue()
@@ -245,8 +245,8 @@ public class MAPIMessage extends POIDocument {
    /**
     * Gets the display value of the "TO" line of the outlook message.
     * If there are multiple recipients, they will be separated
-    *  by semicolons. 
-    * This is not the actual list of addresses/values that will be 
+    *  by semicolons.
+    * This is not the actual list of addresses/values that will be
     *  sent to if you click Reply in the email - those are stored
     *  in {@link RecipientChunks}.
     * @throws ChunkNotFoundException
@@ -258,8 +258,8 @@ public class MAPIMessage extends POIDocument {
    /**
     * Gets the display value of the "CC" line of the outlook message.
     * If there are multiple recipients, they will be separated
-    *  by semicolons. 
-    * This is not the actual list of addresses/values that will be 
+    *  by semicolons.
+    * This is not the actual list of addresses/values that will be
     *  sent to if you click Reply in the email - those are stored
     *  in {@link RecipientChunks}.
     * @throws ChunkNotFoundException
@@ -271,8 +271,8 @@ public class MAPIMessage extends POIDocument {
    /**
     * Gets the display value of the "BCC" line of the outlook message.
     * If there are multiple recipients, they will be separated
-    *  by semicolons. 
-    * This is not the actual list of addresses/values that will be 
+    *  by semicolons.
+    * This is not the actual list of addresses/values that will be
     *  sent to if you click Reply in the email - those are stored
     *  in {@link RecipientChunks}.
     * This will only be present in sent emails, not received ones!
@@ -284,7 +284,7 @@ public class MAPIMessage extends POIDocument {
 
    /**
     * Returns all the recipients' email address, separated by
-    *  semicolons. Checks all the likely chunks in search of 
+    *  semicolons. Checks all the likely chunks in search of
     *  the addresses.
     */
    public String getRecipientEmailAddress() throws ChunkNotFoundException {
@@ -293,7 +293,7 @@ public class MAPIMessage extends POIDocument {
    /**
     * Returns an array of all the recipient's email address, normally
     *  in TO then CC then BCC order.
-    * Checks all the likely chunks in search of the addresses. 
+    * Checks all the likely chunks in search of the addresses.
     */
    public String[] getRecipientEmailAddressList() throws ChunkNotFoundException {
       if(recipientChunks == null || recipientChunks.length == 0) {
@@ -321,7 +321,7 @@ public class MAPIMessage extends POIDocument {
 
    /**
     * Returns all the recipients' names, separated by
-    *  semicolons. Checks all the likely chunks in search of 
+    *  semicolons. Checks all the likely chunks in search of
     *  the names.
     * See also {@link #getDisplayTo()}, {@link #getDisplayCC()}
     *  and {@link #getDisplayBCC()}.
@@ -332,7 +332,7 @@ public class MAPIMessage extends POIDocument {
    /**
     * Returns an array of all the recipient's names, normally
     *  in TO then CC then BCC order.
-    * Checks all the likely chunks in search of the names. 
+    * Checks all the likely chunks in search of the names.
     * See also {@link #getDisplayTo()}, {@link #getDisplayCC()}
     *  and {@link #getDisplayBCC()}.
     */
@@ -354,7 +354,7 @@ public class MAPIMessage extends POIDocument {
 
       return names;
    }
-   
+
    /**
     * Tries to identify the correct encoding for 7-bit (non-unicode)
     *  strings in the file.
@@ -363,7 +363,7 @@ public class MAPIMessage extends POIDocument {
     *  strings, but don't always store the encoding anywhere
     *  helpful in the file.</p>
     * <p>This method checks for codepage properties, and failing that
-    *  looks at the headers for the message, and uses these to 
+    *  looks at the headers for the message, and uses these to
     *  guess the correct encoding for your file.</p>
     * <p>Bug #49441 has more on why this is needed</p>
     */
@@ -381,13 +381,13 @@ public class MAPIMessage extends POIDocument {
                set7BitEncoding(encoding);
                return;
             } catch(UnsupportedEncodingException e) {
-               logger.log(POILogger.WARN, "Invalid codepage ID ", codepage, 
+               logger.log(POILogger.WARN, "Invalid codepage ID ", codepage,
                           " set for the message via ", prop, ", ignoring");
             }
          }
       }
-     
-       
+
+
       // Second choice is a charset on a content type header
       try {
          String[] headers = getHeaders();
@@ -402,7 +402,7 @@ public class MAPIMessage extends POIDocument {
                      // Found it! Tell all the string chunks
                      String charset = m.group(1);
 
-                     if (!charset.equalsIgnoreCase("utf-8")) { 
+                     if (!charset.equalsIgnoreCase("utf-8")) {
                         set7BitEncoding(charset);
                      }
                      return;
@@ -411,7 +411,7 @@ public class MAPIMessage extends POIDocument {
             }
          }
       } catch(ChunkNotFoundException e) {}
-      
+
       // Nothing suitable in the headers, try HTML
       try {
          String html = getHmtlBody();
@@ -464,7 +464,7 @@ public class MAPIMessage extends POIDocument {
          }
       }
    }
-   
+
    /**
     * Does this file contain any strings that
     *  are stored as 7 bit rather than unicode?
@@ -477,7 +477,7 @@ public class MAPIMessage extends POIDocument {
             }
          }
       }
-      
+
       if (nameIdChunks!=null) {
          for(Chunk c : nameIdChunks.getChunks()) {
             if(c instanceof StringChunk) {
@@ -487,7 +487,7 @@ public class MAPIMessage extends POIDocument {
             }
          }
       }
-      
+
       for(RecipientChunks rc : recipientChunks) {
          for(Chunk c : rc.getAll()) {
             if(c instanceof StringChunk) {
@@ -499,7 +499,7 @@ public class MAPIMessage extends POIDocument {
       }
       return false;
    }
-   
+
    /**
     * Returns all the headers, one entry per line
     */
@@ -522,7 +522,7 @@ public class MAPIMessage extends POIDocument {
 
    /**
     * Gets the message class of the parsed Outlook Message.
-    * (Yes, you can use this to determine if a message is a calendar 
+    * (Yes, you can use this to determine if a message is a calendar
     *  item, note, or actual outlook Message)
     * For emails the class will be IPM.Note
     *
@@ -552,7 +552,7 @@ public class MAPIMessage extends POIDocument {
             }
          }
       }
-      
+
       if(returnNullOnMissingChunk)
          return null;
       throw new ChunkNotFoundException();
@@ -599,7 +599,7 @@ public class MAPIMessage extends POIDocument {
 
 
    /**
-    * Will you get a null on a missing chunk, or a 
+    * Will you get a null on a missing chunk, or a
     *  {@link ChunkNotFoundException} (default is the
     *  exception).
     */
@@ -610,7 +610,7 @@ public class MAPIMessage extends POIDocument {
    /**
     * Sets whether on asking for a missing chunk,
     *  you get back null or a {@link ChunkNotFoundException}
-    *  (default is the exception). 
+    *  (default is the exception).
     */
    public void setReturnNullOnMissingChunk(boolean returnNullOnMissingChunk) {
       this.returnNullOnMissingChunk = returnNullOnMissingChunk;

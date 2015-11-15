@@ -40,33 +40,33 @@ public final class TestCellRange extends TestCase
 	private static final CellRangeAddress[] sampleRanges = {
 		biggest, tenthColumn, tenthRow, box10x10, box9x9, box10to20c, oneCell,
 	};
-	
+
 	/** cross-reference of <tt>contains()</tt> operations for sampleRanges against itself */
-	private static final boolean [][] containsExpectedResults = 
+	private static final boolean [][] containsExpectedResults =
     {
 	//               biggest, tenthColumn, tenthRow, box10x10, box9x9, box10to20c, oneCell
-	/*biggest    */ {true,       true ,    true ,    true ,    true ,      true ,  true},	
-	/*tenthColumn*/ {false,      true ,    false,    false,    false,      false,  true},	
-	/*tenthRow   */ {false,      false,    true ,    false,    false,      false,  true},	
-	/*box10x10   */ {false,      false,    false,    true ,    true ,      false,  true},	
-	/*box9x9     */ {false,      false,    false,    false,    true ,      false, false},	
-	/*box10to20c */ {false,      false,    false,    false,    false,      true ,  true},	
-	/*oneCell    */ {false,      false,    false,    false,    false,      false,  true},	
+	/*biggest    */ {true,       true ,    true ,    true ,    true ,      true ,  true},
+	/*tenthColumn*/ {false,      true ,    false,    false,    false,      false,  true},
+	/*tenthRow   */ {false,      false,    true ,    false,    false,      false,  true},
+	/*box10x10   */ {false,      false,    false,    true ,    true ,      false,  true},
+	/*box9x9     */ {false,      false,    false,    false,    true ,      false, false},
+	/*box10to20c */ {false,      false,    false,    false,    false,      true ,  true},
+	/*oneCell    */ {false,      false,    false,    false,    false,      false,  true},
      } ;
 
 	/**
-	 * @param lastRow pass -1 for max row index 
+	 * @param lastRow pass -1 for max row index
 	 * @param lastCol pass -1 for max col index
 	 */
 	private static CellRangeAddress createCR(int firstRow, int lastRow, int firstCol, int lastCol) {
 		// max row & max col limit as per BIFF8
 		return new CellRangeAddress(
-				firstRow, 
-				lastRow == -1 ? 0xFFFF : lastRow, 
+				firstRow,
+				lastRow == -1 ? 0xFFFF : lastRow,
 				firstCol,
 				lastCol == -1 ? 0x00FF : lastCol);
 	}
-	
+
 	public void testContainsMethod()
 	{
 		CellRangeAddress [] ranges = sampleRanges;
@@ -103,7 +103,7 @@ public final class TestCellRange extends TestCase
 		assertFalse(CellRangeUtil.hasExactSharedBorder(row2, row2));
 		assertTrue(CellRangeUtil.hasExactSharedBorder(row1, row2));
 		assertTrue(CellRangeUtil.hasExactSharedBorder(row2, row1));
-		
+
 		assertFalse(CellRangeUtil.hasExactSharedBorder(row1, col1));
 		assertFalse(CellRangeUtil.hasExactSharedBorder(row1, col2));
 		assertFalse(CellRangeUtil.hasExactSharedBorder(col1, row1));
@@ -113,22 +113,22 @@ public final class TestCellRange extends TestCase
 		assertFalse(CellRangeUtil.hasExactSharedBorder(col1, row2));
 		assertFalse(CellRangeUtil.hasExactSharedBorder(col2, row2));
 		assertTrue(CellRangeUtil.hasExactSharedBorder(col2, col1));
-		
+
 		assertFalse(CellRangeUtil.hasExactSharedBorder(box1, box1));
 		assertTrue(CellRangeUtil.hasExactSharedBorder(box1, box2));
 		assertTrue(CellRangeUtil.hasExactSharedBorder(box1, box3));
 		assertFalse(CellRangeUtil.hasExactSharedBorder(box1, box4));
-		
+
 		assertTrue(CellRangeUtil.hasExactSharedBorder(box2, box1));
 		assertFalse(CellRangeUtil.hasExactSharedBorder(box2, box2));
 		assertFalse(CellRangeUtil.hasExactSharedBorder(box2, box3));
 		assertTrue(CellRangeUtil.hasExactSharedBorder(box2, box4));
-		
+
 		assertTrue(CellRangeUtil.hasExactSharedBorder(box3, box1));
 		assertFalse(CellRangeUtil.hasExactSharedBorder(box3, box2));
 		assertFalse(CellRangeUtil.hasExactSharedBorder(box3, box3));
 		assertTrue(CellRangeUtil.hasExactSharedBorder(box3, box4));
-		
+
 		assertFalse(CellRangeUtil.hasExactSharedBorder(box4, box1));
 		assertTrue(CellRangeUtil.hasExactSharedBorder(box4, box2));
 		assertTrue(CellRangeUtil.hasExactSharedBorder(box4, box3));
@@ -152,23 +152,23 @@ public final class TestCellRange extends TestCase
 		assertEquals(CellRangeUtil.OVERLAP, CellRangeUtil.intersect(tenthRow, tenthColumn));
 		assertEquals(CellRangeUtil.INSIDE, CellRangeUtil.intersect(tenthColumn, tenthColumn));
 		assertEquals(CellRangeUtil.INSIDE, CellRangeUtil.intersect(tenthRow, tenthRow));
-		
+
 		// Bug 55380
 		assertEquals(CellRangeUtil.OVERLAP, CellRangeUtil.intersect(
 		        CellRangeAddress.valueOf("C1:D2"), CellRangeAddress.valueOf("C2:C3")));
 	}
-	
+
 	/**
 	 * Cell ranges like the following are valid
 	 * =$C:$IV,$B$1:$B$8,$B$10:$B$65536,$A:$A
 	 */
 	public void testCreate() {
 		CellRangeAddress cr;
-		
+
 		cr = createCR(0, -1, 2, 255); // $C:$IV
 		confirmRange(cr, false, true);
 		cr = createCR(0, 7, 1, 1); // $B$1:$B$8
-		
+
 		try {
 			cr = createCR(9, -1, 1, 1); // $B$65536
 		} catch (IllegalArgumentException e) {
@@ -184,7 +184,7 @@ public final class TestCellRange extends TestCase
 		assertEquals("isFullRowRange", isFullRow, cr.isFullRowRange());
 		assertEquals("isFullColumnRange", isFullColumn, cr.isFullColumnRange());
 	}
-	
+
 	public void testNumberOfCells() {
 		assertEquals(1, oneCell.getNumberOfCells());
 		assertEquals(100, box9x9.getNumberOfCells());
@@ -201,11 +201,11 @@ public final class TestCellRange extends TestCase
         cellRangeTest(new String[]{"A1:B2", "A2:B2"}, "A1:B2");
         cellRangeTest(new String[]{"A1:B3", "A2:B2"}, "A1:B3");
         cellRangeTest(new String[]{"A1:C1", "A2:B2"}, new String[] {"A1:C1", "A2:B2"});
-        
+
         // cases with three ranges
         cellRangeTest(new String[]{"A1:A1", "A2:B2", "A1:C1"}, new String[] {"A1:C1", "A2:B2"});
         cellRangeTest(new String[]{"A1:C1", "A2:B2", "A1:A1"}, new String[] {"A1:C1", "A2:B2"});
-        
+
         // "standard" cases
         // enclose
         cellRangeTest(new String[]{"A1:D4", "B2:C3"}, new String[] {"A1:D4"});
@@ -227,11 +227,11 @@ public final class TestCellRange extends TestCase
         cellRangeTest(new String[]{"A1:C3", "B2:D2"}, new String[] {"A1:C3", "B2:D2"});
         cellRangeTest(new String[]{"C9:D30", "C7:C31"}, new String[] {"C9:D30",  "C7:C31"});
     }
-    
+
 //    public void testResolveRangeOverlap() {
 //        resolveRangeOverlapTest("C1:D2", "C2:C3");
 //    }
-    
+
     private void cellRangeTest(String[] input, String... expectedOutput) {
         CellRangeAddress[] inputArr = new CellRangeAddress[input.length];
         for(int i = 0;i < input.length;i++) {
@@ -247,16 +247,16 @@ public final class TestCellRange extends TestCase
 //        CellRangeAddress[] result = CellRangeUtil.resolveRangeOverlap(rangeA, rangeB);
 //        verifyExpectedResult(result, expectedOutput);
 //    }
-    
+
     private void verifyExpectedResult(CellRangeAddress[] result, String... expectedOutput) {
-        assertEquals("\nExpected: " + Arrays.toString(expectedOutput) + "\nHad: " + Arrays.toString(result), 
+        assertEquals("\nExpected: " + Arrays.toString(expectedOutput) + "\nHad: " + Arrays.toString(result),
                 expectedOutput.length, result.length);
         for(int i = 0;i < expectedOutput.length;i++) {
             assertEquals("\nExpected: " + Arrays.toString(expectedOutput) + "\nHad: " + Arrays.toString(result),
                     expectedOutput[i], result[i].formatAsString());
         }
     }
-    
+
     public void testValueOf() {
         CellRangeAddress cr1 = CellRangeAddress.valueOf("A1:B1");
         assertEquals(0, cr1.getFirstColumn());

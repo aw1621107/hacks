@@ -48,7 +48,7 @@ public class ColumnHelper {
         this.worksheet = worksheet;
         cleanColumns();
     }
-    
+
     @SuppressWarnings("deprecation")
     public void cleanColumns() {
         this.newCols = CTCols.Factory.newInstance();
@@ -56,18 +56,18 @@ public class ColumnHelper {
         CTCols aggregateCols = CTCols.Factory.newInstance();
         CTCols[] colsArray = worksheet.getColsArray();
         assert(colsArray != null);
-        
+
         for (CTCols cols : colsArray) {
             for (CTCol col : cols.getColArray()) {
                 cloneCol(aggregateCols, col);
             }
         }
-        
+
         sortColumns(aggregateCols);
-        
+
         CTCol[] colArray = aggregateCols.getColArray();
         sweepCleanColumns(newCols, colArray, null);
-        
+
         int i = colsArray.length;
         for (int y = i - 1; y >= 0; y--) {
             worksheet.removeCols(y);
@@ -111,7 +111,7 @@ public class ColumnHelper {
             while (currentIndex <= nextIndex && !currentElements.isEmpty()) {
                 Set<CTCol> currentIndexElements = new HashSet<CTCol>();
                 long currentElemIndex;
-                
+
                 {
                     // narrow scope of currentElem
                     CTCol currentElem = currentElements.first();
@@ -128,8 +128,8 @@ public class ColumnHelper {
                         if (col.equals(overrideColumn)) haveOverrideColumn = overrideColumn;
                     }
                 }
-                
-                
+
+
                 if (currentElemIndex < nextIndex || !flIter.hasNext()) {
                     insertCol(cols, currentIndex, currentElemIndex, currentElements.toArray(new CTCol[currentElements.size()]), true, haveOverrideColumn);
                     if (flIter.hasNext()) {
@@ -146,8 +146,8 @@ public class ColumnHelper {
                     lastMaxIndex = currentIndex;
                     currentIndex = nextIndex + 1;
                 }
-                
-            }        
+
+            }
         }
         sortColumns(cols);
     }
@@ -181,7 +181,7 @@ public class ColumnHelper {
      */
     public CTCol getColumn1Based(long index1, boolean splitColumns) {
         CTCols cols = worksheet.getColsArray(0);
-        
+
         // Fetching the array is quicker than working on the new style
         //  list, assuming we need to read many of them (which we often do),
         //  and assuming we're not making many changes (which we're not)
@@ -231,8 +231,8 @@ public class ColumnHelper {
     private CTCol insertCol(CTCols cols, long min, long max, CTCol[] colsWithAttributes) {
         return insertCol(cols, min, max, colsWithAttributes, false, null);
     }
-    
-    private CTCol insertCol(CTCols cols, long min, long max,            
+
+    private CTCol insertCol(CTCols cols, long min, long max,
         CTCol[] colsWithAttributes, boolean ignoreExistsCheck, CTCol overrideColumn) {
         if(ignoreExistsCheck || !columnExists(cols,min,max)){
             CTCol newCol = cols.insertNewCol(0);
@@ -241,7 +241,7 @@ public class ColumnHelper {
             for (CTCol col : colsWithAttributes) {
                 setColumnAttributes(col, newCol);
             }
-            if (overrideColumn != null) setColumnAttributes(overrideColumn, newCol); 
+            if (overrideColumn != null) setColumnAttributes(overrideColumn, newCol);
             return newCol;
         }
         return null;
@@ -313,12 +313,12 @@ public class ColumnHelper {
     public void setColDefaultStyle(long index, CellStyle style) {
         setColDefaultStyle(index, style.getIndex());
     }
-    
+
     public void setColDefaultStyle(long index, int styleId) {
         CTCol col = getOrCreateColumn1Based(index+1, true);
         col.setStyle(styleId);
     }
-    
+
     // Returns -1 if no column is found for the given index
     public int getColDefaultStyle(long index) {
         if (getColumn(index, false) != null) {

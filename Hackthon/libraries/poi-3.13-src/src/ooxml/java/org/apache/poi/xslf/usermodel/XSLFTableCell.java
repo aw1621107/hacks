@@ -83,7 +83,7 @@ public class XSLFTableCell extends XSLFTextShape implements TableCell<XSLFShape,
         }
         return _tcPr;
     }
-    
+
     @Override
     public void setLeftInset(double margin){
         CTTableCellProperties pr = getCellProperties(true);
@@ -111,7 +111,7 @@ public class XSLFTableCell extends XSLFTextShape implements TableCell<XSLFShape,
     private CTLineProperties getCTLine(char bltr, boolean create) {
         CTTableCellProperties pr = getCellProperties(create);
         if (pr == null) return null;
-        
+
         switch (bltr) {
             case 'b':
                 return (pr.isSetLnB()) ? pr.getLnB() : (create ? pr.addNewLnB() : null);
@@ -125,7 +125,7 @@ public class XSLFTableCell extends XSLFTextShape implements TableCell<XSLFShape,
                 return null;
         }
     }
-    
+
     private void setBorderWidth(char bltr, double width) {
         CTLineProperties ln = getCTLine(bltr, true);
         ln.setW(Units.toEMU(width));
@@ -165,8 +165,8 @@ public class XSLFTableCell extends XSLFTextShape implements TableCell<XSLFShape,
             rgb.setVal(new byte[]{(byte)color.getRed(), (byte)color.getGreen(), (byte)color.getBlue()});
             ln.addNewSolidFill().setSrgbClr(rgb);
         }
-    }    
-    
+    }
+
     private Color getBorderColor(char bltr) {
         CTLineProperties ln = getCTLine(bltr,false);
         if (ln == null || ln.isSetNoFill() || !ln.isSetSolidFill()) return null;
@@ -178,8 +178,8 @@ public class XSLFTableCell extends XSLFTextShape implements TableCell<XSLFShape,
         }
         byte[] val = fill.getSrgbClr().getVal();
         return new Color(0xFF & val[0], 0xFF & val[1], 0xFF & val[2]);
-    }    
-    
+    }
+
     public void setBorderLeft(double width) {
         setBorderWidth('l', width);
     }
@@ -299,7 +299,7 @@ public class XSLFTableCell extends XSLFTextShape implements TableCell<XSLFShape,
     void setVMerge(boolean merge_) {
         ((CTTableCell)getXmlObject()).setVMerge(merge_);
     }
-    
+
     @Override
     public void setVerticalAlignment(VerticalAlignment anchor){
     	CTTableCellProperties cellProps = getCellProperties(true);

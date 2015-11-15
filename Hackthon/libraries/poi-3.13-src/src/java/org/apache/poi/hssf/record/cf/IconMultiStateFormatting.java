@@ -30,11 +30,11 @@ import org.apache.poi.util.POILogger;
  */
 public final class IconMultiStateFormatting implements Cloneable {
     private static POILogger log = POILogFactory.getLogger(IconMultiStateFormatting.class);
-            
+
     private IconSet iconSet;
     private byte options;
     private Threshold[] thresholds;
-    
+
     private static BitField iconOnly = BitFieldFactory.getInstance(0x01);
     private static BitField reversed = BitFieldFactory.getInstance(0x04);
 
@@ -53,13 +53,13 @@ public final class IconMultiStateFormatting implements Cloneable {
             log.log(POILogger.WARN, "Inconsistent Icon Set defintion, found " + iconSet + " but defined as " + num + " entries");
         }
         options = in.readByte();
-        
+
         thresholds = new Threshold[iconSet.num];
         for (int i=0; i<thresholds.length; i++) {
             thresholds[i] = new IconMultiStateThreshold(in);
         }
     }
-    
+
     public IconSet getIconSet() {
         return iconSet;
     }
@@ -73,21 +73,21 @@ public final class IconMultiStateFormatting implements Cloneable {
     public void setThresholds(Threshold[] thresholds) {
         this.thresholds = thresholds;
     }
-    
+
     public boolean isIconOnly() {
         return getOptionFlag(iconOnly);
     }
     public void setIconOnly(boolean only) {
         setOptionFlag(only, iconOnly);
     }
-    
+
     public boolean isReversed() {
         return getOptionFlag(reversed);
     }
     public void setReversed(boolean rev) {
         setOptionFlag(rev, reversed);
     }
-    
+
     private boolean getOptionFlag(BitField field) {
         int value = field.getValue(options);
         return value==0 ? false : true;
@@ -95,7 +95,7 @@ public final class IconMultiStateFormatting implements Cloneable {
     private void setOptionFlag(boolean option, BitField field) {
         options = field.setByteBoolean(options, option);
     }
-    
+
     public String toString() {
         StringBuffer buffer = new StringBuffer();
         buffer.append("    [Icon Formatting]\n");
@@ -108,7 +108,7 @@ public final class IconMultiStateFormatting implements Cloneable {
         buffer.append("    [/Icon Formatting]\n");
         return buffer.toString();
     }
-    
+
     public Object clone()  {
       IconMultiStateFormatting rec = new IconMultiStateFormatting();
       rec.iconSet = iconSet;
@@ -117,7 +117,7 @@ public final class IconMultiStateFormatting implements Cloneable {
       System.arraycopy(thresholds, 0, rec.thresholds, 0, thresholds.length);
       return rec;
     }
-    
+
     public int getDataLength() {
         int len = 6;
         for (Threshold t : thresholds) {

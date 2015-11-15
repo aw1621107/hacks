@@ -46,7 +46,7 @@ public final class TestXSSFPicture extends BaseTestPicture {
         List<XSSFShape> pics = dp.getShapes();
         XSSFPicture inpPic = (XSSFPicture)pics.get(0);
         XSSFPicture cmpPic = (XSSFPicture)pics.get(0);
-        
+
         baseTestResize(inpPic, cmpPic, 2.0, 2.0);
         wb.close();
     }
@@ -81,7 +81,7 @@ public final class TestXSSFPicture extends BaseTestPicture {
         CTTwoCellAnchor ctShapeHolder = drawing.getCTDrawing().getTwoCellAnchorArray(0);
         // STEditAs.ABSOLUTE corresponds to ClientAnchor.DONT_MOVE_AND_RESIZE
         assertEquals(STEditAs.ABSOLUTE, ctShapeHolder.getEditAs());
-        
+
         wb.close();
     }
 

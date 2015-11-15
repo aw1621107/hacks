@@ -37,7 +37,7 @@ import java.util.ArrayList;
  */
 public class MemoryUsage extends TestCase {
     private static final int NUM_COLUMNS = 255;
-    
+
     private static void printMemoryUsage(String msg) {
         System.out.println(" Memory (" + msg + "): " + Runtime.getRuntime().totalMemory()/(1024*1024) + "MB");
     }
@@ -78,7 +78,7 @@ public class MemoryUsage extends TestCase {
 
     /**
      * Generate a spreadsheet who's all cell values are numbers.
-     * The data is generated until OutOfMemoryError. 
+     * The data is generated until OutOfMemoryError.
      * <p>
      * as compared to {@link #mixedSpreadsheet(org.apache.poi.ss.usermodel.Workbook, int)},
      * this method does not set string values and, hence, does not involve the Shared Strings Table.

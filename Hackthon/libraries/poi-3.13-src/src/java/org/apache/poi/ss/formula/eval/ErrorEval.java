@@ -27,7 +27,7 @@ import org.apache.poi.ss.usermodel.FormulaError;
  */
 public final class ErrorEval implements ValueEval {
     private static final Map<FormulaError,ErrorEval> evals = new HashMap<FormulaError, ErrorEval>();
-    
+
     /** <b>#NULL!</b>  - Intersection of two cell ranges is empty */
     public static final ErrorEval NULL_INTERSECTION = new ErrorEval(FormulaError.NULL);
     /** <b>#DIV/0!</b> - Division by zero */
@@ -64,7 +64,7 @@ public final class ErrorEval implements ValueEval {
     }
 
     /**
-     * Converts error codes to text.  Handles non-standard error codes OK.  
+     * Converts error codes to text.  Handles non-standard error codes OK.
      * For debug/test purposes (and for formatting error messages).
      * @return the String representation of the specified Excel error code.
      */

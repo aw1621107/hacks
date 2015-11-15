@@ -14,7 +14,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.hslf.record;
 
@@ -50,7 +50,7 @@ public class ExObjListAtom extends RecordAtom
 
         LittleEndian.putShort(_header, 2, (short)getRecordType());
         LittleEndian.putInt(_header, 4, _data.length);
-        
+
         // It is fine for the other values to be zero
     }
 
@@ -66,11 +66,11 @@ public class ExObjListAtom extends RecordAtom
         // Get the header.
         _header = new byte[8];
         System.arraycopy(source,start,_header,0,8);
-        
+
         // Get the record data.
         _data = new byte[len-8];
         System.arraycopy(source,start+8,_data,0,len-8);
-        
+
         // Must be at least 4 bytes long
         if(_data.length < 4) {
         	throw new IllegalArgumentException("The length of the data for a ExObjListAtom must be at least 4 bytes, but was only " + _data.length);
@@ -93,7 +93,7 @@ public class ExObjListAtom extends RecordAtom
     public void setObjectIDSeed(int seed) {
         LittleEndian.putInt(_data,0,seed);
     }
-    
+
     /**
      * Gets the record type.
      * @return the record type.

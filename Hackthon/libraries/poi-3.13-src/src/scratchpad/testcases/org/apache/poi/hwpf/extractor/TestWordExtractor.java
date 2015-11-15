@@ -260,7 +260,7 @@ public final class TestWordExtractor extends TestCase {
 
 		assertTrue(b.toString().contains("TestComment"));
 	}
-	
+
 	public void testWord95() throws Exception {
 	    // Too old for the default
 	    try {
@@ -269,18 +269,18 @@ public final class TestWordExtractor extends TestCase {
     		);
     		fail();
 	    } catch(OldWordFileFormatException e) {}
-		
+
 		// Can work with the special one
 	    Word6Extractor w6e = new Word6Extractor(
                 POIDataSamples.getDocumentInstance().openResourceAsStream("Word95.doc")
         );
 		String text = w6e.getText();
-		
+
 		assertTrue(text.contains("The quick brown fox jumps over the lazy dog"));
         assertTrue(text.contains("Paragraph 2"));
         assertTrue(text.contains("Paragraph 3. Has some RED text and some BLUE BOLD text in it"));
         assertTrue(text.contains("Last (4th) paragraph"));
-        
+
         String[] tp = w6e.getParagraphText();
         assertEquals(7, tp.length);
         assertEquals("The quick brown fox jumps over the lazy dog\r\n", tp[0]);
@@ -291,7 +291,7 @@ public final class TestWordExtractor extends TestCase {
         assertEquals("\r\n", tp[5]);
         assertEquals("Last (4th) paragraph.\r\n", tp[6]);
 	}
-	
+
 	public void testWord6() throws Exception {
         // Too old for the default
         try {
@@ -300,14 +300,14 @@ public final class TestWordExtractor extends TestCase {
     		);
             fail();
         } catch(OldWordFileFormatException e) {}
-        
+
         Word6Extractor w6e = new Word6Extractor(
                 POIDataSamples.getDocumentInstance().openResourceAsStream("Word6.doc")
         );
         String text = w6e.getText();
-        
+
         assertTrue(text.contains("The quick brown fox jumps over the lazy dog"));
-        
+
         String[] tp = w6e.getParagraphText();
         assertEquals(1, tp.length);
         assertEquals("The quick brown fox jumps over the lazy dog\r\n", tp[0]);
@@ -332,21 +332,21 @@ public final class TestWordExtractor extends TestCase {
 
         assertTrue(text.startsWith("\u041f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435"));
     }
-    
+
     /**
      * Tests that we can work with both {@link POIFSFileSystem}
      *  and {@link NPOIFSFileSystem}
      */
     public void testDifferentPOIFS() throws Exception {
        POIDataSamples docTests = POIDataSamples.getDocumentInstance();
-       
+
        // Open the two filesystems
        DirectoryNode[] files = new DirectoryNode[2];
        files[0] = (new POIFSFileSystem(docTests.openResourceAsStream("test2.doc"))).getRoot();
        NPOIFSFileSystem npoifsFileSystem = new NPOIFSFileSystem(docTests.getFile("test2.doc"));
        files[1] = npoifsFileSystem.getRoot();
-       
-       // Open directly 
+
+       // Open directly
        for(DirectoryNode dir : files) {
           WordExtractor extractor = new WordExtractor(dir);
           assertEquals(p_text1_block, extractor.getText());
@@ -358,7 +358,7 @@ public final class TestWordExtractor extends TestCase {
           WordExtractor extractor = new WordExtractor(doc);
           assertEquals(p_text1_block, extractor.getText());
        }
-       
+
        npoifsFileSystem.close();
     }
 

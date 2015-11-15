@@ -26,7 +26,7 @@ import org.apache.poi.util.LittleEndian;
 
 /**
  * Comment me
- * 
+ *
  * @author Ryan Ackley
  */
 @Internal

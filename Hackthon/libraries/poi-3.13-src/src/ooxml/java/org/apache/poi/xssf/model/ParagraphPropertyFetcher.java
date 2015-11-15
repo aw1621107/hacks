@@ -32,7 +32,7 @@ public abstract class ParagraphPropertyFetcher<T> {
 
     private T _value;
     private int _level;
-    
+
     public T getValue(){
         return _value;
     }
@@ -49,7 +49,7 @@ public abstract class ParagraphPropertyFetcher<T> {
     *
     * @param shape the shape being examined
     * @return true if the desired property was fetched
-    */    
+    */
     public boolean fetch(CTShape shape) {
 
         XmlObject[] o = shape.selectPath(

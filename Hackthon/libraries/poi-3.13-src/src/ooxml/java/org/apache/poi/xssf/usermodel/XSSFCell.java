@@ -538,7 +538,7 @@ public final class XSSFCell implements Cell {
             _cell.setS(idx);
         }
     }
-    
+
     private boolean isFormulaCell() {
         if (_cell.getF() != null || getSheet().isCellInArrayFormulaContext(this)) {
             return true;
@@ -999,10 +999,10 @@ public final class XSSFCell implements Cell {
     public CTCell getCTCell(){
         return _cell;
     }
-    
+
     /**
      * Set a new internal xml bean. This is only for internal use, do not call this from outside!
-     * 
+     *
      * This is necessary in some rare cases to work around XMLBeans specialties.
      */
     @Internal

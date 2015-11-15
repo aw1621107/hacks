@@ -57,7 +57,7 @@ public final class CHPFormattedDiskPage extends FormattedDiskPage
     /**
      * This constructs a CHPFormattedDiskPage from a raw fkp (512 byte array
      * read from a Word file).
-     * 
+     *
      * @deprecated Use
      *             {@link #CHPFormattedDiskPage(byte[], int, CharIndexTranslator)}
      *             instead

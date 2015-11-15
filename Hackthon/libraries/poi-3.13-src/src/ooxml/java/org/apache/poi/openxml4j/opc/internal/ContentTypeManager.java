@@ -106,7 +106,7 @@ public abstract class ContentTypeManager {
 
                 // here it is useful to add the cause to not loose the original stack-trace
                 ex.initCause(e);
-		        
+
                 throw ex;
 			}
 		}

@@ -29,7 +29,7 @@ public interface PaintStyle {
 
     public interface GradientPaint extends PaintStyle {
         enum GradientType { linear, circular, shape }
-        
+
         /**
          * @return the angle of the gradient
          */
@@ -38,8 +38,8 @@ public interface PaintStyle {
         float[] getGradientFractions();
         boolean isRotatedWithShape();
         GradientType getGradientType();
-    }    
-    
+    }
+
     public interface TexturePaint extends PaintStyle {
         /**
          * @return the raw image stream
@@ -50,7 +50,7 @@ public interface PaintStyle {
          * @return the content type of the image data
          */
         String getContentType();
-        
+
         /**
          * @return the alpha mask in percents [0..100000]
          */

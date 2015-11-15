@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 /**
  * Number Stores a floating point value in a formula value stored in a 8 byte
  * field using IEEE notation
- * 
+ *
  * @author Avik Sengupta
  * @author Jason Height (jheight at chariot dot net dot au)
  */
@@ -41,7 +41,7 @@ public final class NumberPtg extends ScalarConstantPtg {
 	 * Create a NumberPtg from a string representation of the number Number
 	 * format is not checked, it is expected to be validated in the parser that
 	 * calls this method.
-	 * 
+	 *
 	 * @param value String representation of a floating point number
 	 */
 	public NumberPtg(String value) {

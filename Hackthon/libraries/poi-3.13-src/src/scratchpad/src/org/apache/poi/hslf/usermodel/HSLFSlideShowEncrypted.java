@@ -57,7 +57,7 @@ public class HSLFSlideShowEncrypted {
     CipherOutputStream cyos = null;
 
     private static final BitField fieldRecInst = new BitField(0xFFF0);
-    
+
     protected HSLFSlideShowEncrypted(DocumentEncryptionAtom dea) {
         this.dea = dea;
     }
@@ -84,10 +84,10 @@ public class HSLFSlideShowEncrypted {
         Record r = recordMap.get(userEditAtomWithEncryption.getPersistPointersOffset());
         assert(r instanceof PersistPtrHolder);
         PersistPtrHolder ptr = (PersistPtrHolder)r;
-        
+
         Integer encOffset = ptr.getSlideLocationsLookup().get(userEditAtomWithEncryption.getEncryptSessionPersistIdRef());
         assert(encOffset != null);
-        
+
         r = recordMap.get(encOffset);
         if (r == null) {
             r = Record.buildRecordAtOffset(docstream, encOffset);
@@ -95,7 +95,7 @@ public class HSLFSlideShowEncrypted {
         }
         assert(r instanceof DocumentEncryptionAtom);
         this.dea = (DocumentEncryptionAtom)r;
-        
+
         CryptoAPIDecryptor dec = (CryptoAPIDecryptor)dea.getEncryptionInfo().getDecryptor();
         String pass = Biff8EncryptionKey.getCurrentUserPassword();
         if(!dec.verifyPassword(pass != null ? pass : Decryptor.DEFAULT_PASSWORD)) {
@@ -106,12 +106,12 @@ public class HSLFSlideShowEncrypted {
     public DocumentEncryptionAtom getDocumentEncryptionAtom() {
         return dea;
     }
-    
+
     protected void setPersistId(int persistId) {
         if (enc != null && dec != null) {
             throw new EncryptedPowerPointFileException("Use instance either for en- or decryption");
         }
-        
+
         try {
             if (enc != null) cipher = enc.initCipherForBlock(cipher, persistId);
             if (dec != null) cipher = dec.initCipherForBlock(cipher, persistId);
@@ -119,23 +119,23 @@ public class HSLFSlideShowEncrypted {
             throw new EncryptedPowerPointFileException(e);
         }
     }
-    
+
     protected void decryptInit() {
         if (dec != null) return;
         EncryptionInfo ei = dea.getEncryptionInfo();
         dec = (CryptoAPIDecryptor)ei.getDecryptor();
     }
-    
+
     protected void encryptInit() {
         if (enc != null) return;
         EncryptionInfo ei = dea.getEncryptionInfo();
         enc = (CryptoAPIEncryptor)ei.getEncryptor();
     }
-    
 
-    
+
+
     protected OutputStream encryptRecord(OutputStream plainStream, int persistId, Record record) {
-        boolean isPlain = (dea == null 
+        boolean isPlain = (dea == null
             || record instanceof UserEditAtom
             || record instanceof PersistPtrHolder
             || record instanceof DocumentEncryptionAtom
@@ -144,7 +144,7 @@ public class HSLFSlideShowEncrypted {
 
         encryptInit();
         setPersistId(persistId);
-        
+
         if (cyos == null) {
             cyos = new CipherOutputStream(plainStream, cipher);
         }
@@ -156,7 +156,7 @@ public class HSLFSlideShowEncrypted {
 
         decryptInit();
         setPersistId(persistId);
-        
+
         try {
             // decrypt header and read length to be decrypted
             cipher.update(docstream, offset, 8, docstream, offset);
@@ -165,15 +165,15 @@ public class HSLFSlideShowEncrypted {
             cipher.update(docstream, offset+8, rlen, docstream, offset+8);
         } catch (GeneralSecurityException e) {
             throw new CorruptPowerPointFileException(e);
-        }       
-    }        
-    
+        }
+    }
+
     protected void decryptPicture(byte[] pictstream, int offset) {
         if (dea == null) return;
-        
+
         decryptInit();
         setPersistId(0);
-        
+
         try {
             // decrypt header and read length to be decrypted
             cipher.doFinal(pictstream, offset, 8, pictstream, offset);
@@ -181,12 +181,12 @@ public class HSLFSlideShowEncrypted {
             int recType = LittleEndian.getUShort(pictstream, offset+2);
             int rlen = (int)LittleEndian.getUInt(pictstream, offset+4);
             offset += 8;
-            int endOffset = offset + rlen; 
+            int endOffset = offset + rlen;
 
             if (recType == 0xF007) {
                 // TOOD: get a real example file ... to actual test the FBSE entry
                 // not sure where the foDelay block is
-                
+
                 // File BLIP Store Entry (FBSE)
                 cipher.doFinal(pictstream, offset, 1, pictstream, offset); // btWin32
                 offset++;
@@ -227,12 +227,12 @@ public class HSLFSlideShowEncrypted {
 
             int rgbUidCnt = (recInst == 0x217 || recInst == 0x3D5 || recInst == 0x46B || recInst == 0x543 ||
                 recInst == 0x6E1 || recInst == 0x6E3 || recInst == 0x6E5 || recInst == 0x7A9) ? 2 : 1;
-            
+
             for (int i=0; i<rgbUidCnt; i++) {
                 cipher.doFinal(pictstream, offset, 16, pictstream, offset); // rgbUid 1/2
                 offset += 16;
             }
-            
+
             if (recType == 0xF01A || recType == 0XF01B || recType == 0XF01C) {
                 cipher.doFinal(pictstream, offset, 34, pictstream, offset); // metafileHeader
                 offset += 34;
@@ -240,17 +240,17 @@ public class HSLFSlideShowEncrypted {
                 cipher.doFinal(pictstream, offset, 1, pictstream, offset); // tag
                 offset += 1;
             }
-            
+
             int blipLen = endOffset - offset;
             cipher.doFinal(pictstream, offset, blipLen, pictstream, offset);
         } catch (GeneralSecurityException e) {
             throw new CorruptPowerPointFileException(e);
-        }       
+        }
     }
 
     protected void encryptPicture(byte[] pictstream, int offset) {
         if (dea == null) return;
-        
+
         encryptInit();
         setPersistId(0);
 
@@ -260,12 +260,12 @@ public class HSLFSlideShowEncrypted {
             int rlen = (int)LittleEndian.getUInt(pictstream, offset+4);
             cipher.doFinal(pictstream, offset, 8, pictstream, offset);
             offset += 8;
-            int endOffset = offset + rlen; 
+            int endOffset = offset + rlen;
 
             if (recType == 0xF007) {
                 // TOOD: get a real example file ... to actual test the FBSE entry
                 // not sure where the foDelay block is
-                
+
                 // File BLIP Store Entry (FBSE)
                 cipher.doFinal(pictstream, offset, 1, pictstream, offset); // btWin32
                 offset++;
@@ -303,15 +303,15 @@ public class HSLFSlideShowEncrypted {
                 cipher.doFinal(pictstream, offset, 8, pictstream, offset);
                 offset += 8;
             }
-            
+
             int rgbUidCnt = (recInst == 0x217 || recInst == 0x3D5 || recInst == 0x46B || recInst == 0x543 ||
                 recInst == 0x6E1 || recInst == 0x6E3 || recInst == 0x6E5 || recInst == 0x7A9) ? 2 : 1;
-                
+
             for (int i=0; i<rgbUidCnt; i++) {
                 cipher.doFinal(pictstream, offset, 16, pictstream, offset); // rgbUid 1/2
                 offset += 16;
             }
-            
+
             if (recType == 0xF01A || recType == 0XF01B || recType == 0XF01C) {
                 cipher.doFinal(pictstream, offset, 34, pictstream, offset); // metafileHeader
                 offset += 34;
@@ -319,12 +319,12 @@ public class HSLFSlideShowEncrypted {
                 cipher.doFinal(pictstream, offset, 1, pictstream, offset); // tag
                 offset += 1;
             }
-            
+
             int blipLen = endOffset - offset;
             cipher.doFinal(pictstream, offset, blipLen, pictstream, offset);
         } catch (GeneralSecurityException e) {
             throw new CorruptPowerPointFileException(e);
-        }       
+        }
     }
 
     protected Record[] updateEncryptionRecord(Record records[]) {
@@ -367,7 +367,7 @@ public class HSLFSlideShowEncrypted {
     protected static Record[] normalizeRecords(Record records[]) {
         // http://msdn.microsoft.com/en-us/library/office/gg615594(v=office.14).aspx
         // repeated slideIds can be overwritten, i.e. ignored
-        
+
         UserEditAtom uea = null;
         PersistPtrHolder pph = null;
         TreeMap<Integer,Integer> slideLocations = new TreeMap<Integer,Integer>();
@@ -381,7 +381,7 @@ public class HSLFSlideShowEncrypted {
                 uea = (UserEditAtom)pdr;
                 continue;
             }
-            
+
             if (pdr instanceof PersistPtrHolder) {
                 if (pph != null) {
                     duplicatedCount++;
@@ -393,14 +393,14 @@ public class HSLFSlideShowEncrypted {
                 }
                 continue;
             }
-            
+
             recordMap.put(pdr.getLastOnDiskOffset(), r);
         }
         recordMap.put(pph.getLastOnDiskOffset(), pph);
         recordMap.put(uea.getLastOnDiskOffset(), uea);
 
         assert(uea != null && pph != null && uea.getPersistPointersOffset() == pph.getLastOnDiskOffset());
-        
+
         if (duplicatedCount == 0 && obsoleteOffsets.isEmpty()) {
             return records;
         }
@@ -410,15 +410,15 @@ public class HSLFSlideShowEncrypted {
         for (Map.Entry<Integer,Integer> me : slideLocations.entrySet()) {
             pph.addSlideLookup(me.getKey(), me.getValue());
         }
-        
+
         for (Integer oldOffset : obsoleteOffsets) {
             recordMap.remove(oldOffset);
         }
-        
+
         return recordMap.values().toArray(new Record[recordMap.size()]);
     }
-     
-    
+
+
     protected static Record[] removeEncryptionRecord(Record records[]) {
         int deaSlideId = -1;
         int deaOffset = -1;
@@ -438,10 +438,10 @@ public class HSLFSlideShowEncrypted {
             }
             recordList.add(r);
         }
-        
+
         assert(ptr != null);
         if (deaSlideId == -1 && deaOffset == -1) return records;
-        
+
         TreeMap<Integer,Integer> tm = new TreeMap<Integer,Integer>(ptr.getSlideLocationsLookup());
         ptr.clear();
         int maxSlideId = -1;
@@ -450,11 +450,11 @@ public class HSLFSlideShowEncrypted {
             ptr.addSlideLookup(me.getKey(), me.getValue());
             maxSlideId = Math.max(me.getKey(), maxSlideId);
         }
-        
+
         uea.setMaxPersistWritten(maxSlideId);
 
         records = recordList.toArray(new Record[recordList.size()]);
-        
+
         return records;
     }
 
@@ -482,7 +482,7 @@ public class HSLFSlideShowEncrypted {
             ptr.addSlideLookup(nextSlideId, ptr.getLastOnDiskOffset()-1);
             uea.setEncryptSessionPersistIdRef(nextSlideId);
             uea.setMaxPersistWritten(nextSlideId);
-            
+
             Record newRecords[] = new Record[records.length+1];
             if (ptrIdx > 0) System.arraycopy(records, 0, newRecords, 0, ptrIdx);
             if (ptrIdx < records.length-1) System.arraycopy(records, ptrIdx, newRecords, ptrIdx+1, records.length-ptrIdx);

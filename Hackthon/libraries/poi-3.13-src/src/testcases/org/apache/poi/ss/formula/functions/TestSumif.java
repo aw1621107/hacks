@@ -70,7 +70,7 @@ public final class TestSumif extends TestCase {
 		confirm(140.0, arg0, new StringEval("<=40.0"));
 		confirm(160.0, arg0, new StringEval("<>40.0"));
 		confirm(80.0, arg0, new StringEval("=40.0"));
-		
+
 
 	}
 	private static void confirm(double expectedResult, ValueEval...args) {

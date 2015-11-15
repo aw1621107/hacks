@@ -25,15 +25,15 @@ import org.junit.Test;
 
 public class TestFormulaViewer extends BaseXLSIteratingTest {
 	static {
-		// TODO: is it ok to fail these? 
+		// TODO: is it ok to fail these?
 		// Look at the output of the test for the detailed stacktrace of the failures...
-//		EXCLUDED.add("WORKBOOK_in_capitals.xls"); 	
-//		EXCLUDED.add("NoGutsRecords.xls"); 
-//		EXCLUDED.add("BOOK_in_capitals.xls"); 
-//		EXCLUDED.add("46904.xls"); 
-//		EXCLUDED.add("OddStyleRecord.xls");		
+//		EXCLUDED.add("WORKBOOK_in_capitals.xls");
+//		EXCLUDED.add("NoGutsRecords.xls");
+//		EXCLUDED.add("BOOK_in_capitals.xls");
+//		EXCLUDED.add("46904.xls");
+//		EXCLUDED.add("OddStyleRecord.xls");
 	}
-	
+
 	@Override
 	@Ignore("Not yet done, nearly all files fail with various errors, remove this method when done to use the one from the abstract base class!...")
 	@Test

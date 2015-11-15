@@ -34,7 +34,7 @@ import org.apache.poi.util.Internal;
  * NOTE: This source is automatically generated please do not modify this file.  Either subclass or
  *       remove the record in src/types/definitions.
  * <p>
- * This class is internal. It content or properties may change without notice 
+ * This class is internal. It content or properties may change without notice
  * due to changes in our knowledge of internal Microsoft Word binary structures.
 
  * @author S. Ryan Ackley
@@ -922,7 +922,7 @@ public abstract class CHPAbstractType
     /**
      * Emphasis mark.
      *
-     * @return One of 
+     * @return One of
      * <li>{@link #KCD_NON}
      * <li>{@link #KCD_DOT}
      * <li>{@link #KCD_COMMA}
@@ -939,7 +939,7 @@ public abstract class CHPAbstractType
      * Emphasis mark.
      *
      * @param field_13_kcd
-     *        One of 
+     *        One of
      * <li>{@link #KCD_NON}
      * <li>{@link #KCD_DOT}
      * <li>{@link #KCD_COMMA}
@@ -973,7 +973,7 @@ public abstract class CHPAbstractType
     /**
      * Superscript/subscript indices.
      *
-     * @return One of 
+     * @return One of
      * <li>{@link #ISS_NONE}
      * <li>{@link #ISS_SUPERSCRIPTED}
      * <li>{@link #ISS_SUBSCRIPTED}
@@ -988,7 +988,7 @@ public abstract class CHPAbstractType
      * Superscript/subscript indices.
      *
      * @param field_15_iss
-     *        One of 
+     *        One of
      * <li>{@link #ISS_NONE}
      * <li>{@link #ISS_SUPERSCRIPTED}
      * <li>{@link #ISS_SUBSCRIPTED}
@@ -1056,7 +1056,7 @@ public abstract class CHPAbstractType
     /**
      * Underline code.
      *
-     * @return One of 
+     * @return One of
      * <li>{@link #KUL_NONE}
      * <li>{@link #KUL_SINGLE}
      * <li>{@link #KUL_BY_WORD}
@@ -1088,7 +1088,7 @@ public abstract class CHPAbstractType
      * Underline code.
      *
      * @param field_19_kul
-     *        One of 
+     *        One of
      * <li>{@link #KUL_NONE}
      * <li>{@link #KUL_SINGLE}
      * <li>{@link #KUL_BY_WORD}
@@ -1227,7 +1227,7 @@ public abstract class CHPAbstractType
     /**
      * Text animation.
      *
-     * @return One of 
+     * @return One of
      * <li>{@link #SFXTTEXT_NO}
      * <li>{@link #SFXTTEXT_LAS_VEGAS_LIGHTS}
      * <li>{@link #SFXTTEXT_BACKGROUND_BLINK}
@@ -1246,7 +1246,7 @@ public abstract class CHPAbstractType
      * Text animation.
      *
      * @param field_26_sfxtText
-     *        One of 
+     *        One of
      * <li>{@link #SFXTTEXT_NO}
      * <li>{@link #SFXTTEXT_LAS_VEGAS_LIGHTS}
      * <li>{@link #SFXTTEXT_BACKGROUND_BLINK}
@@ -1930,7 +1930,7 @@ public abstract class CHPAbstractType
     /**
      * Line BReak code for xchCRJ.
      *
-     * @return One of 
+     * @return One of
      * <li>{@link #LBRCRJ_NONE}
      * <li>{@link #LBRCRJ_LEFT}
      * <li>{@link #LBRCRJ_RIGHT}
@@ -1946,7 +1946,7 @@ public abstract class CHPAbstractType
      * Line BReak code for xchCRJ.
      *
      * @param field_64_lbrCRJ
-     *        One of 
+     *        One of
      * <li>{@link #LBRCRJ_NONE}
      * <li>{@link #LBRCRJ_LEFT}
      * <li>{@link #LBRCRJ_RIGHT}
@@ -2692,7 +2692,7 @@ public abstract class CHPAbstractType
 
     /**
      * Sets the itypFELayout field value.
-     * 
+     *
      */
     @Internal
     public void setItypFELayout( short value )
@@ -2701,7 +2701,7 @@ public abstract class CHPAbstractType
     }
 
     /**
-     * 
+     *
      * @return  the itypFELayout field value.
      */
     @Internal

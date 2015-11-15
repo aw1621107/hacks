@@ -39,10 +39,10 @@ public class XSSFDataValidationConstraint implements DataValidationConstraint {
 		}
 		this.validationType = ValidationType.LIST;
 		setExplicitListValues(explicitListOfValues);
-		
+
 		validate();
 	}
-	
+
 	public XSSFDataValidationConstraint(int validationType,String formula1) {
 		super();
 		setFormula1(formula1);
@@ -66,9 +66,9 @@ public class XSSFDataValidationConstraint implements DataValidationConstraint {
 		setFormula2(formula2);
 		this.validationType = validationType;
 		this.operator = operator;
-		
+
 		validate();
-		
+
 		//FIXME: Need to confirm if this is not a formula.
 		if( ValidationType.LIST==validationType) {
 			explicitListOfValues = formula1.split(",");
@@ -125,7 +125,7 @@ public class XSSFDataValidationConstraint implements DataValidationConstraint {
 				builder.append(string);
 			}
 			builder.append("\"");
-			setFormula1(builder.toString());			
+			setFormula1(builder.toString());
 		}
 	}
 
@@ -158,7 +158,7 @@ public class XSSFDataValidationConstraint implements DataValidationConstraint {
 		if (validationType==ValidationType.ANY) {
 			return;
 		}
-		
+
 		if (validationType==ValidationType.LIST ) {
 			if (isFormulaEmpty(formula1)) {
 				throw new IllegalArgumentException("A valid formula or a list of values must be specified for list validation.");
@@ -167,7 +167,7 @@ public class XSSFDataValidationConstraint implements DataValidationConstraint {
 			if( isFormulaEmpty(formula1) ) {
 				throw new IllegalArgumentException("Formula is not specified. Formula is required for all validation types except explicit list validation.");
 			}
-			
+
 			if( validationType!= ValidationType.FORMULA ) {
 				if (operator==-1) {
 					throw new IllegalArgumentException("This validation type requires an operator to be specified.");
@@ -181,7 +181,7 @@ public class XSSFDataValidationConstraint implements DataValidationConstraint {
 	protected boolean isFormulaEmpty(String formula1) {
 		return formula1 == null || formula1.trim().length()==0;
 	}
-	
+
 	public String prettyPrint() {
 		StringBuilder builder = new StringBuilder();
 		STDataValidationType.Enum vt = XSSFDataValidation.validationTypeMappings.get(validationType);

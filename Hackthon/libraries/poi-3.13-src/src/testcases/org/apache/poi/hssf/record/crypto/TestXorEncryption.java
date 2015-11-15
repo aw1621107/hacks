@@ -30,9 +30,9 @@ import org.apache.poi.util.HexRead;
 import org.junit.Test;
 
 public class TestXorEncryption {
-    
+
     private static HSSFTestDataSamples samples = new HSSFTestDataSamples();
-    
+
     @Test
     public void testXorEncryption() throws Exception {
         // Xor-Password: abc
@@ -43,7 +43,7 @@ public class TestXorEncryption {
         int key = CryptoFunctions.createXorKey1("abc");
         assertEquals(20810, key);
         assertEquals(52250, verifier);
-        
+
         byte xorArrAct[] = CryptoFunctions.createXorArray1("abc");
         byte xorArrExp[] = HexRead.readFromString("AC-CC-A4-AB-D6-BA-C3-BA-D6-A3-2B-45-D3-79-29-BB");
         assertThat(xorArrExp, equalTo(xorArrAct));
@@ -55,7 +55,7 @@ public class TestXorEncryption {
         Biff8EncryptionKey.setCurrentUserPassword("abc");
         NPOIFSFileSystem fs = new NPOIFSFileSystem(samples.getSampleFile("xor-encryption-abc.xls"), true);
         HSSFWorkbook hwb = new HSSFWorkbook(fs.getRoot(), true);
-        
+
         HSSFSheet sh = hwb.getSheetAt(0);
         assertEquals(1.0, sh.getRow(0).getCell(0).getNumericCellValue(), 0.0);
         assertEquals(2.0, sh.getRow(1).getCell(0).getNumericCellValue(), 0.0);

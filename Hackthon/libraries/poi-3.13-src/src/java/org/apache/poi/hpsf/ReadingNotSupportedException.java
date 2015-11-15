@@ -20,7 +20,7 @@ package org.apache.poi.hpsf;
 /**
  * <p>This exception is thrown when HPSF tries to read a (yet) unsupported
  * variant type.</p>
- * 
+ *
  * @see WritingNotSupportedException
  * @see UnsupportedVariantTypeException
  *
@@ -33,7 +33,7 @@ public class ReadingNotSupportedException
 
     /**
      * <p>Constructor</p>
-     * 
+     *
      * @param variantType The unsupported variant type.
      * @param value The value.
      */

@@ -69,7 +69,7 @@ public class EDate implements FreeRefFunction {
                 // Multi-Sheet references are not supported
                 throw new EvaluationException(ErrorEval.VALUE_INVALID);
             }
-            
+
             ValueEval innerValueEval = refEval.getInnerValueEval(refEval.getFirstSheetIndex());
             if(innerValueEval instanceof NumberEval) {
                 return ((NumberEval) innerValueEval).getNumberValue();

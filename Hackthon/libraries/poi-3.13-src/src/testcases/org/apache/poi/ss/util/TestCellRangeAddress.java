@@ -110,7 +110,7 @@ public final class TestCellRangeAddress extends TestCase {
             assertEquals("At offset " + i, data[i], recordBytes[i]);
         }
     }
-    
+
     public void testCreateIllegal() throws IOException {
         // for some combinations we expected exceptions
         try {
@@ -139,7 +139,7 @@ public final class TestCellRangeAddress extends TestCase {
 
     public void testFormatAsString() throws IOException {
         CellRangeAddress ref = new CellRangeAddress(1, 2, 3, 4);
-        
+
         assertEquals("D2:E3", ref.formatAsString());
         assertEquals("D2:E3", CellRangeAddress.valueOf(ref.formatAsString()).formatAsString());
 
@@ -154,11 +154,11 @@ public final class TestCellRangeAddress extends TestCase {
         assertEquals("D2:E3", ref.formatAsString(null, false));
         assertEquals("D2:E3", CellRangeAddress.valueOf(ref.formatAsString()).formatAsString(null, false));
         assertEquals("D2:E3", CellRangeAddress.valueOf(ref.formatAsString(null, false)).formatAsString(null, false));
-        
+
         assertEquals("$D$2:$E$3", ref.formatAsString(null, true));
         assertEquals("$D$2:$E$3", CellRangeAddress.valueOf(ref.formatAsString()).formatAsString(null, true));
         assertEquals("$D$2:$E$3", CellRangeAddress.valueOf(ref.formatAsString(null, true)).formatAsString(null, true));
-        
+
         ref = new CellRangeAddress(-1, -1, 3, 4);
         assertEquals("D:E", ref.formatAsString());
         assertEquals("sheet1!$D:$E", CellRangeAddress.valueOf(ref.formatAsString()).formatAsString("sheet1", true));

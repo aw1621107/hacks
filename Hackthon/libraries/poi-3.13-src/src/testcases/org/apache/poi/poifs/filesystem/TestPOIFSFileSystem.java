@@ -152,7 +152,7 @@ public final class TestPOIFSFileSystem extends TestCase {
 			// Check sizes
 		}
 	}
-	
+
 	/**
 	 * Check that we do the right thing when the list of which
 	 *  sectors are BAT blocks points off the list of
@@ -173,7 +173,7 @@ public final class TestPOIFSFileSystem extends TestCase {
             assertTrue(msg.startsWith("Your file contains 695 sectors"));
         }
 	}
-	
+
 	/**
 	 * Tests that we can write and read a file that contains XBATs
 	 *  as well as regular BATs.
@@ -186,19 +186,19 @@ public final class TestPOIFSFileSystem extends TestCase {
 	   fs.getRoot().createDocument(
 	         "BIG", new ByteArrayInputStream(hugeStream)
 	   );
-	   
+
 	   ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	   fs.writeFilesystem(baos);
 	   byte[] fsData = baos.toByteArray();
-	   
-	   
+
+
 	   // Check the header was written properly
-	   InputStream inp = new ByteArrayInputStream(fsData); 
+	   InputStream inp = new ByteArrayInputStream(fsData);
 	   HeaderBlock header = new HeaderBlock(inp);
 	   assertEquals(109+21, header.getBATCount());
 	   assertEquals(1, header.getXBATCount());
-	   
-	   
+
+
 	   // We should have 21 BATs in the XBAT
 	   ByteBuffer xbatData = ByteBuffer.allocate(512);
 	   xbatData.put(fsData, (1+header.getXBATIndex())*512, 512);
@@ -211,8 +211,8 @@ public final class TestPOIFSFileSystem extends TestCase {
 	      assertEquals(POIFSConstants.UNUSED_BLOCK, xbat.getValueAt(i));
 	   }
 	   assertEquals(POIFSConstants.END_OF_CHAIN, xbat.getValueAt(127));
-	   
-	   
+
+
 	   // Load the blocks and check with that
 	   RawDataBlockList blockList = new RawDataBlockList(inp, POIFSConstants.SMALLER_BIG_BLOCK_SIZE_DETAILS);
 	   assertEquals(fsData.length / 512, blockList.blockCount() + 1); // Header not counted
@@ -223,19 +223,19 @@ public final class TestPOIFSFileSystem extends TestCase {
             header.getXBATIndex(),
             blockList);
       assertEquals(fsData.length / 512, blockList.blockCount() + 1); // Header not counted
-      
+
 	   // Now load it and check
 	   fs = null;
 	   fs = new OPOIFSFileSystem(
 	         new ByteArrayInputStream(fsData)
 	   );
-	   
+
 	   DirectoryNode root = fs.getRoot();
 	   assertEquals(1, root.getEntryCount());
 	   DocumentNode big = (DocumentNode)root.getEntry("BIG");
 	   assertEquals(hugeStream.length, big.getSize());
 	}
-	
+
 	/**
 	 * Most OLE2 files use 512byte blocks. However, a small number
 	 *  use 4k blocks. Check that we can open these.

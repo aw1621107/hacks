@@ -30,7 +30,7 @@ import org.apache.poi.util.StringUtil;
  * A Chunk made up of a single string.
  */
 public class StringChunk extends Chunk {
-   private static final String DEFAULT_ENCODING = "CP1252"; 
+   private static final String DEFAULT_ENCODING = "CP1252";
    private String encoding7Bit = DEFAULT_ENCODING;
    private byte[] rawValue;
    private String value;
@@ -125,7 +125,7 @@ public class StringChunk extends Chunk {
    public String toString() {
       return this.value;
    }
-   
+
    /**
     * Parses as non-unicode, supposedly 7 bit CP1252 data
     *  and returns the string that that yields.
@@ -142,7 +142,7 @@ public class StringChunk extends Chunk {
       if ("ansi".equals(encoding)) {
           encoding = DEFAULT_ENCODING;
       }
-      
+
       // Decode
       return new String(data, Charset.forName(encoding));
    }

@@ -46,7 +46,7 @@ public class DrawingParagraph {
         }
 
         c.dispose();
-        
+
         return text;
     }
 }

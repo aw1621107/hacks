@@ -38,7 +38,7 @@ import org.apache.poi.util.StringUtil;
  */
 public final class DVRecord extends StandardRecord {
 	public final static short sid = 0x01BE;
-	
+
 	/** the unicode string used for error/prompt title/text when not present */
 	private static final UnicodeString NULL_TEXT_STRING = new UnicodeString("\0");
 
@@ -65,7 +65,7 @@ public final class DVRecord extends StandardRecord {
 
 	/**
 	 * Option flags field
-	 * 
+	 *
 	 * @see HSSFDataValidation utility class
 	 */
 	private static final BitField opt_data_type                    = new BitField(0x0000000F);
@@ -79,11 +79,11 @@ public final class DVRecord extends StandardRecord {
 
 	public DVRecord(int validationType, int operator, int errorStyle, boolean emptyCellAllowed,
 			boolean suppressDropDownArrow, boolean isExplicitList,
-			boolean showPromptBox, String promptTitle, String promptText, 
+			boolean showPromptBox, String promptTitle, String promptText,
 			boolean showErrorBox, String errorTitle, String errorText,
 			Ptg[] formula1, Ptg[] formula2,
 			CellRangeAddressList regions) {
-		
+
 		int flags = 0;
 		flags = opt_data_type.setValue(flags, validationType);
 		flags = opt_condition_operator.setValue(flags, operator);
@@ -262,7 +262,7 @@ public final class DVRecord extends StandardRecord {
 
 	private static void appendFormula(StringBuffer sb, String label, Formula f) {
 		sb.append(label);
-		
+
 		if (f == null) {
 			sb.append("<empty>\n");
 			return;
@@ -277,7 +277,7 @@ public final class DVRecord extends StandardRecord {
 	public void serialize(LittleEndianOutput out) {
 
 		out.writeInt(_option_flags);
-		
+
 		serializeUnicodeString(_promptTitle, out);
 		serializeUnicodeString(_errorTitle, out);
 		serializeUnicodeString(_promptText, out);
@@ -285,19 +285,19 @@ public final class DVRecord extends StandardRecord {
 		out.writeShort(_formula1.getEncodedTokenSize());
 		out.writeShort(_not_used_1);
 		_formula1.serializeTokens(out);
-		
+
 		out.writeShort(_formula2.getEncodedTokenSize());
 		out.writeShort(_not_used_2);
 		_formula2.serializeTokens(out);
-		
+
 		_regions.serialize(out);
 	}
 
 	/**
 	 * When entered via the UI, Excel translates empty string into "\0"
 	 * While it is possible to encode the title/text as empty string (Excel doesn't exactly crash),
-	 * the resulting tool-tip text / message box looks wrong.  It is best to do the same as the 
-	 * Excel UI and encode 'not present' as "\0". 
+	 * the resulting tool-tip text / message box looks wrong.  It is best to do the same as the
+	 * Excel UI and encode 'not present' as "\0".
 	 */
 	private static UnicodeString resolveTitleText(String str) {
 		if (str == null || str.length() < 1) {
@@ -340,7 +340,7 @@ public final class DVRecord extends StandardRecord {
 	public short getSid() {
 		return sid;
 	}
-	
+
 	/**
 	 * Clones the object. Uses serialisation, as the
 	 *  contents are somewhat complex

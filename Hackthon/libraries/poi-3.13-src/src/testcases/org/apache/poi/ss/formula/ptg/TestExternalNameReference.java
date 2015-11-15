@@ -27,8 +27,8 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.CellReference;
 /**
  * Tests for proper calculation of named ranges from external workbooks.
- * 
- * 
+ *
+ *
  * @author Stephen Wolke (smwolke at geistig.com)
  */
 public final class TestExternalNameReference extends TestCase {
@@ -39,7 +39,7 @@ public final class TestExternalNameReference extends TestCase {
 	double NEW_QUANT = 7.0d;
 	double NEW_PART_COST = 15.3d;
 	/**
-	 * tests <tt>NameXPtg for external cell reference by name</tt> and logic in Workbook below that   
+	 * tests <tt>NameXPtg for external cell reference by name</tt> and logic in Workbook below that
 	 */
 	public void testReadCalcSheet() {
 	    try{
@@ -63,7 +63,7 @@ public final class TestExternalNameReference extends TestCase {
 		fail();
 	    }
 	}
-	
+
 	public void testReadReferencedSheet() {
 	    try{
 		HSSFWorkbook wb = HSSFTestDataSamples.openSampleWorkbook("XRefCalcData.xls");
@@ -76,7 +76,7 @@ public final class TestExternalNameReference extends TestCase {
 		fail();
 	    }
 	}
-	
+
 	public void testEvaluate() throws Exception {
 		HSSFWorkbook wb = HSSFTestDataSamples.openSampleWorkbook("XRefCalc.xls");
 		HSSFWorkbook wb2 = HSSFTestDataSamples.openSampleWorkbook("XRefCalcData.xls");

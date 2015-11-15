@@ -100,7 +100,7 @@ public class DrawFactory {
         } else if (shape.getClass().isAnnotationPresent(DrawNotImplemented.class)) {
             return new DrawNothing(shape);
         }
-        
+
         throw new IllegalArgumentException("Unsupported shape type: "+shape.getClass());
     }
 
@@ -127,11 +127,11 @@ public class DrawFactory {
     public DrawConnectorShape getDrawable(ConnectorShape<?,?> shape) {
         return new DrawConnectorShape(shape);
     }
-    
+
     public DrawTableShape getDrawable(TableShape<?,?> shape) {
         return new DrawTableShape(shape);
     }
-    
+
     public DrawTextShape getDrawable(TextShape<?,?> shape) {
         return new DrawTextShape(shape);
     }
@@ -139,11 +139,11 @@ public class DrawFactory {
     public DrawGroupShape getDrawable(GroupShape<?,?> shape) {
         return new DrawGroupShape(shape);
     }
-    
+
     public DrawPictureShape getDrawable(PictureShape<?,?> shape) {
         return new DrawPictureShape(shape);
     }
-    
+
     public DrawTextParagraph getDrawable(TextParagraph<?,?,?> paragraph) {
         return new DrawTextParagraph(paragraph);
     }
@@ -151,11 +151,11 @@ public class DrawFactory {
     public DrawBackground getDrawable(Background<?,?> shape) {
         return new DrawBackground(shape);
     }
-    
+
     public DrawTextFragment getTextFragment(TextLayout layout, AttributedString str) {
         return new DrawTextFragment(layout, str);
     }
-    
+
     public DrawPaint getPaint(PlaceableShape<?,?> shape) {
         return new DrawPaint(shape);
     }

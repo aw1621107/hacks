@@ -49,7 +49,7 @@ public final class XSSFITestDataProvider implements ITestDataProvider {
     public XSSFWorkbook createWorkbook(){
         return new XSSFWorkbook();
     }
-    
+
     public FormulaEvaluator createFormulaEvaluator(Workbook wb) {
         return new XSSFFormulaEvaluator((XSSFWorkbook) wb);
     }

@@ -25,8 +25,8 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * See OOO documentation: excelfileformat.pdf sec 2.5.14 - 'Cell Range Address'<p/>
- * 
- * <p>In the Microsoft documentation, this is also known as a 
+ *
+ * <p>In the Microsoft documentation, this is also known as a
  *  Ref8U - see page 831 of version 1.0 of the documentation.
  *
  * Note - {@link SelectionRecord} uses the BIFF5 version of this structure
@@ -40,7 +40,7 @@ public class CellRangeAddress extends CellRangeAddressBase {
 
 	/**
 	 * Creates new cell range. Indexes are zero-based.
-	 * 
+	 *
 	 * @param firstRow Index of first row
 	 * @param lastRow Index of last row (inclusive), must be equal to or larger than {@code firstRow}
 	 * @param firstCol Index of first column
@@ -48,7 +48,7 @@ public class CellRangeAddress extends CellRangeAddressBase {
 	 */
 	public CellRangeAddress(int firstRow, int lastRow, int firstCol, int lastCol) {
 		super(firstRow, lastRow, firstCol, lastCol);
-		
+
 		if (lastRow < firstRow || lastCol < firstCol)
 		    throw new IllegalArgumentException("lastRow < firstRow || lastCol < firstCol");
 	}
@@ -113,7 +113,7 @@ public class CellRangeAddress extends CellRangeAddressBase {
 
         //for a single-cell reference return A1 instead of A1:A1
         //for full-column ranges or full-row ranges return A:A instead of A,
-        //and 1:1 instead of 1         
+        //and 1:1 instead of 1
         if(!cellRefFrom.equals(cellRefTo)
             || isFullColumnRange() || isFullRowRange()){
             sb.append(':');
@@ -124,10 +124,10 @@ public class CellRangeAddress extends CellRangeAddressBase {
 
     /**
      * Creates a CellRangeAddress from a cell range reference string.
-     *  
-     * @param ref usually a standard area ref (e.g. "B1:D8").  May be a single 
-     *            cell ref (e.g. "B5") in which case the result is a 1 x 1 cell 
-     *            range. May also be a whole row range (e.g. "3:5"), or a whole 
+     *
+     * @param ref usually a standard area ref (e.g. "B1:D8").  May be a single
+     *            cell ref (e.g. "B5") in which case the result is a 1 x 1 cell
+     *            range. May also be a whole row range (e.g. "3:5"), or a whole
      *            column range (e.g. "C:F")
      */
     public static CellRangeAddress valueOf(String ref) {

@@ -39,7 +39,7 @@ public final class TestSXSSFBugs extends BaseTestBugzillaIssues {
     @Override @Ignore("Evaluation is not fully supported") @Test public void bug47815() { /* Evaluation is not supported */ }
     @Override @Ignore("Evaluation is not fully supported") @Test public void test58113() { /* Evaluation is not supported */ }
     @Override @Ignore("Evaluation is not fully supported") @Test public void bug46729_testMaxFunctionArguments() { /* Evaluation is not supported */ }
-    
+
     /**
      * Setting repeating rows and columns shouldn't break
      *  any print settings that were there before
@@ -51,7 +51,7 @@ public final class TestSXSSFBugs extends BaseTestBugzillaIssues {
         Workbook wb2 = new SXSSFWorkbook();
 
         // No print settings before repeating
-        Sheet s1 = wb1.createSheet(); 
+        Sheet s1 = wb1.createSheet();
 
         wb1.setRepeatingRowsAndColumns(0, 2, 3, 1, 2);
 

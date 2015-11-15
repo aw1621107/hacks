@@ -206,7 +206,7 @@ public class Paragraph extends Range implements Cloneable {
    * Returns the index of the style which applies to this
    *  Paragraph. Details of the style can be looked up
    *  from the {@link StyleSheet}, via
-   *  {@link StyleSheet#getStyleDescription(int)} 
+   *  {@link StyleSheet#getStyleDescription(int)}
    */
   public short getStyleIndex()
   {
@@ -579,7 +579,7 @@ public class Paragraph extends Range implements Cloneable {
     /**
      * Returns number of tabs stops defined for paragraph. Must be >= 0 and <=
      * 64.
-     * 
+     *
      * @return number of tabs stops defined for paragraph. Must be >= 0 and <=
      *         64
      */
@@ -590,7 +590,7 @@ public class Paragraph extends Range implements Cloneable {
 
     /**
      * Returns array of positions of itbdMac tab stops
-     * 
+     *
      * @return array of positions of itbdMac tab stops
      */
     public int[] getTabStopsPositions()
@@ -616,7 +616,7 @@ public class Paragraph extends Range implements Cloneable {
 
     /**
      * Clone the ParagraphProperties object associated with this
-     *  Paragraph, so that you can apply the same properties to 
+     *  Paragraph, so that you can apply the same properties to
      *  another Paragraph.
      */
     public ParagraphProperties cloneProperties() {

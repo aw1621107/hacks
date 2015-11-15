@@ -48,7 +48,7 @@ public class TestXSSFVMLDrawing extends TestCase {
         assertEquals(STExt.EDIT, layout.getExt());
         assertEquals(STExt.EDIT, layout.getIdmap().getExt());
         assertEquals("1", layout.getIdmap().getData());
-    
+
         assertTrue(items.get(1) instanceof CTShapetype);
         CTShapetype type = (CTShapetype)items.get(1);
         assertEquals("21600,21600", type.getCoordsize());
@@ -95,7 +95,7 @@ public class TestXSSFVMLDrawing extends TestCase {
     }
 
     public void testFindCommentShape() throws Exception {
-        
+
         XSSFVMLDrawing vml = new XSSFVMLDrawing();
         InputStream stream = POIDataSamples.getSpreadSheetInstance().openResourceAsStream("vmlDrawing1.vml");
         try {

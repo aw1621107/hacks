@@ -80,7 +80,7 @@ public final class TestPackage {
 		OPCPackage p = OPCPackage.open(originalFile, PackageAccess.READ_WRITE);
 		try {
     		p.save(targetFile.getAbsoluteFile());
-    
+
     		// Compare the original and newly saved document
     		assertTrue(targetFile.exists());
     		ZipFileAssert.assertEquals(new File(originalFile), targetFile);
@@ -233,17 +233,17 @@ public final class TestPackage {
             coreRels = pkg.getRelationshipsByType(PackageRelationshipTypes.CORE_DOCUMENT);
             assertEquals(1, coreRels.size());
             coreRel = coreRels.getRelationship(0);
-    
+
             assertEquals("/", coreRel.getSourceURI().toString());
             assertEquals("/xl/workbook.xml", coreRel.getTargetURI().toString());
             corePart = pkg.getPart(coreRel);
             assertNotNull(corePart);
-    
+
             PackageRelationshipCollection rels = corePart.getRelationshipsByType("http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink");
             assertEquals(1, rels.size());
             rel = rels.getRelationship(0);
             assertEquals("Sheet1!A1", rel.getTargetURI().getRawFragment());
-    
+
             assertMSCompatibility(pkg);
         } finally {
             pkg.close();
@@ -343,7 +343,7 @@ public final class TestPackage {
     		} finally {
     		    fout.close();
     		}
-    
+
     		// Compare the original and newly saved document
     		assertTrue(targetFile.exists());
     		ZipFileAssert.assertEquals(new File(originalFile), targetFile);
@@ -493,7 +493,7 @@ public final class TestPackage {
 		// Don't save modifications
 		p.revert();
 	}
-	
+
 	/**
 	 * Test that we can open a file by path, and then
 	 *  write changes to it.
@@ -503,18 +503,18 @@ public final class TestPackage {
         File tempFile = TempFile.createTempFile("poiTesting","tmp");
         File origFile = OpenXML4JTestDataSamples.getSampleFile("TestPackageCommon.docx");
         FileHelper.copyFile(origFile, tempFile);
-        
+
         // Open the temp file
         OPCPackage p = OPCPackage.open(tempFile.toString(), PackageAccess.READ_WRITE);
         // Close it
         p.close();
         // Delete it
         assertTrue(tempFile.delete());
-        
+
         // Reset
         FileHelper.copyFile(origFile, tempFile);
         p = OPCPackage.open(tempFile.toString(), PackageAccess.READ_WRITE);
-        
+
         // Save it to the same file - not allowed
         try {
             p.save(tempFile);
@@ -524,8 +524,8 @@ public final class TestPackage {
         p.close();
         // Delete it
         assertTrue(tempFile.delete());
-        
-        
+
+
         // Open it read only, then close and delete - allowed
         FileHelper.copyFile(origFile, tempFile);
         p = OPCPackage.open(tempFile.toString(), PackageAccess.READ);
@@ -542,14 +542,14 @@ public final class TestPackage {
         File tempFile2 = TempFile.createTempFile("poiTesting","tmp");
         File origFile = OpenXML4JTestDataSamples.getSampleFile("TestPackageCommon.docx");
         FileHelper.copyFile(origFile, tempFile);
-        
+
         // Open the temp file
         OPCPackage p = OPCPackage.open(tempFile.toString(), PackageAccess.READ_WRITE);
 
         // Save it to a different file
         p.save(tempFile2);
         p.close();
-        
+
         // Delete both the files
         assertTrue(tempFile.delete());
         assertTrue(tempFile2.delete());
@@ -569,10 +569,10 @@ public final class TestPackage {
         try {
             List<PackagePart> rs =  pkg.getPartsByName(Pattern.compile("/word/.*?\\.xml"));
             HashMap<String, PackagePart>  selected = new HashMap<String, PackagePart>();
-    
+
             for(PackagePart p : rs)
                 selected.put(p.getPartName().getName(), p);
-    
+
             assertEquals(6, selected.size());
             assertTrue(selected.containsKey("/word/document.xml"));
             assertTrue(selected.containsKey("/word/fontTable.xml"));
@@ -585,7 +585,7 @@ public final class TestPackage {
             pkg.revert();
         }
     }
-    
+
     @Test
     public void getPartSize() throws Exception {
        String filepath =  OpenXML4JTestDataSamples.getSampleFileName("sample.docx");
@@ -604,7 +604,7 @@ public final class TestPackage {
                  assertEquals(ZipPackagePart.class, part.getClass());
                  assertEquals(1312l, part.getSize());
               }
-              
+
               // But not from the others
               if (part.getPartName().getName().equals("/docProps/core.xml")) {
                  checked++;
@@ -653,7 +653,7 @@ public final class TestPackage {
             e.setTime(e2.getTime());
             e.setComment(e2.getComment());
             e.setSize(e2.getSize());
-            
+
             append.putNextEntry(e);
             if (!e.isDirectory()) {
                 InputStream is = zipFile.getInputStream(e);
@@ -677,18 +677,18 @@ public final class TestPackage {
             }
             append.closeEntry();
         }
-        
+
         append.close();
         zipFile.close();
 
         byte buf[] = bos.toByteArray();
         bos = null;
-        
+
         Workbook wb = WorkbookFactory.create(new ByteArrayInputStream(buf));
         wb.getSheetAt(0);
         wb.close();
     }
-    
+
     @Test
     public void zipBombCheckSizes() throws Exception {
         File file = OpenXML4JTestDataSamples.getSampleFile("sample.xlsx");
@@ -705,13 +705,13 @@ public final class TestPackage {
                 max_size = Math.max(max_size, ze.getSize());
             }
             zf.close();
-    
-            // use values close to, but within the limits 
+
+            // use values close to, but within the limits
             ZipSecureFile.setMinInflateRatio(min_ratio-0.002);
             ZipSecureFile.setMaxEntrySize(max_size+1);
             Workbook wb = WorkbookFactory.create(file, null, true);
             wb.close();
-    
+
             // check ratio out of bounds
             ZipSecureFile.setMinInflateRatio(min_ratio+0.002);
             try {
@@ -725,7 +725,7 @@ public final class TestPackage {
             } catch (POIXMLException e) {
                 checkForZipBombException(e);
             }
-    
+
             // check max entry size ouf of bounds
             ZipSecureFile.setMinInflateRatio(min_ratio-0.002);
             ZipSecureFile.setMaxEntrySize(max_size-1);
@@ -740,7 +740,7 @@ public final class TestPackage {
         } finally {
             // reset otherwise a lot of ooxml tests will fail
             ZipSecureFile.setMinInflateRatio(0.01d);
-            ZipSecureFile.setMaxEntrySize(0xFFFFFFFFl);            
+            ZipSecureFile.setMaxEntrySize(0xFFFFFFFFl);
         }
     }
 
@@ -752,18 +752,18 @@ public final class TestPackage {
                 return;
             }
         }
-        
+
         if(e.getMessage().startsWith("Zip bomb detected!")) {
             return;
         }
-        
+
         // recursively check the causes for the message as it can be nested further down in the exception-tree
         if(e.getCause() != null && e.getCause() != e) {
             checkForZipBombException(e.getCause());
             return;
         }
 
-        throw new IllegalStateException("Expected to catch an Exception because of a detected Zip Bomb, but did not find the related error message in the exception", e);        
+        throw new IllegalStateException("Expected to catch an Exception because of a detected Zip Bomb, but did not find the related error message in the exception", e);
     }
 }
 

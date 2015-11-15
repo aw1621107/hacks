@@ -54,7 +54,7 @@ import schemasMicrosoftComOfficeExcel.STObjectType;
  * considered a deprecated format included in Office Open XML for legacy reasons only and new applications that
  * need a file format for drawings are strongly encouraged to use preferentially DrawingML
  * </p>
- * 
+ *
  * <p>
  * Warning - Excel is known to put invalid XML into these files!
  *  For example, &gt;br&lt; without being closed or escaped crops up.

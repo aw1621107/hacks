@@ -56,7 +56,7 @@ public final class PicturesTable
 {
     private static final POILogger logger = POILogFactory
             .getLogger( PicturesTable.class );
-    
+
   static final int TYPE_IMAGE = 0x08;
   static final int TYPE_IMAGE_WORD2000 = 0x00;
   static final int TYPE_IMAGE_PASTED_FROM_CLIPBOARD = 0xA;

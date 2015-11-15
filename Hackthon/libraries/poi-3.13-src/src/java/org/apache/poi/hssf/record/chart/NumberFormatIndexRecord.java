@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The number format index record indexes format table.  This applies to an axis.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class NumberFormatIndexRecord extends StandardRecord {
@@ -50,7 +50,7 @@ public final class NumberFormatIndexRecord extends StandardRecord {
         buffer.append("    .formatIndex          = ")
             .append("0x").append(HexDump.toHex(  getFormatIndex ()))
             .append(" (").append( getFormatIndex() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/IFMT]\n");
         return buffer.toString();
@@ -71,7 +71,7 @@ public final class NumberFormatIndexRecord extends StandardRecord {
 
     public Object clone() {
         NumberFormatIndexRecord rec = new NumberFormatIndexRecord();
-    
+
         rec.field_1_formatIndex = field_1_formatIndex;
         return rec;
     }

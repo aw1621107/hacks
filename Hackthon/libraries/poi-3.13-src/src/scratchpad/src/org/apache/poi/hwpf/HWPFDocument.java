@@ -105,7 +105,7 @@ public final class HWPFDocument extends HWPFDocumentCore
 
   /** Holds the save history for this document. */
   protected SavedByTable _sbt;
-  
+
   /** Holds the revision mark authors for this document. */
   protected RevisionMarkAuthorTable _rmat;
 
@@ -124,7 +124,7 @@ public final class HWPFDocument extends HWPFDocumentCore
   /** Holds Office Art objects */
   @Deprecated
   protected ShapesTable _officeArts;
-  
+
   /** Holds Office Art objects */
   protected OfficeDrawingsImpl _officeDrawingsHeaders;
 
@@ -201,7 +201,7 @@ public final class HWPFDocument extends HWPFDocumentCore
   {
      this(directory);
   }
-  
+
   /**
    * This constructor loads a Word document from a specific point
    *  in a POIFSFileSystem, probably not the default.
@@ -462,7 +462,7 @@ public final class HWPFDocument extends HWPFDocumentCore
 
     /**
      * Returns the {@link Range} which covers all the Footnotes.
-     * 
+     *
      * @return the {@link Range} which covers all the Footnotes.
      */
     public Range getFootnoteRange()
@@ -472,7 +472,7 @@ public final class HWPFDocument extends HWPFDocumentCore
 
     /**
      * Returns the {@link Range} which covers all endnotes.
-     * 
+     *
      * @return the {@link Range} which covers all endnotes.
      */
     public Range getEndnoteRange()
@@ -482,7 +482,7 @@ public final class HWPFDocument extends HWPFDocumentCore
 
     /**
      * Returns the {@link Range} which covers all annotations.
-     * 
+     *
      * @return the {@link Range} which covers all annotations.
      */
     public Range getCommentsRange()
@@ -492,7 +492,7 @@ public final class HWPFDocument extends HWPFDocumentCore
 
     /**
      * Returns the {@link Range} which covers all textboxes.
-     * 
+     *
      * @return the {@link Range} which covers all textboxes.
      */
     public Range getMainTextboxRange()
@@ -539,7 +539,7 @@ public final class HWPFDocument extends HWPFDocumentCore
   {
     return _rmat;
   }
-  
+
   /**
    * @return PicturesTable object, that is able to extract images from this document
    */
@@ -610,7 +610,7 @@ public final class HWPFDocument extends HWPFDocumentCore
 
     /**
      * Returns user-friendly interface to access document {@link Field}s
-     * 
+     *
      * @return user-friendly interface to access document {@link Field}s
      */
     public Fields getFields()
@@ -664,11 +664,11 @@ public final class HWPFDocument extends HWPFDocumentCore
          * clx (encoding of the sprm lists for a complex file and piece table
          * for a any file) Written immediately after the end of the previously
          * recorded structure. This is recorded in all Word documents
-         * 
+         *
          * Microsoft Office Word 97-2007 Binary File Format (.doc)
          * Specification; Page 23 of 210
          */
-    
+
     // write out the Complex table, includes text.
     _fib.setFcClx(tableOffset);
     _cft.writeTo(wordDocumentStream, tableStream);
@@ -680,7 +680,7 @@ public final class HWPFDocument extends HWPFDocumentCore
          * dop (document properties record) Written immediately after the end of
          * the previously recorded structure. This is recorded in all Word
          * documents
-         * 
+         *
          * Microsoft Office Word 97-2007 Binary File Format (.doc)
          * Specification; Page 23 of 210
          */
@@ -694,7 +694,7 @@ public final class HWPFDocument extends HWPFDocumentCore
         /*
          * plcfBkmkf (table recording beginning CPs of bookmarks) Written
          * immediately after the sttbfBkmk, if the document contains bookmarks.
-         * 
+         *
          * Microsoft Office Word 97-2007 Binary File Format (.doc)
          * Specification; Page 24 of 210
          */
@@ -707,7 +707,7 @@ public final class HWPFDocument extends HWPFDocumentCore
         /*
          * plcfBkmkl (table recording limit CPs of bookmarks) Written
          * immediately after the plcfBkmkf, if the document contains bookmarks.
-         * 
+         *
          * Microsoft Office Word 97-2007 Binary File Format (.doc)
          * Specification; Page 24 of 210
          */
@@ -720,7 +720,7 @@ public final class HWPFDocument extends HWPFDocumentCore
         /*
          * plcfbteChpx (bin table for CHP FKPs) Written immediately after the
          * previously recorded table. This is recorded in all Word documents.
-         * 
+         *
          * Microsoft Office Word 97-2007 Binary File Format (.doc)
          * Specification; Page 24 of 210
          */
@@ -734,7 +734,7 @@ public final class HWPFDocument extends HWPFDocumentCore
         /*
          * plcfbtePapx (bin table for PAP FKPs) Written immediately after the
          * plcfbteChpx. This is recorded in all Word documents.
-         * 
+         *
          * Microsoft Office Word 97-2007 Binary File Format (.doc)
          * Specification; Page 24 of 210
          */
@@ -748,10 +748,10 @@ public final class HWPFDocument extends HWPFDocumentCore
         /*
          * plcfendRef (endnote reference position table) Written immediately
          * after the previously recorded table if the document contains endnotes
-         * 
+         *
          * plcfendTxt (endnote text position table) Written immediately after
          * the plcfendRef if the document contains endnotes
-         * 
+         *
          * Microsoft Office Word 97-2007 Binary File Format (.doc)
          * Specification; Page 24 of 210
          */
@@ -763,7 +763,7 @@ public final class HWPFDocument extends HWPFDocumentCore
      * plcffld*** (table of field positions and statuses for annotation
      * subdocument) Written immediately after the previously recorded table,
      * if the ******* subdocument contains fields.
-     * 
+     *
      * Microsoft Office Word 97-2007 Binary File Format (.doc)
      * Specification; Page 24 of 210
      */
@@ -777,10 +777,10 @@ public final class HWPFDocument extends HWPFDocumentCore
         /*
          * plcffndRef (footnote reference position table) Written immediately
          * after the stsh if the document contains footnotes
-         * 
+         *
          * plcffndTxt (footnote text position table) Written immediately after
          * the plcffndRef if the document contains footnotes
-         * 
+         *
          * Microsoft Office Word 97-2007 Binary File Format (.doc)
          * Specification; Page 24 of 210
          */
@@ -791,7 +791,7 @@ public final class HWPFDocument extends HWPFDocumentCore
         /*
          * plcfsed (section table) Written immediately after the previously
          * recorded table. Recorded in all Word documents
-         * 
+         *
          * Microsoft Office Word 97-2007 Binary File Format (.doc)
          * Specification; Page 25 of 210
          */
@@ -813,7 +813,7 @@ public final class HWPFDocument extends HWPFDocumentCore
              * by the allocated data hanging off the LSTFs. This data consists
              * of the array of LVLs for each LSTF. (Each LVL consists of an LVLF
              * followed by two grpprls and an XST.)
-             * 
+             *
              * Microsoft Office Word 97-2007 Binary File Format (.doc)
              * Specification; Page 25 of 210
              */
@@ -827,7 +827,7 @@ public final class HWPFDocument extends HWPFDocumentCore
              * records, followed by the allocated data (if any) hanging off the
              * LFOs. The allocated data consists of the array of LFOLVLFs for
              * each LFO (and each LFOLVLF is immediately followed by some LVLs).
-             * 
+             *
              * Microsoft Office Word 97-2007 Binary File Format (.doc)
              * Specification; Page 26 of 210
              */
@@ -838,7 +838,7 @@ public final class HWPFDocument extends HWPFDocumentCore
         /*
          * sttbfBkmk (table of bookmark name strings) Written immediately after
          * the previously recorded table, if the document contains bookmarks.
-         * 
+         *
          * Microsoft Office Word 97-2007 Binary File Format (.doc)
          * Specification; Page 27 of 210
          */
@@ -851,7 +851,7 @@ public final class HWPFDocument extends HWPFDocumentCore
         /*
          * sttbSavedBy (last saved by string table) Written immediately after
          * the previously recorded table.
-         * 
+         *
          * Microsoft Office Word 97-2007 Binary File Format (.doc)
          * Specification; Page 27 of 210
          */
@@ -865,7 +865,7 @@ public final class HWPFDocument extends HWPFDocumentCore
 
       tableOffset = tableStream.getOffset();
     }
-    
+
     // write out the revision mark authors table.
     if (_rmat != null)
     {

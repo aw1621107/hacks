@@ -32,12 +32,12 @@ public class StoragePropertiesChunk extends PropertiesChunk {
    public StoragePropertiesChunk(ChunkGroup parentGroup) {
       super(parentGroup);
    }
-   
+
    @Override
    public void readValue(InputStream stream) throws IOException {
       // 8 bytes of reserved zeros
       LittleEndian.readLong(stream);
-      
+
       // Now properties
       readProperties(stream);
    }
@@ -46,7 +46,7 @@ public class StoragePropertiesChunk extends PropertiesChunk {
    public void writeValue(OutputStream out) throws IOException {
       // 8 bytes of reserved zeros
       out.write(new byte[8]);
-      
+
       // Now properties
       writeProperties(out);
    }

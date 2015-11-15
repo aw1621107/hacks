@@ -59,15 +59,15 @@ public abstract class POIXMLDocument extends POIXMLDocumentPart implements Close
         super(pkg);
         init(pkg);
     }
-    
+
     protected POIXMLDocument(OPCPackage pkg, String coreDocumentRel) {
         super(pkg, coreDocumentRel);
         init(pkg);
     }
-    
+
     private void init(OPCPackage pkg) {
         this.pkg = pkg;
-        
+
         // Workaround for XMLBEANS-512 - ensure that when we parse
         //  the file, we start with a fresh XML Parser each time,
         //  and avoid the risk of getting a SaxHandler that's in error
@@ -177,7 +177,7 @@ public abstract class POIXMLDocument extends POIXMLDocumentPart implements Close
         onDocumentRead();
         context.clear();
     }
-    
+
     /**
      * Closes the underlying {@link OPCPackage} from which this
      *  document was read, if there is one

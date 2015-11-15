@@ -27,24 +27,24 @@ import java.util.List;
  */
 public final class NameIdChunks implements ChunkGroup {
    public static final String NAME = "__nameid_version1.0";
-   
+
    /** Holds all the chunks that were found. */
    private List<Chunk> allChunks = new ArrayList<Chunk>();
-   
+
    public Chunk[] getAll() {
       return allChunks.toArray(new Chunk[allChunks.size()]);
    }
    public Chunk[] getChunks() {
       return getAll();
    }
-	
+
    /**
     * Called by the parser whenever a chunk is found.
     */
    public void record(Chunk chunk) {
       allChunks.add(chunk);
    }
-   
+
    /**
     * Used to flag that all the chunks of the NameID
     *  have now been located.

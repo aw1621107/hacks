@@ -23,10 +23,10 @@ import org.apache.poi.util.HexDump;
 import org.apache.poi.util.LittleEndianOutput;
 
 /**
- * Indicates the chart-group index for a series.  The order probably defines the mapping.  
- * So the 0th record probably means the 0th series.  The only field in this of course defines which chart 
+ * Indicates the chart-group index for a series.  The order probably defines the mapping.
+ * So the 0th record probably means the 0th series.  The only field in this of course defines which chart
  * group the 0th series (for instance) would map to.  Confusing?  Well thats because it is.  (p 522 BCG)<p/>
- * 
+ *
  * @author Andrew C. Oliver (acoliver at apache.org)
  */
 public final class SeriesToChartGroupRecord extends StandardRecord {
@@ -52,7 +52,7 @@ public final class SeriesToChartGroupRecord extends StandardRecord {
         buffer.append("    .chartGroupIndex      = ")
             .append("0x").append(HexDump.toHex(  getChartGroupIndex ()))
             .append(" (").append( getChartGroupIndex() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/SeriesToChartGroup]\n");
         return buffer.toString();
@@ -73,7 +73,7 @@ public final class SeriesToChartGroupRecord extends StandardRecord {
 
     public Object clone() {
         SeriesToChartGroupRecord rec = new SeriesToChartGroupRecord();
-    
+
         rec.field_1_chartGroupIndex = field_1_chartGroupIndex;
         return rec;
     }

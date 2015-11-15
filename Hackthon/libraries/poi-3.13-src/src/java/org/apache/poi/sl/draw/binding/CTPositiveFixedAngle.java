@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_PositiveFixedAngle complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_PositiveFixedAngle">
  *   &lt;complexContent>
@@ -37,8 +37,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_PositiveFixedAngle", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main")
@@ -49,7 +49,7 @@ public class CTPositiveFixedAngle {
 
     /**
      * Gets the value of the val property.
-     * 
+     *
      */
     public int getVal() {
         return val;
@@ -57,7 +57,7 @@ public class CTPositiveFixedAngle {
 
     /**
      * Sets the value of the val property.
-     * 
+     *
      */
     public void setVal(int value) {
         this.val = value;

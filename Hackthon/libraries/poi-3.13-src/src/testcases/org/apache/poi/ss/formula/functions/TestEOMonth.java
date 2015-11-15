@@ -107,14 +107,14 @@ public class TestEOMonth {
             cal.clear(Calendar.SECOND);
             cal.clear(Calendar.MILLISECOND);
             Date expDate = cal.getTime();
-            
+
             ValueEval ve[] = {
                 new NumberEval(DateUtil.getExcelDate(startDate)),
                 new NumberEval(offset)
             };
             NumberEval result = (NumberEval) eOMonth.evaluate(ve, ec);
             Date actDate = DateUtil.getJavaDate(result.getNumberValue());
-            
+
             assertEquals(expDate, actDate);
         }
     }

@@ -549,7 +549,7 @@ public class XWPFDocument extends POIXMLDocument implements Document, IBody {
             String uri = CTP.type.getName().getNamespaceURI();
             /*
              * TODO DO not use a coded constant, find the constant in the OOXML
-             * classes instead, as the child of type CT_Paragraph is defined in the 
+             * classes instead, as the child of type CT_Paragraph is defined in the
              * OOXML schema as 'p'
              */
             String localPart = "p";
@@ -1217,7 +1217,7 @@ public class XWPFDocument extends POIXMLDocument implements Document, IBody {
     public void setZoomPercent(long zoomPercent) {
         settings.setZoomPercent(zoomPercent);;
     }
-    
+
     /**
      * inserts an existing XWPFTable to the arrays bodyElements and tables
      *

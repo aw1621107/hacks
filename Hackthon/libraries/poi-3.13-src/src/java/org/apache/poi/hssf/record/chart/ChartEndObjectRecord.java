@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * ENDOBJECT - Chart Future Record Type End Object (0x0855)<br/>
- * 
+ *
  * @author Patrick Cheng
  */
 public final class ChartEndObjectRecord extends StandardRecord {
@@ -47,7 +47,7 @@ public final class ChartEndObjectRecord extends StandardRecord {
 		if(in.available() == 0) {
 		   // They've gone missing...
 		} else {
-		   // Read the reserved bytes 
+		   // Read the reserved bytes
 		   in.readFully(reserved);
 		}
 	}

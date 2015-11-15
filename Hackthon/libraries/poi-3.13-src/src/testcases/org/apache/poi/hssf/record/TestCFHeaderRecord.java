@@ -24,7 +24,7 @@ import org.apache.poi.ss.util.CellRangeAddress;
 
 /**
  * Tests the serialization and deserialization of the {@link CFHeaderRecord}
- *  and {@link CFHeader12Record} classes works correctly.  
+ *  and {@link CFHeader12Record} classes works correctly.
  */
 public final class TestCFHeaderRecord extends TestCase {
 	public void testCreateCFHeaderRecord () {
@@ -45,20 +45,20 @@ public final class TestCFHeaderRecord extends TestCase {
 		assertEquals(65535, enclosingCellRange.getLastRow());
 		assertEquals(0, enclosingCellRange.getFirstColumn());
 		assertEquals(6, enclosingCellRange.getLastColumn());
-		
+
 		assertEquals(false, record.getNeedRecalculation());
 		assertEquals(0, record.getID());
-		
+
 		record.setNeedRecalculation(true);
         assertEquals(true, record.getNeedRecalculation());
         assertEquals(0, record.getID());
-        
+
         record.setID(7);
 		record.setNeedRecalculation(false);
         assertEquals(false, record.getNeedRecalculation());
         assertEquals(7, record.getID());
 	}
-	
+
     public void testCreateCFHeader12Record () {
         CFHeader12Record record = new CFHeader12Record();
         CellRangeAddress[] ranges = {
@@ -80,45 +80,45 @@ public final class TestCFHeaderRecord extends TestCase {
 
         assertEquals(false, record.getNeedRecalculation());
         assertEquals(0, record.getID());
-        
+
         record.setNeedRecalculation(true);
         assertEquals(true, record.getNeedRecalculation());
         assertEquals(0, record.getID());
-        
+
         record.setID(7);
         record.setNeedRecalculation(false);
         assertEquals(false, record.getNeedRecalculation());
         assertEquals(7, record.getID());
     }
-    
+
 	public void testSerialization() {
-		byte[] recordData = 
+		byte[] recordData =
 		{
 			(byte)0x03, (byte)0x00,
 			(byte)0x01,	(byte)0x00,
-			
+
 			(byte)0x00,	(byte)0x00,
 			(byte)0x03,	(byte)0x00,
 			(byte)0x00,	(byte)0x00,
 			(byte)0x03,	(byte)0x00,
-			
+
 			(byte)0x04,	(byte)0x00, // nRegions
-			
+
 			(byte)0x00,	(byte)0x00,
 			(byte)0x01,	(byte)0x00,
 			(byte)0x00,	(byte)0x00,
 			(byte)0x01,	(byte)0x00,
-			
+
 			(byte)0x00,	(byte)0x00,
 			(byte)0x01,	(byte)0x00,
 			(byte)0x02,	(byte)0x00,
 			(byte)0x03,	(byte)0x00,
-			
+
 			(byte)0x02,	(byte)0x00,
 			(byte)0x03,	(byte)0x00,
 			(byte)0x00,	(byte)0x00,
 			(byte)0x01,	(byte)0x00,
-			
+
 			(byte)0x02,	(byte)0x00,
 			(byte)0x03,	(byte)0x00,
 			(byte)0x02,	(byte)0x00,
@@ -142,34 +142,34 @@ public final class TestCFHeaderRecord extends TestCase {
 
 		assertEquals("Output size", recordData.length+4, output.length); //includes sid+recordlength
 
-		for (int i = 0; i < recordData.length; i++) 
+		for (int i = 0; i < recordData.length; i++)
 		{
 			assertEquals("CFHeaderRecord doesn't match", recordData[i], output[i+4]);
 		}
 	}
-	
+
 	public void testExtremeRows() {
 		byte[] recordData = {
 			(byte)0x13, (byte)0x00, // nFormats
 			(byte)0x00,	(byte)0x00,
-			
+
 			(byte)0x00,	(byte)0x00,
 			(byte)0xFF,	(byte)0xFF,
 			(byte)0x00,	(byte)0x00,
 			(byte)0xFF,	(byte)0x00,
-			
+
 			(byte)0x03,	(byte)0x00, // nRegions
-			
+
 			(byte)0x40,	(byte)0x9C,
 			(byte)0x50,	(byte)0xC3,
 			(byte)0x02,	(byte)0x00,
 			(byte)0x02,	(byte)0x00,
-			
+
 			(byte)0x00,	(byte)0x00,
 			(byte)0xFF,	(byte)0xFF,
 			(byte)0x05,	(byte)0x00,
 			(byte)0x05,	(byte)0x00,
-			
+
 			(byte)0x07,	(byte)0x00,
 			(byte)0x07,	(byte)0x00,
 			(byte)0x00,	(byte)0x00,

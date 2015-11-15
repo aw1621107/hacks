@@ -53,9 +53,9 @@ public final class NDocumentInputStream extends DocumentInputStream {
 
     /**
      * Create an InputStream from the specified DocumentEntry
-     * 
+     *
      * @param document the DocumentEntry to be read
-     * 
+     *
      * @exception IOException if the DocumentEntry cannot be opened (like, maybe it has
      *                been deleted?)
      */
@@ -73,7 +73,7 @@ public final class NDocumentInputStream extends DocumentInputStream {
         DocumentNode doc = (DocumentNode)document;
         DocumentProperty property = (DocumentProperty)doc.getProperty();
         _document = new NPOIFSDocument(
-                property, 
+                property,
                 ((DirectoryNode)doc.getParent()).getNFileSystem()
         );
         _data = _document.getBlockIterator();
@@ -81,7 +81,7 @@ public final class NDocumentInputStream extends DocumentInputStream {
 
     /**
      * Create an InputStream from the specified Document
-     * 
+     *
      * @param document the Document to be read
      */
     public NDocumentInputStream(NPOIFSDocument document) {
@@ -174,15 +174,15 @@ public final class NDocumentInputStream extends DocumentInputStream {
 		   _buffer = _data.next();
 		   _current_offset += _buffer.remaining();
 		}
-		
+
       _current_block_count = _marked_offset_count;
-      
+
       // Do we need to position within it?
       if(_current_offset != _marked_offset) {
    		// Grab the right block
          _buffer = _data.next();
          _current_block_count++;
-         
+
    		// Skip to the right place in it
          // (It should be positioned already at the start of the block,
          //  we need to move further inside the block)
@@ -208,9 +208,9 @@ public final class NDocumentInputStream extends DocumentInputStream {
 		} else if (new_offset > _document_size) {
 			new_offset = _document_size;
 		}
-		
+
 		long rval = new_offset - _current_offset;
-		
+
 		// TODO Do this better
 		byte[] skip = new byte[(int)rval];
 		readFully(skip);
@@ -247,7 +247,7 @@ public final class NDocumentInputStream extends DocumentInputStream {
 		      _current_block_count++;
 		      _buffer = _data.next();
 		   }
-		   
+
 		   int limit = Math.min(len-read, _buffer.remaining());
 		   _buffer.get(buf, off+read, limit);
          _current_offset += limit;

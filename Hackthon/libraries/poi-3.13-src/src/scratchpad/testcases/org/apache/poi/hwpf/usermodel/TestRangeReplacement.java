@@ -93,7 +93,7 @@ public final class TestRangeReplacement extends TestCase {
 		Section section = range.getSection(0);
 		assertEquals(5, section.numParagraphs());
 
-		
+
 		// Change some text
 		Paragraph para = section.getParagraph(2);
 

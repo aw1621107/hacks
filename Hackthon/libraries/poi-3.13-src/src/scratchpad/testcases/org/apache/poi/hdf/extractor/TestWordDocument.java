@@ -36,7 +36,7 @@ public class TestWordDocument {
     public void testMain() {
         // fails, but exception is caught and only printed
         //WordDocument.main(new String[] {});
-        
+
         //WordDocument.main(new String[] {"test-data/document/Word95.doc", "/tmp/test.doc"});
         //WordDocument.main(new String[] {"test-data/document/Word6.doc", "/tmp/test.doc"});
         WordDocument.main(new String[] {POIDataSamples.getDocumentInstance().getFile("53446.doc").getAbsolutePath(), "/tmp/test.doc"});
@@ -47,15 +47,15 @@ public class TestWordDocument {
     public void test47304() throws IOException {
     	HWPFDocument doc = HWPFTestDataSamples.openSampleFile("47304.doc");
     	assertNotNull(doc);
-    	
+
     	WordExtractor extractor = new WordExtractor(doc);
         String text = extractor.getText();
         //System.out.println(text);
         assertTrue("Had: " + text, text.contains("Just  a \u201Ctest\u201D"));
         extractor.close();
-        
+
 		WordDocument wordDoc = new WordDocument(POIDataSamples.getDocumentInstance().getFile("47304.doc").getAbsolutePath());
-        
+
         StringWriter docTextWriter = new StringWriter();
         PrintWriter out = new PrintWriter(docTextWriter);
         try {

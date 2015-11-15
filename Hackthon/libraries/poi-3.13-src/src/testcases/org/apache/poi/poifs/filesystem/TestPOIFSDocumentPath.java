@@ -166,20 +166,20 @@ public final class TestPOIFSDocumentPath extends TestCase {
             }
 
             // Test weird variants
-            
+
             // This one is allowed, even if it's really odd
             assertEquals(n, new POIFSDocumentPath(base, null).length());
             new POIFSDocumentPath(base, new String[]
             {
                  "fu", ""
             });
-            
+
             // This one is allowed too
             new POIFSDocumentPath(base, new String[]
             {
                  "", "fu"
             });
-            
+
             // This one shouldn't be allowed
             try
             {
@@ -192,7 +192,7 @@ public final class TestPOIFSDocumentPath extends TestCase {
             catch (IllegalArgumentException ignored)
             {
             }
-            
+
             // Ditto
             try
             {

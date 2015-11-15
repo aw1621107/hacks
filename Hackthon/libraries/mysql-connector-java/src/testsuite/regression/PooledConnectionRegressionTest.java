@@ -46,7 +46,7 @@ import com.mysql.jdbc.jdbc2.optional.MysqlXADataSource;
 /**
  * Tests a PooledConnection implementation provided by a JDBC driver. Test case provided by Johnny Macchione from bug database record BUG#884. According to
  * the JDBC 2.0 specification:
- * 
+ *
  * <p>
  * "Each call to PooledConnection.getConnection() must return a newly constructed Connection object that exhibits the default Connection behavior. Only the most
  * recent Connection object produced from a particular PooledConnection is open. An existing Connection object is automatically closed, if the getConnection()
@@ -54,13 +54,13 @@ import com.mysql.jdbc.jdbc2.optional.MysqlXADataSource;
  * to �take away� a Connection from the application if it wishes, and give it out to someone else. This capability will not likely be used frequently in
  * practice."
  * </p>
- * 
+ *
  * <p>
  * "When the application calls Connection.close(), an event is triggered that tells the connection pool it can recycle the physical database connection. In
  * other words, the event signals the connection pool that the PooledConnection object which originally produced the Connection object generating the event can
  * be put back in the connection pool."
  * </p>
- * 
+ *
  * <p>
  * "A Connection-EventListener will also be notified when a fatal error occurs, so that it can make a note not to put a bad PooledConnection object back in the
  * cache when the application finishes using it. When an error occurs, the ConnectionEventListener is notified by the JDBC driver, just before the driver throws
@@ -68,20 +68,20 @@ import com.mysql.jdbc.jdbc2.optional.MysqlXADataSource;
  * does not generate a connection close event."
  * </p>
  * The JDBC 3.0 specification states the same in other words:
- * 
+ *
  * <p>
  * "The Connection.close method closes the logical handle, but the physical connection is maintained. The connection pool manager is notified that the
  * underlying PooledConnection object is now available for reuse. If the application attempts to reuse the logical handle, the Connection implementation throws
  * an SQLException."
  * </p>
- * 
+ *
  * <p>
  * "For a given PooledConnection object, only the most recently produced logical Connection object will be valid. Any previously existing Connection object is
  * automatically closed when the associated PooledConnection.getConnection method is called. Listeners (connection pool managers) are not notified in this case.
  * This gives the application server a way to take a connection away from a client. This is an unlikely scenario but may be useful if the application server is
  * trying to force an orderly shutdown."
  * </p>
- * 
+ *
  * <p>
  * "A connection pool manager shuts down a physical connection by calling the method PooledConnection.close. This method is typically called only in certain
  * circumstances: when the application server is undergoing an orderly shutdown, when the connection cache is being reinitialized, or when the application
@@ -103,7 +103,7 @@ public final class PooledConnectionRegressionTest extends BaseTestCase {
 
     /**
      * Creates a new instance of ProgressPooledConnectionTest
-     * 
+     *
      * @param testname
      */
     public PooledConnectionRegressionTest(String testname) {
@@ -112,7 +112,7 @@ public final class PooledConnectionRegressionTest extends BaseTestCase {
 
     /**
      * Set up test case before a test is run.
-     * 
+     *
      * @throws Exception
      */
     @Override
@@ -132,7 +132,7 @@ public final class PooledConnectionRegressionTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -265,7 +265,7 @@ public final class PooledConnectionRegressionTest extends BaseTestCase {
 
     /**
      * Tests that PacketTooLargeException doesn't clober the connection.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -369,7 +369,7 @@ public final class PooledConnectionRegressionTest extends BaseTestCase {
     /**
      * Tests fix for BUG#35489 - Prepared statements from pooled connections
      * cause NPE when closed() under JDBC4
-     * 
+     *
      * @throws Exception
      *             if the test fails
      */

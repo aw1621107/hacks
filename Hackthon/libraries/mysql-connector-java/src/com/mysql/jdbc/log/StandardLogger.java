@@ -50,7 +50,7 @@ public class StandardLogger implements Log {
 
     /**
      * Creates a new StandardLogger object.
-     * 
+     *
      * @param name
      *            the name of the configuration to use -- ignored
      */
@@ -122,7 +122,7 @@ public class StandardLogger implements Log {
 
     /**
      * Logs the given message instance using the 'debug' level
-     * 
+     *
      * @param message
      *            the message to log
      */
@@ -132,7 +132,7 @@ public class StandardLogger implements Log {
 
     /**
      * Logs the given message and Throwable at the 'debug' level.
-     * 
+     *
      * @param message
      *            the message to log
      * @param exception
@@ -144,7 +144,7 @@ public class StandardLogger implements Log {
 
     /**
      * Logs the given message instance using the 'error' level
-     * 
+     *
      * @param message
      *            the message to log
      */
@@ -154,7 +154,7 @@ public class StandardLogger implements Log {
 
     /**
      * Logs the given message and Throwable at the 'error' level.
-     * 
+     *
      * @param message
      *            the message to log
      * @param exception
@@ -166,7 +166,7 @@ public class StandardLogger implements Log {
 
     /**
      * Logs the given message instance using the 'fatal' level
-     * 
+     *
      * @param message
      *            the message to log
      */
@@ -176,7 +176,7 @@ public class StandardLogger implements Log {
 
     /**
      * Logs the given message and Throwable at the 'fatal' level.
-     * 
+     *
      * @param message
      *            the message to log
      * @param exception
@@ -188,7 +188,7 @@ public class StandardLogger implements Log {
 
     /**
      * Logs the given message instance using the 'info' level
-     * 
+     *
      * @param message
      *            the message to log
      */
@@ -198,7 +198,7 @@ public class StandardLogger implements Log {
 
     /**
      * Logs the given message and Throwable at the 'info' level.
-     * 
+     *
      * @param message
      *            the message to log
      * @param exception
@@ -210,7 +210,7 @@ public class StandardLogger implements Log {
 
     /**
      * Logs the given message instance using the 'trace' level
-     * 
+     *
      * @param message
      *            the message to log
      */
@@ -220,7 +220,7 @@ public class StandardLogger implements Log {
 
     /**
      * Logs the given message and Throwable at the 'trace' level.
-     * 
+     *
      * @param message
      *            the message to log
      * @param exception
@@ -232,7 +232,7 @@ public class StandardLogger implements Log {
 
     /**
      * Logs the given message instance using the 'warn' level
-     * 
+     *
      * @param message
      *            the message to log
      */
@@ -242,7 +242,7 @@ public class StandardLogger implements Log {
 
     /**
      * Logs the given message and Throwable at the 'warn' level.
-     * 
+     *
      * @param message
      *            the message to log
      * @param exception

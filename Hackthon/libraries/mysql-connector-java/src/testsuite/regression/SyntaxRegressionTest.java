@@ -54,20 +54,20 @@ public class SyntaxRegressionTest extends BaseTestCase {
 
     /**
      * ALTER TABLE syntax changed in 5.6GA
-     * 
+     *
      * ALTER TABLE ... , algorithm, concurrency
-     * 
+     *
      * algorithm:
      * | ALGORITHM [=] DEFAULT
      * | ALGORITHM [=] INPLACE
      * | ALGORITHM [=] COPY
-     * 
+     *
      * concurrency:
      * | LOCK [=] DEFAULT
      * | LOCK [=] NONE
      * | LOCK [=] SHARED
      * | LOCK [=] EXCLUSIVE
-     * 
+     *
      * @throws SQLException
      */
     public void testAlterTableAlgorithmLock() throws SQLException {
@@ -119,15 +119,15 @@ public class SyntaxRegressionTest extends BaseTestCase {
 
     /**
      * CREATE TABLE syntax changed in 5.6GA
-     * 
+     *
      * InnoDB: Allow the location of file-per-table tablespaces to be chosen
      * CREATE TABLE ... DATA DIRECTORY = 'absolute/path/to/directory/'
-     * 
+     *
      * Notes:
      * - DATA DIRECTORY option can't be used with temporary tables.
      * - DATA DIRECTORY and INDEX DIRECTORY can't be used together for InnoDB.
      * - Using these options result in an 'option ignored' warning for servers below MySQL 5.7.7. This syntax isn't allowed for MySQL 5.7.7 and higher.
-     * 
+     *
      * @throws SQLException
      */
     public void testCreateTableDataDirectory() throws SQLException {
@@ -200,11 +200,11 @@ public class SyntaxRegressionTest extends BaseTestCase {
 
     /**
      * Test case for transportable tablespaces syntax support:
-     * 
+     *
      * FLUSH TABLES ... FOR EXPORT
      * ALTER TABLE ... DISCARD TABLESPACE
      * ALTER TABLE ... IMPORT TABLESPACE
-     * 
+     *
      * @throws SQLException
      */
     public void testTransportableTablespaces() throws Exception {
@@ -327,7 +327,7 @@ public class SyntaxRegressionTest extends BaseTestCase {
 
     /**
      * Test case for ALTER [IGNORE] TABLE t1 EXCHANGE PARTITION p1 WITH TABLE t2 syntax
-     * 
+     *
      * @throws SQLException
      */
     public void testExchangePartition() throws Exception {
@@ -377,7 +377,7 @@ public class SyntaxRegressionTest extends BaseTestCase {
 
     /**
      * Test for explicit partition selection syntax
-     * 
+     *
      * @throws SQLException
      */
     public void testExplicitPartitions() throws Exception {
@@ -627,11 +627,11 @@ public class SyntaxRegressionTest extends BaseTestCase {
 
     /**
      * WL#1326 - GIS: Precise spatial operations
-     * 
+     *
      * GIS functions added in 5.6GA: ST_Intersection(g1 geometry, g2 geometry); ST_Difference(g1 geometry, g2 geometry);
      * ST_Union(g1 geometry, g2 geometry); ST_SymDifference(g1 geometry, g2 geometry); ST_Buffer(g1 geometry, d
      * numeric).
-     * 
+     *
      * @throws SQLException
      */
     public void testGISPreciseSpatialFunctions() throws Exception {
@@ -659,9 +659,9 @@ public class SyntaxRegressionTest extends BaseTestCase {
 
     /**
      * WL#5787 - IPv6-capable INET_ATON and INET_NTOA functions
-     * 
+     *
      * IPv6 functions added in 5.6GA: INET6_ATON(ip) and INET6_NTOA(ip).
-     * 
+     *
      * @throws SQLException
      */
     public void testIPv6Functions() throws Exception {
@@ -707,12 +707,12 @@ public class SyntaxRegressionTest extends BaseTestCase {
 
     /**
      * WL#5538 - InnoDB Full-Text Search Support
-     * 
+     *
      * CREATE TABLE syntax changed in 5.6GA
-     * 
+     *
      * InnoDB engine accepts FULLTEXT indexes.
      * CREATE TABLE ... FULLTEXT(...) ... ENGINE=InnoDB
-     * 
+     *
      * @throws SQLException
      */
     public void testFULLTEXTSearchInnoDB() throws Exception {
@@ -748,11 +748,11 @@ public class SyntaxRegressionTest extends BaseTestCase {
 
     /**
      * WL#6555 - Online rename index
-     * 
+     *
      * ALTER TABLE syntax changed in 5.7.1
-     * 
+     *
      * Alter table allows to rename indexes. ALTER TABLE ... RENAME INDEX x TO y
-     * 
+     *
      * @throws SQLException
      */
     public void testRenameIndex() throws Exception {
@@ -786,10 +786,10 @@ public class SyntaxRegressionTest extends BaseTestCase {
 
     /**
      * WL#6406 - Stacked diagnostic areas
-     * 
+     *
      * "STACKED" in "GET [CURRENT | STACKED] DIAGNOSTICS" syntax was added in 5.7.0. Final behavior was implemented in
      * version 5.7.2, by WL#5928 - Most statements should clear the diagnostic area.
-     * 
+     *
      * @throws SQLException
      */
     public void testGetStackedDiagnostics() throws Exception {
@@ -880,7 +880,7 @@ public class SyntaxRegressionTest extends BaseTestCase {
 
     /**
      * WL#6868 - Support transportable tablespaces for single innodb partition.
-     * 
+     *
      * New syntax introduced in MySQL 5.7.4.
      * ALTER TABLE t DISCARD PARTITION {p[[,p1]..]|ALL} TABLESPACE;
      * ALTER TABLE t IMPORT PARTITION {p[[,p1]..]|ALL} TABLESPACE;
@@ -921,9 +921,9 @@ public class SyntaxRegressionTest extends BaseTestCase {
 
     /**
      * WL#7909 - Server side JSON functions
-     * 
+     *
      * Test support for data type JSON.
-     * 
+     *
      * New JSON functions added in MySQL 5.7.8:
      * - JSON_APPEND(), Append data to JSON document (only in 5.7.8)
      * - JSON_ARRAY_APPEND(), Append data to JSON document (added in 5.7.9+)
@@ -1036,9 +1036,9 @@ public class SyntaxRegressionTest extends BaseTestCase {
 
     /**
      * WL#8016 - Parser for optimizer hints.
-     * 
+     *
      * Test syntax for optimizer hints.
-     * 
+     *
      * New optimizer hints feature added in MySQL 5.7.7. Hints are permitted in these contexts:
      * At the beginning of DML statements
      * - SELECT /*+ ... *&#47 ...

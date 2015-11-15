@@ -54,7 +54,7 @@ public final class MysqlConnectionTester implements QueryConnectionTester {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mchange.v2.c3p0.ConnectionTester#activeCheckConnection(java.sql.Connection)
      */
     public int activeCheckConnection(Connection con) {
@@ -89,7 +89,7 @@ public final class MysqlConnectionTester implements QueryConnectionTester {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mchange.v2.c3p0.ConnectionTester#statusOnException(java.sql.Connection, java.lang.Throwable)
      */
     public int statusOnException(Connection arg0, Throwable throwable) {
@@ -114,7 +114,7 @@ public final class MysqlConnectionTester implements QueryConnectionTester {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mchange.v2.c3p0.QueryConnectionTester#activeCheckConnection(java.sql.Connection, java.lang.String)
      */
     public int activeCheckConnection(Connection arg0, String arg1) {

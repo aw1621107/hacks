@@ -21,7 +21,7 @@ import java.util.HashMap;
 
 /**
  * Enumerates error values in SpreadsheetML formula calculations.
- * 
+ *
  * See also OOO's excelfileformat.pdf (2.5.6)
  */
 public enum FormulaError {
@@ -94,12 +94,12 @@ public enum FormulaError {
      * This error value can be produced by calling the function NA
      */
     NA(0x2A, "#N/A"),
-    
+
     // These are POI-specific error codes
     // It is desirable to make these (arbitrary) strings look clearly different from any other
     // value expression that might appear in a formula.  In addition these error strings should
     // look unlike the standard Excel errors.  Hence tilde ('~') was used.
-    
+
     /**
      * POI specific code to indicate that there is a circular reference
      *  in the formula
@@ -151,7 +151,7 @@ public enum FormulaError {
             smap.put(error.getString(), error);
         }
     }
-    
+
     public static final boolean isValidCode(int errorCode) {
         for (FormulaError error : values()) {
             if (error.getCode() == errorCode) return true;

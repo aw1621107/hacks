@@ -125,7 +125,7 @@ public final class PPDrawing extends RecordAtom {
 		}
 		return found.toArray(new EscherTextboxWrapper[found.size()]);
 	}
-	
+
 	private StyleTextProp9Atom findInSpContainer(final EscherContainerRecord spContainer) {
 		EscherContainerRecord clientData = findFirstEscherContainerRecordOfType((short)RecordTypes.EscherClientData, spContainer);
 		if (null == clientData) { return null; }

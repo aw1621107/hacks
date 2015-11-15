@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_PositiveSize2D complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_PositiveSize2D">
  *   &lt;complexContent>
@@ -38,8 +38,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_PositiveSize2D", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main")
@@ -52,7 +52,7 @@ public class CTPositiveSize2D {
 
     /**
      * Gets the value of the cx property.
-     * 
+     *
      */
     public long getCx() {
         return cx;
@@ -60,7 +60,7 @@ public class CTPositiveSize2D {
 
     /**
      * Sets the value of the cx property.
-     * 
+     *
      */
     public void setCx(long value) {
         this.cx = value;
@@ -72,7 +72,7 @@ public class CTPositiveSize2D {
 
     /**
      * Gets the value of the cy property.
-     * 
+     *
      */
     public long getCy() {
         return cy;
@@ -80,7 +80,7 @@ public class CTPositiveSize2D {
 
     /**
      * Sets the value of the cy property.
-     * 
+     *
      */
     public void setCy(long value) {
         this.cy = value;

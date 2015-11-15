@@ -33,7 +33,7 @@ import testsuite.BaseTestCase;
 public class NumbersRegressionTest extends BaseTestCase {
     /**
      * Constructor for NumbersRegressionTest.
-     * 
+     *
      * @param name
      *            the test name
      */
@@ -43,10 +43,10 @@ public class NumbersRegressionTest extends BaseTestCase {
 
     /**
      * Runs all test cases
-     * 
+     *
      * @param args
      *            command-line args
-     * 
+     *
      * @throws Exception
      *             if any errors occur
      */
@@ -56,7 +56,7 @@ public class NumbersRegressionTest extends BaseTestCase {
 
     /**
      * Tests that BIGINT retrieval works correctly
-     * 
+     *
      * @throws Exception
      *             if any errors occur
      */
@@ -84,7 +84,7 @@ public class NumbersRegressionTest extends BaseTestCase {
 
     /**
      * Tests correct type assignment for MySQL FLOAT and REAL datatypes.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -112,7 +112,7 @@ public class NumbersRegressionTest extends BaseTestCase {
     /**
      * Tests that ResultSetMetaData precision and scale methods work correctly
      * for all numeric types.
-     * 
+     *
      * @throws Exception
      *             if any errors occur
      */
@@ -198,7 +198,7 @@ public class NumbersRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#5729, UNSIGNED BIGINT returned incorrectly
-     * 
+     *
      * @throws Exception
      *             if the test fails
      */
@@ -219,7 +219,7 @@ public class NumbersRegressionTest extends BaseTestCase {
     /**
      * Tests fix for BUG#8484 - ResultSet.getBigDecimal() throws exception when
      * rounding would need to occur to set scale.
-     * 
+     *
      * @throws Exception
      *             if the test fails
      * @deprecated

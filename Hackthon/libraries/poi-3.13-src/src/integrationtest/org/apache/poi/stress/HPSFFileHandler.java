@@ -33,7 +33,7 @@ public class HPSFFileHandler extends AbstractFileHandler {
 		assertNotNull(hpsf.getDocumentSummaryInformation());
 		assertNotNull(hpsf.getSummaryInformation());
 	}
-	
+
 	// a test-case to test this locally without executing the full TestAllFiles
 	@Test
 	public void test() throws Exception {

@@ -59,7 +59,7 @@ public final class Deleted3DPxg extends OperandPtg implements Pxg {
     public String getSheetName() {
         return sheetName;
     }
-    
+
     public void setSheetName(String sheetName) {
         this.sheetName = sheetName;
     }
@@ -78,7 +78,7 @@ public final class Deleted3DPxg extends OperandPtg implements Pxg {
         sb.append(ErrorConstants.getText(ErrorConstants.ERROR_REF));
         return sb.toString();
     }
-    
+
     public byte getDefaultOperandClass() {
         return Ptg.CLASS_VALUE;
     }

@@ -41,14 +41,14 @@ public final class DeletedArea3DPtg extends OperandPtg implements WorkbookDepend
 		unused1 = 0;
 		unused2 = 0;
 	}
-	
+
 	public DeletedArea3DPtg(LittleEndianInput in)  {
 		field_1_index_extern_sheet = in.readUShort();
 		unused1 = in.readInt();
 		unused2 = in.readInt();
 	}
 	public String toFormulaString(FormulaRenderingWorkbook book) {
-		return ExternSheetNameResolver.prependSheetName(book, field_1_index_extern_sheet, 
+		return ExternSheetNameResolver.prependSheetName(book, field_1_index_extern_sheet,
 				ErrorConstants.getText(ErrorConstants.ERROR_REF));
 	}
 	public String toFormulaString() {

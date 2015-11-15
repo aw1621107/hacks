@@ -106,7 +106,7 @@ public class XSSFPictureData extends POIXMLDocumentPart implements PictureData {
     /**
      * Return an integer constant that specifies type of this picture
      *
-     * @return an integer constant that specifies type of this picture 
+     * @return an integer constant that specifies type of this picture
      * @see org.apache.poi.ss.usermodel.Workbook#PICTURE_TYPE_EMF
      * @see org.apache.poi.ss.usermodel.Workbook#PICTURE_TYPE_WMF
      * @see org.apache.poi.ss.usermodel.Workbook#PICTURE_TYPE_PICT
@@ -131,7 +131,7 @@ public class XSSFPictureData extends POIXMLDocumentPart implements PictureData {
     }
 
     /**
-     * *PictureData objects store the actual content in the part directly without keeping a 
+     * *PictureData objects store the actual content in the part directly without keeping a
      * copy like all others therefore we need to handle them differently.
      */
     @Override

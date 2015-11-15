@@ -21,7 +21,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * Title:        Write Protect Record<P>
- * Description:  Indicated that the sheet/workbook is write protected. 
+ * Description:  Indicated that the sheet/workbook is write protected.
  * REFERENCE:  PG 425 Microsoft Excel 97 Developer's Kit (ISBN: 1-57231-498-2)<P>
  * @version 3.0-pre
  */

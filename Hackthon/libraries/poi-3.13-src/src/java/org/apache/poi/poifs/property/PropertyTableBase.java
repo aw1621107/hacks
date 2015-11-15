@@ -93,7 +93,7 @@ public abstract class PropertyTableBase implements BATManaged {
         // it's always the first element in the List
         return ( RootProperty ) _properties.get(0);
     }
-    
+
     private void populatePropertyTree(DirectoryProperty root)
         throws IOException
     {

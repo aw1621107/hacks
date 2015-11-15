@@ -156,7 +156,7 @@ public class TestXSLFPictureShape {
         XSLFPictureShape shape1 = slide1.createPicture(pdata1);
         CTPicture ctPic1 = (CTPicture)shape1.getXmlObject();
         ctPic1.getNvPicPr().getNvPr().addNewCustDataLst().addNewTags().setId("rId99");
-        
+
         XMLSlideShow ppt2 = new XMLSlideShow();
 
         XSLFSlide slide2 = ppt2.createSlide().importContent(slide1);

@@ -28,8 +28,8 @@ public enum CipherProvider {
             if (cp.ecmaId == ecmaId) return cp;
         }
         throw new EncryptedDocumentException("cipher provider not found");
-    }    
-    
+    }
+
     public final String jceId;
     public final int ecmaId;
     public final String cipherProviderName;

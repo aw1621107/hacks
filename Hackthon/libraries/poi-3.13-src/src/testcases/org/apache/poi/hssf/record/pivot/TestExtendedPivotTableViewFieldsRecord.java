@@ -28,11 +28,11 @@ import junit.framework.TestCase;
 
 /**
  * Tests for {@link ExtendedPivotTableViewFieldsRecord}
- * 
+ *
  * @author Josh Micich
  */
 public final class TestExtendedPivotTableViewFieldsRecord extends TestCase {
-	
+
 	public void testSubNameNotPresent_bug46693() {
 		// This data came from attachment 23347 of bug 46693 at offset 0xAA43
 		byte[] data = HexRead.readFromString(
@@ -48,14 +48,14 @@ public final class TestExtendedPivotTableViewFieldsRecord extends TestCase {
 			}
 			throw e;
 		}
-		
+
 		assertEquals(data.length, rec.getRecordSize());
 	}
-	
+
 	public void testOlderFormat_bug46918() {
 		// There are 10 SXVDEX records in the file (not uploaded) that originated bugzilla 46918
 		// They all had the following hex encoding:
-		byte data[] = HexRead.readFromString("00 01 0A 00 1E 14 00 0A FF FF FF FF 00 00");  
+		byte data[] = HexRead.readFromString("00 01 0A 00 1E 14 00 0A FF FF FF FF 00 00");
 
 		RecordInputStream in = TestcaseRecordInputStream.create(data);
 		ExtendedPivotTableViewFieldsRecord rec;
@@ -69,8 +69,8 @@ public final class TestExtendedPivotTableViewFieldsRecord extends TestCase {
 		}
 
 		byte expReserData[] = HexRead.readFromString("1E 14 00 0A FF FF FF FF 00 00" +
-				"FF FF 00 00 00 00 00 00 00 00");  
-		
+				"FF FF 00 00 00 00 00 00 00 00");
+
 		TestcaseRecordInputStream.confirmRecordEncoding(ExtendedPivotTableViewFieldsRecord.sid, expReserData, rec.serialize());
 	}
 }

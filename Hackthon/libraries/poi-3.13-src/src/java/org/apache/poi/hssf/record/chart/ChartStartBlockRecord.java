@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * STARTBLOCK - Chart Future Record Type Start Block (0x0852)<br/>
- * 
+ *
  * @author Patrick Cheng
  */
 public final class ChartStartBlockRecord extends StandardRecord {
@@ -39,7 +39,7 @@ public final class ChartStartBlockRecord extends StandardRecord {
 
 	public ChartStartBlockRecord() {
 	}
-	
+
 	public ChartStartBlockRecord(RecordInputStream in) {
 		rt = in.readShort();
 		grbitFrt = in.readShort();
@@ -83,18 +83,18 @@ public final class ChartStartBlockRecord extends StandardRecord {
 		buffer.append("[/STARTBLOCK]\n");
 		return buffer.toString();
 	}
-	
+
 	@Override
 	public ChartStartBlockRecord clone() {
 		ChartStartBlockRecord record = new ChartStartBlockRecord();
-		
+
 		record.rt = rt;
 		record.grbitFrt = grbitFrt;
 		record.iObjectKind = iObjectKind;
 		record.iObjectContext = iObjectContext;
 		record.iObjectInstance1 = iObjectInstance1;
 		record.iObjectInstance2 = iObjectInstance2;
-		
+
 		return record;
 	}
 }

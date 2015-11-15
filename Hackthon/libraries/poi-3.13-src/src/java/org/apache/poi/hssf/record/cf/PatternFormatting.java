@@ -64,33 +64,33 @@ public final class PatternFormatting implements Cloneable {
     public final static short     LESS_DOTS           = 17 ;
     /**  Least Dots */
     public final static short     LEAST_DOTS          = 18 ;
-    
-    
+
+
     // PATTERN FORMATING BLOCK
     // For Pattern Styles see constants at HSSFCellStyle (from NO_FILL to LEAST_DOTS)
     private int              field_15_pattern_style;
     private static final BitField  fillPatternStyle = BitFieldFactory.getInstance(0xFC00);
-    
-    private int              field_16_pattern_color_indexes;
-    private static final BitField  patternColorIndex = BitFieldFactory.getInstance(0x007F);         
-    private static final BitField  patternBackgroundColorIndex = BitFieldFactory.getInstance(0x3F80);         
 
-    
+    private int              field_16_pattern_color_indexes;
+    private static final BitField  patternColorIndex = BitFieldFactory.getInstance(0x007F);
+    private static final BitField  patternBackgroundColorIndex = BitFieldFactory.getInstance(0x3F80);
+
+
     public PatternFormatting() {
         field_15_pattern_style    = 0;
         field_16_pattern_color_indexes    = 0;
     }
-    
+
     /** Creates new FontFormatting */
     public PatternFormatting(LittleEndianInput in) {
         field_15_pattern_style    = in.readUShort();
         field_16_pattern_color_indexes    = in.readUShort();
     }
-    
+
     public int getDataLength() {
         return 4;
     }
-    
+
     /**
      * setting fill pattern
      *
@@ -112,7 +112,7 @@ public final class PatternFormatting implements Cloneable {
      * @see #SQUARES
      * @see #DIAMONDS
      *
-     * @param fp  fill pattern 
+     * @param fp  fill pattern
      */
     public void setFillPattern(int fp) {
         field_15_pattern_style = fillPatternStyle.setValue(field_15_pattern_style, fp);
@@ -124,11 +124,11 @@ public final class PatternFormatting implements Cloneable {
     public int getFillPattern() {
         return fillPatternStyle.getValue(field_15_pattern_style);
     }
-    
+
     /**
      * set the background fill color.
      */
-    public void setFillBackgroundColor(int bg) {        
+    public void setFillBackgroundColor(int bg) {
         field_16_pattern_color_indexes = patternBackgroundColorIndex.setValue(field_16_pattern_color_indexes,bg);
     }
 
@@ -154,7 +154,7 @@ public final class PatternFormatting implements Cloneable {
     public int getFillForegroundColor() {
         return patternColorIndex.getValue(field_16_pattern_color_indexes);
     }
-    
+
     public String toString() {
         StringBuffer buffer = new StringBuffer();
         buffer.append("    [Pattern Formatting]\n");
@@ -164,11 +164,11 @@ public final class PatternFormatting implements Cloneable {
         buffer.append("    [/Pattern Formatting]\n");
         return buffer.toString();
     }
-    
+
     public Object clone()  {
       PatternFormatting rec = new PatternFormatting();
       rec.field_15_pattern_style = field_15_pattern_style;
-      rec.field_16_pattern_color_indexes = field_16_pattern_color_indexes; 
+      rec.field_16_pattern_color_indexes = field_16_pattern_color_indexes;
       return rec;
     }
 

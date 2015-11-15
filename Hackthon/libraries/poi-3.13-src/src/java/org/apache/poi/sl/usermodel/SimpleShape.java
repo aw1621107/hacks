@@ -30,10 +30,10 @@ public interface SimpleShape<
     StrokeStyle getStrokeStyle();
 
     CustomGeometry getGeometry();
-    
+
     ShapeType getShapeType();
 
     boolean isPlaceholder();
-    
+
 	Shadow<S,P> getShadow();
 }

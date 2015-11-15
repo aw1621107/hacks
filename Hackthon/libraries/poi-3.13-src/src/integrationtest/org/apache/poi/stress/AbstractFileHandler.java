@@ -45,7 +45,7 @@ public abstract class AbstractFileHandler implements FileHandler {
         EXPECTED_EXTRACTOR_FAILURES.add("poifs/protect.xlsx");
         EXPECTED_EXTRACTOR_FAILURES.add("poifs/protected_agile.docx");
         EXPECTED_EXTRACTOR_FAILURES.add("poifs/protected_sha512.xlsx");
-        
+
         // unsupported file-types, no supported OLE2 parts
         EXPECTED_EXTRACTOR_FAILURES.add("hmef/quick-winmail.dat");
         EXPECTED_EXTRACTOR_FAILURES.add("hmef/winmail-sample1.dat");
@@ -68,10 +68,10 @@ public abstract class AbstractFileHandler implements FileHandler {
         } finally {
             ExtractorFactory.setThreadPrefersEventExtractors(before);
         }
-        
+
         /* Did fail for some documents with special XML contents...
         try {
-            OOXMLPrettyPrint.main(new String[] { file.getAbsolutePath(), 
+            OOXMLPrettyPrint.main(new String[] { file.getAbsolutePath(),
             		"/tmp/pretty-" + file.getName() });
         } catch (ZipException e) {
         	// ignore, not a Zip/OOXML file
@@ -81,25 +81,25 @@ public abstract class AbstractFileHandler implements FileHandler {
     private void handleExtractingInternal(File file) throws Exception {
         long length = file.length();
         long modified = file.lastModified();
-        
+
         POITextExtractor extractor = ExtractorFactory.createExtractor(file);
         try  {
             assertNotNull(extractor);
 
             assertNotNull(extractor.getText());
-            
+
             // also try metadata
             POITextExtractor metadataExtractor = extractor.getMetadataTextExtractor();
             assertNotNull(metadataExtractor.getText());
 
-            assertFalse("Expected Extraction to fail for file " + file + " and handler " + this + ", but did not fail!", 
+            assertFalse("Expected Extraction to fail for file " + file + " and handler " + this + ", but did not fail!",
                     EXPECTED_EXTRACTOR_FAILURES.contains(file));
-            
+
             assertEquals("File should not be modified by extractor", length, file.length());
             assertEquals("File should not be modified by extractor", modified, file.lastModified());
-            
+
             handleExtractingAsStream(file);
-            
+
             if(extractor instanceof POIOLE2TextExtractor) {
             	HPSFPropertiesExtractor hpsfExtractor = new HPSFPropertiesExtractor((POIOLE2TextExtractor)extractor);
             	try {
@@ -129,7 +129,7 @@ public abstract class AbstractFileHandler implements FileHandler {
             POITextExtractor streamExtractor = ExtractorFactory.createExtractor(stream);
             try {
                 assertNotNull(streamExtractor);
-   
+
                 assertNotNull(streamExtractor.getText());
             } finally {
                 streamExtractor.close();

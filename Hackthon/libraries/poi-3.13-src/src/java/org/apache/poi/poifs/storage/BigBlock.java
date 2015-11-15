@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.poifs.storage;
 
@@ -39,12 +39,12 @@ import org.apache.poi.poifs.common.POIFSConstants;
 abstract class BigBlock
     implements BlockWritable
 {
-    /** 
-     * Either 512 bytes ({@link POIFSConstants#SMALLER_BIG_BLOCK_SIZE}) 
+    /**
+     * Either 512 bytes ({@link POIFSConstants#SMALLER_BIG_BLOCK_SIZE})
      *  or 4096 bytes ({@link POIFSConstants#LARGER_BIG_BLOCK_SIZE})
      */
     protected POIFSBigBlockSize bigBlockSize;
-    
+
     protected BigBlock(POIFSBigBlockSize bigBlockSize) {
        this.bigBlockSize = bigBlockSize;
     }

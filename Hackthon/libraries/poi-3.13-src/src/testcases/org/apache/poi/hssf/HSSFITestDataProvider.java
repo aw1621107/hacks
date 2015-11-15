@@ -36,25 +36,25 @@ public final class HSSFITestDataProvider implements ITestDataProvider {
     private HSSFITestDataProvider(){
         // enforce singleton
     }
-    
+
     public HSSFWorkbook openSampleWorkbook(String sampleFileName) {
         return HSSFTestDataSamples.openSampleWorkbook(sampleFileName);
     }
     public InputStream openWorkbookStream(String sampleFileName) {
         return HSSFTestDataSamples.openSampleFileStream(sampleFileName);
     }
-    
+
     public HSSFWorkbook writeOutAndReadBack(Workbook original) {
         if(!(original instanceof HSSFWorkbook)) {
             throw new IllegalArgumentException("Expected an instance of HSSFWorkbook");
         }
         return HSSFTestDataSamples.writeOutAndReadBack((HSSFWorkbook)original);
     }
-    
+
     public HSSFWorkbook createWorkbook(){
         return new HSSFWorkbook();
     }
-    
+
     public FormulaEvaluator createFormulaEvaluator(Workbook wb) {
         return new HSSFFormulaEvaluator((HSSFWorkbook) wb);
     }
@@ -62,11 +62,11 @@ public final class HSSFITestDataProvider implements ITestDataProvider {
     public byte[] getTestDataFileContent(String fileName) {
         return POIDataSamples.getSpreadSheetInstance().readFile(fileName);
     }
-    
+
     public SpreadsheetVersion getSpreadsheetVersion(){
         return SpreadsheetVersion.EXCEL97;
     }
-    
+
     public String getStandardFileNameExtension() {
         return "xls";
     }

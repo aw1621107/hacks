@@ -139,7 +139,7 @@ public class SXSSFWorkbook implements Workbook {
     public SXSSFWorkbook(XSSFWorkbook workbook){
     	this(workbook, DEFAULT_WINDOW_SIZE);
     }
-    
+
 
     /**
      * Constructs an workbook from an existing workbook.
@@ -259,7 +259,7 @@ public class SXSSFWorkbook implements Workbook {
     public SXSSFWorkbook(int rowAccessWindowSize){
     	this(null /*workbook*/, rowAccessWindowSize);
     }
-    
+
     public int getRandomAccessWindowSize()
     {
     	return _randomAccessWindowSize;
@@ -293,7 +293,7 @@ public class SXSSFWorkbook implements Workbook {
         if(_compressTmpFiles) {
             return new GZIPSheetDataWriter(_sharedStringSource);
         }
-        
+
         return new SheetDataWriter(_sharedStringSource);
     }
 
@@ -317,14 +317,14 @@ public class SXSSFWorkbook implements Workbook {
     void deregisterSheetMapping(XSSFSheet xSheet)
     {
         SXSSFSheet sxSheet=getSXSSFSheet(xSheet);
-        
+
         // ensure that the writer is closed in all cases to not have lingering writers
         try {
             sxSheet.getSheetDataWriter().close();
         } catch (IOException e) {
             // ignore exception here
         }
-        
+
         _sxFromXHash.remove(sxSheet);
 
         _xFromSxHash.remove(xSheet);
@@ -337,7 +337,7 @@ public class SXSSFWorkbook implements Workbook {
         }
         return null;
     }
-    private void injectData(File zipfile, OutputStream out) throws IOException 
+    private void injectData(File zipfile, OutputStream out) throws IOException
     {
         ZipFile zip = ZipHelper.openZipFile(zipfile);
         try
@@ -346,7 +346,7 @@ public class SXSSFWorkbook implements Workbook {
             try
             {
                 Enumeration<? extends ZipEntry> en = zip.entries();
-                while (en.hasMoreElements()) 
+                while (en.hasMoreElements())
                 {
                     ZipEntry ze = en.nextElement();
                     zos.putNextEntry(new ZipEntry(ze.getName()));
@@ -438,14 +438,14 @@ public class SXSSFWorkbook implements Workbook {
                         		// Found <sheetData/>
                         		break;
                         	}
-                        	
+
                     		outWriter.write(s);
                     		outWriter.write('/');
                     		outWriter.write(c);
                     		pos = 0;
                     		continue;
                     	}
-                    	
+
                 		outWriter.write(s);
                 		outWriter.write('/');
                 		outWriter.write(c);
@@ -681,7 +681,7 @@ public class SXSSFWorkbook implements Workbook {
     {
         return _wb.getNumberOfSheets();
     }
-    
+
     /**
      *  Returns an iterator of the sheets in the workbook
      *  in sheet order. Includes hidden and very hidden sheets.
@@ -692,7 +692,7 @@ public class SXSSFWorkbook implements Workbook {
     public Iterator<Sheet> sheetIterator() {
         return new SheetIterator<Sheet>();
     }
-    
+
     private final class SheetIterator<T extends Sheet> implements Iterator<T> {
         final private Iterator<XSSFSheet> it;
         @SuppressWarnings("unchecked")
@@ -721,7 +721,7 @@ public class SXSSFWorkbook implements Workbook {
                     "Use Sheet.removeSheetAt(int) instead.");
         }
     }
-    
+
     /**
      * Alias for {@link #sheetIterator()} to allow
      * foreach loops
@@ -766,11 +766,11 @@ public class SXSSFWorkbook implements Workbook {
         // Get the sheet to be removed
         XSSFSheet xSheet = _wb.getSheetAt(index);
         SXSSFSheet sxSheet = getSXSSFSheet(xSheet);
-        
+
         // De-register it
         _wb.removeSheetAt(index);
         deregisterSheetMapping(xSheet);
-        
+
         // Clean up temporary resources
         try {
             sxSheet.dispose();
@@ -803,7 +803,7 @@ public class SXSSFWorkbook implements Workbook {
      * @param endColumn     0 based end of repeating columns.
      * @param startRow      0 based start of repeating rows.
      * @param endRow        0 based end of repeating rows.
-     * 
+     *
      * @deprecated use {@link SXSSFSheet#setRepeatingRows(CellRangeAddress)}
      *        or {@link SXSSFSheet#setRepeatingColumns(CellRangeAddress)}
      */
@@ -835,7 +835,7 @@ public class SXSSFWorkbook implements Workbook {
     {
         return _wb.findFont(boldWeight, color, fontHeight, name, italic, strikeout, typeOffset, underline);
     }
-   
+
 
     /**
      * Get the number of fonts in the font table
@@ -895,7 +895,7 @@ public class SXSSFWorkbook implements Workbook {
     }
 
     /**
-     * Closes the underlying {@link XSSFWorkbook} and {@link OPCPackage} 
+     * Closes the underlying {@link XSSFWorkbook} and {@link OPCPackage}
      *  on which this Workbook is based, if any. Has no effect on Workbooks
      *  created from scratch.
      */
@@ -911,12 +911,12 @@ public class SXSSFWorkbook implements Workbook {
             }
         }
 
-        
-        // Tell the base workbook to close, does nothing if 
+
+        // Tell the base workbook to close, does nothing if
         //  it's a newly created one
         _wb.close();
     }
-    
+
     /**
      * Write out this workbook to an Outputstream.
      *
@@ -930,7 +930,7 @@ public class SXSSFWorkbook implements Workbook {
     	{
     		sheet.flushRows();
     	}
-    	
+
         //Save the template
         File tmplFile = TempFile.createTempFile("poi-sxssf-template", ".xlsx");
         try
@@ -955,7 +955,7 @@ public class SXSSFWorkbook implements Workbook {
             }
         }
     }
-    
+
     /**
      * Dispose of temporary files backing this workbook on disk.
      * Calling this method will render the workbook unusable.
@@ -1187,7 +1187,7 @@ public class SXSSFWorkbook implements Workbook {
     protected boolean isDate1904() {
         return _wb.isDate1904();
     }
-    
+
     /**
      * @return <code>false</code> if this workbook is not visible in the GUI
      */
@@ -1238,9 +1238,9 @@ public class SXSSFWorkbook implements Workbook {
 
     /**
      * Hide or unhide a sheet
-     * 
-     * Please note that the sheet currently set as active sheet (sheet 0 in a newly 
-     * created workbook or the one set via setActiveSheet()) cannot be hidden. 
+     *
+     * Please note that the sheet currently set as active sheet (sheet 0 in a newly
+     * created workbook or the one set via setActiveSheet()) cannot be hidden.
      *
      * @param sheetIx the sheet index (0-based)
      * @param hidden True to mark the sheet as hidden, false otherwise
@@ -1253,16 +1253,16 @@ public class SXSSFWorkbook implements Workbook {
 
     /**
      * Hide or unhide a sheet.
-     * 
+     *
      * <ul>
      *  <li>0 - visible. </li>
      *  <li>1 - hidden. </li>
      *  <li>2 - very hidden.</li>
      * </ul>
-     * 
-     * Please note that the sheet currently set as active sheet (sheet 0 in a newly 
+     *
+     * Please note that the sheet currently set as active sheet (sheet 0 in a newly
      * created workbook or the one set via setActiveSheet()) cannot be hidden.
-     *  
+     *
      * @param sheetIx the sheet index (0-based)
      * @param hidden one of the following <code>Workbook</code> constants:
      *        <code>Workbook.SHEET_STATE_VISIBLE</code>,
@@ -1275,11 +1275,11 @@ public class SXSSFWorkbook implements Workbook {
     {
         _wb.setSheetHidden(sheetIx,hidden);
     }
-    
+
     /**
      * Adds the LinkTable records required to allow formulas referencing
      *  the specified external workbook to be added to this one. Allows
-     *  formulas such as "[MyOtherWorkbook]Sheet3!$A$5" to be added to the 
+     *  formulas such as "[MyOtherWorkbook]Sheet3!$A$5" to be added to the
      *  file, for workbooks not already referenced.
      *
      * @param name The name the workbook will be referenced as in formulas
@@ -1288,7 +1288,7 @@ public class SXSSFWorkbook implements Workbook {
     public int linkExternalWorkbook(String name, Workbook workbook) {
         throw new RuntimeException("NotImplemented");
     }
-    
+
     /**
      * Register a new toolpack in this workbook.
      *

@@ -48,7 +48,7 @@ public class Rate implements Function {
          if (args.length >= 6)
             v6 = OperandResolver.getSingleValue(args[5], srcRowIndex, srcColumnIndex);
 
-         periods = OperandResolver.coerceValueToDouble(v1); 
+         periods = OperandResolver.coerceValueToDouble(v1);
          payment = OperandResolver.coerceValueToDouble(v2);
          present_val = OperandResolver.coerceValueToDouble(v3);
          if (args.length >= 4)
@@ -108,7 +108,7 @@ public class Rate implements Function {
 
    /**
     * Excel does not support infinities and NaNs, rather, it gives a #NUM! error in these cases
-    * 
+    *
     * @throws EvaluationException (#NUM!) if <tt>result</tt> is <tt>NaN</> or <tt>Infinity</tt>
     */
    static final void checkValue(double result) throws EvaluationException {

@@ -49,18 +49,18 @@ public class XSSFDataValidation implements DataValidation {
 		errorStyleMappings.put(DataValidation.ErrorStyle.STOP, STDataValidationErrorStyle.STOP);
 		errorStyleMappings.put(DataValidation.ErrorStyle.WARNING, STDataValidationErrorStyle.WARNING);
     }
-	
-    
+
+
 	static {
 		operatorTypeMappings.put(DataValidationConstraint.OperatorType.BETWEEN,STDataValidationOperator.BETWEEN);
 		operatorTypeMappings.put(DataValidationConstraint.OperatorType.NOT_BETWEEN,STDataValidationOperator.NOT_BETWEEN);
 		operatorTypeMappings.put(DataValidationConstraint.OperatorType.EQUAL,STDataValidationOperator.EQUAL);
 		operatorTypeMappings.put(DataValidationConstraint.OperatorType.NOT_EQUAL,STDataValidationOperator.NOT_EQUAL);
-		operatorTypeMappings.put(DataValidationConstraint.OperatorType.GREATER_THAN,STDataValidationOperator.GREATER_THAN);    	
+		operatorTypeMappings.put(DataValidationConstraint.OperatorType.GREATER_THAN,STDataValidationOperator.GREATER_THAN);
 		operatorTypeMappings.put(DataValidationConstraint.OperatorType.GREATER_OR_EQUAL,STDataValidationOperator.GREATER_THAN_OR_EQUAL);
-		operatorTypeMappings.put(DataValidationConstraint.OperatorType.LESS_THAN,STDataValidationOperator.LESS_THAN);    	
+		operatorTypeMappings.put(DataValidationConstraint.OperatorType.LESS_THAN,STDataValidationOperator.LESS_THAN);
 		operatorTypeMappings.put(DataValidationConstraint.OperatorType.LESS_OR_EQUAL,STDataValidationOperator.LESS_THAN_OR_EQUAL);
-		
+
 		for( Map.Entry<Integer,STDataValidationOperator.Enum> entry : operatorTypeMappings.entrySet() ) {
 			operatorTypeReverseMappings.put(entry.getValue(),entry.getKey());
 		}
@@ -69,22 +69,22 @@ public class XSSFDataValidation implements DataValidation {
 	static {
 		validationTypeMappings.put(DataValidationConstraint.ValidationType.FORMULA,STDataValidationType.CUSTOM);
 		validationTypeMappings.put(DataValidationConstraint.ValidationType.DATE,STDataValidationType.DATE);
-		validationTypeMappings.put(DataValidationConstraint.ValidationType.DECIMAL,STDataValidationType.DECIMAL);    	
-		validationTypeMappings.put(DataValidationConstraint.ValidationType.LIST,STDataValidationType.LIST); 
+		validationTypeMappings.put(DataValidationConstraint.ValidationType.DECIMAL,STDataValidationType.DECIMAL);
+		validationTypeMappings.put(DataValidationConstraint.ValidationType.LIST,STDataValidationType.LIST);
 		validationTypeMappings.put(DataValidationConstraint.ValidationType.ANY,STDataValidationType.NONE);
 		validationTypeMappings.put(DataValidationConstraint.ValidationType.TEXT_LENGTH,STDataValidationType.TEXT_LENGTH);
-		validationTypeMappings.put(DataValidationConstraint.ValidationType.TIME,STDataValidationType.TIME);  
+		validationTypeMappings.put(DataValidationConstraint.ValidationType.TIME,STDataValidationType.TIME);
 		validationTypeMappings.put(DataValidationConstraint.ValidationType.INTEGER,STDataValidationType.WHOLE);
-		
+
 		for( Map.Entry<Integer,STDataValidationType.Enum> entry : validationTypeMappings.entrySet() ) {
 			validationTypeReverseMappings.put(entry.getValue(),entry.getKey());
 		}
 	}
 
-	
+
 	XSSFDataValidation(CellRangeAddressList regions,CTDataValidation ctDataValidation) {
 	    this(getConstraint(ctDataValidation), regions, ctDataValidation);
-	}	
+	}
 
 	public XSSFDataValidation(XSSFDataValidationConstraint constraint,CellRangeAddressList regions,CTDataValidation ctDataValidation) {
 		super();
@@ -92,7 +92,7 @@ public class XSSFDataValidation implements DataValidation {
 		this.ctDdataValidation = ctDataValidation;
 		this.regions = regions;
 	}
- 
+
 	CTDataValidation getCtDdataValidation() {
 		return ctDdataValidation;
 	}
@@ -225,17 +225,17 @@ public class XSSFDataValidation implements DataValidation {
 	public CellRangeAddressList getRegions() {
 		return regions;
 	}
-	
+
 	public String prettyPrint() {
 		StringBuilder builder = new StringBuilder();
 		for(CellRangeAddress address : regions.getCellRangeAddresses()) {
 			builder.append(address.formatAsString());
 		}
 		builder.append(" => ");
-		builder.append(this.validationConstraint.prettyPrint());	
+		builder.append(this.validationConstraint.prettyPrint());
 		return builder.toString();
 	}
-	
+
     private static XSSFDataValidationConstraint getConstraint(CTDataValidation ctDataValidation) {
     	XSSFDataValidationConstraint constraint = null;
     	String formula1 = ctDataValidation.getFormula1();

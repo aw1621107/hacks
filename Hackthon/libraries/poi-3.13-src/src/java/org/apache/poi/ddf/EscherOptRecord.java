@@ -24,7 +24,7 @@ import org.apache.poi.util.Internal;
  * determining the attributes of a shape. Properties can be of two types: simple
  * or complex. Simple types are fixed length. Complex properties are variable
  * length.
- * 
+ *
  * @author Glen Stampoultzis
  */
 public class EscherOptRecord extends AbstractEscherOptRecord

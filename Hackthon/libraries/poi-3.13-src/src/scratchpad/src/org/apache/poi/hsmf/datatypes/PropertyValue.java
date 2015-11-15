@@ -34,13 +34,13 @@ public class PropertyValue {
    private MAPIProperty property;
    private long flags;
    protected byte[] data;
-   
+
    public PropertyValue(MAPIProperty property, long flags, byte[] data) {
       this.property = property;
       this.flags = flags;
       this.data = data;
    }
-   
+
    public MAPIProperty getProperty() {
       return property;
    }
@@ -59,12 +59,12 @@ public class PropertyValue {
    public void setRawValue(byte[] value) {
       this.data = value;
    }
-   
+
    public String toString() {
       Object v = getValue();
       if (v == null)
           return "(No value available)";
-      
+
       if (v instanceof byte[]) {
           return ByteChunk.toDebugFriendlyString((byte[])v);
       } else {
@@ -72,22 +72,22 @@ public class PropertyValue {
           return v.toString();
       }
    }
-   
+
    public static class NullPropertyValue extends PropertyValue {
        public NullPropertyValue(MAPIProperty property, long flags, byte[] data) {
           super(property, flags, data);
        }
-       
+
        public Void getValue() {
            return null;
        }
    }
-   
+
    public static class BooleanPropertyValue extends PropertyValue {
        public BooleanPropertyValue(MAPIProperty property, long flags, byte[] data) {
           super(property, flags, data);
        }
-       
+
        public Boolean getValue() {
           short val = LittleEndian.getShort(data);
           return val > 0;
@@ -101,12 +101,12 @@ public class PropertyValue {
           }
        }
    }
-    
+
    public static class ShortPropertyValue extends PropertyValue {
        public ShortPropertyValue(MAPIProperty property, long flags, byte[] data) {
           super(property, flags, data);
        }
-       
+
        public Short getValue() {
           return LittleEndian.getShort(data);
        }
@@ -117,12 +117,12 @@ public class PropertyValue {
           LittleEndian.putShort(data, 0, value);
        }
    }
-    
+
    public static class LongPropertyValue extends PropertyValue {
        public LongPropertyValue(MAPIProperty property, long flags, byte[] data) {
           super(property, flags, data);
        }
-       
+
        public Integer getValue() {
           return LittleEndian.getInt(data);
        }
@@ -133,12 +133,12 @@ public class PropertyValue {
           LittleEndian.putInt(data, 0, value);
        }
     }
-    
+
    public static class LongLongPropertyValue extends PropertyValue {
       public LongLongPropertyValue(MAPIProperty property, long flags, byte[] data) {
          super(property, flags, data);
       }
-      
+
       public Long getValue() {
          return LittleEndian.getLong(data);
       }
@@ -149,12 +149,12 @@ public class PropertyValue {
          LittleEndian.putLong(data, 0, value);
       }
    }
-   
+
    public static class FloatPropertyValue extends PropertyValue {
        public FloatPropertyValue(MAPIProperty property, long flags, byte[] data) {
           super(property, flags, data);
        }
-       
+
        public Float getValue() {
           return LittleEndian.getFloat(data);
        }
@@ -165,12 +165,12 @@ public class PropertyValue {
           LittleEndian.putFloat(data, 0, value);
        }
    }
-    
+
    public static class DoublePropertyValue extends PropertyValue {
        public DoublePropertyValue(MAPIProperty property, long flags, byte[] data) {
           super(property, flags, data);
        }
-       
+
        public Double getValue() {
           return LittleEndian.getDouble(data);
        }
@@ -181,9 +181,9 @@ public class PropertyValue {
           LittleEndian.putDouble(data, 0, value);
        }
    }
-    
+
    /**
-    * signed 64-bit integer that represents a base ten decimal, 
+    * signed 64-bit integer that represents a base ten decimal,
     * with four digits to the right of the decimal point
     */
    public static class CurrencyPropertyValue extends PropertyValue {
@@ -191,7 +191,7 @@ public class PropertyValue {
        public CurrencyPropertyValue(MAPIProperty property, long flags, byte[] data) {
           super(property, flags, data);
        }
-       
+
        public BigInteger getValue() {
            long unshifted = LittleEndian.getLong(data);
            return BigInteger.valueOf(unshifted).divide(SHIFT);
@@ -204,7 +204,7 @@ public class PropertyValue {
           LittleEndian.putLong(data, 0, shifted);
        }
    }
-    
+
    /**
     * 64-bit integer specifying the number of 100ns periods since Jan 1, 1601
     */
@@ -213,7 +213,7 @@ public class PropertyValue {
       public TimePropertyValue(MAPIProperty property, long flags, byte[] data) {
          super(property, flags, data);
       }
-      
+
       public Calendar getValue() {
          long time = LittleEndian.getLong(data);
          time = (time / 10 / 1000) - OFFSET;

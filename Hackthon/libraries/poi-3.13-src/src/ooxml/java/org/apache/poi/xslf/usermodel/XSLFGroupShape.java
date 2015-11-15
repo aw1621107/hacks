@@ -47,14 +47,14 @@ import org.openxmlformats.schemas.presentationml.x2006.main.CTShape;
 
 /**
  * Represents a group shape that consists of many shapes grouped together.
- * 
+ *
  * @author Yegor Kozlov
  */
 @Beta
 public class XSLFGroupShape extends XSLFShape
 implements XSLFShapeContainer, GroupShape<XSLFShape,XSLFTextParagraph> {
     private static POILogger _logger = POILogFactory.getLogger(XSLFGroupShape.class);
-    
+
     private final List<XSLFShape> _shapes;
     private final CTGroupShapeProperties _grpSpPr;
     private XSLFDrawing _drawing;
@@ -68,12 +68,12 @@ implements XSLFShapeContainer, GroupShape<XSLFShape,XSLFTextParagraph> {
     protected CTGroupShapeProperties getGrpSpPr() {
         return _grpSpPr;
     }
-    
+
     protected CTGroupTransform2D getSafeXfrm() {
         CTGroupTransform2D xfrm = getXfrm();
         return (xfrm == null ? getGrpSpPr().addNewXfrm() : xfrm);
     }
-    
+
     protected CTGroupTransform2D getXfrm() {
         return getGrpSpPr().getXfrm();
     }
@@ -259,7 +259,7 @@ implements XSLFShapeContainer, GroupShape<XSLFShape,XSLFTextParagraph> {
         sh.setParent(this);
         return sh;
     }
-    
+
     @Override
     public XSLFTable createTable(int numRows, int numCols){
         if (numRows < 1 || numCols < 1) {
@@ -277,7 +277,7 @@ implements XSLFShapeContainer, GroupShape<XSLFShape,XSLFTextParagraph> {
         return sh;
     }
 
-    
+
     @Override
     public void setFlipHorizontal(boolean flip){
         getSafeXfrm().setFlipH(flip);
@@ -314,10 +314,10 @@ implements XSLFShapeContainer, GroupShape<XSLFShape,XSLFTextParagraph> {
     @Override
     void copy(XSLFShape src){
         XSLFGroupShape gr = (XSLFGroupShape)src;
-        
+
         // clear shapes
         clear();
-        
+
         // recursively update each shape
         for(XSLFShape shape : gr.getShapes()) {
             XSLFShape newShape = null;

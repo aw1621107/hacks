@@ -48,14 +48,14 @@ public abstract class LZWDecompresser {
     *  becomes a position of 0x123 or 0x312
     */
    private final boolean positionIsBigEndian;
-   
-   protected LZWDecompresser(boolean maskMeansCompressed, 
+
+   protected LZWDecompresser(boolean maskMeansCompressed,
             int codeLengthIncrease, boolean positionIsBigEndian) {
       this.maskMeansCompressed = maskMeansCompressed;
       this.codeLengthIncrease = codeLengthIncrease;
       this.positionIsBigEndian = positionIsBigEndian;
    }
-   
+
    /**
     * Populates the dictionary, and returns where in it
     *  to begin writing new codes.
@@ -65,13 +65,13 @@ public abstract class LZWDecompresser {
     *  usually the new codes can go in at the start.
     */
    protected abstract int populateDictionary(byte[] dict);
-   
+
    /**
     * Adjusts the position offset if needed when looking
     *  something up in the dictionary.
     */
    protected abstract int adjustDictionaryOffset(int offset);
-   
+
    /**
     * Decompresses the given input stream, returning the array of bytes
     *  of the decompressed input.
@@ -81,7 +81,7 @@ public abstract class LZWDecompresser {
       decompress(src,res);
       return res.toByteArray();
    }
-   
+
    /**
     * Perform a streaming decompression of the input.
     * Works by:
@@ -153,7 +153,7 @@ public abstract class LZWDecompresser {
 
                // Build up how long the code sequence is, and
                //  what position of the code to start at
-               // (The position is the usually the first 12 bits, 
+               // (The position is the usually the first 12 bits,
                //  and the length is usually the last 4 bits)
                len = (dataIPt2 & 15) + codeLengthIncrease;
                if(positionIsBigEndian) {
@@ -161,7 +161,7 @@ public abstract class LZWDecompresser {
                } else {
                   pntr = dataIPt1 + ((dataIPt2&0xF0)<<4);
                }
-               
+
                // Adjust the pointer as needed
                pntr = adjustDictionaryOffset(pntr);
 

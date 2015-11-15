@@ -27,7 +27,7 @@ import org.apache.poi.ss.usermodel.CellValue;
 
 /**
  * Tests for {@link Financed}
- * 
+ *
  * @author Torstein Svendsen (torstei@officenet.no)
  */
 public final class TestFind extends TestCase {

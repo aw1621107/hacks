@@ -74,7 +74,7 @@ public final class ZipHelper {
 	 */
 	public static ZipEntry getContentTypeZipEntry(ZipPackage pkg) {
 		Enumeration<? extends ZipEntry> entries = pkg.getZipArchive().getEntries();
-		
+
 		// Enumerate through the Zip entries until we find the one named
 		// '[Content_Types].xml'.
 		while (entries.hasMoreElements()) {

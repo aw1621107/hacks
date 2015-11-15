@@ -24,7 +24,7 @@ import org.apache.poi.ss.formula.eval.ValueEval;
 /**
  * Implementation of the DMin function:
  * Finds the minimum value of a column in an area with given conditions.
- * 
+ *
  * TODO:
  * - wildcards ? and * in string conditions
  * - functions as conditions

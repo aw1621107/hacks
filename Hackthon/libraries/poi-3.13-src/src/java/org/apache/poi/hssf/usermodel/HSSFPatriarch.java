@@ -170,10 +170,10 @@ public final class HSSFPatriarch implements HSSFShapeContainer, Drawing {
     /**
      * Creates a simple shape.  This includes such shapes as lines, rectangles,
      * and ovals.
-     * 
-     * Note: Microsoft Excel seems to sometimes disallow 
-     * higher y1 than y2 or higher x1 than x2 in the anchor, you might need to 
-     * reverse them and draw shapes vertically or horizontally flipped! 
+     *
+     * Note: Microsoft Excel seems to sometimes disallow
+     * higher y1 than y2 or higher x1 than x2 in the anchor, you might need to
+     * reverse them and draw shapes vertically or horizontally flipped!
      *
      * @param anchor the client anchor describes how this group is attached
      *               to the sheet.
@@ -218,8 +218,8 @@ public final class HSSFPatriarch implements HSSFShapeContainer, Drawing {
     }
 
     /**
-     * Adds a new OLE Package Shape 
-     * 
+     * Adds a new OLE Package Shape
+     *
      * @param anchor       the client anchor describes how this picture is
      *                     attached to the sheet.
      * @param storageId    the storageId returned by {@link HSSFWorkbook#addOlePackage(POIFSFileSystem,String,String,String)}
@@ -242,14 +242,14 @@ public final class HSSFPatriarch implements HSSFShapeContainer, Drawing {
         ftCmo.setReserved2(0);
         ftCmo.setReserved3(0);
         obj.addSubRecord(ftCmo);
-        
-        // FtCf (pictFormat) 
+
+        // FtCf (pictFormat)
         FtCfSubRecord ftCf = new FtCfSubRecord();
         HSSFPictureData pictData = getSheet().getWorkbook().getAllPictures().get(pictureIndex-1);
         switch (pictData.getFormat()) {
 	        case HSSFWorkbook.PICTURE_TYPE_WMF:
 	        case HSSFWorkbook.PICTURE_TYPE_EMF:
-	        	// this needs patch #49658 to be applied to actually work 
+	        	// this needs patch #49658 to be applied to actually work
 	            ftCf.setFlags(FtCfSubRecord.METAFILE_BIT);
 	            break;
 	        case HSSFWorkbook.PICTURE_TYPE_DIB:
@@ -264,12 +264,12 @@ public final class HSSFPatriarch implements HSSFShapeContainer, Drawing {
         FtPioGrbitSubRecord ftPioGrbit = new FtPioGrbitSubRecord();
         ftPioGrbit.setFlagByBit(FtPioGrbitSubRecord.AUTO_PICT_BIT, true);
         obj.addSubRecord(ftPioGrbit);
-        
+
         EmbeddedObjectRefSubRecord ftPictFmla = new EmbeddedObjectRefSubRecord();
         ftPictFmla.setUnknownFormulaData(new byte[]{2, 0, 0, 0, 0});
         ftPictFmla.setOleClassname("Paket");
         ftPictFmla.setStorageId(storageId);
-        
+
         obj.addSubRecord(ftPictFmla);
         obj.addSubRecord(new EndSubRecord());
 
@@ -282,22 +282,22 @@ public final class HSSFPatriarch implements HSSFShapeContainer, Drawing {
         } catch (FileNotFoundException e) {
         	throw new IllegalStateException("trying to add ole shape without actually adding data first - use HSSFWorkbook.addOlePackage first", e);
         }
-        
+
         // create picture shape, which need to be minimal modified for oleshapes
         HSSFPicture shape = new HSSFPicture(null, anchor);
         shape.setPictureIndex(pictureIndex);
         EscherContainerRecord spContainer = shape.getEscherContainer();
         EscherSpRecord spRecord = spContainer.getChildById(EscherSpRecord.RECORD_ID);
         spRecord.setFlags(spRecord.getFlags() |  EscherSpRecord.FLAG_OLESHAPE);
-        
-        HSSFObjectData oleShape = new HSSFObjectData(spContainer, obj, oleRoot); 
+
+        HSSFObjectData oleShape = new HSSFObjectData(spContainer, obj, oleRoot);
         addShape(oleShape);
         onCreate(oleShape);
-        
-        
+
+
         return oleShape;
     }
-    
+
     /**
      * Creates a polygon
      *

@@ -37,11 +37,11 @@ public class POIFSFileHandler extends AbstractFileHandler {
 		assertNotNull(fs);
 		assertNotNull(fs.getRoot());
 	}
-	
+
 	protected void handlePOIDocument(POIDocument doc) throws Exception {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		doc.write(out);
-		
+
 		ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
 		POIFSFileSystem fs = new POIFSFileSystem(in);
 		handlePOIFSFileSystem(fs);

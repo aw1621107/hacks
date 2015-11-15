@@ -28,7 +28,7 @@ import org.apache.poi.util.LittleEndianOutput;
 public final class FtCfSubRecord extends SubRecord {
     public final static short sid = 0x07;
     public final static short length = 0x02;
-    
+
     /**
      * Specifies the format of the picture is an enhanced metafile.
      */
@@ -38,13 +38,13 @@ public final class FtCfSubRecord extends SubRecord {
      * Specifies the format of the picture is a bitmap.
      */
     public static final short BITMAP_BIT      = (short)0x0009;
-    
+
     /**
      * Specifies the picture is in an unspecified format that is
      * neither and enhanced metafile nor a bitmap.
      */
     public static final short UNSPECIFIED_BIT = (short)0xFFFF;
-    
+
     private short flags = 0;
 
     /**

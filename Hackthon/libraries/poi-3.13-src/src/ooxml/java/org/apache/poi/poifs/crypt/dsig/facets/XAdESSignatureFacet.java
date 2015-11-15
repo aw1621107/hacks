@@ -18,9 +18,9 @@
 /* ====================================================================
    This product contains an ASLv2 licensed version of the OOXML signer
    package from the eID Applet project
-   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt  
+   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt
    Copyright (C) 2008-2014 FedICT.
-   ================================================================= */ 
+   ================================================================= */
 
 package org.apache.poi.poifs.crypt.dsig.facets;
 
@@ -78,20 +78,20 @@ import org.w3c.dom.Element;
  * XAdES Signature Facet. Implements XAdES v1.4.1 which is compatible with XAdES
  * v1.3.2. The implemented XAdES format is XAdES-BES/EPES. It's up to another
  * part of the signature service to upgrade the XAdES-BES to a XAdES-X-L.
- * 
+ *
  * This implementation has been tested against an implementation that
  * participated multiple ETSI XAdES plugtests.
- * 
+ *
  * @author Frank Cornelis
  * @see <a href="http://en.wikipedia.org/wiki/XAdES">XAdES</a>
- * 
+ *
  */
 public class XAdESSignatureFacet extends SignatureFacet {
 
     private static final POILogger LOG = POILogFactory.getLogger(XAdESSignatureFacet.class);
 
     private static final String XADES_TYPE = "http://uri.etsi.org/01903#SignedProperties";
-    
+
     private Map<String, String> dataObjectFormatMimeTypes = new HashMap<String, String>();
 
 
@@ -107,7 +107,7 @@ public class XAdESSignatureFacet extends SignatureFacet {
         QualifyingPropertiesDocument qualDoc = QualifyingPropertiesDocument.Factory.newInstance();
         QualifyingPropertiesType qualifyingProperties = qualDoc.addNewQualifyingProperties();
         qualifyingProperties.setTarget("#" + signatureConfig.getPackageSignatureId());
-        
+
         // SignedProperties
         SignedPropertiesType signedProperties = qualifyingProperties.addNewSignedProperties();
         signedProperties.setId(signatureConfig.getXadesSignatureId());
@@ -148,12 +148,12 @@ public class XAdESSignatureFacet extends SignatureFacet {
         if (policyService != null) {
             SignaturePolicyIdentifierType signaturePolicyIdentifier =
                 signedSignatureProperties.addNewSignaturePolicyIdentifier();
-            
+
             SignaturePolicyIdType signaturePolicyId = signaturePolicyIdentifier.addNewSignaturePolicyId();
 
             ObjectIdentifierType objectIdentifier = signaturePolicyId.addNewSigPolicyId();
             objectIdentifier.setDescription(policyService.getSignaturePolicyDescription());
-            
+
             IdentifierType identifier = objectIdentifier.addNewIdentifier();
             identifier.setStringValue(policyService.getSignaturePolicyIdentifier());
 
@@ -163,14 +163,14 @@ public class XAdESSignatureFacet extends SignatureFacet {
 
             String signaturePolicyDownloadUrl = policyService.getSignaturePolicyDownloadUrl();
             if (null != signaturePolicyDownloadUrl) {
-                SigPolicyQualifiersListType sigPolicyQualifiers = signaturePolicyId.addNewSigPolicyQualifiers(); 
+                SigPolicyQualifiersListType sigPolicyQualifiers = signaturePolicyId.addNewSigPolicyQualifiers();
                 AnyType sigPolicyQualifier = sigPolicyQualifiers.addNewSigPolicyQualifier();
                 XmlString spUriElement = XmlString.Factory.newInstance();
                 spUriElement.setStringValue(signaturePolicyDownloadUrl);
                 insertXChild(sigPolicyQualifier, spUriElement);
             }
         } else if (signatureConfig.isXadesSignaturePolicyImplied()) {
-            SignaturePolicyIdentifierType signaturePolicyIdentifier = 
+            SignaturePolicyIdentifierType signaturePolicyIdentifier =
                     signedSignatureProperties.addNewSignaturePolicyIdentifier();
             signaturePolicyIdentifier.addNewSignaturePolicyImplied();
         }
@@ -211,7 +211,7 @@ public class XAdESSignatureFacet extends SignatureFacet {
     /**
      * Gives back the JAXB DigestAlgAndValue data structure.
      *
-     * @param digestAlgAndValue the parent for the new digest element 
+     * @param digestAlgAndValue the parent for the new digest element
      * @param data the data to be digested
      * @param digestAlgo the digest algorithm
      */
@@ -221,7 +221,7 @@ public class XAdESSignatureFacet extends SignatureFacet {
             HashAlgorithm digestAlgo) {
         DigestMethodType digestMethod = digestAlgAndValue.addNewDigestMethod();
         digestMethod.setAlgorithm(SignatureConfig.getDigestMethodUri(digestAlgo));
-        
+
         MessageDigest messageDigest = CryptoFunctions.getMessageDigest(digestAlgo);
         byte[] digestValue = messageDigest.digest(data);
         digestAlgAndValue.setDigestValue(digestValue);
@@ -239,7 +239,7 @@ public class XAdESSignatureFacet extends SignatureFacet {
              * Make sure the DN is encoded using the same order as present
              * within the certificate. This is an Office2010 work-around.
              * Should be reverted back.
-             * 
+             *
              * XXX: not correct according to RFC 4514.
              */
             // TODO: check if issuerName is different on getTBSCertificate
@@ -258,14 +258,14 @@ public class XAdESSignatureFacet extends SignatureFacet {
             throw new RuntimeException("certificate encoding error: "
                     + e.getMessage(), e);
         }
-        DigestAlgAndValueType certDigest = certId.addNewCertDigest(); 
+        DigestAlgAndValueType certDigest = certId.addNewCertDigest();
         setDigestAlgAndValue(certDigest, encodedCertificate, signatureConfig.getXadesDigestAlgo());
     }
 
     /**
      * Adds a mime-type for the given ds:Reference (referred via its @URI). This
      * information is added via the xades:DataObjectFormat element.
-     * 
+     *
      * @param dsReferenceUri
      * @param mimetype
      */

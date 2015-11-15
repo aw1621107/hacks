@@ -38,7 +38,7 @@ import org.apache.poi.poifs.filesystem.NPOIFSFileSystem;
  */
 public final class TestHPSFBugs extends TestCase {
    private static final POIDataSamples _samples = POIDataSamples.getHPSFInstance();
-    
+
    /**
     * Ensure that we can create a new HSSF Workbook,
     *  then add some properties to it, save +
@@ -46,62 +46,62 @@ public final class TestHPSFBugs extends TestCase {
     */
    public void test48832() throws Exception {
       HSSFWorkbook wb = new HSSFWorkbook();
-      
+
       // Starts empty
       assertNull(wb.getDocumentSummaryInformation());
       assertNull(wb.getSummaryInformation());
-      
+
       // Add new properties
       wb.createInformationProperties();
-      
+
       assertNotNull(wb.getDocumentSummaryInformation());
       assertNotNull(wb.getSummaryInformation());
-      
+
       // Set initial values
       wb.getSummaryInformation().setAuthor("Apache POI");
       wb.getSummaryInformation().setKeywords("Testing POI");
       wb.getSummaryInformation().setCreateDateTime(new Date(12345));
-      
+
       wb.getDocumentSummaryInformation().setCompany("Apache");
-      
-      
+
+
       // Save and reload
       ByteArrayOutputStream baos = new ByteArrayOutputStream();
       wb.write(baos);
-      ByteArrayInputStream bais = 
+      ByteArrayInputStream bais =
          new ByteArrayInputStream(baos.toByteArray());
       wb = new HSSFWorkbook(bais);
-      
-      
+
+
       // Ensure changes were taken
       assertNotNull(wb.getDocumentSummaryInformation());
       assertNotNull(wb.getSummaryInformation());
- 
+
       assertEquals("Apache POI", wb.getSummaryInformation().getAuthor());
       assertEquals("Testing POI", wb.getSummaryInformation().getKeywords());
       assertEquals(12345, wb.getSummaryInformation().getCreateDateTime().getTime());
       assertEquals("Apache", wb.getDocumentSummaryInformation().getCompany());
-      
-      
+
+
       // Set some more, save + reload
       wb.getSummaryInformation().setComments("Resaved");
-      
+
       baos = new ByteArrayOutputStream();
       wb.write(baos);
       bais = new ByteArrayInputStream(baos.toByteArray());
       wb = new HSSFWorkbook(bais);
-      
+
       // Check again
       assertNotNull(wb.getDocumentSummaryInformation());
       assertNotNull(wb.getSummaryInformation());
- 
+
       assertEquals("Apache POI", wb.getSummaryInformation().getAuthor());
       assertEquals("Testing POI", wb.getSummaryInformation().getKeywords());
       assertEquals("Resaved", wb.getSummaryInformation().getComments());
       assertEquals(12345, wb.getSummaryInformation().getCreateDateTime().getTime());
       assertEquals("Apache", wb.getDocumentSummaryInformation().getCompany());
    }
-   
+
    /**
     * Some files seem to want the length and data to be on a 4-byte boundary,
     * and without that you'll hit an ArrayIndexOutOfBoundsException after
@@ -109,55 +109,55 @@ public final class TestHPSFBugs extends TestCase {
     */
    public void test54233() throws Exception {
        DocumentInputStream dis;
-       NPOIFSFileSystem fs = 
+       NPOIFSFileSystem fs =
                new NPOIFSFileSystem(_samples.openResourceAsStream("TestNon4ByteBoundary.doc"));
-       
+
        dis = fs.createDocumentInputStream(SummaryInformation.DEFAULT_STREAM_NAME);
        SummaryInformation si = (SummaryInformation)PropertySetFactory.create(dis);
-       
+
        dis = fs.createDocumentInputStream(DocumentSummaryInformation.DEFAULT_STREAM_NAME);
        DocumentSummaryInformation dsi = (DocumentSummaryInformation)PropertySetFactory.create(dis);
-      
+
        // Test
        assertEquals("Microsoft Word 10.0", si.getApplicationName());
        assertEquals("", si.getTitle());
        assertEquals("", si.getAuthor());
        assertEquals("Cour de Justice", dsi.getCompany());
-       
-       
+
+
        // Write out and read back, should still be valid
        POIDocument doc = new HPSFPropertiesOnlyDocument(fs);
        ByteArrayOutputStream baos = new ByteArrayOutputStream();
        doc.write(baos);
        ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
        doc = new HPSFPropertiesOnlyDocument(new NPOIFSFileSystem(bais));
-       
+
        // Check properties are still there
        assertEquals("Microsoft Word 10.0", si.getApplicationName());
        assertEquals("", si.getTitle());
        assertEquals("", si.getAuthor());
        assertEquals("Cour de Justice", dsi.getCompany());
    }
-   
+
    /**
     * CodePage Strings can be zero length
     */
    public void test56138() throws Exception {
        DocumentInputStream dis;
-       NPOIFSFileSystem fs = 
+       NPOIFSFileSystem fs =
                new NPOIFSFileSystem(_samples.openResourceAsStream("TestZeroLengthCodePage.mpp"));
-       
+
        dis = fs.createDocumentInputStream(SummaryInformation.DEFAULT_STREAM_NAME);
        SummaryInformation si = (SummaryInformation)PropertySetFactory.create(dis);
-       
+
        dis = fs.createDocumentInputStream(DocumentSummaryInformation.DEFAULT_STREAM_NAME);
        DocumentSummaryInformation dsi = (DocumentSummaryInformation)PropertySetFactory.create(dis);
-       
+
        // Test
        assertEquals("MSProject", si.getApplicationName());
        assertEquals("project1", si.getTitle());
        assertEquals("Jon Iles", si.getAuthor());
-       
+
        assertEquals("", dsi.getCompany());
        assertEquals(2, dsi.getSectionCount());
    }

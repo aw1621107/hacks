@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.poifs.storage;
 
@@ -79,7 +79,7 @@ public interface BlockList
 
     public void setBAT(final BlockAllocationTableReader bat)
         throws IOException;
-    
+
     public int blockCount();
 }   // end public interface BlockList
 

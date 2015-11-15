@@ -71,12 +71,12 @@ public class CustomGeometry implements Iterable<Path>{
                     new ClosePathCommand());
         }
     }
-    
+
     public Iterator<Path> iterator() {
         return paths.iterator();
     }
 
     public Path getTextBounds(){
-        return textBounds;        
+        return textBounds;
     }
 }

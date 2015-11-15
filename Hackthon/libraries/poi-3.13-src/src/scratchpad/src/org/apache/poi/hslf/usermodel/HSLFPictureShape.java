@@ -196,18 +196,18 @@ public class HSLFPictureShape extends HSLFSimpleShape implements PictureShape<HS
         // The anchor specified by the escher properties is the displayed size,
         // i.e. the size of the already clipped image
         AbstractEscherOptRecord opt = getEscherOptRecord();
-        
+
         double top    = getFractProp(opt, EscherProperties.BLIP__CROPFROMTOP);
         double bottom = getFractProp(opt, EscherProperties.BLIP__CROPFROMBOTTOM);
         double left   = getFractProp(opt, EscherProperties.BLIP__CROPFROMLEFT);
         double right  = getFractProp(opt, EscherProperties.BLIP__CROPFROMRIGHT);
-        
+
         // if all crop values are zero (the default) then no crop rectangle is set, return null
         return (top==0 && bottom==0 && left==0 && right==0)
             ? null
             : new Insets((int)(top*100000), (int)(left*100000), (int)(bottom*100000), (int)(right*100000));
     }
-    
+
     /**
      * @return the fractional property or 0 if not defined
      */

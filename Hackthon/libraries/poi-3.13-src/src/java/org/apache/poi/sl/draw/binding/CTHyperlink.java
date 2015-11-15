@@ -26,9 +26,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_Hyperlink complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_Hyperlink">
  *   &lt;complexContent>
@@ -49,8 +49,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_Hyperlink", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main", propOrder = {
@@ -82,11 +82,11 @@ public class CTHyperlink {
 
     /**
      * Gets the value of the snd property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTEmbeddedWAVAudioFile }
-     *     
+     *
      */
     public CTEmbeddedWAVAudioFile getSnd() {
         return snd;
@@ -94,11 +94,11 @@ public class CTHyperlink {
 
     /**
      * Sets the value of the snd property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTEmbeddedWAVAudioFile }
-     *     
+     *
      */
     public void setSnd(CTEmbeddedWAVAudioFile value) {
         this.snd = value;
@@ -110,11 +110,11 @@ public class CTHyperlink {
 
     /**
      * Gets the value of the extLst property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTOfficeArtExtensionList }
-     *     
+     *
      */
     public CTOfficeArtExtensionList getExtLst() {
         return extLst;
@@ -122,11 +122,11 @@ public class CTHyperlink {
 
     /**
      * Sets the value of the extLst property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTOfficeArtExtensionList }
-     *     
+     *
      */
     public void setExtLst(CTOfficeArtExtensionList value) {
         this.extLst = value;
@@ -138,11 +138,11 @@ public class CTHyperlink {
 
     /**
      * Drawing Object Hyperlink Target
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getId() {
         return id;
@@ -150,11 +150,11 @@ public class CTHyperlink {
 
     /**
      * Sets the value of the id property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setId(String value) {
         this.id = value;
@@ -166,11 +166,11 @@ public class CTHyperlink {
 
     /**
      * Gets the value of the invalidUrl property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getInvalidUrl() {
         if (invalidUrl == null) {
@@ -182,11 +182,11 @@ public class CTHyperlink {
 
     /**
      * Sets the value of the invalidUrl property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setInvalidUrl(String value) {
         this.invalidUrl = value;
@@ -198,11 +198,11 @@ public class CTHyperlink {
 
     /**
      * Gets the value of the action property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getAction() {
         if (action == null) {
@@ -214,11 +214,11 @@ public class CTHyperlink {
 
     /**
      * Sets the value of the action property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setAction(String value) {
         this.action = value;
@@ -230,11 +230,11 @@ public class CTHyperlink {
 
     /**
      * Gets the value of the tgtFrame property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getTgtFrame() {
         if (tgtFrame == null) {
@@ -246,11 +246,11 @@ public class CTHyperlink {
 
     /**
      * Sets the value of the tgtFrame property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setTgtFrame(String value) {
         this.tgtFrame = value;
@@ -262,11 +262,11 @@ public class CTHyperlink {
 
     /**
      * Gets the value of the tooltip property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getTooltip() {
         if (tooltip == null) {
@@ -278,11 +278,11 @@ public class CTHyperlink {
 
     /**
      * Sets the value of the tooltip property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setTooltip(String value) {
         this.tooltip = value;
@@ -294,11 +294,11 @@ public class CTHyperlink {
 
     /**
      * Gets the value of the history property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public boolean isHistory() {
         if (history == null) {
@@ -310,11 +310,11 @@ public class CTHyperlink {
 
     /**
      * Sets the value of the history property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setHistory(boolean value) {
         this.history = value;
@@ -330,11 +330,11 @@ public class CTHyperlink {
 
     /**
      * Gets the value of the highlightClick property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public boolean isHighlightClick() {
         if (highlightClick == null) {
@@ -346,11 +346,11 @@ public class CTHyperlink {
 
     /**
      * Sets the value of the highlightClick property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setHighlightClick(boolean value) {
         this.highlightClick = value;
@@ -366,11 +366,11 @@ public class CTHyperlink {
 
     /**
      * Gets the value of the endSnd property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public boolean isEndSnd() {
         if (endSnd == null) {
@@ -382,11 +382,11 @@ public class CTHyperlink {
 
     /**
      * Sets the value of the endSnd property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setEndSnd(boolean value) {
         this.endSnd = value;

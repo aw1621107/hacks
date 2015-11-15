@@ -26,7 +26,7 @@ import org.apache.poi.ss.formula.functions.FreeRefFunction ;
 
 /**
  * A simple user-defined function to calculate principal and interest.
- * 
+ *
  * @author Jon Svede ( jon [at] loquatic [dot] com )
  * @author Brian Bush ( brian [dot] bush [at] nrel [dot] gov )
  *
@@ -34,9 +34,9 @@ import org.apache.poi.ss.formula.functions.FreeRefFunction ;
 public class CalculateMortgage implements FreeRefFunction {
 
     public ValueEval evaluate( ValueEval[] args, OperationEvaluationContext ec ) {
-        
+
         // verify that we have enough data
-        if (args.length != 3) {  
+        if (args.length != 3) {
             return ErrorEval.VALUE_INVALID;
         }
 
@@ -44,40 +44,40 @@ public class CalculateMortgage implements FreeRefFunction {
         double principal, rate, years,  result;
         try {
             // extract values as ValueEval
-            ValueEval v1 = OperandResolver.getSingleValue( args[0], 
-                                                           ec.getRowIndex(), 
+            ValueEval v1 = OperandResolver.getSingleValue( args[0],
+                                                           ec.getRowIndex(),
                                                            ec.getColumnIndex() ) ;
-            ValueEval v2 = OperandResolver.getSingleValue( args[1], 
-                                                           ec.getRowIndex(), 
+            ValueEval v2 = OperandResolver.getSingleValue( args[1],
+                                                           ec.getRowIndex(),
                                                            ec.getColumnIndex() ) ;
-            ValueEval v3 = OperandResolver.getSingleValue( args[2], 
-                                                           ec.getRowIndex(), 
+            ValueEval v3 = OperandResolver.getSingleValue( args[2],
+                                                           ec.getRowIndex(),
                                                            ec.getColumnIndex() ) ;
 
             // get data as doubles
-            principal  = OperandResolver.coerceValueToDouble( v1 ) ; 
+            principal  = OperandResolver.coerceValueToDouble( v1 ) ;
             rate  = OperandResolver.coerceValueToDouble( v2 ) ;
             years = OperandResolver.coerceValueToDouble( v3 ) ;
-            
+
             result = calculateMortgagePayment( principal, rate, years ) ;
             System.out.println( "Result = " + result ) ;
 
             checkValue(result);
-            
+
         } catch (EvaluationException e) {
             return e.getErrorEval();
         }
 
         return new NumberEval( result ) ;
     }
-    
+
     public double calculateMortgagePayment( double p, double r, double y ) {
         double i = r / 12 ;
         double n = y * 12 ;
-        
-        double principalAndInterest = 
+
+        double principalAndInterest =
              p * (( i * Math.pow((1 + i),n ) ) / ( Math.pow((1 + i),n) - 1))  ;
-        
+
         return principalAndInterest ;
     }
     /**
@@ -89,5 +89,5 @@ public class CalculateMortgage implements FreeRefFunction {
          if (Double.isNaN(result) || Double.isInfinite(result)) {
              throw new EvaluationException(ErrorEval.NUM_ERROR);
          }
-     }    
+     }
 }

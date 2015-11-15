@@ -42,14 +42,14 @@ public abstract class ChunkedCipherOutputStream extends FilterOutputStream {
     protected final int chunkSize;
     protected final int chunkMask;
     protected final int chunkBits;
-    
+
     private final byte[] _chunk;
     private final File fileOut;
     private final DirectoryNode dir;
 
     private long _pos = 0;
     private Cipher _cipher;
-    
+
     public ChunkedCipherOutputStream(DirectoryNode dir, int chunkSize) throws IOException, GeneralSecurityException {
         super(null);
         this.chunkSize = chunkSize;
@@ -65,11 +65,11 @@ public abstract class ChunkedCipherOutputStream extends FilterOutputStream {
     }
 
     protected abstract Cipher initCipherForBlock(Cipher existing, int block, boolean lastChunk)
-    throws GeneralSecurityException;    
-    
+    throws GeneralSecurityException;
+
     protected abstract void calculateChecksum(File fileOut, int oleStreamSize)
     throws GeneralSecurityException, IOException;
-    
+
     protected abstract void createEncryptionInfoEntry(DirectoryNode dir, File tmpFile)
     throws IOException, GeneralSecurityException;
 
@@ -84,11 +84,11 @@ public abstract class ChunkedCipherOutputStream extends FilterOutputStream {
     public void write(byte[] b, int off, int len)
     throws IOException {
         if (len == 0) return;
-        
+
         if (len < 0 || b.length < off+len) {
             throw new IOException("not enough bytes in your input buffer");
         }
-        
+
         while (len > 0) {
             int posInChunk = (int)(_pos & chunkMask);
             int nextLen = Math.min(chunkSize-posInChunk, len);
@@ -126,13 +126,13 @@ public abstract class ChunkedCipherOutputStream extends FilterOutputStream {
         int ciLen = _cipher.doFinal(_chunk, 0, posInChunk, _chunk);
         out.write(_chunk, 0, ciLen);
     }
-    
+
     public void close() throws IOException {
         try {
             writeChunk();
 
             super.close();
-            
+
             int oleStreamSize = (int)(fileOut.length()+LittleEndianConsts.LONG_SIZE);
             calculateChecksum(fileOut, (int)_pos);
             dir.createDocument(DEFAULT_POIFS_ENTRY, oleStreamSize, new EncryptedPackageWriter());
@@ -147,10 +147,10 @@ public abstract class ChunkedCipherOutputStream extends FilterOutputStream {
             try {
                 OutputStream os = event.getStream();
                 byte buf[] = new byte[chunkSize];
-    
-                // StreamSize (8 bytes): An unsigned integer that specifies the number of bytes used by data 
-                // encrypted within the EncryptedData field, not including the size of the StreamSize field. 
-                // Note that the actual size of the \EncryptedPackage stream (1) can be larger than this 
+
+                // StreamSize (8 bytes): An unsigned integer that specifies the number of bytes used by data
+                // encrypted within the EncryptedData field, not including the size of the StreamSize field.
+                // Note that the actual size of the \EncryptedPackage stream (1) can be larger than this
                 // value, depending on the block size of the chosen encryption algorithm
                 LittleEndian.putLong(buf, 0, _pos);
                 os.write(buf, 0, LittleEndian.LONG_SIZE);
@@ -163,7 +163,7 @@ public abstract class ChunkedCipherOutputStream extends FilterOutputStream {
                 fis.close();
 
                 os.close();
-                
+
                 fileOut.delete();
             } catch (IOException e) {
                 throw new EncryptedDocumentException(e);

@@ -194,7 +194,7 @@ public final class NoteRecord extends StandardRecord {
 	public void setFlags(short flags) {
 		field_3_flags = flags;
 	}
-	
+
 	/**
 	 * For unit testing only!
 	 */

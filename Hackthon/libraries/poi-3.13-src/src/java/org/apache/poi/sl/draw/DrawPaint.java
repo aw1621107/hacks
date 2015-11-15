@@ -42,16 +42,16 @@ import org.apache.poi.util.POILogger;
 
 /**
  * This class handles color transformations.
- * 
+ *
  * @see <a href="https://tips4java.wordpress.com/2009/07/05/hsl-color/">HSL code taken from Java Tips Weblog</a>
  */
 public class DrawPaint {
     // HSL code is public domain - see https://tips4java.wordpress.com/contact-us/
-    
+
     private final static POILogger LOG = POILogFactory.getLogger(DrawPaint.class);
 
     protected PlaceableShape<?,?> shape;
-    
+
     public DrawPaint(PlaceableShape<?,?> shape) {
         this.shape = shape;
     }
@@ -83,20 +83,20 @@ public class DrawPaint {
             }
             this.solidColor = color;
         }
-        
+
         public ColorStyle getSolidColor() {
             return solidColor;
         }
     }
-    
+
     public static SolidPaint createSolidPaint(final Color color) {
         return (color == null) ? null : new SimpleSolidPaint(color);
     }
-    
+
     public static SolidPaint createSolidPaint(final ColorStyle color) {
         return (color == null) ? null : new SimpleSolidPaint(color);
     }
-    
+
     public Paint getPaint(Graphics2D graphics, PaintStyle paint) {
         if (paint instanceof SolidPaint) {
             return getSolidPaint((SolidPaint)paint, graphics);
@@ -107,7 +107,7 @@ public class DrawPaint {
         }
         return null;
     }
-    
+
     protected Paint getSolidPaint(SolidPaint fill, Graphics2D graphics) {
         return applyColorTransform(fill.getSolidColor());
     }
@@ -129,7 +129,7 @@ public class DrawPaint {
         InputStream is = fill.getImageData();
         if (is == null) return null;
         assert(graphics != null);
-        
+
         ImageRenderer renderer = (ImageRenderer)graphics.getRenderingHint(Drawable.IMAGE_RENDERER);
         if (renderer == null) renderer = new ImageRenderer();
 
@@ -145,16 +145,16 @@ public class DrawPaint {
         if (0 <= alpha && alpha < 100000) {
             renderer.setAlpha(alpha/100000.f);
         }
-        
+
         Rectangle2D textAnchor = shape.getAnchor();
         Paint paint = new java.awt.TexturePaint(renderer.getImage(), textAnchor);
 
         return paint;
     }
-    
+
     /**
      * Convert color transformations in {@link ColorStyle} to a {@link Color} instance
-     * 
+     *
      * @see <a href="https://msdn.microsoft.com/en-us/library/dd560821%28v=office.12%29.aspx">Using Office Open XML to Customize Document Formatting in the 2007 Office System</a>
      * @see <a href="https://social.msdn.microsoft.com/Forums/office/en-US/040e0a1f-dbfe-4ce5-826b-38b4b6f6d3f7/saturation-modulation-satmod">saturation modulation (satMod)</a>
      * @see <a href="http://stackoverflow.com/questions/6754127/office-open-xml-satmod-results-in-more-than-100-saturation">Office Open XML satMod results in more than 100% saturation</a>
@@ -175,7 +175,7 @@ public class DrawPaint {
         applyTint(hsl, color);
 
         result = HSL2RGB(hsl[0], hsl[1], hsl[2], alpha);
-        
+
         return result;
     }
 
@@ -187,10 +187,10 @@ public class DrawPaint {
         }
         return Math.min(1, Math.max(0, alpha));
     }
-    
+
     /**
      * Apply the modulation and offset adjustments to the given HSL part
-     * 
+     *
      * Example for lumMod/lumOff:
      * The lumMod value is the percent luminance. A lumMod value of "60000",
      * is 60% of the luminance of the original color.
@@ -198,20 +198,20 @@ public class DrawPaint {
      * attribute is the only one of the tags shown here that appears.
      * The <a:lumOff> tag appears after the <a:lumMod> tag when the color is a
      * tint of the original. The lumOff value always equals 1-lumMod, which is used in the tint calculation
-     * 
+     *
      * Despite having different ways to display the tint and shade percentages,
      * all of the programs use the same method to calculate the resulting color.
      * Convert the original RGB value to HSL ... and then adjust the luminance (L)
      * with one of the following equations before converting the HSL value back to RGB.
      * (The % tint in the following equations refers to the tint, themetint, themeshade,
      * or lumMod values, as applicable.)
-     * 
+     *
      * @param hsl the hsl values
      * @param hslPart the hsl part to modify [0..2]
      * @param mod the modulation adjustment
      * @param off the offset adjustment
      * @return the modified hsl value
-     * 
+     *
      */
     private static void applyHslModOff(double hsl[], int hslPart, int mod, int off) {
         if (mod == -1) mod = 100000;
@@ -222,36 +222,36 @@ public class DrawPaint {
             hsl[hslPart] = hsl[hslPart]*fMod+fOff;
         }
     }
-    
+
     /**
      * Apply the shade
-     * 
+     *
      * For a shade, the equation is luminance * %tint.
      */
     private static void applyShade(double hsl[], ColorStyle fc) {
         int shade = fc.getShade();
         if (shade == -1) return;
-        
+
         double fshade = shade / 100000.d;
-        
+
         hsl[2] *= fshade;
     }
 
     /**
      * Apply the tint
-     * 
+     *
      * For a tint, the equation is luminance * %tint + (1-%tint).
      * (Note that 1-%tint is equal to the lumOff value in DrawingML.)
      */
     private static void applyTint(double hsl[], ColorStyle fc) {
         int tint = fc.getTint();
         if (tint == -1) return;
-        
+
         double ftint = tint / 100000.f;
 
         hsl[2] = hsl[2] * ftint + (100 - ftint*100.);
     }
-    
+
 
     protected Paint createLinearGradientPaint(GradientPaint fill, Graphics2D graphics) {
         double angle = fill.getGradientAngle();
@@ -275,7 +275,7 @@ public class DrawPaint {
 
         float[] fractions = fill.getGradientFractions();
         Color[] colors = new Color[fractions.length];
-        
+
         int i = 0;
         for (ColorStyle fc : fill.getGradientColors()) {
             colors[i++] = applyColorTransform(fc);
@@ -319,7 +319,7 @@ public class DrawPaint {
 
     protected Paint createPathGradientPaint(GradientPaint fill, Graphics2D graphics) {
         // currently we ignore an eventually center setting
-        
+
         float[] fractions = fill.getGradientFractions();
         Color[] colors = new Color[fractions.length];
 
@@ -330,7 +330,7 @@ public class DrawPaint {
 
         return new PathGradientPaint(colors, fractions);
     }
-    
+
     protected void snapToAnchor(Point2D p, Rectangle2D anchor) {
         if (p.getX() < anchor.getX()) {
             p.setLocation(anchor.getX(), p.getY());

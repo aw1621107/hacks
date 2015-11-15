@@ -68,7 +68,7 @@ implements HSLFShapeContainer, TableShape<HSLFShape,HSLFTextParagraph> {
     public HSLFTable(int numRows, int numCols) {
         this(numRows, numCols, null);
     }
-    
+
     /**
      * Create a new Table of the given number of rows and columns
      *
@@ -144,7 +144,7 @@ implements HSLFShapeContainer, TableShape<HSLFShape,HSLFTextParagraph> {
         EscherContainerRecord spCont = (EscherContainerRecord) getSpContainer().getChild(0);
         List<EscherRecord> lst = spCont.getChildRecords();
         AbstractEscherOptRecord opt = (AbstractEscherOptRecord)lst.get(lst.size()-2);
-        EscherArrayProperty p = opt.lookup(0x3A0); 
+        EscherArrayProperty p = opt.lookup(0x3A0);
         for (int i = 0; i < cells.length; i++) {
             HSLFTableCell cell = cells[i][0];
             int rowHeight = Units.pointsToMaster(cell.getAnchor().height);
@@ -184,8 +184,8 @@ implements HSLFShapeContainer, TableShape<HSLFShape,HSLFTextParagraph> {
                 if (etr != null) continue;
             }
             shapeIter.remove();
-        }        
-        
+        }
+
         Collections.sort(shapeList, new Comparator<HSLFShape>(){
             public int compare( HSLFShape o1, HSLFShape o2 ) {
                 Rectangle anchor1 = o1.getAnchor();
@@ -197,7 +197,7 @@ implements HSLFShapeContainer, TableShape<HSLFShape,HSLFTextParagraph> {
                 return delta;
             }
         });
-        
+
         int y0 = (shapeList.isEmpty()) ? -1 : shapeList.get(0).getAnchor().y - 1;
         int maxrowlen = 0;
         List<List<HSLFShape>> lst = new ArrayList<List<HSLFShape>>();

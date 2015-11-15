@@ -127,7 +127,7 @@ public class TestExtractorFactory extends TestCase {
         // Excel
         POITextExtractor xlsExtractor = ExtractorFactory.createExtractor(xls);
         assertNotNull("Had empty extractor for " + xls, xlsExtractor);
-        assertTrue("Expected instanceof ExcelExtractor, but had: " + xlsExtractor.getClass(), 
+        assertTrue("Expected instanceof ExcelExtractor, but had: " + xlsExtractor.getClass(),
                 xlsExtractor
                 instanceof ExcelExtractor
         );
@@ -632,7 +632,7 @@ public class TestExtractorFactory extends TestCase {
 
     /**
      * Test embeded docs text extraction. For now, only
-     *  does poifs embeded, but will do ooxml ones 
+     *  does poifs embeded, but will do ooxml ones
      *  at some point.
      */
     public void testEmbeded() throws Exception {

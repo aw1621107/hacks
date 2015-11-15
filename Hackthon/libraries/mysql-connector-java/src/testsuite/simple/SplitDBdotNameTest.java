@@ -33,13 +33,13 @@ import com.mysql.jdbc.StringUtils;
 /**
  * Tests new StringUtils functions in the driver: public static String sanitizeProcOrFuncName(String src) and public static List splitDBdotName(String src,
  * String cat, String quotId, boolean isNoBslashEscSet)
- * 
+ *
  * By the time sanitizeProcOrFuncName is called we should only have DB.SP as src, ie. SP/FUNC name is already sanitized during the process!
  */
 public class SplitDBdotNameTest extends BaseTestCase {
     /**
      * Constructor for SplitDBdotNameTest.
-     * 
+     *
      * @param name
      *            the name of the test to run.
      */
@@ -49,7 +49,7 @@ public class SplitDBdotNameTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -58,7 +58,7 @@ public class SplitDBdotNameTest extends BaseTestCase {
 
     /**
      * Tests sanitation and SplitDBdotName
-     * 
+     *
      * @throws Exception
      *             if an error occurs
      */

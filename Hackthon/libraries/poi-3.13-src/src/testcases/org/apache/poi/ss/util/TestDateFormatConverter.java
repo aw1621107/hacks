@@ -62,15 +62,15 @@ public final class TestDateFormatConverter extends TestCase {
             header.createCell(4).setCellValue("Equals");
             header.createCell(5).setCellValue("Java pattern");
             header.createCell(6).setCellValue("Excel pattern");
-    
+
             int rowNum = 1;
             for( Locale locale : DateFormat.getAvailableLocales() ) {
                 try {
                     Row row = sheet.createRow(rowNum++);
-        
+
                     row.createCell(0).setCellValue(locale.toString());
                     row.createCell(1).setCellValue(locale.getDisplayName(Locale.ROOT));
-        
+
                     DateFormat dateFormat;
                     if( dates ) {
                         if( times ) {
@@ -81,31 +81,31 @@ public final class TestDateFormatConverter extends TestCase {
                     } else {
                         dateFormat = DateFormat.getTimeInstance(style, locale);
                     }
-        
+
                     Cell cell = row.createCell(2);
-        
+
                     cell.setCellValue(date);
                     CellStyle cellStyle = row.getSheet().getWorkbook().createCellStyle();
-        
+
                     String javaDateFormatPattern = ((SimpleDateFormat)dateFormat).toPattern();
                     String excelFormatPattern = DateFormatConverter.convert(locale, javaDateFormatPattern);
-        
+
                     DataFormat poiFormat = row.getSheet().getWorkbook().createDataFormat();
                     cellStyle.setDataFormat(poiFormat.getFormat(excelFormatPattern));
                     row.createCell(3).setCellValue(dateFormat.format(date));
-        
+
                     cell.setCellStyle(cellStyle);
-        
+
                     // the formula returns TRUE is the formatted date in column C equals to the string in column D
                     row.createCell(4).setCellFormula("TEXT(C"+rowNum+",G"+rowNum+")=D" + rowNum);
                     row.createCell(5).setCellValue(javaDateFormatPattern);
                     row.createCell(6).setCellValue(excelFormatPattern);
                 } catch (Exception e) {
-                    throw new RuntimeException("Failed for locale: " + locale + ", having locales: " + 
+                    throw new RuntimeException("Failed for locale: " + locale + ", having locales: " +
                             Arrays.toString(DateFormat.getAvailableLocales()), e);
                 }
             }
-    
+
             File outputFile = TempFile.createTempFile("Locale" + sheetName + styleName, ".xlsx");
             FileOutputStream outputStream = new FileOutputStream(outputFile);
             try {
@@ -113,7 +113,7 @@ public final class TestDateFormatConverter extends TestCase {
             } finally {
                 outputStream.close();
             }
-    
+
             System.out.println("Open " + outputFile.getAbsolutePath()+" in Excel");
         } finally {
             workbook.close();
@@ -141,7 +141,7 @@ public final class TestDateFormatConverter extends TestCase {
         outputLocaleDataFormats(date, false, true, DateFormat.LONG, "Long" );
         outputLocaleDataFormats(date, false, true, DateFormat.FULL, "Full" );
     }
-    
+
     public void testJDK8EmptyLocale() {
         // JDK 8 seems to add an empty locale-string to the list returned via DateFormat.getAvailableLocales()
         // therefore we now cater for this special locale as well

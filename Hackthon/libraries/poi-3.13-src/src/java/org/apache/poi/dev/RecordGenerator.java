@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 package org.apache.poi.dev;
 
 import java.io.File;
@@ -95,7 +95,7 @@ public class RecordGenerator {
                 File destinationPathFile = new File(destinationPath);
                 destinationPathFile.mkdirs();
                 String destinationFilepath = destinationPath + "/" + recordName + suffix + ".java";
-                transform(file, new File(destinationFilepath), 
+                transform(file, new File(destinationFilepath),
                           new File(recordStyleDir + "/" + extendstg.toLowerCase(Locale.ROOT) + ".xsl"));
                 System.out.println("Generated " + suffix + ": " + destinationFilepath);
 
@@ -115,17 +115,17 @@ public class RecordGenerator {
         }
     }
 
-    
-    
+
+
     /**
      * <p>Executes an XSL transformation. This process transforms an XML input
      * file into a text output file controlled by an XSLT specification.</p>
-     * 
+     *
      * @param in the XML input file
      * @param out the text output file
      * @param xslt the XSLT specification, i.e. an XSL style sheet
-     * @throws FileNotFoundException 
-     * @throws TransformerException 
+     * @throws FileNotFoundException
+     * @throws TransformerException
      */
     private static void transform(final File in, final File out, final File xslt)
     throws FileNotFoundException, TransformerException
@@ -147,7 +147,7 @@ public class RecordGenerator {
         p.setProperty(OutputKeys.METHOD, "text");
         t.setOutputProperties(p);
         final Result result = new StreamResult(out);
-        t.transform(new StreamSource(in), result);        
+        t.transform(new StreamSource(in), result);
     }
 
 }

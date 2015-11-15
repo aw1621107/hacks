@@ -24,7 +24,7 @@ import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
 /**
  * Tests for <tt>LabelRecord</tt>
- * 
+ *
  * @author Josh Micich
  */
 public final class TestLabelRecord extends TestCase {

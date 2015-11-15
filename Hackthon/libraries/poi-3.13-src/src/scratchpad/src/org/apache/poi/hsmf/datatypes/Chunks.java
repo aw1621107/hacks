@@ -29,24 +29,24 @@ import org.apache.poi.util.POILogger;
 
 /**
  * Collection of convenience chunks for standard parts of the MSG file.
- * 
+ *
  * Not all of these will be present in any given file.
- * 
+ *
  * A partial list is available at:
  *  http://msdn.microsoft.com/en-us/library/ms526356%28v=exchg.10%29.aspx
- *  
+ *
  * TODO Deprecate the public Chunks in favour of Property Lookups
  */
 public final class Chunks implements ChunkGroupWithProperties {
    private static POILogger logger = POILogFactory.getLogger(Chunks.class);
 
-   /** 
+   /**
     * Holds all the chunks that were found, indexed by their MAPIProperty.
-    * Normally a property will have zero chunks (fixed sized) or one chunk 
+    * Normally a property will have zero chunks (fixed sized) or one chunk
     *  (variable size), but in some cases (eg Unknown) you may get more.
     */
    private Map<MAPIProperty,List<Chunk>> allChunks = new HashMap<MAPIProperty,List<Chunk>>();
-   
+
    /** Type of message that the MSG represents (ie. IPM.Note) */
    public StringChunk messageClass;
    /** BODY Chunk, for plain/text messages */
@@ -58,9 +58,9 @@ public final class Chunks implements ChunkGroupWithProperties {
    public ByteChunk rtfBodyChunk;
    /** Subject link chunk, in plain/text */
    public StringChunk subjectChunk;
-   /** 
-    * Value that is in the TO field (not actually the addresses as they are 
-    * stored in recip directory nodes 
+   /**
+    * Value that is in the TO field (not actually the addresses as they are
+    * stored in recip directory nodes
     */
    public StringChunk displayToChunk;
    /** Value that is in the FROM field */
@@ -76,9 +76,9 @@ public final class Chunks implements ChunkGroupWithProperties {
    /** The email headers */
    public StringChunk messageHeaders;
    /** TODO */
-   public MessageSubmissionChunk submissionChunk; 
+   public MessageSubmissionChunk submissionChunk;
    /** TODO */
-   public StringChunk emailFromChunk; 
+   public StringChunk emailFromChunk;
    /** The message ID */
    public StringChunk messageId;
    /** The message properties */
@@ -96,7 +96,7 @@ public final class Chunks implements ChunkGroupWithProperties {
       }
       else return Collections.emptyMap();
    }
-   
+
    public Map<MAPIProperty,List<Chunk>> getAll() {
       return allChunks;
    }
@@ -107,14 +107,14 @@ public final class Chunks implements ChunkGroupWithProperties {
       }
       return chunks.toArray(new Chunk[chunks.size()]);
    }
-	
+
    /**
     * Called by the parser whenever a chunk is found.
     */
    public void record(Chunk chunk) {
       // Work out what MAPIProperty this corresponds to
       MAPIProperty prop = MAPIProperty.get(chunk.getChunkId());
-      
+
       // Assign it for easy lookup, as best we can
       if(prop == MAPIProperty.MESSAGE_CLASS) {
          messageClass = (StringChunk)chunk;
@@ -132,7 +132,7 @@ public final class Chunks implements ChunkGroupWithProperties {
       else if(prop == MAPIProperty.TRANSPORT_MESSAGE_HEADERS) {
          messageHeaders = (StringChunk)chunk;
       }
-      
+
       else if(prop == MAPIProperty.CONVERSATION_TOPIC) {
          conversationTopic = (StringChunk)chunk;
       }
@@ -142,7 +142,7 @@ public final class Chunks implements ChunkGroupWithProperties {
       else if(prop == MAPIProperty.ORIGINAL_SUBJECT) {
          // TODO
       }
-      
+
       else if(prop == MAPIProperty.DISPLAY_TO) {
          displayToChunk = (StringChunk)chunk;
       }
@@ -152,7 +152,7 @@ public final class Chunks implements ChunkGroupWithProperties {
       else if(prop == MAPIProperty.DISPLAY_BCC) {
          displayBCCChunk = (StringChunk)chunk;
       }
-      
+
       else if(prop == MAPIProperty.SENDER_EMAIL_ADDRESS) {
          emailFromChunk = (StringChunk)chunk;
       }
@@ -176,14 +176,14 @@ public final class Chunks implements ChunkGroupWithProperties {
       else if(chunk instanceof MessagePropertiesChunk) {
          messageProperties = (MessagePropertiesChunk) chunk;
       }
-      
+
       // And add to the main list
       if (allChunks.get(prop) == null) {
          allChunks.put(prop, new ArrayList<Chunk>());
       }
       allChunks.get(prop).add(chunk);
    }
-   
+
    public void chunksComplete() {
       if (messageProperties != null) {
          messageProperties.matchVariableSizedPropertiesToChunks();

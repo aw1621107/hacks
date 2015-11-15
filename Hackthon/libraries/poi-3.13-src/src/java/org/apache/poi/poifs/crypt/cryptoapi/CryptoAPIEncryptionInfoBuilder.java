@@ -54,9 +54,9 @@ public class CryptoAPIEncryptionInfoBuilder implements EncryptionInfoBuilder {
         this.info = info;
         if (cipherAlgorithm == null) cipherAlgorithm = CipherAlgorithm.rc4;
         if (hashAlgorithm == null) hashAlgorithm = HashAlgorithm.sha1;
-        if (keyBits == -1) keyBits = 0x28; 
+        if (keyBits == -1) keyBits = 0x28;
         assert(cipherAlgorithm == CipherAlgorithm.rc4 && hashAlgorithm == HashAlgorithm.sha1);
-        
+
         header = new CryptoAPIEncryptionHeader(cipherAlgorithm, hashAlgorithm, keyBits, blockSize, chainingMode);
         verifier = new CryptoAPIEncryptionVerifier(cipherAlgorithm, hashAlgorithm, keyBits, blockSize, chainingMode);
         decryptor = new CryptoAPIDecryptor(this);

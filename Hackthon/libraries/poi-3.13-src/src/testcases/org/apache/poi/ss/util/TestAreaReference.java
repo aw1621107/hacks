@@ -22,11 +22,11 @@ import junit.framework.TestCase;
 
 /**
  * Test for {@link AreaReference} handling of max rows.
- * 
+ *
  * @author David North
  */
 public class TestAreaReference extends TestCase {
-    
+
     public void testWholeColumn() {
         AreaReference oldStyle = AreaReference.getWholeColumn(SpreadsheetVersion.EXCEL97, "A", "B");
         assertEquals(0, oldStyle.getFirstCell().getCol());
@@ -48,14 +48,14 @@ public class TestAreaReference extends TestCase {
         AreaReference newStyleNonWholeColumn = new AreaReference("A1:B23", SpreadsheetVersion.EXCEL2007);
         assertFalse(newStyleNonWholeColumn.isWholeColumnReference());
     }
-    
+
     public void testWholeRow() {
         AreaReference oldStyle = AreaReference.getWholeRow(SpreadsheetVersion.EXCEL97, "1", "2");
         assertEquals(0, oldStyle.getFirstCell().getCol());
         assertEquals(0, oldStyle.getFirstCell().getRow());
         assertEquals(SpreadsheetVersion.EXCEL97.getLastColumnIndex(), oldStyle.getLastCell().getCol());
         assertEquals(1, oldStyle.getLastCell().getRow());
-        
+
         AreaReference newStyle = AreaReference.getWholeRow(SpreadsheetVersion.EXCEL2007, "1", "2");
         assertEquals(0, newStyle.getFirstCell().getCol());
         assertEquals(0, newStyle.getFirstCell().getRow());

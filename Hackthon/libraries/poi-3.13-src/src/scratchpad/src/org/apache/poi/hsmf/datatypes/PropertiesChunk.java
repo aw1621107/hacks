@@ -43,14 +43,14 @@ import org.apache.poi.util.POILogger;
 
 /**
  * <p>A Chunk which holds (single) fixed-length properties, and pointer
- *  to the variable length ones / multi-valued ones (which get their 
+ *  to the variable length ones / multi-valued ones (which get their
  *  own chunk).
- * <p>There are two kinds of PropertiesChunks, which differ only in 
+ * <p>There are two kinds of PropertiesChunks, which differ only in
  *  their headers.
  */
 public abstract class PropertiesChunk extends Chunk {
    public static final String NAME = "__properties_version1.0";
-   
+
    /** For logging problems we spot with the file */
    private POILogger logger = POILogFactory.getLogger(PropertiesChunk.class);
 
@@ -58,7 +58,7 @@ public abstract class PropertiesChunk extends Chunk {
     * Holds properties, indexed by type. If a property is multi-valued,
     *  or variable length, it will be held via a {@link ChunkBasedPropertyValue}.
     */
-   private Map<MAPIProperty, PropertyValue> properties = 
+   private Map<MAPIProperty, PropertyValue> properties =
          new HashMap<MAPIProperty, PropertyValue>();
 
    /**
@@ -66,7 +66,7 @@ public abstract class PropertiesChunk extends Chunk {
     *  matching chunks to variable sized and multi-valued properties
     */
    private ChunkGroup parentGroup;
-   
+
    /**
     * Creates a Properties Chunk.
     */
@@ -79,7 +79,7 @@ public abstract class PropertiesChunk extends Chunk {
    public String getEntryName() {
        return NAME;
    }
-	
+
    /**
     * Returns all the properties in the chunk, without
     *  looking up any chunk-based values
@@ -94,7 +94,7 @@ public abstract class PropertiesChunk extends Chunk {
     * <p>Any chunk-based values will be looked up and returned as such
     */
    public Map<MAPIProperty, List<PropertyValue>> getProperties() {
-       Map<MAPIProperty, List<PropertyValue>> props = 
+       Map<MAPIProperty, List<PropertyValue>> props =
                new HashMap<MAPIProperty, List<PropertyValue>>(properties.size());
        for (MAPIProperty prop : properties.keySet()) {
            props.put(prop, getValues(prop));
@@ -121,13 +121,13 @@ public abstract class PropertiesChunk extends Chunk {
    }
 
    /**
-    * Returns the value / pointer to the value chunk of 
+    * Returns the value / pointer to the value chunk of
     *  the property, or null if none exists
     */
    public PropertyValue getRawValue(MAPIProperty property) {
        return properties.get(property);
    }
-	
+
    /**
     * Called once the parent ChunkGroup has been populated, to match
     *  up the Chunks in it with our Variable Sized Properties.
@@ -139,16 +139,16 @@ public abstract class PropertiesChunk extends Chunk {
       for (Chunk chunk : parentGroup.getChunks()) {
          chunks.put(chunk.chunkId, chunk);
       }
-      
+
       // Loop over our values, looking for chunk based ones
       for (PropertyValue val : properties.values()) {
            if (val instanceof ChunkBasedPropertyValue) {
               ChunkBasedPropertyValue cVal = (ChunkBasedPropertyValue)val;
               Chunk chunk = chunks.get(cVal.getProperty().id);
-//System.err.println(cVal.getProperty() + " = " + cVal + " -> " + HexDump.toHex(cVal.data));                  
-                  
+//System.err.println(cVal.getProperty() + " = " + cVal + " -> " + HexDump.toHex(cVal.data));
+
               // TODO Make sense of the raw offset value
-              
+
               if (chunk != null) {
                  cVal.setValue(chunk);
               } else {
@@ -166,22 +166,22 @@ public abstract class PropertiesChunk extends Chunk {
             int typeID = LittleEndian.readUShort(value);
             int id     = LittleEndian.readUShort(value);
             long flags = LittleEndian.readUInt(value);
-            
+
             // Turn the Type and ID into helper objects
             MAPIType type = Types.getById(typeID);
             MAPIProperty prop = MAPIProperty.get(id);
-            
+
             // Wrap properties we don't know about as custom ones
             if (prop == MAPIProperty.UNKNOWN) {
                 prop = MAPIProperty.createCustom(id, type, "Unknown " + id);
             }
             if (type == null) {
-                logger.log(POILogger.WARN, "Invalid type found, expected ", prop.usualType, 
+                logger.log(POILogger.WARN, "Invalid type found, expected ", prop.usualType,
                         " but got ", typeID, " for property ", prop);
                 going = false;
                 break;
             }
-            
+
             // Sanity check the property's type against the value's type
             if (prop.usualType != type) {
                 // Is it an allowed substitution?
@@ -191,21 +191,21 @@ public abstract class PropertiesChunk extends Chunk {
                 } else if (prop.usualType == Types.UNKNOWN) {
                     // We don't know what this property normally is, but it has come
                     // through with a valid type, so use that
-                    logger.log(POILogger.INFO, "Property definition for ", prop, 
+                    logger.log(POILogger.INFO, "Property definition for ", prop,
                             " is missing a type definition, found a value with type ", type);
                 } else {
                    // Oh dear, something has gone wrong...
-                   logger.log(POILogger.WARN, "Type mismatch, expected ", prop.usualType, 
+                   logger.log(POILogger.WARN, "Type mismatch, expected ", prop.usualType,
                               " but got ", type, " for property ", prop);
                    going = false;
                    break;
                 }
             }
-            
+
             // TODO Detect if it is multi-valued, since if it is
             //  then even fixed-length strings store their multiple
             //  values in another chunk (much as variable length ones)
-            
+
             // Work out how long the "data" is
             // This might be the actual data, or just a pointer
             //  to another chunk which holds the data itself
@@ -215,17 +215,17 @@ public abstract class PropertiesChunk extends Chunk {
                isPointer = true;
                length = 8;
             }
-            
+
             // Grab the data block
             byte[] data = new byte[length];
             IOUtils.readFully(value, data);
-            
+
             // Skip over any padding
             if (length < 8) {
                 byte[] padding = new byte[8-length];
                 IOUtils.readFully(value, padding);
             }
-            
+
             // Wrap and store
             PropertyValue propVal = null;
             if (isPointer) {

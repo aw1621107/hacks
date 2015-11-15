@@ -229,7 +229,7 @@ public class SXSSFCell implements Cell {
         }
 
         ((RichTextValue)_value).setValue(value);
-        
+
         if (((XSSFRichTextString)value).hasFormatting())
             logger.log(POILogger.WARN, "SXSSF doesn't support Shared Strings, rich text formatting information has be lost");
     }
@@ -245,7 +245,7 @@ public class SXSSFCell implements Cell {
     public void setCellValue(String value)
     {
         ensureTypeOrFormulaType(CELL_TYPE_STRING);
-        
+
         if(value != null && value.length() > SpreadsheetVersion.EXCEL2007.getMaxTextLength()){
             throw new IllegalArgumentException("The maximum length of cell contents (text) is 32,767 characters");
         }
@@ -304,7 +304,7 @@ public class SXSSFCell implements Cell {
     public double getNumericCellValue()
     {
         int cellType = getCellType();
-        switch(cellType) 
+        switch(cellType)
         {
             case CELL_TYPE_BLANK:
                 return 0.0;
@@ -335,7 +335,7 @@ public class SXSSFCell implements Cell {
     public Date getDateCellValue()
     {
         int cellType = getCellType();
-        if (cellType == CELL_TYPE_BLANK) 
+        if (cellType == CELL_TYPE_BLANK)
         {
             return null;
         }
@@ -380,7 +380,7 @@ public class SXSSFCell implements Cell {
     public String getStringCellValue()
     {
         int cellType = getCellType();
-        switch(cellType) 
+        switch(cellType)
         {
             case CELL_TYPE_BLANK:
                 return "";
@@ -449,7 +449,7 @@ public class SXSSFCell implements Cell {
     public boolean getBooleanCellValue()
     {
         int cellType = getCellType();
-        switch(cellType) 
+        switch(cellType)
         {
             case CELL_TYPE_BLANK:
                 return false;
@@ -483,7 +483,7 @@ public class SXSSFCell implements Cell {
     public byte getErrorCellValue()
     {
         int cellType = getCellType();
-        switch(cellType) 
+        switch(cellType)
         {
             case CELL_TYPE_BLANK:
                 return 0;

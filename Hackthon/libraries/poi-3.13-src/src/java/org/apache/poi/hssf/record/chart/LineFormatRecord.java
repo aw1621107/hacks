@@ -26,7 +26,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * Describes a line format record.  The line format record controls how a line on a chart appears.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class LineFormatRecord extends StandardRecord {
@@ -79,26 +79,26 @@ public final class LineFormatRecord extends StandardRecord {
         buffer.append("    .lineColor            = ")
             .append("0x").append(HexDump.toHex(  getLineColor ()))
             .append(" (").append( getLineColor() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .linePattern          = ")
             .append("0x").append(HexDump.toHex(  getLinePattern ()))
             .append(" (").append( getLinePattern() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .weight               = ")
             .append("0x").append(HexDump.toHex(  getWeight ()))
             .append(" (").append( getWeight() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .format               = ")
             .append("0x").append(HexDump.toHex(  getFormat ()))
             .append(" (").append( getFormat() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
-        buffer.append("         .auto                     = ").append(isAuto()).append('\n'); 
-        buffer.append("         .drawTicks                = ").append(isDrawTicks()).append('\n'); 
-        buffer.append("         .unknown                  = ").append(isUnknown()).append('\n'); 
+        buffer.append(System.getProperty("line.separator"));
+        buffer.append("         .auto                     = ").append(isAuto()).append('\n');
+        buffer.append("         .drawTicks                = ").append(isDrawTicks()).append('\n');
+        buffer.append("         .unknown                  = ").append(isUnknown()).append('\n');
         buffer.append("    .colourPaletteIndex   = ")
             .append("0x").append(HexDump.toHex(  getColourPaletteIndex ()))
             .append(" (").append( getColourPaletteIndex() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/LINEFORMAT]\n");
         return buffer.toString();
@@ -123,7 +123,7 @@ public final class LineFormatRecord extends StandardRecord {
 
     public Object clone() {
         LineFormatRecord rec = new LineFormatRecord();
-    
+
         rec.field_1_lineColor = field_1_lineColor;
         rec.field_2_linePattern = field_2_linePattern;
         rec.field_3_weight = field_3_weight;
@@ -154,7 +154,7 @@ public final class LineFormatRecord extends StandardRecord {
     /**
      * Get the line pattern field for the LineFormat record.
      *
-     * @return  One of 
+     * @return  One of
      *        LINE_PATTERN_SOLID
      *        LINE_PATTERN_DASH
      *        LINE_PATTERN_DOT
@@ -174,7 +174,7 @@ public final class LineFormatRecord extends StandardRecord {
      * Set the line pattern field for the LineFormat record.
      *
      * @param field_2_linePattern
-     *        One of 
+     *        One of
      *        LINE_PATTERN_SOLID
      *        LINE_PATTERN_DASH
      *        LINE_PATTERN_DOT
@@ -193,7 +193,7 @@ public final class LineFormatRecord extends StandardRecord {
     /**
      * Get the weight field for the LineFormat record.
      *
-     * @return  One of 
+     * @return  One of
      *        WEIGHT_HAIRLINE
      *        WEIGHT_NARROW
      *        WEIGHT_MEDIUM
@@ -208,7 +208,7 @@ public final class LineFormatRecord extends StandardRecord {
      * Set the weight field for the LineFormat record.
      *
      * @param field_3_weight
-     *        One of 
+     *        One of
      *        WEIGHT_HAIRLINE
      *        WEIGHT_NARROW
      *        WEIGHT_MEDIUM

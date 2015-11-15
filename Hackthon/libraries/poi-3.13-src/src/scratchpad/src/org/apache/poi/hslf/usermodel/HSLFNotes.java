@@ -34,13 +34,13 @@ import org.apache.poi.util.POILogger;
 
 public final class HSLFNotes extends HSLFSheet implements Notes<HSLFShape,HSLFTextParagraph> {
     protected static final POILogger logger = POILogFactory.getLogger(HSLFNotes.class);
-    
+
     private List<List<HSLFTextParagraph>> _paragraphs = new ArrayList<List<HSLFTextParagraph>>();
 
     /**
      * Constructs a Notes Sheet from the given Notes record.
      * Initialises TextRuns, to provide easier access to the text
-     * 
+     *
      * @param notes the Notes record to read from
      */
     public HSLFNotes(org.apache.poi.hslf.record.Notes notes) {
@@ -52,7 +52,7 @@ public final class HSLFNotes extends HSLFSheet implements Notes<HSLFShape,HSLFTe
         for (List<HSLFTextParagraph> l : HSLFTextParagraph.findTextParagraphs(getPPDrawing(), this)) {
             if (!_paragraphs.contains(l)) _paragraphs.add(l);
         }
-        
+
         if (_paragraphs.isEmpty()) {
             logger.log(POILogger.WARN, "No text records found for notes sheet");
         }

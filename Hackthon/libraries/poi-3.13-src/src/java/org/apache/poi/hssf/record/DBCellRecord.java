@@ -30,7 +30,7 @@ import org.apache.poi.util.LittleEndianOutput;
 public final class DBCellRecord extends StandardRecord {
     public final static short sid = 0x00D7;
     public final static int BLOCK_SIZE = 32;
-    
+
     public static final class Builder {
         private short[] _cellOffsets;
         private int _nCellOffsets;
@@ -68,7 +68,7 @@ public final class DBCellRecord extends StandardRecord {
 
     public DBCellRecord(RecordInputStream in) {
         field_1_row_offset   = in.readUShort();
-        int size = in.remaining();        
+        int size = in.remaining();
         field_2_cell_offsets = new short[ size / 2 ];
 
         for (int i=0;i<field_2_cell_offsets.length;i++)
@@ -100,7 +100,7 @@ public final class DBCellRecord extends StandardRecord {
     protected int getDataSize() {
         return 4 + field_2_cell_offsets.length * 2;
     }
-    
+
     /**
      *  @return the size of the group of <tt>DBCellRecord</tt>s needed to encode
      *  the specified number of blocks and rows

@@ -41,7 +41,7 @@ public class Biff8RC4Key extends Biff8EncryptionKey {
     private static final int PASSWORD_HASH_NUMBER_OF_BYTES_USED = 5;
 
     private static POILogger log = POILogFactory.getLogger(Biff8RC4Key.class);
-    
+
     Biff8RC4Key(byte[] keyDigest) {
         if (keyDigest.length != KEY_DIGEST_LENGTH) {
             throw new IllegalArgumentException("Expected 5 byte key digest, but got " + HexDump.toHex(keyDigest));
@@ -58,7 +58,7 @@ public class Biff8RC4Key extends Biff8EncryptionKey {
     public static Biff8RC4Key create(String password, byte[] salt) {
         return new Biff8RC4Key(createKeyDigest(password, salt));
     }
-    
+
     /**
      * @return <code>true</code> if the keyDigest is compatible with the specified saltData and saltHash
      */
@@ -69,7 +69,7 @@ public class Biff8RC4Key extends Biff8EncryptionKey {
         // validation uses the RC4 for block zero
         Cipher rc4 = getCipher();
         initCipherForBlock(rc4, 0);
-        
+
         byte[] verifierPrime = verifier.clone();
         byte[] verifierHashPrime = verifierHash.clone();
 
@@ -91,13 +91,13 @@ public class Biff8RC4Key extends Biff8EncryptionKey {
 
         return Arrays.equals(verifierHashPrime, finalVerifierResult);
     }
-    
+
     Cipher getCipher() {
         CipherAlgorithm ca = CipherAlgorithm.rc4;
         Cipher rc4 = CryptoFunctions.getCipher(_secretKey, ca, null, null, Cipher.ENCRYPT_MODE);
         return rc4;
     }
-    
+
     static byte[] createKeyDigest(String password, byte[] docIdData) {
         check16Bytes(docIdData, "docId");
         int nChars = Math.min(password.length(), 16);
@@ -117,15 +117,15 @@ public class Biff8RC4Key extends Biff8EncryptionKey {
             md5.update(passwordHash, 0, PASSWORD_HASH_NUMBER_OF_BYTES_USED);
             md5.update(docIdData, 0, docIdData.length);
         }
-        
+
         byte[] result = CryptoFunctions.getBlock0(md5.digest(), KEY_DIGEST_LENGTH);
         return result;
     }
 
     void initCipherForBlock(Cipher rc4, int keyBlockNo) {
-        byte buf[] = new byte[LittleEndianConsts.INT_SIZE]; 
+        byte buf[] = new byte[LittleEndianConsts.INT_SIZE];
         LittleEndian.putInt(buf, 0, keyBlockNo);
-        
+
         MessageDigest md5 = CryptoFunctions.getMessageDigest(HashAlgorithm.md5);
         md5.update(_secretKey.getEncoded());
         md5.update(buf);
@@ -137,7 +137,7 @@ public class Biff8RC4Key extends Biff8EncryptionKey {
             throw new EncryptedDocumentException("Can't rekey for next block", e);
         }
     }
-    
+
     private static byte[] xor(byte[] a, byte[] b) {
         byte[] c = new byte[a.length];
         for (int i = 0; i < c.length; i++) {
@@ -150,6 +150,6 @@ public class Biff8RC4Key extends Biff8EncryptionKey {
             throw new IllegalArgumentException("Expected 16 byte " + argName + ", but got " + HexDump.toHex(data));
         }
     }
-    
+
 
 }

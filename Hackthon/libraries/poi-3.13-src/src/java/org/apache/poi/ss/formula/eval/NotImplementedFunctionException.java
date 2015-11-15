@@ -20,15 +20,15 @@ package org.apache.poi.ss.formula.eval;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
 
 /**
- * An exception thrown by implementors of {@link FormulaEvaluator} when 
- *  attempting to evaluate a formula which requires a function that POI 
+ * An exception thrown by implementors of {@link FormulaEvaluator} when
+ *  attempting to evaluate a formula which requires a function that POI
  *  does not (yet) support.
  */
 public final class NotImplementedFunctionException extends NotImplementedException {
     private static final long serialVersionUID = 1208119411557559057L;
-    
+
     private String functionName;
-    
+
 	public NotImplementedFunctionException(String functionName) {
 		super(functionName);
 		this.functionName = functionName;
@@ -37,7 +37,7 @@ public final class NotImplementedFunctionException extends NotImplementedExcepti
 		super(functionName, cause);
         this.functionName = functionName;
 	}
-	
+
 	public String getFunctionName() {
 	    return functionName;
 	}

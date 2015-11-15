@@ -113,7 +113,7 @@ implements Slide<XSLFShape,XSLFTextParagraph> {
 
     @Override
     protected String getRootElementName(){
-        return "sld";        
+        return "sld";
     }
 
     public XSLFSlideLayout getMasterSheet(){
@@ -175,7 +175,7 @@ implements Slide<XSLFShape,XSLFTextParagraph> {
         XSLFTextShape txt = getTextShapeByType(Placeholder.TITLE);
         return txt == null ? null : txt.getText();
     }
-    
+
     @Override
     public XSLFTheme getTheme(){
     	return getSlideLayout().getSlideMaster().getTheme();
@@ -215,7 +215,7 @@ implements Slide<XSLFShape,XSLFTextParagraph> {
     public boolean getFollowMasterObjects() {
         return getFollowMasterGraphics();
     }
-    
+
     public void setFollowMasterObjects(boolean follow) {
         setFollowMasterGraphics(follow);
     }
@@ -241,7 +241,7 @@ implements Slide<XSLFShape,XSLFTextParagraph> {
     public boolean getFollowMasterBackground() {
         return false;
     }
-    
+
     public void setFollowMasterBackground(boolean follow) {
         // not implemented ... also not in the specs
         throw new UnsupportedOperationException();
@@ -250,7 +250,7 @@ implements Slide<XSLFShape,XSLFTextParagraph> {
     public boolean getFollowMasterColourScheme() {
         return false;
     }
-    
+
     public void setFollowMasterColourScheme(boolean follow) {
         // not implemented ... only for OLE objects in the specs
         throw new UnsupportedOperationException();
@@ -261,7 +261,7 @@ implements Slide<XSLFShape,XSLFTextParagraph> {
         assert(notes instanceof XSLFNotes);
         // TODO Auto-generated method stub
     }
-    
+
     @Override
     public int getSlideNumber() {
         int idx = getSlideShow().getSlides().indexOf(this);

@@ -31,7 +31,7 @@ import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTRst;
 import schemasMicrosoftComVml.CTShape;
 
 public class XSSFComment implements Comment {
-	
+
 	private final CTComment _comment;
 	private final CommentsTable _comments;
     private final CTShape _vmlShape;
@@ -54,12 +54,12 @@ public class XSSFComment implements Comment {
         // the same way as we do in setRow()/setColumn()
         if(vmlShape != null && vmlShape.sizeOfClientDataArray() > 0) {
             CellReference ref = new CellReference(comment.getRef());
-            vmlShape.getClientDataArray(0).setRowArray(0, 
+            vmlShape.getClientDataArray(0).setRowArray(0,
                     new BigInteger(String.valueOf(ref.getRow())));
-    
-            vmlShape.getClientDataArray(0).setColumnArray(0, 
+
+            vmlShape.getClientDataArray(0).setColumnArray(0,
                     new BigInteger(String.valueOf(ref.getCol())));
-            
+
             // There is a very odd xmlbeans bug when changing the row
             //  arrays which can lead to corrupt pointer
             // This call seems to fix them again... See bug #50795
@@ -131,16 +131,16 @@ public class XSSFComment implements Comment {
      */
     public void setColumn(int col) {
         String oldRef = _comment.getRef();
-        
+
         CellReference ref = new CellReference(getRow(), col);
         _comment.setRef(ref.formatAsString());
         _comments.referenceUpdated(oldRef, _comment);
-        
+
         if(_vmlShape != null) {
            _vmlShape.getClientDataArray(0).setColumnArray(
                  new BigInteger[] { new BigInteger(String.valueOf(col)) }
            );
-           
+
            // There is a very odd xmlbeans bug when changing the column
            //  arrays which can lead to corrupt pointer
            // This call seems to fix them again... See bug #50795
@@ -155,23 +155,23 @@ public class XSSFComment implements Comment {
      */
 	public void setRow(int row) {
 	   String oldRef = _comment.getRef();
-	   
+
 		String newRef =
 			(new CellReference(row, getColumn())).formatAsString();
 		_comment.setRef(newRef);
       _comments.referenceUpdated(oldRef, _comment);
-      
+
         if(_vmlShape != null) {
-        	_vmlShape.getClientDataArray(0).setRowArray(0, 
+        	_vmlShape.getClientDataArray(0).setRowArray(0,
         			new BigInteger(String.valueOf(row)));
-        	
+
             // There is a very odd xmlbeans bug when changing the row
             //  arrays which can lead to corrupt pointer
             // This call seems to fix them again... See bug #50795
             _vmlShape.getClientDataList().toString();
         }
     }
-    
+
     /**
      * @return the rich text string of the comment
      */
@@ -195,7 +195,7 @@ public class XSSFComment implements Comment {
         _str = (XSSFRichTextString)string;
         _comment.setText(_str.getCTRst());
 	}
-	
+
 	public void setString(String string) {
 		setString(new XSSFRichTextString(string));
 	}

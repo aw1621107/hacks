@@ -50,7 +50,7 @@ import org.w3c.dom.Text;
 
 /**
  * Converts xls files (97-2007) to HTML file.
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 @Beta
@@ -62,7 +62,7 @@ public class ExcelToHtmlConverter extends AbstractExcelConverter
 
     /**
      * Java main() interface to interact with {@link ExcelToHtmlConverter}
-     * 
+     *
      * <p>
      * Usage: ExcelToHtmlConverter infile outfile
      * </p>
@@ -103,7 +103,7 @@ public class ExcelToHtmlConverter extends AbstractExcelConverter
 
     /**
      * Converts Excel file (97-2007) into HTML file.
-     * 
+     *
      * @param xlsFile
      *            file to process
      * @return DOM representation of result HTML
@@ -370,7 +370,7 @@ public class ExcelToHtmlConverter extends AbstractExcelConverter
             @SuppressWarnings("resource")
             HSSFWorkbook workbook = cell.getRow().getSheet().getWorkbook();
             String mainCssClass = getStyleClassName( workbook, cellStyle );
-            
+
             if ( wrapInDivs )
             {
                 tableCellElement.setAttribute( "class", mainCssClass + " "

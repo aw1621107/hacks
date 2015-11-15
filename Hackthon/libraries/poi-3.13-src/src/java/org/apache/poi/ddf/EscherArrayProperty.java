@@ -215,17 +215,17 @@ public final class EscherArrayProperty extends EscherComplexProperty implements 
             public boolean hasNext() {
                 return (idx < getNumberOfElementsInArray());
             }
-            
+
             public byte[] next() {
                 if (!hasNext()) throw new NoSuchElementException();
                 return getElement(idx++);
             }
-            
+
             public void remove() {
                 throw new UnsupportedOperationException("not yet implemented");
             }
         };
     }
-    
-    
+
+
 }

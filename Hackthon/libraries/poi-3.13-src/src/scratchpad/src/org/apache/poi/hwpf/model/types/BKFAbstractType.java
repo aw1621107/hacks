@@ -26,10 +26,10 @@ import org.apache.poi.util.LittleEndian;
  * <p>
  * Class and fields descriptions are quoted from Microsoft Office Word 97-2007
  * Binary File Format (.doc) Specification
- * 
+ *
  * NOTE: This source is automatically generated please do not modify this file.
  * Either subclass or remove the record in src/types/definitions.
- * 
+ *
  * @author Sergey Vladimirov; according to Microsoft Office Word 97-2007 Binary
  *         File Format (.doc) Specification
  */

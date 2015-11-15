@@ -27,7 +27,7 @@ import org.apache.poi.poifs.storage.PropertyBlock;
 import org.apache.poi.poifs.storage.RawDataBlockList;
 
 /**
- * This class embodies the Property Table for the {@link org.apache.poi.poifs.filesystem.POIFSFileSystem}; 
+ * This class embodies the Property Table for the {@link org.apache.poi.poifs.filesystem.POIFSFileSystem};
  *  this is basically the directory for all of the documents in the
  * filesystem.
  *
@@ -91,7 +91,7 @@ public final class PropertyTable extends PropertyTableBase implements BlockWrita
             properties[ k ].preWrite();
         }
     }
-    
+
     /**
      * Return the number of BigBlock's this instance uses
      *

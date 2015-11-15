@@ -42,8 +42,8 @@ public class MessageSubmissionChunk extends Chunk {
    private String rawId;
    private Calendar date;
 
-   private static final Pattern datePatern = 
-            Pattern.compile("(\\d\\d)(\\d\\d)(\\d\\d)(\\d\\d)(\\d\\d)(\\d\\d)Z?"); 
+   private static final Pattern datePatern =
+            Pattern.compile("(\\d\\d)(\\d\\d)(\\d\\d)(\\d\\d)(\\d\\d)(\\d\\d)Z?");
 
    /**
     * Creates a Byte Chunk.
@@ -62,9 +62,9 @@ public class MessageSubmissionChunk extends Chunk {
 
    public void readValue(InputStream value) throws IOException {
       // Stored in the file as us-ascii
-     byte[] data = IOUtils.toByteArray(value); 
+     byte[] data = IOUtils.toByteArray(value);
      rawId = new String(data, Charset.forName("ASCII"));
-      
+
       // Now process the date
       String[] parts = rawId.split(";");
       for(String part : parts) {
@@ -76,7 +76,7 @@ public class MessageSubmissionChunk extends Chunk {
             final int numberPartBegin = part.lastIndexOf('-');
             if (numberPartBegin != -1) {
                 final int datePartBegin = part.lastIndexOf('-', numberPartBegin-1);
-                if (datePartBegin != -1 && 
+                if (datePartBegin != -1 &&
                         // cannot extract date if only one hyphen is in the string...
                         numberPartBegin > datePartBegin) {
                     dateS = part.substring(datePartBegin + 1, numberPartBegin);
@@ -107,10 +107,10 @@ public class MessageSubmissionChunk extends Chunk {
    }
 
    public void writeValue(OutputStream out) throws IOException {
-     byte[] data = rawId.getBytes(Charset.forName("ASCII")); 
+     byte[] data = rawId.getBytes(Charset.forName("ASCII"));
      out.write(data);
    }
-   
+
    /**
     * @return the date that the server accepted the
     *  message, as found from the message ID it generated.
@@ -119,7 +119,7 @@ public class MessageSubmissionChunk extends Chunk {
    public Calendar getAcceptedAtTime() {
       return date;
    }
-   
+
    /**
     * @return the full ID that the server generated when
     *  it accepted the message.

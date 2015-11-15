@@ -66,7 +66,7 @@ import org.apache.poi.util.POILogger;
  */
 public final class HSLFSlideShowImpl extends POIDocument {
     public static final int UNSET_OFFSET = -1;
-    
+
     // For logging
     private POILogger logger = POILogFactory.getLogger(this.getClass());
 
@@ -84,9 +84,9 @@ public final class HSLFSlideShowImpl extends POIDocument {
 
     // Embedded objects stored in storage records in the document stream, lazily populated.
     private HSLFObjectData[] _objects;
-    
+
     /**
-     * Returns the directory in the underlying POIFSFileSystem for the 
+     * Returns the directory in the underlying POIFSFileSystem for the
      *  document that is open.
      */
     protected DirectoryNode getPOIFSDirectory() {
@@ -154,7 +154,7 @@ public final class HSLFSlideShowImpl extends POIDocument {
     public HSLFSlideShowImpl(DirectoryNode dir, POIFSFileSystem filesystem) throws IOException {
         this(dir);
     }
-   
+
 	/**
 	 * Constructs a Powerpoint document from a specific point in a
 	 *  POIFS Filesystem. Parses the document and places all the
@@ -180,7 +180,7 @@ public final class HSLFSlideShowImpl extends POIDocument {
 		// Look for any other streams
 		readOtherStreams();
 	}
-	
+
 	private static DirectoryNode handleDualStorage(DirectoryNode dir) throws IOException {
 	    // when there's a dual storage entry, use it, as the outer document can't be read quite probably ...
 	    String dualName = "PP97_DUALSTORAGE";
@@ -188,7 +188,7 @@ public final class HSLFSlideShowImpl extends POIDocument {
 	    dir = (DirectoryNode)dir.getEntry(dualName);
 	    return dir;
 	}
-	
+
 	/**
 	 * Constructs a new, empty, Powerpoint document.
 	 */
@@ -274,7 +274,7 @@ public final class HSLFSlideShowImpl extends POIDocument {
         Map<Integer,Integer> persistIds = new HashMap<Integer,Integer>(); // offset -> persistId
         initRecordOffsets(docstream, usrOffset, records, persistIds);
         HSLFSlideShowEncrypted decryptData = new HSLFSlideShowEncrypted(docstream, records);
-        
+
         for (Map.Entry<Integer,Record> entry : records.entrySet()) {
             Integer offset = entry.getKey();
             Record record = entry.getValue();
@@ -286,12 +286,12 @@ public final class HSLFSlideShowImpl extends POIDocument {
                 record = Record.buildRecordAtOffset(docstream, offset);
                 entry.setValue(record);
             }
-            
+
             if (record instanceof PersistRecord) {
                 ((PersistRecord)record).setPersistId(persistId);
-            }            
+            }
         }
-        
+
         return records.values().toArray(new Record[records.size()]);
     }
 
@@ -299,24 +299,24 @@ public final class HSLFSlideShowImpl extends POIDocument {
         while (usrOffset != 0){
             UserEditAtom usr = (UserEditAtom) Record.buildRecordAtOffset(docstream, usrOffset);
             recordMap.put(usrOffset, usr);
-            
+
             int psrOffset = usr.getPersistPointersOffset();
             PersistPtrHolder ptr = (PersistPtrHolder)Record.buildRecordAtOffset(docstream, psrOffset);
             recordMap.put(psrOffset, ptr);
-            
+
             for(Map.Entry<Integer,Integer> entry : ptr.getSlideLocationsLookup().entrySet()) {
                 Integer offset = entry.getValue();
                 Integer id = entry.getKey();
                 recordMap.put(offset, null); // reserve a slot for the record
                 offset2id.put(offset, id);
             }
-            
+
             usrOffset = usr.getLastUserEditAtomOffset();
 
             // check for corrupted user edit atom and try to repair it
             // if the next user edit atom offset is already known, we would go into an endless loop
             if (usrOffset > 0 && recordMap.containsKey(usrOffset)) {
-                // a user edit atom is usually located 36 byte before the smallest known record offset 
+                // a user edit atom is usually located 36 byte before the smallest known record offset
                 usrOffset = recordMap.firstKey()-36;
                 // check that we really are located on a user edit atom
                 int ver_inst = LittleEndian.getUShort(docstream, usrOffset);
@@ -329,7 +329,7 @@ public final class HSLFSlideShowImpl extends POIDocument {
                     throw new CorruptPowerPointFileException("Powerpoint document contains invalid user edit atom");
                 }
             }
-        }       
+        }
     }
 
     public DocumentEncryptionAtom getDocumentEncryptionAtom() {
@@ -340,8 +340,8 @@ public final class HSLFSlideShowImpl extends POIDocument {
         }
         return null;
     }
-    
-    
+
+
 	/**
 	 * Find the "Current User" stream, and load it
 	 */
@@ -360,7 +360,7 @@ public final class HSLFSlideShowImpl extends POIDocument {
 	private void readOtherStreams() {
 		// Currently, there aren't any
 	}
-	
+
 	/**
 	 * Find and read in pictures contained in this presentation.
 	 * This is lazily called as and when we want to touch pictures.
@@ -372,21 +372,21 @@ public final class HSLFSlideShowImpl extends POIDocument {
         if (!directory.hasEntry("Pictures")) return;
 
         HSLFSlideShowEncrypted decryptData = new HSLFSlideShowEncrypted(getDocumentEncryptionAtom());
-        
+
 		DocumentEntry entry = (DocumentEntry)directory.getEntry("Pictures");
 		byte[] pictstream = new byte[entry.getSize()];
 		DocumentInputStream is = directory.createDocumentInputStream(entry);
 		is.read(pictstream);
 		is.close();
 
-		
+
         int pos = 0;
 		// An empty picture record (length 0) will take up 8 bytes
         while (pos <= (pictstream.length-8)) {
             int offset = pos;
 
             decryptData.decryptPicture(pictstream, offset);
-            
+
             // Image signature
             int signature = LittleEndian.getUShort(pictstream, pos);
             pos += LittleEndian.SHORT_SIZE;
@@ -436,7 +436,7 @@ public final class HSLFSlideShowImpl extends POIDocument {
             pos += imgsize;
         }
 	}
-    
+
     /**
      * remove duplicated UserEditAtoms and merge PersistPtrHolder, i.e.
      * remove document edit history
@@ -449,8 +449,8 @@ public final class HSLFSlideShowImpl extends POIDocument {
         }
         _records = HSLFSlideShowEncrypted.normalizeRecords(_records);
     }
-   
-    
+
+
 	/**
      * This is a helper functions, which is needed for adding new position dependent records
      * or finally write the slideshow to a file.
@@ -458,7 +458,7 @@ public final class HSLFSlideShowImpl extends POIDocument {
 	 * @param os the stream to write to, if null only the references are updated
 	 * @param interestingRecords a map of interesting records (PersistPtrHolder and UserEditAtom)
 	 *        referenced by their RecordType. Only the very last of each type will be saved to the map.
-	 *        May be null, if not needed. 
+	 *        May be null, if not needed.
 	 * @throws IOException
 	 */
 	public void updateAndWriteDependantRecords(OutputStream os, Map<RecordTypes.Type,PositionDependentRecord> interestingRecords)
@@ -501,21 +501,21 @@ public final class HSLFSlideShowImpl extends POIDocument {
             if (interestingRecords != null && saveme != null) {
                 interestingRecords.put(saveme,pdr);
             }
-            
+
             // Dummy write out, so the position winds on properly
             record.writeOut(cos);
         }
         cos.close();
-        
+
         assert(usr != null && ptr != null);
-        
+
         Map<Integer,Integer> persistIds = new HashMap<Integer,Integer>();
         for (Map.Entry<Integer,Integer> entry : ptr.getSlideLocationsLookup().entrySet()) {
             persistIds.put(oldToNewPositions.get(entry.getValue()), entry.getKey());
         }
-        
+
         HSLFSlideShowEncrypted encData = new HSLFSlideShowEncrypted(getDocumentEncryptionAtom());
-	    
+
 	    for (Record record : _records) {
             assert(record instanceof PositionDependentRecord);
             // We've already figured out their new location, and
@@ -524,13 +524,13 @@ public final class HSLFSlideShowImpl extends POIDocument {
             PositionDependentRecord pdr = (PositionDependentRecord)record;
             Integer persistId = persistIds.get(pdr.getLastOnDiskOffset());
             if (persistId == null) persistId = 0;
-            
+
             // For now, we're only handling PositionDependentRecord's that
             // happen at the top level.
             // In future, we'll need the handle them everywhere, but that's
             // a bit trickier
             pdr.updateOtherRecordReferences(oldToNewPositions);
-            
+
             // Whatever happens, write out that record tree
             if (os != null) {
                 record.writeOut(encData.encryptRecord(os, persistId, record));
@@ -570,7 +570,7 @@ public final class HSLFSlideShowImpl extends POIDocument {
      *           the passed in OutputStream
      */
     public void write(OutputStream out, boolean preserveNodes) throws IOException {
-        // read properties and pictures, with old encryption settings where appropriate 
+        // read properties and pictures, with old encryption settings where appropriate
         if(_pictures == null) {
            readPictures();
         }
@@ -588,7 +588,7 @@ public final class HSLFSlideShowImpl extends POIDocument {
 
         // Write out the Property Streams
         writeProperties(outFS, writtenEntries);
-        
+
         BufAccessBAOS baos = new BufAccessBAOS();
 
         // For position dependent records, hold where they were and now are
@@ -605,7 +605,7 @@ public final class HSLFSlideShowImpl extends POIDocument {
         ByteArrayInputStream bais = new ByteArrayInputStream(_docstream);
         outFS.createDocument(bais,"PowerPoint Document");
         writtenEntries.add("PowerPoint Document");
-        
+
         currentUser.setEncrypted(encryptedSS.getDocumentEncryptionAtom() != null);
         currentUser.writeToFS(outFS);
         writtenEntries.add("Current User");
@@ -635,10 +635,10 @@ public final class HSLFSlideShowImpl extends POIDocument {
         outFS.close();
     }
 
-    /** 
+    /**
      * For a given named property entry, either return it or null if
      *  if it wasn't found
-     *  
+     *
      *  @param setName The property to read
      *  @return The value of the given property or null if it wasn't found.
      */
@@ -653,8 +653,8 @@ public final class HSLFSlideShowImpl extends POIDocument {
      * Writes out the standard Documment Information Properties (HPSF)
      * @param outFS the POIFSFileSystem to write the properties into
      * @param writtenEntries a list of POIFS entries to add the property names too
-     * 
-     * @throws IOException if an error when writing to the 
+     *
+     * @throws IOException if an error when writing to the
      *      {@link POIFSFileSystem} occurs
      */
     protected void writeProperties(POIFSFileSystem outFS, List<String> writtenEntries) throws IOException {
@@ -671,7 +671,7 @@ public final class HSLFSlideShowImpl extends POIDocument {
             }
         }
     }
-    
+
     /* ******************* adding methods follow ********************* */
 
 	/**
@@ -713,7 +713,7 @@ public final class HSLFSlideShowImpl extends POIDocument {
             throw new CorruptPowerPointFileException(e.getMessage());
          }
 	   }
-	   
+
 	   // Add the new picture in
       int offset = 0;
 	   if(_pictures.size() > 0) {
@@ -759,7 +759,7 @@ public final class HSLFSlideShowImpl extends POIDocument {
 	         throw new CorruptPowerPointFileException(e.getMessage());
 	      }
 	   }
-	   
+
 		return Collections.unmodifiableList(_pictures);
 	}
 
@@ -780,14 +780,14 @@ public final class HSLFSlideShowImpl extends POIDocument {
         }
         return _objects;
     }
-    
-    
+
+
     private static class BufAccessBAOS extends ByteArrayOutputStream {
         public byte[] getBuf() {
             return buf;
         }
     }
-    
+
     private static class CountingOS extends OutputStream {
         int count = 0;
         public void write(int b) throws IOException {
@@ -801,7 +801,7 @@ public final class HSLFSlideShowImpl extends POIDocument {
         public void write(byte[] b, int off, int len) throws IOException {
             count += len;
         }
-        
+
         public int size() {
             return count;
         }

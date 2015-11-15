@@ -35,7 +35,7 @@ import org.apache.poi.util.LittleEndian;
  * <p>
  * Fields documentation is quotes from Microsoft Office Word 97-2007 Binary File
  * Format (.doc) Specification, page 36 of 210
- * 
+ *
  * @author Ryan Ackley
  */
 @Internal
@@ -64,7 +64,7 @@ public final class StyleSheet implements HDFType {
      * General information about a stylesheet
      */
     private Stshif _stshif;
-    
+
   StyleDescription[] _styleDescriptions;
 
   /**
@@ -82,17 +82,17 @@ public final class StyleSheet implements HDFType {
 
         /*
          * Count of styles in stylesheet
-         * 
+         *
          * The number of styles in this style sheet. There will be stshi.cstd
          * (cbSTD, STD) pairs in the file following the STSHI. Note: styles can
          * be empty, i.e. cbSTD==0.
          */
-        
+
         _stshif = new Stshif( tableStream, offset );
         offset += Stshif.getSize();
 
         // shall we discard cbLSD and mpstilsd?
-        
+
       offset = startOffset + LittleEndian.SHORT_SIZE + _cbStshi;
       _styleDescriptions = new StyleDescription[_stshif.getCstd()];
       for(int x = 0; x < _stshif.getCstd(); x++)
@@ -185,7 +185,7 @@ public final class StyleSheet implements HDFType {
         || ss._cbStshi != this._cbStshi
         || ss._styleDescriptions.length != this._styleDescriptions.length
     ) return false;
-    
+
     for (int i=0; i<_styleDescriptions.length; i++) {
         StyleDescription tsd = this._styleDescriptions[i];
         StyleDescription osd = ss._styleDescriptions[i];
@@ -263,7 +263,7 @@ public final class StyleSheet implements HDFType {
       CharacterProperties chp = sd.getCHP();
       byte[] chpx = sd.getCHPX();
       int baseIndex = sd.getBaseStyle();
-      
+
       if(baseIndex == istd) {
          // Oh dear, this isn't allowed...
          // The word file seems to be corrupted
@@ -271,8 +271,8 @@ public final class StyleSheet implements HDFType {
          //  there's a chance we can read it
          baseIndex = NIL_STYLE;
       }
-      
-      // Build and decompress the Chp if required 
+
+      // Build and decompress the Chp if required
       if(chp == null && chpx != null)
       {
           CharacterProperties parentCHP = new CharacterProperties();
@@ -304,7 +304,7 @@ public final class StyleSheet implements HDFType {
 
     /**
      * Gets the StyleDescription at index x.
-     * 
+     *
      * @param styleIndex
      *            the index of the desired StyleDescription.
      */

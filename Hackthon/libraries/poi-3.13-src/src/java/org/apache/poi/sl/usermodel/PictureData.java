@@ -21,7 +21,7 @@ import java.awt.Dimension;
 import java.io.IOException;
 
 public interface PictureData {
-    
+
     enum PictureType {
         /** Extended windows meta file */
         EMF(2,2,"image/x-emf",".emf"),
@@ -47,7 +47,7 @@ public interface PictureData {
         WPG(-1,12,"image/x-wpg",".wpg"),
         /** Microsoft Windows Media Photo image (.wdp) */
         WDP(-1,13,"image/vnd.ms-photo",".wdp");
-        
+
         public final int nativeId, ooxmlId;
         public final String contentType,extension;
 
@@ -57,7 +57,7 @@ public interface PictureData {
             this.contentType = contentType;
             this.extension = extension;
         }
-        
+
         public static PictureType forNativeID(int nativeId) {
             for (PictureType ans : values()) {
                 if (ans.nativeId == nativeId) return ans;
@@ -72,15 +72,15 @@ public interface PictureData {
             return null;
         }
     }
-    
-    
+
+
     /**
      * Returns content type (mime type) of this picture.
      *
      * @return content type of this picture.
      */
 	String getContentType();
-	
+
 	/**
 	 * @return the picture type
 	 */
@@ -97,14 +97,14 @@ public interface PictureData {
      * @param data picture data
      */
 	void setData(byte[] data) throws IOException;
-	
+
 	/**
 	 * Gets the checksum - the checksum can be of various length -
-	 * mostly it's 8 (XSLF) or 16 (HSLF) bytes long.  
+	 * mostly it's 8 (XSLF) or 16 (HSLF) bytes long.
 	 * @return the checksum
 	 */
 	byte[] getChecksum();
-	
+
     /**
      * Return the original image dimensions in points
      * (for formats supported by BufferedImage).
@@ -112,7 +112,7 @@ public interface PictureData {
      * Will return a Dimension with a default width of 200x200 if the format unsupported.
      */
 	Dimension getImageDimension();
-	
+
     /**
      * Return the original image dimensions in pixels
      * @see PictureData#getImageDimension()

@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_Scale2D complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_Scale2D">
  *   &lt;complexContent>
@@ -40,8 +40,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_Scale2D", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main", propOrder = {
@@ -57,11 +57,11 @@ public class CTScale2D {
 
     /**
      * Gets the value of the sx property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTRatio }
-     *     
+     *
      */
     public CTRatio getSx() {
         return sx;
@@ -69,11 +69,11 @@ public class CTScale2D {
 
     /**
      * Sets the value of the sx property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTRatio }
-     *     
+     *
      */
     public void setSx(CTRatio value) {
         this.sx = value;
@@ -85,11 +85,11 @@ public class CTScale2D {
 
     /**
      * Gets the value of the sy property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTRatio }
-     *     
+     *
      */
     public CTRatio getSy() {
         return sy;
@@ -97,11 +97,11 @@ public class CTScale2D {
 
     /**
      * Sets the value of the sy property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTRatio }
-     *     
+     *
      */
     public void setSy(CTRatio value) {
         this.sy = value;

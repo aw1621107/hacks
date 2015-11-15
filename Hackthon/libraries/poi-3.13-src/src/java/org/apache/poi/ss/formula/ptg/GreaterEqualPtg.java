@@ -32,7 +32,7 @@ public final class GreaterEqualPtg extends ValueOperatorPtg {
     private GreaterEqualPtg() {
     	// enforce singleton
     }
-    
+
     protected byte getSid() {
     	return sid;
     }

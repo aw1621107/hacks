@@ -30,14 +30,14 @@ import org.apache.poi.util.LittleEndianOutput;
  */
 public class ChartTitleFormatRecord extends StandardRecord {
 	public static final short sid = 0x1050;
-	
+
 	private CTFormat[] _formats;
-	
+
 	private static final class CTFormat {
 		public static final int ENCODED_SIZE=4;
 		private int _offset;
 		private int _fontIndex;
-		
+
 		public CTFormat(RecordInputStream in) {
 			_offset = in.readShort();
 			_fontIndex = in.readShort();
@@ -79,15 +79,15 @@ public class ChartTitleFormatRecord extends StandardRecord {
     protected int getDataSize() {
         return 2 + CTFormat.ENCODED_SIZE * _formats.length;
     }
-    
+
 	public short getSid() {
 		return sid;
 	}
-	
+
 	public int getFormatCount() {
 		return _formats.length;
 	}
-	
+
 	public void modifyFormatRun(short oldPos, short newLen) {
 		int shift = 0;
 		for(int i=0; i < _formats.length; i++) {
@@ -97,10 +97,10 @@ public class ChartTitleFormatRecord extends StandardRecord {
 			} else if (oldPos == ctf.getOffset() && i < _formats.length - 1){
 				CTFormat nextCTF = _formats[i + 1];
 				shift = newLen - (nextCTF.getOffset() - ctf.getOffset());
-			} 
+			}
 		}
 	}
-	
+
 	public String toString() {
         StringBuffer buffer = new StringBuffer();
 

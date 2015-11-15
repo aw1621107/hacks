@@ -27,7 +27,7 @@ import java.io.IOException;
 
 /**
  * Creates outlines.
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public class Outlines {

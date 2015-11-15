@@ -32,7 +32,7 @@ public class Context {
     final Map<String, Double> _ctx = new HashMap<String, Double>();
     final IAdjustableShape _props;
     final Rectangle2D _anchor;
-    
+
     public Context(CustomGeometry geom, Rectangle2D anchor, IAdjustableShape props){
         _props = props;
         _anchor = anchor;

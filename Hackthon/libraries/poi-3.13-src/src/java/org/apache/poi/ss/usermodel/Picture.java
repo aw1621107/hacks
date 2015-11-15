@@ -39,7 +39,7 @@ public interface Picture {
      * @see #resize(double, double)
      */
     void resize(double scale);
-    
+
     /**
      * Resize the image.
      * <p>
@@ -51,7 +51,7 @@ public interface Picture {
      * <code>resize(1.0,1.0)</code> keeps the original size,<br/>
      * <code>resize(0.5,0.5)</code> resize to 50% of the original,<br/>
      * <code>resize(2.0,2.0)</code> resizes to 200% of the original.<br/>
-     * <code>resize({@link Double#MAX_VALUE},{@link Double#MAX_VALUE})</code> resizes to the dimension of the embedded image. 
+     * <code>resize({@link Double#MAX_VALUE},{@link Double#MAX_VALUE})</code> resizes to the dimension of the embedded image.
      * </p>
      *
      * @param scaleX the amount by which the image width is multiplied relative to the original width.
@@ -65,7 +65,7 @@ public interface Picture {
      * @return XSSFClientAnchor with the preferred size for this image
      */
     ClientAnchor getPreferredSize();
-    
+
     /**
      * Calculate the preferred size for this picture.
      *
@@ -81,7 +81,7 @@ public interface Picture {
      * @return image dimension in pixels
      */
     Dimension getImageDimension();
-    
+
     /**
      * Return picture data for this picture
      *

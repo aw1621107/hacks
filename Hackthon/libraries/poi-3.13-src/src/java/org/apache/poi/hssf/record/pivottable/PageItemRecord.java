@@ -25,7 +25,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * SXPI - Page Item (0x00B6)<br/>
- * 
+ *
  * @author Patrick Cheng
  */
 public final class PageItemRecord extends StandardRecord {

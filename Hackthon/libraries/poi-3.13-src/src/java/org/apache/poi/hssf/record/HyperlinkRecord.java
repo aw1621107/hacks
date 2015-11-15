@@ -145,7 +145,7 @@ public final class HyperlinkRecord extends StandardRecord {
 
 		/**
 		 * Read a GUID in standard text form e.g.<br/>
-		 * 13579BDF-0246-8ACE-0123-456789ABCDEF 
+		 * 13579BDF-0246-8ACE-0123-456789ABCDEF
 		 * <br/> -&gt; <br/>
 		 *  0x13579BDF, 0x0246, 0x8ACE 0x0123456789ABCDEF
 		 */
@@ -214,7 +214,7 @@ public final class HyperlinkRecord extends StandardRecord {
      final static GUID URL_MONIKER = GUID.parse("79EAC9E0-BAF9-11CE-8C82-00AA004BA90B");
      final static GUID FILE_MONIKER = GUID.parse("00000303-0000-0000-C000-000000000046");
     /** expected Tail of a URL link */
-    private final static byte[] URL_TAIL  = HexRead.readFromString("79 58 81 F4  3B 1D 7F 48   AF 2C 82 5D  C4 85 27 63   00 00 00 00  A5 AB 00 00"); 
+    private final static byte[] URL_TAIL  = HexRead.readFromString("79 58 81 F4  3B 1D 7F 48   AF 2C 82 5D  C4 85 27 63   00 00 00 00  A5 AB 00 00");
     /** expected Tail of a file link */
     private final static byte[] FILE_TAIL = HexRead.readFromString("FF FF AD DE  00 00 00 00   00 00 00 00  00 00 00 00   00 00 00 00  00 00 00 00");
 
@@ -246,7 +246,7 @@ public final class HyperlinkRecord extends StandardRecord {
      * This field is optional.  If present, the {@link #HLINK_PLACE} must be set.
      */
     private String _textMark;
-    
+
     private byte[] _uninterpretedTail;
 
     /**
@@ -529,7 +529,7 @@ public final class HyperlinkRecord extends StandardRecord {
         }
 
         if (in.remaining() > 0) {
-           logger.log(POILogger.WARN, 
+           logger.log(POILogger.WARN,
                  "Hyperlink data remains: " + in.remaining() +
                  " : " +HexDump.toHex(in.readRemainder())
            );
@@ -685,23 +685,23 @@ public final class HyperlinkRecord extends StandardRecord {
      * Based on the link options, is this a url?
      */
     public boolean isUrlLink() {
-       return (_linkOpts & HLINK_URL) > 0 
+       return (_linkOpts & HLINK_URL) > 0
            && (_linkOpts & HLINK_ABS) > 0;
     }
     /**
      * Based on the link options, is this a file?
      */
     public boolean isFileLink() {
-       return (_linkOpts & HLINK_URL) > 0 
+       return (_linkOpts & HLINK_URL) > 0
            && (_linkOpts & HLINK_ABS) == 0;
     }
     /**
      * Based on the link options, is this a document?
      */
     public boolean isDocumentLink() {
-       return (_linkOpts & HLINK_PLACE) > 0; 
+       return (_linkOpts & HLINK_PLACE) > 0;
     }
-    
+
     /**
      * Initialize a new url link
      */

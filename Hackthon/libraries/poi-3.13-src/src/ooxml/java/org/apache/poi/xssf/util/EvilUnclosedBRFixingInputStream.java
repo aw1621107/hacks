@@ -35,11 +35,11 @@ import java.util.ArrayList;
 public class EvilUnclosedBRFixingInputStream extends InputStream {
    private InputStream source;
    private byte[] spare;
-   
+
    private static byte[] detect = new byte[] {
       (byte)'<', (byte)'b', (byte)'r', (byte)'>'
    };
-   
+
    public EvilUnclosedBRFixingInputStream(InputStream source) {
       this.source = source;
    }
@@ -57,22 +57,22 @@ public class EvilUnclosedBRFixingInputStream extends InputStream {
       // Grab any data left from last time
       int readA = readFromSpare(b, off, len);
 
-      // Now read from the stream 
+      // Now read from the stream
       int readB = source.read(b, off+readA, len-readA);
-      
+
       // Figure out how much we've done
       int read;
       if(readB == -1 || readB == 0) {
-         read = readA; 
+         read = readA;
       } else {
          read = readA + readB;
       }
-      
+
       // Fix up our data
       if(read > 0) {
          read = fixUp(b, off, read);
       }
-      
+
       // All done
       return read;
    }
@@ -81,14 +81,14 @@ public class EvilUnclosedBRFixingInputStream extends InputStream {
    public int read(byte[] b) throws IOException {
       return this.read(b, 0, b.length);
    }
-   
+
    /**
     * Reads into the buffer from the spare bytes
     */
    private int readFromSpare(byte[] b, int offset, int len) {
       if(spare == null) return 0;
       if(len == 0) throw new IllegalArgumentException("Asked to read 0 bytes");
-      
+
       if(spare.length <= len) {
          // All fits, good
          System.arraycopy(spare, 0, b, offset, spare.length);
@@ -126,7 +126,7 @@ public class EvilUnclosedBRFixingInputStream extends InputStream {
       for(int i=0; i<detect.length-1; i++) {
          int base = offset+read-1-i;
          if(base < 0) continue;
-            
+
          boolean going = true;
          for(int j=0; j<=i && going; j++) {
             if(b[base+j] == detect[j]) {
@@ -143,7 +143,7 @@ public class EvilUnclosedBRFixingInputStream extends InputStream {
             break;
          }
       }
-      
+
       // Find places to fix
       ArrayList<Integer> fixAt = new ArrayList<Integer>();
       for(int i=offset; i<=offset+read-detect.length; i++) {
@@ -157,15 +157,15 @@ public class EvilUnclosedBRFixingInputStream extends InputStream {
             fixAt.add(i);
          }
       }
-      
+
       if(fixAt.size()==0) {
          return read;
       }
-      
+
       // If there isn't space in the buffer to contain
       //  all the fixes, then save the overshoot for next time
       int needed = offset+read+fixAt.size();
-      int overshoot = needed - b.length;  
+      int overshoot = needed - b.length;
       if(overshoot > 0) {
          // Make sure we don't loose part of a <br>!
          int fixes = 0;
@@ -180,7 +180,7 @@ public class EvilUnclosedBRFixingInputStream extends InputStream {
          addToSpare(b, offset+read-overshoot, overshoot, false);
          read -= overshoot;
       }
-      
+
       // Fix them, in reverse order so the
       //  positions are valid
       for(int j=fixAt.size()-1; j>=0; j--) {

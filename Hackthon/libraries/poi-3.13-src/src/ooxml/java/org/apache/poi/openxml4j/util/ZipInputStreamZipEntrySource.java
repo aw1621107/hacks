@@ -38,16 +38,16 @@ import org.apache.poi.openxml4j.util.ZipSecureFile.ThresholdInputStream;
  */
 public class ZipInputStreamZipEntrySource implements ZipEntrySource {
 	private ArrayList<FakeZipEntry> zipEntries;
-	
+
 	/**
-	 * Reads all the entries from the ZipInputStream 
+	 * Reads all the entries from the ZipInputStream
 	 *  into memory, and closes the source stream.
 	 * We'll then eat lots of memory, but be able to
 	 *  work with the entries at-will.
 	 */
 	public ZipInputStreamZipEntrySource(ThresholdInputStream inp) throws IOException {
 		zipEntries = new ArrayList<FakeZipEntry>();
-		
+
 		boolean going = true;
 		while(going) {
 			ZipEntry zipEntry = inp.getNextEntry();
@@ -56,7 +56,7 @@ public class ZipInputStreamZipEntrySource implements ZipEntrySource {
 			} else {
 				FakeZipEntry entry = new FakeZipEntry(zipEntry, inp);
 				inp.closeEntry();
-				
+
 				zipEntries.add(entry);
 			}
 		}
@@ -66,29 +66,29 @@ public class ZipInputStreamZipEntrySource implements ZipEntrySource {
 	public Enumeration<? extends ZipEntry> getEntries() {
 		return new EntryEnumerator();
 	}
-	
+
 	public InputStream getInputStream(ZipEntry zipEntry) {
 	    assert (zipEntry instanceof FakeZipEntry);
 		FakeZipEntry entry = (FakeZipEntry)zipEntry;
 		return entry.getInputStream();
 	}
-	
+
 	public void close() {
 		// Free the memory
 		zipEntries = null;
 	}
-	
+
 	/**
 	 * Why oh why oh why are Iterator and Enumeration
 	 *  still not compatible?
 	 */
 	private class EntryEnumerator implements Enumeration<ZipEntry> {
 		private Iterator<? extends ZipEntry> iterator;
-		
+
 		private EntryEnumerator() {
 			iterator = zipEntries.iterator();
 		}
-		
+
 		public boolean hasMoreElements() {
 			return iterator.hasNext();
 		}
@@ -102,14 +102,14 @@ public class ZipInputStreamZipEntrySource implements ZipEntrySource {
 	 * So we can close the real zip entry and still
 	 *  effectively work with it.
 	 * Holds the (decompressed!) data in memory, so
-	 *  close this as soon as you can! 
+	 *  close this as soon as you can!
 	 */
 	public static class FakeZipEntry extends ZipEntry {
 		private byte[] data;
-		
+
 		public FakeZipEntry(ZipEntry entry, InputStream inp) throws IOException {
 			super(entry.getName());
-			
+
 			// Grab the de-compressed contents for later
             ByteArrayOutputStream baos;
 
@@ -130,10 +130,10 @@ public class ZipInputStreamZipEntrySource implements ZipEntrySource {
 			while( (read = inp.read(buffer)) != -1 ) {
 				baos.write(buffer, 0, read);
 			}
-			
+
 			data = baos.toByteArray();
 		}
-		
+
 		public InputStream getInputStream() {
 			return new ByteArrayInputStream(data);
 		}

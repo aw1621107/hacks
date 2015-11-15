@@ -33,7 +33,7 @@ public class Units {
      * Master DPI (576 pixels per inch).
      * Used by the reference coordinate system in PowerPoint (HSLF)
      */
-    public static final int MASTER_DPI = 576;    
+    public static final int MASTER_DPI = 576;
 
     /**
      * Pixels DPI (96 pixels per inch)
@@ -43,7 +43,7 @@ public class Units {
     /**
      * Points DPI (72 pixels per inch)
      */
-    public static final int POINT_DPI = 72;    
+    public static final int POINT_DPI = 72;
 
     /**
      * Converts points to EMUs
@@ -62,13 +62,13 @@ public class Units {
     public static double toPoints(long emu){
         return (double)emu/EMU_PER_POINT;
     }
-    
+
     /**
      * Converts a value of type FixedPoint to a floating point
      *
      * @param fixedPoint
      * @return floating point (double)
-     * 
+     *
      * @see <a href="http://msdn.microsoft.com/en-us/library/dd910765(v=office.12).aspx">[MS-OSHARED] - 2.2.1.6 FixedPoint</a>
      */
     public static double fixedPointToDouble(int fixedPoint) {
@@ -77,13 +77,13 @@ public class Units {
         double floatPoint = (i + f/65536d);
         return floatPoint;
     }
-    
+
     /**
      * Converts a value of type floating point to a FixedPoint
      *
      * @param floatPoint
      * @return fixedPoint
-     * 
+     *
      * @see <a href="http://msdn.microsoft.com/en-us/library/dd910765(v=office.12).aspx">[MS-OSHARED] - 2.2.1.6 FixedPoint</a>
      */
     public static int doubleToFixedPoint(double floatPoint) {
@@ -99,13 +99,13 @@ public class Units {
         points /= MASTER_DPI;
         return points;
     }
-    
+
     public static int pointsToMaster(double points) {
         points *= MASTER_DPI;
         points /= POINT_DPI;
         return (int)points;
     }
-    
+
     public static int pointsToPixel(double points) {
         points *= PIXEL_DPI;
         points /= POINT_DPI;

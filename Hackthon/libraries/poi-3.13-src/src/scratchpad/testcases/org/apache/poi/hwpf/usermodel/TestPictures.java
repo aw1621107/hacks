@@ -150,23 +150,23 @@ public final class TestPictures extends TestCase {
        // This file has two embeded excel files, an embeded powerpoint
        //   file and an embeded word file, in that order
        HWPFDocument doc = HWPFTestDataSamples.openSampleFile("word_with_embeded.doc");
-       
+
        // Check we don't break loading the pictures
        doc.getPicturesTable().getAllPictures();
        PicturesTable pictureTable = doc.getPicturesTable();
-       
+
        // Check the text, and its embeded images
        Paragraph p;
        Range r = doc.getRange();
        assertEquals(1, r.numSections());
        assertEquals(5, r.numParagraphs());
-       
+
        p = r.getParagraph(0);
        assertEquals(2, p.numCharacterRuns());
        assertEquals("I have lots of embedded files in me\r", p.text());
        assertEquals(false, pictureTable.hasPicture(p.getCharacterRun(0)));
        assertEquals(false, pictureTable.hasPicture(p.getCharacterRun(1)));
-       
+
        p = r.getParagraph(1);
        assertEquals(5, p.numCharacterRuns());
        assertEquals("\u0013 EMBED Excel.Sheet.8  \u0014\u0001\u0015\r", p.text());
@@ -175,7 +175,7 @@ public final class TestPictures extends TestCase {
        assertEquals(false, pictureTable.hasPicture(p.getCharacterRun(2)));
        assertEquals(true,  pictureTable.hasPicture(p.getCharacterRun(3)));
        assertEquals(false, pictureTable.hasPicture(p.getCharacterRun(4)));
-       
+
        p = r.getParagraph(2);
        assertEquals(6, p.numCharacterRuns());
        assertEquals("\u0013 EMBED Excel.Sheet.8  \u0014\u0001\u0015\r", p.text());
@@ -185,7 +185,7 @@ public final class TestPictures extends TestCase {
        assertEquals(true,  pictureTable.hasPicture(p.getCharacterRun(3)));
        assertEquals(false, pictureTable.hasPicture(p.getCharacterRun(4)));
        assertEquals(false, pictureTable.hasPicture(p.getCharacterRun(5)));
-       
+
        p = r.getParagraph(3);
        assertEquals(6, p.numCharacterRuns());
        assertEquals("\u0013 EMBED PowerPoint.Show.8  \u0014\u0001\u0015\r", p.text());
@@ -195,7 +195,7 @@ public final class TestPictures extends TestCase {
        assertEquals(true,  pictureTable.hasPicture(p.getCharacterRun(3)));
        assertEquals(false, pictureTable.hasPicture(p.getCharacterRun(4)));
        assertEquals(false, pictureTable.hasPicture(p.getCharacterRun(5)));
-       
+
        p = r.getParagraph(4);
        assertEquals(6, p.numCharacterRuns());
        assertEquals("\u0013 EMBED Word.Document.8 \\s \u0014\u0001\u0015\r", p.text());
@@ -259,15 +259,15 @@ public final class TestPictures extends TestCase {
     public void testFloatingPictures() throws Exception {
        HWPFDocument doc = HWPFTestDataSamples.openSampleFile("FloatingPictures.doc");
        PicturesTable pictures = doc.getPicturesTable();
-       
+
        // There are 19 images in the picture, but some are
        //  duplicate floating ones
        assertEquals(17, pictures.getAllPictures().size());
-       
+
        int plain8s = 0;
        int escher8s = 0;
        int image1s = 0;
-       
+
        Range r = doc.getRange();
        for(int np=0; np < r.numParagraphs(); np++) {
           Paragraph p = r.getParagraph(np);
@@ -326,14 +326,14 @@ public final class TestPictures extends TestCase {
     public void testPictureDetectionWithPNG() throws Exception {
         HWPFDocument document = HWPFTestDataSamples.openSampleFile("PngPicture.doc");
         PicturesTable pictureTable = document.getPicturesTable();
-        
+
         assertEquals(1, pictureTable.getAllPictures().size());
-        
+
         Picture p = pictureTable.getAllPictures().get(0);
         assertEquals(PictureType.PNG, p.suggestPictureType());
         assertEquals("png", p.suggestFileExtension());
     }
-    
+
     public void testPictureWithAlternativeText() throws Exception {
         HWPFDocument document = HWPFTestDataSamples.openSampleFile("Picture_Alternative_Text.doc");
         PicturesTable pictureTable = document.getPicturesTable();

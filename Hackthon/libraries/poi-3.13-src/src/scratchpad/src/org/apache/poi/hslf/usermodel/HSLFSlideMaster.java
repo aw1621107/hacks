@@ -79,14 +79,14 @@ public final class HSLFSlideMaster extends HSLFMasterSheet {
         if (_txmaster.length <= txtype) return null;
         TxMasterStyleAtom t = _txmaster[txtype];
         List<TextPropCollection> styles = isCharacter ? t.getCharacterStyles() : t.getParagraphStyles();
-        
+
         TextProp prop = null;
         for (int i = Math.min(level, styles.size()-1); prop == null && i >= 0; i--) {
             prop = styles.get(i).findByName(name);
         }
 
         if (prop != null) return prop;
-        
+
         switch (txtype) {
             case TextHeaderAtom.CENTRE_BODY_TYPE:
             case TextHeaderAtom.HALF_BODY_TYPE:

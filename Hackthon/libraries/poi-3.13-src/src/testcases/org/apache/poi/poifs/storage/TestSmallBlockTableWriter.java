@@ -75,7 +75,7 @@ public final class TestSmallBlockTableWriter extends TestCase {
         documents
             .add(new OPOIFSDocument("doc9",
                                    new ByteArrayInputStream(new byte[ 9 ])));
-        
+
         HeaderBlock              header = new HeaderBlock(POIFSConstants.SMALLER_BIG_BLOCK_SIZE_DETAILS);
         RootProperty               root = new PropertyTable(header).getRoot();
         SmallBlockTableWriter      sbtw = new SmallBlockTableWriter(

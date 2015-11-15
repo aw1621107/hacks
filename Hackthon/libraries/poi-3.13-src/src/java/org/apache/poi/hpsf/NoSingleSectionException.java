@@ -43,7 +43,7 @@ public class NoSingleSectionException extends HPSFRuntimeException
 
     /**
      * <p>Constructor</p>
-     * 
+     *
      * @param msg The exception's message string
      */
     public NoSingleSectionException(final String msg)
@@ -54,7 +54,7 @@ public class NoSingleSectionException extends HPSFRuntimeException
 
     /**
      * <p>Constructor</p>
-     * 
+     *
      * @param reason This exception's underlying reason
      */
     public NoSingleSectionException(final Throwable reason)
@@ -65,7 +65,7 @@ public class NoSingleSectionException extends HPSFRuntimeException
 
     /**
      * <p>Constructor</p>
-     * 
+     *
      * @param msg The exception's message string
      * @param reason This exception's underlying reason
      */

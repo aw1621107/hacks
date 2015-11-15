@@ -42,7 +42,7 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * Checks if the SQL Type is a Decimal/Number Type
-     * 
+     *
      * @param type
      *            SQL Type
      */
@@ -72,7 +72,7 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * Initialize for a result with a tuple set and a field descriptor set
-     * 
+     *
      * @param fields
      *            the array of field descriptors
      */
@@ -85,12 +85,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * What's a column's table's catalog name?
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2...
-     * 
+     *
      * @return catalog name, or "" if not applicable
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -104,14 +104,14 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * What's the Java character encoding name for the given column?
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2, etc.
-     * 
+     *
      * @return the Java character encoding name for the given column, or null if
      *         no Java character encoding maps to the MySQL character set for
      *         the given column.
-     * 
+     *
      * @throws SQLException
      *             if an invalid column index is given.
      */
@@ -135,12 +135,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * What's the MySQL character set name for the given column?
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2, etc.
-     * 
+     *
      * @return the MySQL character set name for the given column
-     * 
+     *
      * @throws SQLException
      *             if an invalid column index is given.
      */
@@ -152,19 +152,19 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * JDBC 2.0
-     * 
+     *
      * <p>
      * Return the fully qualified name of the Java class whose instances are manufactured if ResultSet.getObject() is called to retrieve a value from the
      * column. ResultSet.getObject() may return a subClass of the class returned by this method.
      * </p>
-     * 
+     *
      * @param column
      *            the column number to retrieve information for
-     * 
+     *
      * @return the fully qualified name of the Java class whose instances are
      *         manufactured if ResultSet.getObject() is called to retrieve a
      *         value from the column.
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -176,9 +176,9 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * Whats the number of columns in the ResultSet?
-     * 
+     *
      * @return the number
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -188,12 +188,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * What is the column's normal maximum width in characters?
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2, etc.
-     * 
+     *
      * @return the maximum width
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -207,12 +207,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * What is the suggested column title for use in printouts and displays?
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2, etc.
-     * 
+     *
      * @return the column label
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -226,12 +226,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * What's a column's name?
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2, etc.
-     * 
+     *
      * @return the column name
-     * 
+     *
      * @throws SQLException
      *             if a databvase access error occurs
      */
@@ -251,15 +251,15 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * What is a column's SQL Type? (java.sql.Type int)
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2, etc.
-     * 
+     *
      * @return the java.sql.Type value
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
-     * 
+     *
      * @see java.sql.Types
      */
     public int getColumnType(int column) throws SQLException {
@@ -268,12 +268,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * Whats is the column's data source specific type name?
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2, etc.
-     * 
+     *
      * @return the type name
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -381,12 +381,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * Returns the field instance for the given column index
-     * 
+     *
      * @param columnIndex
      *            the column number to retrieve a field instance for
-     * 
+     *
      * @return the field instance for the given column index
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -400,12 +400,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * What is a column's number of decimal digits.
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2...
-     * 
+     *
      * @return the precision
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -439,12 +439,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * What is a column's number of digits to the right of the decimal point?
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2...
-     * 
+     *
      * @return the scale
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -462,12 +462,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
      * What is a column's table's schema? This relies on us knowing the table
      * name. The JDBC specification allows us to return "" if this is not
      * applicable.
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2...
-     * 
+     *
      * @return the Schema
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -477,12 +477,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * Whats a column's table's name?
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2...
-     * 
+     *
      * @return column name, or "" if not applicable
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -496,12 +496,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * Is the column automatically numbered (and thus read-only)
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2...
-     * 
+     *
      * @return true if so
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -513,12 +513,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * Does a column's case matter?
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2...
-     * 
+     *
      * @return true if so
-     * 
+     *
      * @throws java.sql.SQLException
      *             if a database access error occurs
      */
@@ -560,12 +560,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * Is the column a cash value?
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2...
-     * 
+     *
      * @return true if its a cash column
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -575,12 +575,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * Will a write on this column definately succeed?
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2, etc..
-     * 
+     *
      * @return true if so
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -590,12 +590,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * Can you put a NULL in this column?
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2...
-     * 
+     *
      * @return one of the columnNullable values
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -609,12 +609,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * Is the column definitely not writable?
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2, etc.
-     * 
+     *
      * @return true if so
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -628,12 +628,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
      * and OTHER types (which may or may not be useable). The OTHER types, for
      * now, I will assume they are useable. We should really query the catalog
      * to see if they are useable.
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2...
-     * 
+     *
      * @return true if they can be used in a WHERE clause
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -643,12 +643,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * Is the column a signed number?
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2...
-     * 
+     *
      * @return true if so
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -680,12 +680,12 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * Is it possible for a write on the column to succeed?
-     * 
+     *
      * @param column
      *            the first column is 1, the second is 2, etc.
-     * 
+     *
      * @return true if so
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -695,7 +695,7 @@ public class ResultSetMetaData implements java.sql.ResultSetMetaData {
 
     /**
      * Returns a string representation of this object
-     * 
+     *
      * @return ...
      */
     @Override

@@ -42,8 +42,8 @@ public final class PropertyBlock extends BigBlock {
     private PropertyBlock(final POIFSBigBlockSize bigBlockSize, final Property [] properties, final int offset)
     {
         super(bigBlockSize);
-        
-        _properties = new Property[ bigBlockSize.getPropertiesPerBlock() ]; 
+
+        _properties = new Property[ bigBlockSize.getPropertiesPerBlock() ];
         for (int j = 0; j < _properties.length; j++)
         {
             _properties[ j ] = properties[ j + offset ];

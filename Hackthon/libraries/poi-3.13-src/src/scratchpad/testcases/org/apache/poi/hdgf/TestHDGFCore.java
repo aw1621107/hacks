@@ -70,13 +70,13 @@ public final class TestHDGFCore extends TestCase {
 
 		HDGFDiagram hdgf = new HDGFDiagram(fs);
 		assertNotNull(hdgf);
-		
+
 		// And another file
 		fs = new POIFSFileSystem(_dgTests.openResourceAsStream("NegativeChunkLength2.vsd"));
 		hdgf = new HDGFDiagram(fs);
 		assertNotNull(hdgf);
 	}
-	
+
 	/**
 	 * Tests that we can open a problematic file that triggers
 	 *  an ArrayIndexOutOfBoundsException when processing the

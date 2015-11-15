@@ -55,7 +55,7 @@ public interface EvaluationWorkbook {
     ExternalSheet getExternalSheet(String firstSheetName, String lastSheetName, int externalWorkbookNumber);
     /**
      * HSSF Only - convert an external sheet index to an internal sheet index,
-     *  for an external-style reference to one of this workbook's own sheets 
+     *  for an external-style reference to one of this workbook's own sheets
      */
     int convertFromExternSheetIndex(int externSheetIndex);
 
@@ -67,7 +67,7 @@ public interface EvaluationWorkbook {
      * XSSF Only - fetch the external-style name details
      */
     ExternalName getExternalName(String nameName, String sheetName, int externalWorkbookNumber);
-    
+
     EvaluationName getName(NamePtg namePtg);
     EvaluationName getName(String name, int sheetIndex);
     String resolveNameXText(NameXPtg ptg);
@@ -95,7 +95,7 @@ public interface EvaluationWorkbook {
             super(workbookName, firstSheetName);
             this._lastSheetName = lastSheetName;
         }
-        
+
         public String getFirstSheetName() {
             return getSheetName();
         }

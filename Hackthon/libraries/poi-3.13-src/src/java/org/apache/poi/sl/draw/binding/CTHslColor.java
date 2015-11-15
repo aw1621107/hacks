@@ -30,9 +30,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_HslColor complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_HslColor">
  *   &lt;complexContent>
@@ -47,8 +47,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_HslColor", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main", propOrder = {
@@ -96,20 +96,20 @@ public class CTHslColor {
 
     /**
      * Gets the value of the egColorTransform property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the egColorTransform property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getEGColorTransform().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link CTComplementTransform }{@code >}
@@ -140,8 +140,8 @@ public class CTHslColor {
      * {@link JAXBElement }{@code <}{@link CTPercentage }{@code >}
      * {@link JAXBElement }{@code <}{@link CTPercentage }{@code >}
      * {@link JAXBElement }{@code <}{@link CTPositiveFixedPercentage }{@code >}
-     * 
-     * 
+     *
+     *
      */
     public List<JAXBElement<?>> getEGColorTransform() {
         if (egColorTransform == null) {
@@ -160,7 +160,7 @@ public class CTHslColor {
 
     /**
      * Gets the value of the hue property.
-     * 
+     *
      */
     public int getHue() {
         return hue;
@@ -168,7 +168,7 @@ public class CTHslColor {
 
     /**
      * Sets the value of the hue property.
-     * 
+     *
      */
     public void setHue(int value) {
         this.hue = value;
@@ -180,7 +180,7 @@ public class CTHslColor {
 
     /**
      * Gets the value of the sat property.
-     * 
+     *
      */
     public int getSat() {
         return sat;
@@ -188,7 +188,7 @@ public class CTHslColor {
 
     /**
      * Sets the value of the sat property.
-     * 
+     *
      */
     public void setSat(int value) {
         this.sat = value;
@@ -200,7 +200,7 @@ public class CTHslColor {
 
     /**
      * Gets the value of the lum property.
-     * 
+     *
      */
     public int getLum() {
         return lum;
@@ -208,7 +208,7 @@ public class CTHslColor {
 
     /**
      * Sets the value of the lum property.
-     * 
+     *
      */
     public void setLum(int value) {
         this.lum = value;

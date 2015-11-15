@@ -27,7 +27,7 @@ import java.util.logging.Logger;
  * <p>Processes a test method for all OLE2 files in the HPSF test data
  * directory. Well, this class does not check whether a file is an OLE2 file but
  * rather whether its name begins with "Test".</p>
- * 
+ *
  * @author Rainer Klute <a
  *         href="mailto:klute@rainer-klute.de">&lt;klute@rainer-klute.de&gt;</a>
  */
@@ -55,7 +55,7 @@ public class AllDataFilesTester {
      * <p>Tests the simplified custom properties.</p>
      *
      * @param task the task to execute
-     * @throws Throwable 
+     * @throws Throwable
      */
     public void runTests(final TestTask task) throws Throwable
     {

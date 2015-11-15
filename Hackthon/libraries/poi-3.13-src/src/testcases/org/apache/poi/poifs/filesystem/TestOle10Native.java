@@ -57,26 +57,26 @@ public class TestOle10Native {
             POIDataSamples.getDocumentInstance().getFile("Bug53380_3.doc"),
             POIDataSamples.getDocumentInstance().getFile("Bug47731.doc")
         };
-        
+
         for (File f : files) {
             NPOIFSFileSystem fs = new NPOIFSFileSystem(f, true);
             List<Entry> entries = new ArrayList<Entry>();
             findOle10(entries, fs.getRoot(), "/", "");
-            
+
             for (Entry e : entries) {
                 ByteArrayOutputStream bosExp = new ByteArrayOutputStream();
                 InputStream is = ((DirectoryNode)e.getParent()).createDocumentInputStream(e);
                 IOUtils.copy(is,bosExp);
                 is.close();
-                
+
                 Ole10Native ole = Ole10Native.createFromEmbeddedOleObject((DirectoryNode)e.getParent());
-                
+
                 ByteArrayOutputStream bosAct = new ByteArrayOutputStream();
                 ole.writeOut(bosAct);
-                
+
                 assertThat(bosExp.toByteArray(), equalTo(bosAct.toByteArray()));
             }
-            
+
             fs.close();
         }
     }
@@ -94,7 +94,7 @@ public class TestOle10Native {
             fs.close();
         }
     }*/
-    
+
     void findOle10(List<Entry> entries, DirectoryNode dn, String path, String filename) {
         Iterator<Entry> iter = dn.getEntries();
         while (iter.hasNext()) {

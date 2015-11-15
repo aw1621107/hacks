@@ -21,7 +21,7 @@ import java.awt.Color;
 import junit.framework.TestCase;
 
 public class TestCellFormatResult extends TestCase {
-    
+
     public void testNullTextRaisesException() {
         try {
             final boolean applies = true;

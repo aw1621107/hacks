@@ -24,7 +24,7 @@ public class NumericRanges {
     public static final int OVERLAPS_2_MINOR = 1;
     public static final int OVERLAPS_1_WRAPS = 2;
     public static final int OVERLAPS_2_WRAPS = 3;
-    
+
     public static long[] getOverlappingRange(long[] range1, long[] range2) {
         int overlappingType = getOverlappingType(range1, range2);
         if (overlappingType == OVERLAPS_1_MINOR) {
@@ -41,7 +41,7 @@ public class NumericRanges {
         }
         return new long[]{-1, -1};
     }
-    
+
     public static int getOverlappingType(long[] range1, long[] range2) {
         long min1 = range1[0];
         long max1 = range1[1];
@@ -60,7 +60,7 @@ public class NumericRanges {
             return OVERLAPS_2_MINOR;
         }
         return NO_OVERLAPS;
-        
+
     }
-    
+
 }

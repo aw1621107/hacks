@@ -27,7 +27,7 @@ import org.apache.poi.hssf.record.cf.Threshold;
  */
 public interface ColorScaleFormatting {
     /**
-     * How many control points should be used to map 
+     * How many control points should be used to map
      *  the colours? Normally 2 or 3
      */
     int getNumControlPoints();
@@ -49,7 +49,7 @@ public interface ColorScaleFormatting {
      *  between. The number must match {@link #getNumControlPoints()}
      */
     void setColors(Color[] colors);
-    
+
     /**
      * Gets the list of thresholds
      */

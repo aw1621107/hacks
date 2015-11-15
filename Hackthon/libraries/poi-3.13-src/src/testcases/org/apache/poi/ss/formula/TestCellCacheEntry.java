@@ -33,10 +33,10 @@ public class TestCellCacheEntry extends TestCase {
 		CellCacheEntry pcce = new PlainValueCellCacheEntry(new NumberEval(42.0));
 		ValueEval ve = pcce.getValue();
 		assertEquals(42, ((NumberEval)ve).getNumberValue(), 0.0);
-		
+
 		FormulaCellCacheEntry fcce = new FormulaCellCacheEntry();
 		fcce.updateFormulaResult(new NumberEval(10.0), CellCacheEntry.EMPTY_ARRAY, null);
-		
+
 		ve = fcce.getValue();
 		assertEquals(10, ((NumberEval)ve).getNumberValue(), 0.0);
 	}

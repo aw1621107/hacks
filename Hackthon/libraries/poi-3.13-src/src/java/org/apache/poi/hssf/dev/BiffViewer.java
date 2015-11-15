@@ -143,7 +143,7 @@ public final class BiffViewer {
             case CFHeader12Record.sid:        return new CFHeader12Record(in);
             case CFRuleRecord.sid:            return new CFRuleRecord(in);
             case CFRule12Record.sid:          return new CFRule12Record(in);
-            // TODO Add CF Ex, and remove from UnknownRecord 
+            // TODO Add CF Ex, and remove from UnknownRecord
             case CalcCountRecord.sid:         return new CalcCountRecord(in);
             case CalcModeRecord.sid:          return new CalcModeRecord(in);
             case CategorySeriesAxisRecord.sid:return new CategorySeriesAxisRecord(in);
@@ -411,7 +411,7 @@ public final class BiffViewer {
 
 		NPOIFSFileSystem fs = new NPOIFSFileSystem(cmdArgs.getFile(), true);
         InputStream is = getPOIFSInputStream(fs);
-		
+
 		if (cmdArgs.shouldOutputRawHexOnly()) {
 			int size = is.available();
 			byte[] data = new byte[size];

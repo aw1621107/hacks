@@ -62,7 +62,7 @@ public class DocumentSummaryInformation extends SpecialPropertySet
                 ("Not a " + getClass().getName());
     }
 
-    
+
     /**
      * <p>Returns the category (or <code>null</code>).</p>
      *

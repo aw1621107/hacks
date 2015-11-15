@@ -24,9 +24,9 @@ package org.apache.poi.hslf.blip;
 public final class JPEG extends Bitmap {
 
     public enum ColorSpace { rgb, cymk };
-    
+
     private ColorSpace colorSpace = ColorSpace.rgb;
-    
+
     @Override
     public PictureType getType(){
         return PictureType.JPEG;
@@ -35,13 +35,13 @@ public final class JPEG extends Bitmap {
     public ColorSpace getColorSpace() {
         return colorSpace;
     }
-    
+
     public void setColorSpace(ColorSpace colorSpace) {
         this.colorSpace = colorSpace;
     }
-    
+
     /**
-     * JPEG signature is one of {@code 0x46A0, 0x46B0, 0x6E20, 0x6E30} 
+     * JPEG signature is one of {@code 0x46A0, 0x46B0, 0x6E20, 0x6E30}
      *
      * @return JPEG signature ({@code 0x46A0, 0x46B0, 0x6E20, 0x6E30})
      */
@@ -50,7 +50,7 @@ public final class JPEG extends Bitmap {
             ? (uidInstanceCount == 1 ? 0x46A0 :  0x46B0)
             : (uidInstanceCount == 1 ? 0x6E20 :  0x6E30);
     }
-    
+
     /**
      * Sets the PICT signature - either {@code 0x5420} or {@code 0x5430}
      */
@@ -74,6 +74,6 @@ public final class JPEG extends Bitmap {
                 break;
             default:
                 throw new IllegalArgumentException(signature+" is not a valid instance/signature value for JPEG");
-        }        
+        }
     }
 }

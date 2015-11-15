@@ -36,13 +36,13 @@ import org.junit.Test;
 
 public final class TestXSLFSlideShowFactory extends BaseTestSlideShowFactory {
     private static POIDataSamples _slTests = POIDataSamples.getSlideShowInstance();
-    
+
     @Test
     public void testFactory() throws Exception {
         File pFile = createProtected("SampleShow.pptx", "foobaa");
         testFactory("SampleShow.pptx", pFile.getAbsolutePath(), "foobaa");
     }
-    
+
     private static File createProtected(String basefile, String password)
     throws IOException, GeneralSecurityException {
         NPOIFSFileSystem fs = new NPOIFSFileSystem();
@@ -54,7 +54,7 @@ public final class TestXSLFSlideShowFactory extends BaseTestSlideShowFactory {
         IOUtils.copy(fis, os);
         os.close();
         fis.close();
-        
+
         File tf = TempFile.createTempFile("test-xslf-slidefactory", "pptx");
         FileOutputStream fos = new FileOutputStream(tf);
         fs.writeFilesystem(fos);

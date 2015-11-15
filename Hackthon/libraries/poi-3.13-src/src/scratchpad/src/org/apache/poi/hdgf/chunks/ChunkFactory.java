@@ -42,7 +42,7 @@ public final class ChunkFactory {
 	/**
 	 * Key is a Chunk's type, value is an array of its CommandDefinitions
 	 */
-	private Hashtable<Integer, CommandDefinition[]> chunkCommandDefinitions = 
+	private Hashtable<Integer, CommandDefinition[]> chunkCommandDefinitions =
 	      new Hashtable<Integer, CommandDefinition[]>();
 	/**
 	 * What the name is of the chunk table definitions file?
@@ -75,33 +75,33 @@ public final class ChunkFactory {
 	        }
 
 	        inp = new BufferedReader(new InputStreamReader(cpd, LocaleUtil.CHARSET_1252));
-		    
+
 		    while( (line = inp.readLine()) != null ) {
     			if(line.startsWith("#")) continue;
     			if(line.startsWith(" ")) continue;
     			if(line.startsWith("\t")) continue;
     			if(line.length() == 0) continue;
-    
+
     			// Start xxx
     			if(!line.startsWith("start")) {
     				throw new IllegalStateException("Expecting start xxx, found " + line);
     			}
     			int chunkType = Integer.parseInt(line.substring(6));
     			ArrayList<CommandDefinition> defsL = new ArrayList<CommandDefinition>();
-    
+
     			// Data entries
     			while( ! (line = inp.readLine()).startsWith("end") ) {
     				StringTokenizer st = new StringTokenizer(line, " ");
     				int defType = Integer.parseInt(st.nextToken());
     				int offset = Integer.parseInt(st.nextToken());
     				String name = st.nextToken("\uffff").substring(1);
-    
+
     				CommandDefinition def = new CommandDefinition(defType,offset,name);
     				defsL.add(def);
     			}
-    
+
     			CommandDefinition[] defs = defsL.toArray(new CommandDefinition[defsL.size()]);
-    
+
     			// Add to the hashtable
     			chunkCommandDefinitions.put(Integer.valueOf(chunkType), defs);
     		}

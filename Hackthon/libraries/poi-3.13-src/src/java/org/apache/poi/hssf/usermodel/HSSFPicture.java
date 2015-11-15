@@ -46,7 +46,7 @@ import org.apache.poi.util.StringUtil;
 public class HSSFPicture extends HSSFSimpleShape implements Picture {
 	@SuppressWarnings("unused")
     private static POILogger logger = POILogFactory.getLogger(HSSFPicture.class);
-	
+
     public static final int PICTURE_TYPE_EMF = HSSFWorkbook.PICTURE_TYPE_EMF;                // Windows Enhanced Metafile
     public static final int PICTURE_TYPE_WMF = HSSFWorkbook.PICTURE_TYPE_WMF;                // Windows Metafile
     public static final int PICTURE_TYPE_PICT = HSSFWorkbook.PICTURE_TYPE_PICT;              // Macintosh PICT
@@ -95,7 +95,7 @@ public class HSSFPicture extends HSSFSimpleShape implements Picture {
 
     /**
      * Reset the image to the dimension of the embedded image
-     * 
+     *
      * <p>
      * Please note, that this method works correctly only for workbooks
      * with default font size (Arial 10pt for .xls).
@@ -114,7 +114,7 @@ public class HSSFPicture extends HSSFSimpleShape implements Picture {
     public void resize(double scale) {
         resize(scale,scale);
     }
-    
+
     /**
      * Resize the image
      * <p>
@@ -126,7 +126,7 @@ public class HSSFPicture extends HSSFSimpleShape implements Picture {
      * <code>resize(1.0,1.0)</code> keeps the original size,<br/>
      * <code>resize(0.5,0.5)</code> resize to 50% of the original,<br/>
      * <code>resize(2.0,2.0)</code> resizes to 200% of the original.<br/>
-     * <code>resize({@link Double#MAX_VALUE},{@link Double#MAX_VALUE})</code> resizes to the dimension of the embedded image. 
+     * <code>resize({@link Double#MAX_VALUE},{@link Double#MAX_VALUE})</code> resizes to the dimension of the embedded image.
      * </p>
      *
      * @param scaleX the amount by which the image width is multiplied relative to the original width.
@@ -170,7 +170,7 @@ public class HSSFPicture extends HSSFSimpleShape implements Picture {
     public HSSFClientAnchor getPreferredSize(double scale){
         return getPreferredSize(scale, scale);
     }
-    
+
     /**
      * Calculate the preferred size for this picture.
      *
@@ -196,7 +196,7 @@ public class HSSFPicture extends HSSFSimpleShape implements Picture {
         int type = bse.getBlipTypeWin32();
         return ImageUtils.getImageDimension(new ByteArrayInputStream(data), type);
     }
-    
+
     /**
      * Return picture data for this shape
      *
@@ -228,9 +228,9 @@ public class HSSFPicture extends HSSFSimpleShape implements Picture {
             ? ""
             : StringUtil.getFromUnicodeLE(propFile.getComplexData()).trim();
     }
-    
+
     public void setFileName(String data){
-        // TODO: add trailing \u0000? 
+        // TODO: add trailing \u0000?
         byte bytes[] = StringUtil.getToUnicodeLE(data);
         EscherComplexProperty prop = new EscherComplexProperty(EscherProperties.BLIP__BLIPFILENAME, true, bytes);
         setPropertyValue(prop);
@@ -249,7 +249,7 @@ public class HSSFPicture extends HSSFSimpleShape implements Picture {
         ObjRecord obj = (ObjRecord) getObjRecord().cloneViaReserialise();
         return new HSSFPicture(spContainer, obj);
     }
-    
+
     /**
      * @return the anchor that is used by this picture.
      */
@@ -259,7 +259,7 @@ public class HSSFPicture extends HSSFSimpleShape implements Picture {
         return (a instanceof HSSFClientAnchor) ? (HSSFClientAnchor)a : null;
     }
 
-    
+
     /**
      * @return the sheet which contains the picture shape
      */

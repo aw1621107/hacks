@@ -26,27 +26,27 @@ import org.junit.Test;
 
 public class TestBiffDrawingToXml extends BaseXLSIteratingTest {
 	static {
-		// TODO: is it ok to fail these? 
+		// TODO: is it ok to fail these?
 		// Look at the output of the test for the detailed stacktrace of the failures...
-//		EXCLUDED.add("password.xls"); 
-//		EXCLUDED.add("XRefCalc.xls"); 
+//		EXCLUDED.add("password.xls");
+//		EXCLUDED.add("XRefCalc.xls");
 //		EXCLUDED.add("43493.xls");
-//		EXCLUDED.add("51832.xls"); 
+//		EXCLUDED.add("51832.xls");
 	}
-	
+
 	@Override
 	@Ignore("Not yet done, nearly all files fail with various errors, remove this method when done to use the one from the abstract base class!...")
 	@Test
 	public void testMain() throws Exception {
 	}
-	
+
 	@Override
 	void runOneFile(File file)
 			throws Exception {
 		PrintStream save = System.out;
 		try {
 			//System.setOut(new PrintStream(TestBiffViewer.NULL_OUTPUT_STREAM));
-			// use a NullOutputStream to not write the bytes anywhere for best runtime 
+			// use a NullOutputStream to not write the bytes anywhere for best runtime
 		    InputStream wb = new FileInputStream(file);
 		    try {
 		    	BiffDrawingToXml.writeToFile(NULL_OUTPUT_STREAM, wb, false, new String[] {});

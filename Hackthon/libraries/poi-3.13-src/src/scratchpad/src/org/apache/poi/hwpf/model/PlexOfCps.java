@@ -24,12 +24,12 @@ import org.apache.poi.util.LittleEndian;
 
 /**
  * Plex of CPs stored in File (PLCF)
- * 
+ *
  * common data structure in a Word file. Contains an array of 4 byte ints in the
  * front that relate to an array of arbitrary data structures in the back.
- * 
+ *
  * See page 184 of official documentation for details
- * 
+ *
  * @author Ryan Ackley
  */
 public final class PlexOfCps
@@ -47,7 +47,7 @@ public final class PlexOfCps
 
     /**
      * Constructor
-     * 
+     *
      * @param cb
      *            The size of PLCF in bytes
      * @param cbStruct
@@ -162,7 +162,7 @@ public final class PlexOfCps
 
     /**
      * returns the number of data structures in this PlexofCps.
-     * 
+     *
      * @return The number of data structures in this PlexofCps
      */
     public int length()
@@ -173,10 +173,10 @@ public final class PlexOfCps
     /**
      * Returns the offset, in bytes, from the beginning if this PlexOfCps to the
      * data structure at index.
-     * 
+     *
      * @param index
      *            The index of the data structure.
-     * 
+     *
      * @return The offset, in bytes, from the beginning if this PlexOfCps to the
      *         data structure at index.
      */

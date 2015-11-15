@@ -26,7 +26,7 @@ import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTColor;
 import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTColorScale;
 
 /**
- * High level representation for Color Scale / Color Gradient Formatting 
+ * High level representation for Color Scale / Color Gradient Formatting
  *  component of Conditional Formatting settings
  */
 public class XSSFColorScaleFormatting implements ColorScaleFormatting {
@@ -35,7 +35,7 @@ public class XSSFColorScaleFormatting implements ColorScaleFormatting {
     /*package*/ XSSFColorScaleFormatting(CTColorScale scale){
         _scale = scale;
     }
-    
+
     public int getNumControlPoints() {
         return _scale.sizeOfCfvoArray();
     }
@@ -70,7 +70,7 @@ public class XSSFColorScaleFormatting implements ColorScaleFormatting {
     @SuppressWarnings("deprecation")
     public XSSFConditionalFormattingThreshold[] getThresholds() {
         CTCfvo[] cfvos = _scale.getCfvoArray();
-        XSSFConditionalFormattingThreshold[] t = 
+        XSSFConditionalFormattingThreshold[] t =
                 new XSSFConditionalFormattingThreshold[cfvos.length];
         for (int i=0; i<cfvos.length; i++) {
             t[i] = new XSSFConditionalFormattingThreshold(cfvos[i]);
@@ -84,7 +84,7 @@ public class XSSFColorScaleFormatting implements ColorScaleFormatting {
         }
         _scale.setCfvoArray(cfvos);
     }
-    
+
     public XSSFColor createColor() {
         return new XSSFColor(_scale.addNewColor());
     }

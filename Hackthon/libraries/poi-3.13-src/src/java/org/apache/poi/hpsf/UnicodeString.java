@@ -24,7 +24,7 @@ import org.apache.poi.util.StringUtil;
 
 @Internal
 class UnicodeString {
-    private final static POILogger logger = 
+    private final static POILogger logger =
             POILogFactory.getLogger( UnicodeString.class );
 
     private byte[] _value;
@@ -32,9 +32,9 @@ class UnicodeString {
     UnicodeString(byte[] data, int offset) {
         int length = LittleEndian.getInt( data, offset );
         int dataOffset = offset + LittleEndian.INT_SIZE;
-        
+
         if (! validLength(length, data, dataOffset)) {
-            // If the length looks wrong, this might be because the offset is sometimes expected 
+            // If the length looks wrong, this might be because the offset is sometimes expected
             // to be on a 4 byte boundary. Try checking with that if so, rather than blowing up with
             // and  ArrayIndexOutOfBoundsException below
             boolean valid = false;
@@ -43,10 +43,10 @@ class UnicodeString {
                 offset = offset + past4byte;
                 length = LittleEndian.getInt( data, offset );
                 dataOffset = offset + LittleEndian.INT_SIZE;
-                
+
                 valid = validLength(length, data, dataOffset);
             }
-            
+
             if (!valid) {
                 throw new IllegalPropertySetDataException(
                         "UnicodeString started at offset #" + offset +
@@ -62,7 +62,7 @@ class UnicodeString {
 
         _value = LittleEndian.getByteArray( data, dataOffset, length * 2 );
     }
-    
+
     /**
      * Checks to see if the specified length seems valid,
      *  given the amount of data available still to read,

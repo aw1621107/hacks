@@ -81,7 +81,7 @@ public class ExternalLinksTable extends POIXMLDocumentPart {
     public CTExternalLink getCTExternalLink(){
         return link;
     }
-    
+
     /**
      * Returns the last recorded name of the file that this
      *  is linked to
@@ -100,14 +100,14 @@ public class ExternalLinksTable extends POIXMLDocumentPart {
      */
     public void setLinkedFileName(String target) {
         String rId = link.getExternalBook().getId();
-        
+
         if (rId == null || rId.isEmpty()) {
             // We're a new External Link Table, so nothing to remove
         } else {
             // Relationships can't be changed, so remove the old one
             getPackagePart().removeRelationship(rId);
         }
-        
+
         // Have a new one added
         PackageRelationship newRel = getPackagePart().addExternalRelationship(
                                 target, PackageRelationshipTypes.EXTERNAL_LINK_PATH);
@@ -116,7 +116,7 @@ public class ExternalLinksTable extends POIXMLDocumentPart {
 
     @SuppressWarnings("deprecation")
     public List<String> getSheetNames() {
-        CTExternalSheetName[] sheetNames = 
+        CTExternalSheetName[] sheetNames =
                 link.getExternalBook().getSheetNames().getSheetNameArray();
         List<String> names = new ArrayList<String>(sheetNames.length);
         for (CTExternalSheetName name : sheetNames) {
@@ -124,10 +124,10 @@ public class ExternalLinksTable extends POIXMLDocumentPart {
         }
         return names;
     }
-    
+
     @SuppressWarnings("deprecation")
     public List<Name> getDefinedNames() {
-        CTExternalDefinedName[] extNames = 
+        CTExternalDefinedName[] extNames =
                 link.getExternalBook().getDefinedNames().getDefinedNameArray();
         List<Name> names = new ArrayList<Name>(extNames.length);
         for (CTExternalDefinedName extName : extNames) {
@@ -135,11 +135,11 @@ public class ExternalLinksTable extends POIXMLDocumentPart {
         }
         return names;
     }
-    
-    
+
+
     // TODO Last seen data
 
-    
+
     protected class ExternalName implements Name {
         private CTExternalDefinedName name;
         protected ExternalName(CTExternalDefinedName name) {

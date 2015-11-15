@@ -59,7 +59,7 @@ public class EscherChildAnchorRecord
         default:
             throw new RuntimeException("Invalid EscherChildAnchorRecord - neither 8 nor 16 bytes.");
         }
-            
+
         return 8 + size;
     }
 

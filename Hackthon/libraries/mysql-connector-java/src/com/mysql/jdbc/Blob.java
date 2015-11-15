@@ -59,7 +59,7 @@ public class Blob implements java.sql.Blob, OutputStreamWatcher {
 
     /**
      * Creates a BLOB encapsulating the given binary data
-     * 
+     *
      * @param data
      */
     Blob(byte[] data, ExceptionInterceptor exceptionInterceptor) {
@@ -69,7 +69,7 @@ public class Blob implements java.sql.Blob, OutputStreamWatcher {
 
     /**
      * Creates an updatable BLOB that can update in-place (not implemented yet).
-     * 
+     *
      * @param data
      * @param creatorResultSetToSet
      * @param columnIndexToSet
@@ -84,9 +84,9 @@ public class Blob implements java.sql.Blob, OutputStreamWatcher {
 
     /**
      * Retrieves the BLOB designated by this Blob instance as a stream.
-     * 
+     *
      * @return this BLOB represented as a binary stream of bytes.
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */
@@ -99,14 +99,14 @@ public class Blob implements java.sql.Blob, OutputStreamWatcher {
     /**
      * Returns as an array of bytes, part or all of the BLOB value that this
      * Blob object designates.
-     * 
+     *
      * @param pos
      *            where to start the part of the BLOB
      * @param length
      *            the length of the part of the BLOB you want returned.
-     * 
+     *
      * @return the bytes stored in the blob starting at position <code>pos</code> and having a length of <code>length</code>.
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */
@@ -138,9 +138,9 @@ public class Blob implements java.sql.Blob, OutputStreamWatcher {
     /**
      * Returns the number of bytes in the BLOB value designated by this Blob
      * object.
-     * 
+     *
      * @return the length of this blob
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */
@@ -159,15 +159,15 @@ public class Blob implements java.sql.Blob, OutputStreamWatcher {
 
     /**
      * Finds the position of the given pattern in this BLOB.
-     * 
+     *
      * @param pattern
      *            the pattern to find
      * @param start
      *            where to start finding the pattern
-     * 
+     *
      * @return the position where the pattern is found in the BLOB, -1 if not
      *         found
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */
@@ -261,7 +261,7 @@ public class Blob implements java.sql.Blob, OutputStreamWatcher {
      * <p>
      * <b>Note:</b> If the value specified for <code>len</code> is greater then the length+1 of the <code>BLOB</code> value then the behavior is undefined. Some
      * JDBC drivers may throw a <code>SQLException</code> while other drivers may support this operation.
-     * 
+     *
      * @param len
      *            the length, in bytes, to which the <code>BLOB</code> value
      *            that this <code>Blob</code> object represents should be truncated
@@ -298,7 +298,7 @@ public class Blob implements java.sql.Blob, OutputStreamWatcher {
      * After <code>free</code> has been called, any attempt to invoke a method other than <code>free</code> will result in a <code>SQLException</code> being
      * thrown. If <code>free</code> is called multiple times, the subsequent calls to <code>free</code> are treated as a no-op.
      * <p>
-     * 
+     *
      * @throws SQLException
      *             if an error occurs releasing
      *             the Blob's resources
@@ -316,7 +316,7 @@ public class Blob implements java.sql.Blob, OutputStreamWatcher {
     /**
      * Returns an <code>InputStream</code> object that contains a partial <code>Blob</code> value,
      * starting with the byte specified by pos, which is length bytes in length.
-     * 
+     *
      * @param pos
      *            the offset to the first byte of the partial value to be retrieved.
      *            The first byte in the <code>Blob</code> is at position 1
@@ -327,7 +327,7 @@ public class Blob implements java.sql.Blob, OutputStreamWatcher {
      *             if pos is less than 1 or if pos is greater than the number of bytes
      *             in the <code>Blob</code> or if pos + length is greater than the number of bytes
      *             in the <code>Blob</code>
-     * 
+     *
      * @exception SQLFeatureNotSupportedException
      *                if the JDBC driver does not support
      *                this method

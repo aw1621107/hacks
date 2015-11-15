@@ -26,7 +26,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The dat record is used to store options for the chart.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class DatRecord extends StandardRecord {
@@ -58,11 +58,11 @@ public final class DatRecord extends StandardRecord {
         buffer.append("    .options              = ")
             .append("0x").append(HexDump.toHex(  getOptions ()))
             .append(" (").append( getOptions() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
-        buffer.append("         .horizontalBorder         = ").append(isHorizontalBorder()).append('\n'); 
-        buffer.append("         .verticalBorder           = ").append(isVerticalBorder()).append('\n'); 
-        buffer.append("         .border                   = ").append(isBorder()).append('\n'); 
-        buffer.append("         .showSeriesKey            = ").append(isShowSeriesKey()).append('\n'); 
+        buffer.append(System.getProperty("line.separator"));
+        buffer.append("         .horizontalBorder         = ").append(isHorizontalBorder()).append('\n');
+        buffer.append("         .verticalBorder           = ").append(isVerticalBorder()).append('\n');
+        buffer.append("         .border                   = ").append(isBorder()).append('\n');
+        buffer.append("         .showSeriesKey            = ").append(isShowSeriesKey()).append('\n');
 
         buffer.append("[/DAT]\n");
         return buffer.toString();
@@ -83,7 +83,7 @@ public final class DatRecord extends StandardRecord {
 
     public Object clone() {
         DatRecord rec = new DatRecord();
-    
+
         rec.field_1_options = field_1_options;
         return rec;
     }

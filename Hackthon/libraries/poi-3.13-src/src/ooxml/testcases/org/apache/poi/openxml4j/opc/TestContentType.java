@@ -86,26 +86,26 @@ public final class TestContentType extends TestCase {
    /**
     * Parameters are allowed, provides that they meet the
     *  criteria of rule [01.2]
-    * Invalid parameters are verified as incorrect in 
+    * Invalid parameters are verified as incorrect in
     *  {@link #testContentTypeParameterFailure()}
     */
    public void testContentTypeParam() throws InvalidFormatException {
       String[] contentTypesToTest = new String[] { "mail/toto;titi=tata",
                "text/xml;a=b;c=d", "text/xml;key1=param1;key2=param2",
-               "application/pgp-key;version=\"2\"", 
+               "application/pgp-key;version=\"2\"",
                "application/x-resqml+xml;version=2.0;type=obj_global2dCrs"
       };
       for (String contentType : contentTypesToTest) {
           new ContentType(contentType);
       }
    }
-   
+
 	/**
 	 * Check rule [O1.2]: Format designers might restrict the usage of
 	 * parameters for content types.
 	 */
 	public void testContentTypeParameterFailure() {
-		String[] contentTypesToTest = new String[] { 
+		String[] contentTypesToTest = new String[] {
 		        "mail/toto;\"titi=tata\"", // quotes not allowed like that
                 "mail/toto;titi = tata", // spaces not allowed
                 "text/\u0080" // characters above ASCII are not allowed
@@ -138,7 +138,7 @@ public final class TestContentType extends TestCase {
 					+ "' !");
 		}
 	}
-	
+
 	/**
 	 * OOXML content types don't need entities, but we shouldn't
 	 * barf if we get one from a third party system that added them
@@ -146,7 +146,7 @@ public final class TestContentType extends TestCase {
 	public void testFileWithContentTypeEntities() throws Exception {
         InputStream is = OpenXML4JTestDataSamples.openSampleStream("ContentTypeHasEntities.ooxml");
         OPCPackage p = OPCPackage.open(is);
-        
+
         // Check we found the contents of it
         boolean foundCoreProps = false, foundDocument = false, foundTheme1 = false;
         for (PackagePart part : p.getParts()) {
@@ -167,7 +167,7 @@ public final class TestContentType extends TestCase {
         assertTrue("Document not found in " + p.getParts(), foundDocument);
         assertTrue("Theme1 not found in " + p.getParts(), foundTheme1);
 	}
-	
+
 	/**
 	 * Check that we can open a file where there are valid
 	 *  parameters on a content type
@@ -176,9 +176,9 @@ public final class TestContentType extends TestCase {
         InputStream is = OpenXML4JTestDataSamples.openSampleStream("ContentTypeHasParameters.ooxml");
 
         OPCPackage p = OPCPackage.open(is);
-        
+
         final String typeResqml = "application/x-resqml+xml";
-        
+
         // Check the types on everything
         for (PackagePart part : p.getParts()) {
             // _rels type doesn't have any params

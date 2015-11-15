@@ -34,7 +34,7 @@ public final class RowRecord extends StandardRecord {
     public final static short sid = 0x0208;
 
     public static final int ENCODED_SIZE = 20;
-    
+
     private static final int OPTION_BITS_ALWAYS_SET = 0x0100;
     //private static final int DEFAULT_HEIGHT_BIT = 0x8000;
 
@@ -54,7 +54,7 @@ public final class RowRecord extends StandardRecord {
     private static final BitField          zeroHeight    = BitFieldFactory.getInstance(0x20);
     private static final BitField          badFontHeight = BitFieldFactory.getInstance(0x40);
     private static final BitField          formatted     = BitFieldFactory.getInstance(0x80);
-    
+
     /** 16 bit options flags */
     private int field_8_option_flags;   // only if isFormatted
     private static final BitField          xfIndex       = BitFieldFactory.getInstance(0xFFF);
@@ -92,7 +92,7 @@ public final class RowRecord extends StandardRecord {
     }
 
     /**
-     * Updates the firstCol and lastCol fields to the reserved value (-1) 
+     * Updates the firstCol and lastCol fields to the reserved value (-1)
      * to signify that this row is empty
      */
     public void setEmpty() {
@@ -102,7 +102,7 @@ public final class RowRecord extends StandardRecord {
     public boolean isEmpty() {
         return (field_2_first_col | field_3_last_col) == 0;
     }
-    
+
     /**
      * set the logical row number for this row (0 based index)
      * @param row - the row number
@@ -203,7 +203,7 @@ public final class RowRecord extends StandardRecord {
     public void setTopBorder(boolean f) {
     	field_8_option_flags = topBorder.setBoolean(field_8_option_flags, f);
     }
-    
+
     /**
      * A bit that specifies whether any cell in the row has a medium or thick
      * bottom border, or any cell in the row directly below the current row has
@@ -213,7 +213,7 @@ public final class RowRecord extends StandardRecord {
     public void setBottomBorder(boolean f) {
     	field_8_option_flags = bottomBorder.setBoolean(field_8_option_flags, f);
     }
-    
+
     /**
      * A bit that specifies whether the phonetic guide feature is enabled for
      * any cell in this row.
@@ -222,7 +222,7 @@ public final class RowRecord extends StandardRecord {
     public void setPhoeneticGuide(boolean f) {
     	field_8_option_flags = phoeneticGuide.setBoolean(field_8_option_flags, f);
     }
-    
+
     /**
      * get the logical row number for this row (0 based index)
      * @return row - the row number
@@ -240,7 +240,7 @@ public final class RowRecord extends StandardRecord {
     }
 
     /**
-     * get the logical col number for the last cell this row (0 based index), plus one 
+     * get the logical col number for the last cell this row (0 based index), plus one
      * @return col - the last col index + 1
      */
     public int getLastCol() {
@@ -329,7 +329,7 @@ public final class RowRecord extends StandardRecord {
     public short getOptionFlags2() {
         return (short)field_8_option_flags;
     }
-    
+
     /**
      * if the row is formatted then this is the index to the extended format record
      * @see org.apache.poi.hssf.record.ExtendedFormatRecord
@@ -365,7 +365,7 @@ public final class RowRecord extends StandardRecord {
     public boolean getPhoeneticGuide() {
     	return phoeneticGuide.isSet(field_8_option_flags);
     }
-    
+
     public String toString() {
         StringBuffer sb = new StringBuffer();
 

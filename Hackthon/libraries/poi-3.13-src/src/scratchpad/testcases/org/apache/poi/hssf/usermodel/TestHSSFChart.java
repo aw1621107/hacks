@@ -131,25 +131,25 @@ public final class TestHSSFChart extends TestCase {
 		assertEquals("Base Numbers", charts[0].getSeries()[1].getSeriesTitle());
 		assertEquals("Sheet 3 Chart with Title", charts[0].getChartTitle());
 	}
-	
+
     public void testExistingSheet3() throws Exception {
         HSSFWorkbook wb = HSSFTestDataSamples.openSampleWorkbook("49581.xls");
-        
+
         HSSFSheet sheet = wb.getSheetAt( 2 ) ;
         HSSFChart[] charts = HSSFChart.getSheetCharts( sheet ) ;
         assertEquals(1, charts.length);
-        
+
         for ( HSSFChart chart : charts ) {
             for ( HSSFSeries series : chart.getSeries() ) {
                 chart.removeSeries( series ) ;
             }
         }
-        
+
         // Save and re-check
         wb = HSSFITestDataProvider.instance.writeOutAndReadBack(wb);
         sheet = wb.getSheetAt( 2 ) ;
         assertEquals(1, HSSFChart.getSheetCharts(sheet).length);
-        
+
         HSSFChart c = HSSFChart.getSheetCharts(sheet)[0];
         assertEquals(0, c.getSeries().length);
     }
@@ -158,11 +158,11 @@ public final class TestHSSFChart extends TestCase {
         HSSFWorkbook wb = HSSFTestDataSamples.openSampleWorkbook("49581.xls");
         HSSFSheet sheet = wb.getSheetAt( 1 ) ;
         HSSFChart[] charts = HSSFChart.getSheetCharts( sheet ) ;
-        
+
         assertEquals(1, charts.length);
         for ( HSSFChart chart : charts ) {
             HSSFSeries series ;
-            
+
             // Starts with one
             assertEquals(1, chart.getSeries().length);
 
@@ -175,12 +175,12 @@ public final class TestHSSFChart extends TestCase {
             series.setCategoryLabelsCellRange( new CellRangeAddress( 6, 7, 0, 0 ) ) ;
             series.setValuesCellRange( new CellRangeAddress( 6, 7, 1, 1 ) ) ;
         }
-        
+
         // Save and re-check
         wb = HSSFITestDataProvider.instance.writeOutAndReadBack(wb);
         sheet = wb.getSheetAt( 1 ) ;
         assertEquals(1, HSSFChart.getSheetCharts(sheet).length);
-        
+
         HSSFChart c = HSSFChart.getSheetCharts(sheet)[0];
         assertEquals(3, c.getSeries().length);
     }
@@ -189,7 +189,7 @@ public final class TestHSSFChart extends TestCase {
        HSSFWorkbook wb = HSSFTestDataSamples.openSampleWorkbook("49581.xls");
         HSSFSheet sheet = wb.getSheetAt( 0 ) ;
         HSSFChart[] charts = HSSFChart.getSheetCharts( sheet ) ;
-        
+
         for ( HSSFChart chart : charts ) {
             //System.out.println( chart.getType() ) ;
             HSSFSeries[] seriesArray = chart.getSeries() ;

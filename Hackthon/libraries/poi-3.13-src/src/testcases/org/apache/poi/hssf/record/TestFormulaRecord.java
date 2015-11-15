@@ -150,7 +150,7 @@ public final class TestFormulaRecord extends TestCase {
 		FuncVarPtg choose = (FuncVarPtg)ptgs[8];
 		assertEquals("CHOOSE", choose.getName());
 	}
-	
+
 	public void testReserialize() {
 		FormulaRecord formulaRecord = new FormulaRecord();
 		formulaRecord.setRow(1);
@@ -168,7 +168,7 @@ public final class TestFormulaRecord extends TestCase {
 		RefPtg rp = (RefPtg) ptgs[0];
 		assertEquals("B$5", rp.toFormulaString());
 	}
-	
+
 	/**
 	 * Bug noticed while fixing 46479.  Operands of conditional operator ( ? : ) were swapped
 	 * inside {@link FormulaRecord}
@@ -176,7 +176,7 @@ public final class TestFormulaRecord extends TestCase {
 	public void testCachedValue_bug46479() {
 		FormulaRecord fr0 = new FormulaRecord();
 		FormulaRecord fr1 = new FormulaRecord();
-		// test some other cached value types 
+		// test some other cached value types
 		fr0.setValue(3.5);
 		assertEquals(3.5, fr0.getValue(), 0.0);
 		fr0.setCachedResultErrorCode(HSSFErrorConstants.ERROR_REF);

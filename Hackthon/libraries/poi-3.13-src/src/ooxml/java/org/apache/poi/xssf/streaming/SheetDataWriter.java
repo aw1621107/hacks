@@ -69,11 +69,11 @@ public class SheetDataWriter {
         this._sharedStringSource = sharedStringsTable;
     }
     /**
-     * Create a temp file to write sheet data. 
+     * Create a temp file to write sheet data.
      * By default, temp files are created in the default temporary-file directory
-     * with a prefix "poi-sxssf-sheet" and suffix ".xml".  Subclasses can override 
+     * with a prefix "poi-sxssf-sheet" and suffix ".xml".  Subclasses can override
      * it and specify a different temp directory or filename or suffix, e.g. <code>.gz</code>
-     * 
+     *
      * @return temp file to write sheet data
      */
     public File createTempFile() throws IOException {
@@ -82,7 +82,7 @@ public class SheetDataWriter {
 
     /**
      * Create a writer for the sheet data.
-     * 
+     *
      * @param  fd the file to write to
      */
     public Writer createWriter(File fd)throws IOException {
@@ -90,7 +90,7 @@ public class SheetDataWriter {
     }
 
     /**
-     * flush and close the temp data writer. 
+     * flush and close the temp data writer.
      * This method <em>must</em> be invoked before calling {@link #getWorksheetXMLInputStream()}
      */
     public void close() throws IOException{
@@ -101,7 +101,7 @@ public class SheetDataWriter {
     File getTempFile(){
         return _fd;
     }
-    
+
     /**
      * @return a stream to read temp file with the sheet data
      */
@@ -173,7 +173,7 @@ public class SheetDataWriter {
         if(row.getCollapsed() != null) {
         	_out.write(" collapsed=\"" + (row.getCollapsed() ? "1" : "0") + "\"");
         }
-        
+
         _out.write(">\n");
         this._rownum = rownum;
     }
@@ -191,7 +191,7 @@ public class SheetDataWriter {
         CellStyle cellStyle = cell.getCellStyle();
         if (cellStyle.getIndex() != 0) {
             // need to convert the short to unsigned short as the indexes can be up to 64k
-            // ideally we would use int for this index, but that would need changes to some more 
+            // ideally we would use int for this index, but that would need changes to some more
             // APIs
             _out.write(" s=\"" + (cellStyle.getIndex() & 0xffff) + "\"");
         }

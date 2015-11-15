@@ -36,7 +36,7 @@ import org.apache.poi.openxml4j.opc.PackageRelationshipCollection;
 public class OOXMLLister {
 	private OPCPackage container;
 	private PrintStream disp;
-	
+
 	public OOXMLLister(OPCPackage container) {
 		this(container, System.out);
 	}
@@ -44,7 +44,7 @@ public class OOXMLLister {
 		this.container = container;
 		this.disp = disp;
 	}
-	
+
 	/**
 	 * Figures out how big a given PackagePart is.
 	 */
@@ -53,17 +53,17 @@ public class OOXMLLister {
 		byte[] b = new byte[8192];
 		long size = 0;
 		int read = 0;
-		
+
 		while(read > -1) {
 			read = in.read(b);
 			if(read > 0) {
 				size += read;
 			}
 		}
-		
+
 		return size;
 	}
-	
+
 	/**
 	 * Displays information on all the different
 	 *  parts of the OOXML file container.
@@ -73,11 +73,11 @@ public class OOXMLLister {
 		for (PackagePart part : parts) {
 			disp.println(part.getPartName());
 			disp.println("\t" + part.getContentType());
-			
+
 			if(! part.getPartName().toString().equals("/docProps/core.xml")) {
 				disp.println("\t" + getSize(part) + " bytes");
 			}
-			
+
 			if(! part.isRelationshipPart()) {
 				disp.println("\t" + part.getRelationships().size() + " relations");
 				for(PackageRelationship rel : part.getRelationships()) {
@@ -92,7 +92,7 @@ public class OOXMLLister {
 	 *  of the OOXML file container.
 	 */
 	public void displayRelations() throws Exception {
-		PackageRelationshipCollection rels = 
+		PackageRelationshipCollection rels =
 			container.getRelationships();
 		for (PackageRelationship rel : rels) {
 			displayRelation(rel, "");
@@ -106,25 +106,25 @@ public class OOXMLLister {
 		disp.println(indent+"\tMode: " + rel.getTargetMode());
 		disp.println(indent+"\tType: " + rel.getRelationshipType());
 	}
-	
+
 	public static void main(String[] args) throws Exception {
 		if(args.length == 0) {
 			System.err.println("Use:");
 			System.err.println("\tjava OOXMLLister <filename>");
 			System.exit(1);
 		}
-		
+
 		File f = new File(args[0]);
 		if(! f.exists()) {
 			System.err.println("Error, file not found!");
 			System.err.println("\t" + f.toString());
 			System.exit(2);
 		}
-		
+
 		OOXMLLister lister = new OOXMLLister(
 				OPCPackage.open(f.toString(), PackageAccess.READ)
 		);
-		
+
 		lister.disp.println(f.toString() + "\n");
 		lister.displayParts();
 		lister.disp.println();

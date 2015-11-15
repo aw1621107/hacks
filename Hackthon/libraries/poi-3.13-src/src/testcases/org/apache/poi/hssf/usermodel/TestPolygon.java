@@ -98,7 +98,7 @@ public class TestPolygon extends TestCase{
 
         assertEquals(verticesProp1.getNumberOfElementsInArray(), verticesProp2.getNumberOfElementsInArray());
         assertEquals(verticesProp1.toXml(""), verticesProp2.toXml(""));
-        
+
         polygon.setPoints(new int[]{1,2,3}, new int[] {4,5,6});
         assertArrayEquals(polygon.getXPoints(), new int[]{1, 2, 3});
         assertArrayEquals(polygon.getYPoints(), new int[]{4, 5, 6});

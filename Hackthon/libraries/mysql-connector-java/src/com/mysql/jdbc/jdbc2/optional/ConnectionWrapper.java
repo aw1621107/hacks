@@ -44,10 +44,10 @@ import com.mysql.jdbc.log.Log;
 /**
  * This class serves as a wrapper for the org.gjt.mm.mysql.jdbc2.Connection class. It is returned to the application server which may wrap it again and then
  * return it to the application client in response to dataSource.getConnection().
- * 
+ *
  * All method invocations are forwarded to org.gjt.mm.mysql.jdbc2.Connection unless the close method was previously called, in which case a sqlException is
  * thrown. The close method performs a 'logical close' on the connection.
- * 
+ *
  * All sqlExceptions thrown by the physical connection are intercepted and sent to connectionEvent listeners before being thrown to client.
  */
 public class ConnectionWrapper extends WrapperBase implements Connection {
@@ -89,12 +89,12 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
 
     /**
      * Construct a new LogicalHandle and set instance variables
-     * 
+     *
      * @param mysqlPooledConnection
      *            reference to object that instantiated this object
      * @param mysqlConnection
      *            physical connection to db
-     * 
+     *
      * @throws SQLException
      *             if an error occurs.
      */
@@ -113,7 +113,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#setAutoCommit
      */
     public void setAutoCommit(boolean autoCommit) throws SQLException {
@@ -134,7 +134,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#getAutoCommit()
      */
     public boolean getAutoCommit() throws SQLException {
@@ -152,7 +152,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#setCatalog()
      */
     public void setCatalog(String catalog) throws SQLException {
@@ -168,9 +168,9 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @return the current catalog
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -189,7 +189,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#isClosed()
      */
     public boolean isClosed() throws SQLException {
@@ -231,7 +231,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
 
     /**
      * Allows clients to determine how long this connection has been idle.
-     * 
+     *
      * @return how long the connection has been idle.
      */
     public long getIdleFor() {
@@ -241,9 +241,9 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @return a metadata instance
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -262,7 +262,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#setReadOnly()
      */
     public void setReadOnly(boolean readOnly) throws SQLException {
@@ -278,7 +278,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#isReadOnly()
      */
     public boolean isReadOnly() throws SQLException {
@@ -336,7 +336,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#setTransactionIsolation()
      */
     public void setTransactionIsolation(int level) throws SQLException {
@@ -352,7 +352,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#getTransactionIsolation()
      */
     public int getTransactionIsolation() throws SQLException {
@@ -371,7 +371,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#getTypeMap()
      */
     public java.util.Map<String, Class<?>> getTypeMap() throws SQLException {
@@ -389,7 +389,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#getWarnings
      */
     public java.sql.SQLWarning getWarnings() throws SQLException {
@@ -407,7 +407,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -427,7 +427,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
      * mysqlPooledConnection.close(). this object is de-referenced by the pooled
      * connection each time mysqlPooledConnection.getConnection() is called by
      * app server.
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -438,7 +438,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -460,7 +460,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#createStatement()
      */
     public java.sql.Statement createStatement() throws SQLException {
@@ -478,7 +478,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#createStatement()
      */
     public java.sql.Statement createStatement(int resultSetType, int resultSetConcurrency) throws SQLException {
@@ -511,7 +511,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#nativeSQL()
      */
     public String nativeSQL(String sql) throws SQLException {
@@ -529,7 +529,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#prepareCall()
      */
     public java.sql.CallableStatement prepareCall(String sql) throws SQLException {
@@ -547,7 +547,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#prepareCall()
      */
     public java.sql.CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
@@ -604,7 +604,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#prepareStatement()
      */
     public java.sql.PreparedStatement prepareStatement(String sql) throws SQLException {
@@ -622,7 +622,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#prepareStatement()
      */
     public java.sql.PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
@@ -713,7 +713,7 @@ public class ConnectionWrapper extends WrapperBase implements Connection {
     /**
      * Passes call to method on physical connection instance. Notifies listeners
      * of any caught exceptions before re-throwing to client.
-     * 
+     *
      * @see java.sql.Connection#rollback()
      */
     public void rollback() throws SQLException {

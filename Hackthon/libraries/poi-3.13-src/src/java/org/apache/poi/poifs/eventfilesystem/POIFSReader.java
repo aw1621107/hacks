@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.poifs.eventfilesystem;
 
@@ -97,8 +97,8 @@ public class POIFSReader
         processProperties(SmallBlockTableReader
             .getSmallDocumentBlocks(
                   header_block.getBigBlockSize(),
-                  data_blocks, properties.getRoot(), 
-                  header_block.getSBATStart()), 
+                  data_blocks, properties.getRoot(),
+                  header_block.getSBATStart()),
                   data_blocks, properties.getRoot()
                         .getChildren(), new POIFSDocumentPath());
     }

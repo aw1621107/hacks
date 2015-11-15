@@ -30,7 +30,7 @@ public final class DividePtg extends ValueOperatorPtg {
     private DividePtg() {
     	// enforce singleton
     }
-    
+
     protected byte getSid() {
     	return sid;
     }
@@ -46,5 +46,5 @@ public final class DividePtg extends ValueOperatorPtg {
         buffer.append("/");
         buffer.append(operands[ 1 ]);
         return buffer.toString();
-    }      
+    }
 }

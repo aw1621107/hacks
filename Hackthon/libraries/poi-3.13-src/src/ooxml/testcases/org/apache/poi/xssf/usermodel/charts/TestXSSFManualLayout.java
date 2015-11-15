@@ -27,7 +27,7 @@ import org.apache.poi.ss.usermodel.charts.LayoutTarget;
 import org.apache.poi.xssf.usermodel.*;
 
 public final class TestXSSFManualLayout extends TestCase {
-	
+
 	/*
 	 * Accessor methods are not trivial. They use lazy underlying bean
 	 * initialization so there can be some errors (NPE, for example).
@@ -75,7 +75,7 @@ public final class TestXSSFManualLayout extends TestCase {
 	 */
 	public void testDefaultValues() throws Exception {
 		ManualLayout layout = getEmptyLayout();
-		
+
 		assertNotNull(layout.getTarget());
 		assertNotNull(layout.getXMode());
 		assertNotNull(layout.getYMode());

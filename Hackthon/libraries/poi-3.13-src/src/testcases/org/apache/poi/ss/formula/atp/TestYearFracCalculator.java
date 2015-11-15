@@ -56,7 +56,7 @@ public final class TestYearFracCalculator {
 			System.out.println(startDate + " " + endDate + " off by " + hours + " hours");
 			assertEquals(expectedValue, actualValue, 0.000000001);
 		}
-		
+
 	}
 
 	private static double md(int year, int month, int day) {

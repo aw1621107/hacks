@@ -34,5 +34,5 @@ import java.lang.annotation.Documented;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Internal {
-    String value() default "";    
+    String value() default "";
 }

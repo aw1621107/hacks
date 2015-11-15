@@ -33,30 +33,30 @@ import org.apache.poi.util.LittleEndian;
  */
 public final class BATBlock extends BigBlock {
     /**
-     * For a regular fat block, these are 128 / 1024 
+     * For a regular fat block, these are 128 / 1024
      *  next sector values.
      * For a XFat (DIFat) block, these are 127 / 1023
      *  next sector values, then a chaining value.
      */
     private int[] _values;
-    
+
     /**
      * Does this BATBlock have any free sectors in it?
      */
     private boolean _has_free_sectors;
-    
+
     /**
      * Where in the file are we?
      */
     private int ourBlockIndex;
-    
+
     /**
      * Create a single instance initialized with default values
      */
     private BATBlock(POIFSBigBlockSize bigBlockSize)
     {
         super(bigBlockSize);
-        
+
         int _entries_per_block = bigBlockSize.getBATEntriesPerBlock();
         _values = new int[_entries_per_block];
         _has_free_sectors = true;
@@ -82,13 +82,13 @@ public final class BATBlock extends BigBlock {
         for (int k = start_index; k < end_index; k++) {
            _values[k - start_index] = entries[k];
         }
-        
+
         // Do we have any free sectors?
         if(end_index - start_index == _values.length) {
            recomputeFree();
         }
     }
-    
+
     private void recomputeFree() {
        boolean hasFree = false;
        for(int k=0; k<_values.length; k++) {
@@ -108,7 +108,7 @@ public final class BATBlock extends BigBlock {
     {
        // Create an empty block
        BATBlock block = new BATBlock(bigBlockSize);
-       
+
        // Fill it
        byte[] buffer = new byte[LittleEndian.INT_SIZE];
        for(int i=0; i<block._values.length; i++) {
@@ -116,11 +116,11 @@ public final class BATBlock extends BigBlock {
           block._values[i] = LittleEndian.getInt(buffer);
        }
        block.recomputeFree();
-       
+
        // All done
        return block;
     }
-    
+
     /**
      * Creates a single BATBlock, with all the values set to empty.
      */
@@ -158,7 +158,7 @@ public final class BATBlock extends BigBlock {
         }
         return blocks;
     }
-    
+
     /**
      * Create an array of XBATBlocks from an array of int block
      * allocation table entries
@@ -228,13 +228,13 @@ public final class BATBlock extends BigBlock {
         return (entryCount + _entries_per_xbat_block - 1)
                / _entries_per_xbat_block;
     }
-    
+
     /**
      * Calculates the maximum size of a file which is addressable given the
      *  number of FAT (BAT) sectors specified. (We don't care if those BAT
      *  blocks come from the 109 in the header, or from header + XBATS, it
      *  won't affect the calculation)
-     *  
+     *
      * The actual file size will be between [size of fatCount-1 blocks] and
      *   [size of fatCount blocks].
      *  For 512 byte block sizes, this means we may over-estimate by up to 65kb.
@@ -243,12 +243,12 @@ public final class BATBlock extends BigBlock {
     public static long calculateMaximumSize(final POIFSBigBlockSize bigBlockSize,
           final int numBATs) {
        long size = 1; // Header isn't FAT addressed
-       
+
        // The header has up to 109 BATs, and extra ones are referenced
        //  from XBATs
        // However, all BATs can contain 128/1024 blocks
        size += (numBATs * bigBlockSize.getBATEntriesPerBlock());
-       
+
        // So far we've been in sector counts, turn into bytes
        return size * bigBlockSize.getBigBlockSize();
     }
@@ -262,36 +262,36 @@ public final class BATBlock extends BigBlock {
      *  and the relative index within it.
      * The List of BATBlocks must be in sequential order
      */
-    public static BATBlockAndIndex getBATBlockAndIndex(final int offset, 
+    public static BATBlockAndIndex getBATBlockAndIndex(final int offset,
                 final HeaderBlock header, final List<BATBlock> bats) {
        POIFSBigBlockSize bigBlockSize = header.getBigBlockSize();
-       
+
        int whichBAT = (int)Math.floor(offset / bigBlockSize.getBATEntriesPerBlock());
        int index = offset % bigBlockSize.getBATEntriesPerBlock();
        return new BATBlockAndIndex( index, bats.get(whichBAT) );
     }
-    
+
     /**
      * Returns the BATBlock that handles the specified offset,
      *  and the relative index within it, for the mini stream.
      * The List of BATBlocks must be in sequential order
      */
-    public static BATBlockAndIndex getSBATBlockAndIndex(final int offset, 
+    public static BATBlockAndIndex getSBATBlockAndIndex(final int offset,
           final HeaderBlock header, final List<BATBlock> sbats) {
        POIFSBigBlockSize bigBlockSize = header.getBigBlockSize();
-       
+
        // SBATs are so much easier, as they're chained streams
        int whichSBAT = (int)Math.floor(offset / bigBlockSize.getBATEntriesPerBlock());
        int index = offset % bigBlockSize.getBATEntriesPerBlock();
        return new BATBlockAndIndex( index, sbats.get(whichSBAT) );
     }
-    
+
     private void setXBATChain(final POIFSBigBlockSize bigBlockSize, int chainIndex)
     {
         int _entries_per_xbat_block = bigBlockSize.getXBATEntriesPerBlock();
         _values[ _entries_per_xbat_block ] = chainIndex;
     }
-    
+
     /**
      * Does this BATBlock have any free sectors in it, or
      *  is it full?
@@ -314,20 +314,20 @@ public final class BATBlock extends BigBlock {
         }
         return usedSectors;
     }
-    
+
     public int getValueAt(int relativeOffset) {
        if(relativeOffset >= _values.length) {
           throw new ArrayIndexOutOfBoundsException(
-                "Unable to fetch offset " + relativeOffset + " as the " + 
+                "Unable to fetch offset " + relativeOffset + " as the " +
                 "BAT only contains " + _values.length + " entries"
-          ); 
+          );
        }
        return _values[relativeOffset];
     }
     public void setValueAt(int relativeOffset, int value) {
        int oldValue = _values[relativeOffset];
        _values[relativeOffset] = value;
-       
+
        // Do we need to re-compute the free?
        if(value == POIFSConstants.UNUSED_BLOCK) {
           _has_free_sectors = true;
@@ -337,7 +337,7 @@ public final class BATBlock extends BigBlock {
           recomputeFree();
        }
     }
-    
+
     /**
      * Record where in the file we live
      */
@@ -345,7 +345,7 @@ public final class BATBlock extends BigBlock {
        this.ourBlockIndex = index;
     }
     /**
-     * Retrieve where in the file we live 
+     * Retrieve where in the file we live
      */
     public int getOurBlockIndex() {
        return ourBlockIndex;
@@ -369,32 +369,32 @@ public final class BATBlock extends BigBlock {
        // Save it out
        stream.write( serialize() );
     }
-    
+
     void writeData(final ByteBuffer block)
         throws IOException
     {
        // Save it out
        block.put( serialize() );
     }
-    
+
     private byte[] serialize() {
        // Create the empty array
        byte[] data = new byte[ bigBlockSize.getBigBlockSize() ];
-       
+
        // Fill in the values
        int offset = 0;
        for(int i=0; i<_values.length; i++) {
           LittleEndian.putInt(data, offset, _values[i]);
           offset += LittleEndian.INT_SIZE;
        }
-       
+
        // Done
        return data;
     }
 
     /* **********  END  extension of BigBlock ********** */
-    
-    
+
+
     public static class BATBlockAndIndex {
        private final int index;
        private final BATBlock block;

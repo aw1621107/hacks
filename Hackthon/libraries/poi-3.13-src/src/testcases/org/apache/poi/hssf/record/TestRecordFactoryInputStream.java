@@ -60,7 +60,7 @@ public final class TestRecordFactoryInputStream {
 	@Rule
 	public ExpectedException expectedEx = ExpectedException.none();
 
-	
+
 	/**
 	 * Makes sure that a default password mismatch condition is represented with {@link EncryptedDocumentException}
 	 */
@@ -81,7 +81,7 @@ public final class TestRecordFactoryInputStream {
 	    expectedEx.expectMessage("Default password is invalid for salt/verifier/verifierHash");
 		createRFIS(dataWrongDefault);
 	}
-	
+
     @Test
     public void defaultPasswordOK() {
         // This encodng depends on docId, password and stream position
@@ -98,7 +98,7 @@ public final class TestRecordFactoryInputStream {
         RecordFactoryInputStream rfis = createRFIS(dataCorrectDefault);
         confirmReadInitialRecords(rfis);
     }
-	
+
 
 	/**
 	 * Makes sure that an incorrect user supplied password condition is represented with {@link EncryptedDocumentException}
@@ -142,8 +142,8 @@ public final class TestRecordFactoryInputStream {
 
         confirmReadInitialRecords(rfis);
     }
-	
-	
+
+
 	/**
 	 * makes sure the record stream starts with {@link BOFRecord} and then {@link WindowOneRecord}
 	 * The second record is gets decrypted so this method also checks its content.

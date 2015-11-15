@@ -84,7 +84,7 @@ public class TestText {
 
         assertEquals(expected.length, actual.length);
         assertArrayEquals(expected, actual);
-        
+
         wb.close();
     }
 
@@ -119,7 +119,7 @@ public class TestText {
         assertEquals(((HSSFTextbox) patriarch.getChildren().get(0)).getString().getString(), "just for test");
         assertEquals(((HSSFTextbox) patriarch.getChildren().get(1)).getString().getString(), "just for test2");
         assertEquals(((HSSFTextbox) patriarch.getChildren().get(2)).getString().getString(), "text3");
-        
+
         wb3.close();
     }
 
@@ -192,7 +192,7 @@ public class TestText {
         assertEquals(textbox.getMarginLeft(), 81);
         assertEquals(textbox.getMarginRight(), 91);
         assertEquals(textbox.getMarginTop(), 101);
-        
+
         wb3.close();
     }
 

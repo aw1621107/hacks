@@ -25,7 +25,7 @@ import org.apache.poi.util.LittleEndianOutput;
  * MsoDrawingSelection (0x00ED)<p/>
  * Reference:
  * [MS-OGRAPH].pdf sec 2.4.69
- * 
+ *
  * @author Josh Micich
  */
 public final class DrawingSelectionRecord extends StandardRecord {
@@ -95,7 +95,7 @@ public final class DrawingSelectionRecord extends StandardRecord {
 	}
 
 	protected int getDataSize() {
-		return OfficeArtRecordHeader.ENCODED_SIZE 
+		return OfficeArtRecordHeader.ENCODED_SIZE
 			+ 12 // 3 int fields
 			+ _shapeIds.length * 4;
 	}

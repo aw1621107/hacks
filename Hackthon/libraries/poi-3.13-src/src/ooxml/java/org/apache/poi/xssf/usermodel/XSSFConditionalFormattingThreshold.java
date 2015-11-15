@@ -28,11 +28,11 @@ import org.openxmlformats.schemas.spreadsheetml.x2006.main.STCfvoType;
  */
 public class XSSFConditionalFormattingThreshold implements org.apache.poi.ss.usermodel.ConditionalFormattingThreshold {
     private CTCfvo cfvo;
-    
+
     protected XSSFConditionalFormattingThreshold(CTCfvo cfvo) {
         this.cfvo = cfvo;
     }
-    
+
     protected CTCfvo getCTCfvo() {
         return cfvo;
     }

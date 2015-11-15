@@ -122,50 +122,50 @@ public class XSSFSheetConditionalFormatting implements SheetConditionalFormattin
 
     /**
      * Create a Databar conditional formatting rule.
-     * <p>The thresholds and colour for it will be created, but will be 
-     *  empty and require configuring with 
+     * <p>The thresholds and colour for it will be created, but will be
+     *  empty and require configuring with
      *  {@link XSSFConditionalFormattingRule#getDataBarFormatting()}
      *  then
      *  {@link XSSFDataBarFormatting#getMinThreshold()}
-     *  and 
+     *  and
      *  {@link XSSFDataBarFormatting#getMaxThreshold()}
      */
     public XSSFConditionalFormattingRule createConditionalFormattingRule(XSSFColor color) {
         XSSFConditionalFormattingRule rule = new XSSFConditionalFormattingRule(_sheet);
-        
+
         // Have it setup, with suitable defaults
         rule.createDataBarFormatting(color);
-        
+
         // All done!
         return rule;
     }
     public XSSFConditionalFormattingRule createConditionalFormattingRule(ExtendedColor color) {
         return createConditionalFormattingRule((XSSFColor)color);
     }
-    
+
     /**
      * A factory method allowing the creation of conditional formatting
      *  rules using an Icon Set / Multi-State formatting.
      * The thresholds for it will be created, but will be empty
-     *  and require configuring with 
+     *  and require configuring with
      *  {@link XSSFConditionalFormattingRule#getMultiStateFormatting()}
      *  then
      *  {@link XSSFIconMultiStateFormatting#getThresholds()}
      */
     public XSSFConditionalFormattingRule createConditionalFormattingRule(IconSet iconSet) {
         XSSFConditionalFormattingRule rule = new XSSFConditionalFormattingRule(_sheet);
-        
+
         // Have it setup, with suitable defaults
         rule.createMultiStateFormatting(iconSet);
-        
+
         // All done!
         return rule;
     }
 
     /**
      * Create a Color Scale / Color Gradient conditional formatting rule.
-     * <p>The thresholds and colours for it will be created, but will be 
-     *  empty and require configuring with 
+     * <p>The thresholds and colours for it will be created, but will be
+     *  empty and require configuring with
      *  {@link XSSFConditionalFormattingRule#getColorScaleFormatting()}
      *  then
      *  {@link XSSFColorScaleFormatting#getThresholds()}
@@ -174,14 +174,14 @@ public class XSSFSheetConditionalFormatting implements SheetConditionalFormattin
      */
     public XSSFConditionalFormattingRule createConditionalFormattingColorScaleRule() {
         XSSFConditionalFormattingRule rule = new XSSFConditionalFormattingRule(_sheet);
-        
+
         // Have it setup, with suitable defaults
         rule.createColorScaleFormatting();
-        
+
         // All done!
         return rule;
     }
-    
+
     @SuppressWarnings("deprecation")
     public int addConditionalFormatting(CellRangeAddress[] regions, ConditionalFormattingRule[] cfRules) {
         if (regions == null) {

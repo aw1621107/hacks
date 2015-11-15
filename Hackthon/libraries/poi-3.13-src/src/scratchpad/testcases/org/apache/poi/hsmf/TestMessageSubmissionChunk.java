@@ -28,7 +28,7 @@ import java.util.Calendar;
 import junit.framework.TestCase;
 
 public final class TestMessageSubmissionChunk extends TestCase {
-    
+
     private MAPIMessage mapiMessageExtraHyphenSubmissionChunk;
     private MAPIMessage mapiMessageNormalSubmissionChunk;
 

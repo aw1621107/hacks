@@ -29,7 +29,7 @@ public final class EqualPtg extends ValueOperatorPtg {
     private EqualPtg() {
     	// enforce singleton
     }
-    
+
     protected byte getSid() {
     	return sid;
     }
@@ -37,14 +37,14 @@ public final class EqualPtg extends ValueOperatorPtg {
     public int getNumberOfOperands() {
         return 2;
     }
- 
+
     public String toFormulaString(String[] operands) {
          StringBuffer buffer = new StringBuffer();
 
-        
+
         buffer.append(operands[ 0 ]);
         buffer.append("=");
         buffer.append(operands[ 1 ]);
         return buffer.toString();
-    }       
+    }
 }

@@ -63,7 +63,7 @@ class CompressedInputStream extends InputStream {
     /**
      * Creates a new CompressedInputStream that reads the given stream from the
      * server.
-     * 
+     *
      * @param conn
      * @param streamFromServer
      */
@@ -107,7 +107,7 @@ class CompressedInputStream extends InputStream {
     /**
      * Retrieves and un-compressed (if necessary) the next packet from the
      * server.
-     * 
+     *
      * @throws IOException
      *             if an I/O error occurs
      */
@@ -154,7 +154,7 @@ class CompressedInputStream extends InputStream {
                 this.log.logTrace("Packet didn't meet compression threshold, not uncompressing...");
             }
 
-            //	
+            //
             // Read data, note this this code is reached when using compressed packets that have not been compressed, as well
             //
             uncompressedData = new byte[compressedPacketLength];
@@ -193,10 +193,10 @@ class CompressedInputStream extends InputStream {
     /**
      * Determines if another packet needs to be read from the server to be able
      * to read numBytes from the stream.
-     * 
+     *
      * @param numBytes
      *            the number of bytes to be read
-     * 
+     *
      * @throws IOException
      *             if an I/O error occors.
      */

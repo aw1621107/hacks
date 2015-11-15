@@ -22,14 +22,14 @@ import junit.framework.TestSuite;
 
 /**
  * Collects all tests for <tt>org.apache.poi.hssf.record.pivot</tt>.
- * 
+ *
  * @author Josh Micich
  */
 public final class AllPivotRecordTests {
-	
+
 	public static Test suite() {
 		TestSuite result = new TestSuite(AllPivotRecordTests.class.getName());
-		
+
 		result.addTestSuite(TestExtendedPivotTableViewFieldsRecord.class);
 		result.addTestSuite(TestPageItemRecord.class);
 		result.addTestSuite(TestViewFieldsRecord.class);

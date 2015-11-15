@@ -35,7 +35,7 @@ public final class TestRecalcIdRecord extends TestCase {
 		return result;
 	}
 	public void testBasicDeserializeReserialize() {
-		
+
 		byte[] data = HexRead.readFromString(
 				"C1 01" +  // rt
 				"00 00" +  // reserved

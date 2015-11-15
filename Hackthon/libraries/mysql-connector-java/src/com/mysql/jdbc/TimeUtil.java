@@ -91,7 +91,7 @@ public class TimeUtil {
 
     /**
      * Change the given times from one timezone to another
-     * 
+     *
      * @param conn
      *            the current connection to the MySQL server
      * @param t
@@ -100,7 +100,7 @@ public class TimeUtil {
      *            the timezone to change from
      * @param toTz
      *            the timezone to change to
-     * 
+     *
      * @return the times changed to the timezone 'toTz'
      */
     public static Time changeTimezone(MySQLConnection conn, Calendar sessionCalendar, Calendar targetCalendar, Time t, TimeZone fromTz, TimeZone toTz,
@@ -143,7 +143,7 @@ public class TimeUtil {
 
     /**
      * Change the given timestamp from one timezone to another
-     * 
+     *
      * @param conn
      *            the current connection to the MySQL server
      * @param tstamp
@@ -152,7 +152,7 @@ public class TimeUtil {
      *            the timezone to change from
      * @param toTz
      *            the timezone to change to
-     * 
+     *
      * @return the timestamp changed to the timezone 'toTz'
      */
     public static Timestamp changeTimezone(MySQLConnection conn, Calendar sessionCalendar, Calendar targetCalendar, Timestamp tstamp, TimeZone fromTz,
@@ -414,13 +414,13 @@ public class TimeUtil {
 
     /**
      * Returns the 'official' Java timezone name for the given timezone
-     * 
+     *
      * @param timezoneStr
      *            the 'common' timezone name
-     * 
+     *
      * @return the Java timezone name for the given timezone
      * @throws SQLException
-     * 
+     *
      * @throws IllegalArgumentException
      */
     public static String getCanonicalTimezone(String timezoneStr, ExceptionInterceptor exceptionInterceptor) throws SQLException {
@@ -514,7 +514,7 @@ public class TimeUtil {
 
     /**
      * Loads a properties file that contains all kinds of time zone mappings.
-     * 
+     *
      * @param exceptionInterceptor
      * @throws SQLException
      */

@@ -74,7 +74,7 @@ public class CommentsTable extends POIXMLDocumentPart {
         writeTo(out);
         out.close();
     }
-    
+
     /**
      * Called after the reference is updated, so that
      *  we can reflect that in our cache
@@ -137,12 +137,12 @@ public class CommentsTable extends POIXMLDocumentPart {
     public CTComment newComment() {
         return newComment("A1");
     }
-    
+
     public CTComment newComment(String ref) {
         CTComment ct = comments.getCommentList().addNewComment();
         ct.setRef(ref);
         ct.setAuthorId(0);
-        
+
         if(commentRefs != null) {
            commentRefs.put(ct.getRef(), ct);
         }

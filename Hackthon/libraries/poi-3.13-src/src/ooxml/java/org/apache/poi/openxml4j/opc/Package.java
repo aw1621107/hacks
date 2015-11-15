@@ -30,7 +30,7 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 @Deprecated
 public abstract class Package extends OPCPackage {
 	/**
-	 * @deprecated use {@link OPCPackage} 
+	 * @deprecated use {@link OPCPackage}
 	 */
     @Deprecated
     protected Package(PackageAccess access) {
@@ -38,7 +38,7 @@ public abstract class Package extends OPCPackage {
 	}
 
 	/**
-	 * @deprecated use {@link OPCPackage#open(String)} 
+	 * @deprecated use {@link OPCPackage#open(String)}
 	 */
     @Deprecated
 	public static Package open(String path) throws InvalidFormatException {
@@ -46,7 +46,7 @@ public abstract class Package extends OPCPackage {
 	}
 
 	/**
-	 * @deprecated use {@link OPCPackage#open(String,PackageAccess)} 
+	 * @deprecated use {@link OPCPackage#open(String,PackageAccess)}
 	 */
     @Deprecated
 	public static Package open(String path, PackageAccess access)
@@ -55,7 +55,7 @@ public abstract class Package extends OPCPackage {
 	}
 
 	/**
-	 * @deprecated use {@link OPCPackage#open(InputStream)} 
+	 * @deprecated use {@link OPCPackage#open(InputStream)}
 	 */
     @Deprecated
 	public static Package open(InputStream in) throws InvalidFormatException,
@@ -64,7 +64,7 @@ public abstract class Package extends OPCPackage {
 	}
 
 	/**
-	 * @deprecated use {@link OPCPackage#openOrCreate(java.io.File)}  
+	 * @deprecated use {@link OPCPackage#openOrCreate(java.io.File)}
 	 */
     @Deprecated
 	public static Package openOrCreate(File file) throws InvalidFormatException {
@@ -72,7 +72,7 @@ public abstract class Package extends OPCPackage {
 	}
 
 	/**
-	 * @deprecated use {@link OPCPackage#create(String)} 
+	 * @deprecated use {@link OPCPackage#create(String)}
 	 */
     @Deprecated
 	public static Package create(String path) {
@@ -80,7 +80,7 @@ public abstract class Package extends OPCPackage {
 	}
 
 	/**
-	 * @deprecated use {@link OPCPackage#create(File)} 
+	 * @deprecated use {@link OPCPackage#create(File)}
 	 */
     @Deprecated
 	public static Package create(File file) {
@@ -88,7 +88,7 @@ public abstract class Package extends OPCPackage {
 	}
 
 	/**
-	 * @deprecated use {@link OPCPackage#create(OutputStream)} 
+	 * @deprecated use {@link OPCPackage#create(OutputStream)}
 	 */
     @Deprecated
 	public static Package create(OutputStream output) {

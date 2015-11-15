@@ -25,7 +25,7 @@ import org.apache.poi.util.Beta;
 
 /**
  * Utility class to translate numbers in letters, usually for lists.
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 @Beta

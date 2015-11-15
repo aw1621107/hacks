@@ -27,10 +27,10 @@ import org.apache.poi.util.LittleEndian;
  * <p>
  * Class and fields descriptions are quoted from Microsoft Office Word 97-2007
  * Binary File Format
- * 
+ *
  * NOTE: This source is automatically generated please do not modify this file.
  * Either subclass or remove the record in src/records/definitions.
- * 
+ *
  * @author Sergey Vladimirov; according to Microsoft Office Word 97-2007 Binary
  *         File Format Specification [*.doc]
  */
@@ -148,7 +148,7 @@ public abstract class TLPAbstractType implements HDFType
 
     /**
      * When == 1, use the border properties from the selected table look
-     * 
+     *
      * @return the fBorders field value.
      */
     public boolean isFBorders()
@@ -170,7 +170,7 @@ public abstract class TLPAbstractType implements HDFType
 
     /**
      * When == 1, use the shading properties from the selected table look
-     * 
+     *
      * @return the fShading field value.
      */
     public boolean isFShading()
@@ -191,7 +191,7 @@ public abstract class TLPAbstractType implements HDFType
 
     /**
      * When == 1, use the font from the selected table look
-     * 
+     *
      * @return the fFont field value.
      */
     public boolean isFFont()
@@ -212,7 +212,7 @@ public abstract class TLPAbstractType implements HDFType
 
     /**
      * When == 1, use the color from the selected table look
-     * 
+     *
      * @return the fColor field value.
      */
     public boolean isFColor()
@@ -234,7 +234,7 @@ public abstract class TLPAbstractType implements HDFType
 
     /**
      * When == 1, do best fit from the selected table look
-     * 
+     *
      * @return the fBestFit field value.
      */
     public boolean isFBestFit()
@@ -257,7 +257,7 @@ public abstract class TLPAbstractType implements HDFType
     /**
      * When == 1, apply properties from the selected table look to the header
      * rows in the table
-     * 
+     *
      * @return the fHdrRows field value.
      */
     public boolean isFHdrRows()
@@ -280,7 +280,7 @@ public abstract class TLPAbstractType implements HDFType
     /**
      * When == 1, apply properties from the selected table look to the last row
      * in the table
-     * 
+     *
      * @return the fLastRow field value.
      */
     public boolean isFLastRow()

@@ -176,7 +176,7 @@ public class TestDrawingAggregate extends TestCase {
                 }
         );
         assertNotNull(
-                "Need to find files in test-data path, had path: " + new File(System.getProperty("POI.testdata.path"), "spreadsheet"), 
+                "Need to find files in test-data path, had path: " + new File(System.getProperty("POI.testdata.path"), "spreadsheet"),
                 xls);
         for(File file : xls) {
             HSSFWorkbook wb;
@@ -193,7 +193,7 @@ public class TestDrawingAggregate extends TestCase {
                 String filename = file.getName();
                 System.out.println("Drawing Aggregate re-write test failed for " + filename);
                 e.printStackTrace(System.out);
-                
+
                 fail("Error when writing and re-reading workbook " + filename + "\n" + e);
             }
         }

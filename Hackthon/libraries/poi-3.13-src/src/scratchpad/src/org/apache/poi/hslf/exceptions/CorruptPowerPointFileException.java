@@ -29,7 +29,7 @@ public final class CorruptPowerPointFileException extends IllegalStateException
 	public CorruptPowerPointFileException(String s) {
 		super(s);
 	}
-	
+
 	public CorruptPowerPointFileException(String s, Throwable t) {
 	    super(s,t);
 	}

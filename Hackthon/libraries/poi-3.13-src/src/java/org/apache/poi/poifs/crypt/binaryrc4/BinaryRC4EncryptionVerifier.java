@@ -54,7 +54,7 @@ public class BinaryRC4EncryptionVerifier extends EncryptionVerifier implements E
         if (salt == null || salt.length != 16) {
             throw new EncryptedDocumentException("invalid verifier salt");
         }
-        
+
         super.setSalt(salt);
     }
 

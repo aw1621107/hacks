@@ -28,10 +28,10 @@ public final class TestBug49820 extends TestCase {
 
   public void test() throws IOException {
     HWPFDocument doc = HWPFTestDataSamples.openSampleFile("Bug49820.doc");
-    
+
     Range documentRange = doc.getRange();
     StyleSheet styleSheet = doc.getStyleSheet();
-    
+
     // JUnit asserts
     assertLevels(documentRange, styleSheet, 0, 0, 0);
     assertLevels(documentRange, styleSheet, 1, 1, 1);
@@ -45,7 +45,7 @@ public final class TestBug49820 extends TestCase {
     assertLevels(documentRange, styleSheet, 9, 9, 9);
     assertLevels(documentRange, styleSheet, 10, 9, 0);
     assertLevels(documentRange, styleSheet, 11, 9, 4);
-    
+
     // output to console
     /*for (int i=0; i<documentRange.numParagraphs(); i++) {
       Paragraph par = documentRange.getParagraph(i);

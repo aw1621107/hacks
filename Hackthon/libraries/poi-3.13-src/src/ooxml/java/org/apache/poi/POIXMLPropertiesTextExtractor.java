@@ -44,7 +44,7 @@ public class POIXMLPropertiesTextExtractor extends POIXMLTextExtractor {
 	public POIXMLPropertiesTextExtractor(POIXMLTextExtractor otherExtractor) {
 		super(otherExtractor.getDocument());
 	}
-	
+
    private void appendIfPresent(StringBuffer text, String thing, boolean value) {
       appendIfPresent(text, thing, Boolean.toString(value));
    }
@@ -150,16 +150,16 @@ public class POIXMLPropertiesTextExtractor extends POIXMLTextExtractor {
          String val = "(not implemented!)";
 
          if (property.isSetLpwstr()) {
-            val = property.getLpwstr(); 
+            val = property.getLpwstr();
          }
          else if (property.isSetLpstr()) {
-            val = property.getLpstr(); 
+            val = property.getLpstr();
          }
          else if (property.isSetDate()) {
-            val = property.getDate().toString(); 
+            val = property.getDate().toString();
          }
          else if (property.isSetFiletime()) {
-            val = property.getFiletime().toString(); 
+            val = property.getFiletime().toString();
          }
          else if (property.isSetBool()) {
             val = Boolean.toString( property.getBool() );
@@ -167,44 +167,44 @@ public class POIXMLPropertiesTextExtractor extends POIXMLTextExtractor {
 
          // Integers
          else if (property.isSetI1()) {
-            val = Integer.toString(property.getI1()); 
+            val = Integer.toString(property.getI1());
          }
          else if (property.isSetI2()) {
-            val = Integer.toString(property.getI2()); 
+            val = Integer.toString(property.getI2());
          }
          else if (property.isSetI4()) {
-            val = Integer.toString(property.getI4()); 
+            val = Integer.toString(property.getI4());
          }
          else if (property.isSetI8()) {
-            val = Long.toString(property.getI8()); 
+            val = Long.toString(property.getI8());
          }
          else if (property.isSetInt()) {
-            val = Integer.toString( property.getInt() ); 
+            val = Integer.toString( property.getInt() );
          }
 
          // Unsigned Integers
          else if (property.isSetUi1()) {
-            val = Integer.toString(property.getUi1()); 
+            val = Integer.toString(property.getUi1());
          }
          else if (property.isSetUi2()) {
-            val = Integer.toString(property.getUi2()); 
+            val = Integer.toString(property.getUi2());
          }
          else if (property.isSetUi4()) {
-            val = Long.toString(property.getUi4()); 
+            val = Long.toString(property.getUi4());
          }
          else if (property.isSetUi8()) {
-            val = property.getUi8().toString(); 
+            val = property.getUi8().toString();
          }
          else if (property.isSetUint()) {
-            val = Long.toString(property.getUint()); 
+            val = Long.toString(property.getUint());
          }
 
          // Reals
          else if (property.isSetR4()) {
-            val = Float.toString( property.getR4() ); 
+            val = Float.toString( property.getR4() );
          }
          else if (property.isSetR8()) {
-            val = Double.toString( property.getR8() ); 
+            val = Double.toString( property.getR8() );
          }
          else if (property.isSetDecimal()) {
             BigDecimal d = property.getDecimal();
@@ -216,7 +216,7 @@ public class POIXMLPropertiesTextExtractor extends POIXMLTextExtractor {
          }
 
          else if (property.isSetArray()) {
-            // TODO Fetch the array values and output 
+            // TODO Fetch the array values and output
          }
          else if (property.isSetVector()) {
             // TODO Fetch the vector values and output

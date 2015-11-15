@@ -22,7 +22,7 @@ import org.apache.poi.util.Internal;
 
 /**
  * TODO: document me
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 @Internal

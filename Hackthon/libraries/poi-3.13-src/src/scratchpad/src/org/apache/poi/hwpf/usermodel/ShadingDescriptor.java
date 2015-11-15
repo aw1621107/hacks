@@ -21,7 +21,7 @@ import org.apache.poi.hwpf.model.types.SHDAbstractType;
 
 /**
  * The SHD is a substructure of the CHP, PAP, and TC for Word 2000.
- * 
+ *
  * @author vlsergey
  */
 public final class ShadingDescriptor extends SHDAbstractType implements

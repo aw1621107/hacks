@@ -33,7 +33,7 @@ public interface PictureShape<
 	/**
 	 * Returns the clipping values as percent ratio relatively to the image size.
 	 * The clipping are returned as insets converted/scaled to 100000 (=100%).
-	 * 
+	 *
 	 * @return the clipping rectangle, which is given in percent in relation to the image width/height
 	 */
 	Insets getClipping();

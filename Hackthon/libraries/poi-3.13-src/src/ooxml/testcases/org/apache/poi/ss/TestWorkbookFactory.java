@@ -275,20 +275,20 @@ public final class TestWorkbookFactory extends TestCase {
             fail("Shouldn't be able to open with the wrong password");
         } catch (EncryptedDocumentException e) {}
     }
-    
+
     /**
      * Check that a helpful exception is given on an empty file / stream
      */
     public void testEmptyFile() throws Exception {
         InputStream emptyStream = new ByteArrayInputStream(new byte[0]);
         File emptyFile = TempFile.createTempFile("empty", ".poi");
-        
+
         try {
             WorkbookFactory.create(emptyStream);
             fail("Shouldn't be able to create for an empty stream");
         } catch (EmptyFileException e) {
         }
-        
+
         try {
             WorkbookFactory.create(emptyFile);
             fail("Shouldn't be able to create for an empty file");

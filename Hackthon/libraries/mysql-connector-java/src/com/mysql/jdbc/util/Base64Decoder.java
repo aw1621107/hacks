@@ -25,7 +25,7 @@ package com.mysql.jdbc.util;
 
 /**
  * This decoder implements standard Base64 decoding except it allows and silently ignores non-base64 input characters (spaces, line breaks etc)
- * 
+ *
  * Note: Java 6+ provide standard decoders
  */
 public class Base64Decoder {
@@ -54,7 +54,7 @@ public class Base64Decoder {
             }
             pos.value++;
         }
-        // padding if reached max position 
+        // padding if reached max position
         return '=';
     }
 

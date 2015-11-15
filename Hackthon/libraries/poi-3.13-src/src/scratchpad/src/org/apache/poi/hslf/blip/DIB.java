@@ -57,9 +57,9 @@ public final class DIB extends Bitmap {
                 break;
             default:
                 throw new IllegalArgumentException(signature+" is not a valid instance/signature value for DIB");
-        }        
-    }    
-    
+        }
+    }
+
     @Override
     public byte[] getData(){
         return addBMPHeader ( super.getData() );
@@ -78,14 +78,14 @@ public final class DIB extends Bitmap {
         int imageSize = LittleEndian.getInt(data, 0x22 - HEADER_SIZE);
         int fileSize = data.length + HEADER_SIZE;
         int offset = fileSize - imageSize;
-        
+
 		// specifies the size, in bytes, of the bitmap file - must add the length of the header
-        LittleEndian.putInt(header, 2, fileSize); 
+        LittleEndian.putInt(header, 2, fileSize);
         // Reserved; set to zero
         LittleEndian.putInt(header, 6, 0);
         // the offset, i.e. starting address, of the byte where the bitmap data can be found
         LittleEndian.putInt(header, 10, offset);
-        
+
         //DIB data is the header + dib bytes
         byte[] dib = new byte[header.length + data.length];
         System.arraycopy(header, 0, dib, 0, header.length);

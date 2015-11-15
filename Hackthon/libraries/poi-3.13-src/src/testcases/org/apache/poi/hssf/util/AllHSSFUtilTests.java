@@ -22,11 +22,11 @@ import junit.framework.TestSuite;
 
 /**
  * Collects all tests for org.apache.poi.hssf.util.
- * 
+ *
  * @author Josh Micich
  */
 public class AllHSSFUtilTests {
-	
+
 	public static Test suite() {
 		TestSuite result = new TestSuite(AllHSSFUtilTests.class.getName());
 		result.addTestSuite(TestAreaReference.class);

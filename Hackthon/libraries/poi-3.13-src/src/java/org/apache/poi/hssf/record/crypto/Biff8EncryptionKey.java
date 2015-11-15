@@ -32,7 +32,7 @@ public abstract class Biff8EncryptionKey {
 	public static Biff8EncryptionKey create(byte[] salt) {
 	    return Biff8RC4Key.create(Decryptor.DEFAULT_PASSWORD, salt);
 	}
-	
+
 	public static Biff8EncryptionKey create(String password, byte[] salt) {
         return Biff8RC4Key.create(password, salt);
 	}

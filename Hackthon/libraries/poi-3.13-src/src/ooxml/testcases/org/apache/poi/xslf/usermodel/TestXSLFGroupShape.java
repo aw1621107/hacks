@@ -36,7 +36,7 @@ public class TestXSLFGroupShape {
         XSLFSlide slide = ppt.createSlide();
 
         ppt.setPageSize(new Dimension(792, 612));
-        
+
         XSLFGroupShape group = slide.createGroup();
         assertEquals(1, slide.getShapes().size());
 
@@ -85,7 +85,7 @@ public class TestXSLFGroupShape {
         group.removeShape(shape1);
         group.removeShape(shape4);
         assertTrue(group.getShapes().isEmpty());
-        
+
         ppt.close();
     }
 

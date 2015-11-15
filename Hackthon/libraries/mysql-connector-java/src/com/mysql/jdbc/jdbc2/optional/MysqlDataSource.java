@@ -95,9 +95,9 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
     /**
      * Creates a new connection using the already configured username and
      * password.
-     * 
+     *
      * @return a connection to the database
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -107,14 +107,14 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Creates a new connection with the given username and password
-     * 
+     *
      * @param userID
      *            the user id to connect with
      * @param password
      *            the password to connect with
-     * 
+     *
      * @return a connection to the database
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -136,7 +136,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Sets the database name.
-     * 
+     *
      * @param dbName
      *            the name of the database
      */
@@ -146,7 +146,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Gets the name of the database
-     * 
+     *
      * @return the name of the database for this data source
      */
     public String getDatabaseName() {
@@ -155,7 +155,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Sets the log writer for this data source.
-     * 
+     *
      * @see javax.sql.DataSource#setLogWriter(PrintWriter)
      */
     public void setLogWriter(PrintWriter output) throws SQLException {
@@ -164,7 +164,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Returns the log writer for this data source
-     * 
+     *
      * @return the log writer for this data source
      */
     public java.io.PrintWriter getLogWriter() {
@@ -173,7 +173,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * @param seconds
-     * 
+     *
      * @throws SQLException
      */
     public void setLoginTimeout(int seconds) throws SQLException {
@@ -181,7 +181,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Returns the login timeout
-     * 
+     *
      * @return the login timeout
      */
     public int getLoginTimeout() {
@@ -190,7 +190,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Sets the password
-     * 
+     *
      * @param pass
      *            the password
      */
@@ -200,7 +200,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Sets the database port.
-     * 
+     *
      * @param p
      *            the port
      */
@@ -210,7 +210,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Returns the port number
-     * 
+     *
      * @return the port number
      */
     public int getPort() {
@@ -219,10 +219,10 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Sets the port number
-     * 
+     *
      * @param p
      *            the port
-     * 
+     *
      * @see #setPort
      */
     public void setPortNumber(int p) {
@@ -231,7 +231,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Returns the port number
-     * 
+     *
      * @return the port number
      */
     public int getPortNumber() {
@@ -240,7 +240,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * @param ref
-     * 
+     *
      * @throws SQLException
      */
     public void setPropertiesViaRef(Reference ref) throws SQLException {
@@ -249,9 +249,9 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Required method to support this class as a <CODE>Referenceable</CODE>.
-     * 
+     *
      * @return a Reference to this data source
-     * 
+     *
      * @throws NamingException
      *             if a JNDI error occurs
      */
@@ -280,7 +280,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Sets the server name.
-     * 
+     *
      * @param serverName
      *            the server name
      */
@@ -290,7 +290,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Returns the name of the database server
-     * 
+     *
      * @return the name of the database server
      */
     public String getServerName() {
@@ -303,7 +303,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Sets the URL for this connection
-     * 
+     *
      * @param url
      *            the URL for this connection
      */
@@ -313,7 +313,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Returns the URL for this connection
-     * 
+     *
      * @return the URL for this connection
      */
     public String getURL() {
@@ -324,7 +324,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
      * This method is used by the app server to set the url string specified
      * within the datasource deployment descriptor. It is discovered using
      * introspection and matches if property name in descriptor is "url".
-     * 
+     *
      * @param url
      *            url to be used within driver.connect
      */
@@ -335,7 +335,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Returns the JDBC URL that will be used to create the database connection.
-     * 
+     *
      * @return the URL for this connection
      */
     public String getUrl() {
@@ -351,7 +351,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Sets the user ID.
-     * 
+     *
      * @param userID
      *            the User ID
      */
@@ -361,7 +361,7 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Returns the configured user for this connection
-     * 
+     *
      * @return the user for this connection
      */
     public String getUser() {
@@ -370,12 +370,12 @@ public class MysqlDataSource extends ConnectionPropertiesImpl implements DataSou
 
     /**
      * Creates a connection using the specified properties.
-     * 
+     *
      * @param props
      *            the properties to connect with
-     * 
+     *
      * @return a connection to the database
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */

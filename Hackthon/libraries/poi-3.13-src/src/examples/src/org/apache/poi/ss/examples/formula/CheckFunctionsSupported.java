@@ -52,16 +52,16 @@ public class CheckFunctionsSupported {
             System.err.println("  CheckFunctionsSupported <filename>");
             return;
         }
-        
+
         Workbook wb = WorkbookFactory.create(new File(args[0]));
         CheckFunctionsSupported check = new CheckFunctionsSupported(wb);
-        
+
         // Fetch all the problems
         List<FormulaEvaluationProblems> problems = new ArrayList<CheckFunctionsSupported.FormulaEvaluationProblems>();
         for (int sn=0; sn<wb.getNumberOfSheets(); sn++) {
             problems.add(check.getEvaluationProblems(sn));
         }
-        
+
         // Produce an overall summary
         Set<String> unsupportedFunctions = new TreeSet<String>();
         for (FormulaEvaluationProblems p : problems) {
@@ -76,33 +76,33 @@ public class CheckFunctionsSupported {
             }
             System.out.println("Total unsupported functions = " + unsupportedFunctions.size());
         }
-        
+
         // Report sheet by sheet
         for (int sn=0; sn<wb.getNumberOfSheets(); sn++) {
             String sheetName = wb.getSheetName(sn);
             FormulaEvaluationProblems probs = problems.get(sn);
-            
+
             System.out.println();
             System.out.println("Sheet = " + sheetName);
-            
+
             if (probs.unevaluatableCells.isEmpty()) {
                 System.out.println(" All cells evaluated without error");
             } else {
                 for (CellReference cr : probs.unevaluatableCells.keySet()) {
-                    System.out.println(" " + cr.formatAsString() + " - " + 
+                    System.out.println(" " + cr.formatAsString() + " - " +
                                        probs.unevaluatableCells.get(cr).toString());
                 }
             }
         }
     }
-    
+
     private Workbook workbook;
     private FormulaEvaluator evaluator;
     public CheckFunctionsSupported(Workbook workbook) {
         this.workbook = workbook;
         this.evaluator = workbook.getCreationHelper().createFormulaEvaluator();
     }
-    
+
     public Set<String> getUnsupportedFunctions(String sheetName) {
         return getUnsupportedFunctions(workbook.getSheet(sheetName));
     }
@@ -113,7 +113,7 @@ public class CheckFunctionsSupported {
         FormulaEvaluationProblems problems = getEvaluationProblems(sheet);
         return problems.unsupportedFunctions;
     }
-    
+
     public FormulaEvaluationProblems getEvaluationProblems(String sheetName) {
         return getEvaluationProblems(workbook.getSheet(sheetName));
     }
@@ -123,7 +123,7 @@ public class CheckFunctionsSupported {
     public FormulaEvaluationProblems getEvaluationProblems(Sheet sheet) {
         Set<String> unsupportedFunctions = new HashSet<String>();
         Map<CellReference,Exception> unevaluatableCells = new HashMap<CellReference, Exception>();
-        
+
         for (Row r : sheet) {
             for (Cell c : r) {
                 try {
@@ -133,7 +133,7 @@ public class CheckFunctionsSupported {
                         // Has been wrapped with cell details, but we know those
                         e = (Exception)e.getCause();
                     }
-                    
+
                     if (e instanceof NotImplementedFunctionException) {
                         NotImplementedFunctionException nie = (NotImplementedFunctionException)e;
                         unsupportedFunctions.add(nie.getFunctionName());
@@ -142,16 +142,16 @@ public class CheckFunctionsSupported {
                 }
             }
         }
-        
+
         return new FormulaEvaluationProblems(unsupportedFunctions, unevaluatableCells);
     }
-    
+
     public static class FormulaEvaluationProblems {
         /** Which used functions are unsupported by POI at this time */
         public Set<String> unsupportedFunctions;
         /** Which cells had unevaluatable formulas, and why? */
         public Map<CellReference,Exception> unevaluatableCells;
-        
+
         protected FormulaEvaluationProblems(Set<String> unsupportedFunctions,
                              Map<CellReference, Exception> unevaluatableCells) {
             this.unsupportedFunctions = Collections.unmodifiableSet(unsupportedFunctions);

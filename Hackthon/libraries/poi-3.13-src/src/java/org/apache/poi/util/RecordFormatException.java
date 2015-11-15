@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.util;
 
@@ -31,11 +31,11 @@ public class RecordFormatException
     {
         super(exception);
     }
-    
+
     public RecordFormatException(String exception, Throwable thr) {
       super(exception, thr);
     }
-    
+
     public RecordFormatException(Throwable thr) {
       super(thr);
     }

@@ -38,9 +38,9 @@ public final class StreamHelper {
 	private StreamHelper() {
 		// Do nothing
 	}
-  
+
   private static final TransformerFactory transformerFactory = TransformerFactory.newInstance();
-  
+
   private static synchronized Transformer getIdentityTransformer() throws TransformerException {
     return transformerFactory.newTransformer();
   }

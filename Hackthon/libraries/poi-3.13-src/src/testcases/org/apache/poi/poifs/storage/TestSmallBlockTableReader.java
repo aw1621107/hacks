@@ -302,7 +302,7 @@ public final class TestSmallBlockTableReader extends TestCase {
 		// need to initialize the block list with a block allocation
 		// table
 		new BlockAllocationTableReader(POIFSConstants.SMALLER_BIG_BLOCK_SIZE_DETAILS, 1, bat_array, 0, -2, data_blocks);
-		
+
 		// Fake up a header
 		HeaderBlock header_block = new HeaderBlock(POIFSConstants.SMALLER_BIG_BLOCK_SIZE_DETAILS);
 		header_block.setPropertyStart(0);

@@ -161,12 +161,12 @@ public final class HSLFHyperlink {
         if (paragraphs == null || paragraphs.isEmpty()) return lst;
 
         HSLFTextParagraph firstPara = paragraphs.get(0);
-        
+
         HSLFSlideShow ppt = firstPara.getSheet().getSlideShow();
         //document-level container which stores info about all links in a presentation
         ExObjList exobj = ppt.getDocumentRecord().getExObjList();
         if (exobj == null) return lst;
-        
+
         Record[] records = firstPara.getRecords();
         find(records, exobj, lst);
 
@@ -206,13 +206,13 @@ public final class HSLFHyperlink {
         for (int i = 0; i < records.length; i++) {
             //see if we have InteractiveInfo in the textrun's records
             if(!(records[i] instanceof InteractiveInfo)) continue;
-            
+
             InteractiveInfo hldr = (InteractiveInfo)records[i];
             InteractiveInfoAtom info = hldr.getInteractiveInfoAtom();
             int id = info.getHyperlinkID();
             ExHyperlink linkRecord = exobj.get(id);
             if (linkRecord == null) continue;
-            
+
             HSLFHyperlink link = new HSLFHyperlink();
             link.title = linkRecord.getLinkTitle();
             link.address = linkRecord.getLinkURL();

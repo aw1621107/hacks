@@ -46,7 +46,7 @@ public class TabStopPropCollection extends TextProp {
          * If the TextPFException record that contains this TabStop structure also contains a
          * leftMargin, then the value of position is relative to the left margin of the paragraph;
          * otherwise, the value is relative to the left side of the paragraph.
-         * 
+         *
          * If a TextRuler record contains this TabStop structure, the value is relative to the
          * left side of the text ruler.
          */
@@ -61,7 +61,7 @@ public class TabStopPropCollection extends TextProp {
             this.position = position;
             this.type = type;
         }
-        
+
         public int getPosition() {
             return position;
         }
@@ -78,13 +78,13 @@ public class TabStopPropCollection extends TextProp {
             this.type = type;
         }
     }
-    
+
     private List<TabStop> tabStops = new ArrayList<TabStop>();
-    
+
     public TabStopPropCollection() {
         super(0, 0x100000, "tabStops");
     }
-    
+
     /**
      * Parses the tabstops from TxMasterStyle record
      *
@@ -101,10 +101,10 @@ public class TabStopPropCollection extends TextProp {
             TabStopType type = TabStopType.fromRecordVal(recVal);
             offset += LittleEndianConsts.SHORT_SIZE;
             tabStops.add(new TabStop(position, type));
-            
+
         }
     }
-    
+
     @Override
     public int getSize() {
         return LittleEndianConsts.SHORT_SIZE + tabStops.size()*LittleEndianConsts.INT_SIZE;

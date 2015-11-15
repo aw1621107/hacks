@@ -100,7 +100,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Creates a new cursor-backed row provider.
-     * 
+     *
      * @param ioChannel
      *            connection to the server.
      * @param creatingStatement
@@ -127,7 +127,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Only works on non dynamic result sets.
-     * 
+     *
      * @param index
      *            row number to get at
      * @return row data at index
@@ -142,7 +142,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Returns if iteration has not occured yet.
-     * 
+     *
      * @return true if before first row
      * @throws SQLException
      *             if a database error occurs
@@ -153,7 +153,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Moves the current position in the result set to the given row number.
-     * 
+     *
      * @param rowNumber
      *            row to move to
      * @throws SQLException
@@ -165,7 +165,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Returns the current position in the result set as a row number.
-     * 
+     *
      * @return the current row number
      * @throws SQLException
      *             if a database error occurs
@@ -176,10 +176,10 @@ public class RowDataCursor implements RowData {
 
     /**
      * Returns true if the result set is dynamic.
-     * 
+     *
      * This means that move back and move forward won't work because we do not
      * hold on to the records.
-     * 
+     *
      * @return true if this result set is streaming from the server
      */
     public boolean isDynamic() {
@@ -188,7 +188,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Has no records.
-     * 
+     *
      * @return true if no records
      * @throws SQLException
      *             if a database error occurs
@@ -199,7 +199,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Are we on the first row of the result set?
-     * 
+     *
      * @return true if on first row
      * @throws SQLException
      *             if a database error occurs
@@ -210,7 +210,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Are we on the last row of the result set?
-     * 
+     *
      * @return true if on last row
      * @throws SQLException
      *             if a database error occurs
@@ -221,7 +221,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Adds a row to this row data.
-     * 
+     *
      * @param row
      *            the row to add
      * @throws SQLException
@@ -233,7 +233,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Moves to after last.
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */
@@ -243,7 +243,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Moves to before first.
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */
@@ -253,7 +253,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Moves to before last so next el is the last el.
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */
@@ -263,7 +263,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * We're done.
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */
@@ -275,7 +275,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Returns true if another row exists.
-     * 
+     *
      * @return true if more rows
      * @throws SQLException
      *             if a database error occurs
@@ -317,7 +317,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Moves the current position relative 'rows' from the current position.
-     * 
+     *
      * @param rows
      *            the relative number of rows to move
      * @throws SQLException
@@ -329,7 +329,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Returns the next row.
-     * 
+     *
      * @return the next row value
      * @throws SQLException
      *             if a database error occurs
@@ -407,7 +407,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Removes the row at the given index.
-     * 
+     *
      * @param index
      *            the row to move to
      * @throws SQLException
@@ -419,7 +419,7 @@ public class RowDataCursor implements RowData {
 
     /**
      * Only works on non dynamic result sets.
-     * 
+     *
      * @return the size of this row data
      */
     public int size() {
@@ -436,7 +436,7 @@ public class RowDataCursor implements RowData {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.RowProvider#setOwner(com.mysql.jdbc.ResultSet)
      */
     public void setOwner(ResultSetImpl rs) {
@@ -445,7 +445,7 @@ public class RowDataCursor implements RowData {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.RowProvider#getOwner()
      */
     public ResultSetInternalMethods getOwner() {

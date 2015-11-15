@@ -264,7 +264,7 @@ public final class TestHyperlinkRecord {
     private void confirmGUID(GUID expectedGuid, GUID actualGuid) {
 		assertEquals(expectedGuid, actualGuid);
 	}
-    
+
     @Test
     public void testReadURLLink(){
         RecordInputStream is = TestcaseRecordInputStream.create(HyperlinkRecord.sid, data1);
@@ -470,7 +470,7 @@ public final class TestHyperlinkRecord {
 		    fail("Identified bug with option URL and UNC set at same time");
 		}
 	}
-	
+
     @Test
 	public void testGUID() {
 		GUID g;

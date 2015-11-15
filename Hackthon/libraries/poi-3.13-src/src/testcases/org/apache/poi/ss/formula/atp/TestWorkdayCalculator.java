@@ -108,7 +108,7 @@ public class TestWorkdayCalculator {
         final double A_SATURDAY = DateUtil.getExcelDate(d(2011, 12, 10));
         assertEquals(1, WorkdayCalculator.instance.pastDaysOfWeek(A_THURSDAY, A_SATURDAY, SATURDAY));
     }
-    
+
     private static Date d(int year, int month, int day) {
         Calendar cal = LocaleUtil.getLocaleCalendar(year, month-1, day, 0, 0, 0);
         return cal.getTime();

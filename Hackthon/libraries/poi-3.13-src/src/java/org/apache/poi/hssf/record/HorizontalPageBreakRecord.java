@@ -21,7 +21,7 @@ import java.util.Iterator;
 
 /**
  * HorizontalPageBreak (0x001B) record that stores page breaks at rows <p/>
- * 
+ *
  * @see PageBreakRecord
  * @author Danny Mui (dmui at apache dot org)
  */

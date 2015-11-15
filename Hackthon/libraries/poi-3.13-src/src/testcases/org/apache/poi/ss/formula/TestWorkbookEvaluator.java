@@ -215,7 +215,7 @@ public class TestWorkbookEvaluator extends TestCase {
 	/**
 	 * Functions like IF, INDIRECT, INDEX, OFFSET etc can return AreaEvals which
 	 * should be dereferenced by the evaluator
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public void testResultOutsideRange() throws IOException {
 		Workbook wb = new HSSFWorkbook();
@@ -234,7 +234,7 @@ public class TestWorkbookEvaluator extends TestCase {
     		}
     		assertEquals(Cell.CELL_TYPE_ERROR, cv.getCellType());
     		assertEquals(ErrorConstants.ERROR_VALUE, cv.getErrorValue());
-    
+
     		// verify circular refs are still detected properly
     		fe.clearAllCachedResultValues();
     		cell.setCellFormula("OFFSET(A1,0,0)");
@@ -245,16 +245,16 @@ public class TestWorkbookEvaluator extends TestCase {
 		    wb.close();
 		}
 	}
-	
+
 
   /**
    * formulas with defined names.
- * @throws IOException 
+ * @throws IOException
    */
   public void testNamesInFormulas() throws IOException {
     Workbook wb = new HSSFWorkbook();
     Sheet sheet = wb.createSheet("Sheet1");
-    
+
     Name name1 = wb.createName();
     name1.setNameName("aConstant");
     name1.setRefersToFormula("3.14");
@@ -267,7 +267,7 @@ public class TestWorkbookEvaluator extends TestCase {
     name3.setNameName("aSet");
     name3.setRefersToFormula("Sheet1!$A$2:$A$4");
 
-    
+
     Row row0 = sheet.createRow(0);
     Row row1 = sheet.createRow(1);
     Row row2 = sheet.createRow(2);
@@ -276,7 +276,7 @@ public class TestWorkbookEvaluator extends TestCase {
     row1.createCell(0).setCellValue(5);
     row2.createCell(0).setCellValue(3);
     row3.createCell(0).setCellValue(7);
-    
+
     row0.createCell(2).setCellFormula("aConstant");
     row1.createCell(2).setCellFormula("aFormula");
     row2.createCell(2).setCellFormula("SUM(aSet)");
@@ -287,8 +287,8 @@ public class TestWorkbookEvaluator extends TestCase {
     assertEquals(10.0, fe.evaluate(row1.getCell(2)).getNumberValue());
     assertEquals(15.0, fe.evaluate(row2.getCell(2)).getNumberValue());
     assertEquals(28.14, fe.evaluate(row3.getCell(2)).getNumberValue());
-    
+
     wb.close();
   }
-	
+
 }

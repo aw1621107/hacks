@@ -14,7 +14,7 @@
  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
- * ==================================================================== 
+ * ====================================================================
  */
 
 package org.apache.poi.xslf.usermodel;
@@ -61,9 +61,9 @@ public class Tutorial4 {
 
             tbl.setColumnWidth(i, 150);  // all columns are equally sized
         }
-        
+
         // rows
-        
+
         for(int rownum = 0; rownum < numRows; rownum ++){
             XSLFTableRow tr = tbl.addRow();
             tr.setHeight(50);
@@ -80,14 +80,14 @@ public class Tutorial4 {
                     cell.setFillColor(new Color(233, 247, 244));
 
             }
-            
+
         }
 
 
         FileOutputStream out = new FileOutputStream("table.pptx");
         ppt.write(out);
         out.close();
-        
+
         ppt.close();
     }
 }

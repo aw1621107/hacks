@@ -265,7 +265,7 @@ public final class TestSumifs extends TestCase {
         assertEquals(625000., ex5cell.getNumericCellValue());
 
     }
-    
+
     public void testBug56655() {
         ValueEval[] a2a9 = new ValueEval[] {
                 new NumberEval(5),
@@ -283,7 +283,7 @@ public final class TestSumifs extends TestCase {
                 ErrorEval.VALUE_INVALID,
                 new StringEval("A*"),
         };
-        
+
         ValueEval result = invokeSumifs(args, EC);
         assertTrue("Expect to have an error when an input is an invalid value, but had: " + result.getClass(), result instanceof ErrorEval);
 
@@ -292,7 +292,7 @@ public final class TestSumifs extends TestCase {
                 EvalFactory.createAreaEval("A2:A9", a2a9),
                 ErrorEval.VALUE_INVALID,
         };
-        
+
         result = invokeSumifs(args, EC);
         assertTrue("Expect to have an error when an input is an invalid value, but had: " + result.getClass(), result instanceof ErrorEval);
     }
@@ -315,7 +315,7 @@ public final class TestSumifs extends TestCase {
                 EvalFactory.createAreaEval("A0:A1", a0a1),
                 ErrorEval.VALUE_INVALID
         };
-        
+
         ValueEval result = invokeSumifs(args, EC);
         assertTrue("Expect to have an error when an input is an invalid value, but had: " + result.getClass(), result instanceof ErrorEval);
         assertEquals(ErrorEval.VALUE_INVALID, result);
@@ -340,7 +340,7 @@ public final class TestSumifs extends TestCase {
                 EvalFactory.createAreaEval("A0:A1", a0a1),
                 ErrorEval.NAME_INVALID
         };
-        
+
         ValueEval result = invokeSumifs(args, EC);
         assertTrue("Expect to have an error when an input is an invalid value, but had: " + result.getClass(), result instanceof ErrorEval);
         assertEquals(ErrorEval.NAME_INVALID, result);

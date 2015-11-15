@@ -30,7 +30,7 @@ import testsuite.BaseTestCase;
 public class ExceptionSubclassesTest extends BaseTestCase {
     /**
      * Creates a new ExceptionSubclassesTest.
-     * 
+     *
      * @param name
      *            the name of the test
      */

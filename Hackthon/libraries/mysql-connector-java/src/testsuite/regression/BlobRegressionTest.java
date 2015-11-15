@@ -45,7 +45,7 @@ import testsuite.BaseTestCase;
 public class BlobRegressionTest extends BaseTestCase {
     /**
      * Creates a new BlobRegressionTest.
-     * 
+     *
      * @param name
      *            name of the test to run
      */
@@ -55,7 +55,7 @@ public class BlobRegressionTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -104,7 +104,7 @@ public class BlobRegressionTest extends BaseTestCase {
 
     /**
      * http://bugs.mysql.com/bug.php?id=22891
-     * 
+     *
      * @throws Exception
      *             ...
      */
@@ -201,7 +201,7 @@ public class BlobRegressionTest extends BaseTestCase {
     /**
      * Tests BUG#8096 where emulated locators corrupt binary data when using
      * server-side prepared statements.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -269,7 +269,7 @@ public class BlobRegressionTest extends BaseTestCase {
     /**
      * Tests fix for BUG#9040 - PreparedStatement.addBatch() doesn't work with
      * server-side prepared statements and streaming BINARY data.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -333,7 +333,7 @@ public class BlobRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#20453671 - CLOB.POSITION() API CALL WITH CLOB INPUT RETURNS EXCEPTION
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -366,7 +366,7 @@ public class BlobRegressionTest extends BaseTestCase {
     /**
      * Tests fix for BUG#20453712 - CLOB.SETSTRING() WITH VALID INPUT RETURNS EXCEPTION
      * server-side prepared statements and streaming BINARY data.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */

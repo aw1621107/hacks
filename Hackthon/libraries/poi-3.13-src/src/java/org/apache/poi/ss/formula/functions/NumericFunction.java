@@ -395,7 +395,7 @@ public abstract class NumericFunction implements Function {
     public static final Function POISSON = new Fixed3ArgFunction() {
 
         private final static double DEFAULT_RETURN_RESULT =1;
-        
+
         /**
          * This checks is x = 0 and the mean = 0.
          * Excel currently returns the value 1 where as the
@@ -420,7 +420,7 @@ public abstract class NumericFunction implements Function {
             if (aDouble < 0) {
                 throw new EvaluationException(ErrorEval.NUM_ERROR);
             }
-            
+
             return true;
         }
 
@@ -469,7 +469,7 @@ public abstract class NumericFunction implements Function {
                 // check for default result : excel implementation for 0,0
                 // is different to Math Common.
                 if (isDefaultResult(x,mean)) {
-                    return new NumberEval(DEFAULT_RETURN_RESULT); 
+                    return new NumberEval(DEFAULT_RETURN_RESULT);
                 }
                 // check the arguments : as per excel function def
                 checkArgument(x);
@@ -488,7 +488,7 @@ public abstract class NumericFunction implements Function {
 			} catch (EvaluationException e) {
 				return e.getErrorEval();
 			}
-            
+
             return new NumberEval(result);
 
         }

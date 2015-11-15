@@ -24,7 +24,7 @@ public interface PlaceableShape<
     P extends TextParagraph<S,P,?>
 > {
     ShapeContainer<S,P> getParent();
-    
+
     /**
      * @return the position of this shape within the drawing canvas.
      *         The coordinates are expressed in points

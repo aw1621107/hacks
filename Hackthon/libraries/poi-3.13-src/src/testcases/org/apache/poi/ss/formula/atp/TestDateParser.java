@@ -62,8 +62,8 @@ public class TestDateParser {
     public void testShouldParseValidDate() throws EvaluationException {
         Calendar expDate = LocaleUtil.getLocaleCalendar(1984, Calendar.OCTOBER, 20);
         Calendar actDate = DateParser.parseDate("1984/10/20");
-        assertEquals("Had: " + expDate.getTime() + " and " + actDate.getTime() + "/" + 
-                expDate.getTimeInMillis() + "ms and " + actDate.getTimeInMillis() + "ms", 
+        assertEquals("Had: " + expDate.getTime() + " and " + actDate.getTime() + "/" +
+                expDate.getTimeInMillis() + "ms and " + actDate.getTimeInMillis() + "ms",
                 expDate, actDate);
     }
 
@@ -71,8 +71,8 @@ public class TestDateParser {
     public void testShouldIgnoreTimestamp() throws EvaluationException {
         Calendar expDate = LocaleUtil.getLocaleCalendar(1984, Calendar.OCTOBER, 20);
         Calendar actDate = DateParser.parseDate("1984/10/20 12:34:56");
-        assertEquals("Had: " + expDate.getTime() + " and " + actDate.getTime() + "/" + 
-                expDate.getTimeInMillis() + "ms and " + actDate.getTimeInMillis() + "ms", 
+        assertEquals("Had: " + expDate.getTime() + " and " + actDate.getTime() + "/" +
+                expDate.getTimeInMillis() + "ms and " + actDate.getTimeInMillis() + "ms",
                 expDate, actDate);
     }
 

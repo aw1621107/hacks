@@ -78,7 +78,7 @@ public abstract class BasePerfTest extends BaseTestCase {
 
     /**
      * Creates a new BasePerfTest object.
-     * 
+     *
      * @param name
      *            the testcase name to perform.
      */
@@ -88,7 +88,7 @@ public abstract class BasePerfTest extends BaseTestCase {
 
     /**
      * Returns the meanValue.
-     * 
+     *
      * @return double
      */
     public double getMeanValue() {
@@ -97,7 +97,7 @@ public abstract class BasePerfTest extends BaseTestCase {
 
     /**
      * Sub-classes should override this to perform the operation to be measured.
-     * 
+     *
      * @throws Exception
      *             if an error occurs.
      */
@@ -105,7 +105,7 @@ public abstract class BasePerfTest extends BaseTestCase {
 
     /**
      * Returns the current confidence level.
-     * 
+     *
      * @return the current confindence level.
      */
     protected double getCurrentConfidence() {
@@ -114,7 +114,7 @@ public abstract class BasePerfTest extends BaseTestCase {
 
     /**
      * Returns the current margin of error.
-     * 
+     *
      * @return the current margin of error.
      */
     protected double getMarginOfError() {
@@ -123,7 +123,7 @@ public abstract class BasePerfTest extends BaseTestCase {
 
     /**
      * Returns the current STDDEV.
-     * 
+     *
      * @return the current STDDEV
      */
     protected double getStandardDeviationP() {
@@ -136,7 +136,7 @@ public abstract class BasePerfTest extends BaseTestCase {
 
     /**
      * Adds one test result to the statistics.
-     * 
+     *
      * @param value
      *            a single result representing the value being measured in the
      *            test.
@@ -160,7 +160,7 @@ public abstract class BasePerfTest extends BaseTestCase {
     /**
      * Calls doIteration() the <code>numIterations</code> times, displaying
      * the mean, std, margin of error and confidence level.
-     * 
+     *
      * @param num_iterations
      *            the number of iterations to perform ( < 30)
      * @throws Exception
@@ -174,7 +174,7 @@ public abstract class BasePerfTest extends BaseTestCase {
 
     /**
      * Reports the current results to STDOUT, preceeded by <code>additionalMessage</code> if not null.
-     * 
+     *
      * @param additionalMessage
      *            the additional message to print, or null if no message.
      */

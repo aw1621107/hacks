@@ -41,7 +41,7 @@ public final class DataInputBlock {
 
 	/**
 	 * Possibly any size (usually 512K or 64K).  Assumed to be at least 8 bytes for all blocks
-	 * before the end of the stream.  The last block in the stream can be any size except zero. 
+	 * before the end of the stream.  The last block in the stream can be any size except zero.
 	 */
 	private final byte[] _buf;
 	private int _readIndex;
@@ -65,7 +65,7 @@ public final class DataInputBlock {
 	 */
 	public int readUShortLE() {
 		int i = _readIndex;
-		
+
 		int b0 = _buf[i++] & 0xFF;
 		int b1 = _buf[i++] & 0xFF;
 		_readIndex = i;
@@ -78,7 +78,7 @@ public final class DataInputBlock {
 	public int readUShortLE(DataInputBlock prevBlock) {
 		// simple case - will always be one byte in each block
 		int i = prevBlock._buf.length-1;
-		
+
 		int b0 = prevBlock._buf[i] & 0xFF;
 		int b1 = _buf[_readIndex++] & 0xFF;
 		return (b1 << 8) + (b0 << 0);
@@ -89,7 +89,7 @@ public final class DataInputBlock {
 	 */
 	public int readIntLE() {
 		int i = _readIndex;
-		
+
 		int b0 = _buf[i++] & 0xFF;
 		int b1 = _buf[i++] & 0xFF;
 		int b2 = _buf[i++] & 0xFF;
@@ -103,7 +103,7 @@ public final class DataInputBlock {
 	 */
 	public int readIntLE(DataInputBlock prevBlock, int prevBlockAvailable) {
 		byte[] buf = new byte[4];
-		
+
 		readSpanning(prevBlock, prevBlockAvailable, buf);
 		int b0 = buf[0] & 0xFF;
 		int b1 = buf[1] & 0xFF;
@@ -117,7 +117,7 @@ public final class DataInputBlock {
 	 */
 	public long readLongLE() {
 		int i = _readIndex;
-		
+
 		int b0 = _buf[i++] & 0xFF;
 		int b1 = _buf[i++] & 0xFF;
 		int b2 = _buf[i++] & 0xFF;
@@ -142,9 +142,9 @@ public final class DataInputBlock {
 	 */
 	public long readLongLE(DataInputBlock prevBlock, int prevBlockAvailable) {
 		byte[] buf = new byte[8];
-		
+
 		readSpanning(prevBlock, prevBlockAvailable, buf);
-		
+
 		int b0 = buf[0] & 0xFF;
 		int b1 = buf[1] & 0xFF;
 		int b2 = buf[2] & 0xFF;
@@ -164,7 +164,7 @@ public final class DataInputBlock {
 	}
 
 	/**
-	 * Reads a small amount of data from across the boundary between two blocks.  
+	 * Reads a small amount of data from across the boundary between two blocks.
 	 * The {@link #_readIndex} of this (the second) block is updated accordingly.
 	 * Note- this method (and other code) assumes that the second {@link DataInputBlock}
 	 * always is big enough to complete the read without being exhausted.

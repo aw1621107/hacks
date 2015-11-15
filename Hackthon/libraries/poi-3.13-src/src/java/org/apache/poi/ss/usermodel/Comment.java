@@ -74,7 +74,7 @@ public interface Comment {
      * @param author the name of the original author of the comment
      */
     void setAuthor(String author);
-    
+
     /**
      * Fetches the rich text string of the comment
      */

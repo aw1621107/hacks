@@ -46,7 +46,7 @@ public final class UnknownEscherRecord extends EscherRecord {
         int bytesRemaining = readHeader( data, offset );
 		/*
 		 * Modified by Zhang Zhang
-		 * Have a check between avaliable bytes and bytesRemaining, 
+		 * Have a check between avaliable bytes and bytesRemaining,
 		 * take the avaliable length if the bytesRemaining out of range.
 		 * July 09, 2010
 		 */

@@ -18,7 +18,7 @@
 package org.apache.poi.ss.formula.ptg;
 
 /**
- * An XSSF only special kind of Ptg, which stores the sheet / book 
+ * An XSSF only special kind of Ptg, which stores the sheet / book
  *  reference in string form.
  */
 public interface Pxg {

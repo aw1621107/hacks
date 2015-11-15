@@ -80,7 +80,7 @@ public class XSSFTextRun {
                 CTSRgbColor clr = fill.getSrgbClr();
                 byte[] rgb = clr.getVal();
                 return new Color(0xFF & rgb[0], 0xFF & rgb[1], 0xFF & rgb[2]);
-            }	
+            }
         }
 
         return new Color(0, 0, 0);
@@ -115,7 +115,7 @@ public class XSSFTextRun {
 
         CTTextCharacterProperties rPr = getRPr();
         if(rPr.isSetSz()){
-            size = rPr.getSz()*0.01;        
+            size = rPr.getSz()*0.01;
         }
 
         return size * scale;
@@ -281,7 +281,7 @@ public class XSSFTextRun {
     /**
      * @return whether a run of text will be formatted as a superscript text. Default is false.
      */
-    public TextCap getTextCap() {    	
+    public TextCap getTextCap() {
         CTTextCharacterProperties rPr = getRPr();
         if(rPr.isSetCap()){
             return TextCap.values()[rPr.getCap().intValue() - 1];

@@ -27,7 +27,7 @@ public class DrawTableShape extends DrawShape {
     public DrawTableShape(TableShape<?,?> shape) {
         super(shape);
     }
-    
+
     protected Drawable getDrawable(Graphics2D graphics) {
         if (shape instanceof GroupShape) {
             DrawFactory df = DrawFactory.getInstance(graphics);
@@ -57,5 +57,5 @@ public class DrawTableShape extends DrawShape {
         }
     }
 
-    
+
 }

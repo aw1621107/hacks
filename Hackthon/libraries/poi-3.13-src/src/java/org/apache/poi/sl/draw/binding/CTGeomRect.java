@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_GeomRect complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_GeomRect">
  *   &lt;complexContent>
@@ -40,8 +40,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_GeomRect", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main")
@@ -58,11 +58,11 @@ public class CTGeomRect {
 
     /**
      * Gets the value of the l property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getL() {
         return l;
@@ -70,11 +70,11 @@ public class CTGeomRect {
 
     /**
      * Sets the value of the l property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setL(String value) {
         this.l = value;
@@ -86,11 +86,11 @@ public class CTGeomRect {
 
     /**
      * Gets the value of the t property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getT() {
         return t;
@@ -98,11 +98,11 @@ public class CTGeomRect {
 
     /**
      * Sets the value of the t property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setT(String value) {
         this.t = value;
@@ -114,11 +114,11 @@ public class CTGeomRect {
 
     /**
      * Gets the value of the r property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getR() {
         return r;
@@ -126,11 +126,11 @@ public class CTGeomRect {
 
     /**
      * Sets the value of the r property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setR(String value) {
         this.r = value;
@@ -142,11 +142,11 @@ public class CTGeomRect {
 
     /**
      * Gets the value of the b property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getB() {
         return b;
@@ -154,11 +154,11 @@ public class CTGeomRect {
 
     /**
      * Sets the value of the b property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setB(String value) {
         this.b = value;

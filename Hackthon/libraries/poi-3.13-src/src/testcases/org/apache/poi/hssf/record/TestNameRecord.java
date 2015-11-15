@@ -32,7 +32,7 @@ import org.apache.poi.util.HexRead;
 
 /**
  * Tests the NameRecord serializes/deserializes correctly
- * 
+ *
  * @author Danny Mui (dmui at apache dot org)
  */
 public final class TestNameRecord extends TestCase {
@@ -89,7 +89,7 @@ public final class TestNameRecord extends TestCase {
 		assertEquals("Sheet1!A1+Sheet1!A2", name.getRefersToFormula());
 		name.setRefersToFormula("5*6");
 		assertEquals("5*6", name.getRefersToFormula());
-		
+
 		wb.close();
 	}
 
@@ -700,10 +700,10 @@ public final class TestNameRecord extends TestCase {
     public void testBug57923() {
         NameRecord record = new NameRecord();
         assertEquals(0, record.getExternSheetNumber());
-        
+
         record.setNameDefinition(new Ptg[] {});
         assertEquals(0, record.getExternSheetNumber());
-        
+
         record.setNameDefinition(new Ptg[] {new NamePtg(1)});
         assertEquals(0, record.getExternSheetNumber());
 
@@ -713,5 +713,5 @@ public final class TestNameRecord extends TestCase {
         record.setNameDefinition(new Ptg[] {new Ref3DPtg("A1", 1)});
         assertEquals(1, record.getExternSheetNumber());
     }
-    
+
 }

@@ -30,7 +30,7 @@ public interface DataValidation {
     	public static final int WARNING = 0x01;
     	/** INFO style */
     	public static final int INFO    = 0x02;
-	}    
+	}
 
 	public abstract DataValidationConstraint getValidationConstraint();
 
@@ -48,7 +48,7 @@ public interface DataValidation {
 
 	/**
 	 * Sets if this object allows empty as a valid value
-	 * 
+	 *
 	 * @param allowed <code>true</code> if this object should treats empty as valid value , <code>false</code>
 	 *            otherwise
 	 */
@@ -56,7 +56,7 @@ public interface DataValidation {
 
 	/**
 	 * Retrieve the settings for empty cells allowed
-	 * 
+	 *
 	 * @return True if this object should treats empty as valid value , false
 	 *         otherwise
 	 */
@@ -64,7 +64,7 @@ public interface DataValidation {
 
 	/**
 	 * Useful for list validation objects .
-	 * 
+	 *
 	 * @param suppress
 	 *            True if a list should display the values into a drop down list ,
 	 *            false otherwise . In other words , if a list should display
@@ -75,7 +75,7 @@ public interface DataValidation {
 	/**
 	 * Useful only list validation objects . This method always returns false if
 	 * the object isn't a list validation object
-	 * 
+	 *
 	 * @return <code>true</code> if a list should display the values into a drop down list ,
 	 *         <code>false</code> otherwise .
 	 */
@@ -83,7 +83,7 @@ public interface DataValidation {
 
 	/**
 	 * Sets the behaviour when a cell which belongs to this object is selected
-	 * 
+	 *
 	 * @param show <code>true</code> if an prompt box should be displayed , <code>false</code> otherwise
 	 */
 	public abstract void setShowPromptBox(boolean show);
@@ -95,7 +95,7 @@ public interface DataValidation {
 
 	/**
 	 * Sets the behaviour when an invalid value is entered
-	 * 
+	 *
 	 * @param show <code>true</code> if an error box should be displayed , <code>false</code> otherwise
 	 */
 	public abstract void setShowErrorBox(boolean show);
@@ -110,7 +110,7 @@ public interface DataValidation {
 	 * the user selects a cell which belongs to this validation object . In
 	 * order for a prompt box to be displayed you should also use method
 	 * setShowPromptBox( boolean show )
-	 * 
+	 *
 	 * @param title The prompt box's title
 	 * @param text The prompt box's text
 	 */
@@ -131,7 +131,7 @@ public interface DataValidation {
 	 * the user enters an invalid value int o a cell which belongs to this
 	 * validation object . In order for an error box to be displayed you should
 	 * also use method setShowErrorBox( boolean show )
-	 * 
+	 *
 	 * @param title The error box's title
 	 * @param text The error box's text
 	 */

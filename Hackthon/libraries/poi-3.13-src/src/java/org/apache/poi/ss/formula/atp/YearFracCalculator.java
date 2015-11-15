@@ -27,9 +27,9 @@ import org.apache.poi.util.LocaleUtil;
 
 /**
  * Internal calculation methods for Excel 'Analysis ToolPak' function YEARFRAC()<br/>
- *  
+ *
  * Algorithm inspired by www.dwheeler.com/yearfrac
- * 
+ *
  * @author Josh Micich
  */
 final class YearFracCalculator {
@@ -63,7 +63,7 @@ final class YearFracCalculator {
 		int startDateVal = (int) Math.floor(pStartDateVal);
 		int endDateVal = (int) Math.floor(pEndDateVal);
 		if (startDateVal == endDateVal) {
-			// when dates are equal, result is zero 
+			// when dates are equal, result is zero
 			return 0;
 		}
 		// swap start and end if out of order
@@ -94,7 +94,7 @@ final class YearFracCalculator {
 		int date1day = startDate.day;
 		int date2day = endDate.day;
 
-		// basis zero has funny adjustments to the day-of-month fields when at end-of-month 
+		// basis zero has funny adjustments to the day-of-month fields when at end-of-month
 		if (date1day == LONG_MONTH_LEN && date2day == LONG_MONTH_LEN) {
 			date1day = SHORT_MONTH_LEN;
 			date2day = SHORT_MONTH_LEN;
@@ -157,7 +157,7 @@ final class YearFracCalculator {
 		int date2day = endDate.day;
 
 
-		// basis four has funny adjustments to the day-of-month fields when at end-of-month 
+		// basis four has funny adjustments to the day-of-month fields when at end-of-month
 		if (date1day == LONG_MONTH_LEN) {
 			date1day = SHORT_MONTH_LEN;
 		}
@@ -171,7 +171,7 @@ final class YearFracCalculator {
 
 	private static double calculateAdjusted(SimpleDate startDate, SimpleDate endDate, int date1day,
 			int date2day) {
-		double dayCount 
+		double dayCount
 			= (endDate.year - startDate.year) * 360
 			+ (endDate.month - startDate.month) * SHORT_MONTH_LEN
 			+ (date2day - date1day) * 1;
@@ -251,14 +251,14 @@ final class YearFracCalculator {
 	private static int dateDiff(long startDateMS, long endDateMS) {
 		long msDiff = endDateMS - startDateMS;
 
-		// some extra checks to make sure we don't hide some other bug with the rounding 
+		// some extra checks to make sure we don't hide some other bug with the rounding
 		int remainderHours = (int) ((msDiff % MS_PER_DAY) / MS_PER_HOUR);
 		switch (remainderHours) {
 			case 0:  // normal case
 				break;
 			case 1:  // transition from normal time to daylight savings adjusted
 			case 23: // transition from daylight savings adjusted to normal time
-				// Unexpected since we are using UTC_TIME_ZONE 
+				// Unexpected since we are using UTC_TIME_ZONE
 			default:
 				throw new RuntimeException("Unexpected date diff between " + startDateMS + " and " + endDateMS);
 

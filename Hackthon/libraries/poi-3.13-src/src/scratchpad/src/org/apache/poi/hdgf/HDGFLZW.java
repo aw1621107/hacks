@@ -65,7 +65,7 @@ public class HDGFLZW extends LZWDecompresser {
       }
       return pntr;
    }
-   
+
    /**
     * We want an empty dictionary, so do nothing
     */

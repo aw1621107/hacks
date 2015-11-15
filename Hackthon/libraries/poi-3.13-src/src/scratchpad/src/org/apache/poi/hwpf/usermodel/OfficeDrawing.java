@@ -27,7 +27,7 @@ import org.apache.poi.ddf.EscherContainerRecord;
  * <li>[MS-ODRAW] -- v20110608; Office Drawing Binary File Format; Copyright (c)
  * 2011 Microsoft Corporation.
  * </ul>
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 public interface OfficeDrawing
@@ -118,7 +118,7 @@ public interface OfficeDrawing
 
     /**
      * Returns the type of horizontal positioning to use for a shape
-     * 
+     *
      * @return the type of horizontal positioning to use for a shape
      */
     public HorizontalPositioning getHorizontalPositioning();
@@ -126,7 +126,7 @@ public interface OfficeDrawing
     /**
      * Specifies a page element relative to which a shape is horizontally
      * positioned
-     * 
+     *
      * @return a page element relative to which a shape is horizontally
      *         positioned
      */
@@ -136,7 +136,7 @@ public interface OfficeDrawing
      * Returns escher record that represent shape container (record type is
      * <tt>0xF004</tt>). Returned record has a child with record type
      * <tt>0xF00A</tt> and value of shape id equals to {@link #getShapeId()}.
-     * 
+     *
      * @return Returns office art shape container or <tt>null</tt> if not found
      */
     public EscherContainerRecord getOfficeArtSpContainer();
@@ -174,7 +174,7 @@ public interface OfficeDrawing
 
     /**
      * Specifies the type of vertical positioning to use for a shape
-     * 
+     *
      * @return return the type of vertical positioning to use for a shape
      */
     public VerticalPositioning getVerticalPositioning();
@@ -182,7 +182,7 @@ public interface OfficeDrawing
     /**
      * Specifies a page element relative to which a shape is vertically
      * positioned
-     * 
+     *
      * @return a page element relative to which a shape is vertically positioned
      */
     public VerticalRelativeElement getVerticalRelativeElement();

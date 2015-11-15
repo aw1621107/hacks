@@ -40,13 +40,13 @@ import java.util.concurrent.Executor;
 /**
  * A proxy for a dynamic com.mysql.jdbc.Connection implementation that load balances requests across a series of MySQL JDBC connections, where the balancing
  * takes place at transaction commit.
- * 
+ *
  * Therefore, for this to work (at all), you must use transactions, even if only reading data.
- * 
+ *
  * This implementation will invalidate connections that it detects have had communication errors when processing a request. Problematic hosts will be added to a
  * global blacklist for loadBalanceBlacklistTimeout ms, after which they will be removed from the blacklist and made eligible once again to be selected for new
  * connections.
- * 
+ *
  * This implementation is thread-safe, but it's questionable whether sharing a connection instance amongst threads is a good idea, given that transactions are
  * scoped to connections in JDBC.
  */
@@ -94,7 +94,7 @@ public class LoadBalancingConnectionProxy extends MultiHostConnectionProxy imple
 
     /**
      * Creates a proxy for java.sql.Connection that routes requests between the given list of host:port and uses the given properties when creating connections.
-     * 
+     *
      * @param hosts
      *            The list of the hosts to load balance.
      * @param props
@@ -205,7 +205,7 @@ public class LoadBalancingConnectionProxy extends MultiHostConnectionProxy imple
 
     /**
      * Wraps this object with a new load balanced Connection instance.
-     * 
+     *
      * @return
      *         The connection object instance that wraps 'this'.
      */
@@ -224,7 +224,7 @@ public class LoadBalancingConnectionProxy extends MultiHostConnectionProxy imple
 
     /**
      * Consults the registered LoadBalanceExceptionChecker if the given exception should trigger a connection fail-over.
-     * 
+     *
      * @param ex
      *            The Exception instance to check.
      * @return
@@ -236,7 +236,7 @@ public class LoadBalancingConnectionProxy extends MultiHostConnectionProxy imple
 
     /**
      * Closes specified connection and removes it from required mappings.
-     * 
+     *
      * @param conn
      * @throws SQLException
      */
@@ -263,7 +263,7 @@ public class LoadBalancingConnectionProxy extends MultiHostConnectionProxy imple
 
     /**
      * Picks the "best" connection to use for the next transaction based on the BalanceStrategy in use.
-     * 
+     *
      * @throws SQLException
      */
     @Override
@@ -321,7 +321,7 @@ public class LoadBalancingConnectionProxy extends MultiHostConnectionProxy imple
 
     /**
      * Creates a new physical connection for the given host:port and updates required internal mappings and statistics for that connection.
-     * 
+     *
      * @param hostPortSpec
      *            The host:port specification.
      * @throws SQLException
@@ -557,7 +557,7 @@ public class LoadBalancingConnectionProxy extends MultiHostConnectionProxy imple
 
     /**
      * Adds a host to the blacklist with the given timeout.
-     * 
+     *
      * @param host
      *            The host to be blacklisted.
      * @param timeout
@@ -573,7 +573,7 @@ public class LoadBalancingConnectionProxy extends MultiHostConnectionProxy imple
 
     /**
      * Adds a host to the blacklist.
-     * 
+     *
      * @param host
      *            The host to be blacklisted.
      */
@@ -584,7 +584,7 @@ public class LoadBalancingConnectionProxy extends MultiHostConnectionProxy imple
 
     /**
      * Checks if host blacklist management was enabled.
-     * 
+     *
      * @return
      */
     public boolean isGlobalBlacklistEnabled() {
@@ -593,7 +593,7 @@ public class LoadBalancingConnectionProxy extends MultiHostConnectionProxy imple
 
     /**
      * Returns a local hosts blacklist, or a blacklist with a single host to be removed, while cleaning up expired records from the global blacklist.
-     * 
+     *
      * @return
      *         A local hosts blacklist.
      */
@@ -646,7 +646,7 @@ public class LoadBalancingConnectionProxy extends MultiHostConnectionProxy imple
 
     /**
      * Removes a host from the host list, allowing it some time to be released gracefully if needed.
-     * 
+     *
      * @param host
      *            The host to be removed.
      * @throws SQLException
@@ -681,7 +681,7 @@ public class LoadBalancingConnectionProxy extends MultiHostConnectionProxy imple
 
     /**
      * Removes a host from the host list.
-     * 
+     *
      * @param host
      *            The host to be removed.
      * @throws SQLException
@@ -715,7 +715,7 @@ public class LoadBalancingConnectionProxy extends MultiHostConnectionProxy imple
 
     /**
      * Adds a host to the hosts list.
-     * 
+     *
      * @param host
      *            The host to be added.
      * @return

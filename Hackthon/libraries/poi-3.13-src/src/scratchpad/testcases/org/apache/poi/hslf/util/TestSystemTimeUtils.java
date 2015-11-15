@@ -49,7 +49,7 @@ public final class TestSystemTimeUtils {
 	};
 
     private static SimpleDateFormat sdf;
-    
+
     @BeforeClass
     public static void initDateFormat() {
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.ROOT);

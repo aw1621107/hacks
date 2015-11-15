@@ -1375,7 +1375,7 @@ public class XWPFParagraph implements IBodyElement, IRunBody, ISDTContents, Para
             startChar = startPos.getChar();
         int beginRunPos = 0, candCharPos = 0;
         boolean newList = false;
-        
+
         @SuppressWarnings("deprecation")
         CTR[] rArray = paragraph.getRArray();
         for (int runPos = startRun; runPos < rArray.length; runPos++) {

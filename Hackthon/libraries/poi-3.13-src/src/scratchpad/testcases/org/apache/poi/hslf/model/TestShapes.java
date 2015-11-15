@@ -178,10 +178,10 @@ public final class TestShapes {
         shape.setAnchor(new Rectangle(100,100,100,10));
         slide.addShape(shape);
         shape.resizeToFitText();
-        
+
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ss.write(bos);
-        
+
         ss = new HSLFSlideShow(new ByteArrayInputStream(bos.toByteArray()));
         slide = ss.getSlides().get(0);
         HSLFTextBox tb = (HSLFTextBox)slide.getShapes().get(0);
@@ -200,8 +200,8 @@ public final class TestShapes {
         assertTrue(sameColor(Color.black, tr.getFontColor()));
         assertTrue(tr.isStrikethrough());
     }
-        
-    
+
+
     /**
      * Verify that we can add TextBox shapes to a slide
      * and set some of the style attributes

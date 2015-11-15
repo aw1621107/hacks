@@ -44,7 +44,7 @@ public class TextDocumentFacade
 
         root.appendChild( head );
         root.appendChild( body );
-        
+
         title = document.createElement( "title" );
         titleText = document.createTextNode( "" );
         head.appendChild( title );

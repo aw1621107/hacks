@@ -215,7 +215,7 @@ public class ExOleObjAtom extends RecordAtom {
 
     /**
      * Gets the type of OLE object.
-     * 
+     *
      * @return the sub-type, one of the {@code SUBTYPE_*} constants.
      */
     public int getSubType() {
@@ -260,7 +260,7 @@ public class ExOleObjAtom extends RecordAtom {
         // Even though this is a mere boolean, KOffice's code says it's an int.
         return LittleEndian.getInt(_data, 20) != 0;
     }
-    
+
     /**
      * Gets misc options (the last four bytes in the atom).
      *

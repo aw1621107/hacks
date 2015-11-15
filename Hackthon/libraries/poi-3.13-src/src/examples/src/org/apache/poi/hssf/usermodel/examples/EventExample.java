@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 package org.apache.poi.hssf.usermodel.examples;
 
 import org.apache.poi.hssf.eventusermodel.HSSFEventFactory;

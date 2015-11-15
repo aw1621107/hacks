@@ -33,7 +33,7 @@ import org.apache.poi.util.POILogFactory;
 import org.apache.poi.util.POILogger;
 
 /**
- * This class embodies the Property Table for a {@link NPOIFSFileSystem}; 
+ * This class embodies the Property Table for a {@link NPOIFSFileSystem};
  *  this is basically the directory for all of the documents in the
  * filesystem.
  */
@@ -72,7 +72,7 @@ public final class NPropertyTable extends PropertyTableBase {
         );
         _bigBigBlockSize = headerBlock.getBigBlockSize();
     }
-    
+
     /**
      * Builds
      * @param startAt
@@ -85,15 +85,15 @@ public final class NPropertyTable extends PropertyTableBase {
        List<Property> properties = new ArrayList<Property>();
        while(dataSource.hasNext()) {
           ByteBuffer bb = dataSource.next();
-          
+
           // Turn it into an array
           byte[] data;
-          if(bb.hasArray() && bb.arrayOffset() == 0 && 
+          if(bb.hasArray() && bb.arrayOffset() == 0 &&
                 bb.array().length == bigBlockSize.getBigBlockSize()) {
              data = bb.array();
           } else {
              data = new byte[bigBlockSize.getBigBlockSize()];
-             
+
              int toRead = data.length;
              if (bb.remaining() < bigBlockSize.getBigBlockSize()) {
                 // Looks to be a truncated block
@@ -103,10 +103,10 @@ public final class NPropertyTable extends PropertyTableBase {
                             " bytes instead of the expected " + bigBlockSize.getBigBlockSize());
                 toRead = bb.remaining();
              }
-             
+
              bb.get(data, 0, toRead);
           }
-          
+
           PropertyFactory.convertToProperties(data, properties);
        }
        return properties;
@@ -122,7 +122,7 @@ public final class NPropertyTable extends PropertyTableBase {
        int size = _properties.size() * POIFSConstants.PROPERTY_SIZE;
        return (int)Math.ceil(size / _bigBigBlockSize.getBigBlockSize());
     }
- 
+
     /**
      * Prepare to be written
      */
@@ -131,7 +131,7 @@ public final class NPropertyTable extends PropertyTableBase {
         // give each property its index
         int i=0;
         for (Property p : _properties) {
-            // only handle non-null properties 
+            // only handle non-null properties
             if (p == null) continue;
             p.setIndex(i++);
             pList.add(p);
@@ -139,8 +139,8 @@ public final class NPropertyTable extends PropertyTableBase {
 
         // prepare each property for writing
         for (Property p : pList) p.preWrite();
-    }    
-    
+    }
+
     /**
      * Writes the properties out into the given low-level stream
      */
@@ -152,7 +152,7 @@ public final class NPropertyTable extends PropertyTableBase {
           }
        }
        os.close();
-       
+
        // Update the start position if needed
        if(getStartBlock() != stream.getStartBlock()) {
           setStartBlock(stream.getStartBlock());

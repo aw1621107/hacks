@@ -37,7 +37,7 @@ public class LRUCache extends LinkedHashMap<Object, Object> {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.util.LinkedHashMap#removeEldestEntry(java.util.Map.Entry)
      */
     @Override

@@ -56,7 +56,7 @@ public final class RecordFactoryInputStream {
 		private final boolean _hasBOFRecord;
 
 		private static POILogger log = POILogFactory.getLogger(StreamEncryptionInfo.class);
-		
+
 		public StreamEncryptionInfo(RecordInputStream rs, List<Record> outputRecs) {
 			Record rec;
 			rs.nextRecord();
@@ -66,7 +66,7 @@ public final class RecordFactoryInputStream {
 			FilePassRecord fpr = null;
 			if (rec instanceof BOFRecord) {
 				_hasBOFRecord = true;
-				
+
 				// Fetch the next record, and see if it indicates whether
 				//  the document is encrypted or not
 				if (rs.hasNextRecord()) {
@@ -74,7 +74,7 @@ public final class RecordFactoryInputStream {
 					rec = RecordFactory.createSingleRecord(rs);
 					recSize += rec.getRecordSize();
 					outputRecs.add(rec);
-					
+
 					// Encrypted is normally BOF then FILEPASS
 					// May sometimes be BOF, WRITEPROTECT, FILEPASS
 					if (rec instanceof WriteProtectRecord && rs.hasNextRecord()) {
@@ -83,7 +83,7 @@ public final class RecordFactoryInputStream {
 	               recSize += rec.getRecordSize();
 	               outputRecs.add(rec);
 					}
-					
+
 					// If it's a FILEPASS, track it specifically but
 					//  don't include it in the main stream
 					if (rec instanceof FilePassRecord) {
@@ -132,7 +132,7 @@ public final class RecordFactoryInputStream {
 			    XorKeyData xor = fpr.getXorKeyData();
 			    Biff8XORKey xorKey = Biff8XORKey.create(userPassword, xor.getKey());
 			    key = xorKey;
-			    
+
 			    if (!xorKey.validate(userPassword, xor.getVerifier())) {
                     throw new EncryptedDocumentException(
 		                (Decryptor.DEFAULT_PASSWORD.equals(userPassword) ? "Default" : "Supplied")

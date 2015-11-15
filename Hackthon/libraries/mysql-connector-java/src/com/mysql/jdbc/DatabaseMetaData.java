@@ -761,7 +761,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Creates a new DatabaseMetaData object.
-     * 
+     *
      * @param connToSet
      * @param databaseToSet
      */
@@ -784,7 +784,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Can all the procedures returned by getProcedures be called by the current
      * user?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -794,7 +794,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can all the tables returned by getTable be SELECTed by the current user?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -895,7 +895,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Getter to JDBC4 DatabaseMetaData.functionNoTable constant.
      * This method must be overridden by JDBC4 subclasses. This implementation should never be called.
-     * 
+     *
      * @return 0
      */
     protected int getJDBC4FunctionNoTableConstant() {
@@ -1016,7 +1016,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Determines the COLUMN_TYPE information based on parameter type (IN, OUT or INOUT) or function return parameter.
-     * 
+     *
      * @param isOutParam
      *            Indicates whether it's an output parameter.
      * @param isInParam
@@ -1026,7 +1026,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * @param forGetFunctionColumns
      *            Indicates whether the column belong to a function. This argument is required for JDBC4, in which case
      *            this method must be overridden to provide the correct functionality.
-     * 
+     *
      * @return The corresponding COLUMN_TYPE as in java.sql.getProcedureColumns API.
      */
     protected int getColumnType(boolean isOutParam, boolean isInParam, boolean isReturnParam, boolean forGetFunctionColumns) {
@@ -1052,7 +1052,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Does a data definition statement within a transaction force the
      * transaction to commit?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -1062,7 +1062,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is a data definition statement within a transaction ignored?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -1074,7 +1074,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * JDBC 2.0 Determine whether or not a visible row delete can be detected by
      * calling ResultSet.rowDeleted(). If deletesAreDetected() returns false,
      * then deleted rows are removed from the result set.
-     * 
+     *
      * @param type
      *            set type, i.e. ResultSet.TYPE_XXX
      * @return true if changes are detected by the resultset type
@@ -1089,7 +1089,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Did getMaxRowSize() include LONGVARCHAR and LONGVARBINARY blobs?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -1099,7 +1099,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Extracts foreign key info for one table.
-     * 
+     *
      * @param rows
      *            the list of rows to add to
      * @param rs
@@ -1246,7 +1246,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Creates a result set similar enough to 'SHOW TABLE STATUS' to allow the
      * same code to work on extracting the foreign key data
-     * 
+     *
      * @param connToUse
      *            the database connection to use
      * @param metadata
@@ -1389,7 +1389,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * </li>
      * </ol>
      * </p>
-     * 
+     *
      * @param catalog
      *            a catalog name; "" retrieves those without a catalog
      * @param schema
@@ -1517,7 +1517,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /*
      * Extract parameter details for Procedures and Functions by parsing the DDL query obtained from SHOW CREATE [PROCEDURE|FUNCTION] ... statements.
      * The result rows returned follow the required structure for getProcedureColumns() and getFunctionColumns() methods.
-     * 
+     *
      * Internal use only.
      */
     private void getCallStmtParameterTypes(String catalog, String quotedProcName, ProcedureType procType, String parameterNamePattern,
@@ -1832,7 +1832,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Finds the end of the parameter declaration from the output of "SHOW
      * CREATE PROCEDURE".
-     * 
+     *
      * @param beginIndex
      *            should be the index of the procedure body that contains the
      *            first "(".
@@ -1877,7 +1877,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Finds the end of the RETURNS clause for SQL Functions by using any of the
      * keywords allowed after the RETURNS clause, or a label.
-     * 
+     *
      * @param procedureDefn
      *            the function body containing the definition of the function
      * @param quoteChar
@@ -1940,7 +1940,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Parses the cascade option string and returns the DBMD constant that
      * represents it (for deletes)
-     * 
+     *
      * @param cascadeOptions
      *            the comment from 'SHOW TABLE STATUS'
      * @return the DBMD constant that represents the cascade option
@@ -1968,7 +1968,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Parses the cascade option string and returns the DBMD constant that
      * represents it (for Updates)
-     * 
+     *
      * @param cascadeOptions
      *            the comment from 'SHOW TABLE STATUS'
      * @return the DBMD constant that represents the cascade option
@@ -2025,7 +2025,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <li><B>TABLE_CAT</B> String => catalog name</li>
      * </ol>
      * </p>
-     * 
+     *
      * @return ResultSet each row has a single String column that is a catalog
      *         name
      * @throws SQLException
@@ -2086,7 +2086,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the separator between catalog and table name?
-     * 
+     *
      * @return the separator string
      * @throws SQLException
      */
@@ -2099,7 +2099,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the database vendor's preferred term for "catalog"?
-     * 
+     *
      * @return the vendor term
      * @throws SQLException
      */
@@ -2125,7 +2125,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <li><B>IS_GRANTABLE</B> String => "YES" if grantee is permitted to grant to others; "NO" if not; null if unknown</li>
      * </ol>
      * </p>
-     * 
+     *
      * @param catalog
      *            a catalog name; "" retrieves those without a catalog
      * @param schema
@@ -2273,7 +2273,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * means nobody knows.</li>
      * </ol>
      * </p>
-     * 
+     *
      * @param catalog
      *            a catalog name; "" retrieves those without a catalog
      * @param schemaPattern
@@ -2574,7 +2574,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * JDBC 2.0 Return the connection that produced this metadata object.
-     * 
+     *
      * @return the connection that produced this metadata object.
      * @throws SQLException
      *             if a database error occurs
@@ -2620,7 +2620,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <li><B>PK_NAME</B> String => primary key identifier (may be null)</li>
      * </ol>
      * </p>
-     * 
+     *
      * @param primaryCatalog
      *            a catalog name; "" retrieves those without a catalog
      * @param primarySchema
@@ -2811,7 +2811,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the name of this database product?
-     * 
+     *
      * @return database product name
      * @throws SQLException
      */
@@ -2821,7 +2821,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the version of this database product?
-     * 
+     *
      * @return database version
      * @throws SQLException
      */
@@ -2832,7 +2832,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * What's the database's default transaction isolation level? The values are
      * defined in java.sql.Connection.
-     * 
+     *
      * @return the default isolation level
      * @throws SQLException
      *             if a database access error occurs
@@ -2848,7 +2848,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's this JDBC driver's major version number?
-     * 
+     *
      * @return JDBC driver major version
      */
     public int getDriverMajorVersion() {
@@ -2857,7 +2857,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's this JDBC driver's minor version number?
-     * 
+     *
      * @return JDBC driver minor version number
      */
     public int getDriverMinorVersion() {
@@ -2866,7 +2866,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the name of this JDBC driver?
-     * 
+     *
      * @return JDBC driver name
      * @throws SQLException
      */
@@ -2876,7 +2876,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the version of this JDBC driver?
-     * 
+     *
      * @return JDBC driver version
      * @throws java.sql.SQLException
      */
@@ -2918,7 +2918,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <li><B>PK_NAME</B> String => primary key identifier (may be null)</li>
      * </ol>
      * </p>
-     * 
+     *
      * @param catalog
      *            a catalog name; "" retrieves those without a catalog
      * @param schema
@@ -3026,7 +3026,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * Adds to the tuples list the exported keys of exportingTable based on the
      * keysComment from the 'show table status' sql command. KeysComment is that
      * part of the comment field that follows the "InnoDB free ...;" prefix.
-     * 
+     *
      * @param catalog
      *            the database to use
      * @param exportingTable
@@ -3048,7 +3048,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Get all the "extra" characters that can be used in unquoted identifier
      * names (those beyond a-z, 0-9 and _).
-     * 
+     *
      * @return the string containing the extra characters
      * @throws SQLException
      */
@@ -3060,7 +3060,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * Returns the DELETE and UPDATE foreign key actions from the given 'SHOW
      * TABLE STATUS' string, with the DELETE action being the first item in the
      * array, and the UPDATE action being the second.
-     * 
+     *
      * @param commentString
      *            the comment from 'SHOW TABLE STATUS'
      * @return int[] [0] = delete action, [1] = update action
@@ -3084,7 +3084,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * What's the string used to quote SQL identifiers? This returns a space " "
      * if identifier quoting isn't supported. A JDBC compliant driver always
      * uses a double quote character.
-     * 
+     *
      * @return the quoting string
      * @throws SQLException
      */
@@ -3131,7 +3131,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <li><B>PK_NAME</B> String => primary key name (may be null)</li>
      * </ol>
      * </p>
-     * 
+     *
      * @param catalog
      *            a catalog name; "" retrieves those without a catalog
      * @param schema
@@ -3237,7 +3237,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * on the keysComment from the 'show table status' sql command. KeysComment
      * is that part of the comment field that follows the "InnoDB free ...;"
      * prefix.
-     * 
+     *
      * @param catalog
      *            the database to use
      * @param importingTable
@@ -3284,7 +3284,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <li><B>FILTER_CONDITION</B> String => Filter condition, if any. (may be null)</li>
      * </ol>
      * </p>
-     * 
+     *
      * @param catalog
      *            a catalog name; "" retrieves those without a catalog
      * @param schema
@@ -3446,7 +3446,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * How many hex characters can you have in an inline binary literal?
-     * 
+     *
      * @return max literal length
      * @throws SQLException
      */
@@ -3456,7 +3456,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the maximum length of a catalog name?
-     * 
+     *
      * @return max name length in bytes
      * @throws SQLException
      */
@@ -3466,7 +3466,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the max length for a character literal?
-     * 
+     *
      * @return max literal length
      * @throws SQLException
      */
@@ -3476,7 +3476,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the limit on column name length?
-     * 
+     *
      * @return max literal length
      * @throws SQLException
      */
@@ -3486,7 +3486,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the maximum number of columns in a "GROUP BY" clause?
-     * 
+     *
      * @return max number of columns
      * @throws SQLException
      */
@@ -3496,7 +3496,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the maximum number of columns allowed in an index?
-     * 
+     *
      * @return max columns
      * @throws SQLException
      */
@@ -3506,7 +3506,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the maximum number of columns in an "ORDER BY" clause?
-     * 
+     *
      * @return max columns
      * @throws SQLException
      */
@@ -3516,7 +3516,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the maximum number of columns in a "SELECT" list?
-     * 
+     *
      * @return max columns
      * @throws SQLException
      */
@@ -3526,7 +3526,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's maximum number of columns in a table?
-     * 
+     *
      * @return max columns
      * @throws SQLException
      */
@@ -3536,7 +3536,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * How many active connections can we have at a time to this database?
-     * 
+     *
      * @return max connections
      * @throws SQLException
      */
@@ -3546,7 +3546,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the maximum cursor name length?
-     * 
+     *
      * @return max cursor name length in bytes
      * @throws SQLException
      */
@@ -3556,7 +3556,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the maximum length of an index (in bytes)?
-     * 
+     *
      * @return max index length in bytes
      * @throws SQLException
      */
@@ -3566,7 +3566,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the maximum length of a procedure name?
-     * 
+     *
      * @return max name length in bytes
      * @throws SQLException
      */
@@ -3576,7 +3576,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the maximum length of a single row?
-     * 
+     *
      * @return max row size in bytes
      * @throws SQLException
      */
@@ -3586,7 +3586,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the maximum length allowed for a schema name?
-     * 
+     *
      * @return max name length in bytes
      * @throws SQLException
      */
@@ -3596,7 +3596,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the maximum length of a SQL statement?
-     * 
+     *
      * @return max length in bytes
      * @throws SQLException
      */
@@ -3606,7 +3606,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * How many active statements can we have open at one time to this database?
-     * 
+     *
      * @return the maximum
      * @throws SQLException
      */
@@ -3616,7 +3616,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the maximum length of a table name?
-     * 
+     *
      * @return max name length in bytes
      * @throws SQLException
      */
@@ -3626,7 +3626,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the maximum number of tables in a SELECT?
-     * 
+     *
      * @return the maximum
      * @throws SQLException
      */
@@ -3636,7 +3636,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the maximum length of a user name?
-     * 
+     *
      * @return max name length in bytes
      * @throws SQLException
      */
@@ -3646,7 +3646,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Get a comma separated list of math functions.
-     * 
+     *
      * @return the list
      * @throws SQLException
      */
@@ -3669,7 +3669,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <li><B>PK_NAME</B> String => primary key name (may be null)</li>
      * </ol>
      * </p>
-     * 
+     *
      * @param catalog
      *            a catalog name; "" retrieves those without a catalog
      * @param schema
@@ -3818,7 +3818,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <P>
      * <B>Note:</B> Some databases may not return the column descriptions for a procedure.
      * </p>
-     * 
+     *
      * @param catalog
      *            a catalog name; "" retrieves those without a catalog
      * @param schemaPattern
@@ -3917,7 +3917,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
                     // "User does not have access to metadata required to determine " +
                     // "stored procedure parameter types. If rights can not be granted, configure connection with \"noAccessToProcedureBodies=true\" " +
                     // "to have driver generate parameters that represent INOUT strings irregardless of actual parameter types.",
-                    // SQLError.SQL_STATE_GENERAL_ERROR, getExceptionInterceptor());		
+                    // SQLError.SQL_STATE_GENERAL_ERROR, getExceptionInterceptor());
                 } else {
                     Collections.sort(procsOrFuncsToExtractList);
                 }
@@ -3995,7 +3995,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * </li>
      * </ol>
      * </p>
-     * 
+     *
      * @param catalog
      *            a catalog name; "" retrieves those without a catalog
      * @param schemaPattern
@@ -4182,7 +4182,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the database vendor's preferred term for "procedure"?
-     * 
+     *
      * @return the vendor term
      * @throws SQLException
      *             if an error occurs (don't know why it would in this case...)
@@ -4251,7 +4251,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <li><B>TABLE_SCHEM</B> String => schema name</li>
      * </ol>
      * </p>
-     * 
+     *
      * @return ResultSet each row has a single String column that is a schema
      *         name
      * @throws SQLException
@@ -4269,7 +4269,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the database vendor's preferred term for "schema"?
-     * 
+     *
      * @return the vendor term
      * @throws SQLException
      */
@@ -4286,7 +4286,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <P>
      * The '%' character represents any sequence of zero or more characters.
      * </p>
-     * 
+     *
      * @return the string used to escape wildcard characters
      * @throws SQLException
      */
@@ -4296,7 +4296,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Get a comma separated list of all a database's SQL keywords that are NOT also SQL92/SQL2003 keywords.
-     * 
+     *
      * @return the list
      * @throws SQLException
      */
@@ -4343,7 +4343,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Get a comma separated list of string functions.
-     * 
+     *
      * @return the list
      * @throws SQLException
      */
@@ -4384,7 +4384,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Get a comma separated list of system functions.
-     * 
+     *
      * @return the list
      * @throws SQLException
      */
@@ -4417,7 +4417,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <li><B>IS_GRANTABLE</B> String => "YES" if grantee is permitted to grant to others; "NO" if not; null if unknown</li>
      * </ol>
      * </p>
-     * 
+     *
      * @param catalog
      *            a catalog name; "" retrieves those without a catalog
      * @param schemaPattern
@@ -4568,7 +4568,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <P>
      * <B>Note:</B> Some databases may not return information for all tables.
      * </p>
-     * 
+     *
      * @param catalog
      *            a catalog name; "" retrieves those without a catalog
      * @param schemaPattern
@@ -4684,7 +4684,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
                                 // We should probably check SQLState here, but that can change depending on the server version and user properties, however,
                                 // we'll get a 'true' SQLException when we actually try to find the 'Type' column
-                                // 
+                                //
                                 try {
                                     typeColumnIndex = results.findColumn("Type");
                                     hasTableTypes = true;
@@ -4827,7 +4827,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * </li>
      * </ol>
      * </p>
-     * 
+     *
      * @return ResultSet each row has a single String column that is a table
      *         type
      * @throws SQLException
@@ -4853,7 +4853,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Get a comma separated list of time and date functions.
-     * 
+     *
      * @return the list
      * @throws SQLException
      */
@@ -4903,7 +4903,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <li><B>NUM_PREC_RADIX</B> int => usually 2 or 10</li>
      * </ol>
      * </p>
-     * 
+     *
      * @return ResultSet each row is a SQL type description
      * @throws SQLException
      */
@@ -4947,7 +4947,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <li><B>NUM_PREC_RADIX</B> int => usually 2 or 10</li>
      * </ol>
      * </p>
-     * 
+     *
      * @return ResultSet each row is a SQL type description
      * @throws SQLException
      */
@@ -5548,7 +5548,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
         rowVal[17] = s2b("10"); // NUM_PREC_RADIX (2 or 10)
         tuples.add(new ByteArrayRow(rowVal, getExceptionInterceptor()));
 
-        // The maximum number of digits for DECIMAL or NUMERIC is 65 (64 from MySQL 5.0.3 to 5.0.5). 
+        // The maximum number of digits for DECIMAL or NUMERIC is 65 (64 from MySQL 5.0.3 to 5.0.5).
 
         int decimalPrecision = 254;
 
@@ -6204,7 +6204,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <P>
      * <B>Note:</B> If the driver does not support UDTs then an empty result set is returned.
      * </p>
-     * 
+     *
      * @param catalog
      *            a catalog name; "" retrieves those without a catalog; null
      *            means drop catalog name from the selection criteria
@@ -6236,7 +6236,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's the url for this database?
-     * 
+     *
      * @return the url or null if it can't be generated
      * @throws SQLException
      */
@@ -6246,7 +6246,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * What's our user name as known to the database?
-     * 
+     *
      * @return our database user name
      * @throws SQLException
      */
@@ -6310,7 +6310,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * </li>
      * </ol>
      * </p>
-     * 
+     *
      * @param catalog
      *            a catalog name; "" retrieves those without a catalog
      * @param schema
@@ -6473,7 +6473,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * JDBC 2.0 Determine whether or not a visible row insert can be detected by
      * calling ResultSet.rowInserted().
-     * 
+     *
      * @param type
      *            set type, i.e. ResultSet.TYPE_XXX
      * @return true if changes are detected by the resultset type
@@ -6487,7 +6487,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Does a catalog appear at the start of a qualified table name? (Otherwise
      * it appears at the end)
-     * 
+     *
      * @return true if it appears at the start
      * @throws SQLException
      */
@@ -6497,7 +6497,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is the database in read-only mode?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6515,7 +6515,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Are concatenations between NULL and non-NULL values NULL? A JDBC
      * compliant driver always returns true.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6525,7 +6525,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Are NULL values sorted at the end regardless of sort order?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6535,7 +6535,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Are NULL values sorted at the start regardless of sort order?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6545,7 +6545,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Are NULL values sorted high?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6555,7 +6555,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Are NULL values sorted low?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6581,7 +6581,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * JDBC 2.0 Determine whether changes made by others are visible.
-     * 
+     *
      * @param type
      *            set type, i.e. ResultSet.TYPE_XXX
      * @return true if changes are visible for the result set type
@@ -6610,7 +6610,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * JDBC 2.0 Determine whether a result set's own changes visible.
-     * 
+     *
      * @param type
      *            set type, i.e. ResultSet.TYPE_XXX
      * @return true if changes are visible for the result set type
@@ -6703,7 +6703,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Converts the given string to bytes, using the connection's character
      * encoding, or if not available, the JVM default encoding.
-     * 
+     *
      * @param s
      */
     protected byte[] s2b(String s) throws SQLException {
@@ -6718,7 +6718,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Does the database store mixed case unquoted SQL identifiers in lower
      * case?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6729,7 +6729,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Does the database store mixed case quoted SQL identifiers in lower case?
      * A JDBC compliant driver will always return false.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6740,7 +6740,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Does the database store mixed case unquoted SQL identifiers in mixed
      * case?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6751,7 +6751,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Does the database store mixed case quoted SQL identifiers in mixed case?
      * A JDBC compliant driver will always return false.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6762,7 +6762,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Does the database store mixed case unquoted SQL identifiers in upper
      * case?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6773,7 +6773,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Does the database store mixed case quoted SQL identifiers in upper case?
      * A JDBC compliant driver will always return true.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6783,7 +6783,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is "ALTER TABLE" with add column supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6793,7 +6793,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is "ALTER TABLE" with drop column supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6804,7 +6804,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Is the ANSI92 entry level SQL grammar supported? All JDBC compliant
      * drivers must return true.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6814,7 +6814,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is the ANSI92 full SQL grammar supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6824,7 +6824,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is the ANSI92 intermediate SQL grammar supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6835,7 +6835,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * JDBC 2.0 Return true if the driver supports batch updates, else return
      * false.
-     * 
+     *
      * @throws SQLException
      */
     public boolean supportsBatchUpdates() throws SQLException {
@@ -6844,7 +6844,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can a catalog name be used in a data manipulation statement?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6855,7 +6855,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can a catalog name be used in a index definition statement?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6866,7 +6866,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can a catalog name be used in a privilege definition statement?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6877,7 +6877,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can a catalog name be used in a procedure call statement?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6888,7 +6888,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can a catalog name be used in a table definition statement?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6903,7 +6903,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * If so, the SQL AS clause can be used to provide names for computed columns or to provide alias names for columns as required. A JDBC compliant driver
      * always returns true.
      * </p>
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6913,7 +6913,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is the CONVERT function between SQL types supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -6923,7 +6923,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is CONVERT between the given SQL types supported?
-     * 
+     *
      * @param fromType
      *            the type to convert from
      * @param toType
@@ -7094,7 +7094,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is the ODBC Core SQL grammar supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7105,7 +7105,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Are correlated subqueries supported? A JDBC compliant driver always
      * returns true.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7116,7 +7116,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Are both data definition and data manipulation statements within a
      * transaction supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7126,7 +7126,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Are only data manipulation statements within a transaction supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7138,7 +7138,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * If table correlation names are supported, are they restricted to be
      * different from the names of the tables? A JDBC compliant driver always
      * returns true.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7148,7 +7148,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Are expressions in "ORDER BY" lists supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7158,7 +7158,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is the ODBC Extended SQL grammar supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7168,7 +7168,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Are full nested outer joins supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7185,7 +7185,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is some form of "GROUP BY" clause supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7196,7 +7196,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Can a "GROUP BY" clause add columns not in the SELECT provided it
      * specifies all the columns in the SELECT?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7206,7 +7206,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can a "GROUP BY" clause use columns not in the SELECT?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7216,7 +7216,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is the SQL Integrity Enhancement Facility supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7231,7 +7231,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Is the escape character in "LIKE" clauses supported? A JDBC compliant
      * driver always returns true.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7242,7 +7242,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Is there limited support for outer joins? (This will be true if
      * supportFullOuterJoins is true.)
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7253,7 +7253,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Is the ODBC Minimum SQL grammar supported? All JDBC compliant drivers
      * must return true.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7263,7 +7263,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Does the database support mixed case unquoted SQL identifiers?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7274,7 +7274,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Does the database support mixed case quoted SQL identifiers? A JDBC
      * compliant driver will always return true.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7291,7 +7291,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Are multiple ResultSets from a single execute supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7302,7 +7302,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Can we have multiple transactions open at once (on different
      * connections)?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7320,7 +7320,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Can columns be defined as non-nullable? A JDBC compliant driver always
      * returns true.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7330,7 +7330,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can cursors remain open across commits?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      *             if a database access error occurs
@@ -7342,7 +7342,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can cursors remain open across rollbacks?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      *             if an error occurs
@@ -7354,7 +7354,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can statements remain open across commits?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      *             if an error occurs
@@ -7366,7 +7366,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can statements remain open across rollbacks?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      *             if an error occurs
@@ -7378,7 +7378,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can an "ORDER BY" clause use columns not in the SELECT?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7388,7 +7388,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is some form of outer join supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7398,7 +7398,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is positioned DELETE supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7408,7 +7408,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is positioned UPDATE supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7419,7 +7419,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * JDBC 2.0 Does the database support the concurrency type in combination
      * with the given result set type?
-     * 
+     *
      * @param type
      *            defined in java.sql.ResultSet
      * @param concurrency
@@ -7463,7 +7463,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * JDBC 2.0 Does the database support the given result set type?
-     * 
+     *
      * @param type
      *            defined in java.sql.ResultSet
      * @return true if so
@@ -7485,7 +7485,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can a schema name be used in a data manipulation statement?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7495,7 +7495,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can a schema name be used in an index definition statement?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7505,7 +7505,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can a schema name be used in a privilege definition statement?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7515,7 +7515,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can a schema name be used in a procedure call statement?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7525,7 +7525,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Can a schema name be used in a table definition statement?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7535,7 +7535,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is SELECT for UPDATE supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7553,7 +7553,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Are stored procedure calls using the stored procedure escape syntax
      * supported?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7564,7 +7564,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Are subqueries in comparison expressions supported? A JDBC compliant
      * driver always returns true.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7575,7 +7575,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Are subqueries in exists expressions supported? A JDBC compliant driver
      * always returns true.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7586,7 +7586,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Are subqueries in "in" statements supported? A JDBC compliant driver
      * always returns true.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7597,7 +7597,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Are subqueries in quantified expressions supported? A JDBC compliant
      * driver always returns true.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7608,7 +7608,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Are table correlation names supported? A JDBC compliant driver always
      * returns true.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7618,7 +7618,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Does the database support the given transaction isolation level?
-     * 
+     *
      * @param level
      *            the values are defined in java.sql.Connection
      * @return true if so
@@ -7646,7 +7646,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Are transactions supported? If not, commit is a noop and the isolation
      * level is TRANSACTION_NONE.
-     * 
+     *
      * @return true if transactions are supported
      * @throws SQLException
      */
@@ -7656,7 +7656,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is SQL UNION supported? A JDBC compliant driver always returns true.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7666,7 +7666,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Is SQL UNION ALL supported? A JDBC compliant driver always returns true.
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7677,7 +7677,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * JDBC 2.0 Determine whether or not a visible row update can be detected by
      * calling ResultSet.rowUpdated().
-     * 
+     *
      * @param type
      *            set type, i.e. ResultSet.TYPE_XXX
      * @return true if changes are detected by the resultset type
@@ -7690,7 +7690,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Does the database use a file for each table?
-     * 
+     *
      * @return true if the database uses a local file for each table
      * @throws SQLException
      */
@@ -7700,7 +7700,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Does the database store tables in a local file?
-     * 
+     *
      * @return true if so
      * @throws SQLException
      */
@@ -7726,7 +7726,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <p>
      * The <code>ResultSet</code> is sorted by the NAME column
      * <p>
-     * 
+     *
      * @return A <code>ResultSet</code> object; each row is a supported client info property
      *         <p>
      * @exception SQLException
@@ -7749,7 +7749,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
     /**
      * Retrieves a description of the given catalog's system or user
      * function parameters and return type.
-     * 
+     *
      * @see java.sql.DatabaseMetaData#getFunctionColumns(String, String, String, String)
      * @since 1.6
      */
@@ -7776,7 +7776,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * <P>
      * Only system and user function descriptions matching the schema and function name criteria are returned. They are ordered by <code>FUNCTION_CAT</code>,
      * <code>FUNCTION_SCHEM</code>, <code>FUNCTION_NAME</code> and <code>SPECIFIC_ NAME</code>.
-     * 
+     *
      * <P>
      * Each function description has the the following columns:
      * <OL>
@@ -7795,7 +7795,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
      * </OL>
      * <p>
      * A user may not have permission to execute any of the functions that are returned by <code>getFunctions</code>
-     * 
+     *
      * @param catalog
      *            a catalog name; must match the catalog name as it
      *            is stored in the database; "" retrieves those without a catalog; <code>null</code> means that the catalog name should not be used to narrow
@@ -7848,7 +7848,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * Get a prepared statement to query information_schema tables.
-     * 
+     *
      * @return PreparedStatement
      * @throws SQLException
      */
@@ -7867,7 +7867,7 @@ public class DatabaseMetaData implements java.sql.DatabaseMetaData {
 
     /**
      * JDBC-4.1
-     * 
+     *
      * @param catalog
      * @param schemaPattern
      * @param tableNamePattern

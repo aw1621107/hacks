@@ -105,7 +105,7 @@ public final class DataExtraction {
                         out.close();
                     }
                 }
-                
+
                 //Pictures
                 else if (shape instanceof HSLFPictureShape) {
                     picIdx++;

@@ -120,7 +120,7 @@ public final class POIDataSamples {
         if(_instXmlDSign == null) _instXmlDSign = new POIDataSamples("xmldsign");
         return _instXmlDSign;
     }
-    
+
     /**
      * Opens a sample file from the test data directory
      *

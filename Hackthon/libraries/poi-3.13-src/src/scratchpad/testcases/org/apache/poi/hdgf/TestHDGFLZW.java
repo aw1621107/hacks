@@ -38,7 +38,7 @@ public final class TestHDGFLZW extends TestCase {
 		21,       // *mask bit* 1,3,5
 		9,
 		-21, -16, // 3 @ 4093
-		103, 
+		103,
 		-21, -16, // 3 @ 4093
 		34,
 		-36, -1,  // 18 @ 4078
@@ -186,7 +186,7 @@ public final class TestHDGFLZW extends TestCase {
 		// Compress it using our engine
 		HDGFLZW lzw = new HDGFLZW();
 		byte[] comp = lzw.compress(new ByteArrayInputStream(sourceDecomp));
-		
+
 		// Now decompress it again
 		byte[] decomp = lzw.decompress(new ByteArrayInputStream(comp));
 
@@ -217,11 +217,11 @@ public final class TestHDGFLZW extends TestCase {
       // Compress it using our engine
       HDGFLZW lzw = new HDGFLZW();
       byte[] comp = lzw.compress(new ByteArrayInputStream(sourceDecomp));
-      
+
       // We should be 3 characters bigger, as
       //  we split one compressed bit into two
       assertEquals(27, comp.length);
-      
+
       // Now decompress it again
       byte[] decomp = lzw.decompress(new ByteArrayInputStream(comp));
 
@@ -244,21 +244,21 @@ public final class TestHDGFLZW extends TestCase {
       // Compress it using our engine
       HDGFLZW lzw = new HDGFLZW();
       byte[] comp = lzw.compress(new ByteArrayInputStream(testTrailerDecomp));
-      
+
       // Now decompress it again
       byte[] decomp = lzw.decompress(new ByteArrayInputStream(comp));
 
 //      for(int i=0; i<comp.length; i++) {
 //         System.err.println(i + "\t" + comp[i] + "\t" + testTrailerComp[i]);
 //      }
-      
+
       // First up, check the round tripping
 //    assertEquals(632, decomp.length);
       for(int i=0; i<decomp.length; i++) {
          assertEquals("Wrong at " + i, decomp[i], testTrailerDecomp[i]);
       }
 
-      
+
       // Now check the compressed intermediate version
       assertEquals(339, comp.length);
       for(int i=0; i<comp.length; i++) {

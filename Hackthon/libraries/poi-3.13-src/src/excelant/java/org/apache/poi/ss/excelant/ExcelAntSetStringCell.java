@@ -23,20 +23,20 @@ import org.apache.tools.ant.Project;
 /**
  * Class for use in an Ant build script that sets the value of an Excel
  * sheet cell using the cell id ('Sheet Name'!cellId).
- * 
+ *
  * @author Jon Svede ( jon [at] loquatic [dot] com )
  * @author Brian Bush ( brian [dot] bush [at] nrel [dot] gov )
  *
  */
 public class ExcelAntSetStringCell extends ExcelAntSet {
-	
-	
+
+
 	private String stringValue ;
-	
-	
+
+
 	public ExcelAntSetStringCell() {}
 
-	
+
 	/**
 	 * Set the value of the cell to the String passed in.
 	 * @param value
@@ -52,11 +52,11 @@ public class ExcelAntSetStringCell extends ExcelAntSet {
 	public String getCellValue() {
 		return stringValue;
 	}
-	
+
 	public void execute() throws BuildException {
 
 		wbUtil.setStringValue(cellStr, stringValue ) ;
-		
+
 		log( "set cell " + cellStr + " to value " + stringValue + " as String.", Project.MSG_DEBUG ) ;
 	}
 }

@@ -285,7 +285,7 @@ public class POIXMLProperties {
 		public org.openxmlformats.schemas.officeDocument.x2006.extendedProperties.CTProperties getUnderlyingProperties() {
 			return props.getProperties();
 		}
-		
+
         public String getTemplate() {
             if (props.getProperties().isSetTemplate()) {
                 return props.getProperties().getTemplate();
@@ -504,12 +504,12 @@ public class POIXMLProperties {
             }
             return false;
         }
-        
+
         /**
          * Retrieve the custom property with this name, or null if none exists.
          *
          * You will need to test the various isSetX methods to work out
-         *  what the type of the property is, before fetching the 
+         *  what the type of the property is, before fetching the
          *  appropriate value for it.
          *
          * @param name the name of the property to fetch

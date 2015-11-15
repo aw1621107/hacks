@@ -40,10 +40,10 @@ public class HWPFFileHandler extends POIFSFileHandler {
 		assertNotNull(doc.getBookmarks());
 		assertNotNull(doc.getCharacterTable());
 		assertNotNull(doc.getEndnotes());
-		
+
 		handlePOIDocument(doc);
-		
-		// fails for many documents, but is deprecated anyway... 
+
+		// fails for many documents, but is deprecated anyway...
 		// handleWordDocument(doc);
 	}
 
@@ -52,7 +52,7 @@ public class HWPFFileHandler extends POIFSFileHandler {
 		doc.write(outStream);
 
 		WordDocument wordDoc = new WordDocument(new ByteArrayInputStream(outStream.toByteArray()));
-        
+
         StringWriter docTextWriter = new StringWriter();
         PrintWriter out = new PrintWriter(docTextWriter);
         try {
@@ -74,9 +74,9 @@ public class HWPFFileHandler extends POIFSFileHandler {
 		} finally {
 			stream.close();
 		}
-		
+
 		handleExtracting(file);
-		
+
 		stream = new FileInputStream(file);
 		try {
 			WordExtractor extractor = new WordExtractor(stream);

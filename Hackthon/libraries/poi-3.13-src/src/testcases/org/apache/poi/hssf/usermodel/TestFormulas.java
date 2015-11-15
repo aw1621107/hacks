@@ -895,7 +895,7 @@ public final class TestFormulas extends TestCase {
         System.out.println("Open "+outF.getAbsolutePath()+" in Excel");
     }
 
-    /** MissingArgPtg 
+    /** MissingArgPtg
      * @throws IOException */
     public void testMissingArgPtg() throws IOException {
         HSSFWorkbook wb = new HSSFWorkbook();
@@ -966,7 +966,7 @@ public final class TestFormulas extends TestCase {
     /**
      * Verify that FormulaParser handles defined names beginning with underscores,
      * see Bug #49640
-     * @throws IOException 
+     * @throws IOException
      */
     public void testFormulasWithUnderscore() throws IOException{
         HSSFWorkbook wb = new HSSFWorkbook();
@@ -974,11 +974,11 @@ public final class TestFormulas extends TestCase {
             Name nm1 = wb.createName();
             nm1.setNameName("_score1");
             nm1.setRefersToFormula("A1");
-    
+
             Name nm2 = wb.createName();
             nm2.setNameName("_score2");
             nm2.setRefersToFormula("A2");
-    
+
             Sheet sheet = wb.createSheet();
             Cell cell = sheet.createRow(0).createCell(2);
             cell.setCellFormula("_score1*SUM(_score1+_score2)");

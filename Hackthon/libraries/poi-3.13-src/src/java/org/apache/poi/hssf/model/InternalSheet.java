@@ -166,7 +166,7 @@ public final class InternalSheet {
         if (rs.peekNextSid() != BOFRecord.sid) {
             throw new RuntimeException("BOF record expected");
         }
-        
+
         BOFRecord bof = (BOFRecord) rs.getNext();
         if (bof.getType() == BOFRecord.TYPE_WORKSHEET) {
             // Good, well supported
@@ -186,7 +186,7 @@ public final class InternalSheet {
             throw new UnsupportedBOFType(bof.getType());
         }
         records.add(bof);
-        
+
         while (rs.hasNext()) {
             int recSid = rs.peekNextSid();
 
@@ -369,14 +369,14 @@ public final class InternalSheet {
                 recs.add(r);
             }});
     }
-    
+
     public static class UnsupportedBOFType extends RecordFormatException {
         private final int type;
         protected UnsupportedBOFType(int type) {
             super("BOF not of a supported type, found " + type);
             this.type = type;
         }
-        
+
         public int getType() {
             return type;
         }
@@ -1667,7 +1667,7 @@ public final class InternalSheet {
         temp.toArray(result);
         return result;
     }
-    
+
     public int getColumnOutlineLevel(int columnIndex) {
         return _columnInfos.getOutlineLevel(columnIndex);
     }

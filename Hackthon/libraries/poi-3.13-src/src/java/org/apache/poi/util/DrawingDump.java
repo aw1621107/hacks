@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 package org.apache.poi.util;
 
 import java.io.File;
@@ -41,7 +41,7 @@ public class DrawingDump
         try {
             pw.println( "Drawing group:" );
             wb.dumpDrawingGroupRecords(true);
-    
+
             for (int sheetNum = 1; sheetNum <= wb.getNumberOfSheets(); sheetNum++)
             {
                 pw.println( "Sheet " + sheetNum + ":" );

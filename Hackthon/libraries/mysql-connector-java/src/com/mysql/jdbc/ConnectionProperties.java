@@ -29,7 +29,7 @@ public interface ConnectionProperties {
 
     /**
      * Returns a description of the connection properties as an XML document.
-     * 
+     *
      * @return the connection properties as an XML document.
      * @throws SQLException
      *             if an error occurs.
@@ -221,7 +221,7 @@ public interface ConnectionProperties {
     /**
      * Returns the number of queries that metadata can be cached if caching is
      * enabled.
-     * 
+     *
      * @return the number of queries to cache metadata for.
      */
     public int getMetadataCacheSize();
@@ -286,7 +286,7 @@ public interface ConnectionProperties {
 
     /**
      * Returns whether or not hosts will be picked in a round-robin fashion.
-     * 
+     *
      * @return Returns the roundRobinLoadBalance property.
      */
     public boolean getRoundRobinLoadBalance();
@@ -300,7 +300,7 @@ public interface ConnectionProperties {
 
     /**
      * Returns the 'serverTimezone' property.
-     * 
+     *
      * @return the configured server timezone property.
      */
     public String getServerTimezone();
@@ -390,7 +390,7 @@ public interface ConnectionProperties {
 
     /**
      * Returns whether or not the driver advises of proper usage.
-     * 
+     *
      * @return the value of useUsageAdvisor
      */
     public boolean getUseUsageAdvisor();
@@ -469,7 +469,7 @@ public interface ConnectionProperties {
 
     /**
      * Sets whether or not we should cache result set metadata.
-     * 
+     *
      * @param property
      */
     public void setCacheResultSetMetadata(boolean property);
@@ -483,7 +483,7 @@ public interface ConnectionProperties {
     /**
      * Configures the number of callable statements to cache. (this is
      * configurable during the life of the connection).
-     * 
+     *
      * @param size
      *            The callableStatementCacheSize to set.
      * @throws SQLException
@@ -685,7 +685,7 @@ public interface ConnectionProperties {
     /**
      * Sets the number of queries that metadata can be cached if caching is
      * enabled.
-     * 
+     *
      * @param value
      *            the number of queries to cache metadata for.
      * @throws SQLException
@@ -788,7 +788,7 @@ public interface ConnectionProperties {
 
     /**
      * Sets whether or not hosts will be picked in a round-robin fashion.
-     * 
+     *
      * @param flag
      *            The roundRobinLoadBalance property to set.
      */
@@ -947,7 +947,7 @@ public interface ConnectionProperties {
 
     /**
      * Sets whether or not the driver advises of proper usage.
-     * 
+     *
      * @param useUsageAdvisorFlag
      *            whether or not the driver advises of proper usage.
      */

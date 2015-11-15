@@ -57,7 +57,7 @@ public interface CharacterRun {
     public void setKerning(int kern);
 
     public String getFontName();
-    
+
     /**
      * @return The text of the run, including any tabs/spaces/etc
      */
@@ -83,10 +83,10 @@ public interface CharacterRun {
 /*
     public boolean isFldVanished();
     public void setFldVanish(boolean fldVanish);
-    
+
     public boolean isOutlined();
     public void setOutline(boolean outlined);
-    
+
     public boolean isVanished();
     public void setVanished(boolean vanish);
 

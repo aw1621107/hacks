@@ -112,7 +112,7 @@ public abstract class CellRangeAddressBase {
 	}
 
 	/**
-	 * Determines if the given coordinates lie within the bounds 
+	 * Determines if the given coordinates lie within the bounds
 	 * of this range.
 	 *
 	 * @param rowInd The row, 0-based.

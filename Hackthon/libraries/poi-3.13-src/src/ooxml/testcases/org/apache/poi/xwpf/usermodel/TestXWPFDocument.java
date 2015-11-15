@@ -56,7 +56,7 @@ public final class TestXWPFDocument {
 //            }
         }
         assertTrue(found);
-        
+
         pack.close();
         doc.close();
     }

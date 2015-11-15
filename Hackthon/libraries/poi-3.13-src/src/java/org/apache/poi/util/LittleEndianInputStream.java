@@ -35,7 +35,7 @@ public class LittleEndianInputStream extends FilterInputStream implements Little
 	public LittleEndianInputStream(InputStream is) {
 		super(is);
 	}
-	
+
 	public int available() {
 		try {
 			return super.available();
@@ -43,11 +43,11 @@ public class LittleEndianInputStream extends FilterInputStream implements Little
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 	public byte readByte() {
 		return (byte)readUByte();
 	}
-	
+
 	public int readUByte() {
 		byte buf[] = new byte[1];
 		try {
@@ -57,11 +57,11 @@ public class LittleEndianInputStream extends FilterInputStream implements Little
 		}
 		return LittleEndian.getUByte(buf);
 	}
-	
+
 	public double readDouble() {
 		return Double.longBitsToDouble(readLong());
 	}
-	
+
 	public int readInt() {
 	    byte buf[] = new byte[LittleEndianConsts.INT_SIZE];
 		try {
@@ -71,10 +71,10 @@ public class LittleEndianInputStream extends FilterInputStream implements Little
 		}
 		return LittleEndian.getInt(buf);
 	}
-	
+
     /**
      * get an unsigned int value from an InputStream
-     * 
+     *
      * @return the unsigned int (32-bit) value
      * @exception IOException
      *                will be propagated back to the caller
@@ -85,7 +85,7 @@ public class LittleEndianInputStream extends FilterInputStream implements Little
        long retNum = readInt();
        return retNum & 0x00FFFFFFFFl;
     }
-	
+
 	public long readLong() {
 		byte buf[] = new byte[LittleEndianConsts.LONG_SIZE];
 		try {
@@ -95,11 +95,11 @@ public class LittleEndianInputStream extends FilterInputStream implements Little
 		}
 		return LittleEndian.getLong(buf);
 	}
-	
+
 	public short readShort() {
 		return (short)readUShort();
 	}
-	
+
 	public int readUShort() {
 		byte buf[] = new byte[LittleEndianConsts.SHORT_SIZE];
 		try {
@@ -109,7 +109,7 @@ public class LittleEndianInputStream extends FilterInputStream implements Little
 		}
 		return LittleEndian.getUShort(buf);
 	}
-	
+
 	private static void checkEOF(int actualBytes, int expectedBytes) {
 		if (expectedBytes != 0 && (actualBytes == -1 || actualBytes != expectedBytes)) {
 			throw new RuntimeException("Unexpected end-of-file");

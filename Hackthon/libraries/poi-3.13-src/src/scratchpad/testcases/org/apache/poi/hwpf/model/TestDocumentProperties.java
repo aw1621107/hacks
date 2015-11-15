@@ -61,9 +61,9 @@ public final class TestDocumentProperties
       else
       {
     	// ensure that the class was not changed/enhanced, e.g. by code instrumentation like coverage tools
-    	assertEquals("Invalid type for field: " + fields[x].getName(), 
+    	assertEquals("Invalid type for field: " + fields[x].getName(),
     			"[B", fields[x].getType().getName());
-    	
+
         byte[] buf1 = (byte[])fields[x].get(_documentProperties);
         byte[] buf2 = (byte[])fields[x].get(newDocProperties);
         Arrays.equals(buf1, buf2);

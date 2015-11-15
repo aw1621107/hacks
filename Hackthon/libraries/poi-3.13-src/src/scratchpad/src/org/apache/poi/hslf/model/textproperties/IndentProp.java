@@ -19,17 +19,17 @@ package org.apache.poi.hslf.model.textproperties;
 
 import org.apache.poi.hslf.record.TxMasterStyleAtom;
 
-/** 
+/**
  * Definition of the indent level of some text. Defines how many
  *  characters it applies to, and what indent level they share.
- * 
- * This is defined by the slightly confusingly named MasterTextPropRun 
+ *
+ * This is defined by the slightly confusingly named MasterTextPropRun
  */
 public class IndentProp  {
     private int charactersCovered;
     private short indentLevel;
 
-	/** 
+	/**
 	 * Generate the definition of a given text indent
 	 */
 	public IndentProp(int charactersCovered, short indentLevel) {
@@ -39,11 +39,11 @@ public class IndentProp  {
 
     /** Fetch the number of characters this styling applies to */
     public int getCharactersCovered() { return charactersCovered; }
-    
+
     public int getIndentLevel() {
         return indentLevel;
     }
-    
+
     /**
      * Sets the indent level, which can be between 0 and 4
      */
@@ -57,7 +57,7 @@ public class IndentProp  {
 
     /**
      * Update the size of the text that this set of properties
-     *  applies to 
+     *  applies to
      */
     public void updateTextSize(int textSize) {
         charactersCovered = textSize;

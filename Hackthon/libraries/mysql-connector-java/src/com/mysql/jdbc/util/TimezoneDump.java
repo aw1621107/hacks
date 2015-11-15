@@ -43,7 +43,7 @@ public class TimezoneDump {
 
     /**
      * Entry point for program when called from the command line.
-     * 
+     *
      * @param args
      *            command-line args. Arg 1 is JDBC URL.
      * @throws Exception

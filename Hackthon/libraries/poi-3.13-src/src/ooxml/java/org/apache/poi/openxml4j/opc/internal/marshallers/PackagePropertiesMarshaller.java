@@ -128,7 +128,7 @@ public class PackagePropertiesMarshaller implements PartMarshaller {
     private Element setElementTextContent(String localName, Namespace namespace, Nullable<String> property) {
         return setElementTextContent(localName, namespace, property, property.getValue());
     }
-    
+
     private String getQName(String localName, Namespace namespace) {
         return namespace.getPrefix().isEmpty() ? localName : namespace.getPrefix() + ':' + localName;
     }

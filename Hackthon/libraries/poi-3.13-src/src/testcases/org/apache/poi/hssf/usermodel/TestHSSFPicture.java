@@ -53,11 +53,11 @@ public final class TestHSSFPicture extends BaseTestPicture {
         List<HSSFShape> pics = dp.getChildren();
         HSSFPicture inpPic = (HSSFPicture)pics.get(0);
         HSSFPicture cmpPic = (HSSFPicture)pics.get(1);
-        
+
         baseTestResize(inpPic, cmpPic, 2.0, 2.0);
         wb.close();
     }
-    
+
     /**
      * Bug # 45829 reported ArithmeticException (/ by zero) when resizing png with zero DPI.
      */
@@ -71,7 +71,7 @@ public final class TestHSSFPicture extends BaseTestPicture {
         int idx1 = wb.addPicture( pictureData, HSSFWorkbook.PICTURE_TYPE_PNG );
         HSSFPicture pic = p1.createPicture(new HSSFClientAnchor(), idx1);
         pic.resize();
-        
+
         wb.close();
     }
 
@@ -80,7 +80,7 @@ public final class TestHSSFPicture extends BaseTestPicture {
     @Test
     public void addPictures() throws IOException {
         HSSFWorkbook wb = new HSSFWorkbook();
-        
+
         HSSFSheet sh = wb.createSheet("Pictures");
         HSSFPatriarch dr = sh.createDrawingPatriarch();
         assertEquals(0, dr.getChildren().size());
@@ -101,7 +101,7 @@ public final class TestHSSFPicture extends BaseTestPicture {
         assertEquals(2, dr.getChildren().size());
         assertArrayEquals(data2, p2.getPictureData().getData());
 
-        // confirm that HSSFPatriarch.getChildren() returns two picture shapes 
+        // confirm that HSSFPatriarch.getChildren() returns two picture shapes
         assertArrayEquals(data1, ((HSSFPicture)dr.getChildren().get(0)).getPictureData().getData());
         assertArrayEquals(data2, ((HSSFPicture)dr.getChildren().get(1)).getPictureData().getData());
 
@@ -169,7 +169,7 @@ public final class TestHSSFPicture extends BaseTestPicture {
         assertArrayEquals(data2, ((HSSFPicture)dr.getChildren().get(1)).getPictureData().getData());
         assertArrayEquals(data3, ((HSSFPicture)dr.getChildren().get(2)).getPictureData().getData());
         assertArrayEquals(data4, ((HSSFPicture)dr.getChildren().get(3)).getPictureData().getData());
-        
+
         wb.close();
     }
 
@@ -199,7 +199,7 @@ public final class TestHSSFPicture extends BaseTestPicture {
         HSSFShapeGroup gr = dr.createGroup(new HSSFClientAnchor());
         gr.createPicture(new HSSFChildAnchor(), idx1);
         assertEquals(bse.getRef(), 3);
-        
+
         wb.close();
     }
 
@@ -264,7 +264,7 @@ public final class TestHSSFPicture extends BaseTestPicture {
         anchor.setRow1(1);
         anchor.setRow2(6);
         patriarch.createPicture(anchor, indexEmf);
-        
+
         anchor = ch.createClientAnchor();
         anchor.setCol1(2);
         anchor.setCol2(5);
@@ -278,8 +278,8 @@ public final class TestHSSFPicture extends BaseTestPicture {
         anchor.setRow1(1);
         anchor.setRow2(6);
         patriarch.createPicture(anchor, indexWmf);
-        
-        
+
+
         wb = HSSFTestDataSamples.writeOutAndReadBack(wb);
         byte pictureDataOut[] = wb.getAllPictures().get(0).getData();
         assertArrayEquals(pictureDataEmf, pictureDataOut);

@@ -200,4 +200,4 @@ public final class TestHSSFEventFactory extends TestCase {
         assertTrue("Numeric record for A2 not found", hasA2);
         assertTrue("Numeric record for A3 not found", hasA3);
     }
-}	
+}

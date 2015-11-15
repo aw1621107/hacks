@@ -125,8 +125,8 @@ import org.apache.poi.hssf.util.CellReference;
  * A note concerning Excels' image resizing behaviour. The HSSFClientAnchor
  * class contains a method called setAnchorType(int) which can be used to
  * determine how Excel will resize an image in reponse to the user increasing
- * or decreasing the dimensions of the cell containing the image. There are 
- * three values that can be passed to this method; 0 = To move and size the 
+ * or decreasing the dimensions of the cell containing the image. There are
+ * three values that can be passed to this method; 0 = To move and size the
  * image with the cell, 2 = To move but don't size the image with the cell,
  * 3 = To prevent the image from moving or being resized along with the cell. If
  * an image is inserted using this class and placed into a single cell then if
@@ -293,7 +293,7 @@ public class AddDimensionedImage {
         // become another parameter passed to the method.
         //anchor.setAnchorType(HSSFClientAnchor.DONT_MOVE_AND_RESIZE);
         anchor.setAnchorType(HSSFClientAnchor.MOVE_AND_RESIZE);
-        
+
         // Now, add the picture to the workbook. Note that the type is assumed
         // to be a JPEG/JPG, this could easily (and should) be parameterised
         // however.
@@ -535,7 +535,7 @@ public class AddDimensionedImage {
             // total number of co-ordinate positions to the third paramater
             // of the ClientAnchorDetail constructor. For no sepcific reason,
             // the latter option is used below.
-            anchorDetail = new ClientAnchorDetail(startingColumn, 
+            anchorDetail = new ClientAnchorDetail(startingColumn,
                     toColumn, ConvertImageUnits.TOTAL_COLUMN_COORDINATE_POSITIONS);
         }
         // In this case, the image will overlap part of another column and it is
@@ -781,13 +781,13 @@ public class AddDimensionedImage {
      *      * Together, parameter seven and eight determine the column and row
      *      co-ordinates of the cell whose top left hand corner will be aligned
      *      with the images bottom right hand corner.
-     * 
+     *
      * An instance of the ClientAnchorDetail class provides three of the eight
      * parameters, one of the co-ordinates for the images top left hand corner,
-     * one of the co-ordinates for the images bottom right hand corner and 
+     * one of the co-ordinates for the images bottom right hand corner and
      * either how far the image should be inset from the top or the left hand
      * edge of the cell.
-     * 
+     *
      * @author Mark Beardsley [mas at apache.org]
      * @version 1.00 5th August 2009.
      */

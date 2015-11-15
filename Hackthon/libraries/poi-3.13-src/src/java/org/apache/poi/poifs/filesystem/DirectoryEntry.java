@@ -50,14 +50,14 @@ public interface DirectoryEntry
      */
 
     public Iterator<Entry> getEntries();
-    
+
     /**
      * get the names of all the Entries contained directly in this
      * instance (in other words, names of children only; no grandchildren
      * etc).
      *
      * @return the names of all the entries that may be retrieved with
-     *         getEntry(String), which may be empty (if this 
+     *         getEntry(String), which may be empty (if this
      *         DirectoryEntry is empty)
      */
     public Set<String> getEntryNames();

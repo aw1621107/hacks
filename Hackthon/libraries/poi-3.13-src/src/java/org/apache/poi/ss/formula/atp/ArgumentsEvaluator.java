@@ -30,7 +30,7 @@ import org.apache.poi.ss.usermodel.DateUtil;
 
 /**
  * Evaluator for formula arguments.
- * 
+ *
  * @author jfaenomoto@gmail.com
  */
 final class ArgumentsEvaluator {
@@ -43,7 +43,7 @@ final class ArgumentsEvaluator {
 
     /**
      * Evaluate a generic {@link ValueEval} argument to a double value that represents a date in POI.
-     * 
+     *
      * @param arg {@link ValueEval} an argument.
      * @param srcCellRow number cell row.
      * @param srcCellCol number cell column.
@@ -67,7 +67,7 @@ final class ArgumentsEvaluator {
 
     /**
      * Evaluate a generic {@link ValueEval} argument to an array of double values that represents dates in POI.
-     * 
+     *
      * @param arg {@link ValueEval} an argument.
      * @param srcCellRow number cell row.
      * @param srcCellCol number cell column.
@@ -100,7 +100,7 @@ final class ArgumentsEvaluator {
 
     /**
      * Evaluate a generic {@link ValueEval} argument to a double value.
-     * 
+     *
      * @param arg {@link ValueEval} an argument.
      * @param srcCellRow number cell row.
      * @param srcCellCol number cell column.

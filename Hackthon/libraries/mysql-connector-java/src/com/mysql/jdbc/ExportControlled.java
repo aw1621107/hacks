@@ -68,11 +68,11 @@ public class ExportControlled {
     /**
      * Converts the socket being used in the given MysqlIO to an SSLSocket by
      * performing the SSL/TLS handshake.
-     * 
+     *
      * @param mysqlIO
      *            the MysqlIO instance containing the socket to convert to an
      *            SSLSocket.
-     * 
+     *
      * @throws CommunicationsException
      *             if the handshake fails, or if this distribution of
      *             Connector/J doesn't contain the SSL crytpo hooks needed to

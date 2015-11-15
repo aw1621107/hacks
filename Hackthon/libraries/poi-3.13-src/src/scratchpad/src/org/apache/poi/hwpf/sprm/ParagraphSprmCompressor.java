@@ -35,7 +35,7 @@ public final class ParagraphSprmCompressor
   public static byte[] compressParagraphProperty(ParagraphProperties newPAP,
                                                  ParagraphProperties oldPAP)
   {
-    // page numbers links to Word97-2007BinaryFileFormat(doc)Specification.pdf, accessible from microsoft.com 
+    // page numbers links to Word97-2007BinaryFileFormat(doc)Specification.pdf, accessible from microsoft.com
 
     List<byte[]> sprmList = new ArrayList<byte[]>();
     int size = 0;
@@ -43,17 +43,17 @@ public final class ParagraphSprmCompressor
     // Page 50 of public specification begins
     if (newPAP.getIstd() != oldPAP.getIstd())
     {
-      // sprmPIstd 
+      // sprmPIstd
       size += SprmUtils.addSprm((short)0x4600, newPAP.getIstd(), null, sprmList);
     }
     if (newPAP.getJc() != oldPAP.getJc())
     {
-      // sprmPJc80 
+      // sprmPJc80
       size += SprmUtils.addSprm((short)0x2403, newPAP.getJc(), null, sprmList);
     }
     if (newPAP.getFSideBySide() != oldPAP.getFSideBySide())
     {
-      // sprmPFSideBySide 
+      // sprmPFSideBySide
       size += SprmUtils.addSprm((short)0x2404, newPAP.getFSideBySide(), sprmList);
     }
     if (newPAP.getFKeep() != oldPAP.getFKeep())
@@ -112,19 +112,19 @@ public final class ParagraphSprmCompressor
     }
     if (newPAP.getDxaLeft() != oldPAP.getDxaLeft())
     {
-      // sprmPDxaLeft80 
+      // sprmPDxaLeft80
       size += SprmUtils.addSprm((short)0x840F, newPAP.getDxaLeft(), null, sprmList);
     }
 
     // Page 51 of public specification begins
     if (newPAP.getDxaLeft1() != oldPAP.getDxaLeft1())
     {
-      // sprmPDxaLeft180 
+      // sprmPDxaLeft180
       size += SprmUtils.addSprm((short)0x8411, newPAP.getDxaLeft1(), null, sprmList);
     }
     if (newPAP.getDxaRight() != oldPAP.getDxaRight())
     {
-      // sprmPDxaRight80  
+      // sprmPDxaRight80
       size += SprmUtils.addSprm((short)0x840E, newPAP.getDxaRight(), null, sprmList);
     }
     if (newPAP.getDxcLeft() != oldPAP.getDxcLeft())
@@ -195,7 +195,7 @@ public final class ParagraphSprmCompressor
       // sprmPDxaWidth
       size += SprmUtils.addSprm((short)0x841A, newPAP.getDxaWidth(), null, sprmList);
     }
-    
+
     // Page 52 of public specification begins
     if (newPAP.getWr() != oldPAP.getWr())
     {
@@ -210,13 +210,13 @@ public final class ParagraphSprmCompressor
     }
     if (!newPAP.getBrcBottom().equals(oldPAP.getBrcBottom()))
     {
-      // sprmPBrcBottom80  
+      // sprmPBrcBottom80
       int brc = newPAP.getBrcBottom().toInt();
       size += SprmUtils.addSprm((short)0x6426, brc, null, sprmList);
     }
     if (!newPAP.getBrcLeft().equals(oldPAP.getBrcLeft()))
     {
-      // sprmPBrcLeft80  
+      // sprmPBrcLeft80
       int brc = newPAP.getBrcLeft().toInt();
       size += SprmUtils.addSprm((short)0x6425, brc, null, sprmList);
     }
@@ -230,7 +230,7 @@ public final class ParagraphSprmCompressor
     }
     if (!newPAP.getBrcTop().equals(oldPAP.getBrcTop()))
     {
-      // sprmPBrcTop80 
+      // sprmPBrcTop80
       int brc = newPAP.getBrcTop().toInt();
       size += SprmUtils.addSprm((short)0x6424, brc, null, sprmList);
     }
@@ -251,7 +251,7 @@ public final class ParagraphSprmCompressor
     }
     if (newPAP.getDcs() != null && !newPAP.getDcs().equals(oldPAP.getDcs()))
     {
-      // sprmPDcs 
+      // sprmPDcs
       size += SprmUtils.addSprm((short)0x442C, newPAP.getDcs().toShort(), null, sprmList);
     }
     if (newPAP.getDyaFromText() != oldPAP.getDyaFromText())
@@ -325,7 +325,7 @@ public final class ParagraphSprmCompressor
     }
     if (!Arrays.equals(newPAP.getAnld(), oldPAP.getAnld()))
     {
-      // sprmPAnld80 
+      // sprmPAnld80
       size += SprmUtils.addSprm((short)0xC63E, 0, newPAP.getAnld(), sprmList);
     }
     if (newPAP.getFPropRMark() != oldPAP.getFPropRMark() ||
@@ -341,17 +341,17 @@ public final class ParagraphSprmCompressor
     }
     if (newPAP.getLvl() != oldPAP.getLvl())
     {
-      // sprmPOutLvl 
+      // sprmPOutLvl
       size += SprmUtils.addSprm((short)0x2640, newPAP.getLvl(), null, sprmList);
     }
     if (newPAP.getFBiDi() != oldPAP.getFBiDi())
     {
-      // sprmPFBiDi 
+      // sprmPFBiDi
       size += SprmUtils.addSprm((short)0x2441, newPAP.getFBiDi(), sprmList);
     }
     if (newPAP.getFNumRMIns() != oldPAP.getFNumRMIns())
     {
-      // sprmPFNumRMIns 
+      // sprmPFNumRMIns
       size += SprmUtils.addSprm((short)0x2443, newPAP.getFNumRMIns(), sprmList);
     }
     if (!Arrays.equals(newPAP.getNumrm(), oldPAP.getNumrm()))
@@ -366,14 +366,14 @@ public final class ParagraphSprmCompressor
     }
     if (newPAP.getFTtpEmbedded() != oldPAP.getFTtpEmbedded())
     {
-      // sprmPFInnerTtp 
+      // sprmPFInnerTtp
       size += SprmUtils.addSprm((short)0x244c, newPAP.getFTtpEmbedded(), sprmList);
     }
 
     if (newPAP.getShd() != null && !newPAP.getShd().equals(oldPAP.getShd()))
     {
         // size += SprmUtils.addSprm((short)0x442D, newPAP.getShd().toShort(), null, sprmList);
-        // sprmPShd  -- 0xc64d 
+        // sprmPShd  -- 0xc64d
         size += SprmUtils.addSprm( (short) 0xc64d, 0, newPAP.getShd().serialize(), sprmList );
     }
 

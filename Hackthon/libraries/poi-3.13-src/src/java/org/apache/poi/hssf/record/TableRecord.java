@@ -142,7 +142,7 @@ public final class TableRecord extends SharedValueRecordBase {
 		return sid;
 	}
 	protected int getExtraDataSize() {
-		return 
+		return
 		2 // 2 byte fields
 		+ 8; // 4 short fields
 	}

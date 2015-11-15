@@ -41,14 +41,14 @@ public class ReSave {
                 HSSFWorkbook wb = new HSSFWorkbook(is);
                 try {
                     System.out.println("done");
-    
+
                     for(int i = 0; i < wb.getNumberOfSheets(); i++){
                         HSSFSheet sheet = wb.getSheetAt(i);
                         if(initDrawing) {
                             /*HSSFPatriarch dg =*/ sheet.getDrawingPatriarch();
                         }
                     }
-    
+
                     String outputFile = filename.replace(".xls", "-saved.xls");
                     System.out.print("saving to " + outputFile + "...");
                     FileOutputStream out = new FileOutputStream(outputFile);

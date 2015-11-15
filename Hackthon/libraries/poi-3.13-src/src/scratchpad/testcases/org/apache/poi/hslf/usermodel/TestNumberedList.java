@@ -33,7 +33,7 @@ import org.junit.Test;
 
 /**
  * Test that checks numbered list functionality.
- * 
+ *
  * @author Alex Nikiforov [mailto:anikif@gmail.com]
  */
 public final class TestNumberedList {
@@ -65,7 +65,7 @@ public final class TestNumberedList {
 		assertTrue(AutoNumberingScheme.arabicPeriod == autoNumbers[0].getAutoNumberScheme());
 		assertNull(autoNumbers[1].getAutoNumberScheme());
 		assertTrue(AutoNumberingScheme.alphaLcParenRight == autoNumbers[2].getAutoNumberScheme());
-			
+
 		List<List<HSLFTextParagraph>> textParass = s.getTextParagraphs();
 		assertEquals(2, textParass.size());
 
@@ -81,7 +81,7 @@ public final class TestNumberedList {
 	        "Second paragraph first line c) ;\r" +
 	        "Second paragraph second line d) . \r";
 		assertEquals(expected, HSLFTextParagraph.getRawText(textParass.get(1)));
-		
+
 		final EscherTextboxWrapper[] styleAtoms = s.getTextboxWrappers();
 		assertEquals(textParass.size(), styleAtoms.length);
 		final EscherTextboxWrapper wrapper =  styleAtoms[1];
@@ -121,15 +121,15 @@ public final class TestNumberedList {
 	        "follows the design pattern\r" +
 	        "Just a test\rWithout any paragraph\r" +
 	        "Second paragraph first line c) ;\r" +
-	        "Second paragraph second line d) . \r";		        
+	        "Second paragraph second line d) . \r";
 		assertEquals(expected, HSLFTextParagraph.getRawText(textParass.get(1)));
-		
+
 		final EscherTextboxWrapper[] styleAtoms = s.getTextboxWrappers();
 		assertEquals(textParass.size(), styleAtoms.length);
 		final EscherTextboxWrapper wrapper =  styleAtoms[1];
 		final StyleTextPropAtom styleTextPropAtom = wrapper.getStyleTextPropAtom();
 		final List<TextPropCollection> textProps = styleTextPropAtom.getCharacterStyles();
-		
+
 		assertEquals(33, textProps.get(0).getCharactersCovered());
 		assertEquals(61, textProps.get(1).getCharactersCovered());
 		assertEquals(68, textProps.get(2).getCharactersCovered());

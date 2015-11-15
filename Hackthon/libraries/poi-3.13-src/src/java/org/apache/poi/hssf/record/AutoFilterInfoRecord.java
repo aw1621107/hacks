@@ -97,5 +97,5 @@ public final class AutoFilterInfoRecord
     {
     	return cloneViaReserialise();
     }
-    
+
 }

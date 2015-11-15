@@ -544,7 +544,7 @@ public final class CharacterRun extends Range
     /**
      * clone the CharacterProperties object associated with this characterRun so
      * that you can apply it to another CharacterRun
-     * 
+     *
      * @deprecated This method shall not be public and should not be called from
      *             high-level code
      */
@@ -574,7 +574,7 @@ public final class CharacterRun extends Range
 
     return cp;
   }
-  
+
   /**
    * Returns true, if the CharacterRun is a special character run containing a symbol, otherwise false.
    *
@@ -589,7 +589,7 @@ public final class CharacterRun extends Range
 
   /**
    * Returns the symbol character, if this is a symbol character run.
-   * 
+   *
    * @see #isSymbol()
    * @throws IllegalStateException If this is not a symbol character run: call {@link #isSymbol()} first.
    */
@@ -603,7 +603,7 @@ public final class CharacterRun extends Range
 
   /**
    * Returns the symbol font, if this is a symbol character run. Might return null, if the font index is not found in the font table.
-   * 
+   *
    * @see #isSymbol()
    * @throws IllegalStateException If this is not a symbol character run: call {@link #isSymbol()} first.
    */
@@ -612,7 +612,7 @@ public final class CharacterRun extends Range
     if (isSymbol()) {
       if (_doc.getFontTable() == null)
         return null;
-      
+
       // Fetch all font names
       Ffn[] fontNames = _doc.getFontTable().getFontNames();
 
@@ -624,7 +624,7 @@ public final class CharacterRun extends Range
     } else
       throw new IllegalStateException("Not a symbol CharacterRun");
   }
-  
+
   public BorderCode getBorder() {
     return _props.getBrc();
   }
@@ -632,7 +632,7 @@ public final class CharacterRun extends Range
   public int getLanguageCode() {
       return _props.getLidDefault();
   }
-  
+
   /**
    * <p>Returns the index of the base style which applies to
    *  this Run. Details of the style can be looked up
@@ -646,10 +646,10 @@ public final class CharacterRun extends Range
   public short getStyleIndex() {
     return _istd;
   }
-  
+
   public String toString() {
      String text = text();
-     return "CharacterRun of " + text.length() + " characters - " + text; 
+     return "CharacterRun of " + text.length() + " characters - " + text;
   }
 
     public String[] getDropDownListValues()

@@ -33,7 +33,7 @@ import org.xml.sax.SAXException;
 
 public final class DocumentHelper {
     private static POILogger logger = POILogFactory.getLogger(DocumentHelper.class);
-    
+
     private DocumentHelper() {}
 
     /**
@@ -66,7 +66,7 @@ public final class DocumentHelper {
             logger.log(POILogger.WARN, "Cannot set SAX feature because outdated XML parser in classpath", feature, ame);
         }
     }
-    
+
     private static void trySetXercesSecurityManager(DocumentBuilderFactory documentBuilderFactory) {
         // Try built-in JVM one first, standalone if not
         for (String securityManagerClassName : new String[] {
@@ -90,7 +90,7 @@ public final class DocumentHelper {
      * Parses the given stream via the default (sensible)
      * DocumentBuilder
      * @param inp Stream to read the XML data from
-     * @return the parsed Document 
+     * @return the parsed Document
      */
     public static Document readDocument(InputStream inp) throws IOException, SAXException {
         return newDocumentBuilder().parse(inp);

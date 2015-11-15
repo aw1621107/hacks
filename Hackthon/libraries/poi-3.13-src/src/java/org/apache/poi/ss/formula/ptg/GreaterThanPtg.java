@@ -23,7 +23,7 @@ package org.apache.poi.ss.formula.ptg;
  * @author  Cameron Riley (criley at ekmail.com)
  */
 public final class GreaterThanPtg extends ValueOperatorPtg {
-    public final static byte sid  = 0x0D;    
+    public final static byte sid  = 0x0D;
     private final static String GREATERTHAN = ">";
 
     public static final ValueOperatorPtg instance = new GreaterThanPtg();
@@ -31,7 +31,7 @@ public final class GreaterThanPtg extends ValueOperatorPtg {
     private GreaterThanPtg() {
     	// enforce singleton
     }
-    
+
     protected byte getSid() {
     	return sid;
     }
@@ -43,13 +43,13 @@ public final class GreaterThanPtg extends ValueOperatorPtg {
     public int getNumberOfOperands() {
         return 2;
     }
-    
-    /** 
+
+    /**
      * Implementation of method from OperationsPtg
      * @param operands a String array of operands
      * @return String the Formula as a String
-     */  
-    public String toFormulaString(String[] operands) 
+     */
+    public String toFormulaString(String[] operands)
     {
         StringBuffer buffer = new StringBuffer();
 

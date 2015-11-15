@@ -148,7 +148,7 @@ public final class PAPX extends BytePropertyNode<PAPX> {
         // TODO Fix up for Word 6/95
         return new ParagraphProperties();
     }
-      
+
     short istd = getIstd();
     ParagraphProperties baseStyle = ss.getParagraphStyle(istd);
     ParagraphProperties props = ParagraphSprmUncompressor.uncompressPAP(baseStyle, getGrpprl(), 2);

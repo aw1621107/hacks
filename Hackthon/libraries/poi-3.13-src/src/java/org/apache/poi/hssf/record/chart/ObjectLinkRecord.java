@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * Links text to an object on the chart or identifies it as the title.<p/>
- * 
+ *
  * @author Andrew C. Oliver (acoliver at apache.org)
  */
 public final class ObjectLinkRecord extends StandardRecord {
@@ -60,15 +60,15 @@ public final class ObjectLinkRecord extends StandardRecord {
         buffer.append("    .anchorId             = ")
             .append("0x").append(HexDump.toHex(  getAnchorId ()))
             .append(" (").append( getAnchorId() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .link1                = ")
             .append("0x").append(HexDump.toHex(  getLink1 ()))
             .append(" (").append( getLink1() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .link2                = ")
             .append("0x").append(HexDump.toHex(  getLink2 ()))
             .append(" (").append( getLink2() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/OBJECTLINK]\n");
         return buffer.toString();
@@ -91,7 +91,7 @@ public final class ObjectLinkRecord extends StandardRecord {
 
     public Object clone() {
         ObjectLinkRecord rec = new ObjectLinkRecord();
-    
+
         rec.field_1_anchorId = field_1_anchorId;
         rec.field_2_link1 = field_2_link1;
         rec.field_3_link2 = field_3_link2;
@@ -104,7 +104,7 @@ public final class ObjectLinkRecord extends StandardRecord {
     /**
      * Get the anchor id field for the ObjectLink record.
      *
-     * @return  One of 
+     * @return  One of
      *        ANCHOR_ID_CHART_TITLE
      *        ANCHOR_ID_Y_AXIS
      *        ANCHOR_ID_X_AXIS
@@ -120,7 +120,7 @@ public final class ObjectLinkRecord extends StandardRecord {
      * Set the anchor id field for the ObjectLink record.
      *
      * @param field_1_anchorId
-     *        One of 
+     *        One of
      *        ANCHOR_ID_CHART_TITLE
      *        ANCHOR_ID_Y_AXIS
      *        ANCHOR_ID_X_AXIS

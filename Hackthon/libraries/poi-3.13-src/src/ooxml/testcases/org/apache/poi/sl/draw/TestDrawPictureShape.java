@@ -56,7 +56,7 @@ public class TestDrawPictureShape {
             new DrawPictureShape(picShape).resize();
             Dimension dimShape = picShape.getAnchor().getSize();
             assertEquals(dimPd, dimShape);
-            
+
             int newWidth = (int)(dimPd.getWidth()*(100d/dimPd.getHeight()));
             // ... -1 is a rounding error
             Rectangle expRect = new Rectangle(50+300-newWidth-1, 50, newWidth, 100);
@@ -66,6 +66,6 @@ public class TestDrawPictureShape {
             assertEquals(expRect, actRect);
         }
     }
-    
-    
+
+
 }

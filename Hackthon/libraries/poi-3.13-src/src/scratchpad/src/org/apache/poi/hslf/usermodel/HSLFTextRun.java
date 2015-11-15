@@ -45,7 +45,7 @@ public final class HSLFTextRun implements TextRun {
 	private HSLFTextParagraph parentParagraph;
 	private String _runText = "";
 	private String _fontFamily;
-	
+
 	/**
 	 * Our paragraph and character style.
 	 * Note - we may share these styles with other RichTextRuns
@@ -59,7 +59,7 @@ public final class HSLFTextRun implements TextRun {
 	public HSLFTextRun(HSLFTextParagraph parentParagraph) {
 		this.parentParagraph = parentParagraph;
 	}
-	
+
 	public TextPropCollection getCharacterStyle() {
 	    return characterStyle;
 	}
@@ -68,7 +68,7 @@ public final class HSLFTextRun implements TextRun {
 	    assert(characterStyle != null);
 	    this.characterStyle = characterStyle;
 	}
-	
+
 	/**
 	 * Supply the SlideShow we belong to
 	 */
@@ -347,7 +347,7 @@ public final class HSLFTextRun implements TextRun {
     public void setFontColor(Color color) {
         setFontColor(DrawPaint.createSolidPaint(color));
     }
-	
+
 	@Override
 	public void setFontColor(PaintStyle color) {
 	    if (!(color instanceof SolidPaint)) {
@@ -368,7 +368,7 @@ public final class HSLFTextRun implements TextRun {
     public HSLFTextParagraph getTextParagraph() {
         return parentParagraph;
     }
-    
+
     public TextCap getTextCap() {
         return TextCap.NONE;
     }

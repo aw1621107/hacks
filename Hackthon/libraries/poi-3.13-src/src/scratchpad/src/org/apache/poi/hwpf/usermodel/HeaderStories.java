@@ -50,7 +50,7 @@ public final class HeaderStories {
 
         if (fib.getSubdocumentTextStreamLength( SubdocumentType.HEADER ) == 0)
 		    return;
-		
+
 		if(fib.getPlcfHddSize() == 0) {
 			return;
 		}
@@ -58,7 +58,7 @@ public final class HeaderStories {
         // Handle the PlcfHdd
         /*
          * Page 88:
-         * 
+         *
          * "The plcfhdd, a table whose location and length within the file is
          * stored in fib.fcPlcfhdd and fib.cbPlcfhdd, describes where the text
          * of each header/footer begins. If there are n headers/footers stored
@@ -69,11 +69,11 @@ public final class HeaderStories {
          * plcfhdd. Note: at the limit CP - 1, Word always places a chEop as a
          * placeholder which is never displayed as part of the header/footer.
          * This allows Word to change an existing header/footer to be empty.
-         * 
+         *
          * If there are n header/footers, the n+2nd CP entry value is always 1
          * greater than the n+1st CP entry value. A paragraph end (ASCII 13) is
          * always stored at the file position marked by the n+1st CP value.
-         * 
+         *
          * The transformation in a full saved file from a header/footer CP to an
          * offset from the beginning of a file (fc) is
          * fc=fib.fcMin+ccpText+ccpFtn+cp."
@@ -160,7 +160,7 @@ public final class HeaderStories {
 	public String getFirstHeader() {
 		return getAt(6+4);
 	}
-	
+
 
     public Range getEvenHeaderSubrange() {
         return getSubrangeAt(6+0);
@@ -171,7 +171,7 @@ public final class HeaderStories {
     public Range getFirstHeaderSubrange() {
         return getSubrangeAt(6+4);
     }
-    
+
 	/**
 	 * Returns the correct, defined header for the given
 	 *  one based page

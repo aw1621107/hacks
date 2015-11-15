@@ -25,14 +25,14 @@ import org.apache.poi.util.IntMapper;
 
 /**
  * Tests that records size calculates correctly.
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class TestSSTRecordSizeCalculator extends TestCase {
 	private static final String SMALL_STRING = "Small string";
 	private static final int COMPRESSED_PLAIN_STRING_OVERHEAD = 3;
 	private static final int OPTION_FIELD_SIZE = 1;
-	
+
 	private final IntMapper<UnicodeString> strings = new IntMapper<UnicodeString>();
 
 	private void confirmSize(int expectedSize) {

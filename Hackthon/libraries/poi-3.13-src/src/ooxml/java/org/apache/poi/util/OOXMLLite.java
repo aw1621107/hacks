@@ -90,13 +90,13 @@ public final class OOXMLLite {
         List<Class<?>> lst = new ArrayList<Class<?>>();
         //collect unit tests
         System.out.println("Collecting unit tests from " + _testDir);
-        collectTests(_testDir, _testDir, lst, ".+.class$", 
+        collectTests(_testDir, _testDir, lst, ".+.class$",
                 ".+(BaseTestXCell|TestUnfixedBugs|MemoryUsage|TestDataProvider|TestDataSamples|All.+Tests|ZipFileAssert|PkiTestUtils|TestCellFormatPart\\$\\d|TestSignatureInfo\\$\\d|"
                 + "TestSXSSFWorkbook\\$\\d|TestCertificateEncryption\\$CertData|TestPOIXMLDocument\\$OPCParser|TestPOIXMLDocument\\$TestFactory|TestXSLFTextParagraph\\$DrawTextParagraphProxy|"
                 + "TestXSSFExportToXML\\$\\d|TestXSSFExportToXML\\$DummyEntityResolver|TestSXSSFWorkbook\\$NullOutputStream|TestFormulaEvaluatorOnXSSF\\$Result|TestFormulaEvaluatorOnXSSF\\$SS|"
                 + "TestMultiSheetFormulaEvaluatorOnXSSF\\$Result|TestMultiSheetFormulaEvaluatorOnXSSF\\$SS|TestXSSFBugs\\$\\d).class");
         System.out.println("Found " + lst.size() + " classes");
-        
+
         //run tests
         JUnitCore jUnitCore = new JUnitCore();
         jUnitCore.addListener(new TextListener(System.out));
@@ -150,7 +150,7 @@ public final class OOXMLLite {
                 return true;
             }
         }
-        
+
         // also check super classes
         if(testclass.getSuperclass() != null) {
             for (Method m : testclass.getSuperclass().getDeclaredMethods()) {
@@ -159,7 +159,7 @@ public final class OOXMLLite {
                 }
             }
         }
-        
+
         System.out.println("Class " + testclass.getName() + " does not derive from TestCase and does not have a @Test annotation");
 
         // Should we also look at superclasses to find cases
@@ -211,7 +211,7 @@ public final class OOXMLLite {
      */
     @SuppressWarnings("unchecked")
     private static Map<String, Class<?>> getLoadedClasses(String ptrn) {
-        // make the field accessible, we defer this from static initialization to here to 
+        // make the field accessible, we defer this from static initialization to here to
         // allow JDKs which do not have this field (e.g. IBM JDK) to at least load the class
         // without failing, see https://issues.apache.org/bugzilla/show_bug.cgi?id=56550
         try {
@@ -233,7 +233,7 @@ public final class OOXMLLite {
                 if (cs == null) continue;
                 URL loc = cs.getLocation();
                 if (loc == null) continue;
-                
+
                 String jar = loc.toString();
                 if(jar.indexOf(ptrn) != -1) map.put(cls.getName(), cls);
             }

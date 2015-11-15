@@ -22,7 +22,7 @@ import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.HWPFTestDataSamples;
 
 /**
- * Bug 47563 - Exception when working with table 
+ * Bug 47563 - Exception when working with table
  */
 public class TestBug47563 extends TestCase {
 
@@ -65,7 +65,7 @@ public class TestBug47563 extends TestCase {
 
 				par.insertBefore("" + (rowIdx * row.numCells() + colIdx));
 				par.sanityCheck();
-				
+
 				row.sanityCheck();
 				table.sanityCheck();
 				range.sanityCheck();
@@ -77,7 +77,7 @@ public class TestBug47563 extends TestCase {
 		int mustBeAfter = 0;
 		for (int i = 0; i < rows * columns; i++) {
 			int next = text.indexOf(Integer.toString(i), mustBeAfter);
-			assertTrue("Test with " + rows + "/" + columns + ": Should not find " + i + " but found it at " + next + " in " + text, 
+			assertTrue("Test with " + rows + "/" + columns + ": Should not find " + i + " but found it at " + next + " in " + text,
 					next != -1);
 			mustBeAfter = next;
 		}

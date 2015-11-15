@@ -39,7 +39,7 @@ import org.junit.runners.Parameterized.Parameters;
 /**
  * Base class for integration-style tests which iterate over all test-files
  * and execute the same action to find out if any change breaks these applications.
- * 
+ *
  * This test uses {@link Parameterized} to run the test for each file separatedely.
  */
 @RunWith(Parameterized.class)
@@ -58,10 +58,10 @@ public abstract class BaseXLSIteratingTest {
         List<Object[]> files = new ArrayList<Object[]>();
         findFile(files, dataDirName + "/spreadsheet");
         findFile(files, dataDirName + "/hpsf");
-        
+
         return files;
     }
-	
+
     private static void findFile(List<Object[]> list, String dir) {
         String[] files = new File(dir).list(new FilenameFilter() {
             @Override
@@ -69,17 +69,17 @@ public abstract class BaseXLSIteratingTest {
                 return arg1.toLowerCase(Locale.ROOT).endsWith(".xls");
             }
         });
-        
+
         assertNotNull("Did not find any xls files in directory " + dir, files);
-        
+
         for(String file : files) {
             list.add(new Object[] { new File(dir, file) });
         }
     }
-    
+
     @Parameter
     public File file;
-    
+
 	@Test
 	public void testMain() throws Exception {
 		try {
@@ -90,7 +90,7 @@ public abstract class BaseXLSIteratingTest {
 
 			System.out.println("Failed: " + file);
 			e.printStackTrace();
-			
+
 			// try to read it in HSSFWorkbook to quickly fail if we cannot read the file there at all and thus probably should use EXCLUDED instead
 			FileInputStream stream = new FileInputStream(file);
 			try {

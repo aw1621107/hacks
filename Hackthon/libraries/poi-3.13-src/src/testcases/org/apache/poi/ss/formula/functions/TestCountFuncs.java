@@ -385,7 +385,7 @@ public final class TestCountFuncs extends TestCase {
 	public void testCountifBug51498() throws Exception {
 		final int REF_COL = 4;
 		final int EVAL_COL = 3;
-		
+
         HSSFWorkbook workbook = HSSFTestDataSamples.openSampleWorkbook("51498.xls");
 		FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
 		HSSFSheet sheet = workbook.getSheetAt(0);

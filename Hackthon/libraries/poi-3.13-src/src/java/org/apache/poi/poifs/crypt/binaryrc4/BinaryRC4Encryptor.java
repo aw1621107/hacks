@@ -41,7 +41,7 @@ import org.apache.poi.util.LittleEndianByteArrayOutputStream;
 public class BinaryRC4Encryptor extends Encryptor {
 
     private final BinaryRC4EncryptionInfoBuilder builder;
-    
+
     protected class BinaryRC4CipherOutputStream extends ChunkedCipherOutputStream {
 
         protected Cipher initCipherForBlock(Cipher cipher, int block, boolean lastChunk)

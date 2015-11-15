@@ -64,7 +64,7 @@ public final class Types {
    /** Binary - counted byte array */
    public static final MAPIType BINARY = new MAPIType(0x0102, "Binary", -1);
 
-   /** 
+   /**
     * An 8-bit string, probably in CP1252, but don't quote us...
     * Normally used for everything before Outlook 3.0, and some
     *  fields in Outlook 3.0.
@@ -80,7 +80,7 @@ public final class Types {
       private final int id;
       private final String name;
       private final int length;
-   
+
       /**
        * Creates a standard, built-in type
        */
@@ -99,7 +99,7 @@ public final class Types {
          this.length = length;
          customTypes.put(id, this);
       }
-      
+
       /**
        * Returns the length, in bytes, of values of this type, or
        *  -1 if it is a variable length type.
@@ -113,18 +113,18 @@ public final class Types {
       public boolean isFixedLength() {
          return (length != -1);
       }
-      
+
       public int getId() {
          return id;
       }
       public String getName() {
          return name;
       }
-      
+
       public String toString() {
          return id + " / 0x" + asFileEnding() + " - " + name + " @ " + length;
       }
-      
+
       /**
        * Return the 4 character hex encoded version,
        *  as used in file endings
@@ -133,7 +133,7 @@ public final class Types {
          return Types.asFileEnding(id);
       }
    }
-   
+
    public static MAPIType getById(int typeId) {
       return builtInTypes.get(typeId);
    }
@@ -155,16 +155,16 @@ public final class Types {
    private static String asCustomName(int typeId) {
       return "0x" + Integer.toHexString(typeId);
    }
-   
+
    public static MAPIType createCustom(int typeId) {
       // Check they're not being silly, and asking for a built-in one...
       if (getById(typeId) != null) {
          return getById(typeId);
       }
-      
+
       // Try to get an existing definition of this
       MAPIType type = customTypes.get(typeId);
-      
+
       // If none, do a thread-safe creation
       if (type == null) {
          synchronized (customTypes) {
@@ -174,7 +174,7 @@ public final class Types {
             }
          }
       }
-      
+
       return type;
    }
 }

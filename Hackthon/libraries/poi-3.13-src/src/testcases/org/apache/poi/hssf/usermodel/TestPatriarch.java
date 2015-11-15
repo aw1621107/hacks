@@ -44,9 +44,9 @@ public class TestPatriarch extends TestCase {
 
         EscherDgRecord dg = agg.getEscherContainer().getChildById(EscherDgRecord.RECORD_ID);
         int lastId = dg.getLastMSOSPID();
-        
+
         assertSame(patriarch, sh.createDrawingPatriarch());
-        
+
         wb = HSSFTestDataSamples.writeOutAndReadBack(wb);
         sh = wb.getSheetAt(0);
         patriarch = sh.createDrawingPatriarch();

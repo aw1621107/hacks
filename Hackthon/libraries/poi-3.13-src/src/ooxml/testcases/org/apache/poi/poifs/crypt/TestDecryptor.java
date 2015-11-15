@@ -93,7 +93,7 @@ public class TestDecryptor {
             // zin.available() doesn't work for entries
             assertEquals("size failed for "+entry.getName(), -1, readBytes);
         }
-        
+
         zin.close();
     }
 
@@ -133,7 +133,7 @@ public class TestDecryptor {
     @Test
     public void bug57080() throws Exception {
         // the test file contains a wrong ole entry size, produced by extenxls
-        // the fix limits the available size and tries to read all entries 
+        // the fix limits the available size and tries to read all entries
         File f = POIDataSamples.getPOIFSInstance().getFile("extenxls_pwd123.xlsx");
         NPOIFSFileSystem fs = new NPOIFSFileSystem(f, true);
         EncryptionInfo info = new EncryptionInfo(fs);
@@ -147,7 +147,7 @@ public class TestDecryptor {
             IOUtils.copy(zis, bos);
             assertEquals(ze.getSize(), bos.size());
         }
-        
+
         zis.close();
         fs.close();
     }

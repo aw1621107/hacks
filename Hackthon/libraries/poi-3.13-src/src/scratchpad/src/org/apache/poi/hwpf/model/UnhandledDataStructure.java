@@ -24,7 +24,7 @@ import org.apache.poi.util.Internal;
 /**
  * A data structure used to hold some data we don't
  *  understand / can't handle, so we have it available
- *  for when we come to write back out again 
+ *  for when we come to write back out again
  */
 @Internal
 public final class UnhandledDataStructure
@@ -38,7 +38,7 @@ public final class UnhandledDataStructure
     if (offsetEnd > buf.length || offsetEnd < 0)
     {
       throw new IndexOutOfBoundsException("Buffer Length is " + buf.length + " " +
-                                          "but code is tried to read " + length + " " + 
+                                          "but code is tried to read " + length + " " +
                                           "from offset " + offset + " to " + offsetEnd);
     }
     if (offset < 0 || length < 0)
@@ -46,8 +46,8 @@ public final class UnhandledDataStructure
        throw new IndexOutOfBoundsException("Offset and Length must both be >= 0, negative " +
        		"indicies are not permitted - code is tried to read " + length + " from offset " + offset);
     }
-    
-    // Save that requested portion of the data 
+
+    // Save that requested portion of the data
     _buf = copyOfRange(buf, offset, offsetEnd);
 
   }

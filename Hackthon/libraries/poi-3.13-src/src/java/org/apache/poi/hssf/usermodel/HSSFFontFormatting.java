@@ -138,7 +138,7 @@ public final class HSSFFontFormatting implements org.apache.poi.ss.usermodel.Fon
     }
 
     /**
-     * @return true if escapement type was modified from default   
+     * @return true if escapement type was modified from default
      */
     public boolean isEscapementTypeModified()
     {
@@ -146,7 +146,7 @@ public final class HSSFFontFormatting implements org.apache.poi.ss.usermodel.Fon
     }
 
     /**
-     * @return true if font cancellation was modified from default   
+     * @return true if font cancellation was modified from default
      */
     public boolean isFontCancellationModified()
     {
@@ -154,7 +154,7 @@ public final class HSSFFontFormatting implements org.apache.poi.ss.usermodel.Fon
     }
 
     /**
-     * @return true if font outline type was modified from default   
+     * @return true if font outline type was modified from default
      */
     public boolean isFontOutlineModified()
     {
@@ -162,7 +162,7 @@ public final class HSSFFontFormatting implements org.apache.poi.ss.usermodel.Fon
     }
 
     /**
-     * @return true if font shadow type was modified from default   
+     * @return true if font shadow type was modified from default
      */
     public boolean isFontShadowModified()
     {
@@ -170,7 +170,7 @@ public final class HSSFFontFormatting implements org.apache.poi.ss.usermodel.Fon
     }
 
     /**
-     * @return true if font style was modified from default   
+     * @return true if font style was modified from default
      */
     public boolean isFontStyleModified()
     {
@@ -178,7 +178,7 @@ public final class HSSFFontFormatting implements org.apache.poi.ss.usermodel.Fon
     }
 
     /**
-     * @return true if font style was set to <i>italic</i> 
+     * @return true if font style was set to <i>italic</i>
      */
     public boolean isItalic()
     {
@@ -210,7 +210,7 @@ public final class HSSFFontFormatting implements org.apache.poi.ss.usermodel.Fon
     }
 
     /**
-     * @return true if font underline type was modified from default   
+     * @return true if font underline type was modified from default
      */
     public boolean isUnderlineTypeModified()
     {
@@ -218,7 +218,7 @@ public final class HSSFFontFormatting implements org.apache.poi.ss.usermodel.Fon
     }
 
     /**
-     * @return true if font weight was modified from default   
+     * @return true if font weight was modified from default
      */
     public boolean isFontWeightModified()
     {
@@ -227,8 +227,8 @@ public final class HSSFFontFormatting implements org.apache.poi.ss.usermodel.Fon
 
     /**
      * set font style options.
-     * 
-     * @param italic - if true, set posture style to italic, otherwise to normal 
+     *
+     * @param italic - if true, set posture style to italic, otherwise to normal
      * @param bold if true, set font weight to bold, otherwise to normal
      */
 
@@ -384,7 +384,7 @@ public final class HSSFFontFormatting implements org.apache.poi.ss.usermodel.Fon
                 fontFormatting.setUnderlineType(underlineType);
                 setUnderlineTypeModified(true);
                 break;
-    
+
             case HSSFFontFormatting.U_NONE:
                 fontFormatting.setUnderlineType(underlineType);
                 setUnderlineTypeModified(false);

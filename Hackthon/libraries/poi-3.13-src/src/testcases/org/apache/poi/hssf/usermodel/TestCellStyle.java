@@ -125,7 +125,7 @@ public final class TestCellStyle extends TestCase {
         assertEquals("LAST ROW ", 0, s.getLastRowNum());
         assertEquals("FIRST ROW ", 0, s.getFirstRowNum());
     }
-    
+
     public void testHashEquals() throws IOException {
         HSSFWorkbook     wb   = new HSSFWorkbook();
         HSSFSheet        s    = wb.createSheet();
@@ -134,26 +134,26 @@ public final class TestCellStyle extends TestCase {
         HSSFRow row = s.createRow(0);
         HSSFCell cell1 = row.createCell(1);
         HSSFCell cell2 = row.createCell(2);
-        
+
         cs1.setDataFormat(HSSFDataFormat.getBuiltinFormat("m/d/yy"));
         cs2.setDataFormat(HSSFDataFormat.getBuiltinFormat("m/dd/yy"));
-        
+
         cell1.setCellStyle(cs1);
         cell1.setCellValue(new Date());
-        
+
         cell2.setCellStyle(cs2);
         cell2.setCellValue(new Date());
-        
+
         assertEquals(cs1.hashCode(), cs1.hashCode());
         assertEquals(cs2.hashCode(), cs2.hashCode());
         assertTrue(cs1.equals(cs1));
         assertTrue(cs2.equals(cs2));
-        
+
         // Change cs1, hash will alter
         int hash1 = cs1.hashCode();
         cs1.setDataFormat(HSSFDataFormat.getBuiltinFormat("m/dd/yy"));
         assertFalse(hash1 == cs1.hashCode());
-        
+
         wb.close();
     }
 
@@ -211,7 +211,7 @@ public final class TestCellStyle extends TestCase {
         assertEquals("LAST ROW == 99", 99, s.getLastRowNum());
         assertEquals("FIRST ROW == 0", 0, s.getFirstRowNum());
     }
-    
+
     /**
      * Cloning one HSSFCellStyle onto Another, same
      *  HSSFWorkbook
@@ -221,63 +221,63 @@ public final class TestCellStyle extends TestCase {
         HSSFFont fnt = wb.createFont();
         fnt.setFontName("TestingFont");
         assertEquals(5, wb.getNumberOfFonts());
-        
+
         HSSFCellStyle orig = wb.createCellStyle();
         orig.setAlignment(HSSFCellStyle.ALIGN_RIGHT);
         orig.setFont(fnt);
         orig.setDataFormat((short)18);
-        
+
         assertTrue(HSSFCellStyle.ALIGN_RIGHT == orig.getAlignment());
         assertTrue(fnt == orig.getFont(wb));
         assertTrue(18 == orig.getDataFormat());
-        
+
         HSSFCellStyle clone = wb.createCellStyle();
         assertFalse(HSSFCellStyle.ALIGN_RIGHT == clone.getAlignment());
         assertFalse(fnt == clone.getFont(wb));
         assertFalse(18 == clone.getDataFormat());
-        
+
         clone.cloneStyleFrom(orig);
         assertTrue(HSSFCellStyle.ALIGN_RIGHT == clone.getAlignment());
         assertTrue(fnt == clone.getFont(wb));
         assertTrue(18 == clone.getDataFormat());
         assertEquals(5, wb.getNumberOfFonts());
     }
-    
+
     /**
      * Cloning one HSSFCellStyle onto Another, across
      *  two different HSSFWorkbooks
      */
     public void testCloneStyleDiffWB() {
         HSSFWorkbook wbOrig = new HSSFWorkbook();
-        
+
         HSSFFont fnt = wbOrig.createFont();
         fnt.setFontName("TestingFont");
         assertEquals(5, wbOrig.getNumberOfFonts());
-        
+
         HSSFDataFormat fmt = wbOrig.createDataFormat();
         fmt.getFormat("MadeUpOne");
         fmt.getFormat("MadeUpTwo");
-        
+
         HSSFCellStyle orig = wbOrig.createCellStyle();
         orig.setAlignment(HSSFCellStyle.ALIGN_RIGHT);
         orig.setFont(fnt);
         orig.setDataFormat(fmt.getFormat("Test##"));
-        
+
         assertTrue(HSSFCellStyle.ALIGN_RIGHT == orig.getAlignment());
         assertTrue(fnt == orig.getFont(wbOrig));
         assertTrue(fmt.getFormat("Test##") == orig.getDataFormat());
-        
+
         // Now a style on another workbook
         HSSFWorkbook wbClone = new HSSFWorkbook();
         assertEquals(4, wbClone.getNumberOfFonts());
         HSSFDataFormat fmtClone = wbClone.createDataFormat();
-        
+
         HSSFCellStyle clone = wbClone.createCellStyle();
         assertEquals(4, wbClone.getNumberOfFonts());
-        
+
         assertFalse(HSSFCellStyle.ALIGN_RIGHT == clone.getAlignment());
         assertFalse("TestingFont" == clone.getFont(wbClone).getFontName());
-        
+
         clone.cloneStyleFrom(orig);
         assertTrue(HSSFCellStyle.ALIGN_RIGHT == clone.getAlignment());
         assertTrue("TestingFont" == clone.getFont(wbClone).getFontName());
@@ -285,47 +285,47 @@ public final class TestCellStyle extends TestCase {
         assertFalse(fmtClone.getFormat("Test##") == fmt.getFormat("Test##"));
         assertEquals(5, wbClone.getNumberOfFonts());
     }
-    
+
     public void testStyleNames() {
         HSSFWorkbook wb = openSample("WithExtendedStyles.xls");
         HSSFSheet s = wb.getSheetAt(0);
         HSSFCell c1 = s.getRow(0).getCell(0);
         HSSFCell c2 = s.getRow(1).getCell(0);
         HSSFCell c3 = s.getRow(2).getCell(0);
-        
+
         HSSFCellStyle cs1 = c1.getCellStyle();
         HSSFCellStyle cs2 = c2.getCellStyle();
         HSSFCellStyle cs3 = c3.getCellStyle();
-        
+
         assertNotNull(cs1);
         assertNotNull(cs2);
         assertNotNull(cs3);
-        
+
         // Check we got the styles we'd expect
         assertEquals(10, cs1.getFont(wb).getFontHeightInPoints());
         assertEquals(9,  cs2.getFont(wb).getFontHeightInPoints());
         assertEquals(12, cs3.getFont(wb).getFontHeightInPoints());
-        
+
         assertEquals(15, cs1.getIndex());
         assertEquals(23, cs2.getIndex());
         assertEquals(24, cs3.getIndex());
-        
+
         assertNull(cs1.getParentStyle());
         assertNotNull(cs2.getParentStyle());
         assertNotNull(cs3.getParentStyle());
-        
+
         assertEquals(21, cs2.getParentStyle().getIndex());
         assertEquals(22, cs3.getParentStyle().getIndex());
-        
-        // Now check we can get style records for 
+
+        // Now check we can get style records for
         //  the parent ones
         assertNull(wb.getWorkbook().getStyleRecord(15));
         assertNull(wb.getWorkbook().getStyleRecord(23));
         assertNull(wb.getWorkbook().getStyleRecord(24));
-        
+
         assertNotNull(wb.getWorkbook().getStyleRecord(21));
         assertNotNull(wb.getWorkbook().getStyleRecord(22));
-        
+
         // Now check the style names
         assertEquals(null, cs1.getUserStyleName());
         assertEquals(null, cs2.getUserStyleName());
@@ -338,7 +338,7 @@ public final class TestCellStyle extends TestCase {
         c4.setCellStyle(cs2);
         assertEquals("style1", c4.getCellStyle().getParentStyle().getUserStyleName());
     }
-    
+
     public void testGetSetBorderHair() {
     	HSSFWorkbook wb = openSample("55341_CellStyleBorder.xls");
     	HSSFSheet s = wb.getSheetAt(0);
@@ -410,9 +410,9 @@ public final class TestCellStyle extends TestCase {
     	assertEquals(false, r.getCell(0).getCellStyle().getShrinkToFit());
     	assertEquals(true,  r.getCell(1).getCellStyle().getShrinkToFit());
     }
-    
-    
-    
+
+
+
     private static class CellFormatBugExample extends Thread {
         private String fileName;
         private Throwable exception = null;
@@ -427,10 +427,10 @@ public final class TestCellStyle extends TestCase {
                 for(int i = 0;i< 10;i++) {
                     Workbook wb = HSSFTestDataSamples.openSampleWorkbook(fileName);
                     Sheet sheet = wb.getSheetAt(0);
-        
+
                     for (Row row : sheet) {
                         for (Integer idxCell = 0; idxCell < row.getLastCellNum(); idxCell++) {
-        
+
                             Cell cell = row.getCell(idxCell);
                             cell.getCellStyle().getDataFormatString();
                             if (cell.getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
@@ -451,16 +451,16 @@ public final class TestCellStyle extends TestCase {
             return exception;
         }
     };
-    
+
     public void test56563() throws Throwable {
         CellFormatBugExample threadA = new CellFormatBugExample("56563a.xls");
         threadA.start();
         CellFormatBugExample threadB = new CellFormatBugExample("56563b.xls");
         threadB.start();
-        
+
         threadA.join();
         threadB.join();
-        
+
         if(threadA.getException() != null) {
             throw threadA.getException();
         }
@@ -468,13 +468,13 @@ public final class TestCellStyle extends TestCase {
             throw threadB.getException();
         }
     }
-    
+
     public void test56959() throws IOException {
         Workbook wb = new HSSFWorkbook();
         Sheet sheet = wb.createSheet("somesheet");
-        
+
         Row row = sheet.createRow(0);
-        
+
         // Create a new font and alter it.
         Font font = wb.createFont();
         font.setFontHeightInPoints((short)24);
@@ -482,24 +482,24 @@ public final class TestCellStyle extends TestCase {
         font.setItalic(true);
         font.setStrikeout(true);
         font.setColor(Font.COLOR_RED);
-        
+
         CellStyle style = wb.createCellStyle();
         style.setBorderBottom(CellStyle.BORDER_DOTTED);
         style.setFont(font);
-        
+
         Cell cell = row.createCell(0);
         cell.setCellStyle(style);
         cell.setCellValue("testtext");
-        
+
         Cell newCell = row.createCell(1);
-        
+
         newCell.setCellStyle(style);
         newCell.setCellValue("2testtext2");
 
         CellStyle newStyle = newCell.getCellStyle();
         assertEquals(CellStyle.BORDER_DOTTED, newStyle.getBorderBottom());
         assertEquals(Font.COLOR_RED, ((HSSFCellStyle)newStyle).getFont(wb).getColor());
-        
+
 //        OutputStream out = new FileOutputStream("/tmp/56959.xls");
 //        try {
 //            wb.write(out);

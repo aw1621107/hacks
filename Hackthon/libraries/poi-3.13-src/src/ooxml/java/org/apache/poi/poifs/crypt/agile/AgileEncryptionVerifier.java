@@ -37,7 +37,7 @@ import com.microsoft.schemas.office.x2006.keyEncryptor.certificate.CTCertificate
 import com.microsoft.schemas.office.x2006.keyEncryptor.password.CTPasswordKeyEncryptor;
 
 /**
- * Used when checking if a key is valid for a document 
+ * Used when checking if a key is valid for a document
  */
 public class AgileEncryptionVerifier extends EncryptionVerifier {
 
@@ -46,13 +46,13 @@ public class AgileEncryptionVerifier extends EncryptionVerifier {
         byte encryptedKey[];
         byte certVerifier[];
     }
-    
+
     private List<AgileCertificateEntry> certList = new ArrayList<AgileCertificateEntry>();
 
     public AgileEncryptionVerifier(String descriptor) {
         this(AgileEncryptionInfoBuilder.parseDescriptor(descriptor));
     }
-    
+
     protected AgileEncryptionVerifier(EncryptionDocument ed) {
         Iterator<CTKeyEncryptor> encList = ed.getEncryption().getKeyEncryptors().getKeyEncryptorList().iterator();
         CTPasswordKeyEncryptor keyData;
@@ -64,9 +64,9 @@ public class AgileEncryptionVerifier extends EncryptionVerifier {
         } catch (Exception e) {
             throw new EncryptedDocumentException("Unable to parse keyData", e);
         }
-        
+
         int keyBits = (int)keyData.getKeyBits();
-        
+
         CipherAlgorithm ca = CipherAlgorithm.fromXmlId(keyData.getCipherAlgorithm().toString(), keyBits);
         setCipherAlgorithm(ca);
 
@@ -76,20 +76,20 @@ public class AgileEncryptionVerifier extends EncryptionVerifier {
         setHashAlgorithm(ha);
 
         if (getHashAlgorithm().hashSize != hashSize) {
-            throw new EncryptedDocumentException("Unsupported hash algorithm: " + 
+            throw new EncryptedDocumentException("Unsupported hash algorithm: " +
                     keyData.getHashAlgorithm() + " @ " + hashSize + " bytes");
         }
 
         setSpinCount(keyData.getSpinCount());
         setEncryptedVerifier(keyData.getEncryptedVerifierHashInput());
         setSalt(keyData.getSaltValue());
-        setEncryptedKey(keyData.getEncryptedKeyValue()); 
+        setEncryptedKey(keyData.getEncryptedKeyValue());
         setEncryptedVerifierHash(keyData.getEncryptedVerifierHashValue());
 
         int saltSize = keyData.getSaltSize();
         if (saltSize != getSalt().length)
             throw new EncryptedDocumentException("Invalid salt size");
-        
+
         switch (keyData.getCipherChaining().intValue()) {
             case STCipherChaining.INT_CHAINING_MODE_CBC:
                 setChainingMode(ChainingMode.cbc);
@@ -100,9 +100,9 @@ public class AgileEncryptionVerifier extends EncryptionVerifier {
             default:
                 throw new EncryptedDocumentException("Unsupported chaining mode - "+keyData.getCipherChaining().toString());
         }
-        
+
         if (!encList.hasNext()) return;
-        
+
         try {
             CertificateFactory cf = CertificateFactory.getInstance("X.509");
             while (encList.hasNext()) {
@@ -117,21 +117,21 @@ public class AgileEncryptionVerifier extends EncryptionVerifier {
             throw new EncryptedDocumentException("can't parse X509 certificate", e);
         }
     }
-    
+
     public AgileEncryptionVerifier(CipherAlgorithm cipherAlgorithm, HashAlgorithm hashAlgorithm, int keyBits, int blockSize, ChainingMode chainingMode) {
         setCipherAlgorithm(cipherAlgorithm);
         setHashAlgorithm(hashAlgorithm);
         setChainingMode(chainingMode);
         setSpinCount(100000); // TODO: use parameter
     }
-    
+
     protected void setSalt(byte salt[]) {
         if (salt == null || salt.length != getCipherAlgorithm().blockSize) {
             throw new EncryptedDocumentException("invalid verifier salt");
         }
         super.setSalt(salt);
     }
-    
+
     // make method visible for this package
     protected void setEncryptedVerifier(byte encryptedVerifier[]) {
         super.setEncryptedVerifier(encryptedVerifier);
@@ -146,13 +146,13 @@ public class AgileEncryptionVerifier extends EncryptionVerifier {
     protected void setEncryptedKey(byte[] encryptedKey) {
         super.setEncryptedKey(encryptedKey);
     }
-    
+
     public void addCertificate(X509Certificate x509) {
         AgileCertificateEntry ace = new AgileCertificateEntry();
         ace.x509 = x509;
         certList.add(ace);
     }
-    
+
     public List<AgileCertificateEntry> getCertificates() {
         return certList;
     }

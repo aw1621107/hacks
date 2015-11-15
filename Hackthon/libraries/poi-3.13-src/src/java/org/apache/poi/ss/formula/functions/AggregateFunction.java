@@ -85,7 +85,7 @@ public abstract class AggregateFunction extends MultiOperandNumericFunction {
      * </ul>
      */
 	private static final class Percentile extends Fixed2ArgFunction {
-		
+
 		protected Percentile() {
 		}
 
@@ -132,7 +132,7 @@ public abstract class AggregateFunction extends MultiOperandNumericFunction {
 			return new NumberEval(result);
 		}
 	}
-	
+
 	static final class ValueCollector extends MultiOperandNumericFunction {
 		private static final ValueCollector instance = new ValueCollector();
 		public ValueCollector() {
@@ -214,9 +214,9 @@ public abstract class AggregateFunction extends MultiOperandNumericFunction {
 			return values.length > 0 ? MathX.min(values) : 0;
 		}
 	};
-	
+
 	public static final Function PERCENTILE = new Percentile();
-	
+
 	public static final Function PRODUCT = new AggregateFunction() {
 		protected double evaluate(double[] values) {
 			return MathX.product(values);

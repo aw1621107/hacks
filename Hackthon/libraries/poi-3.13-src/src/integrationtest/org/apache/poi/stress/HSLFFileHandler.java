@@ -40,13 +40,13 @@ public class HSLFFileHandler extends SlideShowHandler {
 		for(Record record : records) {
 			assertTrue(record.getRecordType() >= 0);
 		}
-		
+
 		handlePOIDocument(slide);
-		
+
 		HSLFSlideShow ss = new HSLFSlideShow(slide);
 		handleSlideShow(ss);
 	}
-	
+
 	// a test-case to test this locally without executing the full TestAllFiles
 	@Test
 	public void test() throws Exception {

@@ -58,7 +58,7 @@ public final class TestStringRecord extends TestCase {
 		for (int i = 0; i < data.length; i++)
 			assertEquals("At offset " + i, data[i], recordBytes[i+4]);
 	}
-    
+
 	public void testContinue() {
 		int MAX_BIFF_DATA = RecordInputStream.MAX_RECORD_DATA_SIZE;
 		int TEXT_LEN = MAX_BIFF_DATA + 1000; // deliberately over-size

@@ -35,17 +35,17 @@ public class DocumentInputStream extends InputStream implements LittleEndianInpu
 	protected static final int SIZE_SHORT = 2;
 	protected static final int SIZE_INT = 4;
 	protected static final int SIZE_LONG = 8;
-	
+
 	private DocumentInputStream delegate;
-	
+
 	/** For use by downstream implementations */
 	protected DocumentInputStream() {}
 
 	/**
 	 * Create an InputStream from the specified DocumentEntry
-	 * 
+	 *
 	 * @param document the DocumentEntry to be read
-	 * 
+	 *
 	 * @exception IOException if the DocumentEntry cannot be opened (like, maybe it has
 	 *                been deleted?)
 	 */
@@ -69,7 +69,7 @@ public class DocumentInputStream extends InputStream implements LittleEndianInpu
 
 	/**
 	 * Create an InputStream from the specified Document
-	 * 
+	 *
 	 * @param document the Document to be read
 	 */
 	public DocumentInputStream(OPOIFSDocument document) {
@@ -78,7 +78,7 @@ public class DocumentInputStream extends InputStream implements LittleEndianInpu
 
    /**
     * Create an InputStream from the specified Document
-    * 
+    *
     * @param document the Document to be read
     */
    public DocumentInputStream(NPOIFSDocument document) {
@@ -99,7 +99,7 @@ public class DocumentInputStream extends InputStream implements LittleEndianInpu
 
 	/**
 	 * Tests if this input stream supports the mark and reset methods.
-	 * 
+	 *
 	 * @return <code>true</code> always
 	 */
 	public boolean markSupported() {
@@ -166,7 +166,7 @@ public class DocumentInputStream extends InputStream implements LittleEndianInpu
 	public int readUByte() {
 	   return delegate.readUByte();
 	}
-	
+
     public long readUInt() {
         int i = readInt();
         return i & 0xFFFFFFFFL;

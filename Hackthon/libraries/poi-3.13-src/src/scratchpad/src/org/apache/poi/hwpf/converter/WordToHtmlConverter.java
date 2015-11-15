@@ -56,7 +56,7 @@ import org.w3c.dom.Text;
  * This implementation doesn't create images or links to them. This can be
  * changed by overriding {@link #processImage(Element, boolean, Picture)}
  * method.
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 @Beta
@@ -81,7 +81,7 @@ public class WordToHtmlConverter extends AbstractWordConverter
     private static final POILogger logger = POILogFactory
             .getLogger( WordToHtmlConverter.class );
 
-    
+
     private static String getSectionStyle( Section section )
     {
         float leftMargin = section.getMarginLeft() / TWIPS_PER_INCH;
@@ -111,7 +111,7 @@ public class WordToHtmlConverter extends AbstractWordConverter
 
     /**
      * Java main() interface to interact with {@link WordToHtmlConverter}
-     * 
+     *
      * <p>
      * Usage: WordToHtmlConverter infile outfile
      * </p>
@@ -163,7 +163,7 @@ public class WordToHtmlConverter extends AbstractWordConverter
     /**
      * Creates new instance of {@link WordToHtmlConverter}. Can be used for
      * output several {@link HWPFDocument}s into single HTML document.
-     * 
+     *
      * @param document
      *            XML DOM Document used as HTML document
      */

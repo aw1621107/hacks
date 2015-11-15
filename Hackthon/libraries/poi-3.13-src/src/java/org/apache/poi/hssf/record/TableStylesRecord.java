@@ -23,21 +23,21 @@ import org.apache.poi.util.StringUtil;
 
 /**
  * TABLESTYLES (0x088E)<br/>
- * 
+ *
  * @author Patrick Cheng
  */
 public final class TableStylesRecord extends StandardRecord {
 	public static final short sid = 0x088E;
-	
+
 	private int rt;
 	private int grbitFrt;
 	private byte[] unused = new byte[8];
 	private int cts;
-	
+
 	private String rgchDefListStyle;
 	private String rgchDefPivotStyle;
-	
-	
+
+
 	public TableStylesRecord(RecordInputStream in) {
 		rt = in.readUShort();
 		grbitFrt = in.readUShort();
@@ -45,21 +45,21 @@ public final class TableStylesRecord extends StandardRecord {
 		cts = in.readInt();
 		int cchDefListStyle = in.readUShort();
 		int cchDefPivotStyle = in.readUShort();
-		
+
 		rgchDefListStyle = in.readUnicodeLEString(cchDefListStyle);
 		rgchDefPivotStyle = in.readUnicodeLEString(cchDefPivotStyle);
 	}
-	
+
 	@Override
 	protected void serialize(LittleEndianOutput out) {
 		out.writeShort(rt);
 		out.writeShort(grbitFrt);
 		out.write(unused);
 		out.writeInt(cts);
-		
+
 		out.writeShort(rgchDefListStyle.length());
 		out.writeShort(rgchDefPivotStyle.length());
-		
+
 		StringUtil.putUnicodeLE(rgchDefListStyle, out);
 		StringUtil.putUnicodeLE(rgchDefPivotStyle, out);
 	}

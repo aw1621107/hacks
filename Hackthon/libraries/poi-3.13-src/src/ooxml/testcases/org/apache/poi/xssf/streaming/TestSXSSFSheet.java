@@ -65,7 +65,7 @@ public class TestSXSSFSheet extends BaseTestSheet {
         thrown.expectMessage("NotImplemented");
         super.cloneSheetMultipleTimes();
     }
-    
+
     /**
      * shifting rows is not supported in SXSSF
      */
@@ -92,11 +92,11 @@ public class TestSXSSFSheet extends BaseTestSheet {
 
     @Test
     public void getCellComment() throws IOException {
-    	// TODO: reading cell comments via Sheet does not work currently as it tries 
+    	// TODO: reading cell comments via Sheet does not work currently as it tries
     	// to access the underlying sheet for this, but comments are stored as
     	// properties on Cells...
     }
-    
+
     @Override
     @Test
     public void defaultColumnStyle() {
@@ -108,12 +108,12 @@ public class TestSXSSFSheet extends BaseTestSheet {
         Workbook wb = new SXSSFWorkbook(3);
         try {
             Sheet sheet = wb.createSheet();
-    
+
             sheet.createRow(1);
             sheet.createRow(2);
             sheet.createRow(3);
             sheet.createRow(4);
-    
+
             thrown.expect(Throwable.class);
             thrown.expectMessage("Attempting to write a row[1] in the range [0,1] that is already written to disk.");
             sheet.createRow(1);
@@ -130,7 +130,7 @@ public class TestSXSSFSheet extends BaseTestSheet {
         Workbook wb = new SXSSFWorkbook(template);
         try {
             Sheet sheet = wb.getSheetAt(0);
-    
+
             try {
                 sheet.createRow(1);
                 fail("expected exception");

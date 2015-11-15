@@ -32,7 +32,7 @@ import org.apache.poi.util.LittleEndianOutput;
 public final class BOFRecord extends StandardRecord {
     /**
      * for BIFF8 files the BOF is 0x809. For earlier versions see
-     *  {@link #biff2_sid} {@link #biff3_sid} {@link #biff4_sid} 
+     *  {@link #biff2_sid} {@link #biff3_sid} {@link #biff4_sid}
      *  {@link #biff5_sid}
      */
     public final static short sid = 0x809;
@@ -70,7 +70,7 @@ public final class BOFRecord extends StandardRecord {
      */
     public BOFRecord() {
     }
-    
+
     private BOFRecord(int type) {
         field_1_version = VERSION;
         field_2_type = type;
@@ -79,7 +79,7 @@ public final class BOFRecord extends StandardRecord {
         field_5_history = 0x01;
         field_6_rversion = VERSION;
     }
-    
+
     public static BOFRecord createSheetBOF() {
         return new BOFRecord(TYPE_WORKSHEET);
     }

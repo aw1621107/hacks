@@ -41,7 +41,7 @@ import org.apache.poi.ss.formula.functions.LookupUtils.ValueVector;
  * @author Johan Karlsteen
  */
 public final class LinearRegressionFunction extends Fixed2ArgFunction {
-	
+
 	private static abstract class ValueArray implements ValueVector {
 		private final int _size;
 		protected ValueArray(int size) {
@@ -84,7 +84,7 @@ public final class LinearRegressionFunction extends Fixed2ArgFunction {
 		}
 
 		protected ValueEval getItemInternal(int index) {
-		    int sIx = (index % _width) + _ref.getFirstSheetIndex(); 
+		    int sIx = (index % _width) + _ref.getFirstSheetIndex();
 			return _ref.getInnerValueEval(sIx);
 		}
 	}
@@ -108,11 +108,11 @@ public final class LinearRegressionFunction extends Fixed2ArgFunction {
 
 	public enum FUNCTION {INTERCEPT, SLOPE};
 	public FUNCTION function;
-	
+
 	public LinearRegressionFunction(FUNCTION function) {
 		this.function = function;
 	}
-	
+
 	public ValueEval evaluate(int srcRowIndex, int srcColumnIndex,
 			ValueEval arg0, ValueEval arg1) {
 		double result;
@@ -132,7 +132,7 @@ public final class LinearRegressionFunction extends Fixed2ArgFunction {
 		}
 		return new NumberEval(result);
 	}
-	
+
 	private double evaluateInternal(ValueVector x, ValueVector y, int size)
 			throws EvaluationException {
 
@@ -142,7 +142,7 @@ public final class LinearRegressionFunction extends Fixed2ArgFunction {
 		boolean accumlatedSome = false;
         // first pass: read in data, compute xbar and ybar
         double sumx = 0.0, sumy = 0.0;
-        
+
 		for (int i = 0; i < size; i++) {
 			ValueEval vx = x.getItem(i);
 			ValueEval vy = y.getItem(i);
@@ -171,13 +171,13 @@ public final class LinearRegressionFunction extends Fixed2ArgFunction {
 		}
 		double xbar = sumx / size;
         double ybar = sumy / size;
-		
+
 		 // second pass: compute summary statistics
         double xxbar = 0.0, xybar = 0.0;
         for (int i = 0; i < size; i++) {
 			ValueEval vx = x.getItem(i);
 			ValueEval vy = y.getItem(i);
-			
+
 			if (vx instanceof ErrorEval) {
 				if (firstXerr == null) {
 					firstXerr = (ErrorEval) vx;
@@ -190,7 +190,7 @@ public final class LinearRegressionFunction extends Fixed2ArgFunction {
 					continue;
 				}
 			}
-			
+
 			// only count pairs if both elements are numbers
 			if (vx instanceof NumberEval && vy instanceof NumberEval) {
 				NumberEval nx = (NumberEval) vx;
@@ -203,7 +203,7 @@ public final class LinearRegressionFunction extends Fixed2ArgFunction {
         }
         double beta1 = xybar / xxbar;
         double beta0 = ybar - beta1 * xbar;
-		
+
 		if (firstXerr != null) {
 			throw new EvaluationException(firstXerr);
 		}
@@ -213,7 +213,7 @@ public final class LinearRegressionFunction extends Fixed2ArgFunction {
 		if (!accumlatedSome) {
 			throw new EvaluationException(ErrorEval.DIV_ZERO);
 		}
-		
+
 		if(function == FUNCTION.INTERCEPT) {
 			return beta0;
 		} else {

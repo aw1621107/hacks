@@ -44,7 +44,7 @@ public class POIFSDump {
             System.err.println("Must specify at least one file to dump");
             System.exit(1);
         }
-        
+
         boolean dumpProps = false, dumpMini = false;
         for (int i = 0; i < args.length; i++) {
             if (args[i].equalsIgnoreCase("-dumprops") ||
@@ -60,7 +60,7 @@ public class POIFSDump {
                 dumpMini = true;
                 continue;
             }
-            
+
             System.out.println("Dumping " + args[i]);
             FileInputStream is = new FileInputStream(args[i]);
             NPOIFSFileSystem fs = new NPOIFSFileSystem(is);
@@ -71,14 +71,14 @@ public class POIFSDump {
             file.mkdir();
 
             dump(root, file);
-            
+
             if (dumpProps) {
                 HeaderBlock header = getHeaderBlock(fs);
                 dump(fs, header.getPropertyStart(), "properties", file);
             }
             if (dumpMini) {
                 NPropertyTable props = getPropertyTable(fs);
-                int startBlock = props.getRoot().getStartBlock(); 
+                int startBlock = props.getRoot().getStartBlock();
                 if (startBlock == POIFSConstants.END_OF_CHAIN) {
                     System.err.println("No Mini Stream in file");
                 } else {
@@ -87,7 +87,7 @@ public class POIFSDump {
             }
         }
    }
-    
+
     protected static HeaderBlock getHeaderBlock(NPOIFSFileSystem fs) throws Exception {
         Field headerF = NPOIFSFileSystem.class.getDeclaredField("_header");
         headerF.setAccessible(true);
@@ -131,7 +131,7 @@ public class POIFSDump {
         File file = new File(parent, name);
         FileOutputStream out = new FileOutputStream(file);
         NPOIFSStream stream = new NPOIFSStream(fs, startBlock);
-        
+
         byte[] b = new byte[fs.getBigBlockSize()];
         for (ByteBuffer bb : stream) {
             int len = bb.remaining();

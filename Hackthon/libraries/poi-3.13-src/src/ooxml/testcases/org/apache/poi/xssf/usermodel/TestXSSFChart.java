@@ -22,41 +22,41 @@ import junit.framework.TestCase;
 import org.apache.poi.xssf.XSSFTestDataSamples;
 
 public final class TestXSSFChart extends TestCase {
- 
+
     public void testGetAccessors() {
         XSSFWorkbook wb = XSSFTestDataSamples.openSampleWorkbook("WithThreeCharts.xlsx");
         XSSFSheet s1 = wb.getSheetAt(0);
         XSSFSheet s2 = wb.getSheetAt(1);
         XSSFSheet s3 = wb.getSheetAt(2);
-        
+
         assertEquals(0, s1.getRelations().size());
         assertEquals(1, s2.getRelations().size());
         assertEquals(1, s3.getRelations().size());
-        
+
         assertNotNull(XSSFTestDataSamples.writeOutAndReadBack(wb));
     }
-    
+
     public void testGetCharts() throws Exception {
        XSSFWorkbook wb = XSSFTestDataSamples.openSampleWorkbook("WithThreeCharts.xlsx");
-       
+
        XSSFSheet s1 = wb.getSheetAt(0);
        XSSFSheet s2 = wb.getSheetAt(1);
        XSSFSheet s3 = wb.getSheetAt(2);
-       
+
        assertEquals(0, s1.createDrawingPatriarch().getCharts().size());
        assertEquals(2, s2.createDrawingPatriarch().getCharts().size());
        assertEquals(1, s3.createDrawingPatriarch().getCharts().size());
-       
+
        // Check the titles
        XSSFChart chart = s2.createDrawingPatriarch().getCharts().get(0);
        assertEquals(null, chart.getTitle());
-       
+
        chart = s2.createDrawingPatriarch().getCharts().get(1);
        assertEquals("Pie Chart Title Thingy", chart.getTitle().getString());
-       
+
        chart = s3.createDrawingPatriarch().getCharts().get(0);
        assertEquals("Sheet 3 Chart with Title", chart.getTitle().getString());
-       
+
        assertNotNull(XSSFTestDataSamples.writeOutAndReadBack(wb));
     }
 
@@ -75,7 +75,7 @@ public final class TestXSSFChart extends TestCase {
 		XSSFChart c2 = d1.createChart(a2);
 		assertNotNull(c2);
 		assertEquals(2, d1.getCharts().size());
-        
+
         assertNotNull(XSSFTestDataSamples.writeOutAndReadBack(wb));
 	}
 }

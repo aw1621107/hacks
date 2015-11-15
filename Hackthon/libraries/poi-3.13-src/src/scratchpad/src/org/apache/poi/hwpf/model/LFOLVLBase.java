@@ -24,7 +24,7 @@ import org.apache.poi.hwpf.model.types.LFOLVLBaseAbstractType;
  * <p>
  * Class and fields descriptions are quoted from Microsoft Office Word 97-2007
  * Binary File Format and [MS-DOC] - v20110608 Word (.doc) Binary File Format
- * 
+ *
  * @author Sergey Vladimirov; according to Microsoft Office Word 97-2007 Binary
  *         File Format Specification [*.doc] and [MS-DOC] - v20110608 Word
  *         (.doc) Binary File Format

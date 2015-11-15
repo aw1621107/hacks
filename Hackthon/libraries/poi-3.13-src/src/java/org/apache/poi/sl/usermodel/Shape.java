@@ -24,18 +24,18 @@ public interface Shape<
     P extends TextParagraph<S,P,?>
 > {
 	ShapeContainer<S,P> getParent();
-	
+
     /**
     *
     * @return the sheet this shape belongs to
     */
    Sheet<S,P> getSheet();
-   
+
    /**
     * Returns the anchor (the bounding box rectangle) of this shape.
     * All coordinates are expressed in points (72 dpi).
     *
     * @return the anchor of this shape
     */
-   Rectangle getAnchor();   
+   Rectangle getAnchor();
 }

@@ -25,8 +25,8 @@ import org.apache.poi.util.StringUtil;
 
 /**
  * Title: Write Access Record (0x005C)<p/>
- * 
- * Description: Stores the username of that who owns the spreadsheet generator (on unix the user's 
+ *
+ * Description: Stores the username of that who owns the spreadsheet generator (on unix the user's
  * login, on Windoze its the name you typed when you installed the thing)
  * <p/>
  * REFERENCE: PG 424 Microsoft Excel 97 Developer's Kit (ISBN: 1-57231-498-2)
@@ -91,7 +91,7 @@ public final class WriteAccessRecord extends StandardRecord {
 	/**
 	 * set the username for the user that created the report. HSSF uses the
 	 * logged in user.
-	 * 
+	 *
 	 * @param username of the user who is logged in (probably "tomcat" or "apache")
 	 */
 	public void setUsername(String username) {
@@ -109,7 +109,7 @@ public final class WriteAccessRecord extends StandardRecord {
 	 * get the username for the user that created the report. HSSF uses the
 	 * logged in user. On natively created M$ Excel sheet this would be the name
 	 * you typed in when you installed it in most cases.
-	 * 
+	 *
 	 * @return username of the user who is logged in (probably "tomcat" or "apache")
 	 */
 	public String getUsername() {

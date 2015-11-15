@@ -26,9 +26,9 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.junit.Test;
 
 /**
- * Class for combined testing of XML-specific functionality of 
+ * Class for combined testing of XML-specific functionality of
  * {@link XSSFCell} and {@link SXSSFCell}.
- * 
+ *
  *  Any test that is applicable for {@link HSSFCell} as well should go into
  *  the common base class {@link BaseTestCell}.
  */

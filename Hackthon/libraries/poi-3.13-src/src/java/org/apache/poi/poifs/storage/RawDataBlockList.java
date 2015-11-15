@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.poifs.storage;
 
@@ -53,7 +53,7 @@ public class RawDataBlockList
         while (true)
         {
             RawDataBlock block = new RawDataBlock(stream, bigBlockSize.getBigBlockSize());
-            
+
             // If there was data, add the block to the list
             if(block.hasData()) {
             	blocks.add(block);

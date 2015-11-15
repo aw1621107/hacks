@@ -27,7 +27,7 @@ import org.apache.poi.util.LittleEndianOutput;
  * <P>
  * The HSSF file format normally stores Color information in the
  *  Palette (see PaletteRecord), but for a few cases (eg Conditional
- *  Formatting, Sheet Extensions), this XSSF-style color record 
+ *  Formatting, Sheet Extensions), this XSSF-style color record
  *  can be used.
  */
 public final class ExtendedColor {
@@ -36,7 +36,7 @@ public final class ExtendedColor {
     public static final int TYPE_RGB = 2;
     public static final int TYPE_THEMED = 3;
     public static final int TYPE_UNSET = 4;
-    
+
     public static final int THEME_DARK_1  = 0;
     public static final int THEME_LIGHT_1 = 1;
     public static final int THEME_DARK_2  = 2;
@@ -50,18 +50,18 @@ public final class ExtendedColor {
     public static final int THEME_HYPERLINK = 10;
     // This one is SheetEx only, not allowed in CFs
     public static final int THEME_FOLLOWED_HYPERLINK = 11;
-    
+
     private int type;
-    
+
     // Type = Indexed
     private int colorIndex;
     // Type = RGB
     private byte[] rgba;
     // Type = Theme
     private int themeIndex;
-    
+
     private double tint;
-    
+
     public ExtendedColor() {
         this.type = TYPE_INDEXED;
         this.colorIndex = 0;
@@ -99,7 +99,7 @@ public final class ExtendedColor {
     public void setColorIndex(int colorIndex) {
         this.colorIndex = colorIndex;
     }
-    
+
     /**
      * @return Red Green Blue Alpha, if type is {@link #TYPE_RGB}
      */
@@ -109,7 +109,7 @@ public final class ExtendedColor {
     public void setRGBA(byte[] rgba) {
         this.rgba = rgba;
     }
-    
+
     /**
      * @return Theme color type index, eg {@link #THEME_DARK_1}, if type is {@link #TYPE_THEMED}
      */
@@ -134,7 +134,7 @@ public final class ExtendedColor {
         }
         this.tint = tint;
     }
-    
+
     public String toString() {
         StringBuffer buffer = new StringBuffer();
         buffer.append("    [Extended Color]\n");
@@ -146,7 +146,7 @@ public final class ExtendedColor {
         buffer.append("    [/Extended Color]\n");
         return buffer.toString();
     }
-    
+
     public Object clone()  {
         ExtendedColor exc = new ExtendedColor();
         exc.type = type;
@@ -161,7 +161,7 @@ public final class ExtendedColor {
         }
         return exc;
     }
-    
+
     public int getDataLength() {
         return 4+4+8;
     }

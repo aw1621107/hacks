@@ -26,9 +26,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_Connection complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_Connection">
  *   &lt;complexContent>
@@ -39,8 +39,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_Connection", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main")
@@ -54,7 +54,7 @@ public class CTConnection {
 
     /**
      * Gets the value of the id property.
-     * 
+     *
      */
     public long getId() {
         return id;
@@ -62,7 +62,7 @@ public class CTConnection {
 
     /**
      * Sets the value of the id property.
-     * 
+     *
      */
     public void setId(long value) {
         this.id = value;
@@ -74,7 +74,7 @@ public class CTConnection {
 
     /**
      * Gets the value of the idx property.
-     * 
+     *
      */
     public long getIdx() {
         return idx;
@@ -82,7 +82,7 @@ public class CTConnection {
 
     /**
      * Sets the value of the idx property.
-     * 
+     *
      */
     public void setIdx(long value) {
         this.idx = value;

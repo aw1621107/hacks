@@ -23,41 +23,41 @@ import org.apache.poi.ss.excelant.util.ExcelAntWorkbookUtilFactory;
 
 public class TestExcelAntSet extends TestCase {
 
-	
-	// This is abstract in nature, so we'll use a 
+
+	// This is abstract in nature, so we'll use a
 	// concrete instance to test the set methods.
 	private ExcelAntSet fixture ;
-	
+
     private static final String mortgageCalculatorFileName =
         BuildFileTest.getDataDir() + "/spreadsheet/mortgage-calculation.xls" ;
-    
+
     @Override
 	public void setUp() {
 		fixture = new ExcelAntSetDoubleCell() ;
 	}
-	
+
     @Override
 	public void tearDown() {
 		fixture = null ;
 	}
-	
+
 	public void testSetter() {
 		String cell = "simpleCellRef!$F$1" ;
-		
+
 		fixture.setCell( cell ) ;
-		
+
 		String cellStr = fixture.getCell() ;
-		
+
 		assertNotNull( cellStr ) ;
 		assertEquals( cell, cellStr ) ;
 	}
-	
+
 	public void testSetWorkbookUtil() {
 		ExcelAntWorkbookUtil util = ExcelAntWorkbookUtilFactory.getInstance(
 				                                 mortgageCalculatorFileName ) ;
-		
+
 		assertNotNull( util ) ;
-		
+
 		fixture.setWorkbookUtil( util ) ;
 	}
 }

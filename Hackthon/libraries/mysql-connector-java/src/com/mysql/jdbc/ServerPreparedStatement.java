@@ -345,14 +345,14 @@ public class ServerPreparedStatement extends PreparedStatement {
 
     /**
      * Creates a new ServerPreparedStatement object.
-     * 
+     *
      * @param conn
      *            the connection creating us.
      * @param sql
      *            the SQL containing the statement to prepare.
      * @param catalog
      *            the catalog in use when we were created.
-     * 
+     *
      * @throws SQLException
      *             If an error occurs
      */
@@ -409,10 +409,10 @@ public class ServerPreparedStatement extends PreparedStatement {
 
     /**
      * JDBC 2.0 Add a set of parameters to the batch.
-     * 
+     *
      * @exception SQLException
      *                if a database-access error occurs.
-     * 
+     *
      * @see StatementImpl#addBatch
      */
     @Override
@@ -493,7 +493,7 @@ public class ServerPreparedStatement extends PreparedStatement {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.Statement#checkClosed()
      */
     @Override
@@ -839,7 +839,7 @@ public class ServerPreparedStatement extends PreparedStatement {
     /**
      * Returns the structure representing the value that (can be)/(is)
      * bound at the given parameter index.
-     * 
+     *
      * @param parameterIndex
      *            1-based
      * @param forLongData
@@ -879,7 +879,7 @@ public class ServerPreparedStatement extends PreparedStatement {
 
     /**
      * Return current bind values for use by Statement Interceptors.
-     * 
+     *
      * @return the bind values as set by setXXX and stored by addBatch
      * @see #executeBatch()
      * @see #addBatch()
@@ -964,10 +964,10 @@ public class ServerPreparedStatement extends PreparedStatement {
 
     /**
      * Closes this connection and frees all resources.
-     * 
+     *
      * @param calledExplicitly
      *            was this called from close()?
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -988,7 +988,7 @@ public class ServerPreparedStatement extends PreparedStatement {
 
                 //
                 // Don't communicate with the server if we're being called from the finalizer...
-                // 
+                //
                 // This will leak server resources, but if we don't do this, we'll deadlock (potentially, because there's no guarantee when, what order, and
                 // what concurrency finalizers will be called with). Well-behaved programs won't rely on finalizers to clean up their statements.
                 //
@@ -1034,7 +1034,7 @@ public class ServerPreparedStatement extends PreparedStatement {
     /**
      * Used by Connection when auto-reconnecting to retrieve 'lost' prepared
      * statements.
-     * 
+     *
      * @throws SQLException
      *             if an error occurs.
      */
@@ -1091,30 +1091,30 @@ public class ServerPreparedStatement extends PreparedStatement {
     /**
      * Tells the server to execute this prepared statement with the current
      * parameter bindings.
-     * 
+     *
      * <pre>
-     * 
-     * 
+     *
+     *
      *    -   Server gets the command 'COM_EXECUTE' to execute the
      *        previously         prepared query. If there is any param markers;
      *  then client will send the data in the following format:
-     * 
+     *
      *  [COM_EXECUTE:1]
      *  [STMT_ID:4]
      *  [NULL_BITS:(param_count+7)/8)]
      *  [TYPES_SUPPLIED_BY_CLIENT(0/1):1]
      *  [[length]data]
      *  [[length]data] .. [[length]data].
-     * 
+     *
      *  (Note: Except for string/binary types; all other types will not be
      *  supplied with length field)
-     * 
-     * 
+     *
+     *
      * </pre>
-     * 
+     *
      * @param maxRowsToRetrieve
      * @param createStreamingResultSet
-     * 
+     *
      * @throws SQLException
      */
     private com.mysql.jdbc.ResultSetInternalMethods serverExecute(int maxRowsToRetrieve, boolean createStreamingResultSet, Field[] metadataFromCache)
@@ -1416,11 +1416,11 @@ public class ServerPreparedStatement extends PreparedStatement {
 
     /**
      * Sends stream-type data parameters to the server.
-     * 
+     *
      * <pre>
-     * 
+     *
      *  Long data handling:
-     * 
+     *
      *  - Server gets the long data in pieces with command type 'COM_LONG_DATA'.
      *  - The packet recieved will have the format as:
      *    [COM_LONG_DATA:     1][STMT_ID:4][parameter_number:2][type:2][data]
@@ -1430,12 +1430,12 @@ public class ServerPreparedStatement extends PreparedStatement {
      *    care;  and also server doesn't notify to the client that it got the
      *    data  or not; if there is any error; then during execute; the error
      *    will  be returned
-     * 
+     *
      * </pre>
-     * 
+     *
      * @param parameterIndex
      * @param longData
-     * 
+     *
      * @throws SQLException
      *             if an error occurs.
      */
@@ -1822,12 +1822,12 @@ public class ServerPreparedStatement extends PreparedStatement {
     /**
      * Set a parameter to a java.sql.Date value. The driver converts this to a
      * SQL DATE value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1, the second is 2, ...
      * @param x
      *            the parameter value
-     * 
+     *
      * @exception SQLException
      *                if a database-access error occurs.
      */
@@ -1839,14 +1839,14 @@ public class ServerPreparedStatement extends PreparedStatement {
     /**
      * Set a parameter to a java.sql.Date value. The driver converts this to a
      * SQL DATE value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1, the second is 2, ...
      * @param x
      *            the parameter value
      * @param cal
      *            the calendar to interpret the date with
-     * 
+     *
      * @exception SQLException
      *                if a database-access error occurs.
      */
@@ -2024,12 +2024,12 @@ public class ServerPreparedStatement extends PreparedStatement {
 
     /**
      * Set a parameter to a java.sql.Time value.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...));
      * @param x
      *            the parameter value
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -2044,14 +2044,14 @@ public class ServerPreparedStatement extends PreparedStatement {
      * Set a parameter to a java.sql.Time value. The driver converts this to a
      * SQL TIME value when it sends it to the database, using the given
      * timezone.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...));
      * @param x
      *            the parameter value
      * @param cal
      *            the timezone to use
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -2066,14 +2066,14 @@ public class ServerPreparedStatement extends PreparedStatement {
      * Set a parameter to a java.sql.Time value. The driver converts this to a
      * SQL TIME value when it sends it to the database, using the given
      * timezone.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...));
      * @param x
      *            the parameter value
      * @param tz
      *            the timezone to use
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -2101,12 +2101,12 @@ public class ServerPreparedStatement extends PreparedStatement {
     /**
      * Set a parameter to a java.sql.Timestamp value. The driver converts this
      * to a SQL TIMESTAMP value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1, the second is 2, ...
      * @param x
      *            the parameter value
-     * 
+     *
      * @throws SQLException
      *             if a database-access error occurs.
      */
@@ -2120,14 +2120,14 @@ public class ServerPreparedStatement extends PreparedStatement {
     /**
      * Set a parameter to a java.sql.Timestamp value. The driver converts this
      * to a SQL TIMESTAMP value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1, the second is 2, ...
      * @param x
      *            the parameter value
      * @param cal
      *            the timezone to use
-     * 
+     *
      * @throws SQLException
      *             if a database-access error occurs.
      */
@@ -2178,10 +2178,10 @@ public class ServerPreparedStatement extends PreparedStatement {
      * @param parameterIndex
      * @param x
      * @param length
-     * 
+     *
      * @throws SQLException
      * @throws NotImplemented
-     * 
+     *
      * @see java.sql.PreparedStatement#setUnicodeStream(int, java.io.InputStream, int)
      * @deprecated
      */
@@ -2205,11 +2205,11 @@ public class ServerPreparedStatement extends PreparedStatement {
 
     /**
      * Method storeBinding.
-     * 
+     *
      * @param packet
      * @param bindValue
      * @param mysql
-     * 
+     *
      * @throws SQLException
      */
     private void storeBinding(Buffer packet, BindValue bindValue, MysqlIO mysql) throws SQLException {
@@ -2684,7 +2684,7 @@ public class ServerPreparedStatement extends PreparedStatement {
     /**
      * Computes the maximum parameter set size, and entire batch size given
      * the number of arguments in the batch.
-     * 
+     *
      * @throws SQLException
      */
     @Override

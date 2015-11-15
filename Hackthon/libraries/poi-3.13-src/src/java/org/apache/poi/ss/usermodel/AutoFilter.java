@@ -75,5 +75,5 @@ public interface AutoFilter {
      *
      * void applyFilter(int columnIndex, String ... values);
      */
-    
+
 }

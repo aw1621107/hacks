@@ -66,7 +66,7 @@ public class EmployeesJdbc {
         statement.close();
         rawConnection.close();
 
-        // The 2-nd way is to get implicitly connected to global group when the shard key isn't provided, ie. set "fabricShardTable" connection property but 
+        // The 2-nd way is to get implicitly connected to global group when the shard key isn't provided, ie. set "fabricShardTable" connection property but
         // don't set "fabricShardKey"
         rawConnection = DriverManager.getConnection(baseUrl + "employees?fabricShardTable=employees.employees", user, password);
         // At this point, we have a connection to the global group for  the `employees.employees' shard mapping.

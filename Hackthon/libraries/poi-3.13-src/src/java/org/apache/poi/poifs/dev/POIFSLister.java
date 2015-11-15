@@ -91,7 +91,7 @@ public class POIFSLister {
                name = name.substring(1) + " <" + altname + ">";
             }
             if (withSizes) {
-               size = " [" + doc.getSize() + " / 0x" + 
+               size = " [" + doc.getSize() + " / 0x" +
                       Integer.toHexString(doc.getSize()) + "]";
             }
             System.out.println(newIndent + name + size);

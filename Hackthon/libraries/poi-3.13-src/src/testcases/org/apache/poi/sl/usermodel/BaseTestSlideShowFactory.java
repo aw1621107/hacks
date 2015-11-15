@@ -58,7 +58,7 @@ public class BaseTestSlideShowFactory {
         assertNotNull(ss);
         npoifs.close();
     }
-    
+
     private static File fromFile(String file) {
         return (file.contains("/") || file.contains("\\"))
             ? new File(file)

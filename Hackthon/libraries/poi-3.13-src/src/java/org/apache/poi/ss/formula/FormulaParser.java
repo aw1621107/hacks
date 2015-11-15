@@ -153,11 +153,11 @@ public final class FormulaParser {
 		fp.parse();
 		return fp.getRPNPtg(formulaType);
 	}
-	
+
 	/** Read New Character From Input Stream */
 	private void GetChar() {
-		// The intersection operator is a space.  We track whether the run of 
-		// whitespace preceeding "look" counts as an intersection operator.  
+		// The intersection operator is a space.  We track whether the run of
+		// whitespace preceeding "look" counts as an intersection operator.
 		if (IsWhite(look)) {
 			if (look == ' ') {
 				_inIntersection = true;
@@ -166,7 +166,7 @@ public final class FormulaParser {
 		else {
 			_inIntersection = false;
 		}
-		
+
 		// Check to see if we've walked off the end of the string.
 		if (_pointer > _formulaLength) {
 			throw new RuntimeException("too far");
@@ -405,7 +405,7 @@ public final class FormulaParser {
 		SkipWhite();
 		int savePointer = _pointer;
 		SheetIdentifier sheetIden = parseSheetName();
-		
+
 		if (sheetIden == null) {
 			resetPointer(savePointer);
 		} else {
@@ -417,7 +417,7 @@ public final class FormulaParser {
 		if (part1 == null) {
 			if (sheetIden != null) {
                 if(look == '#'){  // error ref like MySheet!#REF!
-                    return new ParseNode(ErrPtg.valueOf(parseErrorLiteral()));  
+                    return new ParseNode(ErrPtg.valueOf(parseErrorLiteral()));
                 } else {
                     // Is it a named range?
                     String name = parseAsName();
@@ -547,7 +547,7 @@ public final class FormulaParser {
 		if (look == '"') {
 			return new ParseNode(new StringPtg(parseStringLiteral()));
 		}
-		
+
 		// from now on we can only be dealing with non-quoted identifiers
 		// which will either be named ranges or functions
 		String name = parseAsName();
@@ -574,7 +574,7 @@ public final class FormulaParser {
 		throw new FormulaParseException("Specified name '"
 				+ name + "' is not a range as expected.");
 	}
-	
+
 	private String parseAsName() {
         StringBuilder sb = new StringBuilder();
 
@@ -587,7 +587,7 @@ public final class FormulaParser {
             GetChar();
         }
         SkipWhite();
-        
+
         return sb.toString();
 	}
 
@@ -608,7 +608,7 @@ public final class FormulaParser {
 		}
 		return false;
 	}
-	
+
 	/**
 	 *
 	 * @param sheetIden may be <code>null</code>
@@ -864,9 +864,9 @@ public final class FormulaParser {
 		}
 		return null;
 	}
-	
+
 	/**
-	 * If we have something that looks like [book]Sheet1: or 
+	 * If we have something that looks like [book]Sheet1: or
 	 *  Sheet1, see if it's actually a range eg Sheet1:Sheet2!
 	 */
 	private SheetIdentifier parseSheetRange(String bookname, NameIdentifier sheet1Name) {
@@ -1506,7 +1506,7 @@ public final class FormulaParser {
 			return result;
 		}
 	}
-	
+
 	private ParseNode comparisonExpression() {
 		ParseNode result = concatExpression();
 		while (true) {

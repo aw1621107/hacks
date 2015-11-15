@@ -35,7 +35,7 @@ import org.junit.Test;
  */
 public class TestPPTX2PNG {
     private static boolean jaxpDebugEnable = false;
-    
+
     @BeforeClass
     public static void activateJaxpDebug() {
         jaxpDebugEnable = setDebugFld(true);
@@ -44,8 +44,8 @@ public class TestPPTX2PNG {
     @AfterClass
     public static void resetJaxpDebug() {
         setDebugFld(jaxpDebugEnable);
-    }    
-    
+    }
+
     private static boolean setDebugFld(boolean enable) {
         // enable jaxp debugging because of jaxb/stax error in gump build
         try {
@@ -60,7 +60,7 @@ public class TestPPTX2PNG {
             return false;
         }
     }
-    
+
     @Test
     public void render() throws Exception {
         POIDataSamples samples = POIDataSamples.getSlideShowInstance();

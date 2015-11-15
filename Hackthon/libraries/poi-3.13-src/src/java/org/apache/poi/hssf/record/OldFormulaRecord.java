@@ -67,14 +67,14 @@ public final class OldFormulaRecord extends OldCellRecord {
         }
         return specialCachedValue.getValueType();
     }
-    
+
     public boolean getCachedBooleanValue() {
         return specialCachedValue.getBooleanValue();
     }
     public int getCachedErrorValue() {
         return specialCachedValue.getErrorValue();
     }
-    
+
     /**
      * get the calculated value of the formula
      *

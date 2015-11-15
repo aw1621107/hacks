@@ -39,7 +39,7 @@ public class MysqlConnectionPoolDataSource extends MysqlDataSource implements Co
 
     /**
      * Returns a pooled connection.
-     * 
+     *
      * @exception SQLException
      *                if an error occurs
      * @return a PooledConnection
@@ -54,7 +54,7 @@ public class MysqlConnectionPoolDataSource extends MysqlDataSource implements Co
     /**
      * This method is invoked by the container. Obtains physical connection
      * using mySql.Driver class and returns a mysqlPooledConnection object.
-     * 
+     *
      * @param s
      *            user name
      * @param s1

@@ -27,7 +27,7 @@ public class TestEscherProperty extends TestCase
 {
     /**
      * assure that EscherProperty.getName() returns correct name for complex properties
-     * See Bugzilla 50401 
+     * See Bugzilla 50401
      */
     public void testPropertyNames() throws Exception {
         EscherProperty p1 = new EscherSimpleProperty( EscherProperties.GROUPSHAPE__SHAPENAME, 0);

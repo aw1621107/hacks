@@ -39,19 +39,19 @@ import org.apache.poi.hsmf.datatypes.MAPIProperty;
 public final class Attachment {
    private final List<TNEFAttribute> attributes = new ArrayList<TNEFAttribute>();
    private final List<MAPIAttribute> mapiAttributes = new ArrayList<MAPIAttribute>();
-   
+
    protected void addAttribute(TNEFAttribute attr) {
       attributes.add(attr);
-      
+
       if(attr instanceof TNEFMAPIAttribute) {
          TNEFMAPIAttribute tnefMAPI = (TNEFMAPIAttribute)attr;
          mapiAttributes.addAll( tnefMAPI.getMAPIAttributes() );
       }
    }
-   
+
    /**
     * Return the attachment attribute with the given ID,
-    *  or null if there isn't one. 
+    *  or null if there isn't one.
     */
    public TNEFAttribute getAttribute(TNEFProperty id) {
       for(TNEFAttribute attr : attributes) {
@@ -61,10 +61,10 @@ public final class Attachment {
       }
       return null;
    }
-   
+
    /**
     * Return the attachment MAPI Attribute with the given ID,
-    *  or null if there isn't one. 
+    *  or null if there isn't one.
     */
    public MAPIAttribute getMAPIAttribute(MAPIProperty id) {
       for(MAPIAttribute attr : mapiAttributes) {
@@ -74,24 +74,24 @@ public final class Attachment {
       }
       return null;
    }
-   
+
    /**
-    * Returns all HMEF/TNEF attributes of the attachment, 
+    * Returns all HMEF/TNEF attributes of the attachment,
     *  such as filename, icon and contents
     */
    public List<TNEFAttribute> getAttributes() {
       return attributes;
    }
-   
+
    /**
-    * Returns all MAPI attributes of the attachment, 
+    * Returns all MAPI attributes of the attachment,
     *  such as extension, encoding, size and position
     */
    public List<MAPIAttribute> getMAPIAttributes() {
       return mapiAttributes;
    }
-   
-   
+
+
    /**
     * Return the string value of the mapi property, or null
     *  if it isn't set
@@ -106,7 +106,7 @@ public final class Attachment {
    private String getString(TNEFProperty id) {
       return TNEFStringAttribute.getAsString( getAttribute(id) );
    }
-   
+
    /**
     * Returns the short filename
     */
@@ -125,7 +125,7 @@ public final class Attachment {
    public String getExtension() {
       return getString(MAPIProperty.ATTACH_EXTENSION);
    }
-   
+
    /**
     * Return when the file was last modified, if known.
     */
@@ -134,7 +134,7 @@ public final class Attachment {
             getAttribute(TNEFProperty.ID_ATTACHMODIFYDATE)
       );
    }
-   
+
    /**
     * Returns the contents of the attachment.
     */
@@ -145,7 +145,7 @@ public final class Attachment {
       }
       return contents.getData();
    }
-   
+
    /**
     * Returns the Meta File rendered representation
     *  of the attachment, or null if not set.

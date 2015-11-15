@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 package org.apache.poi.hssf.view;
 
 import java.awt.*;
@@ -26,9 +26,9 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 
 /**
  * This is an attempt to implement Excel style borders for the SheetViewer.
- * Mostly just overrides stuff so the javadoc won't appear here but will 
+ * Mostly just overrides stuff so the javadoc won't appear here but will
  * appear in the generated stuff.
- * 
+ *
  * @author Andrew C. Oliver (acoliver at apache dot org)
  * @author Jason Height
  */
@@ -84,7 +84,7 @@ public class SVBorder extends AbstractBorder {
 
    /**
     * Called by paintBorder to paint the border of a selected cell.
-    * The paramaters are the Graphics object, location and dimensions of the 
+    * The paramaters are the Graphics object, location and dimensions of the
     * cell.
     */
    private void paintSelectedBorder(Graphics g, int x, int y, int width,
@@ -103,7 +103,7 @@ public class SVBorder extends AbstractBorder {
 
    /**
     * Called by paintBorder to paint the various versions of normal line
-    * borders for a cell.  
+    * borders for a cell.
     */
    private void paintNormalBorders(Graphics g, int x, int y, int width,
                                   int height) {
@@ -174,7 +174,7 @@ public class SVBorder extends AbstractBorder {
 
    /**
     * Called by paintBorder to paint the dotted line
-    * borders for a cell.  
+    * borders for a cell.
     */
    private void paintDottedBorders(Graphics g, int x, int y, int width,
                                   int height) {
@@ -240,7 +240,7 @@ public class SVBorder extends AbstractBorder {
 
    /**
     * Called by paintBorder to paint the various versions of dotted line
-    * borders for a cell.  
+    * borders for a cell.
     */
    private void paintDashedBorders(Graphics g, int x, int y, int width,
                                   int height) {
@@ -333,7 +333,7 @@ public class SVBorder extends AbstractBorder {
 
    /**
     * Called by paintBorder to paint the double line
-    * borders for a cell.  
+    * borders for a cell.
     */
    private void paintDoubleBorders(Graphics g, int x, int y, int width,
                                   int height) {
@@ -424,7 +424,7 @@ public class SVBorder extends AbstractBorder {
 
    /**
     * Called by paintBorder to paint the various versions of dash dot dot line
-    * borders for a cell.  
+    * borders for a cell.
     */
    private void paintDashDotDotBorders(Graphics g, int x, int y, int width,
                                   int height) {

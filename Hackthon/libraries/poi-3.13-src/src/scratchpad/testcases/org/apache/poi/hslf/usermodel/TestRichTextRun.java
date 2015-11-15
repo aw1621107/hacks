@@ -60,17 +60,17 @@ public final class TestRichTextRun {
         // Rich test file A
         hssRichA = new HSLFSlideShowImpl(_slTests.openResourceAsStream("Single_Coloured_Page.ppt"));
         ssRichA = new HSLFSlideShow(hssRichA);
-        
+
         // Rich test file B
         hssRichB = new HSLFSlideShowImpl(_slTests.openResourceAsStream("Single_Coloured_Page_With_Fonts_and_Alignments.ppt"));
         ssRichB = new HSLFSlideShow(hssRichB);
-        
+
         // Rich test file C - has paragraph styles that run out before
         //   the character ones do
         filenameC = "ParagraphStylesShorterThanCharStyles.ppt";
         hssRichC = new HSLFSlideShowImpl(_slTests.openResourceAsStream(filenameC));
         ssRichC = new HSLFSlideShow(hssRichC);
-        
+
         // Rich test file with Chinese + English text in it
         hssChinese = new HSLFSlideShowImpl(_slTests.openResourceAsStream("54880_chinese.ppt"));
         ssChinese = new HSLFSlideShow(hssChinese);
@@ -207,7 +207,7 @@ public final class TestRichTextRun {
 			HSLFSlide slideOne = h.getSlides().get(0);
 			List<List<HSLFTextParagraph>> textParass = slideOne.getTextParagraphs();
 			HSLFTextRun rtr = textParass.get(0).get(0).getTextRuns().get(0);
-			
+
 			rtr.setBold(true);
 			rtr.setFontSize(18d);
 			rtr.setFontFamily("Courier");
@@ -410,12 +410,12 @@ public final class TestRichTextRun {
 		is = fs.createDocumentInputStream("PowerPoint Document");
         IOUtils.copy(is, baos);
         is.close();
-        fs.close();		
+        fs.close();
 		byte[] raw_ss = baos.toByteArray();
-		
+
 		// different paragraph mask, because of sanitizing
 		raw_ss[169030] = 0x0a;
-		
+
 		// Ensure they're the same
 		assertArrayEquals(raw_file, raw_ss);
 	}
@@ -620,7 +620,7 @@ public final class TestRichTextRun {
 //		FileOutputStream fout = new FileOutputStream("/tmp/foo.ppt");
 //		ppt.write(fout);
 	}
-	
+
     @Test
 	public void testChineseParagraphs() throws Exception {
       List<HSLFTextRun> rts;
@@ -630,27 +630,27 @@ public final class TestRichTextRun {
 
       // One slide
       assertEquals(1, slides.size());
-      
+
       // One block of text within that
       txt = slides.get(0).getTextParagraphs();
       assertEquals(1, txt.size());
-      
+
       // One rich block of text in that - text is all the same style
       // TODO Is this completely correct?
       rts = txt.get(0).get(0).getTextRuns();
       assertEquals(1, rts.size());
       rt = rts.get(0);
-      
+
       // Check we can get the english text out of that
       String text = rt.getRawText();
       assertContains(text, "Single byte");
       // And the chinese
       assertContains(txt.get(0).get(3).getTextRuns().get(0).getRawText(), "\uff8a\uff9d\uff76\uff78");
-      
+
       // It isn't bold or italic
       assertFalse(rt.isBold());
       assertFalse(rt.isItalic());
-      
+
       // Font is Calibri
       assertEquals("Calibri", rt.getFontFamily());
 	}

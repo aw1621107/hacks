@@ -72,7 +72,7 @@ public class XLS2CSVmra implements HSSFListener {
 	// Records we pick up as we process
 	private SSTRecord sstRecord;
 	private FormatTrackingHSSFListener formatListener;
-	
+
 	/** So we known which sheet we're on */
 	private int sheetIndex = -1;
 	private BoundSheetRecord[] orderedBSRs;
@@ -150,7 +150,7 @@ public class XLS2CSVmra implements HSSFListener {
 				if(workbookBuildingListener != null && stubWorkbook == null) {
 					stubWorkbook = workbookBuildingListener.getStubHSSFWorkbook();
 				}
-				
+
 				// Output the worksheet name
 				// Works by ordering the BSRs by the location of
 				//  their BOFRecords, and then knowing that we
@@ -160,7 +160,7 @@ public class XLS2CSVmra implements HSSFListener {
 					orderedBSRs = BoundSheetRecord.orderByBofPosition(boundSheetRecords);
 				}
 				output.println();
-				output.println( 
+				output.println(
 						orderedBSRs[sheetIndex].getSheetname() +
 						" [" + (sheetIndex+1) + "]:"
 				);

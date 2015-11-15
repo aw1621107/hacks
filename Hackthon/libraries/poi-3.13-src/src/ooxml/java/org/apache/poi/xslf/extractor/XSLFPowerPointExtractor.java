@@ -45,12 +45,12 @@ public class XSLFPowerPointExtractor extends POIXMLTextExtractor {
       XSLFRelation.PRESENTATIONML, XSLFRelation.PRESENTATIONML_TEMPLATE,
       XSLFRelation.PRESENTATION_MACRO
    };
-   
+
 	private XMLSlideShow slideshow;
 	private boolean slidesByDefault = true;
 	private boolean notesByDefault = false;
    private boolean masterByDefault = false;
-	
+
 	public XSLFPowerPointExtractor(XMLSlideShow slideshow) {
 		super(slideshow);
 		this.slideshow = slideshow;
@@ -68,7 +68,7 @@ public class XSLFPowerPointExtractor extends POIXMLTextExtractor {
 			System.err.println("  XSLFPowerPointExtractor <filename.pptx>");
 			System.exit(1);
 		}
-		POIXMLTextExtractor extractor = 
+		POIXMLTextExtractor extractor =
 			new XSLFPowerPointExtractor(
 					new XSLFSlideShow(args[0]));
 		System.out.println(extractor.getText());
@@ -89,21 +89,21 @@ public class XSLFPowerPointExtractor extends POIXMLTextExtractor {
 	public void setNotesByDefault(boolean notesByDefault) {
 		this.notesByDefault = notesByDefault;
 	}
-	
+
    /**
     * Should a call to getText() return text from master? Default is no
     */
    public void setMasterByDefault(boolean masterByDefault) {
        this.masterByDefault = masterByDefault;
    }
-	
+
 	/**
 	 * Gets the slide text, but not the notes text
 	 */
 	public String getText() {
 		return getText(slidesByDefault, notesByDefault);
 	}
-	
+
    /**
     * Gets the requested text from the file
     * @param slideText Should we retrieve text from slides?
@@ -112,7 +112,7 @@ public class XSLFPowerPointExtractor extends POIXMLTextExtractor {
    public String getText(boolean slideText, boolean notesText) {
       return getText(slideText, notesText, masterByDefault);
    }
-   
+
    /**
     * Gets the requested text from the file
     * @param slideText Should we retrieve text from slides?
@@ -139,8 +139,8 @@ public class XSLFPowerPointExtractor extends POIXMLTextExtractor {
             // Do the slide's text if requested
             if (slideText) {
                extractText(slide.getCommonSlideData(), false, text);
-               
-               // If requested, get text from the master and it's layout 
+
+               // If requested, get text from the master and it's layout
                if(masterText) {
                   if(layout != null) {
                      extractText(layout.getCommonSlideData(), true, text);
@@ -160,7 +160,7 @@ public class XSLFPowerPointExtractor extends POIXMLTextExtractor {
                            text.append(author.getName() + ": ");
                         }
                      }
-                     
+
                      // Then the comment text, with a new line afterwards
                      text.append(comment.getText());
                      text.append("\n");
@@ -179,7 +179,7 @@ public class XSLFPowerPointExtractor extends POIXMLTextExtractor {
 
       return text.toString();
    }
-	
+
 	private void extractText(XSLFCommonSlideData data, boolean skipPlaceholders, StringBuffer text) {
 	   for(DrawingTextBody textBody : data.getDrawingText()) {
 	      if(skipPlaceholders && textBody instanceof DrawingTextPlaceholder) {
@@ -189,7 +189,7 @@ public class XSLFPowerPointExtractor extends POIXMLTextExtractor {
 	            continue;
 	         }
 	      }
-	      
+
 	      for (DrawingParagraph p : textBody.getParagraphs()) {
             text.append(p.getText());
             text.append("\n");

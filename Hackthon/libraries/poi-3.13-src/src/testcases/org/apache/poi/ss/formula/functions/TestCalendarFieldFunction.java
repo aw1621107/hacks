@@ -50,7 +50,7 @@ public final class TestCalendarFieldFunction extends TestCase {
         confirm("HOUR(2.26)", 6);
         confirm("MINUTE(2.26)", 14);
         confirm("SECOND(2.26)", 24);
-        
+
         confirm("YEAR(40627.4860417)", 2011);
         confirm("MONTH(40627.4860417)", 3);
         confirm("DAY(40627.4860417)", 25);
@@ -71,7 +71,7 @@ public final class TestCalendarFieldFunction extends TestCase {
         confirm("HOUR(41484.9999942129)", 23);
         confirm("MINUTE(41484.9999942129)", 59);
         confirm("SECOND(41484.9999942129)", 59);
-		
+
         confirm("DAY(41484.9999942130)", 30);
         confirm("HOUR(41484.9999942130)", 0);
         confirm("MINUTE(41484.9999942130)", 0);
@@ -90,7 +90,7 @@ public final class TestCalendarFieldFunction extends TestCase {
         confirm("YEAR(0.0)", 1900);
         confirm("MONTH(0.0)", 1);
         confirm("DAY(0.0)", 0);
-        
+
         confirm("YEAR(0.26)", 1900);
         confirm("MONTH(0.26)", 1);
         confirm("DAY(0.26)", 0);

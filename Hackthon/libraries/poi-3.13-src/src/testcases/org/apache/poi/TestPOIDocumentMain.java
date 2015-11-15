@@ -106,14 +106,14 @@ public final class TestPOIDocumentMain extends TestCase {
 		// Delegate test
 		testReadProperties();
 	}
-	
+
 	public void testCreateNewProperties() throws IOException {
 		POIDocument doc = new HSSFWorkbook();
-		
+
 		// New document won't have them
 		assertNull(doc.getSummaryInformation());
 		assertNull(doc.getDocumentSummaryInformation());
-		
+
 		// Add them in
 		doc.createInformationProperties();
 		assertNotNull(doc.getSummaryInformation());
@@ -125,14 +125,14 @@ public final class TestPOIDocumentMain extends TestCase {
 		ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 
 		doc = new HSSFWorkbook(bais);
-		
+
 		assertNotNull(doc.getSummaryInformation());
 		assertNotNull(doc.getDocumentSummaryInformation());
 	}
-	
+
 	public void testCreateNewPropertiesOnExistingFile() throws IOException {
 		POIDocument doc = new HSSFWorkbook();
-		
+
 		// New document won't have them
 		assertNull(doc.getSummaryInformation());
 		assertNull(doc.getDocumentSummaryInformation());
@@ -142,27 +142,27 @@ public final class TestPOIDocumentMain extends TestCase {
 		doc.write(baos);
 		ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 		doc = new HSSFWorkbook(bais);
-		
+
 		assertNull(doc.getSummaryInformation());
 		assertNull(doc.getDocumentSummaryInformation());
-		
+
 		// Create, and change
 		doc.createInformationProperties();
 		doc.getSummaryInformation().setAuthor("POI Testing");
 		doc.getDocumentSummaryInformation().setCompany("ASF");
-		
+
 		// Save and re-load
 		baos = new ByteArrayOutputStream();
 		doc.write(baos);
 		bais = new ByteArrayInputStream(baos.toByteArray());
 		doc = new HSSFWorkbook(bais);
-		
+
 		// Check
 		assertNotNull(doc.getSummaryInformation());
 		assertNotNull(doc.getDocumentSummaryInformation());
 		assertEquals("POI Testing", doc.getSummaryInformation().getAuthor());
 		assertEquals("ASF", doc.getDocumentSummaryInformation().getCompany());
-		
+
 		// Asking to re-create will make no difference now
 		doc.createInformationProperties();
 		assertNotNull(doc.getSummaryInformation());

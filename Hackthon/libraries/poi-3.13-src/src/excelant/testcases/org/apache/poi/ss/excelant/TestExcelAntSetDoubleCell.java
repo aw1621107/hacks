@@ -22,9 +22,9 @@ import org.apache.poi.ss.excelant.util.ExcelAntWorkbookUtil;
 import org.apache.poi.ss.excelant.util.ExcelAntWorkbookUtilFactory;
 
 public class TestExcelAntSetDoubleCell extends TestCase {
-	
+
 	private ExcelAntSetDoubleCell fixture ;
-	
+
 	private ExcelAntWorkbookUtil util ;
 
     private static final String mortgageCalculatorFileName =
@@ -37,30 +37,30 @@ public class TestExcelAntSetDoubleCell extends TestCase {
 				                                  mortgageCalculatorFileName ) ;
 		fixture.setWorkbookUtil( util ) ;
 	}
-	
+
     @Override
 	public void tearDown() {
 		fixture = null ;
 	}
-	
+
 	public void testSetDouble() {
 		String cellId = "'Sheet3'!$A$1" ;
 		double testValue = 1.1 ;
-		
+
 		fixture.setCell( cellId ) ;
 		fixture.setValue( testValue ) ;
-		
+
 		double value = fixture.getCellValue() ;
-		
+
 		assertTrue( value > 0 ) ;
 		assertEquals( testValue, value, 0.0 ) ;
-		
+
 		fixture.execute() ;
-		
+
 		double setValue = util.getCellAsDouble( cellId ) ;
-		
+
 		assertEquals( setValue, testValue, 0.0 ) ;
 	}
-	
+
 
 }

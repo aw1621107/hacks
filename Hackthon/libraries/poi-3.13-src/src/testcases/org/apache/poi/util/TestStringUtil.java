@@ -155,11 +155,11 @@ public final class TestStringUtil extends TestCase {
 
         return nf.format( num );
     }
-    
+
     public void testStringsIterator() {
        StringsIterator i;
 
-       
+
        i = new StringsIterator(new String[0]);
        assertFalse(i.hasNext());
        try {
@@ -167,18 +167,18 @@ public final class TestStringUtil extends TestCase {
           fail();
        } catch(ArrayIndexOutOfBoundsException e) {}
 
-       
+
        i = new StringsIterator(new String[] {"1"});
        assertTrue(i.hasNext());
        assertEquals("1", i.next());
-       
+
        assertFalse(i.hasNext());
        try {
           i.next();
           fail();
        } catch(ArrayIndexOutOfBoundsException e) {}
 
-       
+
        i = new StringsIterator(new String[] {"1","2","3"});
        assertTrue(i.hasNext());
        assertEquals("1", i.next());
@@ -186,7 +186,7 @@ public final class TestStringUtil extends TestCase {
        assertEquals("2", i.next());
        assertTrue(i.hasNext());
        assertEquals("3", i.next());
-       
+
        assertFalse(i.hasNext());
        try {
           i.next();

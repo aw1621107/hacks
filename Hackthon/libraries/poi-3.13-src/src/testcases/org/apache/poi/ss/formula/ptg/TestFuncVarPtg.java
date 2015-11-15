@@ -39,7 +39,7 @@ public final class TestFuncVarPtg extends TestCase {
 		Ptg[] ptgs = HSSFFormulaParser.parse("sum(A1:A2)", book);
 		assertEquals(2, ptgs.length);
 		assertEquals(AreaPtg.class, ptgs[0].getClass());
-		
+
 		switch(ptgs[0].getPtgClass()) {
 			case Ptg.CLASS_REF:
 				// correct behaviour

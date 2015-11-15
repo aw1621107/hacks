@@ -22,7 +22,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 /**
  * Tests for Ref3DPtg
- * 
+ *
  * @author Josh Micich
  */
 public final class TestRef3DPtg extends AbstractPtgTestCase {

@@ -138,20 +138,20 @@ public interface SheetConditionalFormatting {
 
     /**
      * Create a Databar conditional formatting rule.
-     * <p>The thresholds and colour for it will be created, but will be 
-     *  empty and require configuring with 
+     * <p>The thresholds and colour for it will be created, but will be
+     *  empty and require configuring with
      *  {@link ConditionalFormattingRule#getDataBarFormatting()}
      *  then
      *  {@link DataBarFormatting#getMinThreshold()}
-     *  and 
+     *  and
      *  {@link DataBarFormatting#getMaxThreshold()}
      */
     ConditionalFormattingRule createConditionalFormattingRule(ExtendedColor color);
-    
+
     /**
      * Create an Icon Set / Multi-State conditional formatting rule.
      * <p>The thresholds for it will be created, but will be empty
-     *  and require configuring with 
+     *  and require configuring with
      *  {@link ConditionalFormattingRule#getMultiStateFormatting()}
      *  then
      *  {@link IconMultiStateFormatting#getThresholds()}
@@ -160,8 +160,8 @@ public interface SheetConditionalFormatting {
 
     /**
      * Create a Color Scale / Color Gradient conditional formatting rule.
-     * <p>The thresholds and colours for it will be created, but will be 
-     *  empty and require configuring with 
+     * <p>The thresholds and colours for it will be created, but will be
+     *  empty and require configuring with
      *  {@link ConditionalFormattingRule#getColorScaleFormatting()}
      *  then
      *  {@link ColorScaleFormatting#getThresholds()}
@@ -169,7 +169,7 @@ public interface SheetConditionalFormatting {
      *  {@link ColorScaleFormatting#getColors()}
      */
     ConditionalFormattingRule createConditionalFormattingColorScaleRule();
-    
+
     /**
     * Gets Conditional Formatting object at a particular index
     *

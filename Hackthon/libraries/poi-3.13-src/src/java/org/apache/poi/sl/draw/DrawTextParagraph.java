@@ -79,10 +79,10 @@ public class DrawTextParagraph implements Drawable {
     public void setAutoNumberingIdx(int index) {
         autoNbrIdx = index;
     }
-    
+
     public void draw(Graphics2D graphics){
         if (lines.isEmpty()) return;
-        
+
         double penY = y;
 
         boolean firstLine = true;
@@ -100,7 +100,7 @@ public class DrawTextParagraph implements Drawable {
             // special handling for HSLF
             indent -= leftMargin;
         }
-        
+
 //        Double rightMargin = paragraph.getRightMargin();
 //        if (rightMargin == null) {
 //            rightMargin = 0d;
@@ -109,7 +109,7 @@ public class DrawTextParagraph implements Drawable {
         //The vertical line spacing
         Double spacing = paragraph.getLineSpacing();
         if (spacing == null) spacing = 100d;
-        
+
         for(DrawTextFragment line : lines){
             double penX;
 
@@ -118,7 +118,7 @@ public class DrawTextParagraph implements Drawable {
                     // TODO: find out character style for empty, but bulleted/numbered lines
                     bullet = getBullet(graphics, line.getAttributedString().getIterator());
                 }
-                
+
                 if (bullet != null){
                     bullet.setPosition(x+leftMargin+indent, penY);
                     bullet.draw(graphics);
@@ -168,7 +168,7 @@ public class DrawTextParagraph implements Drawable {
 
         y = penY - y;
     }
-    
+
     public float getFirstLineHeight() {
         return (lines.isEmpty()) ? 0 : lines.get(0).getHeight();
     }
@@ -180,7 +180,7 @@ public class DrawTextParagraph implements Drawable {
     public boolean isEmptyParagraph() {
         return (lines.isEmpty() || rawText.trim().isEmpty());
     }
-    
+
     public void applyTransform(Graphics2D graphics) {
     }
 
@@ -277,11 +277,11 @@ public class DrawTextParagraph implements Drawable {
 
         float fontSize = (Float)firstLineAttr.getAttribute(TextAttribute.SIZE);
         Double buSz = bulletStyle.getBulletFontSize();
-        if (buSz == null) buSz = 100d; 
+        if (buSz == null) buSz = 100d;
         if (buSz > 0) fontSize *= buSz* 0.01;
         else fontSize = (float)-buSz;
 
-        
+
         AttributedString str = new AttributedString(buCharacter);
         str.addAttribute(TextAttribute.FOREGROUND, fgPaint);
         str.addAttribute(TextAttribute.FAMILY, buFont);
@@ -316,7 +316,7 @@ public class DrawTextParagraph implements Drawable {
 
         return buf.toString();
     }
-    
+
     /**
      * Replace a tab with the effective number of white spaces.
      */
@@ -329,7 +329,7 @@ public class DrawTextParagraph implements Drawable {
         Double fs = tr.getFontSize();
         if (fs == null) fs = 12d;
         string.addAttribute(TextAttribute.SIZE, fs.floatValue());
-        
+
         TextLayout l = new TextLayout(string.getIterator(), new FontRenderContext(null, true, true));
         double wspace = l.getAdvance();
 
@@ -343,7 +343,7 @@ public class DrawTextParagraph implements Drawable {
         }
         return buf.toString();
     }
-    
+
 
     /**
      * Returns wrapping width to break lines in this paragraph
@@ -409,7 +409,7 @@ public class DrawTextParagraph implements Drawable {
             this.endIndex = endIndex;
         }
     }
-    
+
     /**
      * Helper method for paint style relative to bounds, e.g. gradient paint
      */
@@ -434,7 +434,7 @@ public class DrawTextParagraph implements Drawable {
         if (text == null) text = new StringBuilder();
 
         PlaceableShape<?,?> ps = getParagraphShape();
-        
+
         DrawFontManager fontHandler = (DrawFontManager)graphics.getRenderingHint(Drawable.FONT_HANDLER);
 
         for (TextRun run : paragraph){

@@ -43,7 +43,7 @@ import java.util.TimeZone;
 /**
  * A RowHolder implementation that holds one row packet (which is re-used by the driver, and thus saves memory allocations), and tries when possible to avoid
  * allocations to break out the results as individual byte[]s.
- * 
+ *
  * (this isn't possible when doing things like reading floating point values).
  */
 public class BufferRow extends ResultSetRow {

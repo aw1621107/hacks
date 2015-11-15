@@ -92,7 +92,7 @@ public abstract class Threshold {
     public void setValue(Double value) {
         this.value = value;
     }
-    
+
     public int getDataLength() {
         int len = 1 + formula.getEncodedSize();
         if (value != null) {

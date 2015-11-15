@@ -87,7 +87,7 @@ public static final byte[] data_b = new byte[] { 70, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0
 };
-    
+
     @Test
 	public void testChunkHeaderA() throws Exception {
 		ChunkHeader h =
@@ -106,7 +106,7 @@ public static final byte[] data_b = new byte[] { 70, 0, 0, 0,
 		assertTrue(header.hasTrailer());
 		assertTrue(header.hasSeparator());
 	}
-	
+
     @Test
     public void testChunkHeaderB() throws Exception {
 		ChunkHeader h =

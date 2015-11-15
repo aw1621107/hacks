@@ -19,33 +19,33 @@ package org.apache.poi.ss.examples.formula;
 import junit.framework.TestCase;
 
 public class TestExcelAntUserDefinedFunction extends TestCase {
-	
+
 	private ExcelAntUserDefinedFunctionTestHelper fixture ;
-	
+
 	@Override
 	public void setUp() {
 		fixture = new ExcelAntUserDefinedFunctionTestHelper() ;
 	}
-	
+
 	public void testSetClassName() {
 		String className = "simple.class.name" ;
-		
+
 		fixture.setClassName( className ) ;
 		String value = fixture.getClassName() ;
-		
+
 		assertNotNull( value ) ;
 		assertEquals( className, value ) ;
 	}
-	
+
 	public void testSetFunction() {
 		String functionAlias = "alias" ;
-		
+
 		fixture.setFunctionAlias( functionAlias ) ;
-		
+
 		String alias = fixture.getFunctionAlias() ;
-		
+
 		assertNotNull( alias ) ;
 		assertEquals( functionAlias, alias ) ;
 	}
-	
+
 }

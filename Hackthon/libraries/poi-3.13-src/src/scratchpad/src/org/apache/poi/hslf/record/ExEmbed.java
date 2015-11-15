@@ -155,7 +155,7 @@ public class ExEmbed extends RecordContainer {
 
     /**
      * Gets the OLE Programmatic Identifier.
-     * 
+     *
      * @return the OLE Programmatic Identifier.
      */
     public String getProgId()

@@ -22,10 +22,10 @@ import org.apache.poi.util.POILogFactory;
 import org.apache.poi.util.POILogger;
 /**
  * Represents a constant error code value as encoded in a constant values array. <p/>
- * 
- * This class is a type-safe wrapper for a 16-bit int value performing a similar job to 
+ *
+ * This class is a type-safe wrapper for a 16-bit int value performing a similar job to
  * <tt>ErrorEval</tt>.
- * 
+ *
  * @author Josh Micich
  */
 public class ErrorConstant {
@@ -53,7 +53,7 @@ public class ErrorConstant {
 	private ErrorConstant(int errorCode) {
 		_errorCode = errorCode;
 	}
-	
+
 	public int getErrorCode() {
 		return _errorCode;
 	}

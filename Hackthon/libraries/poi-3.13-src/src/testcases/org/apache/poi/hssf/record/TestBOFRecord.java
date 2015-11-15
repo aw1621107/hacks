@@ -25,12 +25,12 @@ import junit.framework.TestCase;
 import org.apache.poi.hssf.HSSFTestDataSamples;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 /**
- * 
+ *
  */
 public final class TestBOFRecord extends TestCase {
     public void testBOFRecord() throws Exception {
         InputStream is = HSSFTestDataSamples.openSampleFileStream("bug_42794.xls");
-        
+
         // This used to throw an error before
         try {
             new HSSFWorkbook(is);

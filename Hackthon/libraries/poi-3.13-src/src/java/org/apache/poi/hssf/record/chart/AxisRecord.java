@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The axis record defines the type of an axis.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class AxisRecord extends StandardRecord {
@@ -61,23 +61,23 @@ public final class AxisRecord extends StandardRecord {
         buffer.append("    .axisType             = ")
             .append("0x").append(HexDump.toHex(  getAxisType ()))
             .append(" (").append( getAxisType() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .reserved1            = ")
             .append("0x").append(HexDump.toHex(  getReserved1 ()))
             .append(" (").append( getReserved1() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .reserved2            = ")
             .append("0x").append(HexDump.toHex(  getReserved2 ()))
             .append(" (").append( getReserved2() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .reserved3            = ")
             .append("0x").append(HexDump.toHex(  getReserved3 ()))
             .append(" (").append( getReserved3() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .reserved4            = ")
             .append("0x").append(HexDump.toHex(  getReserved4 ()))
             .append(" (").append( getReserved4() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/AXIS]\n");
         return buffer.toString();
@@ -102,7 +102,7 @@ public final class AxisRecord extends StandardRecord {
 
     public Object clone() {
         AxisRecord rec = new AxisRecord();
-    
+
         rec.field_1_axisType = field_1_axisType;
         rec.field_2_reserved1 = field_2_reserved1;
         rec.field_3_reserved2 = field_3_reserved2;
@@ -117,7 +117,7 @@ public final class AxisRecord extends StandardRecord {
     /**
      * Get the axis type field for the Axis record.
      *
-     * @return  One of 
+     * @return  One of
      *        AXIS_TYPE_CATEGORY_OR_X_AXIS
      *        AXIS_TYPE_VALUE_AXIS
      *        AXIS_TYPE_SERIES_AXIS
@@ -131,7 +131,7 @@ public final class AxisRecord extends StandardRecord {
      * Set the axis type field for the Axis record.
      *
      * @param field_1_axisType
-     *        One of 
+     *        One of
      *        AXIS_TYPE_CATEGORY_OR_X_AXIS
      *        AXIS_TYPE_VALUE_AXIS
      *        AXIS_TYPE_SERIES_AXIS

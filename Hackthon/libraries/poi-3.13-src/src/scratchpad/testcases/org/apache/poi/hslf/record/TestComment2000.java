@@ -92,7 +92,7 @@ public final class TestComment2000 {
 		};
 
 	private static SimpleDateFormat sdf;
-	
+
 	@BeforeClass
 	public static void initDateFormat() {
 	    sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.ROOT);
@@ -104,20 +104,20 @@ public final class TestComment2000 {
 		Comment2000 ca = new Comment2000(data_a, 0, data_a.length);
 		assertEquals(12000l, ca.getRecordType());
 	}
-    
+
     @Test
     public void testAuthor() {
 		Comment2000 ca = new Comment2000(data_a, 0, data_a.length);
 		assertEquals("Dumbledore", ca.getAuthor());
 		assertEquals("D", ca.getAuthorInitials());
 	}
-	
+
     @Test
     public void testText() {
 		Comment2000 ca = new Comment2000(data_a, 0, data_a.length);
 		assertEquals("Yes, they certainly are, aren't they!", ca.getText());
 	}
-	
+
     @Test
     public void testCommentAtom() throws Exception {
 		Comment2000 ca = new Comment2000(data_a, 0, data_a.length);
@@ -129,7 +129,7 @@ public final class TestComment2000 {
 		Date exp_a = sdf.parse("2006-01-24 10:26:15.205");
 		assertEquals(exp_a, c2a.getDate());
 	}
-	
+
     @Test
     public void testCommentAtomB() throws Exception {
 		Comment2000 cb = new Comment2000(data_b, 0, data_b.length);

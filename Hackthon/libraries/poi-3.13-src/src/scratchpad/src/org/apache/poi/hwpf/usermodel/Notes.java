@@ -18,7 +18,7 @@ package org.apache.poi.hwpf.usermodel;
 
 /**
  * User-friendly interface to access document notes information
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {doc} com)
  */
 public interface Notes

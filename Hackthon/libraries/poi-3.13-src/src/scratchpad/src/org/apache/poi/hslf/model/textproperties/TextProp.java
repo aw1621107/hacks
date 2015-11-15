@@ -17,16 +17,16 @@
 
 package org.apache.poi.hslf.model.textproperties;
 
-/** 
- * Definition of a property of some text, or its paragraph. Defines 
- * how to find out if it's present (via the mask on the paragraph or 
- * character "contains" header field), how long the value of it is, 
+/**
+ * Definition of a property of some text, or its paragraph. Defines
+ * how to find out if it's present (via the mask on the paragraph or
+ * character "contains" header field), how long the value of it is,
  * and how to get and set the value.
- * 
+ *
  * As the exact form of these (such as mask value, size of data
  *  block etc) is different for StyleTextProps and
  *  TxMasterTextProps, the definitions of the standard
- *  TextProps is stored in the different record classes 
+ *  TextProps is stored in the different record classes
  */
 public class TextProp implements Cloneable {
 	protected int sizeOfDataBlock; // Number of bytes the data part uses
@@ -34,7 +34,7 @@ public class TextProp implements Cloneable {
 	protected int dataValue;
 	protected int maskInHeader;
 
-	/** 
+	/**
 	 * Generate the definition of a given type of text property.
 	 */
 	public TextProp(int sizeOfDataBlock, int maskInHeader, String propName) {
@@ -53,7 +53,7 @@ public class TextProp implements Cloneable {
 	    this.propName = other.propName;
 	    this.dataValue = other.dataValue;
 	}
-	
+
 	/**
 	 * Name of the text property
 	 */
@@ -71,7 +71,7 @@ public class TextProp implements Cloneable {
 	public int getMask() { return maskInHeader; }
 	/**
 	 * Get the mask that's used at write time. Only differs from
-	 *  the result of getMask() for the mask based properties 
+	 *  the result of getMask() for the mask based properties
 	 */
 	public int getWriteMask() { return getMask(); }
 
@@ -97,7 +97,7 @@ public class TextProp implements Cloneable {
 			throw new InternalError(e.getMessage());
 		}
 	}
-	
+
 	public int hashCode() {
         final int prime = 31;
         int result = 1;

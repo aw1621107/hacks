@@ -90,7 +90,7 @@ public final class TestVisioExtractor extends TestCase {
 
 	public void testProblemFiles() throws Exception {
 		String[] files = {
-		      "44594.vsd", "44594-2.vsd", 
+		      "44594.vsd", "44594-2.vsd",
 		      "ShortChunk1.vsd", "ShortChunk2.vsd", "ShortChunk3.vsd",
 		      "NegativeChunkLength.vsd", "NegativeChunkLength2.vsd"
 		};

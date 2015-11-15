@@ -27,7 +27,7 @@ import org.apache.poi.util.LittleEndian;
 /**
  * The LFOData structure contains the Main Document CP of the corresponding LFO,
  * as well as an array of LVL override data.
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 @Internal

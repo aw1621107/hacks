@@ -30,13 +30,13 @@ public class TestBiffViewer extends BaseXLSIteratingTest {
 		// these are likely ok to fail
 		EXCLUDED.add("XRefCalc.xls"); 	// "Buffer overrun"
 		EXCLUDED.add("50833.xls"); 		// "Name is too long" when setting username
-		EXCLUDED.add("OddStyleRecord.xls");		
-		EXCLUDED.add("NoGutsRecords.xls"); 
-		EXCLUDED.add("51832.xls");	// password 
+		EXCLUDED.add("OddStyleRecord.xls");
+		EXCLUDED.add("NoGutsRecords.xls");
+		EXCLUDED.add("51832.xls");	// password
 		EXCLUDED.add("43493.xls");	// HSSFWorkbook cannot open it as well
-		EXCLUDED.add("password.xls"); 
+		EXCLUDED.add("password.xls");
 		EXCLUDED.add("46904.xls");
-        EXCLUDED.add("35897-type4.xls"); // unsupported crypto api header 
+        EXCLUDED.add("35897-type4.xls"); // unsupported crypto api header
 		EXCLUDED.add("xor-encryption-abc.xls"); // unsupported XOR-encryption
         EXCLUDED.add("testEXCEL_2.xls");  // Biff 2 / Excel 2, pre-OLE2
         EXCLUDED.add("testEXCEL_3.xls");  // Biff 3 / Excel 3, pre-OLE2
@@ -58,7 +58,7 @@ public class TestBiffViewer extends BaseXLSIteratingTest {
 			fs.close();
 		}
 	}
-	
+
 //	@Test
 //	@Ignore("only used for manual tests")
 //	public void testOneFile() throws Exception {

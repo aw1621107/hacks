@@ -49,15 +49,15 @@ import org.apache.poi.util.POILogger;
  */
 public class DateFormatConverter  {
 	private static POILogger logger = POILogFactory.getLogger(DateFormatConverter.class);
-	
+
 	public static class DateFormatTokenizer {
 		String format;
 		int pos;
-		
+
 		public DateFormatTokenizer(String format) {
 			this.format = format;
 		}
-		
+
 		public String getNextToken() {
 			if( pos >= format.length() ) {
 				return null;
@@ -80,23 +80,23 @@ public class DateFormatConverter  {
 			}
 			return format.substring(subStart,pos);
 		}
-		
+
 		public static String[] tokenize( String format ) {
 			List<String> result = new ArrayList<String>();
-			
+
 			DateFormatTokenizer tokenizer = new DateFormatTokenizer(format);
 			String token;
 			while( ( token = tokenizer.getNextToken() ) != null ) {
 				result.add(token);
 			}
-			
+
 			return result.toArray(new String[0]);
 		}
-		
+
 		@Override
 		public String toString() {
 			StringBuilder result = new StringBuilder();
-			
+
 			DateFormatTokenizer tokenizer = new DateFormatTokenizer(format);
 			String token;
 			while( ( token = tokenizer.getNextToken() ) != null ) {
@@ -105,17 +105,17 @@ public class DateFormatConverter  {
 				}
 				result.append("[").append(token).append("]");
 			}
-			
+
 			return result.toString();
-		}		
-	}		
-	
+		}
+	}
+
 	private static Map<String,String> tokenConversions = prepareTokenConversions();
 	private static Map<String,String> localePrefixes = prepareLocalePrefixes();
-	
+
 	private static Map<String,String> prepareTokenConversions() {
 		Map<String,String> result = new HashMap<String,String>();
-		
+
 		result.put( "EEEE", "dddd" );
 		result.put( "EEE", "ddd" );
 		result.put( "EE", "ddd" );
@@ -131,13 +131,13 @@ public class DateFormatConverter  {
 		result.put( "S", "0" );
 		result.put( "SS", "00" );
 		result.put( "SSS", "000" );
-		
+
 		return result;
 	}
-	
+
 	private static Map<String,String> prepareLocalePrefixes() {
 		Map<String,String> result = new HashMap<String,String>();
-		
+
 		result.put( "af", "[$-0436]" );
 		result.put( "am", "[$-45E]" );
 		result.put( "ar_ae", "[$-3801]" );
@@ -318,18 +318,18 @@ public class DateFormatConverter  {
 		result.put( "sv", "[$-41D]" );
 		result.put( "uz", "[$-0843]" );
 		result.put( "zh", "[$-0804]" );
-		
+
 		result.put( "ga", "[$-43C]" );
 		result.put( "ga_ie", "[$-83C]" );
 		result.put( "in", "[$-0421]" );
 		result.put( "iw", "[$-40D]" );
-		
+
 		// JDK 8 adds an empty locale-string, see also https://issues.apache.org/jira/browse/LANG-941
 		result.put( "", "[$-0409]" );
-		
+
 		return result;
 	}
-	
+
 	public static String getPrefixForLocale( Locale locale ) {
 		String localeString = locale.toString().toLowerCase(locale);
 		String result = localePrefixes.get( localeString );
@@ -337,7 +337,7 @@ public class DateFormatConverter  {
 			result = localePrefixes.get( localeString.substring( 0, 2 ) );
 			if( result ==  null ) {
 				Locale parentLocale = new Locale(localeString.substring( 0, 2 ));
-				logger.log( POILogger.ERROR, "Unable to find prefix for " + locale + "(" + locale.getDisplayName(Locale.ROOT) + ") or " 
+				logger.log( POILogger.ERROR, "Unable to find prefix for " + locale + "(" + locale.getDisplayName(Locale.ROOT) + ") or "
 						+ localeString.substring( 0, 2 ) + "(" + parentLocale.getDisplayName(Locale.ROOT) + ")" );
 				return "";
 			}
@@ -352,7 +352,7 @@ public class DateFormatConverter  {
 
     public static String convert( Locale locale, String format ) {
 		StringBuilder result = new StringBuilder();
-		
+
 		result.append(getPrefixForLocale(locale));
 		DateFormatTokenizer tokenizer = new DateFormatTokenizer(format);
 		String token;
@@ -370,7 +370,7 @@ public class DateFormatConverter  {
         result.append(";@");
 		return result.toString().trim();
 	}
-	
+
 	public static String getJavaDatePattern(int style, Locale locale) {
     	DateFormat df = DateFormat.getDateInstance(style, locale);
     	if( df instanceof SimpleDateFormat ) {
@@ -390,7 +390,7 @@ public class DateFormatConverter  {
     		}
     	}
 	}
-	
+
 	public static String getJavaTimePattern(int style, Locale locale) {
     	DateFormat df = DateFormat.getTimeInstance(style, locale);
     	if( df instanceof SimpleDateFormat ) {
@@ -410,7 +410,7 @@ public class DateFormatConverter  {
     		}
     	}
 	}
-	
+
 	public static String getJavaDateTimePattern(int style, Locale locale) {
     	DateFormat df = DateFormat.getDateTimeInstance(style, style, locale);
     	if( df instanceof SimpleDateFormat ) {
@@ -430,5 +430,5 @@ public class DateFormatConverter  {
     		}
     	}
 	}
-		
+
 }

@@ -123,7 +123,7 @@ public final class UserEditAtom extends PositionDependentRecordAtom
 		// Last view type
 		lastViewType = LittleEndian.getShort(source,offset);
 		offset += LittleEndianConsts.SHORT_SIZE;
-		
+
 		// unused
 		unused = LittleEndian.getShort(source,offset);
 		offset += LittleEndianConsts.SHORT_SIZE;
@@ -133,7 +133,7 @@ public final class UserEditAtom extends PositionDependentRecordAtom
 		    encryptSessionPersistIdRef = LittleEndian.getInt(source,offset);
 		    offset += LittleEndianConsts.INT_SIZE;
 		}
-		
+
 		assert(offset-start == len);
 	}
 

@@ -126,32 +126,32 @@ public class TestXWPFHeaderFooterPolicy extends TestCase {
         assertEquals(policy.getDefaultFooter(), policy.getFooter(2));
         assertEquals(policy.getDefaultFooter(), policy.getFooter(3));
     }
-    
+
     @SuppressWarnings("resource")
     public void testCreate() throws Exception {
         XWPFDocument doc = new XWPFDocument();
         assertEquals(null, doc.getHeaderFooterPolicy());
         assertEquals(0, doc.getHeaderList().size());
         assertEquals(0, doc.getFooterList().size());
-        
+
         XWPFHeaderFooterPolicy policy = doc.createHeaderFooterPolicy();
         assertNotNull(doc.getHeaderFooterPolicy());
         assertEquals(0, doc.getHeaderList().size());
         assertEquals(0, doc.getFooterList().size());
-        
+
         // Create a header and a footer
         XWPFHeader header = policy.createHeader(XWPFHeaderFooterPolicy.DEFAULT);
         XWPFFooter footer = policy.createFooter(XWPFHeaderFooterPolicy.DEFAULT);
         header.createParagraph().createRun().setText("Header Hello");
         footer.createParagraph().createRun().setText("Footer Bye");
-        
-        
+
+
         // Save, re-load, and check
         doc = XWPFTestDataSamples.writeOutAndReadBack(doc);
         assertNotNull(doc.getHeaderFooterPolicy());
         assertEquals(1, doc.getHeaderList().size());
         assertEquals(1, doc.getFooterList().size());
-        
+
         assertEquals("Header Hello\n", doc.getHeaderList().get(0).getText());
         assertEquals("Footer Bye\n", doc.getFooterList().get(0).getText());
     }

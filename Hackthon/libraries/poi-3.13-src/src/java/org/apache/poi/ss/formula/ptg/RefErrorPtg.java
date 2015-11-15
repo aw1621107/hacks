@@ -55,7 +55,7 @@ public final class RefErrorPtg extends OperandPtg {
     public String toFormulaString() {
         return ErrorConstants.getText(ErrorConstants.ERROR_REF);
     }
-    
+
     public byte getDefaultOperandClass() {
         return Ptg.CLASS_REF;
     }

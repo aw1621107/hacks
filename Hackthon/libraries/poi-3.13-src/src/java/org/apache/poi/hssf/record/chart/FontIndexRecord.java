@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The font index record indexes into the font table for the text record.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class FontIndexRecord extends StandardRecord {
@@ -50,7 +50,7 @@ public final class FontIndexRecord extends StandardRecord {
         buffer.append("    .fontIndex            = ")
             .append("0x").append(HexDump.toHex(  getFontIndex ()))
             .append(" (").append( getFontIndex() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/FONTX]\n");
         return buffer.toString();
@@ -71,7 +71,7 @@ public final class FontIndexRecord extends StandardRecord {
 
     public Object clone() {
         FontIndexRecord rec = new FontIndexRecord();
-    
+
         rec.field_1_fontIndex = field_1_fontIndex;
         return rec;
     }

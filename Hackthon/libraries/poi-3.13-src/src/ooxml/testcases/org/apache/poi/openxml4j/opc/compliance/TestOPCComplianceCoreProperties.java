@@ -43,34 +43,34 @@ import org.apache.poi.util.TempFile;
 
 /**
  * Test core properties Open Packaging Convention compliance.
- * 
+ *
  * M4.1: The format designer shall specify and the format producer shall create
  * at most one core properties relationship for a package. A format consumer
  * shall consider more than one core properties relationship for a package to be
  * an error. If present, the relationship shall target the Core Properties part.
  * (POI relaxes this on reading, as Office sometimes breaks this)
- * 
+ *
  * M4.2: The format designer shall not specify and the format producer shall not
  * create Core Properties that use the Markup Compatibility namespace as defined
  * in Annex F, "Standard Namespaces and Content Types". A format consumer shall
  * consider the use of the Markup Compatibility namespace to be an error.
- * 
+ *
  * M4.3: Producers shall not create a document element that contains refinements
  * to the Dublin Core elements, except for the two specified in the schema:
  * <dcterms:created> and <dcterms:modified> Consumers shall consider a document
  * element that violates this constraint to be an error.
- * 
+ *
  * M4.4: Producers shall not create a document element that contains the
  * xml:lang attribute. Consumers shall consider a document element that violates
  * this constraint to be an error.
- * 
+ *
  * M4.5: Producers shall not create a document element that contains the
  * xsi:type attribute, except for a <dcterms:created> or <dcterms:modified>
  * element where the xsi:type attribute shall be present and shall hold the
  * value dcterms:W3CDTF, where dcterms is the namespace prefix of the Dublin
  * Core namespace. Consumers shall consider a document element that violates
  * this constraint to be an error.
- * 
+ *
  * @author Julien Chable
  */
 public final class TestOPCComplianceCoreProperties extends TestCase {
@@ -102,7 +102,7 @@ public final class TestOPCComplianceCoreProperties extends TestCase {
 		pkg.revert();
 		throw new AssertionFailedError("expected OPC compliance exception was not thrown");
 	}
-	
+
 	/**
 	 * Test M4.1 rule.
 	 */
@@ -112,11 +112,11 @@ public final class TestOPCComplianceCoreProperties extends TestCase {
 	      extractInvalidFormatMessage("OnlyOneCorePropertiesPartFAIL.docx");
 	      fail("M4.1 should be being relaxed");
 	   } catch (AssertionFailedError e) {}
-	   
+
 	   // We will use the first core properties, and ignore the others
       InputStream is = OpenXML4JTestDataSamples.openSampleStream("MultipleCoreProperties.docx");
       OPCPackage pkg = OPCPackage.open(is);
-      
+
       // We can see 2 by type
       assertEquals(2, pkg.getPartsByContentType(ContentTypes.CORE_PROPERTIES_PART).size());
       // But only the first one by relationship
@@ -127,7 +127,7 @@ public final class TestOPCComplianceCoreProperties extends TestCase {
             pkg.getPartsByRelationshipType(PackageRelationshipTypes.CORE_PROPERTIES).get(0).getPartName().toString()
       );
 	}
-	
+
 	private static URI createURI(String text) {
 		try {
 			return new URI(text);
@@ -175,7 +175,7 @@ public final class TestOPCComplianceCoreProperties extends TestCase {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		
+
 		URI partUri = createURI("/docProps/core2.xml");
 		try {
 			pkg.createPart(PackagingURIHelper.createPartName(partUri),
@@ -230,7 +230,7 @@ public final class TestOPCComplianceCoreProperties extends TestCase {
 		String msg = extractInvalidFormatMessage("LimitedXSITypeAttribute_PresentWithUnauthorizedValueFAIL.docx");
 		assertEquals("The element 'modified' must have the 'xsi:type' attribute with the value 'dcterms:W3CDTF', but had 'W3CDTF' !", msg);
 	}
-	
+
     /**
      * Document with no core properties - testing at the OPC level,
      *  saving into a new stream
@@ -257,17 +257,17 @@ public final class TestOPCComplianceCoreProperties extends TestCase {
         assertNotNull(pkg.getPackageProperties());
         assertNotNull(pkg.getPackageProperties().getLanguageProperty());
         assertNull(pkg.getPackageProperties().getLanguageProperty().getValue());
-        
-        
+
+
         // Open a new copy of it
         pkg = OPCPackage.open(POIDataSamples.getOpenXML4JInstance().getFile(sampleFileName).getPath());
-        
+
         // Save and re-load, without having touched the properties yet
         baos = new ByteArrayOutputStream();
         pkg.save(baos);
         bais = new ByteArrayInputStream(baos.toByteArray());
         pkg = OPCPackage.open(bais);
-        
+
         // Check that this too added empty properties without error
         assertEquals(1, pkg.getPartsByContentType(ContentTypes.CORE_PROPERTIES_PART).size());
         assertNotNull(pkg.getPackageProperties());

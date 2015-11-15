@@ -24,8 +24,8 @@ import org.apache.poi.ss.usermodel.Workbook;
 public class MockExcelAntWorkbookHandler implements IExcelAntWorkbookHandler {
     public static boolean executed = false;
     public static Workbook workbook = null;
-    
-    
+
+
     public void setWorkbook(Workbook workbook) {
         MockExcelAntWorkbookHandler.workbook = workbook;
     }

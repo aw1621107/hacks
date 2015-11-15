@@ -61,22 +61,22 @@ public interface ShapeContainer<
      * create a text box
      */
 	TextBox<S,P> createTextBox();
-	
+
     /**
      * create a connector
      */
 	ConnectorShape<S,P> createConnector();
-	
+
     /**
      * create a group of shapes belonging to this container
      */
 	GroupShape<S,P> createGroup();
-	
+
     /**
      * create a picture belonging to this container
      */
 	PictureShape<S,P> createPicture(PictureData pictureData);
-	
+
     /**
      * Create a new Table of the given number of rows and columns
      *

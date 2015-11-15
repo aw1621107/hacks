@@ -74,7 +74,7 @@ public final class PackageRelationshipCollection implements
      * Reference to the package.
      */
     private OPCPackage container;
-    
+
     /**
      * The ID number of the next rID# to generate, or -1
      *  if that is still to be determined.

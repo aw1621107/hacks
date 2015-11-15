@@ -62,7 +62,7 @@ public class EntryUtils
 
     /**
      * Copies all the nodes from one POIFS Directory to another
-     * 
+     *
      * @param sourceRoot
      *            is the source Directory to copy from
      * @param targetRoot
@@ -78,7 +78,7 @@ public class EntryUtils
 
     /**
      * Copies nodes from one Directory to the other minus the excepts
-     * 
+     *
      * @param filteredSource The filtering source Directory to copy from
      * @param filteredTarget The filtering target Directory to copy to
      */
@@ -92,7 +92,7 @@ public class EntryUtils
 
     /**
      * Copies nodes from one Directory to the other minus the excepts
-     * 
+     *
      * @param sourceRoot
      *            is the source Directory to copy from
      * @param targetRoot
@@ -118,7 +118,7 @@ public class EntryUtils
 
     /**
      * Copies all nodes from one POIFS to the other
-     * 
+     *
      * @param source
      *            is the source POIFS to copy from
      * @param target
@@ -131,7 +131,7 @@ public class EntryUtils
     }
     /**
      * Copies all nodes from one POIFS to the other
-     * 
+     *
      * @param source
      *            is the source POIFS to copy from
      * @param target
@@ -142,13 +142,13 @@ public class EntryUtils
     {
         copyNodes( source.getRoot(), target.getRoot() );
     }
-    
+
     /**
      * Copies nodes from one POIFS to the other, minus the excepts.
      * This delegates the filtering work to {@link FilteringDirectoryNode},
      *  so excepts can be of the form "NodeToExclude" or
      *  "FilteringDirectory/ExcludedChildNode"
-     * 
+     *
      * @param source is the source POIFS to copy from
      * @param target is the target POIFS to copy to
      * @param excepts is a list of Entry Names to be excluded from the copy
@@ -166,7 +166,7 @@ public class EntryUtils
      * This delegates the filtering work to {@link FilteringDirectoryNode},
      *  so excepts can be of the form "NodeToExclude" or
      *  "FilteringDirectory/ExcludedChildNode"
-     * 
+     *
      * @param source is the source POIFS to copy from
      * @param target is the target POIFS to copy to
      * @param excepts is a list of Entry Names to be excluded from the copy
@@ -179,7 +179,7 @@ public class EntryUtils
               new FilteringDirectoryNode(target.getRoot(), excepts)
         );
     }
-    
+
     /**
      * Checks to see if the two Directories hold the same contents.
      * For this to be true, they must have entries with the same names,
@@ -193,15 +193,15 @@ public class EntryUtils
        if (! dirA.getName().equals(dirB.getName())) {
           return false;
        }
-       
+
        // Next up, check they have the same number of children
        if (dirA.getEntryCount() != dirB.getEntryCount()) {
           return false;
        }
-       
+
        // Next, check entries and their types/sizes
        Map<String,Integer> aSizes = new HashMap<String, Integer>();
-       final int isDirectory = -12345; 
+       final int isDirectory = -12345;
        for (Entry a : dirA) {
           String aName = a.getName();
           if (a.isDirectoryEntry()) {
@@ -216,7 +216,7 @@ public class EntryUtils
              // In B but not A
              return false;
           }
-          
+
           int size;
           if (b.isDirectoryEntry()) {
              size = isDirectory;
@@ -227,7 +227,7 @@ public class EntryUtils
              // Either the wrong type, or they're different sizes
              return false;
           }
-          
+
           // Track it as checked
           aSizes.remove(bName);
        }
@@ -235,7 +235,7 @@ public class EntryUtils
           // Nodes were in A but not B
           return false;
        }
-       
+
        // If that passed, check entry contents
        for (Entry a : dirA) {
           try {
@@ -257,11 +257,11 @@ public class EntryUtils
              return false;
           }
        }
-       
+
        // If we get here, they match!
        return true;
     }
-    
+
     /**
      * Checks to see if two Documents have the same name
      *  and the same contents. (Their parent directories are
@@ -282,7 +282,7 @@ public class EntryUtils
        try {
           inpA = new DocumentInputStream(docA);
           inpB = new DocumentInputStream(docB);
-          
+
           int readA, readB;
           do {
              readA = inpA.read();
@@ -296,7 +296,7 @@ public class EntryUtils
           if (inpA != null) inpA.close();
           if (inpB != null) inpB.close();
        }
-       
+
        return matches;
     }
 }

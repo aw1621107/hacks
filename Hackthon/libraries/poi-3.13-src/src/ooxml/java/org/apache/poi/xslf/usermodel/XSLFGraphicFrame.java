@@ -102,7 +102,7 @@ public class XSLFGraphicFrame extends XSLFShape {
     public void setRotation(double theta){
     	throw new IllegalArgumentException("Operation not supported");
     }
-   
+
     /**
      * Rotation angle in degrees
      * <p>
@@ -123,7 +123,7 @@ public class XSLFGraphicFrame extends XSLFShape {
     public void setFlipVertical(boolean flip){
     	throw new IllegalArgumentException("Operation not supported");
     }
-    
+
     /**
      * Whether the shape is horizontally flipped
      *

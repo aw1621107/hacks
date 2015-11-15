@@ -44,7 +44,7 @@ public class LoadStorePerfTest extends BasePerfTest {
 
     /**
      * Constructor for LoadStorePerfTest.
-     * 
+     *
      * @param name
      *            the name of the test to run
      */
@@ -64,10 +64,10 @@ public class LoadStorePerfTest extends BasePerfTest {
 
     /**
      * Runs all tests in this test case
-     * 
+     *
      * @param args
      *            ignored
-     * 
+     *
      * @throws Exception
      *             if an error occurs
      */
@@ -164,7 +164,7 @@ public class LoadStorePerfTest extends BasePerfTest {
 
     /**
      * Tests and times 1000 load/store type transactions
-     * 
+     *
      * @throws Exception
      *             if an error occurs
      */
@@ -179,7 +179,7 @@ public class LoadStorePerfTest extends BasePerfTest {
 
     /**
      * Runs one iteration of the test.
-     * 
+     *
      * @see testsuite.perf.BasePerfTest#doOneIteration()
      */
     @Override
@@ -309,7 +309,7 @@ public class LoadStorePerfTest extends BasePerfTest {
 
     /**
      * Runs the test 10 times to get JIT going, and GC going
-     * 
+     *
      * @throws Exception
      *             if an error occurs.
      */

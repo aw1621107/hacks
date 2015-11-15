@@ -18,9 +18,9 @@
 /* ====================================================================
    This product contains an ASLv2 licensed version of the OOXML signer
    package from the eID Applet project
-   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt  
+   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt
    Copyright (C) 2008-2014 FedICT.
-   ================================================================= */ 
+   ================================================================= */
 
 package org.apache.poi.poifs.crypt.dsig;
 
@@ -64,7 +64,7 @@ public class OOXMLURIDereferencer implements URIDereferencer, SignatureConfigura
         if (baseUriDereferencer == null) {
             baseUriDereferencer = signatureConfig.getSignatureFactory().getURIDereferencer();
         }
-        
+
         if (null == uriReference) {
             throw new NullPointerException("URIReference cannot be null");
         }
@@ -104,7 +104,7 @@ public class OOXMLURIDereferencer implements URIDereferencer, SignatureConfigura
         } catch (IOException e) {
             throw new URIReferenceException("I/O error: " + e.getMessage(), e);
         }
-        
+
         return new OctetStreamData(dataStream, uri.toString(), null);
     }
 
@@ -116,7 +116,7 @@ public class OOXMLURIDereferencer implements URIDereferencer, SignatureConfigura
             LOG.log(POILogger.DEBUG, "illegal part name (expected)", uri);
             return null;
         }
-        
+
         PackagePartName ppn;
         try {
             ppn = PackagingURIHelper.createPartName(path);
@@ -124,7 +124,7 @@ public class OOXMLURIDereferencer implements URIDereferencer, SignatureConfigura
             LOG.log(POILogger.WARN, "illegal part name (not expected)", uri);
             return null;
         }
-        
+
         return signatureConfig.getOpcPackage().getPart(ppn);
     }
 }

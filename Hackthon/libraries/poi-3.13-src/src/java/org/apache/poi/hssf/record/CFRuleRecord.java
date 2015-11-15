@@ -25,8 +25,8 @@ import org.apache.poi.ss.formula.ptg.Ptg;
 import org.apache.poi.util.LittleEndianOutput;
 
 /**
- * Conditional Formatting Rule Record (0x01B1). 
- * 
+ * Conditional Formatting Rule Record (0x01B1).
+ *
  * <p>This is for the older-style Excel conditional formattings,
  *  new-style (Excel 2007+) also make use of {@link CFRule12Record}
  *  and {@link CFExRuleRecord} for their rules.
@@ -106,7 +106,7 @@ public final class CFRuleRecord extends CFRuleBase {
         out.writeByte(getComparisonOperation());
         out.writeShort(formula1Len);
         out.writeShort(formula2Len);
-        
+
         serializeFormattingBlock(out);
 
         getFormula1().serializeTokens(out);

@@ -60,14 +60,14 @@ public class Outlining {
 	sheet2.groupColumn( (short)4, (short)7 );
 	sheet2.groupColumn( (short)9, (short)12 );
 	sheet2.groupColumn( (short)10, (short)11 );
-	
-	
+
+
 	sheet2.setRowGroupCollapsed( 7, true );
 	//sheet1.setRowGroupCollapsed(7,false);
-	
-	sheet2.setColumnGroupCollapsed( (short)4, true );	
+
+	sheet2.setColumnGroupCollapsed( (short)4, true );
 	sheet2.setColumnGroupCollapsed( (short)4, false );
-	
+
 	FileOutputStream fileOut = new FileOutputStream("outlining_collapsed.xlsx");
 	wb2.write(fileOut);
 	fileOut.close();

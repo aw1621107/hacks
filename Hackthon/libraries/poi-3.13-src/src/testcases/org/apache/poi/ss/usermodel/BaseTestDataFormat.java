@@ -60,7 +60,7 @@ public abstract class BaseTestDataFormat extends TestCase {
         //read and verify the string representation
         assertEquals(customFmt, df.getFormat((short)customIdx));
     }
-    
+
     /**
      * [Bug 49928] formatCellValue returns incorrect value for \u00a3 formatted cells
      */
@@ -74,7 +74,7 @@ public abstract class BaseTestDataFormat extends TestCase {
         CellStyle style = cell.getCellStyle();
 
         String poundFmt = "\"\u00a3\"#,##0;[Red]\\-\"\u00a3\"#,##0";
-        // not expected normally, id of a custom format should be greater 
+        // not expected normally, id of a custom format should be greater
         // than BuiltinFormats.FIRST_USER_DEFINED_FORMAT_INDEX
         short  poundFmtIdx = 6;
 

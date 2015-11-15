@@ -43,7 +43,7 @@ public class TestXSSFConditionalFormatting extends BaseTestConditionalFormatting
     public void testRead(){
         testRead("WithConditionalFormatting.xlsx");
     }
-    
+
     public void testReadOffice2007() {
         testReadOffice2007("NewStyleConditionalFormattings.xlsx");
     }

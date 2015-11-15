@@ -26,15 +26,15 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The area format record is used to define the colours and patterns for an area.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class AreaFormatRecord extends StandardRecord {
     public final static short sid = 0x100A;
-    
+
     private static final BitField automatic = BitFieldFactory.getInstance(0x1);
     private static final BitField invert    = BitFieldFactory.getInstance(0x2);
-    
+
     private  int        field_1_foregroundColor;
     private  int        field_2_backgroundColor;
     private  short      field_3_pattern;
@@ -67,29 +67,29 @@ public final class AreaFormatRecord extends StandardRecord {
         buffer.append("    .foregroundColor      = ")
             .append("0x").append(HexDump.toHex(  getForegroundColor ()))
             .append(" (").append( getForegroundColor() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .backgroundColor      = ")
             .append("0x").append(HexDump.toHex(  getBackgroundColor ()))
             .append(" (").append( getBackgroundColor() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .pattern              = ")
             .append("0x").append(HexDump.toHex(  getPattern ()))
             .append(" (").append( getPattern() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .formatFlags          = ")
             .append("0x").append(HexDump.toHex(  getFormatFlags ()))
             .append(" (").append( getFormatFlags() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
-        buffer.append("         .automatic                = ").append(isAutomatic()).append('\n'); 
-        buffer.append("         .invert                   = ").append(isInvert()).append('\n'); 
+        buffer.append(System.getProperty("line.separator"));
+        buffer.append("         .automatic                = ").append(isAutomatic()).append('\n');
+        buffer.append("         .invert                   = ").append(isInvert()).append('\n');
         buffer.append("    .forecolorIndex       = ")
             .append("0x").append(HexDump.toHex(  getForecolorIndex ()))
             .append(" (").append( getForecolorIndex() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .backcolorIndex       = ")
             .append("0x").append(HexDump.toHex(  getBackcolorIndex ()))
             .append(" (").append( getBackcolorIndex() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/AREAFORMAT]\n");
         return buffer.toString();
@@ -115,7 +115,7 @@ public final class AreaFormatRecord extends StandardRecord {
 
     public Object clone() {
         AreaFormatRecord rec = new AreaFormatRecord();
-    
+
         rec.field_1_foregroundColor = field_1_foregroundColor;
         rec.field_2_backgroundColor = field_2_backgroundColor;
         rec.field_3_pattern = field_3_pattern;

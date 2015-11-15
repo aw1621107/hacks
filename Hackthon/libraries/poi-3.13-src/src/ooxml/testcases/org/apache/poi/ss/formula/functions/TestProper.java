@@ -62,7 +62,7 @@ public final class TestProper extends TestCase {
         confirm("PROPER(\"-\")", "-");
         confirm("PROPER(\"!\u00a7$\")", "!\u00a7$");
         confirm("PROPER(\"/&%\")", "/&%");
-        
+
         // also test longer string
         StringBuilder builder = new StringBuilder("A");
         StringBuilder expected = new StringBuilder("A");

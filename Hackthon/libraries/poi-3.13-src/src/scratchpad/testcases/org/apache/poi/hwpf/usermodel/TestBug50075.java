@@ -33,9 +33,9 @@ public class TestBug50075 extends TestCase
     ListEntry entry = (ListEntry) range.getParagraph(0);
     LFO override = doc.getListTables().getLfo( entry.getIlfo());
     ListLevel level = doc.getListTables().getLevel(override.getLsid(), entry.getIlvl());
-    
+
     // the bug reproduces, if this call fails with NullPointerException
     level.getNumberText();
   }
-  
+
 }

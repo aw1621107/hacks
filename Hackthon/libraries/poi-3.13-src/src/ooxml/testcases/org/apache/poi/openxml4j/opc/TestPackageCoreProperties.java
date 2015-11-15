@@ -178,7 +178,7 @@ public final class TestPackageCoreProperties {
         props.setModifiedProperty(strDate);
         assertEquals(strDate, props.getModifiedPropertyString());
         assertEquals(date, props.getModifiedProperty().getValue());
-        
+
         // Tidy
         pkg.close();
     }
@@ -223,26 +223,26 @@ public final class TestPackageCoreProperties {
 
         // Get the Core Properties
         PackagePropertiesPart props = (PackagePropertiesPart)p.getPackageProperties();
-        
+
         // Check
         assertEquals("Stefan Kopf", props.getCreatorProperty().getValue());
-        
+
         p.close();
     }
-    
+
 	@Test
 	public void testListOfCustomProperties() throws Exception {
         File inp = POIDataSamples.getSpreadSheetInstance().getFile("ExcelWithAttachments.xlsm");
         OPCPackage pkg = OPCPackage.open(inp, PackageAccess.READ);
         XSSFWorkbook wb = new XSSFWorkbook(pkg);
-        
+
         assertNotNull(wb.getProperties());
         assertNotNull(wb.getProperties().getCustomProperties());
-        
+
         for (CTProperty prop : wb.getProperties().getCustomProperties().getUnderlyingProperties().getPropertyList()) {
             assertNotNull(prop);
         }
-        
+
         wb.close();
         pkg.close();
     }

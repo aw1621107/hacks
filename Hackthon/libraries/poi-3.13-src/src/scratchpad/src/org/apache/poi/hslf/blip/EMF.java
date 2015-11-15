@@ -36,12 +36,12 @@ import org.apache.poi.util.Units;
 public final class EMF extends Metafile {
 
     public static class NativeHeader {
-        // rectangular inclusive-inclusive bounds, in device units, of the smallest 
+        // rectangular inclusive-inclusive bounds, in device units, of the smallest
         // rectangle that can be drawn around the image stored in the metafile.
         private final Rectangle deviceBounds;
 
         private final static String EMF_SIGNATURE = " EMF"; // 0x464D4520 (LE)
-        
+
         public NativeHeader(byte data[], int offset) {
             int type = (int)LittleEndian.getUInt(data, offset); offset += 4;
             if (type != 1) {
@@ -66,7 +66,7 @@ public final class EMF extends Metafile {
             return deviceBounds.getSize();
         }
     }
-    
+
     @Override
     public byte[] getData(){
         try {
@@ -96,7 +96,7 @@ public final class EMF extends Metafile {
         byte[] compressed = compress(data, 0, data.length);
 
         NativeHeader nHeader = new NativeHeader(data, 0);
-        
+
         Header header = new Header();
         header.wmfsize = data.length;
         header.bounds = nHeader.deviceBounds;
@@ -129,7 +129,7 @@ public final class EMF extends Metafile {
     public int getSignature(){
         return (uidInstanceCount == 1 ? 0x3D40 : 0x3D50);
     }
-    
+
     /**
      * Sets the EMF signature - either {@code 0x3D40} or {@code 0x3D50}
      */
@@ -143,6 +143,6 @@ public final class EMF extends Metafile {
                 break;
             default:
                 throw new IllegalArgumentException(signature+" is not a valid instance/signature value for EMF");
-        }        
+        }
     }
 }

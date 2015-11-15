@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_Vector3D complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_Vector3D">
  *   &lt;complexContent>
@@ -39,8 +39,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_Vector3D", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main")
@@ -55,7 +55,7 @@ public class CTVector3D {
 
     /**
      * Gets the value of the dx property.
-     * 
+     *
      */
     public long getDx() {
         return dx;
@@ -63,7 +63,7 @@ public class CTVector3D {
 
     /**
      * Sets the value of the dx property.
-     * 
+     *
      */
     public void setDx(long value) {
         this.dx = value;
@@ -75,7 +75,7 @@ public class CTVector3D {
 
     /**
      * Gets the value of the dy property.
-     * 
+     *
      */
     public long getDy() {
         return dy;
@@ -83,7 +83,7 @@ public class CTVector3D {
 
     /**
      * Sets the value of the dy property.
-     * 
+     *
      */
     public void setDy(long value) {
         this.dy = value;
@@ -95,7 +95,7 @@ public class CTVector3D {
 
     /**
      * Gets the value of the dz property.
-     * 
+     *
      */
     public long getDz() {
         return dz;
@@ -103,7 +103,7 @@ public class CTVector3D {
 
     /**
      * Sets the value of the dz property.
-     * 
+     *
      */
     public void setDz(long value) {
         this.dz = value;

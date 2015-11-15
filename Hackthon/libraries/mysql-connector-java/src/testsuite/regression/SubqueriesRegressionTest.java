@@ -39,7 +39,7 @@ public class SubqueriesRegressionTest extends BaseTestCase {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see junit.framework.TestCase#setUp()
      */
     @Override
@@ -51,7 +51,7 @@ public class SubqueriesRegressionTest extends BaseTestCase {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see junit.framework.TestCase#tearDown()
      */
     @Override
@@ -61,7 +61,7 @@ public class SubqueriesRegressionTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {

@@ -107,9 +107,9 @@ public class EscherColorRef {
             this.mask = new BitField(mask);
         }
     }
-    
+
     /**
-     * A bit that specifies whether the system color scheme will be used to determine the color. 
+     * A bit that specifies whether the system color scheme will be used to determine the color.
      * A value of 0x1 specifies that green and red will be treated as an unsigned 16-bit index
      * into the system color table. Values less than 0x00F0 map directly to system colors.
      */
@@ -121,14 +121,14 @@ public class EscherColorRef {
      * into the current color scheme table. If this value is 0x1, green and blue MUST be 0x00.
      */
     private static final BitField FLAG_SCHEME_INDEX  = new BitField(0x08000000);
-    
+
     /**
      * A bit that specifies whether the color is a standard RGB color.
      * 0x0 : The RGB color MAY use halftone dithering to display.
      * 0x1 : The color MUST be a solid color.
      */
     private static final BitField FLAG_SYSTEM_RGB    = new BitField(0x04000000);
-    
+
     /**
      * A bit that specifies whether the current palette will be used to determine the color.
      * A value of 0x1 specifies that red, green, and blue contain an RGB value that will be
@@ -138,36 +138,36 @@ public class EscherColorRef {
 
     /**
      * A bit that specifies whether the current palette will be used to determine the color.
-     * A value of 0x1 specifies that green and red will be treated as an unsigned 16-bit index into 
+     * A value of 0x1 specifies that green and red will be treated as an unsigned 16-bit index into
      * the current color palette. This color MAY be dithered. If this value is 0x1, blue MUST be 0x00.
      */
     private static final BitField FLAG_PALETTE_INDEX = new BitField(0x01000000);
-    
+
     /**
      * An unsigned integer that specifies the intensity of the blue color channel. A value
      * of 0x00 has the minimum blue intensity. A value of 0xFF has the maximum blue intensity.
      */
     private static final BitField FLAG_BLUE          = new BitField(0x00FF0000);
-    
+
     /**
      * An unsigned integer that specifies the intensity of the green color channel. A value
      * of 0x00 has the minimum green intensity. A value of 0xFF has the maximum green intensity.
      */
     private static final BitField FLAG_GREEN         = new BitField(0x0000FF00);
-    
+
     /**
      * An unsigned integer that specifies the intensity of the red color channel. A value
      * of 0x00 has the minimum red intensity. A value of 0xFF has the maximum red intensity.
      */
     private static final BitField FLAG_RED           = new BitField(0x000000FF);
-    
+
     public EscherColorRef(int colorRef) {
         this.colorRef = colorRef;
     }
-    
+
     public EscherColorRef(byte[] source, int start, int len) {
         assert(len == 4 || len == 6);
-        
+
         int offset = start;
         if (len == 6) {
             opid = LittleEndian.getUShort(source, offset);
@@ -175,43 +175,43 @@ public class EscherColorRef {
         }
         colorRef = LittleEndian.getInt(source, offset);
     }
-    
+
     public boolean hasSysIndexFlag() {
         return FLAG_SYS_INDEX.isSet(colorRef);
     }
-    
+
     public void setSysIndexFlag(boolean flag) {
         FLAG_SYS_INDEX.setBoolean(colorRef, flag);
     }
-    
+
     public boolean hasSchemeIndexFlag() {
         return FLAG_SCHEME_INDEX.isSet(colorRef);
     }
-    
+
     public void setSchemeIndexFlag(boolean flag) {
         FLAG_SCHEME_INDEX.setBoolean(colorRef, flag);
     }
-    
+
     public boolean hasSystemRGBFlag() {
         return FLAG_SYSTEM_RGB.isSet(colorRef);
     }
-    
+
     public void setSystemRGBFlag(boolean flag) {
         FLAG_SYSTEM_RGB.setBoolean(colorRef, flag);
     }
-    
+
     public boolean hasPaletteRGBFlag() {
         return FLAG_PALETTE_RGB.isSet(colorRef);
     }
-    
+
     public void setPaletteRGBFlag(boolean flag) {
         FLAG_PALETTE_RGB.setBoolean(colorRef, flag);
     }
-    
+
     public boolean hasPaletteIndexFlag() {
         return FLAG_PALETTE_INDEX.isSet(colorRef);
     }
-    
+
     public void setPaletteIndexFlag(boolean flag) {
         FLAG_PALETTE_INDEX.setBoolean(colorRef, flag);
     }
@@ -224,7 +224,7 @@ public class EscherColorRef {
         };
         return rgb;
     }
-    
+
     /**
      * @return {@link SysIndexSource} if {@link #hasSysIndexFlag()} is {@code true}, otherwise null
      */
@@ -236,7 +236,7 @@ public class EscherColorRef {
         }
         return null;
     }
-    
+
     /**
      * Return the {@link SysIndexProcedure} - for invert flag use {@link #getSysIndexInvert()}
      * @return {@link SysIndexProcedure} if {@link #hasSysIndexFlag()} is {@code true}, otherwise null
@@ -250,10 +250,10 @@ public class EscherColorRef {
         }
         return null;
     }
-    
+
     /**
      * @return 0 for no invert flag, 1 for {@link SysIndexProcedure#INVERT_AFTER} and
-     * 2 for {@link SysIndexProcedure#INVERT_HIGHBIT_AFTER} 
+     * 2 for {@link SysIndexProcedure#INVERT_HIGHBIT_AFTER}
      */
     public int getSysIndexInvert() {
         if (!hasSysIndexFlag()) return 0;
@@ -262,17 +262,17 @@ public class EscherColorRef {
         if ((SysIndexProcedure.INVERT_HIGHBIT_AFTER.mask.isSet(val))) return 2;
         return 0;
     }
-    
+
     /**
      * @return index of the scheme color or -1 if {@link #hasSchemeIndexFlag()} is {@code false}
-     * 
+     *
      * @see org.apache.poi.hslf.record.ColorSchemeAtom#getColor(int)
      */
     public int getSchemeIndex() {
         if (!hasSchemeIndexFlag()) return -1;
         return FLAG_RED.getValue(colorRef);
     }
-    
+
     /**
      * @return index of current palette (color) or -1 if {@link #hasPaletteIndexFlag()} is {@code false}
      */

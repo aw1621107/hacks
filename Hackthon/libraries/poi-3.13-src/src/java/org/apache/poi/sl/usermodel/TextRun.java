@@ -30,18 +30,18 @@ public interface TextRun {
         SMALL,
         ALL
     }
-    
+
     String getRawText();
 	void setText(String text);
 
 	TextCap getTextCap();
-	
+
 	/**
 	 * Returns the font color.
 	 * This usually returns a {@link SolidPaint}, but but also other classes are possible
-	 * 
+	 *
 	 * @return the font color/paint
-	 * 
+	 *
      * @see org.apache.poi.sl.draw.DrawPaint#getPaint(java.awt.Graphics2D, PaintStyle)
      * @see SolidPaint#getSolidColor()
 	 * @see org.apache.poi.sl.draw.DrawPaint#applyColorTransform(ColorStyle)
@@ -59,12 +59,12 @@ public interface TextRun {
 	 * Sets the font color
 	 *
 	 * @param color the color
-	 * 
+	 *
 	 * @see org.apache.poi.sl.draw.DrawPaint#createSolidPaint(Color)
 	 */
 	void setFontColor(PaintStyle color);
-	
-	
+
+
     /**
      * @return font size in points or null if font size is not set.
      */
@@ -75,14 +75,14 @@ public interface TextRun {
      */
 	void setFontSize(Double fontSize);
 	String getFontFamily();
-	
+
 	boolean isBold();
 	boolean isItalic();
 	boolean isUnderlined();
 	boolean isStrikethrough();
 	boolean isSubscript();
 	boolean isSuperscript();
-	
+
 	/**
 	 * @return the pitch and family id or -1 if not applicable
 	 */

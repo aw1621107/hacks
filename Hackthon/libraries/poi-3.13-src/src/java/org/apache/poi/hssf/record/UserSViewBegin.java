@@ -87,5 +87,5 @@ public final class UserSViewBegin extends StandardRecord {
     public Object clone() {
         return cloneViaReserialise();
     }
- 
+
 }

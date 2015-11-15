@@ -32,7 +32,7 @@ import java.util.Arrays;
  * <p>
  * This class is internal. It content or properties may change without notice
  * due to changes in our knowledge of internal Microsoft Word binary structures.
- * 
+ *
  * @author Sergey Vladimirov; according to [MS-DOC] -- v20121003 Word (.doc)
  *         Binary File Format; Copyright (c) 2012 Microsoft Corporation;
  *         Release: October 8, 2012

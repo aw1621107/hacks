@@ -69,7 +69,7 @@ public final class Sumif extends Var2or3ArgFunction {
 			AreaEval aeSum) {
 		// TODO - junit to prove last arg must be srcColumnIndex and not srcRowIndex
 		I_MatchPredicate mp = Countif.createCriteriaPredicate(arg1, srcRowIndex, srcColumnIndex);
-		
+
 		// handle empty cells
 		if(mp == null) {
 		    return NumberEval.ZERO;

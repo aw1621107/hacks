@@ -46,21 +46,21 @@ import org.junit.Test;
 public final class TestHSSFDataFormatter {
 
     private static TimeZone userTimeZone;
-    
+
     @BeforeClass
     public static void setTimeZone() {
         userTimeZone = LocaleUtil.getUserTimeZone();
         LocaleUtil.setUserTimeZone(TimeZone.getTimeZone("CET"));
         LocaleUtil.setUserLocale(Locale.US);
     }
-    
+
     @AfterClass
     public static void resetTimeZone() {
         LocaleUtil.setUserTimeZone(userTimeZone);
         LocaleUtil.setUserLocale(Locale.ROOT);
     }
 
-    
+
     private final HSSFDataFormatter formatter;
 	private final HSSFWorkbook wb;
 
@@ -102,15 +102,15 @@ public final class TestHSSFDataFormatter {
 			"mmmm/d/yyyy;@",
 			"[$-409]d\\-mmm\\-yyyy;@"
 		};
-		
+
 		//valid time formats - all should have 11:23 in output
 		String[] goodTimePatterns = {
 		   "HH:MM",
 		   "HH:MM:SS",
-		   "HH:MM;HH:MM;HH:MM", 
+		   "HH:MM;HH:MM;HH:MM",
 		   // This is fun - blue if positive time,
 		   //  red if negative time or green for zero!
-         "[BLUE]HH:MM;[RED]HH:MM;[GREEN]HH:MM", 
+         "[BLUE]HH:MM;[RED]HH:MM;[GREEN]HH:MM",
 		   "yyyy-mm-dd hh:mm",
          "yyyy-mm-dd hh:mm:ss",
 		};
@@ -147,7 +147,7 @@ public final class TestHSSFDataFormatter {
 			cell.setCellStyle(cellStyle);
 		}
 		row = sheet.createRow(1);
-		
+
 		// create cells with time patterns
       for (int i = 0; i < goodTimePatterns.length; i++) {
          HSSFCell cell = row.createCell(i);
@@ -266,10 +266,10 @@ public final class TestHSSFDataFormatter {
          assertTrue( ! "555.47431".equals(fmtval));
 
          // check we found the time properly
-         assertTrue("Format came out incorrect - " + fmt + ": " + fmtval + ", but expected to find '11:23'", 
+         assertTrue("Format came out incorrect - " + fmt + ": " + fmtval + ", but expected to find '11:23'",
                  fmtval.indexOf("11:23") > -1);
       }
-      
+
 		// test number formats
 		row = wb.getSheetAt(0).getRow(1);
 		it = row.cellIterator();
@@ -289,7 +289,7 @@ public final class TestHSSFDataFormatter {
 		while (it.hasNext()) {
 			HSSFCell cell = (HSSFCell) it.next();
 			log(formatter.formatCellValue(cell));
-			// should be equal to "1234567890.12345" 
+			// should be equal to "1234567890.12345"
 			// in some locales the the decimal delimiter is a comma, not a dot
 			char decimalSeparator = new DecimalFormatSymbols(LocaleUtil.getUserLocale()).getDecimalSeparator();
 			assertEquals("1234567890" + decimalSeparator + "12345", formatter.formatCellValue(cell));
@@ -339,7 +339,7 @@ public final class TestHSSFDataFormatter {
 		log(formatter.formatCellValue(cell, evaluator) + "\t\t\t (with evaluator)");
 		char decimalSeparator = new DecimalFormatSymbols(LocaleUtil.getUserLocale()).getDecimalSeparator();
 		assertEquals("24" + decimalSeparator + "50%", formatter.formatCellValue(cell,evaluator));
-		
+
 	}
 
 	/**
@@ -363,7 +363,7 @@ public final class TestHSSFDataFormatter {
 			assertTrue(formatter.formatCellValue(cell).endsWith(" USD"));
 		}
 	}
-	
+
 	/**
 	 * A format of "@" means use the general format
 	 */
@@ -382,7 +382,7 @@ public final class TestHSSFDataFormatter {
 
 		assertEquals("2345", f.formatCellValue(cellA1));
 	}
-	
+
 	/**
 	 * Tests various formattings of dates and numbers
 	 */
@@ -390,36 +390,36 @@ public final class TestHSSFDataFormatter {
 	public void testFromFile() {
       HSSFWorkbook workbook = HSSFTestDataSamples.openSampleWorkbook("Formatting.xls");
       HSSFSheet sheet = workbook.getSheetAt(0);
-	   
+
       HSSFDataFormatter f = new HSSFDataFormatter();
 
       // This one is one of the nasty auto-locale changing ones...
       assertEquals("dd/mm/yyyy", sheet.getRow(1).getCell(0).getStringCellValue());
       assertEquals("m/d/yy",     sheet.getRow(1).getCell(1).getCellStyle().getDataFormatString());
       assertEquals("11/24/06",   f.formatCellValue(sheet.getRow(1).getCell(1)));
-      
+
       assertEquals("yyyy/mm/dd", sheet.getRow(2).getCell(0).getStringCellValue());
       assertEquals("yyyy/mm/dd", sheet.getRow(2).getCell(1).getCellStyle().getDataFormatString());
       assertEquals("2006/11/24", f.formatCellValue(sheet.getRow(2).getCell(1)));
-      
+
       assertEquals("yyyy-mm-dd", sheet.getRow(3).getCell(0).getStringCellValue());
       assertEquals("yyyy\\-mm\\-dd", sheet.getRow(3).getCell(1).getCellStyle().getDataFormatString());
       assertEquals("2006-11-24", f.formatCellValue(sheet.getRow(3).getCell(1)));
-      
+
       assertEquals("yy/mm/dd", sheet.getRow(4).getCell(0).getStringCellValue());
       assertEquals("yy/mm/dd", sheet.getRow(4).getCell(1).getCellStyle().getDataFormatString());
       assertEquals("06/11/24", f.formatCellValue(sheet.getRow(4).getCell(1)));
-      
+
       // Another builtin fun one
       assertEquals("dd/mm/yy", sheet.getRow(5).getCell(0).getStringCellValue());
       assertEquals("d/m/yy;@", sheet.getRow(5).getCell(1).getCellStyle().getDataFormatString());
       assertEquals("24/11/06", f.formatCellValue(sheet.getRow(5).getCell(1)));
-      
+
       assertEquals("dd-mm-yy", sheet.getRow(6).getCell(0).getStringCellValue());
       assertEquals("dd\\-mm\\-yy", sheet.getRow(6).getCell(1).getCellStyle().getDataFormatString());
       assertEquals("24-11-06", f.formatCellValue(sheet.getRow(6).getCell(1)));
-      
-      
+
+
       // Another builtin fun one
       assertEquals("nn.nn", sheet.getRow(9).getCell(0).getStringCellValue());
       assertEquals("General", sheet.getRow(9).getCell(1).getCellStyle().getDataFormatString());

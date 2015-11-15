@@ -92,7 +92,7 @@ public class MysqlPooledConnection implements PooledConnection {
 
     /**
      * Construct a new MysqlPooledConnection and set instance variables
-     * 
+     *
      * @param connection
      *            physical connection to db
      */
@@ -106,7 +106,7 @@ public class MysqlPooledConnection implements PooledConnection {
     /**
      * Adds ConnectionEventListeners to a hash table to be used for notification
      * of ConnectionEvents
-     * 
+     *
      * @param connectioneventlistener
      *            listener to be notified with ConnectionEvents
      */
@@ -120,7 +120,7 @@ public class MysqlPooledConnection implements PooledConnection {
     /**
      * Removes ConnectionEventListeners from hash table used for notification of
      * ConnectionEvents
-     * 
+     *
      * @param connectioneventlistener
      *            listener to be removed
      */
@@ -134,7 +134,7 @@ public class MysqlPooledConnection implements PooledConnection {
     /**
      * Invoked by the container. Return a logicalHandle object that wraps a
      * physical connection.
-     * 
+     *
      * @see java.sql.DataSource#getConnection()
      */
     public synchronized Connection getConnection() throws SQLException {
@@ -175,7 +175,7 @@ public class MysqlPooledConnection implements PooledConnection {
      * Invoked by the container (not the client), and should close the physical
      * connection. This will be called if the pool is destroyed or the
      * connectionEventListener receives a connectionErrorOccurred event.
-     * 
+     *
      * @see java.sql.DataSource#close()
      */
     public synchronized void close() throws SQLException {
@@ -197,7 +197,7 @@ public class MysqlPooledConnection implements PooledConnection {
      * Instantiates a new ConnectionEvent which wraps sqlException and invokes
      * either connectionClose or connectionErrorOccurred on listener as
      * appropriate.
-     * 
+     *
      * @param eventType
      *            value indicating whether connectionClosed or
      *            connectionErrorOccurred called

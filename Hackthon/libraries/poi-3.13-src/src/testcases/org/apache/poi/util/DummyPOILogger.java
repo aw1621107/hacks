@@ -20,16 +20,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * POILogger which logs into an ArrayList, so that 
+ * POILogger which logs into an ArrayList, so that
  *  tests can see what got logged
  */
 public class DummyPOILogger extends POILogger {
-	public List<String>logged = new ArrayList<String>(); 
+	public List<String>logged = new ArrayList<String>();
 
 	public void reset() {
 		logged = new ArrayList<String>();
 	}
-	
+
 	public boolean check(int level) {
 		return true;
 	}

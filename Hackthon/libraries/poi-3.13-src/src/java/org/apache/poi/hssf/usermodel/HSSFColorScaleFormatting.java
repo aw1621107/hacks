@@ -26,7 +26,7 @@ import org.apache.poi.ss.usermodel.Color;
 import org.apache.poi.ss.usermodel.ConditionalFormattingThreshold;
 
 /**
- * High level representation for Color Scale / Color Gradient 
+ * High level representation for Color Scale / Color Gradient
  *  Formatting component of Conditional Formatting settings
  */
 public final class HSSFColorScaleFormatting implements org.apache.poi.ss.usermodel.ColorScaleFormatting {

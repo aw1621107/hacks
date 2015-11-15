@@ -163,10 +163,10 @@ public class StringUtils {
     /**
      * Takes care of the fact that Sun changed the output of
      * BigDecimal.toString() between JDK-1.4 and JDK 5
-     * 
+     *
      * @param decimal
      *            the big decimal to stringify
-     * 
+     *
      * @return a string representation of 'decimal'
      */
     public static String consistentToString(BigDecimal decimal) {
@@ -189,12 +189,12 @@ public class StringUtils {
 
     /**
      * Dumps the given bytes to STDOUT as a hex dump (up to length bytes).
-     * 
+     *
      * @param byteBuffer
      *            the data to print as hex
      * @param length
      *            the number of bytes to print
-     * 
+     *
      * @return ...
      */
     public static String dumpAsHex(byte[] byteBuffer, int length) {
@@ -282,12 +282,12 @@ public class StringUtils {
     /**
      * Unfortunately, SJIS has 0x5c as a high byte in some of its double-byte
      * characters, so we need to escape it.
-     * 
+     *
      * @param origBytes
      *            the original bytes in SJIS format
      * @param origString
      *            the string that had .getBytes() called on it
-     * 
+     *
      * @return byte[] with 0x5c escaped
      */
     public static byte[] escapeEasternUnicodeByteStream(byte[] origBytes, String origString) {
@@ -387,10 +387,10 @@ public class StringUtils {
 
     /**
      * Returns the first non whitespace char, converted to upper case
-     * 
+     *
      * @param searchIn
      *            the string to search in
-     * 
+     *
      * @return the first non-whitespace character, upper cased.
      */
     public static char firstNonWsCharUc(String searchIn) {
@@ -436,10 +436,10 @@ public class StringUtils {
     /**
      * Adds '+' to decimal numbers that are positive (MySQL doesn't understand
      * them otherwise
-     * 
+     *
      * @param dString
      *            The value as a string
-     * 
+     *
      * @return String the string with a '+' added (if needed)
      */
     public static String fixDecimalExponent(String dString) {
@@ -915,7 +915,7 @@ public class StringUtils {
 
     /**
      * Finds the position of a substring within a string ignoring case.
-     * 
+     *
      * @param searchIn
      *            the string to search in
      * @param searchFor
@@ -928,7 +928,7 @@ public class StringUtils {
 
     /**
      * Finds the position of a substring within a string ignoring case.
-     * 
+     *
      * @param startingPosition
      *            the position to start the search from
      * @param searchIn
@@ -976,7 +976,7 @@ public class StringUtils {
      * Independently of the <code>searchMode</code> provided, when searching for the second and following strings <code>SearchMode.SKIP_WHITE_SPACE</code> will
      * be added and <code>SearchMode.SKIP_BETWEEN_MARKERS</code> removed.
      * </p>
-     * 
+     *
      * @param startingPosition
      *            the position to start the search from
      * @param searchIn
@@ -1063,7 +1063,7 @@ public class StringUtils {
 
     /**
      * Finds the position of a substring within a string, ignoring case, with the option to skip text delimited by given markers or within comments.
-     * 
+     *
      * @param startingPosition
      *            the position to start the search from
      * @param searchIn
@@ -1127,7 +1127,7 @@ public class StringUtils {
 
     /**
      * Finds the position the next character from a string, possibly skipping white space, comments and text between markers.
-     * 
+     *
      * @param startingPosition
      *            the position to start the search from
      * @param stopPosition
@@ -1269,16 +1269,16 @@ public class StringUtils {
 
     /**
      * Splits stringToSplit into a list, using the given delimiter
-     * 
+     *
      * @param stringToSplit
      *            the string to split
      * @param delimiter
      *            the string to split on
      * @param trim
      *            should the split strings be whitespace trimmed?
-     * 
+     *
      * @return the list of strings, split by delimiter
-     * 
+     *
      * @throws IllegalArgumentException
      */
     public static List<String> split(String stringToSplit, String delimiter, boolean trim) {
@@ -1309,16 +1309,16 @@ public class StringUtils {
 
     /**
      * Splits stringToSplit into a list, using the given delimiter
-     * 
+     *
      * @param stringToSplit
      *            the string to split
      * @param delimiter
      *            the string to split on
      * @param trim
      *            should the split strings be whitespace trimmed?
-     * 
+     *
      * @return the list of strings, split by delimiter
-     * 
+     *
      * @throws IllegalArgumentException
      */
     public static List<String> split(String stringToSplit, String delimiter, String markers, String markerCloses, boolean trim) {
@@ -1377,14 +1377,14 @@ public class StringUtils {
      * Determines whether or not the string 'searchIn' contains the string
      * 'searchFor', dis-regarding case starting at 'startAt' Shorthand for a
      * String.regionMatch(...)
-     * 
+     *
      * @param searchIn
      *            the string to search in
      * @param startAt
      *            the position to start at
      * @param searchFor
      *            the string to search for
-     * 
+     *
      * @return whether searchIn starts with searchFor, ignoring case
      */
     public static boolean startsWithIgnoreCase(String searchIn, int startAt, String searchFor) {
@@ -1394,12 +1394,12 @@ public class StringUtils {
     /**
      * Determines whether or not the string 'searchIn' contains the string
      * 'searchFor', dis-regarding case. Shorthand for a String.regionMatch(...)
-     * 
+     *
      * @param searchIn
      *            the string to search in
      * @param searchFor
      *            the string to search for
-     * 
+     *
      * @return whether searchIn starts with searchFor, ignoring case
      */
     public static boolean startsWithIgnoreCase(String searchIn, String searchFor) {
@@ -1410,12 +1410,12 @@ public class StringUtils {
      * Determines whether or not the string 'searchIn' contains the string
      * 'searchFor', disregarding case,leading whitespace and non-alphanumeric
      * characters.
-     * 
+     *
      * @param searchIn
      *            the string to search in
      * @param searchFor
      *            the string to search for
-     * 
+     *
      * @return true if the string starts with 'searchFor' ignoring whitespace
      */
     public static boolean startsWithIgnoreCaseAndNonAlphaNumeric(String searchIn, String searchFor) {
@@ -1439,12 +1439,12 @@ public class StringUtils {
     /**
      * Determines whether or not the string 'searchIn' contains the string
      * 'searchFor', disregarding case and leading whitespace
-     * 
+     *
      * @param searchIn
      *            the string to search in
      * @param searchFor
      *            the string to search for
-     * 
+     *
      * @return true if the string starts with 'searchFor' ignoring whitespace
      */
     public static boolean startsWithIgnoreCaseAndWs(String searchIn, String searchFor) {
@@ -1454,14 +1454,14 @@ public class StringUtils {
     /**
      * Determines whether or not the string 'searchIn' contains the string
      * 'searchFor', disregarding case and leading whitespace
-     * 
+     *
      * @param searchIn
      *            the string to search in
      * @param searchFor
      *            the string to search for
      * @param beginPos
      *            where to start searching
-     * 
+     *
      * @return true if the string starts with 'searchFor' ignoring whitespace
      */
 
@@ -1484,12 +1484,12 @@ public class StringUtils {
     /**
      * Determines whether or not the string 'searchIn' starts with one of the strings in 'searchFor', disregarding case
      * and leading whitespace
-     * 
+     *
      * @param searchIn
      *            the string to search in
      * @param searchFor
      *            the string array to search for
-     * 
+     *
      * @return the 'searchFor' array index that matched or -1 if none matches
      */
     public static int startsWithIgnoreCaseAndWs(String searchIn, String[] searchFor) {
@@ -1524,10 +1524,10 @@ public class StringUtils {
 
     /**
      * Returns the bytes as an ASCII String.
-     * 
+     *
      * @param buffer
      *            the bytes representing the string
-     * 
+     *
      * @return The ASCII String.
      */
     public static String toAsciiString(byte[] buffer) {
@@ -1536,14 +1536,14 @@ public class StringUtils {
 
     /**
      * Returns the bytes as an ASCII String.
-     * 
+     *
      * @param buffer
      *            the bytes to convert
      * @param startPos
      *            the position to start converting
      * @param length
      *            the length of the string to convert
-     * 
+     *
      * @return the ASCII string
      */
     public static String toAsciiString(byte[] buffer, int startPos, int length) {
@@ -1561,13 +1561,13 @@ public class StringUtils {
     /**
      * Compares searchIn against searchForWildcard with wildcards (heavily
      * borrowed from strings/ctype-simple.c in the server sources)
-     * 
+     *
      * @param searchIn
      *            the string to search in
      * @param searchForWildcard
      *            the string to search for, using the 'standard' SQL wildcard
      *            chars of '%' and '_'
-     * 
+     *
      * @return WILD_COMPARE_MATCH_NO_WILD if matched, WILD_COMPARE_NO_MATCH if
      *         not matched with wildcard, WILD_COMPARE_MATCH_WITH_WILD if
      *         matched with wildcard
@@ -1757,7 +1757,7 @@ public class StringUtils {
 
     /**
      * Returns the given string, with comments removed
-     * 
+     *
      * @param src
      *            the source string
      * @param stringOpens
@@ -1875,9 +1875,9 @@ public class StringUtils {
      * the given string is in form of database.name and return it
      * as "database";"name" with comments removed.
      * If string is NULL or wildcard (%), returns null and exits.
-     * 
+     *
      * First, we sanitize...
-     * 
+     *
      * @param src
      *            the source string
      * @return the input string with all comment-delimited data removed
@@ -1894,7 +1894,7 @@ public class StringUtils {
      * Next we check if there is anything to split. If so
      * we return result in form of "database";"name"
      * If string is NULL or wildcard (%), returns null and exits.
-     * 
+     *
      * @param src
      *            the source string
      * @param cat
@@ -2006,7 +2006,7 @@ public class StringUtils {
 
     /**
      * Surrounds identifier with quoteChar and duplicates these symbols inside the identifier.
-     * 
+     *
      * @param quoteChar
      *            ` or "
      * @param identifier
@@ -2015,7 +2015,7 @@ public class StringUtils {
      *            in non-pedantic mode if identifier starts and ends with quoteChar method treats it as already quoted and doesn't modify.
      * @param isPedantic
      *            are we in pedantic mode
-     * 
+     *
      * @return
      *         With quoteChar="`":<br>
      *         <ul>
@@ -2075,14 +2075,14 @@ public class StringUtils {
 
     /**
      * Surrounds identifier with "`" and duplicates these symbols inside the identifier.
-     * 
+     *
      * @param identifier
      *            in pedantic mode (connection property pedantic=true) identifier is treated as unquoted
      *            (as it is stored in the database) even if it starts and ends with "`";
      *            in non-pedantic mode if identifier starts and ends with "`" method treats it as already quoted and doesn't modify.
      * @param isPedantic
      *            are we in pedantic mode
-     * 
+     *
      * @return
      *         <ul>
      *         <li>null -> null</li>
@@ -2100,7 +2100,7 @@ public class StringUtils {
      * Trims identifier, removes quote chars from first and last positions
      * and replaces double occurrences of quote char from entire identifier,
      * i.e converts quoted identifier into form as it is stored in database.
-     * 
+     *
      * @param identifier
      * @param quoteChar
      *            ` or "
@@ -2180,7 +2180,7 @@ public class StringUtils {
     // The following methods all exist because of the Java bug
     //
     // http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6790402
-    // 
+    //
     // which has been observed by users and reported as MySQL Bug#61105
     //
     // We can turn around and replace them with their java.lang.String equivalents if/when that bug is ever fixed.

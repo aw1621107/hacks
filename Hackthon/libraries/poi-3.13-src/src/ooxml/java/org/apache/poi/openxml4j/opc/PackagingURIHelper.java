@@ -405,7 +405,7 @@ public final class PackagingURIHelper {
      *         <code>null</code>.
      */
     public static URI relativizeURI(URI sourceURI, URI targetURI) {
-        return relativizeURI(sourceURI, targetURI, false);        
+        return relativizeURI(sourceURI, targetURI, false);
     }
 
     /**

@@ -99,7 +99,7 @@ public final class Section extends Range
      * Set the height of the bottom margin in twips. In the AbstractWordUtils class, a constant
      * is defined that indicates how many twips there are per inch and it can be used in setting
      * the margins width a little like this;
-     * 
+     *
      * section.setMarginBottom( (int) 1.5 * AbstractWordUtils.TWIPS_PER_INCH );
      *
      * @param marginWidth A primitive int whose value will indciate how high the margin should
@@ -114,7 +114,7 @@ public final class Section extends Range
      * Set the width of the left hand margin in twips. In the AbstractWordUtils class, a constant
      * is defined that indicates how many twips there are per inch and it can be used in setting
      * the margins width a little like this;
-     * 
+     *
      * section.setMarginLeft( (int) 1.5 * AbstractWordUtils.TWIPS_PER_INCH );
      *
      * @param marginWidth A primitive int whose value will indciate how high the margin should
@@ -129,7 +129,7 @@ public final class Section extends Range
      * Set the width of the right hand margin in twips. In the AbstractWordUtils class, a constant
      * is defined that indicates how many twips there are per inch and it can be used in setting
      * the margins width a little like this;
-     * 
+     *
      * section.setMarginRight( (int) 1.5 * AbstractWordUtils.TWIPS_PER_INCH );
      *
      * @param marginWidth A primitive int whose value will indciate how high the margin should
@@ -144,7 +144,7 @@ public final class Section extends Range
      * Set the height of the top margin in twips. In the AbstractWordUtils class, a constant
      * is defined that indicates how many twips there are per inch and it can be used in setting
      * the margins width a little like this;
-     * 
+     *
      * section.setMarginTop( (int) 1.5 * AbstractWordUtils.TWIPS_PER_INCH );
      *
      * @param marginWidth A primitive int whose value will indciate how high the margin should

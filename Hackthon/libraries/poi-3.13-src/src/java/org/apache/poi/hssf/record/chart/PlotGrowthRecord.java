@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The plot growth record specifies the scaling factors used when a font is scaled.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class PlotGrowthRecord extends StandardRecord {
@@ -53,11 +53,11 @@ public final class PlotGrowthRecord extends StandardRecord {
         buffer.append("    .horizontalScale      = ")
             .append("0x").append(HexDump.toHex(  getHorizontalScale ()))
             .append(" (").append( getHorizontalScale() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .verticalScale        = ")
             .append("0x").append(HexDump.toHex(  getVerticalScale ()))
             .append(" (").append( getVerticalScale() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/PLOTGROWTH]\n");
         return buffer.toString();
@@ -79,7 +79,7 @@ public final class PlotGrowthRecord extends StandardRecord {
 
     public Object clone() {
         PlotGrowthRecord rec = new PlotGrowthRecord();
-    
+
         rec.field_1_horizontalScale = field_1_horizontalScale;
         rec.field_2_verticalScale = field_2_verticalScale;
         return rec;

@@ -58,7 +58,7 @@ public class TestShardMapping extends TestCase {
         }
         ShardMapping mapping = new RangeShardMapping(5000, ShardingType.RANGE, globalGroupName, null, shardIndices);
 
-        // try adding a second shard index with a lower bound that conflicts with an existing one this should be prohibited 
+        // try adding a second shard index with a lower bound that conflicts with an existing one this should be prohibited
         // mapping.addShardIndex(new ShardIndex(mapping, "1", 0, ""));
 
         // test looking up a key out of range doesn't work

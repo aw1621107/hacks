@@ -21,7 +21,7 @@ import org.apache.poi.util.Beta;
 
 /**
  * User-implemented pictures manager to store images on-disk
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 @Beta
@@ -35,7 +35,7 @@ public interface PicturesManager
      * {@link PictureType#TIFF}, but rarely {@link PictureType#EMF} or
      * {@link PictureType#WMF}. FO (Apache FOP) supports at least PNG and SVG
      * types.
-     * 
+     *
      * @param content
      *            picture content
      * @param pictureType

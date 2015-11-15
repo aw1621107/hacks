@@ -24,12 +24,12 @@ import org.apache.poi.util.LittleEndian;
 import junit.framework.TestCase;
 
 /**
- * 
+ *
  * @author Josh Micich
  */
 public final class TestDVALRecord extends TestCase {
     public void testRead() {
-        
+
         byte[] data = new byte[22];
         LittleEndian.putShort(data, 0, DVALRecord.sid);
         LittleEndian.putShort(data, 2, (short)18);
@@ -38,11 +38,11 @@ public final class TestDVALRecord extends TestCase {
         LittleEndian.putInt(data, 10, 57);
         LittleEndian.putInt(data, 14, 58);
         LittleEndian.putInt(data, 18, 59);
-       
+
         RecordInputStream in = new RecordInputStream(new ByteArrayInputStream(data));
         in.nextRecord();
         DVALRecord dv = new DVALRecord(in);
-        
+
         assertEquals(55, dv.getOptions());
         assertEquals(56, dv.getHorizontalPos());
         assertEquals(57, dv.getVerticalPos());

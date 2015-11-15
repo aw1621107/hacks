@@ -34,10 +34,10 @@ public abstract class SpreadsheetHandler extends AbstractFileHandler {
 	public void handleWorkbook(Workbook wb, String extension) throws IOException {
 		// try to access some of the content
 		readContent(wb);
-		
+
 		// write out the file
 		ByteArrayOutputStream out = writeToArray(wb);
-		
+
 		// access some more content (we had cases where writing corrupts the data in memory)
 		readContent(wb);
 
@@ -52,7 +52,7 @@ public abstract class SpreadsheetHandler extends AbstractFileHandler {
 			throw new IllegalStateException(e);
 		}
 		assertNotNull(read);
-		
+
 		readContent(read);
 	}
 
@@ -64,7 +64,7 @@ public abstract class SpreadsheetHandler extends AbstractFileHandler {
 		} finally {
 			stream.close();
 		}
-		
+
 		return stream;
 	}
 
@@ -75,7 +75,7 @@ public abstract class SpreadsheetHandler extends AbstractFileHandler {
 			sheet.groupColumn((short) 4, (short) 5);
 			sheet.setColumnGroupCollapsed(4, true);
 			sheet.setColumnGroupCollapsed(4, false);
-			
+
 			for(Row row : sheet) {
 			    for(Cell cell : row) {
 			        cell.toString();

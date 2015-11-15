@@ -51,7 +51,7 @@ public final class TextHeaderAtom extends RecordAtom implements ParentAwareRecor
 
 	public int getTextType() { return textType; }
 	public void setTextType(int type) { textType = type; }
-	
+
     /**
      * @return  0-based index of the text run in the SLWT container
      */

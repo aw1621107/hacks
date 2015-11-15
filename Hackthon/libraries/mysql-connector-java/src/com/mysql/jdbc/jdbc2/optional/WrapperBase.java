@@ -41,7 +41,7 @@ abstract class WrapperBase {
 
     /**
      * Fires connection error event if required, before re-throwing exception
-     * 
+     *
      * @param sqlEx
      *            the SQLException that has occurred
      * @throws SQLException
@@ -96,7 +96,7 @@ abstract class WrapperBase {
          * Recursively checks for interfaces on the given object to determine
          * if it implements a java.sql interface, and if so, proxies the
          * instance so that we can catch and fire SQL errors.
-         * 
+         *
          * @param toProxy
          * @param clazz
          */

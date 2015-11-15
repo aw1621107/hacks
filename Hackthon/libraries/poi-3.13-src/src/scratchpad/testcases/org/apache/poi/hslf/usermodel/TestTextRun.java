@@ -125,7 +125,7 @@ public final class TestTextRun {
 		HSLFSlide slideOne = ss.getSlides().get(0);
 		List<HSLFTextParagraph> paras = slideOne.getTextParagraphs().get(0);
 		HSLFTextParagraph para = paras.get(0);
-		
+
         TextHeaderAtom tha = null;
         TextBytesAtom tba = null;
         TextCharsAtom tca = null;
@@ -150,7 +150,7 @@ public final class TestTextRun {
             else if (r instanceof TextBytesAtom) tba = (TextBytesAtom)r;
             else if (r instanceof TextCharsAtom) tca = (TextCharsAtom)r;
         }
-		
+
 		assertEquals(changeBytesOnly, HSLFTextParagraph.getRawText(paras));
 		assertNull(tca);
 		assertNotNull(tba);
@@ -168,7 +168,7 @@ public final class TestTextRun {
             if (r instanceof TextHeaderAtom) tha = (TextHeaderAtom)r;
             else if (r instanceof TextBytesAtom) tba = (TextBytesAtom)r;
             else if (r instanceof TextCharsAtom) tca = (TextCharsAtom)r;
-        }		
+        }
 
 		assertEquals(changeByteChar, HSLFTextParagraph.getRawText(paras));
 		assertNotNull(tca);
@@ -187,7 +187,7 @@ public final class TestTextRun {
             if (r instanceof TextHeaderAtom) tha = (TextHeaderAtom)r;
             else if (r instanceof TextBytesAtom) tba = (TextBytesAtom)r;
             else if (r instanceof TextCharsAtom) tca = (TextCharsAtom)r;
-        }       
+        }
 
 		assertEquals(changeCharChar, HSLFTextParagraph.getRawText(paras));
 		assertNotNull(tca);
@@ -445,7 +445,7 @@ public final class TestTextRun {
 		HSLFSlide sl = ppt.getSlides().get(0);
         List<List<HSLFTextParagraph>> textParass = sl.getTextParagraphs();
 		assertEquals(2, textParass.size());
-		
+
 		List<HSLFTextParagraph> textParas = textParass.get(0);
 		rt = textParass.get(0).get(0).getTextRuns();
 		assertEquals(1, rt.size());
@@ -541,7 +541,7 @@ public final class TestTextRun {
         }
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         ppt.write(out);
-        
+
         ppt = new HSLFSlideShow(new ByteArrayInputStream(out.toByteArray()));
         for(HSLFSlide slide : ppt.getSlides()){
             for(HSLFShape sh : slide.getShapes()){
@@ -563,7 +563,7 @@ public final class TestTextRun {
         HSLFSlide slide = ppt.getSlides().get(0);
 
         int sizes[] = { 36, 24, 12, 32, 12, 12 };
-        
+
         int i=0;
         for (List<HSLFTextParagraph> textParas : slide.getTextParagraphs()) {
             assertEquals("Arial", textParas.get(0).getTextRuns().get(0).getFontFamily());

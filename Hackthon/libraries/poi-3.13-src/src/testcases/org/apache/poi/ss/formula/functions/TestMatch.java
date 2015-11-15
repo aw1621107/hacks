@@ -257,7 +257,7 @@ public final class TestMatch extends TestCase {
 			throw e;
 		}
 	}
-	
+
 	public void testInvalidMatchType() {
 
         ValueEval[] values = {
@@ -271,8 +271,8 @@ public final class TestMatch extends TestCase {
         AreaEval ae = EvalFactory.createAreaEval("A1:A5", values);
 
         confirmInt(2, invokeMatch(new NumberEval(5), ae, MATCH_LARGEST_LTE));
-        
-        assertEquals("Should return #REF! for invalid match type", 
+
+        assertEquals("Should return #REF! for invalid match type",
                 ErrorEval.REF_INVALID, invokeMatch(new StringEval("Ben"), ae, MATCH_INVALID));
 	}
 }

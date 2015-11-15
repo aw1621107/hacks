@@ -124,12 +124,12 @@ public class DateUtil {
     /**
      *  Given an Excel date with using 1900 date windowing, and
      *  converts it to a java.util.Date.
-     *  
-     *  Excel Dates and Times are stored without any timezone 
-     *  information. If you know (through other means) that your file 
+     *
+     *  Excel Dates and Times are stored without any timezone
+     *  information. If you know (through other means) that your file
      *  uses a different TimeZone to the system default, you can use
      *  this version of the getJavaDate() method to handle it.
-     *   
+     *
      *  @param date  The Excel date.
      *  @param tz The TimeZone to evaluate the date in
      *  @return Java representation of the date, or null if date is not a valid Excel date
@@ -161,12 +161,12 @@ public class DateUtil {
     /**
      *  Given an Excel date with either 1900 or 1904 date windowing,
      *  converts it to a java.util.Date.
-     *  
-     *  Excel Dates and Times are stored without any timezone 
-     *  information. If you know (through other means) that your file 
+     *
+     *  Excel Dates and Times are stored without any timezone
+     *  information. If you know (through other means) that your file
      *  uses a different TimeZone to the system default, you can use
      *  this version of the getJavaDate() method to handle it.
-     *   
+     *
      *  @param date  The Excel date.
      *  @param tz The TimeZone to evaluate the date in
      *  @param use1904windowing  true if date uses 1904 windowing,
@@ -176,16 +176,16 @@ public class DateUtil {
     public static Date getJavaDate(double date, boolean use1904windowing, TimeZone tz) {
         return getJavaDate(date, use1904windowing, tz, false);
     }
-    
+
     /**
      *  Given an Excel date with either 1900 or 1904 date windowing,
      *  converts it to a java.util.Date.
-     *  
-     *  Excel Dates and Times are stored without any timezone 
-     *  information. If you know (through other means) that your file 
+     *
+     *  Excel Dates and Times are stored without any timezone
+     *  information. If you know (through other means) that your file
      *  uses a different TimeZone to the system default, you can use
      *  this version of the getJavaDate() method to handle it.
-     *   
+     *
      *  @param date  The Excel date.
      *  @param tz The TimeZone to evaluate the date in
      *  @param use1904windowing  true if date uses 1904 windowing,
@@ -197,7 +197,7 @@ public class DateUtil {
         Calendar calendar = getJavaCalendar(date, use1904windowing, tz, roundSeconds);
         return calendar == null ? null : calendar.getTime();
     }
-    
+
     /**
      *  Given an Excel date with either 1900 or 1904 date windowing,
      *  converts it to a java.util.Date.
@@ -293,7 +293,7 @@ public class DateUtil {
     public static Calendar getJavaCalendar(double date, boolean use1904windowing, TimeZone timeZone) {
         return getJavaCalendar(date, use1904windowing, timeZone, false);
     }
-        
+
     /**
      * Get EXCEL date as Java Calendar with given time zone.
      * @param date  The Excel date.
@@ -330,7 +330,7 @@ public class DateUtil {
     };
     private static ThreadLocal<String> lastFormatString = new ThreadLocal<String>();
     private static ThreadLocal<Boolean> lastCachedResult = new ThreadLocal<Boolean>();
-    
+
     private static boolean isCached(String formatString, int formatIndex) {
         String cachedFormatString = lastFormatString.get();
         return cachedFormatString != null && formatIndex == lastFormatIndex.get()
@@ -444,7 +444,7 @@ public class DateUtil {
         if (! date_ptrn3a.matcher(fs).find()) {
            return false;
         }
-        
+
         // If we get here, check it's only made up, in any case, of:
         //  y m d h s - \ / , . : [ ] T
         // optionally followed by AM/PM

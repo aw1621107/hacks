@@ -25,9 +25,9 @@ import org.apache.poi.ss.formula.eval.ValueEval;
 import junit.framework.TestCase;
 
 /**
- * 
+ *
  * Test cases for {@link TextFunction#LEFT} and {@link TextFunction#RIGHT}
- * 
+ *
  * @author Brendan Nolan
  *
  */
@@ -36,17 +36,17 @@ public class TestLeftRight extends TestCase {
 	private static final NumberEval NEGATIVE_OPERAND = new NumberEval(-1.0);
 	private static final StringEval ANY_STRING_VALUE = new StringEval("ANYSTRINGVALUE");
 
-	
+
 	private static ValueEval invokeLeft(ValueEval text, ValueEval operand) {
 		ValueEval[] args = new ValueEval[] { text, operand };
 		return TextFunction.LEFT.evaluate(args, -1, (short)-1);
 	}
-	
+
 	private static ValueEval invokeRight(ValueEval text, ValueEval operand) {
 		ValueEval[] args = new ValueEval[] { text, operand };
 		return TextFunction.RIGHT.evaluate(args, -1, (short)-1);
 	}
-	
+
 	public void testLeftRight_bug49841() {
 
 		try {
@@ -57,17 +57,17 @@ public class TestLeftRight extends TestCase {
 		}
 
 	}
-	
+
 	public void testLeftRightNegativeOperand() {
-		
-		assertEquals(ErrorEval.VALUE_INVALID, invokeRight(ANY_STRING_VALUE, NEGATIVE_OPERAND));		
+
+		assertEquals(ErrorEval.VALUE_INVALID, invokeRight(ANY_STRING_VALUE, NEGATIVE_OPERAND));
 		assertEquals(ErrorEval.VALUE_INVALID, invokeLeft(ANY_STRING_VALUE, NEGATIVE_OPERAND));
 
 	}
-	
-	
-	
-	
 
-	
+
+
+
+
+
 }

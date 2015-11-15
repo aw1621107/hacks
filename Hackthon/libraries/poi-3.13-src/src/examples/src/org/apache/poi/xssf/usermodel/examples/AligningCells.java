@@ -29,7 +29,7 @@ import org.openxmlformats.schemas.spreadsheetml.x2006.main.impl.CTRowImpl;
  * Shows how various alignment options work.
  *
  * Modified by Cristian Petrula, Romania on May 26, 2010
- * New method was added centerAcrossSelection to center a column content over 
+ * New method was added centerAcrossSelection to center a column content over
  * one selection using ALIGN_CENTER_SELECTION
  * To create this method example was change for XSSF only and the previous
  * AligningCells.java example has been moved into the SS examples folder.

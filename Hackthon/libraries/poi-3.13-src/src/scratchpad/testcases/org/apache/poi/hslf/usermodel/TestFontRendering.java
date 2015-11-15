@@ -56,36 +56,36 @@ public class TestFontRendering {
             // for the junit test not all chars are rendered
             { "build/scratchpad-test-resources/mona.ttf", "fallback", "Cabin" }
         };
-        
+
         // setup fonts (especially needed, when run under *nix systems)
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Map<String,String> fontMap = new HashMap<String,String>();
         Map<String,String> fallbackMap = new HashMap<String,String>();
-        
+
         for (String fontFile[] : fontFiles) {
             File f = new File(fontFile[0]);
             assumeTrue("necessary font file "+f.getName()+" not downloaded.", f.exists());
-            
+
             Font font = Font.createFont(Font.TRUETYPE_FONT, f);
             ge.registerFont(font);
-            
+
             Map<String,String> map = ("mapped".equals(fontFile[1]) ? fontMap : fallbackMap);
             map.put(fontFile[2], font.getFamily());
         }
-        
+
         InputStream is = slTests.openResourceAsStream("bug55902-mixedFontChineseCharacters.ppt");
         HSLFSlideShow ss = new HSLFSlideShow(is);
         is.close();
-        
+
         Dimension pgsize = ss.getPageSize();
-        
+
         HSLFSlide slide = ss.getSlides().get(0);
-        
+
         // render it
         double zoom = 1;
         AffineTransform at = new AffineTransform();
         at.setToScale(zoom, zoom);
-        
+
         BufferedImage imgActual = new BufferedImage((int)Math.ceil(pgsize.width*zoom), (int)Math.ceil(pgsize.height*zoom), BufferedImage.TYPE_3BYTE_BGR);
         Graphics2D graphics = imgActual.createGraphics();
         graphics.setRenderingHint(Drawable.FONT_FALLBACK, fallbackMap);
@@ -94,22 +94,22 @@ public class TestFontRendering {
         graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         graphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
         graphics.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-        graphics.setTransform(at);                
+        graphics.setTransform(at);
         graphics.setPaint(Color.white);
         graphics.fill(new Rectangle2D.Float(0, 0, pgsize.width, pgsize.height));
-        slide.draw(graphics);             
-        
+        slide.draw(graphics);
+
         BufferedImage imgExpected = ImageIO.read(slTests.getFile("bug55902-mixedChars.png"));
         DataBufferByte expectedDB = (DataBufferByte)imgExpected.getRaster().getDataBuffer();
         DataBufferByte actualDB = (DataBufferByte)imgActual.getRaster().getDataBuffer();
         byte[] expectedData = expectedDB.getData(0);
         byte[] actualData = actualDB.getData(0);
-        
+
         // allow to find out what the actual difference is in CI where this fails currently
         if(!Arrays.equals(expectedData, actualData)) {
             ImageIO.write(imgActual, "PNG", TempFile.createTempFile("TestFontRendering", ".png"));
         }
-        
+
         assertArrayEquals("Expected to have matching raster-arrays, but found differences", expectedData, actualData);
     }
 }

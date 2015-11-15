@@ -43,10 +43,10 @@ public class WriteTitle
     /**
      * <p>Runs the example program.</p>
      *
-     * @param args Command-line arguments. The first and only command-line 
+     * @param args Command-line arguments. The first and only command-line
      * argument is the name of the POI file system to create.
      * @throws IOException if any I/O exception occurs.
-     * @throws WritingNotSupportedException if HPSF does not (yet) support 
+     * @throws WritingNotSupportedException if HPSF does not (yet) support
      * writing a certain property type.
      */
     public static void main(final String[] args)
@@ -74,7 +74,7 @@ public class WriteTitle
          * SectionIDMap.SUMMARY_INFORMATION_ID. */
         ms.setFormatID(SectionIDMap.SUMMARY_INFORMATION_ID);
 
-        /* Create an empty property. */    
+        /* Create an empty property. */
         final MutableProperty p = new MutableProperty();
 
         /* Fill the property with appropriate settings so that it specifies the

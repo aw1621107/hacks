@@ -22,7 +22,7 @@ import org.apache.poi.xssf.model.StylesTable;
 
 /**
  * Handles data formats for XSSF.
- * 
+ *
  */
 public class XSSFDataFormat implements DataFormat {
     private StylesTable stylesSource;

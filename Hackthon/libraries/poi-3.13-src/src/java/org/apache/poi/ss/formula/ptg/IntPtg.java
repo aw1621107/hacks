@@ -23,7 +23,7 @@ import org.apache.poi.util.LittleEndianOutput;
 /**
  * Integer (unsigned short integer) Stores an unsigned short value (java int) in
  * a formula
- * 
+ *
  * @author Andrew C. Oliver (acoliver at apache dot org)
  * @author Jason Height (jheight at chariot dot net dot au)
  */
@@ -34,8 +34,8 @@ public final class IntPtg extends ScalarConstantPtg {
 
 	/**
 	 * Excel represents integers 0..65535 with the tInt token.
-	 * 
-	 * @return <code>true</code> if the specified value is within the range of values 
+	 *
+	 * @return <code>true</code> if the specified value is within the range of values
 	 * <tt>IntPtg</tt> can represent.
 	 */
 	public static boolean isInRange(int i) {

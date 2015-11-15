@@ -55,10 +55,10 @@ public class HPSFPropertiesOnlyDocument extends POIDocument {
 
         // Write out our HPFS properties, with any changes
         writeProperties(fs, excepts);
-        
+
         // Copy over everything else unchanged
         EntryUtils.copyNodes(directory, fs.getRoot(), excepts);
-        
+
         // Save the resultant POIFSFileSystem to the output stream
         fs.writeFilesystem(out);
     }

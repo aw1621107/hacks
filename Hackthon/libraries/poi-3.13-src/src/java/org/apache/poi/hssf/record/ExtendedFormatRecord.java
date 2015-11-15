@@ -14,7 +14,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.hssf.record;
 
@@ -561,7 +561,7 @@ public final class ExtendedFormatRecord
     /**
      * <p>Sets whether or not to use the pattern in this XF instead of the
      * parent XF (foreground/background).</p>
-     * 
+     *
      * @param pattern <code>true</code> if this XF has a different pattern
      *        value than its parent,</code> false</code> otherwise.
      * @see #setIndentionOptions(short)
@@ -1789,12 +1789,12 @@ public final class ExtendedFormatRecord
     {
         return sid;
     }
-    
+
     /**
      * Clones all the style information from another
-     *  ExtendedFormatRecord, onto this one. This 
+     *  ExtendedFormatRecord, onto this one. This
      *  will then hold all the same style options.
-     *  
+     *
      * If The source ExtendedFormatRecord comes from
      *  a different Workbook, you will need to sort
      *  out the font and format indicies yourself!
@@ -1860,11 +1860,11 @@ public final class ExtendedFormatRecord
 		}
 		return false;
 	}
-	
+
 	public int[] stateSummary() {
 		return new int[] { field_1_font_index, field_2_format_index, field_3_cell_options, field_4_alignment_options,
 				field_5_indention_options, field_6_border_options, field_7_palette_options, field_8_adtl_palette_options, field_9_fill_palette_options };
 	}
-    
-    
+
+
 }

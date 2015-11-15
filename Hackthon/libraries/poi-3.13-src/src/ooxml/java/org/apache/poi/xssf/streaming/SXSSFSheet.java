@@ -77,7 +77,7 @@ public class SXSSFSheet implements Sheet, Cloneable
     }
 
 /* Gets "<sheetData>" document fragment*/
-    public InputStream getWorksheetXMLInputStream() throws IOException 
+    public InputStream getWorksheetXMLInputStream() throws IOException
     {
         // flush all remaining data and close the temp file writer
         flushRows(0);
@@ -96,7 +96,7 @@ public class SXSSFSheet implements Sheet, Cloneable
      *
      * @param rownum  row number
      * @return high level Row object representing a row in the sheet
-     * @throws IllegalArgumentException If the max. number of rows is exceeded or 
+     * @throws IllegalArgumentException If the max. number of rows is exceeded or
      *      a rownum is provided where the row is already flushed to disk.
      * @see #removeRow(Row)
      */
@@ -267,7 +267,7 @@ public class SXSSFSheet implements Sheet, Cloneable
 
     /**
      * Get the actual column width in pixels
-     * 
+     *
      * <p>
      * Please note, that this method works correctly only for workbooks
      * with the default font size (Calibri 11pt for .xlsx).
@@ -276,8 +276,8 @@ public class SXSSFSheet implements Sheet, Cloneable
     @Override
     public float getColumnWidthInPixels(int columnIndex) {
         return _sh.getColumnWidthInPixels(columnIndex);
-    }    
-    
+    }
+
     /**
      * Set the default column width for the sheet (if the columns do not define their own width)
      * in characters
@@ -299,7 +299,7 @@ public class SXSSFSheet implements Sheet, Cloneable
     {
         return _sh.getDefaultColumnWidth();
     }
- 
+
 
     /**
      * Get the default row height for the sheet (if the rows do not define their own height) in
@@ -343,7 +343,7 @@ public class SXSSFSheet implements Sheet, Cloneable
     {
         _sh.setDefaultRowHeightInPoints(height);
     }
-    
+
 
     /**
      * Returns the CellStyle that applies to the given
@@ -507,7 +507,7 @@ public class SXSSFSheet implements Sheet, Cloneable
     {
         return _sh.isDisplayZeros();
     }
-    
+
     /**
      * Sets whether the worksheet is displayed from right to left instead of from left to right.
      *
@@ -745,7 +745,7 @@ public class SXSSFSheet implements Sheet, Cloneable
     {
         return _sh.getProtect();
     }
-    
+
     /**
      * Sets the protection enabled as well as the password
      * @param password to set for protection. Pass <code>null</code> to remove protection
@@ -754,7 +754,7 @@ public class SXSSFSheet implements Sheet, Cloneable
     {
         _sh.protectSheet(password);
     }
-    
+
     /**
      * Answer whether scenario protection is enabled or disabled
      *
@@ -818,8 +818,8 @@ public class SXSSFSheet implements Sheet, Cloneable
      *
      * @param toprow the top row to show in desktop window pane
      * @param leftcol the left column to show in desktop window pane
-     * 
-     * @deprecated Use the version of showInPane() with ints as there can be more than 32767 rows. 
+     *
+     * @deprecated Use the version of showInPane() with ints as there can be more than 32767 rows.
      */
     public void showInPane(short toprow, short leftcol)
     {
@@ -1148,14 +1148,14 @@ public class SXSSFSheet implements Sheet, Cloneable
 
         setWorksheetOutlineLevelRow();
     }
-    
+
     /**
      * Set row groupings (like groupRow) in a stream-friendly manner
      *
      * <p>
      *    groupRows requires all rows in the group to be in the current window.
-     *    This is not always practical.  Instead use setRowOutlineLevel to 
-     *    explicitly set the group level.  Level 1 is the top level group, 
+     *    This is not always practical.  Instead use setRowOutlineLevel to
+     *    explicitly set the group level.  Level 1 is the top level group,
      *    followed by 2, etc.  It is up to the user to ensure that level 2
      *    groups are correctly nested under level 1, etc.
      * </p>
@@ -1207,7 +1207,7 @@ public class SXSSFSheet implements Sheet, Cloneable
             throw new RuntimeException("Not Implemented");
         }
     }
-    
+
     /**
      * @param rowIndex the zero based row index to collapse
      */
@@ -1220,7 +1220,7 @@ public class SXSSFSheet implements Sheet, Cloneable
 
             // Hide all the columns until the end of the group
             int lastRow = writeHidden(row, startRow, true);
-            SXSSFRow lastRowObj = getRow(lastRow); 
+            SXSSFRow lastRowObj = getRow(lastRow);
             if (lastRowObj != null) {
                 lastRowObj.setCollapsed(true);
             } else {
@@ -1229,7 +1229,7 @@ public class SXSSFSheet implements Sheet, Cloneable
             }
         }
     }
-    
+
     /**
      * @param rowIndex the zero based row index to find from
      */
@@ -1248,7 +1248,7 @@ public class SXSSFSheet implements Sheet, Cloneable
         }
         return currentRow + 1;
     }
-    
+
     private int writeHidden(SXSSFRow xRow, int rowIndex, boolean hidden) {
         int level = xRow.getOutlineLevel();
         SXSSFRow currRow = getRow(rowIndex);
@@ -1390,7 +1390,7 @@ public class SXSSFSheet implements Sheet, Cloneable
     {
         return _sh.removeArrayFormula(cell);
     }
-    
+
     public DataValidationHelper getDataValidationHelper()
     {
         return _sh.getDataValidationHelper();
@@ -1412,7 +1412,7 @@ public class SXSSFSheet implements Sheet, Cloneable
 
     /**
      * Enable filtering for a range of cells
-     * 
+     *
      * @param range the range of cells to filter
      */
     public AutoFilter setAutoFilter(CellRangeAddress range)
@@ -1423,26 +1423,26 @@ public class SXSSFSheet implements Sheet, Cloneable
     public SheetConditionalFormatting getSheetConditionalFormatting(){
         return _sh.getSheetConditionalFormatting();
     }
-    
-    
+
+
     public CellRangeAddress getRepeatingRows() {
       return _sh.getRepeatingRows();
     }
-    
+
     public CellRangeAddress getRepeatingColumns() {
       return _sh.getRepeatingColumns();
     }
-    
+
     public void setRepeatingRows(CellRangeAddress rowRangeRef) {
       _sh.setRepeatingRows(rowRangeRef);
     }
-    
+
     public void setRepeatingColumns(CellRangeAddress columnRangeRef) {
       _sh.setRepeatingColumns(columnRangeRef);
     }
-    
-    
-    
+
+
+
 //end of interface implementation
     /**
      * Specifies how many rows can be accessed at most via getRow().
@@ -1463,7 +1463,7 @@ public class SXSSFSheet implements Sheet, Cloneable
          }
          _randomAccessWindowSize=value;
     }
-    
+
     /**
      * Are all rows flushed to disk?
      */
@@ -1511,7 +1511,7 @@ public class SXSSFSheet implements Sheet, Cloneable
     }
     public void changeRowNum(SXSSFRow row, int newRowNum)
     {
-        
+
         removeRow(row);
         _rows.put(newRowNum,row);
     }

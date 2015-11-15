@@ -222,7 +222,7 @@ public final class FIBFieldHandler
   public int getFieldsCount() {
       return _fields.length / 2;
   }
-  
+
   void writeTo(byte[] mainStream, int offset, HWPFOutputStream tableStream)
     throws IOException
   {

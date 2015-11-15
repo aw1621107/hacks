@@ -39,14 +39,14 @@ public class HDGFFileHandler extends POIFSFileHandler {
 		for(Stream str : topLevelStreams) {
 			assertTrue(str.getPointer().getLength() >= 0);
 		}
-		
+
 		TrailerStream trailerStream = diagram.getTrailerStream();
 		assertNotNull(trailerStream);
 		assertTrue(trailerStream.getPointer().getLength() >= 0);
-		
+
 		// writing is not yet implemented... handlePOIDocument(diagram);
 	}
-	
+
 	// a test-case to test this locally without executing the full TestAllFiles
 	@Test
 	public void test() throws Exception {
@@ -58,9 +58,9 @@ public class HDGFFileHandler extends POIFSFileHandler {
 		} finally {
 			stream.close();
 		}
-		
+
 		handleExtracting(file);
-		
+
 		stream = new FileInputStream(file);
 		try {
 			VisioTextExtractor extractor = new VisioTextExtractor(stream);

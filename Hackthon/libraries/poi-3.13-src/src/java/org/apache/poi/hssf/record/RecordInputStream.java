@@ -53,7 +53,7 @@ public final class RecordInputStream implements LittleEndianInput {
 	public static final class LeftoverDataException extends RuntimeException {
 		public LeftoverDataException(int sid, int remainingByteCount) {
 			super("Initialisation of record 0x" + Integer.toHexString(sid).toUpperCase(Locale.ROOT)
-					+ "(" + getRecordName(sid) + ") left " + remainingByteCount 
+					+ "(" + getRecordName(sid) + ") left " + remainingByteCount
 					+ " bytes remaining still to be read.");
 		}
 
@@ -246,7 +246,7 @@ public final class RecordInputStream implements LittleEndianInput {
 	}
 
 	/**
-	 * Reads a 32 bit, signed value 
+	 * Reads a 32 bit, signed value
 	 */
 	public int readInt() {
 		checkRecordPosition(LittleEndian.INT_SIZE);
@@ -301,7 +301,7 @@ public final class RecordInputStream implements LittleEndianInput {
 	    } else if (off < 0 || len < 0 || len > buf.length - off) {
 	        throw new IndexOutOfBoundsException();
 	    }
-	    
+
 	    while (len > 0) {
 	        int nextChunk = Math.min(available(),len);
 	        if (nextChunk == 0) {

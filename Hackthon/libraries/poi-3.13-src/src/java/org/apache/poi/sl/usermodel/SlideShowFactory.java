@@ -37,7 +37,7 @@ import org.apache.poi.util.IOUtils;
 public class SlideShowFactory {
     /** The first 4 bytes of an OOXML file, used in detection */
     private static final byte[] OOXML_FILE_HEADER = { 0x50, 0x4b, 0x03, 0x04 };
-    
+
     /**
      * Creates a SlideShow from the given NPOIFSFileSystem.
      *
@@ -243,15 +243,15 @@ public class SlideShowFactory {
             return createXSLFSlideShow(file, readOnly);
         }
     }
-    
+
     protected static SlideShow<?,?> createHSLFSlideShow(Object... args) throws IOException, EncryptedDocumentException {
         return createSlideShow("org.apache.poi.hslf.usermodel.HSLFSlideShowFactory", args);
     }
-    
+
     protected static SlideShow<?,?> createXSLFSlideShow(Object... args) throws IOException, EncryptedDocumentException {
         return createSlideShow("org.apache.poi.xslf.usermodel.XSLFSlideShowFactory", args);
     }
-    
+
     protected static SlideShow<?,?> createSlideShow(String factoryClass, Object args[]) throws IOException, EncryptedDocumentException {
         try {
             Class<?> clazz = Thread.currentThread().getContextClassLoader().loadClass(factoryClass);
@@ -284,7 +284,7 @@ public class SlideShowFactory {
 
     /**
      * This copied over from ooxml, because we can't rely on these classes in the main package
-     * 
+     *
      * @see org.apache.poi.POIXMLDocument#hasOOXMLHeader(InputStream)
      */
     protected static boolean hasOOXMLHeader(InputStream inp) throws IOException {

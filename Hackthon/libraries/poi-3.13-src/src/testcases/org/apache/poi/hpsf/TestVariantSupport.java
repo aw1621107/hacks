@@ -67,7 +67,7 @@ public class TestVariantSupport extends TestCase {
         Object hdrs =  s.getProperty(PropertyIDMap.PID_HEADINGPAIR);
 
         assertNotNull("PID_HEADINGPAIR was not found", hdrs);
-        
+
         assertTrue("PID_HEADINGPAIR: expected byte[] but was "+ hdrs.getClass(), hdrs instanceof byte[]);
         // parse the value
         Vector v = new Vector((short)Variant.VT_VARIANT);

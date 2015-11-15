@@ -28,7 +28,7 @@ import java.util.Calendar;
 import junit.framework.TestCase;
 
 public final class TestMessageSubmissionChunkY2KRead extends TestCase {
-    
+
     private MAPIMessage mapiMessage1979;
     private MAPIMessage mapiMessage1980;
     private MAPIMessage mapiMessage1981;

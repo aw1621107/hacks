@@ -29,9 +29,9 @@ public interface TempFileCreationStrategy {
      *
      * @param prefix The prefix to be used to generate the name of the temporary file.
      * @param suffix The suffix to be used to generate the name of the temporary file.
-     * 
+     *
      * @return The path to the newly created and empty temporary file.
-     * 
+     *
      * @throws IOException If no temporary file could be created.
      */
     public File createTempFile(String prefix, String suffix) throws IOException;

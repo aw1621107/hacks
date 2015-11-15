@@ -141,7 +141,7 @@ public class XmlRpcClient {
 
     /**
      * Call a method and return the result only if the call is successful.
-     * 
+     *
      * @throws FabricCommunicationException
      *             If comm fails or the server reports that the method call failed.
      */
@@ -254,7 +254,7 @@ public class XmlRpcClient {
     /**
      * Retrieve a set of complete shard mappings. The returned mappings include all information
      * available about the mapping.
-     * 
+     *
      * @param shardMappingIdPattern
      *            the shard mapping id to retrieve
      */
@@ -316,7 +316,7 @@ public class XmlRpcClient {
 
     /**
      * Create a new shard mapping.
-     * 
+     *
      * @param type
      *            method by which data is distributed to shards
      * @param globalGroupName

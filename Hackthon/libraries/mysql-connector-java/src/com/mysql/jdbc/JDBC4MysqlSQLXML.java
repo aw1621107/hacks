@@ -156,7 +156,7 @@ public class JDBC4MysqlSQLXML implements SQLXML {
      * designated column of the ResultSet has a type java.sql.Types of SQLXML.
      * <p>
      * The SQL XML object becomes not writeable when this method is called and may also become not readable depending on implementation.
-     * 
+     *
      * @param value
      *            the XML value
      * @throws SQLException
@@ -208,7 +208,7 @@ public class JDBC4MysqlSQLXML implements SQLXML {
      * SQLXML.
      * <p>
      * The SQL XML object becomes not readable when this method is called and may also become not writable depending on implementation.
-     * 
+     *
      * @return a stream containing the XML data.
      * @throws SQLException
      *             if there is an error processing the XML value. The getCause()
@@ -238,28 +238,28 @@ public class JDBC4MysqlSQLXML implements SQLXML {
      * <p>
      * Note that SAX is a callback architecture, so a returned SAXSource should then be set with a content handler that will receive the SAX events from
      * parsing. The content handler will receive callbacks based on the contents of the XML.
-     * 
+     *
      * <pre>
      * SAXSource saxSource = sqlxml.getSource(SAXSource.class);
      * XMLReader xmlReader = saxSource.getXMLReader();
      * xmlReader.setContentHandler(myHandler);
      * xmlReader.parse(saxSource.getInputSource());
      * </pre>
-     * 
+     *
      * @param sourceClass
      *            The class of the source, or null. If the class is null, a
      *            vendor specifc Source implementation will be returned. The
      *            following classes are supported at a minimum:
-     * 
+     *
      *            (MySQL returns a SAXSource if sourceClass == null)
-     * 
+     *
      *            <pre>
      *    javax.xml.transform.dom.DOMSource - returns a DOMSource
      *    javax.xml.transform.sax.SAXSource - returns a SAXSource
      *    javax.xml.transform.stax.StAXSource - returns a StAXSource
      *    javax.xml.transform.stream.StreamSource - returns a StreamSource
      * </pre>
-     * 
+     *
      * @return a Source for reading the XML value.
      * @throws SQLException
      *             if there is an error processing the XML value or if this
@@ -353,7 +353,7 @@ public class JDBC4MysqlSQLXML implements SQLXML {
      * ResultSet has a type java.sql.Types of SQLXML.
      * <p>
      * The SQL XML object becomes not writeable when this method is called and may also become not readable depending on implementation.
-     * 
+     *
      * @return a stream to which data can be written.
      * @throws SQLException
      *             if there is an error processing the XML value. An exception
@@ -389,7 +389,7 @@ public class JDBC4MysqlSQLXML implements SQLXML {
      * SQLXML.
      * <p>
      * The SQL XML object becomes not writeable when this method is called and may also become not readable depending on implementation.
-     * 
+     *
      * @return a stream to which data can be written.
      * @throws SQLException
      *             if there is an error processing the XML value. The getCause()
@@ -426,7 +426,7 @@ public class JDBC4MysqlSQLXML implements SQLXML {
      * <p>
      * Note that SAX is a callback architecture and the returned SAXResult has a content handler assigned that will receive the SAX events based on the contents
      * of the XML. Call the content handler with the contents of the XML document to assign the values.
-     * 
+     *
      * <pre>
      * SAXResult saxResult = sqlxml.setResult(SAXResult.class);
      * ContentHandler contentHandler = saxResult.getXMLReader().getContentHandler();
@@ -434,19 +434,19 @@ public class JDBC4MysqlSQLXML implements SQLXML {
      * // set the XML elements and attributes into the result
      * contentHandler.endDocument();
      * </pre>
-     * 
+     *
      * @param resultClass
      *            The class of the result, or null. If resultClass is null, a
      *            vendor specific Result implementation will be returned. The
      *            following classes are supported at a minimum:
-     * 
+     *
      *            <pre>
      *    javax.xml.transform.dom.DOMResult - returns a DOMResult
      *    javax.xml.transform.sax.SAXResult - returns a SAXResult
      *    javax.xml.transform.stax.StAXResult - returns a StAXResult
      *    javax.xml.transform.stream.StreamResult - returns a StreamResult
      * </pre>
-     * 
+     *
      * @return Returns a Result for setting the XML value.
      * @throws SQLException
      *             if there is an error processing the XML value or if this
@@ -635,16 +635,16 @@ public class JDBC4MysqlSQLXML implements SQLXML {
      * The SimpleSaxToReader class is an adaptation of the SAX "Writer"
      * example from the Apache XercesJ-2 Project. The license for this
      * code is as follows:
-     * 
+     *
      * Licensed to the Apache Software Foundation (ASF) under one or more
      * contributor license agreements. See the NOTICE file distributed with
      * this work for additional information regarding copyright ownership.
      * The ASF licenses this file to You under the Apache License, Version 2.0
      * (the "License"); you may not use this file except in compliance with
      * the License. You may obtain a copy of the License at
-     * 
+     *
      * http://www.apache.org/licenses/LICENSE-2.0
-     * 
+     *
      * Unless required by applicable law or agreed to in writing, software
      * distributed under the License is distributed on an "AS IS" BASIS,
      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.

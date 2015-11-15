@@ -41,7 +41,7 @@ public final class TestXSSFChartAxis extends TestCase {
 		XSSFChart chart = drawing.createChart(anchor);
 		axis = chart.getChartAxisFactory().createValueAxis(AxisPosition.BOTTOM);
 	}
- 
+
 	public void testLogBaseIllegalArgument() throws Exception {
 		IllegalArgumentException iae = null;
 		try {

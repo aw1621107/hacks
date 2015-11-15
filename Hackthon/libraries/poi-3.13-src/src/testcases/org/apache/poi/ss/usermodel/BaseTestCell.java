@@ -107,7 +107,7 @@ public abstract class BaseTestCell {
 		assertEquals(Cell.CELL_TYPE_ERROR, cell.getCellType());
 		assertProhibitedValueAccess(cell, Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_BOOLEAN,
 				Cell.CELL_TYPE_FORMULA, Cell.CELL_TYPE_STRING);
-		
+
 		book.close();
 	}
 
@@ -396,7 +396,7 @@ public abstract class BaseTestCell {
 		}
 		assertEquals("abc", cellA1.getStringCellValue());
 	}
-	
+
 	/**
 	 * similar to {@link #testConvertStringFormulaCell()} but  checks at a
 	 * lower level that {#link {@link Cell#setCellType(int)} works properly
@@ -538,7 +538,7 @@ public abstract class BaseTestCell {
      * </li>
      * <li>
      *   Not-a-Number (NaN):
-     *   NaN is used to represent invalid operations (such as infinity/infinity, 
+     *   NaN is used to represent invalid operations (such as infinity/infinity,
      *   infinity-infinity, or the square root of -1). NaNs allow a program to
      *   continue past an invalid operation. Excel instead immediately generates
      *   an error such as #NUM! or #DIV/0!.
@@ -628,12 +628,12 @@ public abstract class BaseTestCell {
         Row row = sh.createRow(0);
         Cell cell = row.createCell(0);
         cell.setCellValue(Integer.valueOf(23));
-        
+
         cell.setCellValue("some");
 
         cell = row.createCell(1);
         cell.setCellValue(Integer.valueOf(23));
-        
+
         cell.setCellValue("24");
 
         Workbook wb2 = _testDataProvider.writeOutAndReadBack(wb1);
@@ -674,7 +674,7 @@ public abstract class BaseTestCell {
         Workbook wb2 = _testDataProvider.writeOutAndReadBack(wb1);
         wb1.close();
         assertNotNull(wb2);
-        
+
         cell1 = wb2.getSheet("test").getRow(0).getCell(1);
         assertNull(cell1.getHyperlink());
         cell2 = wb2.getSheet("test").getRow(0).getCell(0);
@@ -687,7 +687,7 @@ public abstract class BaseTestCell {
     /**
      * Cell with the formula that returns error must return error code(There was
      * an problem that cell could not return error value form formula cell).
-     * @throws IOException 
+     * @throws IOException
      */
 	@Test
 	public void testGetErrorCellValueFromFormulaCell() throws IOException {
@@ -703,44 +703,44 @@ public abstract class BaseTestCell {
             wb.close();
         }
     }
-    
+
 	@Test
 	public void testSetRemoveStyle() throws Exception {
         Workbook wb = _testDataProvider.createWorkbook();
         Sheet sheet = wb.createSheet();
         Row row = sheet.createRow(0);
         Cell cell = row.createCell(0);
-        
+
         // different default style indexes for HSSF and XSSF/SXSSF
         CellStyle defaultStyle = wb.getCellStyleAt(wb instanceof HSSFWorkbook ? (short)15 : (short)0);
-        
+
         // Starts out with the default style
         assertEquals(defaultStyle, cell.getCellStyle());
-        
+
         // Create some styles, no change
         CellStyle style1 = wb.createCellStyle();
         CellStyle style2 = wb.createCellStyle();
         style1.setDataFormat((short)2);
         style2.setDataFormat((short)3);
-        
+
         assertEquals(defaultStyle, cell.getCellStyle());
-        
+
         // Apply one, changes
         cell.setCellStyle(style1);
         assertEquals(style1, cell.getCellStyle());
-        
+
         // Apply the other, changes
         cell.setCellStyle(style2);
         assertEquals(style2, cell.getCellStyle());
-        
+
         // Remove, goes back to default
         cell.setCellStyle(null);
         assertEquals(defaultStyle, cell.getCellStyle());
-        
+
         // Add back, returns
         cell.setCellStyle(style2);
         assertEquals(style2, cell.getCellStyle());
-        
+
         wb.close();
     }
 
@@ -748,19 +748,19 @@ public abstract class BaseTestCell {
 	public void test57008() throws IOException {
         Workbook wb1 = _testDataProvider.createWorkbook();
 		Sheet sheet = wb1.createSheet();
-		
+
 		Row row0 = sheet.createRow(0);
 		Cell cell0 = row0.createCell(0);
 		cell0.setCellValue("row 0, cell 0 _x0046_ without changes");
-		
+
 		Cell cell1 = row0.createCell(1);
 		cell1.setCellValue("row 0, cell 1 _x005fx0046_ with changes");
-		
+
 		Cell cell2 = row0.createCell(2);
 		cell2.setCellValue("hgh_x0041_**_x0100_*_x0101_*_x0190_*_x0200_*_x0300_*_x0427_*");
 
 		checkUnicodeValues(wb1);
-		
+
 		Workbook wb2 = _testDataProvider.writeOutAndReadBack(wb1);
 		checkUnicodeValues(wb2);
 		wb2.close();
@@ -768,17 +768,17 @@ public abstract class BaseTestCell {
 	}
 
 	private void checkUnicodeValues(Workbook wb) {
-		assertEquals((wb instanceof HSSFWorkbook ? "row 0, cell 0 _x0046_ without changes" : "row 0, cell 0 F without changes"), 
+		assertEquals((wb instanceof HSSFWorkbook ? "row 0, cell 0 _x0046_ without changes" : "row 0, cell 0 F without changes"),
 				wb.getSheetAt(0).getRow(0).getCell(0).toString());
-		assertEquals((wb instanceof HSSFWorkbook ? "row 0, cell 1 _x005fx0046_ with changes" : "row 0, cell 1 _x005fx0046_ with changes"), 
+		assertEquals((wb instanceof HSSFWorkbook ? "row 0, cell 1 _x005fx0046_ with changes" : "row 0, cell 1 _x005fx0046_ with changes"),
 				wb.getSheetAt(0).getRow(0).getCell(1).toString());
-		assertEquals((wb instanceof HSSFWorkbook ? "hgh_x0041_**_x0100_*_x0101_*_x0190_*_x0200_*_x0300_*_x0427_*" : "hghA**\u0100*\u0101*\u0190*\u0200*\u0300*\u0427*"), 
+		assertEquals((wb instanceof HSSFWorkbook ? "hgh_x0041_**_x0100_*_x0101_*_x0190_*_x0200_*_x0300_*_x0427_*" : "hghA**\u0100*\u0101*\u0190*\u0200*\u0300*\u0427*"),
 				wb.getSheetAt(0).getRow(0).getCell(2).toString());
 	}
 
 	/**
 	 *  The maximum length of cell contents (text) is 32,767 characters.
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	@Test
 	public void testMaxTextLength() throws IOException{
@@ -786,7 +786,7 @@ public abstract class BaseTestCell {
         Sheet sheet = wb.createSheet();
 		Cell cell = sheet.createRow(0).createCell(0);
 
-		int maxlen = wb instanceof HSSFWorkbook ? 
+		int maxlen = wb instanceof HSSFWorkbook ?
 				SpreadsheetVersion.EXCEL97.getMaxTextLength()
 				: SpreadsheetVersion.EXCEL2007.getMaxTextLength();
 		assertEquals(32767, maxlen);

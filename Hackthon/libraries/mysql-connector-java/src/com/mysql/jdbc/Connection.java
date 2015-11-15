@@ -32,7 +32,7 @@ import com.mysql.jdbc.log.Log;
 
 /**
  * This interface contains methods that are considered the "vendor extension" to the JDBC API for MySQL's implementation of java.sql.Connection.
- * 
+ *
  * For those looking further into the driver implementation, it is not an API that is used for plugability of implementations inside our driver
  * (which is why there are still references to ConnectionImpl throughout the code).
  */
@@ -42,7 +42,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
      * Changes the user on this connection by performing a re-authentication. If
      * authentication fails, the connection will remain under the context of the
      * current user.
-     * 
+     *
      * @param userName
      *            the username to authenticate with
      * @param newPassword
@@ -61,7 +61,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
      * (irregardless of the configuration property 'useServerPrepStmts')
      * with the same semantics as the java.sql.Connection.prepareStatement()
      * method with the same argument types.
-     * 
+     *
      * @see java.sql.Connection#prepareStatement(String)
      */
     public abstract java.sql.PreparedStatement clientPrepareStatement(String sql) throws SQLException;
@@ -71,7 +71,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
      * (irregardless of the configuration property 'useServerPrepStmts')
      * with the same semantics as the java.sql.Connection.prepareStatement()
      * method with the same argument types.
-     * 
+     *
      * @see java.sql.Connection#prepareStatement(String, int)
      */
     public abstract java.sql.PreparedStatement clientPrepareStatement(String sql, int autoGenKeyIndex) throws SQLException;
@@ -81,7 +81,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
      * (irregardless of the configuration property 'useServerPrepStmts')
      * with the same semantics as the java.sql.Connection.prepareStatement()
      * method with the same argument types.
-     * 
+     *
      * @see java.sql.Connection#prepareStatement(String, int, int)
      */
     public abstract java.sql.PreparedStatement clientPrepareStatement(String sql, int resultSetType, int resultSetConcurrency) throws SQLException;
@@ -91,7 +91,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
      * (irregardless of the configuration property 'useServerPrepStmts')
      * with the same semantics as the java.sql.Connection.prepareStatement()
      * method with the same argument types.
-     * 
+     *
      * @see java.sql.Connection#prepareStatement(String, int[])
      */
     public abstract java.sql.PreparedStatement clientPrepareStatement(String sql, int[] autoGenKeyIndexes) throws SQLException;
@@ -101,7 +101,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
      * (irregardless of the configuration property 'useServerPrepStmts')
      * with the same semantics as the java.sql.Connection.prepareStatement()
      * method with the same argument types.
-     * 
+     *
      * @see java.sql.Connection#prepareStatement(String, int, int, int)
      */
     public abstract java.sql.PreparedStatement clientPrepareStatement(String sql, int resultSetType, int resultSetConcurrency, int resultSetHoldability)
@@ -112,7 +112,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
      * (irregardless of the configuration property 'useServerPrepStmts')
      * with the same semantics as the java.sql.Connection.prepareStatement()
      * method with the same argument types.
-     * 
+     *
      * @see java.sql.Connection#prepareStatement(String, String[])
      */
     public abstract java.sql.PreparedStatement clientPrepareStatement(String sql, String[] autoGenKeyColNames) throws SQLException;
@@ -127,7 +127,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
      * Reports how long this connection has been idle.
      * This time (reported in milliseconds) is updated once a query has
      * completed.
-     * 
+     *
      * @return number of ms that this connection has been idle, 0 if the driver
      *         is busy retrieving results.
      */
@@ -136,7 +136,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
     /**
      * Returns the log mechanism that should be used to log information from/for
      * this Connection.
-     * 
+     *
      * @return the Log instance to use for logging messages.
      * @throws SQLException
      *             if an error occurs
@@ -145,7 +145,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
 
     /**
      * Returns the server's character set
-     * 
+     *
      * @return the server's character set.
      * @deprecated replaced by <code>Connection.getServerCharset()</code>
      */
@@ -154,7 +154,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
 
     /**
      * Returns the server's character set
-     * 
+     *
      * @return the server's character set.
      */
     public abstract String getServerCharset();
@@ -168,7 +168,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
     /**
      * Returns the comment that will be prepended to all statements
      * sent to the server.
-     * 
+     *
      * @return the comment that will be prepended to all statements
      *         sent to the server.
      */
@@ -188,7 +188,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
 
     /**
      * Set the state of being in a global (XA) transaction.
-     * 
+     *
      * @param flag
      */
     public void setInGlobalTx(boolean flag);
@@ -196,7 +196,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
     /**
      * Is this connection connected to the first host in the list if
      * there is a list of servers in the URL?
-     * 
+     *
      * @return true if this connection is connected to the first in
      *         the list.
      */
@@ -205,7 +205,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
     /**
      * Is the server in a sql_mode that doesn't allow us to use \\ to escape
      * things?
-     * 
+     *
      * @return Returns the noBackslashEscapes.
      */
     public abstract boolean isNoBackslashEscapesSet();
@@ -213,14 +213,14 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
     /**
      * Does this connection have the same resource name as the given
      * connection (for XA)?
-     * 
+     *
      * @param c
      */
     public abstract boolean isSameResource(Connection c);
 
     /**
      * Is the server configured to use lower-case table names only?
-     * 
+     *
      * @return true if lower_case_table_names is 'on'
      */
     public abstract boolean lowerCaseTableNames();
@@ -234,7 +234,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
     /**
      * Detect if the connection is still good by sending a ping command
      * to the server.
-     * 
+     *
      * @throws SQLException
      *             if the ping fails
      */
@@ -244,7 +244,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
      * Resets the server-side state of this connection. Doesn't work for MySQL
      * versions older than 4.0.6 or if isParanoid() is set (it will become a
      * no-op in these cases). Usually only used from connection pooling code.
-     * 
+     *
      * @throws SQLException
      *             if the operation fails while resetting server state.
      */
@@ -255,7 +255,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
      * configuration property 'useServerPrepStmts') with the same semantics
      * as the java.sql.Connection.prepareStatement() method with the
      * same argument types.
-     * 
+     *
      * @see java.sql.Connection#prepareStatement(String)
      */
     public abstract java.sql.PreparedStatement serverPrepareStatement(String sql) throws SQLException;
@@ -265,7 +265,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
      * configuration property 'useServerPrepStmts') with the same semantics
      * as the java.sql.Connection.prepareStatement() method with the
      * same argument types.
-     * 
+     *
      * @see java.sql.Connection#prepareStatement(String, int)
      */
     public abstract java.sql.PreparedStatement serverPrepareStatement(String sql, int autoGenKeyIndex) throws SQLException;
@@ -275,7 +275,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
      * configuration property 'useServerPrepStmts') with the same semantics
      * as the java.sql.Connection.prepareStatement() method with the
      * same argument types.
-     * 
+     *
      * @see java.sql.Connection#prepareStatement(String, int, int)
      */
     public abstract java.sql.PreparedStatement serverPrepareStatement(String sql, int resultSetType, int resultSetConcurrency) throws SQLException;
@@ -285,7 +285,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
      * configuration property 'useServerPrepStmts') with the same semantics
      * as the java.sql.Connection.prepareStatement() method with the
      * same argument types.
-     * 
+     *
      * @see java.sql.Connection#prepareStatement(String, int, int, int)
      */
     public abstract java.sql.PreparedStatement serverPrepareStatement(String sql, int resultSetType, int resultSetConcurrency, int resultSetHoldability)
@@ -296,7 +296,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
      * configuration property 'useServerPrepStmts') with the same semantics
      * as the java.sql.Connection.prepareStatement() method with the
      * same argument types.
-     * 
+     *
      * @see java.sql.Connection#prepareStatement(String, int[])
      */
     public abstract java.sql.PreparedStatement serverPrepareStatement(String sql, int[] autoGenKeyIndexes) throws SQLException;
@@ -306,7 +306,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
      * configuration property 'useServerPrepStmts') with the same semantics
      * as the java.sql.Connection.prepareStatement() method with the
      * same argument types.
-     * 
+     *
      * @see java.sql.Connection#prepareStatement(String, String[])
      */
     public abstract java.sql.PreparedStatement serverPrepareStatement(String sql, String[] autoGenKeyColNames) throws SQLException;
@@ -328,7 +328,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
      * Sets the comment that will be prepended to all statements
      * sent to the server. Do not use slash-star or star-slash tokens
      * in the comment as these will be added by the driver itself.
-     * 
+     *
      * @param comment
      *            the comment that will be prepended to all statements
      *            sent to the server.
@@ -337,7 +337,7 @@ public interface Connection extends java.sql.Connection, ConnectionProperties {
 
     /**
      * Used by MiniAdmin to shutdown a MySQL server
-     * 
+     *
      * @throws SQLException
      *             if the command can not be issued.
      */

@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The axis size and location<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class AxisParentRecord extends StandardRecord {
@@ -60,23 +60,23 @@ public final class AxisParentRecord extends StandardRecord {
         buffer.append("    .axisType             = ")
             .append("0x").append(HexDump.toHex(  getAxisType ()))
             .append(" (").append( getAxisType() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .x                    = ")
             .append("0x").append(HexDump.toHex(  getX ()))
             .append(" (").append( getX() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .y                    = ")
             .append("0x").append(HexDump.toHex(  getY ()))
             .append(" (").append( getY() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .width                = ")
             .append("0x").append(HexDump.toHex(  getWidth ()))
             .append(" (").append( getWidth() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .height               = ")
             .append("0x").append(HexDump.toHex(  getHeight ()))
             .append(" (").append( getHeight() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/AXISPARENT]\n");
         return buffer.toString();
@@ -101,7 +101,7 @@ public final class AxisParentRecord extends StandardRecord {
 
     public Object clone() {
         AxisParentRecord rec = new AxisParentRecord();
-    
+
         rec.field_1_axisType = field_1_axisType;
         rec.field_2_x = field_2_x;
         rec.field_3_y = field_3_y;
@@ -116,7 +116,7 @@ public final class AxisParentRecord extends StandardRecord {
     /**
      * Get the axis type field for the AxisParent record.
      *
-     * @return  One of 
+     * @return  One of
      *        AXIS_TYPE_MAIN
      *        AXIS_TYPE_SECONDARY
      */
@@ -129,7 +129,7 @@ public final class AxisParentRecord extends StandardRecord {
      * Set the axis type field for the AxisParent record.
      *
      * @param field_1_axisType
-     *        One of 
+     *        One of
      *        AXIS_TYPE_MAIN
      *        AXIS_TYPE_SECONDARY
      */

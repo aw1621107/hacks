@@ -93,7 +93,7 @@ public final class TestFormulaEvaluatorBugs {
             System.err.println("Existing file for bug #44636 written to " + existing.toString());
         }
         wb.close();
-        
+
         // Now, do a new file from scratch
         wb = new HSSFWorkbook();
         sheet = wb.createSheet();
@@ -180,7 +180,7 @@ public final class TestFormulaEvaluatorBugs {
         cell = row.getCell(0);
         assertEquals("-1000000-3000000", cell.getCellFormula());
         assertEquals(-4000000, eva.evaluate(cell).getNumberValue(), 0);
-        
+
         wb.close();
     }
 
@@ -241,7 +241,7 @@ public final class TestFormulaEvaluatorBugs {
         HSSFCell cellSUM2D = rowSUM2D.getCell(0);
         assertEquals("SUM(C:D)", cellSUM2D.getCellFormula());
         assertEquals(66, eva.evaluate(cellSUM2D).getNumberValue(), 0);
-        
+
         wb.close();
     }
 
@@ -265,7 +265,7 @@ public final class TestFormulaEvaluatorBugs {
             fail("Identified bug 44508");
         }
         assertEquals(true, cell.getBooleanCellValue());
-        
+
         wb.close();
     }
 
@@ -290,7 +290,7 @@ public final class TestFormulaEvaluatorBugs {
                 }
             }
         }
-        
+
         wb.close();
     }
 
@@ -355,7 +355,7 @@ public final class TestFormulaEvaluatorBugs {
         cell.setCellFormula("DATE(2012,2-12,1+4)");
         fe.notifyUpdateCell(cell);
         assertEquals(40579.0, fe.evaluate(cell).getNumberValue(), 0);
-        
+
         wb.close();
     }
 
@@ -436,7 +436,7 @@ public final class TestFormulaEvaluatorBugs {
 
         // confirm the evaluation result too
         assertEquals(ErrorEval.NA, ve);
-        
+
         wb.close();
     }
 
@@ -523,22 +523,22 @@ public final class TestFormulaEvaluatorBugs {
         cell = row.getCell(CellReference.convertColStringToIndex("B"));
         assertRefPtgA1('V', getPtgs(cell), 0);
 //      assertRefPtgA1('V', getPtgs(cell), 4); // FIXME!
-        
+
         cell = row.getCell(CellReference.convertColStringToIndex("D"));
         assertRefPtgA1('V', getPtgs(cell), 0);
 //      assertRefPtgA1('V', getPtgs(cell), 6); // FIXME!
-        
+
         cell = row.getCell(CellReference.convertColStringToIndex("F"));
         assertRefPtgA1('V', getPtgs(cell), 0);
 //      assertRefPtgA1('V', getPtgs(cell), 4); // FIXME!
 //      assertRefPtgA1('V', getPtgs(cell), 9); // FIXME!
-        
+
         cell = row.getCell(CellReference.convertColStringToIndex("G"));
         assertRefPtgA1('V', getPtgs(cell), 0);
 //      assertRefPtgA1('V', getPtgs(cell), 4); // FIXME!
 //      assertRefPtgA1('V', getPtgs(cell), 9); // FIXME!
-        
-        
+
+
         // Check our cached values were correctly evaluated
         cell = row.getCell(CellReference.convertColStringToIndex("A"));
         assertEquals("abc", cell.getStringCellValue());

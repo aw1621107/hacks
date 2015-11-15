@@ -84,9 +84,9 @@ public class ServerController {
 
     /**
      * Creates a ServerController with the directory for the MySQL server.
-     * 
+     *
      * The 'datadir' is set to the same directory.
-     * 
+     *
      * @param baseDir
      *            the base directory for the MySQL server.
      */
@@ -97,7 +97,7 @@ public class ServerController {
     /**
      * Creates a server controller for the MySQL server with the given basedir
      * and datadir.
-     * 
+     *
      * @param basedir
      *            the basedir to use when starting MySQL.
      * @param datadir
@@ -108,7 +108,7 @@ public class ServerController {
 
     /**
      * Sets the basedir to use when starting MySQL.
-     * 
+     *
      * @param baseDir
      *            the basedir to use when starting MySQL.
      */
@@ -118,7 +118,7 @@ public class ServerController {
 
     /**
      * Sets the data to use when starting MySQL.
-     * 
+     *
      * @param dataDir
      *            the basedir to use when starting MySQL.
      */
@@ -129,7 +129,7 @@ public class ServerController {
     /**
      * Starts the server, returning a java.lang.Process instance that represents
      * the mysql server.
-     * 
+     *
      * @return Process a java.lang.Process instance representing the mysql
      *         server process.
      * @throws IOException
@@ -146,10 +146,10 @@ public class ServerController {
 
     /**
      * Stops the server (if started)
-     * 
+     *
      * @param forceIfNecessary
      *            use forceStop if mysqladmin doesn't shut the server down
-     * 
+     *
      * @throws IOException
      *             if an error occurs while stopping the server
      */
@@ -204,7 +204,7 @@ public class ServerController {
     /**
      * Returns the list of properties that will be used to start/control the
      * server.
-     * 
+     *
      * @return Properties the list of properties.
      */
     public synchronized Properties getServerProps() {
@@ -218,7 +218,7 @@ public class ServerController {
     /**
      * Returns the full commandline used to start the mysql server, including
      * and arguments to be passed to the server process.
-     * 
+     *
      * @return String the commandline used to start the mysql server.
      */
     private String getCommandLine() {
@@ -230,7 +230,7 @@ public class ServerController {
 
     /**
      * Returns the fully-qualifed path to the 'mysqld' executable
-     * 
+     *
      * @return String the path to the server executable.
      */
     private String getFullExecutablePath() {
@@ -272,7 +272,7 @@ public class ServerController {
     /**
      * Builds the list of command-line arguments that will be passed to the
      * mysql server to be started.
-     * 
+     *
      * @return String the list of command-line arguments.
      */
     private String buildOptionalCommandLine() {
@@ -305,7 +305,7 @@ public class ServerController {
 
     /**
      * Returns true if the property does not belong as a command-line argument
-     * 
+     *
      * @return boolean if the property should not be a command-line argument.
      */
     private boolean isNonCommandLineArgument(String propName) {
@@ -314,7 +314,7 @@ public class ServerController {
 
     /**
      * Lazily creates a list of system properties.
-     * 
+     *
      * @return Properties the properties from System.getProperties()
      */
     private synchronized Properties getSystemProperties() {
@@ -327,7 +327,7 @@ public class ServerController {
 
     /**
      * Is this ServerController running on a Windows operating system?
-     * 
+     *
      * @return boolean if this ServerController is running on Windows
      */
     private boolean runningOnWindows() {

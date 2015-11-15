@@ -23,7 +23,7 @@ import org.apache.poi.hssf.eventusermodel.HSSFUserException;
 
 /**
  * Abstract class for use with the HSSFRequest and HSSFEventFactory, which
- *  allows for the halting of processing. 
+ *  allows for the halting of processing.
  * Users should create subclass of this (which implements the usual
  *  HSSFListener), and then override the #abortableProcessRecord(Record)
  *  method to do their processing.
@@ -47,22 +47,22 @@ public abstract class AbortableHSSFListener implements HSSFListener
 	}
 
    /**
-	 * Process an HSSF Record. Called when a record occurs in an HSSF file. 
+	 * Process an HSSF Record. Called when a record occurs in an HSSF file.
 	 * Provides two options for halting the processing of the HSSF file.
 	 *
-	 * The return value provides a means of non-error termination with a 
-	 * user-defined result code. A value of zero must be returned to 
+	 * The return value provides a means of non-error termination with a
+	 * user-defined result code. A value of zero must be returned to
 	 * continue processing, any other value will halt processing by
-	 * <code>HSSFEventFactory</code> with the code being passed back by 
+	 * <code>HSSFEventFactory</code> with the code being passed back by
 	 * its abortable process events methods.
-	 * 
+	 *
 	 * Error termination can be done by throwing the HSSFUserException.
 	 *
-	 * Note that HSSFEventFactory will not call the inherited process 
+	 * Note that HSSFEventFactory will not call the inherited process
 	 *
      * @return result code of zero for continued processing.
      *
-	 * @throws HSSFUserException User code can throw this to abort 
+	 * @throws HSSFUserException User code can throw this to abort
 	 * file processing by HSSFEventFactory and return diagnostic information.
      */
     public abstract short abortableProcessRecord(Record record) throws HSSFUserException;

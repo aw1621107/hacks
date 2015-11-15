@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for ST_RectAlignment.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -42,7 +42,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
+ *
  */
 @XmlType(name = "ST_RectAlignment", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main")
 @XmlEnum
@@ -51,63 +51,63 @@ public enum STRectAlignment {
 
     /**
      * Rectangle Alignment Enum ( Top Left )
-     * 
+     *
      */
     @XmlEnumValue("tl")
     TL("tl"),
 
     /**
      * Rectangle Alignment Enum ( Top )
-     * 
+     *
      */
     @XmlEnumValue("t")
     T("t"),
 
     /**
      * Rectangle Alignment Enum ( Top Right )
-     * 
+     *
      */
     @XmlEnumValue("tr")
     TR("tr"),
 
     /**
      * Rectangle Alignment Enum ( Left )
-     * 
+     *
      */
     @XmlEnumValue("l")
     L("l"),
 
     /**
      * Rectangle Alignment Enum ( Center )
-     * 
+     *
      */
     @XmlEnumValue("ctr")
     CTR("ctr"),
 
     /**
      * Rectangle Alignment Enum ( Right )
-     * 
+     *
      */
     @XmlEnumValue("r")
     R("r"),
 
     /**
      * Rectangle Alignment Enum ( Bottom Left )
-     * 
+     *
      */
     @XmlEnumValue("bl")
     BL("bl"),
 
     /**
      * Rectangle Alignment Enum ( Bottom )
-     * 
+     *
      */
     @XmlEnumValue("b")
     B("b"),
 
     /**
      * Rectangle Alignment Enum ( Bottom Right )
-     * 
+     *
      */
     @XmlEnumValue("br")
     BR("br");

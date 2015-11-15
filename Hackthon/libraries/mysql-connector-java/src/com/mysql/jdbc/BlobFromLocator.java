@@ -146,9 +146,9 @@ public class BlobFromLocator implements java.sql.Blob {
 
     /**
      * Retrieves the BLOB designated by this Blob instance as a stream.
-     * 
+     *
      * @return this BLOB represented as a binary stream of bytes.
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */
@@ -232,14 +232,14 @@ public class BlobFromLocator implements java.sql.Blob {
     /**
      * Returns as an array of bytes, part or all of the BLOB value that this
      * Blob object designates.
-     * 
+     *
      * @param pos
      *            where to start the part of the BLOB
      * @param length
      *            the length of the part of the BLOB you want returned.
-     * 
+     *
      * @return the bytes stored in the blob starting at position <code>pos</code> and having a length of <code>length</code>.
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */
@@ -267,9 +267,9 @@ public class BlobFromLocator implements java.sql.Blob {
     /**
      * Returns the number of bytes in the BLOB value designated by this Blob
      * object.
-     * 
+     *
      * @return the length of this blob
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */
@@ -333,15 +333,15 @@ public class BlobFromLocator implements java.sql.Blob {
 
     /**
      * Finds the position of the given pattern in this BLOB.
-     * 
+     *
      * @param pattern
      *            the pattern to find
      * @param start
      *            where to start finding the pattern
-     * 
+     *
      * @return the position where the pattern is found in the BLOB, -1 if not
      *         found
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */
@@ -579,7 +579,7 @@ public class BlobFromLocator implements java.sql.Blob {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.io.InputStream#read(byte[], int, int)
          */
         @Override
@@ -607,7 +607,7 @@ public class BlobFromLocator implements java.sql.Blob {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.io.InputStream#read(byte[])
          */
         @Override
@@ -635,7 +635,7 @@ public class BlobFromLocator implements java.sql.Blob {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.io.InputStream#close()
          */
         @Override

@@ -371,7 +371,7 @@ public class XSSFRow implements Row, Comparable<XSSFRow> {
      */
     public XSSFCellStyle getRowStyle() {
        if(!isFormatted()) return null;
-       
+
        StylesTable stylesSource = getSheet().getWorkbook().getStylesSource();
        if(stylesSource.getNumCellStyles() > 0) {
            return stylesSource.getStyleAt((int)_row.getS());
@@ -379,7 +379,7 @@ public class XSSFRow implements Row, Comparable<XSSFRow> {
           return null;
        }
     }
-    
+
     /**
      * Applies a whole-row cell styling to the row.
      * If the value is null then the style information is removed,
@@ -393,7 +393,7 @@ public class XSSFRow implements Row, Comparable<XSSFRow> {
            }
         } else {
             StylesTable styleSource = getSheet().getWorkbook().getStylesSource();
-            
+
             XSSFCellStyle xStyle = (XSSFCellStyle)style;
             xStyle.verifyBelongsToStylesSource(styleSource);
 
@@ -402,7 +402,7 @@ public class XSSFRow implements Row, Comparable<XSSFRow> {
             _row.setCustomFormat(true);
         }
     }
-    
+
     /**
      * Remove the Cell from this row.
      *
@@ -465,8 +465,8 @@ public class XSSFRow implements Row, Comparable<XSSFRow> {
             int i = 0;
             for (XSSFCell xssfCell : _cells.values()) {
                 cArray[i] = (CTCell) xssfCell.getCTCell().copy();
-                
-                // we have to copy and re-create the XSSFCell here because the 
+
+                // we have to copy and re-create the XSSFCell here because the
                 // elements as otherwise setCArray below invalidates all the columns!
                 // see Bug 56170, XMLBeans seems to always release previous objects
                 // in the CArray, so we need to provide completely new ones here!

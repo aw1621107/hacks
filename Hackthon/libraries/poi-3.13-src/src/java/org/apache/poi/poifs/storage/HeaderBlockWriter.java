@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.poifs.storage;
 
@@ -45,7 +45,7 @@ public class HeaderBlockWriter implements HeaderBlockConstants, BlockWritable
     }
 
     /**
-     * Create a single instance initialized with the specified 
+     * Create a single instance initialized with the specified
      *  existing values
      */
     public HeaderBlockWriter(HeaderBlock headerBlock)
@@ -80,7 +80,7 @@ public class HeaderBlockWriter implements HeaderBlockConstants, BlockWritable
            bat_blocks[j] = startBlock + j;
         }
         _header_block.setBATArray(bat_blocks);
-        
+
         // Now do the XBATs
         if (blockCount > _max_bats_in_header)
         {
@@ -170,11 +170,11 @@ public class HeaderBlockWriter implements HeaderBlockConstants, BlockWritable
     {
         _header_block.writeData(stream);
     }
-    
+
     /**
      * Write the block's data to an existing block
      *
-     * @param block the ByteBuffer of the block to which the 
+     * @param block the ByteBuffer of the block to which the
      *               stored data should be written
      *
      * @exception IOException on problems writing to the block
@@ -186,7 +186,7 @@ public class HeaderBlockWriter implements HeaderBlockConstants, BlockWritable
              _header_block.getBigBlockSize().getBigBlockSize()
        );
        _header_block.writeData(baos);
-       
+
        block.put(baos.toByteArray());
     }
 

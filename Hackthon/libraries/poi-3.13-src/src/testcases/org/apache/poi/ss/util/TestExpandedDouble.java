@@ -92,7 +92,7 @@ public final class TestExpandedDouble {
 			throw new AssertionFailedError("One or more test examples failed.  See stderr.");
 		}
 	}
-	
+
 	public static boolean confirmRoundTrip(int i, long rawBitsA) {
 		double a = Double.longBitsToDouble(rawBitsA);
 		if (a == 0.0) {
@@ -156,7 +156,7 @@ public final class TestExpandedDouble {
 		}
 		return bd.unscaledValue().toString();
 	}
-	
+
 	public static BigInteger getNearby(NormalisedDecimal md, int offset) {
 		BigInteger frac = md.composeFrac();
 		int be = frac.bitLength() - 24 - 1;

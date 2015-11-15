@@ -678,7 +678,7 @@ public final class TestStyleTextPropAtom {
     protected void doReadWrite(byte[] data, int textlen) {
         doReadWrite(data, data, textlen);
     }
-    
+
     protected void doReadWrite(byte[] data, byte[] expected, int textlen) {
         StyleTextPropAtom stpb = new StyleTextPropAtom(data, 0,data.length);
         if(textlen != -1) stpb.setParentTextSize(textlen);
@@ -784,7 +784,7 @@ public final class TestStyleTextPropAtom {
         // the bitmask text properties will sanitize the bytes and thus the bytes differ
         byte[] exptected = data.clone();
         exptected[18] = 0;
-        
+
         doReadWrite(data, exptected, length);
     }
 

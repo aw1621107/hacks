@@ -32,7 +32,7 @@ public abstract class ChunkedCipherInputStream extends LittleEndianInputStream {
     private final int chunkSize;
     private final int chunkMask;
     private final int chunkBits;
-    
+
     private int _lastIndex = 0;
     private long _pos = 0;
     private long _size;
@@ -46,10 +46,10 @@ public abstract class ChunkedCipherInputStream extends LittleEndianInputStream {
         this.chunkSize = chunkSize;
         chunkMask = chunkSize-1;
         chunkBits = Integer.bitCount(chunkMask);
-        
+
         _cipher = initCipherForBlock(null, 0);
     }
-    
+
     protected abstract Cipher initCipherForBlock(Cipher existing, int block)
     throws GeneralSecurityException;
 
@@ -65,7 +65,7 @@ public abstract class ChunkedCipherInputStream extends LittleEndianInputStream {
 
     public int read(byte[] b, int off, int len) throws IOException {
         int total = 0;
-        
+
         if (available() <= 0) return -1;
 
         while (len > 0) {
@@ -109,7 +109,7 @@ public abstract class ChunkedCipherInputStream extends LittleEndianInputStream {
     public int available() {
         return (int)(_size - _pos);
     }
-    
+
     @Override
     public boolean markSupported() {
         return false;
@@ -119,7 +119,7 @@ public abstract class ChunkedCipherInputStream extends LittleEndianInputStream {
     public synchronized void mark(int readlimit) {
         throw new UnsupportedOperationException();
     }
-    
+
     @Override
     public synchronized void reset() throws IOException {
         throw new UnsupportedOperationException();
@@ -128,7 +128,7 @@ public abstract class ChunkedCipherInputStream extends LittleEndianInputStream {
     private byte[] nextChunk() throws GeneralSecurityException, IOException {
         int index = (int)(_pos >> chunkBits);
         initCipherForBlock(_cipher, index);
-        
+
         if (_lastIndex != index) {
             super.skip((index - _lastIndex) << chunkBits);
         }

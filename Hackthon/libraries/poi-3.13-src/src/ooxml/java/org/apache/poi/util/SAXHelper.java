@@ -49,7 +49,7 @@ public final class SAXHelper {
         trySetXercesSecurityManager(xmlReader);
         return xmlReader;
     }
-    
+
     static final EntityResolver IGNORING_ENTITY_RESOLVER = new EntityResolver() {
         @Override
         public InputSource resolveEntity(String publicId, String systemId)
@@ -57,14 +57,14 @@ public final class SAXHelper {
             return new InputSource(new StringReader(""));
         }
     };
-    
+
     private static final SAXParserFactory saxFactory;
     static {
         saxFactory = SAXParserFactory.newInstance();
         saxFactory.setValidating(false);
         saxFactory.setNamespaceAware(true);
     }
-            
+
     private static void trySetSAXFeature(XMLReader xmlReader, String feature, boolean enabled) {
         try {
             xmlReader.setFeature(feature, enabled);
@@ -74,7 +74,7 @@ public final class SAXHelper {
             logger.log(POILogger.WARN, "Cannot set SAX feature because outdated XML parser in classpath", feature, ame);
         }
     }
-    
+
     private static void trySetXercesSecurityManager(XMLReader xmlReader) {
         // Try built-in JVM one first, standalone if not
         for (String securityManagerClassName : new String[] {

@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.poifs.storage;
 
@@ -112,9 +112,9 @@ public class RawDataBlock
     public boolean hasData() {
     	return _hasData;
     }
-    
+
     public String toString() {
-       return "RawDataBlock of size " + _data.length; 
+       return "RawDataBlock of size " + _data.length;
     }
 
     /* ********** START implementation of ListManagedBlock ********** */
@@ -135,7 +135,7 @@ public class RawDataBlock
         }
         return _data;
     }
-    
+
     /**
      * What's the big block size?
      */

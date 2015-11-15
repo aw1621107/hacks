@@ -171,7 +171,7 @@ public class Region implements Comparable<Region> {
 	    return 42; // any arbitrary constant will do
 	}
 
-	
+
 	/**
 	 * Compares that the given region is the same less than or greater than this
 	 * region.  If any regional coordiant passed in is less than this regions

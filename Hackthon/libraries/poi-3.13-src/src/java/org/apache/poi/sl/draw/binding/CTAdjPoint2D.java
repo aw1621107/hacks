@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_AdjPoint2D complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_AdjPoint2D">
  *   &lt;complexContent>
@@ -38,8 +38,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_AdjPoint2D", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main")
@@ -52,11 +52,11 @@ public class CTAdjPoint2D {
 
     /**
      * Gets the value of the x property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getX() {
         return x;
@@ -64,11 +64,11 @@ public class CTAdjPoint2D {
 
     /**
      * Sets the value of the x property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setX(String value) {
         this.x = value;
@@ -80,11 +80,11 @@ public class CTAdjPoint2D {
 
     /**
      * Gets the value of the y property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getY() {
         return y;
@@ -92,11 +92,11 @@ public class CTAdjPoint2D {
 
     /**
      * Sets the value of the y property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setY(String value) {
         this.y = value;

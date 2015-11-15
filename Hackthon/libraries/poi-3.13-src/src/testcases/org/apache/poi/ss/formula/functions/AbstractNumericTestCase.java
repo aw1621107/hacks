@@ -38,7 +38,7 @@ public abstract class AbstractNumericTestCase extends TestCase {
     }
 
     /**
-     * Why doesnt JUnit have a method like this for doubles? 
+     * Why doesnt JUnit have a method like this for doubles?
      * The current impl (3.8.1) of Junit has a retar*** method
      * for comparing doubles. DO NOT use that.
      * TODO: This class should really be in an abstract super class

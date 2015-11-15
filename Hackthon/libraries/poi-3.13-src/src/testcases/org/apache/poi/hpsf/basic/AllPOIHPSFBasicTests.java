@@ -31,7 +31,7 @@ import org.junit.runners.Suite;
     TestMetaDataIPI.class,
     TestUnicode.class,
     TestWrite.class,
-    TestWriteWellKnown.class    
+    TestWriteWellKnown.class
 })
 public class AllPOIHPSFBasicTests {
 }

@@ -77,7 +77,7 @@ public final class TestLittleEndian extends TestCase {
         assertEquals(testdata3[2], (byte)0xFF);
         assertEquals(expected2, LittleEndian.getUShort(testdata3));
         assertEquals(expected3, LittleEndian.getUShort(testdata3, 1));
-        
+
     }
 
     private static final byte[]   _double_array =
@@ -229,8 +229,8 @@ public final class TestLittleEndian extends TestCase {
     }
 
     private static byte[] _good_array = {
-        0x01, 0x02, 0x01, 0x02, 
-        0x01, 0x02, 0x01, 0x02, 
+        0x01, 0x02, 0x01, 0x02,
+        0x01, 0x02, 0x01, 0x02,
         0x01, 0x02, 0x01, 0x02,
         0x01, 0x02, 0x01, 0x02,
     };
@@ -314,7 +314,7 @@ public final class TestLittleEndian extends TestCase {
 //        int actual;
 //        actual = LittleEndian.readUShort(new ByteArrayInputStream(new byte[] { 5, -128, }));
 //        assertEquals(32773, actual);
-//        
+//
 //        actual = LittleEndian.readUShort(new ByteArrayInputStream(new byte[] { 1, 2, 3, 4, }));
 //        assertEquals(513, actual);
 //

@@ -28,7 +28,7 @@ import org.apache.poi.util.Internal;
 /**
  * String table containing the names of authors of revision marks, e-mails and
  * comments in this document.
- * 
+ *
  * @author Ryan Lauck
  */
 @Internal
@@ -40,7 +40,7 @@ public final class RevisionMarkAuthorTable {
 
 	/**
 	 * Constructor to read the table from the table stream.
-	 * 
+	 *
 	 * @param tableStream the table stream.
 	 * @param offset the offset into the byte array.
 	 * @param size the size of the table in the byte array.
@@ -53,16 +53,16 @@ public final class RevisionMarkAuthorTable {
 
 	/**
 	 * Gets the entries. The returned list cannot be modified.
-	 * 
+	 *
 	 * @return the list of entries.
 	 */
 	public List<String> getEntries() {
 		return Collections.unmodifiableList(Arrays.asList(entries));
 	}
-	
+
 	/**
 	 * Get an author by its index.  Returns null if it does not exist.
-	 * 
+	 *
 	 * @return the revision mark author
 	 */
 	public String getAuthor(int index) {
@@ -72,10 +72,10 @@ public final class RevisionMarkAuthorTable {
 		}
 		return auth;
 	}
-	
+
 	/**
 	 * Gets the number of entries.
-	 * 
+	 *
 	 * @return the number of entries.
 	 */
 	public int getSize() {
@@ -84,7 +84,7 @@ public final class RevisionMarkAuthorTable {
 
 	/**
 	 * Writes this table to the table stream.
-	 * 
+	 *
 	 * @param tableStream  the table stream to write to.
 	 * @throws IOException  if an error occurs while writing.
 	 */

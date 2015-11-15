@@ -23,7 +23,7 @@ import org.apache.poi.util.LittleEndianOutput;
 /**
  * A Name, be that a Named Range or a Function / User Defined
  *  Function, addressed in the HSSF External Sheet style.
- *  
+ *
  * <p>This is XSSF only, as it stores the sheet / book references
  *  in String form. The HSSF equivalent using indexes is {@link NameXPtg}</p>
  */
@@ -67,7 +67,7 @@ public final class NameXPxg extends OperandPtg implements Pxg {
     public String getNameName() {
         return nameName;
     }
-    
+
     public void setSheetName(String sheetName) {
         this.sheetName = sheetName;
     }
@@ -91,7 +91,7 @@ public final class NameXPxg extends OperandPtg implements Pxg {
         sb.append(nameName);
         return sb.toString();
     }
-    
+
     public byte getDefaultOperandClass() {
         return Ptg.CLASS_VALUE;
     }

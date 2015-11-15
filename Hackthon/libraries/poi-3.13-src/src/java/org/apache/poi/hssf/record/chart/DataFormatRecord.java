@@ -26,7 +26,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The data format record is used to index into a series.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class DataFormatRecord extends StandardRecord {
@@ -61,20 +61,20 @@ public final class DataFormatRecord extends StandardRecord {
         buffer.append("    .pointNumber          = ")
             .append("0x").append(HexDump.toHex(  getPointNumber ()))
             .append(" (").append( getPointNumber() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .seriesIndex          = ")
             .append("0x").append(HexDump.toHex(  getSeriesIndex ()))
             .append(" (").append( getSeriesIndex() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .seriesNumber         = ")
             .append("0x").append(HexDump.toHex(  getSeriesNumber ()))
             .append(" (").append( getSeriesNumber() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .formatFlags          = ")
             .append("0x").append(HexDump.toHex(  getFormatFlags ()))
             .append(" (").append( getFormatFlags() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
-        buffer.append("         .useExcel4Colors          = ").append(isUseExcel4Colors()).append('\n'); 
+        buffer.append(System.getProperty("line.separator"));
+        buffer.append("         .useExcel4Colors          = ").append(isUseExcel4Colors()).append('\n');
 
         buffer.append("[/DATAFORMAT]\n");
         return buffer.toString();
@@ -98,7 +98,7 @@ public final class DataFormatRecord extends StandardRecord {
 
     public Object clone() {
         DataFormatRecord rec = new DataFormatRecord();
-    
+
         rec.field_1_pointNumber = field_1_pointNumber;
         rec.field_2_seriesIndex = field_2_seriesIndex;
         rec.field_3_seriesNumber = field_3_seriesNumber;

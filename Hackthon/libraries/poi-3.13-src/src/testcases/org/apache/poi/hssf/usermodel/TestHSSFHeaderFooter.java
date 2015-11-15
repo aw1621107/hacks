@@ -174,7 +174,7 @@ public final class TestHSSFHeaderFooter extends TestCase {
 		HSSFHeader header = sheet.getHeader();
 		assertEquals("", header.getRawText());
 
-		// make sure header / footer is properly linked to underlying data 
+		// make sure header / footer is properly linked to underlying data
 		HSSFHeader header2 = sheet.getHeader();
 		header.setCenter("foo");
 		assertEquals("foo", header2.getCenter());

@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.hssf.record;
 
@@ -23,9 +23,9 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * Title: Object Protect Record<P>
- * Description: Protect embedded object with the lamest "security" ever invented.  
- * This record tells  "I want to protect my objects" with lame security.  It 
- * appears in conjunction with the PASSWORD and PROTECT records as well as its 
+ * Description: Protect embedded object with the lamest "security" ever invented.
+ * This record tells  "I want to protect my objects" with lame security.  It
+ * appears in conjunction with the PASSWORD and PROTECT records as well as its
  * scenario protect cousin.<P>
  * REFERENCE:  PG 368 Microsoft Excel 97 Developer's Kit (ISBN: 1-57231-498-2)<P>
  * @author Andrew C. Oliver (acoliver at apache dot org)

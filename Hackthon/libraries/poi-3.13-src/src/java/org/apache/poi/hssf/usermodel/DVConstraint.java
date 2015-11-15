@@ -52,19 +52,19 @@ public class DVConstraint implements DataValidationConstraint {
 		public Ptg[] getFormula2() {
 			return _formula2;
 		}
-		
+
 	}
-	
+
 	private final int _validationType;
 	private int _operator;
 	private String[] _explicitListValues;
-	
+
 	private String _formula1;
 	private String _formula2;
 	private Double _value1;
 	private Double _value2;
 
-	
+
 	private DVConstraint(int validationType, int comparisonOperator, String formulaA,
 			String formulaB, Double value1, Double value2, String[] excplicitListValues) {
 		_validationType = validationType;
@@ -75,8 +75,8 @@ public class DVConstraint implements DataValidationConstraint {
 		_value2 = value2;
 		_explicitListValues = excplicitListValues;
 	}
-	
-	
+
+
 	/**
 	 * Creates a list constraint
 	 */
@@ -87,9 +87,9 @@ public class DVConstraint implements DataValidationConstraint {
 
 	/**
 	 * Creates a number based data validation constraint. The text values entered for expr1 and expr2
-	 * can be either standard Excel formulas or formatted number values. If the expression starts 
-	 * with '=' it is parsed as a formula, otherwise it is parsed as a formatted number. 
-	 * 
+	 * can be either standard Excel formulas or formatted number values. If the expression starts
+	 * with '=' it is parsed as a formula, otherwise it is parsed as a formatted number.
+	 *
 	 * @param validationType one of {@link org.apache.poi.ss.usermodel.DataValidationConstraint.ValidationType#ANY},
      * {@link org.apache.poi.ss.usermodel.DataValidationConstraint.ValidationType#DECIMAL},
      * {@link org.apache.poi.ss.usermodel.DataValidationConstraint.ValidationType#INTEGER},
@@ -98,7 +98,7 @@ public class DVConstraint implements DataValidationConstraint {
 	 * @param expr1 date formula (when first char is '=') or formatted number value
 	 * @param expr2 date formula (when first char is '=') or formatted number value
 	 */
-	public static DVConstraint createNumericConstraint(int validationType, int comparisonOperator, 
+	public static DVConstraint createNumericConstraint(int validationType, int comparisonOperator,
 			String expr1, String expr2) {
 		switch (validationType) {
 			case ValidationType.ANY:
@@ -133,15 +133,15 @@ public class DVConstraint implements DataValidationConstraint {
 	public static DVConstraint createExplicitListConstraint(String[] explicitListValues) {
 		return new DVConstraint(null, explicitListValues);
 	}
-	
-	
+
+
 	/**
 	 * Creates a time based data validation constraint. The text values entered for expr1 and expr2
-	 * can be either standard Excel formulas or formatted time values. If the expression starts 
-	 * with '=' it is parsed as a formula, otherwise it is parsed as a formatted time.  To parse 
-	 * formatted times, two formats are supported:  "HH:MM" or "HH:MM:SS".  This is contrary to 
+	 * can be either standard Excel formulas or formatted time values. If the expression starts
+	 * with '=' it is parsed as a formula, otherwise it is parsed as a formatted time.  To parse
+	 * formatted times, two formats are supported:  "HH:MM" or "HH:MM:SS".  This is contrary to
 	 * Excel which uses the default time format from the OS.
-	 * 
+	 *
 	 * @param comparisonOperator constant from {@link org.apache.poi.ss.usermodel.DataValidationConstraint.OperatorType} enum
 	 * @param expr1 date formula (when first char is '=') or formatted time value
 	 * @param expr2 date formula (when first char is '=') or formatted time value
@@ -151,7 +151,7 @@ public class DVConstraint implements DataValidationConstraint {
 			throw new IllegalArgumentException("expr1 must be supplied");
 		}
 		OperatorType.validateSecondArg(comparisonOperator, expr1);
-		
+
 		// formula1 and value1 are mutually exclusive
 		String formula1 = getFormulaFromTextExpression(expr1);
 		Double value1 = formula1 == null ? convertTime(expr1) : null;
@@ -160,14 +160,14 @@ public class DVConstraint implements DataValidationConstraint {
 		Double value2 = formula2 == null ? convertTime(expr2) : null;
 		return new DVConstraint(ValidationType.TIME, comparisonOperator, formula1, formula2, value1, value2, null);
 	}
-	
+
 	/**
 	 * Creates a date based data validation constraint. The text values entered for expr1 and expr2
-	 * can be either standard Excel formulas or formatted date values. If the expression starts 
-	 * with '=' it is parsed as a formula, otherwise it is parsed as a formatted date (Excel uses 
+	 * can be either standard Excel formulas or formatted date values. If the expression starts
+	 * with '=' it is parsed as a formula, otherwise it is parsed as a formatted date (Excel uses
 	 * the same convention).  To parse formatted dates, a date format needs to be specified.  This
 	 * is contrary to Excel which uses the default short date format from the OS.
-	 * 
+	 *
 	 * @param comparisonOperator constant from {@link org.apache.poi.ss.usermodel.DataValidationConstraint.OperatorType} enum
 	 * @param expr1 date formula (when first char is '=') or formatted date value
 	 * @param expr2 date formula (when first char is '=') or formatted date value
@@ -185,7 +185,7 @@ public class DVConstraint implements DataValidationConstraint {
 		    df = new SimpleDateFormat(dateFormat, LocaleUtil.getUserLocale());
 		    df.setTimeZone(LocaleUtil.getUserTimeZone());
 		}
-		
+
 		// formula1 and value1 are mutually exclusive
 		String formula1 = getFormulaFromTextExpression(expr1);
 		Double value1 = formula1 == null ? convertDate(expr1, df) : null;
@@ -194,15 +194,15 @@ public class DVConstraint implements DataValidationConstraint {
 		Double value2 = formula2 == null ? convertDate(expr2, df) : null;
 		return new DVConstraint(ValidationType.DATE, comparisonOperator, formula1, formula2, value1, value2, null);
 	}
-	
+
 	/**
-	 * Distinguishes formula expressions from simple value expressions.  This logic is only 
+	 * Distinguishes formula expressions from simple value expressions.  This logic is only
 	 * required by a few factory methods in this class that create data validation constraints
 	 * from more or less the same parameters that would have been entered in the Excel UI.  The
 	 * data validation dialog box uses the convention that formulas begin with '='.  Other methods
-	 * in this class follow the POI convention (formulas and values are distinct), so the '=' 
+	 * in this class follow the POI convention (formulas and values are distinct), so the '='
 	 * convention is not used there.
-	 *  
+	 *
 	 * @param textExpr a formula or value expression
 	 * @return all text after '=' if textExpr begins with '='. Otherwise <code>null</code> if textExpr does not begin with '='
 	 */
@@ -230,7 +230,7 @@ public class DVConstraint implements DataValidationConstraint {
 		try {
 			return new Double(numberStr);
 		} catch (NumberFormatException e) {
-			throw new RuntimeException("The supplied text '" + numberStr 
+			throw new RuntimeException("The supplied text '" + numberStr
 					+ "' could not be parsed as a number");
 		}
 	}
@@ -252,14 +252,14 @@ public class DVConstraint implements DataValidationConstraint {
 		if (dateStr == null) {
 			return null;
 		}
-		Date dateVal; 
+		Date dateVal;
 		if (dateFormat == null) {
 			dateVal = HSSFDateUtil.parseYYYYMMDDDate(dateStr);
 		} else {
 			try {
 				dateVal = dateFormat.parse(dateStr);
 			} catch (ParseException e) {
-				throw new RuntimeException("Failed to parse date '" + dateStr 
+				throw new RuntimeException("Failed to parse date '" + dateStr
 						+ "' using specified format '" + dateFormat + "'", e);
 			}
 		}
@@ -272,7 +272,7 @@ public class DVConstraint implements DataValidationConstraint {
 		}
 		return new DVConstraint(ValidationType.FORMULA, OperatorType.IGNORED, formula, null, null, null, null);
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see org.apache.poi.hssf.usermodel.DataValidationConstraint#getValidationType()
 	 */
@@ -305,7 +305,7 @@ public class DVConstraint implements DataValidationConstraint {
 	public void setOperator(int operator) {
 		_operator = operator;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see org.apache.poi.hssf.usermodel.DataValidationConstraint#getExplicitListValues()
 	 */
@@ -379,9 +379,9 @@ public class DVConstraint implements DataValidationConstraint {
 		_formula2 = null;
 		_value2 = new Double(value2);
 	}
-	
+
 	/**
-	 * @return both parsed formulas (for expression 1 and 2). 
+	 * @return both parsed formulas (for expression 1 and 2).
 	 */
 	/* package */ FormulaPair createFormulas(HSSFSheet sheet) {
 		Ptg[] formula1;
@@ -413,13 +413,13 @@ public class DVConstraint implements DataValidationConstraint {
 				sb.append('\0'); // list delimiter is the nul char
 			}
 			sb.append(_explicitListValues[i]);
-		
+
 		}
 		return new Ptg[] { new StringPtg(sb.toString()), };
 	}
 
 	/**
-	 * @return The parsed token array representing the formula or value specified. 
+	 * @return The parsed token array representing the formula or value specified.
 	 * Empty array if both formula and value are <code>null</code>
 	 */
     @SuppressWarnings("resource")
@@ -435,7 +435,7 @@ public class DVConstraint implements DataValidationConstraint {
 		}
         HSSFWorkbook wb = sheet.getWorkbook();
 		return HSSFFormulaParser.parse(formula, wb, FormulaType.CELL, wb.getSheetIndex(sheet));
-	}	
+	}
 
     static DVConstraint createDVConstraint(DVRecord dvRecord, FormulaRenderingWorkbook book) {
         switch (dvRecord.getDataType()) {

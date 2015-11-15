@@ -48,14 +48,14 @@ import org.openxmlformats.schemas.presentationml.x2006.main.SldMasterDocument;
 
 /**
  * Experimental class to do low level processing of pptx files.
- * 
+ *
  * Most users should use the higher level {@link XMLSlideShow} instead.
- *  
+ *
  * If you are using these low level classes, then you
  *  will almost certainly need to refer to the OOXML
  *  specifications from
  *  http://www.ecma-international.org/publications/standards/Ecma-376.htm
- * 
+ *
  * WARNING - APIs expected to change rapidly
  */
 public class XSLFSlideShow extends POIXMLDocument {
@@ -69,14 +69,14 @@ public class XSLFSlideShow extends POIXMLDocument {
     @SuppressWarnings("deprecation")
 	public XSLFSlideShow(OPCPackage container) throws OpenXML4JException, IOException, XmlException {
 		super(container);
-		
+
 		if(getCorePart().getContentType().equals(XSLFRelation.THEME_MANAGER.getContentType())) {
 		   rebase(getPackage());
 		}
-		
+
 		presentationDoc =
 			PresentationDocument.Factory.parse(getCorePart().getInputStream());
-		
+
       embedds = new LinkedList<PackagePart>();
       for (CTSlideIdListEntry ctSlide : getSlideReferences().getSldIdArray()) {
              PackagePart corePart = getCorePart();
@@ -93,7 +93,7 @@ public class XSLFSlideShow extends POIXMLDocument {
 	public XSLFSlideShow(String file) throws OpenXML4JException, IOException, XmlException {
 		this(openPackage(file));
 	}
-	
+
 	/**
 	 * Returns the low level presentation base object
 	 */
@@ -101,7 +101,7 @@ public class XSLFSlideShow extends POIXMLDocument {
 	public CTPresentation getPresentation() {
 		return presentationDoc.getPresentation();
 	}
-	
+
 	/**
 	 * Returns the references from the presentation to its
 	 *  slides.
@@ -112,26 +112,26 @@ public class XSLFSlideShow extends POIXMLDocument {
 	public CTSlideIdList getSlideReferences() {
        if(! getPresentation().isSetSldIdLst()) {
           getPresentation().setSldIdLst(
-             CTSlideIdList.Factory.newInstance()   
+             CTSlideIdList.Factory.newInstance()
           );
        }
        return getPresentation().getSldIdLst();
 	}
-    
+
 	/**
 	 * Returns the references from the presentation to its
 	 *  slide masters.
-	 * You'll need these to get at the actual slide 
+	 * You'll need these to get at the actual slide
 	 *  masters themselves
 	 */
     @Internal
 	public CTSlideMasterIdList getSlideMasterReferences() {
 		return getPresentation().getSldMasterIdLst();
 	}
-	
+
 	public PackagePart getSlideMasterPart(CTSlideMasterIdListEntry master) throws IOException, XmlException {
 		try {
-		   PackagePart corePart = getCorePart(); 
+		   PackagePart corePart = getCorePart();
 			return corePart.getRelatedPart(
 				corePart.getRelationship(master.getId2())
 			);
@@ -153,7 +153,7 @@ public class XSLFSlideShow extends POIXMLDocument {
 
 	public PackagePart getSlidePart(CTSlideIdListEntry slide) throws IOException, XmlException {
 		try {
-	      PackagePart corePart = getCorePart(); 
+	      PackagePart corePart = getCorePart();
 	      return corePart.getRelatedPart(
 	         corePart.getRelationship(slide.getId2())
 	      );
@@ -180,13 +180,13 @@ public class XSLFSlideShow extends POIXMLDocument {
 	public PackagePart getNodesPart(CTSlideIdListEntry parentSlide) throws IOException, XmlException {
 		PackageRelationshipCollection notes;
 		PackagePart slidePart = getSlidePart(parentSlide);
-		
+
 		try {
 			notes = slidePart.getRelationshipsByType(XSLFRelation.NOTES.getRelation());
 		} catch(InvalidFormatException e) {
 			throw new IllegalStateException(e);
 		}
-		
+
 		if(notes.size() == 0) {
 			// No notes for this slide
 			return null;
@@ -194,7 +194,7 @@ public class XSLFSlideShow extends POIXMLDocument {
 		if(notes.size() > 1) {
 			throw new IllegalStateException("Expecting 0 or 1 notes for a slide, but found " + notes.size());
 		}
-		
+
 		try {
 		   return slidePart.getRelatedPart(notes.getRelationship(0));
 		} catch(InvalidFormatException e) {
@@ -210,13 +210,13 @@ public class XSLFSlideShow extends POIXMLDocument {
 		PackagePart notesPart = getNodesPart(slide);
 		if(notesPart == null)
 			return null;
-		
+
 		NotesDocument notesDoc =
 			NotesDocument.Factory.parse(notesPart.getInputStream());
-		
+
 		return notesDoc.getNotes();
 	}
-	
+
 	/**
 	 * Returns all the comments for the given slide
 	 */
@@ -224,13 +224,13 @@ public class XSLFSlideShow extends POIXMLDocument {
 	public CTCommentList getSlideComments(CTSlideIdListEntry slide) throws IOException, XmlException {
 		PackageRelationshipCollection commentRels;
 		PackagePart slidePart = getSlidePart(slide);
-		
+
 		try {
 			commentRels = slidePart.getRelationshipsByType(XSLFRelation.COMMENTS.getRelation());
 		} catch(InvalidFormatException e) {
 			throw new IllegalStateException(e);
 		}
-		
+
 		if(commentRels.size() == 0) {
 			// No comments for this slide
 			return null;
@@ -238,12 +238,12 @@ public class XSLFSlideShow extends POIXMLDocument {
 		if(commentRels.size() > 1) {
 			throw new IllegalStateException("Expecting 0 or 1 comments for a slide, but found " + commentRels.size());
 		}
-		
+
 		try {
 			PackagePart cPart = slidePart.getRelatedPart(
 					commentRels.getRelationship(0)
 			);
-			CmLstDocument commDoc = 
+			CmLstDocument commDoc =
 				CmLstDocument.Factory.parse(cPart.getInputStream());
 			return commDoc.getCmLst();
 		} catch(InvalidFormatException e) {

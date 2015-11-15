@@ -779,7 +779,7 @@ public final class EscherDump {
     public static void main( String[] args ) {
         main(args, System.out);
     }
-    
+
     public static void main( String[] args, PrintStream out ) {
         String dump =
                 "0F 00 00 F0 89 07 00 00 00 00 06 F0 18 00 00 00 " +

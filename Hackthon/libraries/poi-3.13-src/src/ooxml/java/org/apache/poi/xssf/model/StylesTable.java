@@ -99,7 +99,7 @@ public class StylesTable extends POIXMLDocumentPart {
         super(part, rel);
         readFrom(part.getInputStream());
     }
-    
+
     public void setWorkbook(XSSFWorkbook wb) {
         this.workbook = wb;
     }
@@ -117,7 +117,7 @@ public class StylesTable extends POIXMLDocumentPart {
     public void setTheme(ThemesTable theme) {
         this.theme = theme;
 
-        // Pass the themes table along to things which need to 
+        // Pass the themes table along to things which need to
         //  know about it, but have already been created by now
         for(XSSFFont font : fonts) {
             font.setThemesTable(theme);
@@ -126,7 +126,7 @@ public class StylesTable extends POIXMLDocumentPart {
             border.setThemesTable(theme);
         }
     }
-    
+
     /**
      * If there isn't currently a {@link ThemesTable} for the
      *  current Workbook, then creates one and sets it up.

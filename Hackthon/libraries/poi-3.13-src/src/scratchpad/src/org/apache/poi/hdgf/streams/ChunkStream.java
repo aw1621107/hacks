@@ -28,7 +28,7 @@ import org.apache.poi.util.POILogger;
 
 public final class ChunkStream extends Stream {
 	private static POILogger logger = POILogFactory.getLogger(ChunkStream.class);
-	
+
 	private ChunkFactory chunkFactory;
 	/** All the Chunks we contain */
 	private Chunk[] chunks;

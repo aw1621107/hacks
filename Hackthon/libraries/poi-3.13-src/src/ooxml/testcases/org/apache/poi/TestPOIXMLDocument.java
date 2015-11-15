@@ -45,7 +45,7 @@ public final class TestPOIXMLDocument extends TestCase {
         public OPCParser(OPCPackage pkg) {
             super(pkg);
         }
-        
+
         public OPCParser(OPCPackage pkg, String coreDocumentRel) {
             super(pkg, coreDocumentRel);
         }
@@ -84,7 +84,7 @@ public final class TestPOIXMLDocument extends TestCase {
         context.put(part.getPackageRelationship().getTargetURI().toString(), part);
         for(POIXMLDocumentPart p : part.getRelations()){
             assertNotNull(p.toString());
-            
+
             String uri = p.getPackageRelationship().getTargetURI().toString();
             if (!context.containsKey(uri)) {
                 traverse(p, context);
@@ -116,17 +116,17 @@ public final class TestPOIXMLDocument extends TestCase {
             context = new HashMap<String,POIXMLDocumentPart>();
             traverse(doc, context);
             context.clear();
-    
+
             assertEquals(pkg1.getRelationships().size(), pkg2.getRelationships().size());
-    
+
             ArrayList<PackagePart> l1 = pkg1.getParts();
             ArrayList<PackagePart> l2 = pkg2.getParts();
-    
+
             assertEquals(l1.size(), l2.size());
             for (int i=0; i < l1.size(); i++){
                 PackagePart p1 = l1.get(i);
                 PackagePart p2 = l2.get(i);
-    
+
                 assertEquals(p1.getContentType(), p2.getContentType());
                 assertEquals(p1.hasRelationships(), p2.hasRelationships());
                 if(p1.hasRelationships()){
@@ -162,7 +162,7 @@ public final class TestPOIXMLDocument extends TestCase {
         OPCParser doc = new OPCParser(pkg);
         try {
             doc.parse(new TestFactory());
-    
+
             for(POIXMLDocumentPart rel : doc.getRelations()){
                 //TODO finish me
                 assertNotNull(rel);
@@ -186,28 +186,28 @@ public final class TestPOIXMLDocument extends TestCase {
         part.onDocumentCreate();
         //part.getTargetPart(null);
     }
-    
+
     public void testVSDX() throws Exception {
         OPCPackage open = PackageHelper.open(POIDataSamples.getDiagramInstance().openResourceAsStream("test.vsdx"));
-        
+
         POIXMLDocument part = new OPCParser(open, PackageRelationshipTypes.VISIO_CORE_DOCUMENT);
-        
+
         assertNotNull(part);
         assertEquals(0, part.getRelationCounter());
     }
-    
+
     public void testVSDXPart() throws Exception {
         OPCPackage open = PackageHelper.open(POIDataSamples.getDiagramInstance().openResourceAsStream("test.vsdx"));
-        
+
         POIXMLDocumentPart part = new POIXMLDocumentPart(open, PackageRelationshipTypes.VISIO_CORE_DOCUMENT);
-        
+
         assertNotNull(part);
         assertEquals(0, part.getRelationCounter());
     }
-    
+
     public void testInvalidCoreRel() throws Exception {
         OPCPackage open = PackageHelper.open(POIDataSamples.getDiagramInstance().openResourceAsStream("test.vsdx"));
-        
+
         try {
             new POIXMLDocumentPart(open, "somethingillegal");
             fail("Unknown core ref will throw exception");

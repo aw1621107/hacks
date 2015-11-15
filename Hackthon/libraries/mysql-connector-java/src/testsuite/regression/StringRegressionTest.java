@@ -44,7 +44,7 @@ import com.mysql.jdbc.util.Base64Decoder;
 public class StringRegressionTest extends BaseTestCase {
     /**
      * Creates a new StringTest object.
-     * 
+     *
      * @param name
      */
     public StringRegressionTest(String name) {
@@ -53,7 +53,7 @@ public class StringRegressionTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -62,7 +62,7 @@ public class StringRegressionTest extends BaseTestCase {
 
     /**
      * Tests character conversion bug.
-     * 
+     *
      * @throws Exception
      *             if there is an internal error (which is a bug).
      */
@@ -93,7 +93,7 @@ public class StringRegressionTest extends BaseTestCase {
      * Tests fix for BUG#4010 -- GBK encoding getting escaped doubly when
      * database default character set is GBK. Requires version older than 4.1.0
      * and server set to default character set of 'gbk' to run.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -138,7 +138,7 @@ public class StringRegressionTest extends BaseTestCase {
     /**
      * Tests for regression of encoding forced by user, reported by Jive
      * Software
-     * 
+     *
      * @throws Exception
      *             when encoding is not supported (which is a bug)
      */
@@ -151,7 +151,7 @@ public class StringRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#879
-     * 
+     *
      * @throws Exception
      *             if the bug resurfaces.
      */
@@ -239,7 +239,7 @@ public class StringRegressionTest extends BaseTestCase {
 
     /**
      * Tests that 'latin1' character conversion works correctly.
-     * 
+     *
      * @throws Exception
      *             if any errors occur
      */
@@ -308,7 +308,7 @@ public class StringRegressionTest extends BaseTestCase {
 
     /**
      * Tests newline being treated correctly.
-     * 
+     *
      * @throws Exception
      *             if an error occurs
      */
@@ -332,7 +332,7 @@ public class StringRegressionTest extends BaseTestCase {
 
     /**
      * Tests that single-byte character conversion works correctly.
-     * 
+     *
      * @throws Exception
      *             if any errors occur
      */
@@ -347,7 +347,7 @@ public class StringRegressionTest extends BaseTestCase {
 
     /**
      * Tests that the 0x5c escaping works (we didn't use to have this).
-     * 
+     *
      * @throws Exception
      *             if an error occurs.
      */
@@ -438,7 +438,7 @@ public class StringRegressionTest extends BaseTestCase {
 
     /**
      * Tests that UTF-8 character conversion works correctly.
-     * 
+     *
      * @throws Exception
      *             if any errors occur
      */
@@ -542,7 +542,7 @@ public class StringRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#7601, '+' duplicated in fixDecimalExponent().
-     * 
+     *
      * @throws Exception
      *             if the test fails
      */
@@ -586,7 +586,7 @@ public class StringRegressionTest extends BaseTestCase {
     /**
      * Tests fix for BUG#11614 - StringUtils.getBytes() doesn't work when using
      * multibyte character encodings and a length in _characters_ is specified.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -643,7 +643,7 @@ public class StringRegressionTest extends BaseTestCase {
              * from
              * ftp://ftp.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WINDOWS/
              * CP1252.TXT
-             * 
+             *
              * 0x80 0x20AC #EURO SIGN 0x81 #UNDEFINED 0x82 0x201A #SINGLE LOW-9
              * QUOTATION MARK 0x83 0x0192 #LATIN SMALL LETTER F WITH HOOK 0x84
              * 0x201E #DOUBLE LOW-9 QUOTATION MARK 0x85 0x2026 #HORIZONTAL
@@ -674,7 +674,7 @@ public class StringRegressionTest extends BaseTestCase {
      * Tests fix for BUG#23645 - Some collations/character sets reported as
      * "unknown" (specifically cias variants of existing character sets), and
      * inability to override the detected server character set.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -722,7 +722,7 @@ public class StringRegressionTest extends BaseTestCase {
     /**
      * Tests fix for BUG#24840 - character encoding of "US-ASCII" doesn't map
      * correctly for 4.1 or newer
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -735,9 +735,9 @@ public class StringRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#25047 - StringUtils.indexOfIgnoreCaseRespectQuotes() isn't case-insensitive on the first character of the target.
-     * 
+     *
      * UPD: Method StringUtils.indexOfIgnoreCaseRespectQuotes() was replaced by StringUtils.indexOfIgnoreCase()
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -753,7 +753,7 @@ public class StringRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#64731 - StringUtils.getBytesWrapped throws StringIndexOutOfBoundsException.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */

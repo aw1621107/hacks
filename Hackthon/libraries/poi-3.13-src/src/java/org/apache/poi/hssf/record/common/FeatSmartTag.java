@@ -36,7 +36,7 @@ import org.apache.poi.util.LittleEndianOutput;
 public final class FeatSmartTag implements SharedFeature {
 	// TODO - process
 	private byte[] data;
-	
+
 	public FeatSmartTag() {
 		data = new byte[0];
 	}

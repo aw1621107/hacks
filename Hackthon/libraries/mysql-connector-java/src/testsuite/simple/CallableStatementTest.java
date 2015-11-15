@@ -47,7 +47,7 @@ public class CallableStatementTest extends BaseTestCase {
 
     /**
      * Tests functioning of inout parameters
-     * 
+     *
      * @throws Exception
      *             if the test fails
      */
@@ -135,7 +135,7 @@ public class CallableStatementTest extends BaseTestCase {
 
     /**
      * Tests functioning of output parameters.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -205,7 +205,7 @@ public class CallableStatementTest extends BaseTestCase {
 
     /**
      * Tests functioning of output parameters.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -264,7 +264,7 @@ public class CallableStatementTest extends BaseTestCase {
 
     /**
      * Tests parsing of stored procedures
-     * 
+     *
      * @throws Exception
      *             if an error occurs.
      */
@@ -284,7 +284,7 @@ public class CallableStatementTest extends BaseTestCase {
 
     /**
      * Tests parsing/execution of stored procedures with no parameters...
-     * 
+     *
      * @throws Exception
      *             if an error occurs.
      */
@@ -304,7 +304,7 @@ public class CallableStatementTest extends BaseTestCase {
 
     /**
      * Tests parsing of stored procedures
-     * 
+     *
      * @throws Exception
      *             if an error occurs.
      */
@@ -397,7 +397,7 @@ public class CallableStatementTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -407,7 +407,7 @@ public class CallableStatementTest extends BaseTestCase {
     /**
      * Tests the new parameter parser that doesn't require "BEGIN" or "\n" at
      * end of parameter declaration
-     * 
+     *
      * @throws Exception
      */
     public void testParameterParser() throws Exception {

@@ -43,7 +43,7 @@ public class TestIdentifierManager extends TestCase
         manager.release(max);
         manager.release(min);
     }
-    
+
     public void testReserve()
     {
         IdentifierManager manager = new IdentifierManager(10L,30L);
@@ -54,7 +54,7 @@ public class TestIdentifierManager extends TestCase
         assertTrue(manager.release(reserve));
         assertFalse(manager.release(12L));
         assertFalse(manager.release(reserve));
-        
+
         manager = new IdentifierManager(0L,2L);
         assertEquals(0L,manager.reserve(0L));
         assertEquals(1L,manager.reserve(1L));
@@ -103,7 +103,7 @@ public class TestIdentifierManager extends TestCase
             // expected
         }
     }
-    
+
     public void testRelease() {
         IdentifierManager manager = new IdentifierManager(10L,20L);
         assertEquals(10L,manager.reserve(10L));
@@ -111,11 +111,11 @@ public class TestIdentifierManager extends TestCase
         assertEquals(12L,manager.reserve(12L));
         assertEquals(13L,manager.reserve(13L));
         assertEquals(14L,manager.reserve(14L));
-        
+
         assertTrue(manager.release(10L));
         assertEquals(10L,manager.reserve(10L));
         assertTrue(manager.release(10L));
-        
+
         assertTrue(manager.release(11L));
         assertEquals(11L,manager.reserve(11L));
         assertTrue(manager.release(11L));

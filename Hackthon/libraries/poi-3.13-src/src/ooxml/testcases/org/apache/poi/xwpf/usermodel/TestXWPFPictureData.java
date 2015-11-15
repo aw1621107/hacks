@@ -62,14 +62,14 @@ public class TestXWPFPictureData extends TestCase {
         XWPFDocument readBack = XWPFTestDataSamples.writeOutAndReadBack(sampleDoc);
         verifyOneHeaderPicture(readBack);
     }
-    
+
     public void testCreateHeaderPicture() throws Exception {
         XWPFDocument doc = new XWPFDocument();
-        
+
         // Starts with no header
         XWPFHeaderFooterPolicy policy = doc.getHeaderFooterPolicy();
         assertNull(policy);
-        
+
         // Add a default header
         policy = doc.createHeaderFooterPolicy();
         XWPFHeader header = policy.createHeader(XWPFHeaderFooterPolicy.DEFAULT);
@@ -77,15 +77,15 @@ public class TestXWPFPictureData extends TestCase {
         header.createParagraph().createRun().setText("Paragraph 2");
         assertEquals(0, header.getAllPictures().size());
         assertEquals(2, header.getParagraphs().size());
-        
+
         // Add a picture to the first paragraph
         header.getParagraphs().get(0).getRuns().get(0).addPicture(
-                new ByteArrayInputStream(new byte[] {1,2,3,4}), 
+                new ByteArrayInputStream(new byte[] {1,2,3,4}),
                 Document.PICTURE_TYPE_JPEG, "test.jpg", 2, 2);
-        
+
         // Check
         verifyOneHeaderPicture(doc);
-        
+
         // Save, re-load, re-check
         XWPFDocument readBack = XWPFTestDataSamples.writeOutAndReadBack(doc);
         verifyOneHeaderPicture(readBack);

@@ -42,7 +42,7 @@ public interface RefEval extends ValueEval, SheetRange {
      * returns the zero based row index.
      */
     int getRow();
-    
+
     /**
      * returns the first sheet index this applies to
      */
@@ -53,7 +53,7 @@ public interface RefEval extends ValueEval, SheetRange {
      *  will be the same as the first for a 2D and many 3D references
      */
     int getLastSheetIndex();
-    
+
     /**
      * returns the number of sheets this applies to
      */

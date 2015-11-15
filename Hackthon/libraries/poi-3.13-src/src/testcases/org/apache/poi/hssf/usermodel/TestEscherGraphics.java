@@ -250,9 +250,9 @@ public final class TestEscherGraphics extends TestCase {
     	assertEquals(40, patriarch.getY2());
 
     	// Check the two groups and the text
-    	// Result of patriarch.countOfAllChildren() makes no sense: 
+    	// Result of patriarch.countOfAllChildren() makes no sense:
     	// Returns 4 for 2 empty groups + 1 TextBox.
-    	//assertEquals(3, patriarch.countOfAllChildren()); 
+    	//assertEquals(3, patriarch.countOfAllChildren());
     	assertEquals(3, patriarch.getChildren().size());
 
     	// Should be two groups and a text

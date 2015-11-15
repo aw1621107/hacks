@@ -19,9 +19,9 @@ package org.apache.poi.ss.usermodel;
 
 
 /**
- * Charset represents the basic set of characters associated with a font (that it can display), and 
- * corresponds to the ANSI codepage (8-bit or DBCS) of that character set used by a given language. 
- * 
+ * Charset represents the basic set of characters associated with a font (that it can display), and
+ * corresponds to the ANSI codepage (8-bit or DBCS) of that character set used by a given language.
+ *
  * @author Gisella Bronzetti
  */
 public enum FontCharset {
@@ -46,7 +46,7 @@ public enum FontCharset {
      EASTEUROPE(238),
      OEM(255);
 
-    
+
     private int charset;
 
     private FontCharset(int value){

@@ -27,16 +27,16 @@ import org.apache.poi.ss.usermodel.ExtendedColor;
 /**
  * The HSSF file format normally stores Color information in the
  *  Palette (see PaletteRecord), but for a few cases (eg Conditional
- *  Formatting, Sheet Extensions), this XSSF-style color record 
+ *  Formatting, Sheet Extensions), this XSSF-style color record
  *  can be used.
  */
 public class HSSFExtendedColor extends ExtendedColor {
     private org.apache.poi.hssf.record.common.ExtendedColor color;
-    
+
     public HSSFExtendedColor(org.apache.poi.hssf.record.common.ExtendedColor color) {
         this.color = color;
     }
-    
+
     protected org.apache.poi.hssf.record.common.ExtendedColor getExtendedColor() {
         return color;
     }

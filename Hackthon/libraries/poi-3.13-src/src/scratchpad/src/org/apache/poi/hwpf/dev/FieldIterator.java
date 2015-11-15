@@ -23,7 +23,7 @@ import org.apache.poi.util.Internal;
  * <p>
  * For iterating through our fields. Used during model classes autogeneration.
  * </p>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 @Internal

@@ -193,7 +193,7 @@ public interface Sheet extends Iterable<Row> {
 
     /**
      * get the width in pixel
-     * 
+     *
      * <p>
      * Please note, that this method works correctly only for workbooks
      * with the default font size (Arial 10pt for .xls and Calibri 11pt for .xlsx).
@@ -204,8 +204,8 @@ public interface Sheet extends Iterable<Row> {
      * @return width in pixels
      */
     float getColumnWidthInPixels(int columnIndex);
-    
-    
+
+
     /**
      * Set the default column width for the sheet (if the columns do not define their own width)
      * in characters
@@ -229,7 +229,7 @@ public interface Sheet extends Iterable<Row> {
      * @return  default row height measured in twips (1/20 of  a point)
      */
     short getDefaultRowHeight();
-    
+
     /**
      * Get the default row height for the sheet (if the rows do not define their own height) in
      * points.
@@ -357,10 +357,10 @@ public interface Sheet extends Iterable<Row> {
 
     /**
      * Whether Excel will be asked to recalculate all formulas in this sheet when the
-     *  workbook is opened.  
+     *  workbook is opened.
      */
     boolean getForceFormulaRecalculation();
-    
+
     /**
      * Flag indicating whether the sheet displays Automatic Page Breaks.
      *
@@ -558,13 +558,13 @@ public interface Sheet extends Iterable<Row> {
      * @return true => protection enabled; false => protection disabled
      */
     boolean getProtect();
-    
+
     /**
      * Sets the protection enabled as well as the password
      * @param password to set for protection. Pass <code>null</code> to remove protection
      */
     public void protectSheet(String password);
-    
+
     /**
      * Answer whether scenario protection is enabled or disabled
      *
@@ -894,9 +894,9 @@ public interface Sheet extends Iterable<Row> {
     Comment getCellComment(int row, int column);
 
     /**
-     * Creates the top-level drawing patriarch. 
+     * Creates the top-level drawing patriarch.
      * <p>This may then be used to add graphics or charts.</p>
-     * <p>Note that this will normally have the effect of removing 
+     * <p>Note that this will normally have the effect of removing
      *  any existing drawings on this sheet.</p>
      *
      * @return  The new drawing patriarch.
@@ -941,7 +941,7 @@ public interface Sheet extends Iterable<Row> {
      * @return the {@link CellRange} of cells affected by this change
      */
     CellRange<? extends Cell> removeArrayFormula(Cell cell);
-    
+
     public DataValidationHelper getDataValidationHelper();
 
 	/**
@@ -958,7 +958,7 @@ public interface Sheet extends Iterable<Row> {
 
     /**
      * Enable filtering for a range of cells
-     * 
+     *
      * @param range the range of cells to filter
      */
     AutoFilter setAutoFilter(CellRangeAddress range);
@@ -972,7 +972,7 @@ public interface Sheet extends Iterable<Row> {
 
 
     /**
-     * Gets the repeating rows used when printing the sheet, as found in 
+     * Gets the repeating rows used when printing the sheet, as found in
      * File->PageSetup->Sheet.
      * <p/>
      * Repeating rows cover a range of contiguous rows, e.g.:
@@ -980,20 +980,20 @@ public interface Sheet extends Iterable<Row> {
      * Sheet1!$1:$1
      * Sheet2!$5:$8
      * </pre>
-     * The {@link CellRangeAddress} returned contains a column part which spans 
-     * all columns, and a row part which specifies the contiguous range of 
+     * The {@link CellRangeAddress} returned contains a column part which spans
+     * all columns, and a row part which specifies the contiguous range of
      * repeating rows.
      * <p/>
      * If the Sheet does not have any repeating rows defined, null is returned.
-     * 
-     * @return an {@link CellRangeAddress} containing the repeating rows for the 
+     *
+     * @return an {@link CellRangeAddress} containing the repeating rows for the
      *         Sheet, or null.
      */
     CellRangeAddress getRepeatingRows();
 
 
     /**
-     * Gets the repeating columns used when printing the sheet, as found in 
+     * Gets the repeating columns used when printing the sheet, as found in
      * File->PageSetup->Sheet.
      * <p/>
      * Repeating columns cover a range of contiguous columns, e.g.:
@@ -1001,66 +1001,66 @@ public interface Sheet extends Iterable<Row> {
      * Sheet1!$A:$A
      * Sheet2!$C:$F
      * </pre>
-     * The {@link CellRangeAddress} returned contains a row part which spans all 
-     * rows, and a column part which specifies the contiguous range of 
+     * The {@link CellRangeAddress} returned contains a row part which spans all
+     * rows, and a column part which specifies the contiguous range of
      * repeating columns.
      * <p/>
-     * If the Sheet does not have any repeating columns defined, null is 
+     * If the Sheet does not have any repeating columns defined, null is
      * returned.
-     * 
-     * @return an {@link CellRangeAddress} containing the repeating columns for 
+     *
+     * @return an {@link CellRangeAddress} containing the repeating columns for
      *         the Sheet, or null.
      */
     CellRangeAddress getRepeatingColumns();
 
 
     /**
-     * Sets the repeating rows used when printing the sheet, as found in 
+     * Sets the repeating rows used when printing the sheet, as found in
      * File->PageSetup->Sheet.
      * <p/>
      * Repeating rows cover a range of contiguous rows, e.g.:
      * <pre>
      * Sheet1!$1:$1
      * Sheet2!$5:$8</pre>
-     * The parameter {@link CellRangeAddress} should specify a column part 
-     * which spans all columns, and a row part which specifies the contiguous 
+     * The parameter {@link CellRangeAddress} should specify a column part
+     * which spans all columns, and a row part which specifies the contiguous
      * range of repeating rows, e.g.:
      * <pre>
      * sheet.setRepeatingRows(CellRangeAddress.valueOf("2:3"));</pre>
-     * A null parameter value indicates that repeating rows should be removed 
+     * A null parameter value indicates that repeating rows should be removed
      * from the Sheet:
      * <pre>
      * sheet.setRepeatingRows(null);</pre>
-     * 
-     * @param rowRangeRef a {@link CellRangeAddress} containing the repeating 
+     *
+     * @param rowRangeRef a {@link CellRangeAddress} containing the repeating
      *        rows for the Sheet, or null.
      */
     void setRepeatingRows(CellRangeAddress rowRangeRef);
 
 
     /**
-     * Sets the repeating columns used when printing the sheet, as found in 
+     * Sets the repeating columns used when printing the sheet, as found in
      * File->PageSetup->Sheet.
      * <p/>
      * Repeating columns cover a range of contiguous columns, e.g.:
      * <pre>
      * Sheet1!$A:$A
      * Sheet2!$C:$F</pre>
-     * The parameter {@link CellRangeAddress} should specify a row part 
-     * which spans all rows, and a column part which specifies the contiguous 
+     * The parameter {@link CellRangeAddress} should specify a row part
+     * which spans all rows, and a column part which specifies the contiguous
      * range of repeating columns, e.g.:
      * <pre>
      * sheet.setRepeatingColumns(CellRangeAddress.valueOf("B:C"));</pre>
-     * A null parameter value indicates that repeating columns should be removed 
+     * A null parameter value indicates that repeating columns should be removed
      * from the Sheet:
      * <pre>
      * sheet.setRepeatingColumns(null);</pre>
-     * 
-     * @param columnRangeRef a {@link CellRangeAddress} containing the repeating 
+     *
+     * @param columnRangeRef a {@link CellRangeAddress} containing the repeating
      *        columns for the Sheet, or null.
      */
     void setRepeatingColumns(CellRangeAddress columnRangeRef);
-    
+
     /**
      * Returns the column outline level. Increased as you
      *  put it into more groups (outlines), reduced as

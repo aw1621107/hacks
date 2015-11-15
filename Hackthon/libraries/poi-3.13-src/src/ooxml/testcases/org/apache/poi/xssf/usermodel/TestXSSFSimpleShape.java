@@ -31,43 +31,43 @@ public class TestXSSFSimpleShape {
         try {
             XSSFSheet sheet = wb.createSheet();
             XSSFDrawing drawing = sheet.createDrawingPatriarch();
-    
+
             XSSFTextBox shape = drawing.createTextbox(new XSSFClientAnchor(0, 0, 0, 0, 2, 2, 3, 4));
-            
+
             XSSFRichTextString rt = new XSSFRichTextString("Test String");
-            
+
             XSSFFont font = wb.createFont();
             Color color = new Color(0, 255, 255);
             font.setColor(new XSSFColor(color));
             font.setFontName("Arial");
             rt.applyFont(font);
-    
+
             shape.setText(rt);
 
             assertNotNull(shape.getCTShape());
             assertNotNull(shape.iterator());
             assertNotNull(XSSFSimpleShape.prototype());
-            
+
             for(ListAutoNumber nr : ListAutoNumber.values()) {
                 shape.getTextParagraphs().get(0).setBullet(nr);
                 assertNotNull(shape.getText());
             }
-            
+
             shape.getTextParagraphs().get(0).setBullet(false);
             assertNotNull(shape.getText());
 
             shape.setText("testtext");
             assertEquals("testtext", shape.getText());
-            
+
             shape.setText(new XSSFRichTextString());
             assertEquals("null", shape.getText());
-            
+
             shape.addNewTextParagraph();
             shape.addNewTextParagraph("test-other-text");
             shape.addNewTextParagraph(new XSSFRichTextString("rtstring"));
             shape.addNewTextParagraph(new XSSFRichTextString());
             assertEquals("null\n\ntest-other-text\nrtstring\nnull", shape.getText());
-            
+
             assertEquals(TextHorizontalOverflow.OVERFLOW, shape.getTextHorizontalOverflow());
             shape.setTextHorizontalOverflow(TextHorizontalOverflow.CLIP);
             assertEquals(TextHorizontalOverflow.CLIP, shape.getTextHorizontalOverflow());
@@ -77,7 +77,7 @@ public class TestXSSFSimpleShape {
             assertEquals(TextHorizontalOverflow.OVERFLOW, shape.getTextHorizontalOverflow());
             shape.setTextHorizontalOverflow(null);
             assertEquals(TextHorizontalOverflow.OVERFLOW, shape.getTextHorizontalOverflow());
-            
+
             assertEquals(TextVerticalOverflow.OVERFLOW, shape.getTextVerticalOverflow());
             shape.setTextVerticalOverflow(TextVerticalOverflow.CLIP);
             assertEquals(TextVerticalOverflow.CLIP, shape.getTextVerticalOverflow());
@@ -115,7 +115,7 @@ public class TestXSSFSimpleShape {
             assertEquals(3.6, shape.getBottomInset(), 0.01);
             shape.setBottomInset(-1);
             assertEquals(3.6, shape.getBottomInset(), 0.01);
-            
+
             assertEquals(3.6, shape.getLeftInset(), 0.01);
             shape.setLeftInset(12.31);
             assertEquals(12.31, shape.getLeftInset(), 0.01);
@@ -139,7 +139,7 @@ public class TestXSSFSimpleShape {
             assertEquals(3.6, shape.getTopInset(), 0.01);
             shape.setTopInset(-1);
             assertEquals(3.6, shape.getTopInset(), 0.01);
-            
+
             assertTrue(shape.getWordWrap());
             shape.setWordWrap(false);
             assertFalse(shape.getWordWrap());
@@ -153,7 +153,7 @@ public class TestXSSFSimpleShape {
             assertEquals(TextAutofit.SHAPE, shape.getTextAutofit());
             shape.setTextAutofit(TextAutofit.NONE);
             assertEquals(TextAutofit.NONE, shape.getTextAutofit());
-            
+
             assertEquals(5, shape.getShapeType());
             shape.setShapeType(23);
             assertEquals(23, shape.getShapeType());
@@ -163,7 +163,7 @@ public class TestXSSFSimpleShape {
 //            assertEquals(-1, shape.getShapeType());
 //            shape.setShapeType(-1);
 //            assertEquals(-1, shape.getShapeType());
-            
+
             assertNotNull(shape.getShapeProperties());
         } finally {
             wb.close();

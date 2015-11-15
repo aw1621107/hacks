@@ -30,7 +30,7 @@ public interface ChunkGroupWithProperties extends ChunkGroup {
     *  with their Values.
     * Normally, each property will have one value, sometimes
     *  none, and rarely multiple (normally for Unknown etc).
-    * For fixed sized properties, the value can be fetched 
+    * For fixed sized properties, the value can be fetched
     *  straight from the {@link PropertyValue}. For variable
     *  sized properties, you'll need to go via the chunk.
     */

@@ -74,7 +74,7 @@ public class TestXSLFTextRun {
         assertEquals(true, r.isSubscript());
         r.setSubscript(false);
         assertEquals(false, r.isSubscript());
-        
+
         ppt.close();
     }
 }

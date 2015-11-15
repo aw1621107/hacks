@@ -22,7 +22,7 @@ import org.apache.poi.util.POILogFactory;
 import org.apache.poi.util.POILogger;
 
 /**
- * Biff2 - Biff 4 Label Record (0x0004 / 0x0204) - read only support for 
+ * Biff2 - Biff 4 Label Record (0x0004 / 0x0204) - read only support for
  *  strings stored directly in the cell, from the older file formats that
  *  didn't use {@link LabelSSTRecord}
  */
@@ -64,7 +64,7 @@ public final class OldLabelRecord extends OldCellRecord {
     public void setCodePage(CodepageRecord codepage) {
         this.codepage = codepage;
     }
-    
+
     /**
      * get the number of characters this string contains
      * @return number of characters

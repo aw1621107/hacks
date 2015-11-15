@@ -27,11 +27,11 @@ import org.apache.poi.ss.formula.eval.NotImplementedException;
 
 /**
  * <p>Format class that handles Excel style fractions, such as "# #/#" and "#/###"</p>
- * 
+ *
  * <p>As of this writing, this is still not 100% accurate, but it does a reasonable job
  * of trying to mimic Excel's fraction calculations.  It does not currently
  * maintain Excel's spacing.</p>
- * 
+ *
  * <p>This class relies on a method lifted nearly verbatim from org.apache.math.fraction.
  *  If further uses for Commons Math are found, we will consider adding it as a dependency.
  *  For now, we have in-lined the one method to keep things simple.</p>
@@ -71,7 +71,7 @@ public class FractionFormat extends Format {
                 try{
                     tmpExact = Integer.parseInt(m.group(2));
                     //if the denom is 0, fall back to the default: tmpExact=100
-                    
+
                     if (tmpExact == 0){
                         tmpExact = -1;
                     }
@@ -97,25 +97,25 @@ public class FractionFormat extends Format {
     public String format(Number num) {
 
         double doubleValue = num.doubleValue();
-        
+
         boolean isNeg = (doubleValue < 0.0f) ? true : false;
         double absDoubleValue = Math.abs(doubleValue);
-        
+
         double wholePart = Math.floor(absDoubleValue);
         double decPart = absDoubleValue - wholePart;
         if (wholePart + decPart == 0) {
             return "0";
         }
-        
+
         //if the absolute value is smaller than 1 over the exact or maxDenom
         //you can stop here and return "0"
         if (absDoubleValue < (1/Math.max(exactDenom,  maxDenom))){
             return "0";
         }
-        
+
         //this is necessary to prevent overflow in the maxDenom calculation
         if (wholePart+(int)decPart == wholePart+decPart){
-            
+
             StringBuilder sb = new StringBuilder();
             if (isNeg){
                 sb.append("-");
@@ -123,7 +123,7 @@ public class FractionFormat extends Format {
             sb.append(Integer.toString((int)wholePart));
             return sb.toString();
         }
-        
+
         SimpleFraction fract = null;
         try{
             //this should be the case because of the constructor
@@ -138,20 +138,20 @@ public class FractionFormat extends Format {
         }
 
         StringBuilder sb = new StringBuilder();
-        
+
         //now format the results
         if (isNeg){
             sb.append("-");
         }
-        
+
         //if whole part has to go into the numerator
         if ("".equals(wholePartFormatString)){
             int trueNum = (fract.getDenominator()*(int)wholePart)+fract.getNumerator();
             sb.append(trueNum).append("/").append(fract.getDenominator());
             return sb.toString();
         }
-        
-        
+
+
         //short circuit if fraction is 0 or 1
         if (fract.getNumerator() == 0){
             sb.append(Integer.toString((int)wholePart));
@@ -175,5 +175,5 @@ public class FractionFormat extends Format {
     public Object parseObject(String source, ParsePosition pos) {
         throw new NotImplementedException("Reverse parsing not supported");
     }
-   
+
 }

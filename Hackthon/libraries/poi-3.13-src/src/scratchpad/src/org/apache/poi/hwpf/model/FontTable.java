@@ -146,11 +146,11 @@ public final class FontTable
           || o._extraDataSz != this._extraDataSz
           || o._fontNames.length != this._fontNames.length
       ) return false;
-      
+
       for (int i=0; i<o._fontNames.length; i++) {
           if (!o._fontNames[i].equals(this._fontNames[i])) return false;
       }
-      
+
       return true;
   }
 

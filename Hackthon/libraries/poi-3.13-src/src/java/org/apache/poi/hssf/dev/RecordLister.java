@@ -34,7 +34,7 @@ import org.apache.poi.poifs.filesystem.NPOIFSFileSystem;
  *  {@link EFBiffViewer}, but this can be handy when
  *  trying to make sense of {@link ContinueRecord}
  *  special cases.
- * 
+ *
  * Output is of the form:
  *  SID - Length - Type (if known)
  *    byte0 byte1 byte2 byte3 .... byte(n-4) byte(n-3) byte(n-2) byte(n-1)
@@ -57,10 +57,10 @@ public class RecordLister
         while(rinp.hasNextRecord()) {
            int sid  = rinp.getNextSid();
            rinp.nextRecord();
-           
+
            int size = rinp.available();
            Class<? extends Record> clz = RecordFactory.getRecordClass(sid);
-           
+
            System.out.print(
                  formatSID(sid) +
                  " - " +
@@ -72,61 +72,61 @@ public class RecordLister
               System.out.print(clz.getName().replace("org.apache.poi.hssf.record.", ""));
            }
            System.out.println();
-           
+
            byte[] data = rinp.readRemainder();
            if(data.length > 0) {
               System.out.print("   ");
               System.out.println( formatData(data) );
            }
         }
-        
+
         din.close();
         fs.close();
     }
-    
+
     private static String formatSID(int sid) {
        String hex = Integer.toHexString(sid);
        String dec = Integer.toString(sid);
-       
+
        StringBuffer s = new StringBuffer();
        s.append("0x");
        for(int i=hex.length(); i<4; i++) {
           s.append('0');
        }
        s.append(hex);
-       
+
        s.append(" (");
        for(int i=dec.length(); i<4; i++) {
           s.append('0');
        }
        s.append(dec);
        s.append(")");
-       
+
        return s.toString();
     }
     private static String formatSize(int size) {
        String hex = Integer.toHexString(size);
        String dec = Integer.toString(size);
-       
+
        StringBuffer s = new StringBuffer();
        for(int i=hex.length(); i<3; i++) {
           s.append('0');
        }
        s.append(hex);
-       
+
        s.append(" (");
        for(int i=dec.length(); i<3; i++) {
           s.append('0');
        }
        s.append(dec);
        s.append(")");
-       
+
        return s.toString();
     }
     private static String formatData(byte[] data) {
        if(data == null || data.length == 0)
           return "";
-       
+
        // If possible, do first 4 and last 4 bytes
        StringBuffer s = new StringBuffer();
        if(data.length > 9) {
@@ -138,9 +138,9 @@ public class RecordLister
           s.append(' ');
           s.append(byteToHex(data[3]));
           s.append(' ');
-          
+
           s.append(" .... ");
-          
+
           s.append(' ');
           s.append(byteToHex(data[data.length-4]));
           s.append(' ');
@@ -155,7 +155,7 @@ public class RecordLister
              s.append(' ');
           }
        }
-       
+
        return s.toString();
     }
     private static String byteToHex(byte b) {
@@ -165,7 +165,7 @@ public class RecordLister
        }
        String s = Integer.toHexString(i);
        if(i < 16) {
-          return "0" + s; 
+          return "0" + s;
        }
        return s;
     }

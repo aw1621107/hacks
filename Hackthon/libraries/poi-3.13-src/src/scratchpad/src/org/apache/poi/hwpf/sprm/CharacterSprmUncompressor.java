@@ -181,9 +181,9 @@ public final class CharacterSprmUncompressor extends SprmUncompressor
             // sprmCPicLocation -- 0x6A03
             /*
              * [MS-DOC]
-             * 
+             *
              * Page 104 of 622
-             * 
+             *
              * A signed 32-bit integer that specifies either the position in the
              * Data Stream of a picture or binary data or the name of an OLE
              * object storage.
@@ -572,9 +572,9 @@ public final class CharacterSprmUncompressor extends SprmUncompressor
             /*
              * Microsoft Office Word 97-2007 Binary File Format (.doc)
              * Specification
-             * 
+             *
              * Page 78 of 210
-             * 
+             *
              * sprmCPropRMark (opcode 0xCA57) is interpreted by moving the first
              * parameter byte to chp.fPropRMark, the next two bytes to
              * chp.ibstPropRMark, and the remaining four bytes to
@@ -607,7 +607,7 @@ public final class CharacterSprmUncompressor extends SprmUncompressor
         // sprmCFtcBi
         break;
       case 0x5f:
-        // sprmCLidBi 
+        // sprmCLidBi
         break;
       case 0x60:
         // sprmCIcoBi
@@ -620,9 +620,9 @@ public final class CharacterSprmUncompressor extends SprmUncompressor
             /*
              * Microsoft Office Word 97-2007 Binary File Format (.doc)
              * Specification
-             * 
+             *
              * Page 78 of 210
-             * 
+             *
              * sprmCDispFldRMark (opcode 0xCA62) is interpreted by moving the
              * first parameter byte to chp.fDispFldRMark, the next two bytes to
              * chp.ibstDispFldRMark, the next four bytes to
@@ -651,7 +651,7 @@ public final class CharacterSprmUncompressor extends SprmUncompressor
             // sprmCShd80
             /*
              * "A Shd80 structure that specifies the background shading for the text. By default, text is not shaded."
-             * 
+             *
              * Word (.doc) Binary File Format. Copyright (c) 2011 Microsoft
              * Corporation. Release: Tuesday, March 15, 2011
              */
@@ -704,7 +704,7 @@ public final class CharacterSprmUncompressor extends SprmUncompressor
 			// sprmCFNoProof -- 0x875
 			/*
 			 * "A ToggleOperand value that specifies whether the text is excluded from the proofing analysis. By default, text is not excluded from the proofing analysis."
-			 * 
+			 *
 			 * Word (.doc) Binary File Format. Copyright (c) 2012 Microsoft
 			 * Corporation. Released: October 8, 2012
 			 */

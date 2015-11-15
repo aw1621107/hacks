@@ -57,7 +57,7 @@ public class OutlookTextExtactor extends POIOLE2TextExtractor {
    public OutlookTextExtactor(InputStream inp) throws IOException {
       this(new MAPIMessage(inp));
    }
-   
+
    public static void main(String[] args) throws Exception {
       for(String filename : args) {
          NPOIFSFileSystem poifs = null;
@@ -79,18 +79,18 @@ public class OutlookTextExtactor extends POIOLE2TextExtractor {
    public MAPIMessage getMAPIMessage() {
       return (MAPIMessage)document;
    }
-      
+
    /**
     * Outputs something a little like a RFC822 email
     */
    public String getText() {
       MAPIMessage msg = (MAPIMessage)document;
       StringBuffer s = new StringBuffer();
-      
+
       // See if we can get a suitable encoding for any
       //  non unicode text in the file
       msg.guess7BitEncoding();
-      
+
       // Off we go
       StringsIterator emails;
       try {
@@ -100,11 +100,11 @@ public class OutlookTextExtactor extends POIOLE2TextExtractor {
       } catch(ChunkNotFoundException e) {
          emails = new StringsIterator(new String[0]);
       }
-      
+
       try {
          s.append("From: " + msg.getDisplayFrom() + "\n");
       } catch(ChunkNotFoundException e) {}
-      
+
       // For To, CC and BCC, try to match the names
       //  up with their email addresses. Relies on the
       //  Recipient Chunks being in the same order as
@@ -118,7 +118,7 @@ public class OutlookTextExtactor extends POIOLE2TextExtractor {
       try {
          handleEmails(s, "BCC", msg.getDisplayBCC(), emails);
       } catch(ChunkNotFoundException e) {}
-      
+
       // Date - try two ways to find it
       try {
          // First try via the proper chunk
@@ -127,12 +127,12 @@ public class OutlookTextExtactor extends POIOLE2TextExtractor {
          s.append("Date: " + f.format(msg.getMessageDate().getTime()) + "\n");
       } catch(ChunkNotFoundException e) {
          try {
-            // Failing that try via the raw headers 
+            // Failing that try via the raw headers
             String[] headers = msg.getHeaders();
             for(String header: headers) {
                if(header.toLowerCase(Locale.ROOT).startsWith("date:")) {
                   s.append(
-                        "Date:" + 
+                        "Date:" +
                         header.substring(header.indexOf(':')+1) +
                         "\n"
                   );
@@ -143,32 +143,32 @@ public class OutlookTextExtactor extends POIOLE2TextExtractor {
             // We can't find the date, sorry...
          }
       }
-      
+
       try {
          s.append("Subject: " + msg.getSubject() + "\n");
       } catch(ChunkNotFoundException e) {}
-      
+
       // Display attachment names
       // To get the attachments, use ExtractorFactory
       for(AttachmentChunks att : msg.getAttachmentFiles()) {
          StringChunk name = att.attachLongFileName;
          if (name == null) name = att.attachFileName;
          String attName = name.getValue();
-          
-         if(att.attachMimeTag != null && 
+
+         if(att.attachMimeTag != null &&
                att.attachMimeTag.getValue() != null) {
-             attName = att.attachMimeTag.getValue() + " = " + attName; 
+             attName = att.attachMimeTag.getValue() + " = " + attName;
          }
          s.append("Attachment: " + attName + "\n");
       }
-      
+
       try {
          s.append("\n" + msg.getTextBody() + "\n");
       } catch(ChunkNotFoundException e) {}
-      
+
       return s.toString();
    }
-   
+
    /**
     * Takes a Display focused string, eg "Nick; Jim" and an iterator
     *  of emails, and does its best to return something like
@@ -178,10 +178,10 @@ public class OutlookTextExtactor extends POIOLE2TextExtractor {
       if(displayText == null || displayText.length() == 0) {
          return;
       }
-      
+
       String[] names = displayText.split(";\\s*");
       boolean first = true;
-      
+
       s.append(type + ": ");
       for(String name : names) {
          if(first) {
@@ -189,7 +189,7 @@ public class OutlookTextExtactor extends POIOLE2TextExtractor {
          } else {
             s.append("; ");
          }
-         
+
          s.append(name);
          if(emails.hasNext()) {
             String email = emails.next();

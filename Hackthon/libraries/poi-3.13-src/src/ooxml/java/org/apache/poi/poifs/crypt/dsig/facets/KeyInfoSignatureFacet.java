@@ -18,9 +18,9 @@
 /* ====================================================================
    This product contains an ASLv2 licensed version of the OOXML signer
    package from the eID Applet project
-   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt  
+   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt
    Copyright (C) 2008-2014 FedICT.
-   ================================================================= */ 
+   ================================================================= */
 
 package org.apache.poi.poifs.crypt.dsig.facets;
 
@@ -49,21 +49,21 @@ import org.w3c.dom.NodeList;
 
 /**
  * Signature Facet implementation that adds ds:KeyInfo to the XML signature.
- * 
+ *
  * @author Frank Cornelis
- * 
+ *
  */
 public class KeyInfoSignatureFacet extends SignatureFacet {
 
     private static final POILogger LOG = POILogFactory.getLogger(KeyInfoSignatureFacet.class);
-    
+
     @Override
-    public void postSign(Document document) 
+    public void postSign(Document document)
     throws MarshalException {
         LOG.log(POILogger.DEBUG, "postSign");
 
         NodeList nl = document.getElementsByTagNameNS(XML_DIGSIG_NS, "Object");
-        
+
         /*
          * Make sure we insert right after the ds:SignatureValue element, just
          * before the first ds:Object element.
@@ -106,7 +106,7 @@ public class KeyInfoSignatureFacet extends SignatureFacet {
             keyInfoContent.add(x509Data);
         }
         KeyInfo keyInfo = keyInfoFactory.newKeyInfo(keyInfoContent);
-        DOMKeyInfo domKeyInfo = (DOMKeyInfo)keyInfo; 
+        DOMKeyInfo domKeyInfo = (DOMKeyInfo)keyInfo;
 
         Key key = new Key() {
             private static final long serialVersionUID = 1L;
@@ -129,10 +129,10 @@ public class KeyInfoSignatureFacet extends SignatureFacet {
         for (Map.Entry<String,String> me : signatureConfig.getNamespacePrefixes().entrySet()) {
             domSignContext.putNamespacePrefix(me.getKey(), me.getValue());
         }
-        
+
         DOMStructure domStructure = new DOMStructure(n);
         domKeyInfo.marshal(domStructure, domSignContext);
-        
+
         // move keyinfo into the right place
         if (nextSibling != null) {
             NodeList kiNl = document.getElementsByTagNameNS(XML_DIGSIG_NS, "KeyInfo");

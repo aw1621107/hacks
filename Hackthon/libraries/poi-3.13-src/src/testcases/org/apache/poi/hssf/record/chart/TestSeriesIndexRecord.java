@@ -37,7 +37,7 @@ public final class TestSeriesIndexRecord extends TestCase {
 
     public void testLoad() {
         SeriesIndexRecord record = new SeriesIndexRecord(TestcaseRecordInputStream.create(0x1065, data));
-        
+
         assertEquals( (short)3, record.getIndex());
         assertEquals( 6, record.getRecordSize() );
     }

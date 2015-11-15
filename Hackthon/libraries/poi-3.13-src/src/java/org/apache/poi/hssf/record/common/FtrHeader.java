@@ -26,7 +26,7 @@ import org.apache.poi.util.LittleEndianOutput;
  * <P>
  * This record part specifies a header for a Ftr (Future)
  *  style record, which includes extra attributes above and
- *  beyond those of a traditional record. 
+ *  beyond those of a traditional record.
  */
 public final class FtrHeader {
     /** This MUST match the type on the containing record */

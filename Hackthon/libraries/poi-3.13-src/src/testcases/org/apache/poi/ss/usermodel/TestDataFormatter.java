@@ -16,7 +16,7 @@
 
    2012 - Alfresco Software, Ltd.
    Alfresco Software has modified source of this file
-   The details of changes as svn diff can be found in svn at location root/projects/3rd-party/src 
+   The details of changes as svn diff can be found in svn at location root/projects/3rd-party/src
 ==================================================================== */
 
 package org.apache.poi.ss.usermodel;
@@ -55,14 +55,14 @@ public class TestDataFormatter {
     public void testLocale() {
        DataFormatter dfUS = new DataFormatter(Locale.US);
        DataFormatter dfFR = new DataFormatter(Locale.FRENCH);
-       
+
        assertEquals("1234", dfUS.formatRawCellContents(1234, -1, "@"));
        assertEquals("1234", dfFR.formatRawCellContents(1234, -1, "@"));
-       
+
        assertEquals("12.34", dfUS.formatRawCellContents(12.34, -1, "@"));
        assertEquals("12,34", dfFR.formatRawCellContents(12.34, -1, "@"));
     }
-    
+
     /**
      * At the moment, we don't decode the locale strings into
      *  a specific locale, but we should format things as if
@@ -78,10 +78,10 @@ public class TestDataFormatter {
 
        // Regular numeric style formats
        assertEquals("63", dfUS.formatRawCellContents(63.0, -1, "[$-1010409]##"));
-       assertEquals("63", dfUS.formatRawCellContents(63.0, -1, "[$-1010409]00"));        
+       assertEquals("63", dfUS.formatRawCellContents(63.0, -1, "[$-1010409]00"));
 
     }
-    
+
     /**
      * Ensure that colours get correctly
      *  zapped from within the format strings
@@ -89,7 +89,7 @@ public class TestDataFormatter {
     @Test
     public void testColours() {
        DataFormatter dfUS = new DataFormatter(Locale.US);
-       
+
        String[] formats = new String[] {
              "##.##",
              "[WHITE]##.##",
@@ -108,16 +108,16 @@ public class TestDataFormatter {
                 dfUS.formatRawCellContents(-12.343, -1, format)
           );
        }
-       
+
        // Ensure that random square brackets remain
        assertEquals("12.34[a]", dfUS.formatRawCellContents(12.343, -1, "##.##[a]"));
        assertEquals("[ab]12.34[x]", dfUS.formatRawCellContents(12.343, -1, "[ab]##.##[x]"));
     }
-    
+
     @Test
     public void testColoursAndBrackets() {
        DataFormatter dfUS = new DataFormatter(Locale.US);
-       
+
        // Without currency symbols
        String[] formats = new String[] {
              "#,##0.00;[Blue](#,##0.00)",
@@ -134,7 +134,7 @@ public class TestDataFormatter {
                 dfUS.formatRawCellContents(-12.343, -1, format)
           );
        }
-       
+
        // With
        formats = new String[] {
              "$#,##0.00;[Red]($#,##0.00)"
@@ -152,7 +152,7 @@ public class TestDataFormatter {
           );
        }
     }
-    
+
     /**
      * Test how we handle negative and zeros.
      * Note - some tests are disabled as DecimalFormat
@@ -162,7 +162,7 @@ public class TestDataFormatter {
     @Test
     public void testNegativeZero() {
        DataFormatter dfUS = new DataFormatter(Locale.US);
-       
+
        String all2dp = "00.00";
        String alln1dp = "(00.0)";
        String p1dp_n1dp = "00.0;(00.0)";
@@ -171,27 +171,27 @@ public class TestDataFormatter {
        String all2dpTSP = "00.00_x";
        String p2dp_n2dpTSP = "00.00_x;(00.00)_x";
        //String p2dp_n1dpTSP = "00.00_x;(00.0)_x";
-       
+
        assertEquals("12.34", dfUS.formatRawCellContents(12.343, -1, all2dp));
        assertEquals("12.34", dfUS.formatRawCellContents(12.343, -1, p2dp_n1dp));
        assertEquals("12.34", dfUS.formatRawCellContents(12.343, -1, p2dp_n1dp_z0));
-       
+
        assertEquals("(12.3)", dfUS.formatRawCellContents(12.343, -1, alln1dp));
        assertEquals("-(12.3)", dfUS.formatRawCellContents(-12.343, -1, alln1dp));
        assertEquals("12.3", dfUS.formatRawCellContents(12.343, -1, p1dp_n1dp));
        assertEquals("(12.3)", dfUS.formatRawCellContents(-12.343, -1, p1dp_n1dp));
-       
+
        assertEquals("-12.34", dfUS.formatRawCellContents(-12.343, -1, all2dp));
        // TODO - fix case of negative subpattern differing from the
        //  positive one by more than just the prefix+suffix, which
        //  is all DecimalFormat supports...
 //       assertEquals("(12.3)", dfUS.formatRawCellContents(-12.343, -1, p2dp_n1dp));
 //       assertEquals("(12.3)", dfUS.formatRawCellContents(-12.343, -1, p2dp_n1dp_z0));
-       
+
        assertEquals("00.00", dfUS.formatRawCellContents(0, -1, all2dp));
        assertEquals("00.00", dfUS.formatRawCellContents(0, -1, p2dp_n1dp));
        assertEquals("0", dfUS.formatRawCellContents(0, -1, p2dp_n1dp_z0));
-       
+
        // Spaces are skipped
        assertEquals("12.34", dfUS.formatRawCellContents(12.343, -1, all2dpTSP));
        assertEquals("12.34", dfUS.formatRawCellContents(12.343, -1, p2dp_n2dpTSP));
@@ -199,7 +199,7 @@ public class TestDataFormatter {
 //       assertEquals("12.34", dfUS.formatRawCellContents(12.343, -1, p2dp_n1dpTSP));
 //       assertEquals("(12.3)", dfUS.formatRawCellContents(-12.343, -1, p2dp_n1dpTSP));
     }
-    
+
     /**
      * Test that we correctly handle fractions in the
      *  format string, eg # #/#
@@ -207,7 +207,7 @@ public class TestDataFormatter {
     @Test
     public void testFractions() {
        DataFormatter dfUS = new DataFormatter(Locale.US);
-       
+
        // Excel often prefers "# #/#"
        assertEquals("321 1/3",   dfUS.formatRawCellContents(321.321, -1, "# #/#"));
        assertEquals("321 26/81", dfUS.formatRawCellContents(321.321, -1, "# #/##"));
@@ -217,18 +217,18 @@ public class TestDataFormatter {
        assertEquals("321 1/3",   dfUS.formatRawCellContents(321.321, -1, "# ?/?"));
        assertEquals("321 26/81", dfUS.formatRawCellContents(321.321, -1, "# ?/??"));
        assertEquals("26027/81",  dfUS.formatRawCellContents(321.321, -1, "?/??"));
-       
+
        // p;n;z;s parts
        assertEquals( "321 1/3",  dfUS.formatRawCellContents(321.321,  -1, "# #/#;# ##/#;0;xxx"));
        assertEquals("-321 1/3",  dfUS.formatRawCellContents(-321.321, -1, "# #/#;# ##/#;0;xxx"));
        assertEquals("0",         dfUS.formatRawCellContents(0,        -1, "# #/#;# ##/#;0;xxx"));
 //     assertEquals("0.0",       dfUS.formatRawCellContents(0,        -1, "# #/#;# ##/#;#.#;xxx")); // currently hard coded to 0
-       
+
        // Custom formats with text are not currently supported
 //     assertEquals("+ve",       dfUS.formatRawCellContents(0,        -1, "+ve;-ve;zero;xxx"));
 //     assertEquals("-ve",       dfUS.formatRawCellContents(0,        -1, "-ve;-ve;zero;xxx"));
 //     assertEquals("zero",      dfUS.formatRawCellContents(0,        -1, "zero;-ve;zero;xxx"));
-       
+
        // Custom formats - check text is stripped, including multiple spaces
        assertEquals("321 1/3",   dfUS.formatRawCellContents(321.321, -1, "#   #/#"));
        assertEquals("321 1/3",   dfUS.formatRawCellContents(321.321, -1, "#\"  \" #/#"));
@@ -243,9 +243,9 @@ public class TestDataFormatter {
        assertEquals("321 295/919",  dfUS.formatRawCellContents(321.321, -1, "# #/###"));
        assertEquals("321 321/1000",  dfUS.formatRawCellContents(321.321, -1, "# #/####")); // Code limits to #### as that is as slow as we want to get
        assertEquals("321 321/1000",  dfUS.formatRawCellContents(321.321, -1, "# #/##########"));
-       
+
        // Not a valid fraction formats (too many #/# or ?/?) - hence the strange expected results
-       
+
 /*       assertEquals("321 / ?/?",   dfUS.formatRawCellContents(321.321, -1, "# #/# ?/?"));
        assertEquals("321 / /",     dfUS.formatRawCellContents(321.321, -1, "# #/# #/#"));
        assertEquals("321 ?/? ?/?",   dfUS.formatRawCellContents(321.321, -1, "# ?/? ?/?"));
@@ -268,7 +268,7 @@ public class TestDataFormatter {
        assertEquals("1",   dfUS.formatRawCellContents(1.0, -1, "# #/#"));
        assertEquals("11",   dfUS.formatRawCellContents(11.0, -1, "# #/#"));
     }
-    
+
     /**
      * Test that _x (blank with the space taken by "x")
      *  and *x (fill to the column width with "x"s) are
@@ -281,13 +281,13 @@ public class TestDataFormatter {
        assertEquals("12.34", dfUS.formatRawCellContents(12.343, -1, "##.##_1"));
        assertEquals("12.34", dfUS.formatRawCellContents(12.343, -1, "##.##_)"));
        assertEquals("12.34", dfUS.formatRawCellContents(12.343, -1, "_-##.##"));
-       
+
        assertEquals("12.34", dfUS.formatRawCellContents(12.343, -1, "##.##* "));
        assertEquals("12.34", dfUS.formatRawCellContents(12.343, -1, "##.##*1"));
        assertEquals("12.34", dfUS.formatRawCellContents(12.343, -1, "##.##*)"));
        assertEquals("12.34", dfUS.formatRawCellContents(12.343, -1, "*-##.##"));
     }
-    
+
     /**
      * DataFormatter is the CSV mode preserves spaces
      */
@@ -328,31 +328,31 @@ public class TestDataFormatter {
     @Test
     public void testMMMMM() {
        DataFormatter dfUS = new DataFormatter(Locale.US);
-       
+
        Calendar c = LocaleUtil.getLocaleCalendar(2010, 5, 1, 2, 0, 0);
-       
+
        assertEquals("2010-J-1 2:00:00", dfUS.formatRawCellContents(
              DateUtil.getExcelDate(c, false), -1, "YYYY-MMMMM-D h:mm:ss"
        ));
     }
-    
+
     /**
      * Tests that we do AM/PM handling properly
      */
     @Test
     public void testAMPM() {
        DataFormatter dfUS = new DataFormatter(Locale.US);
-       
+
        assertEquals("06:00", dfUS.formatRawCellContents(0.25, -1, "hh:mm"));
        assertEquals("18:00", dfUS.formatRawCellContents(0.75, -1, "hh:mm"));
-       
+
        assertEquals("06:00 AM", dfUS.formatRawCellContents(0.25, -1, "hh:mm AM/PM"));
        assertEquals("06:00 PM", dfUS.formatRawCellContents(0.75, -1, "hh:mm AM/PM"));
-       
+
        assertEquals("1904-01-01 06:00:00 AM", dfUS.formatRawCellContents(0.25, -1, "yyyy-mm-dd hh:mm:ss AM/PM", true));
        assertEquals("1904-01-01 06:00:00 PM", dfUS.formatRawCellContents(0.75, -1, "yyyy-mm-dd hh:mm:ss AM/PM", true));
     }
-    
+
     /**
      * Test that we can handle elapsed time,
      *  eg formatting 1 day 4 hours as 28 hours
@@ -465,7 +465,7 @@ public class TestDataFormatter {
     @Test
     public void testDateWindowing() {
        DataFormatter dfUS = new DataFormatter(Locale.US);
-       
+
        assertEquals("1899-12-31 00:00:00", dfUS.formatRawCellContents(0.0, -1, "yyyy-mm-dd hh:mm:ss"));
        assertEquals("1899-12-31 00:00:00", dfUS.formatRawCellContents(0.0, -1, "yyyy-mm-dd hh:mm:ss", false));
        assertEquals("1904-01-01 00:00:00", dfUS.formatRawCellContents(0.0, -1, "yyyy-mm-dd hh:mm:ss", true));
@@ -496,10 +496,10 @@ public class TestDataFormatter {
 
        assertEquals("1901-01-01", dfUS.formatRawCellContents(367.0, -1, "yyyy-mm-dd"));
        assertEquals("1901-01-01", dfUS.formatRawCellContents(367.0, -1, "yyyy\\-mm\\-dd"));
-       
+
        assertEquals("1901.01.01", dfUS.formatRawCellContents(367.0, -1, "yyyy.mm.dd"));
        assertEquals("1901.01.01", dfUS.formatRawCellContents(367.0, -1, "yyyy\\.mm\\.dd"));
-       
+
        assertEquals("1901/01/01", dfUS.formatRawCellContents(367.0, -1, "yyyy/mm/dd"));
        assertEquals("1901/01/01", dfUS.formatRawCellContents(367.0, -1, "yyyy\\/mm\\/dd"));
     }
@@ -513,7 +513,7 @@ public class TestDataFormatter {
         assertEquals(" -   ", dfUS.formatRawCellContents(0.0, -1, "_-* #,##0.00_-;-* #,##0.00_-;_-* \"-\"??_-;_-@_-"));
         assertEquals(" $-   ", dfUS.formatRawCellContents(0.0, -1, "_-$* #,##0.00_-;-$* #,##0.00_-;_-$* \"-\"??_-;_-@_-"));
     }
-    
+
     @Test
     public void testErrors() throws IOException {
         DataFormatter dfUS = new DataFormatter(Locale.US, true);
@@ -524,10 +524,10 @@ public class TestDataFormatter {
             Sheet s = wb.createSheet();
             Row r = s.createRow(0);
             Cell c = r.createCell(0, Cell.CELL_TYPE_ERROR);
-            
+
             c.setCellErrorValue(FormulaError.DIV0.getCode());
             assertEquals(FormulaError.DIV0.getString(), dfUS.formatCellValue(c));
-            
+
             c.setCellErrorValue(FormulaError.REF.getCode());
             assertEquals(FormulaError.REF.getString(), dfUS.formatCellValue(c));
         } finally {
@@ -543,17 +543,17 @@ public class TestDataFormatter {
     @Test
     public void testDatesWithLocales() {
         DataFormatter dfUS = new DataFormatter(Locale.US, true);
-        
+
         String dateFormatEnglish = "[$-409]mmmm dd yyyy  h:mm AM/PM";
         String dateFormatChinese = "[$-804]mmmm dd yyyy  h:mm AM/PM";
-        
+
         // Check we format the English one correctly
         double date = 26995.477777777778;
         assertEquals(
                 "November 27 1973  11:28 AM",
                 dfUS.formatRawCellContents(date, -1, dateFormatEnglish)
         );
-        
+
         // Check that, in the absence of locale support, we handle
         //  the Chinese one the same as the English one
         assertEquals(
@@ -570,17 +570,17 @@ public class TestDataFormatter {
     public void testCustomFormats() {
        DataFormatter dfUS = new DataFormatter(Locale.US, true);
        String fmt;
-       
+
        fmt = "\"At\" H:MM AM/PM \"on\" DDDD MMMM D\",\" YYYY";
        assertEquals(
              "At 4:20 AM on Thursday May 17, 2007",
              dfUS.formatRawCellContents(39219.1805636921, -1, fmt)
        );
-       
+
        fmt = "0 \"dollars and\" .00 \"cents\"";
        assertEquals("19 dollars and .99 cents", dfUS.formatRawCellContents(19.99, -1, fmt));
     }
-    
+
     /**
      * ExcelStyleDateFormatter should work for Milliseconds too
      */
@@ -599,7 +599,7 @@ public class TestDataFormatter {
 
        // Test directly with the .SSS style
        DateFormat formatter2 = new ExcelStyleDateFormatter("ss.SSS");
-       
+
        assertEquals("00.001", formatter2.format(new Date(1L)));
        assertEquals("00.010", formatter2.format(new Date(10L)));
        assertEquals("00.100", formatter2.format(new Date(100L)));
@@ -620,7 +620,7 @@ public class TestDataFormatter {
 		String format = "[h]\"\"h\"\" m\"\"m\"\"";
 		assertTrue(DateUtil.isADateFormat(-1,format));
 		assertTrue(DateUtil.isValidExcelDate(_15_MINUTES));
-		
+
 		assertEquals("1h 0m", formatter.formatRawCellContents(_15_MINUTES, -1, format, false));
 		assertEquals("0.041666667", formatter.formatRawCellContents(_15_MINUTES, -1, "[h]'h'", false));
 		assertEquals("1h 0m\"", formatter.formatRawCellContents(_15_MINUTES, -1, "[h]\"\"h\"\" m\"\"m\"\"\"", false));
@@ -630,7 +630,7 @@ public class TestDataFormatter {
 		assertEquals(" 60", formatter.formatRawCellContents(_15_MINUTES, -1, " [m]", false));
 		assertEquals("h60", formatter.formatRawCellContents(_15_MINUTES, -1, "\"\"h\"\"[m]", false));
 		assertEquals("m1", formatter.formatRawCellContents(_15_MINUTES, -1, "\"\"m\"\"h", false));
-		
+
 		try {
 			assertEquals("1h 0m\"", formatter.formatRawCellContents(_15_MINUTES, -1, "[h]\"\"h\"\" m\"\"m\"\"\"\"", false));
 			fail("Catches exception because of invalid format, i.e. trailing quoting");
@@ -638,7 +638,7 @@ public class TestDataFormatter {
 			assertTrue(e.getMessage().contains("Cannot format given Object as a Number"));
 		}
 	}
-	
+
     @Test
     public void testIsADateFormat() {
 	    // first check some cases that should not be a date, also call multiple times to ensure the cache is used

@@ -28,7 +28,7 @@ import java.util.Properties;
 
 /**
  * Implement this interface to be placed "in between" query execution, so that you can influence it. (currently experimental).
- * 
+ *
  * StatementInterceptors are "chainable" when configured by the user, the results returned by the "current" interceptor will be passed on to the next on in the
  * chain, from left-to-right order, as specified by the user in the JDBC configuration property "statementInterceptors".
  */
@@ -37,10 +37,10 @@ public interface StatementInterceptor extends Extension {
 
     /**
      * Called once per connection that wants to use the interceptor
-     * 
+     *
      * The properties are the same ones passed in in the URL or arguments to
      * Driver.connect() or DriverManager.getConnection().
-     * 
+     *
      * @param conn
      *            the connection for which this interceptor is being created
      * @param props
@@ -49,7 +49,7 @@ public interface StatementInterceptor extends Extension {
      *            to an interceptor <strong>must</strong> be passed via setURL() on the
      *            DataSource. StatementInterceptor properties are not exposed via
      *            accessor/mutator methods on DataSources.
-     * 
+     *
      * @throws SQLException
      *             should be thrown if the the StatementInterceptor
      *             can not initialize itself.
@@ -60,15 +60,15 @@ public interface StatementInterceptor extends Extension {
     /**
      * Called before the given statement is going to be sent to the
      * server for processing.
-     * 
+     *
      * Interceptors are free to return a result set (which must implement the
      * interface com.mysql.jdbc.ResultSetInternalMethods), and if so,
      * the server will not execute the query, and the given result set will be
      * returned to the application instead.
-     * 
+     *
      * This method will be called while the connection-level mutex is held, so
      * it will only be called from one thread at a time.
-     * 
+     *
      * @param sql
      *            the SQL representation of the statement
      * @param interceptedStatement
@@ -76,14 +76,14 @@ public interface StatementInterceptor extends Extension {
      * @param connection
      *            the connection the statement is using (passed in to make
      *            thread-safe implementations straightforward)
-     * 
+     *
      * @return a result set that should be returned to the application instead
      *         of results that are created from actual execution of the intercepted
      *         statement.
-     * 
+     *
      * @throws SQLException
      *             if an error occurs during execution
-     * 
+     *
      * @see com.mysql.jdbc.ResultSetInternalMethods
      */
 
@@ -92,16 +92,16 @@ public interface StatementInterceptor extends Extension {
     /**
      * Called after the given statement has been sent to the server
      * for processing.
-     * 
+     *
      * Interceptors are free to inspect the "original" result set, and if a
      * different result set is returned by the interceptor, it is used in place
      * of the "original" result set. (the result set returned by the interceptor
      * must implement the interface
      * com.mysql.jdbc.ResultSetInternalMethods).
-     * 
+     *
      * This method will be called while the connection-level mutex is held, so
      * it will only be called from one thread at a time.
-     * 
+     *
      * @param sql
      *            the SQL representation of the statement
      * @param interceptedStatement
@@ -109,14 +109,14 @@ public interface StatementInterceptor extends Extension {
      * @param connection
      *            the connection the statement is using (passed in to make
      *            thread-safe implementations straightforward)
-     * 
+     *
      * @return a result set that should be returned to the application instead
      *         of results that are created from actual execution of the intercepted
      *         statement.
-     * 
+     *
      * @throws SQLException
      *             if an error occurs during execution
-     * 
+     *
      * @see com.mysql.jdbc.ResultSetInternalMethods
      */
     public abstract ResultSetInternalMethods postProcess(String sql, Statement interceptedStatement, ResultSetInternalMethods originalResultSet,
@@ -126,11 +126,11 @@ public interface StatementInterceptor extends Extension {
      * Should the driver execute this interceptor only for the
      * "original" top-level query, and not put it in the execution
      * path for queries that may be executed from other interceptors?
-     * 
+     *
      * If an interceptor issues queries using the connection it was created for,
      * and does not return <code>true</code> for this method, it must ensure
      * that it does not cause infinite recursion.
-     * 
+     *
      * @return true if the driver should ensure that this interceptor is only
      *         executed for the top-level "original" query.
      */

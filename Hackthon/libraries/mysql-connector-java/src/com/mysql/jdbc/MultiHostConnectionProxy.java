@@ -100,7 +100,7 @@ public abstract class MultiHostConnectionProxy implements InvocationHandler {
 
     /**
      * Initializes a connection wrapper for this MultiHostConnectionProxy instance.
-     * 
+     *
      * @param props
      *            The properties to be used in new internal connections.
      */
@@ -110,7 +110,7 @@ public abstract class MultiHostConnectionProxy implements InvocationHandler {
 
     /**
      * Constructs a MultiHostConnectionProxy instance for the given list of hosts and connection properties.
-     * 
+     *
      * @param hosts
      *            The lists of hosts available to switch on.
      * @param props
@@ -124,7 +124,7 @@ public abstract class MultiHostConnectionProxy implements InvocationHandler {
     /**
      * Initializes the hosts lists and makes a "clean" local copy of the given connection properties so that it can be later used to create standard
      * connections.
-     * 
+     *
      * @param hosts
      *            The list of hosts for this multi-host connection.
      * @param props
@@ -155,7 +155,7 @@ public abstract class MultiHostConnectionProxy implements InvocationHandler {
 
     /**
      * Wraps this object with a new multi-host Connection instance.
-     * 
+     *
      * @return
      *         The connection object instance that wraps 'this'.
      */
@@ -169,7 +169,7 @@ public abstract class MultiHostConnectionProxy implements InvocationHandler {
 
     /**
      * If the given return type is or implements a JDBC interface, proxies the given object so that we can catch SQL errors and fire a connection switch.
-     * 
+     *
      * @param returnType
      *            The type the object instance to proxy is supposed to be.
      * @param toProxy
@@ -189,7 +189,7 @@ public abstract class MultiHostConnectionProxy implements InvocationHandler {
 
     /**
      * Instantiates a new JdbcInterfaceProxy for the given object. Subclasses can override this to return instances of JdbcInterfaceProxy subclasses.
-     * 
+     *
      * @param toProxy
      *            The object instance to be proxied.
      * @return
@@ -201,7 +201,7 @@ public abstract class MultiHostConnectionProxy implements InvocationHandler {
 
     /**
      * Deals with InvocationException from proxied objects.
-     * 
+     *
      * @param e
      *            The Exception instance to check.
      */
@@ -220,7 +220,7 @@ public abstract class MultiHostConnectionProxy implements InvocationHandler {
 
     /**
      * Checks if the given throwable should trigger a connection switch.
-     * 
+     *
      * @param t
      *            The Throwable instance to analyze.
      */
@@ -235,7 +235,7 @@ public abstract class MultiHostConnectionProxy implements InvocationHandler {
 
     /**
      * Invalidates the specified connection by closing it.
-     * 
+     *
      * @param conn
      *            The connection instance to invalidate.
      */
@@ -256,7 +256,7 @@ public abstract class MultiHostConnectionProxy implements InvocationHandler {
 
     /**
      * Creates a new physical connection for the given host:port.
-     * 
+     *
      * @param hostPortSpec
      *            The host:port specification.
      * @return
@@ -295,7 +295,7 @@ public abstract class MultiHostConnectionProxy implements InvocationHandler {
 
     /**
      * Synchronizes session state between two connections.
-     * 
+     *
      * @param source
      *            The connection where to get state from.
      * @param target
@@ -310,7 +310,7 @@ public abstract class MultiHostConnectionProxy implements InvocationHandler {
 
     /**
      * Synchronizes session state between two connections, allowing to override the read-only status.
-     * 
+     *
      * @param source
      *            The connection where to get state from.
      * @param target

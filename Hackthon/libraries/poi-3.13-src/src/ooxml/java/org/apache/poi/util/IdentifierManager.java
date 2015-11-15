@@ -23,7 +23,7 @@ import java.util.ListIterator;
  * <p>
  * 24.08.2009<br>
  * </p>
- * 
+ *
  * @author Stefan Stern<br>
  */
 
@@ -34,12 +34,12 @@ public class IdentifierManager {
     public static final long MIN_ID = 0L;
 
     /**
-	 * 
+	 *
 	 */
     private final long upperbound;
 
     /**
-	 * 
+	 *
 	 */
     private final long lowerbound;
 
@@ -57,7 +57,7 @@ public class IdentifierManager {
             String message = "lowerbound must not be greater than upperbound";
             throw new IllegalArgumentException(message);
         }
-        else if (lowerbound < MIN_ID) { 
+        else if (lowerbound < MIN_ID) {
             String message = "lowerbound must be greater than or equal to " + Long.toString(MIN_ID);
             throw new IllegalArgumentException(message);
         }
@@ -80,7 +80,7 @@ public class IdentifierManager {
             throw new IllegalArgumentException("Value for parameter 'id' was out of bounds");
         }
         verifyIdentifiersLeft();
-        
+
         if (id == upperbound) {
             Segment lastSegment = segments.getLast();
             if (lastSegment.end == upperbound) {
@@ -138,7 +138,7 @@ public class IdentifierManager {
     }
 
     /**
-     * @return a new identifier. 
+     * @return a new identifier.
      * @throws IllegalStateException if no more identifiers are available, then an Exception is raised.
      */
     public long reserveNew() {
@@ -238,7 +238,7 @@ public class IdentifierManager {
     }
 
     /**
-	 * 
+	 *
 	 */
     private void verifyIdentifiersLeft() {
         if (segments.isEmpty()) {
@@ -258,7 +258,7 @@ public class IdentifierManager {
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.lang.Object#toString()
          */
         public String toString() {

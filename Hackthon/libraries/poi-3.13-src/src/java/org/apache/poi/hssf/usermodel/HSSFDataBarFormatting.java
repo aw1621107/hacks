@@ -23,7 +23,7 @@ import org.apache.poi.hssf.record.cf.DataBarThreshold;
 import org.apache.poi.ss.usermodel.Color;
 
 /**
- * High level representation for DataBar / Data-Bar Formatting 
+ * High level representation for DataBar / Data-Bar Formatting
  *  component of Conditional Formatting settings
  */
 public final class HSSFDataBarFormatting implements org.apache.poi.ss.usermodel.DataBarFormatting {

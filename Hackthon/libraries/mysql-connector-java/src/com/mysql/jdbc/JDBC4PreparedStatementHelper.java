@@ -43,12 +43,12 @@ public class JDBC4PreparedStatementHelper {
 
     /**
      * JDBC 4.0 Set a NCLOB parameter.
-     * 
+     *
      * @param i
      *            the first parameter is 1, the second is 2, ...
      * @param x
      *            an object representing a NCLOB
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */
@@ -66,14 +66,14 @@ public class JDBC4PreparedStatementHelper {
 
     /**
      * JDBC 4.0 Set a NCLOB parameter.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1, the second is 2, ...
      * @param reader
      *            the java reader which contains the UNICODE data
      * @param length
      *            the number of characters in the stream
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */

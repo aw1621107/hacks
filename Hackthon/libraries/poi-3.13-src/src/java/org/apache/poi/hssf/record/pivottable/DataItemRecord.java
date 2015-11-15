@@ -25,7 +25,7 @@ import org.apache.poi.util.StringUtil;
 
 /**
  * SXDI - Data Item (0x00C5)<br/>
- * 
+ *
  * @author Patrick Cheng
  */
 public final class DataItemRecord extends StandardRecord {
@@ -38,7 +38,7 @@ public final class DataItemRecord extends StandardRecord {
 	private int isxvi;
 	private int ifmt;
 	private String name;
-	
+
 	public DataItemRecord(RecordInputStream in) {
 		isxvdData = in.readUShort();
 		iiftab = in.readUShort();
@@ -46,20 +46,20 @@ public final class DataItemRecord extends StandardRecord {
 		isxvd = in.readUShort();
 		isxvi = in.readUShort();
 		ifmt = in.readUShort();
-		
+
 		name = in.readString();
 	}
-	
+
 	@Override
 	protected void serialize(LittleEndianOutput out) {
-		
+
 		out.writeShort(isxvdData);
 		out.writeShort(iiftab);
 		out.writeShort(df);
 		out.writeShort(isxvd);
 		out.writeShort(isxvi);
 		out.writeShort(ifmt);
-		
+
 		StringUtil.writeUnicodeString(out, name);
 	}
 
@@ -76,7 +76,7 @@ public final class DataItemRecord extends StandardRecord {
 	@Override
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
-		
+
 		buffer.append("[SXDI]\n");
 		buffer.append("  .isxvdData = ").append(HexDump.shortToHex(isxvdData)).append("\n");
 		buffer.append("  .iiftab = ").append(HexDump.shortToHex(iiftab)).append("\n");

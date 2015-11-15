@@ -14,7 +14,7 @@
  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
- * ==================================================================== 
+ * ====================================================================
  */
 
 package org.apache.poi.xslf.usermodel;
@@ -79,7 +79,7 @@ public class Tutorial2 {
         FileOutputStream out = new FileOutputStream("text.pptx");
         ppt.write(out);
         out.close();
-        
+
         ppt.close();
     }
 }

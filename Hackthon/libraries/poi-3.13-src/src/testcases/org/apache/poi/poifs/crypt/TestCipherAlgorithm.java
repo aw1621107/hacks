@@ -26,14 +26,14 @@ public class TestCipherAlgorithm {
     @Test
     public void test() {
         assertEquals(128, CipherAlgorithm.aes128.defaultKeySize);
-        
+
         for(CipherAlgorithm alg : CipherAlgorithm.values()) {
             assertEquals(alg, CipherAlgorithm.valueOf(alg.toString()));
         }
 
         assertEquals(CipherAlgorithm.aes128, CipherAlgorithm.fromEcmaId(0x660E));
         assertEquals(CipherAlgorithm.aes192, CipherAlgorithm.fromXmlId("AES", 192));
-        
+
         try {
             CipherAlgorithm.fromEcmaId(0);
             fail("Should throw exception");

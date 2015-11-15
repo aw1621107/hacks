@@ -27,18 +27,18 @@ import org.apache.poi.util.IOUtils;
 
 public abstract class HMEFTest extends TestCase {
    protected static final POIDataSamples _samples = POIDataSamples.getHMEFInstance();
-   
-   protected void assertContents(String filename, Attachment attachment) 
+
+   protected void assertContents(String filename, Attachment attachment)
          throws IOException {
       assertEquals(filename, attachment.getLongFilename());
       assertContents(filename, attachment.getContents());
    }
-   protected void assertContents(String filename, byte[] actual) 
+   protected void assertContents(String filename, byte[] actual)
          throws IOException {
       InputStream stream = _samples.openResourceAsStream("quick-contents/" + filename);
       try {
           byte[] expected = IOUtils.toByteArray(stream);
-          
+
           assertEquals(expected.length, actual.length);
           for(int i=0; i<expected.length; i++) {
               assertEquals("Byte " + i + " wrong", expected[i], actual[i]);

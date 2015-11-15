@@ -42,7 +42,7 @@ public class IllegalPropertySetDataException extends HPSFRuntimeException
 
     /**
      * <p>Constructor</p>
-     * 
+     *
      * @param msg The exception's message string
      */
     public IllegalPropertySetDataException(final String msg)
@@ -54,7 +54,7 @@ public class IllegalPropertySetDataException extends HPSFRuntimeException
 
     /**
      * <p>Constructor</p>
-     * 
+     *
      * @param reason This exception's underlying reason
      */
     public IllegalPropertySetDataException(final Throwable reason)
@@ -66,7 +66,7 @@ public class IllegalPropertySetDataException extends HPSFRuntimeException
 
     /**
      * <p>Constructor</p>
-     * 
+     *
      * @param msg The exception's message string
      * @param reason This exception's underlying reason
      */

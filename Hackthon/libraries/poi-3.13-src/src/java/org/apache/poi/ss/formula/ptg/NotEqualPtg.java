@@ -30,7 +30,7 @@ public final class NotEqualPtg extends ValueOperatorPtg {
     private NotEqualPtg() {
     	// enforce singleton
     }
-    
+
     protected byte getSid() {
     	return sid;
     }

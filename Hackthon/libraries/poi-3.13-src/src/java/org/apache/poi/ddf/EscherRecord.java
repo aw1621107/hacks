@@ -255,7 +255,7 @@ public abstract class EscherRecord {
 
     /**
      * Returns the instance part of the option record.
-     * 
+     *
      * @return The instance part of the record
      */
     public short getInstance()
@@ -265,7 +265,7 @@ public abstract class EscherRecord {
 
     /**
      * Sets the instance part of record
-     * 
+     *
      * @param value
      *            instance part value
      */
@@ -276,7 +276,7 @@ public abstract class EscherRecord {
 
     /**
      * Returns the version part of the option record.
-     * 
+     *
      * @return The version part of the option record
      */
     public short getVersion()
@@ -286,7 +286,7 @@ public abstract class EscherRecord {
 
     /**
      * Sets the version part of record
-     * 
+     *
      * @param value
      *            version part value
      */
@@ -307,14 +307,14 @@ public abstract class EscherRecord {
                 .append(tab).append("</").append(getClass().getSimpleName()).append(">\n");
         return builder.toString();
     }
-    
+
     protected String formatXmlRecordHeader(String className, String recordId, String version, String instance){
         StringBuilder builder = new StringBuilder();
         builder.append("<").append(className).append(" recordId=\"0x").append(recordId).append("\" version=\"0x")
                 .append(version).append("\" instance=\"0x").append(instance).append("\" size=\"").append(getRecordSize()).append("\">\n");
         return builder.toString();
     }
-    
+
     public String toXml(){
         return toXml("");
     }

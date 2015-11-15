@@ -26,7 +26,7 @@ import org.apache.poi.util.StringUtil;
 
 /**
  * SXVDEX - Extended PivotTable View Fields (0x0100)<br/>
- * 
+ *
  * @author Patrick Cheng
  */
 public final class ExtendedPivotTableViewFieldsRecord extends StandardRecord {
@@ -99,7 +99,7 @@ public final class ExtendedPivotTableViewFieldsRecord extends StandardRecord {
 
 	@Override
 	protected int getDataSize() {
-		
+
 		return 4 + 1 + 1 + 2 + 2 + 2 +  4 + 4 +
 					(_subtotalName == null ? 0 : (2*_subtotalName.length())); // in unicode
 	}

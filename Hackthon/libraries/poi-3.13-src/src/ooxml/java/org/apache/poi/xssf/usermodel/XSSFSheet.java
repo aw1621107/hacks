@@ -409,10 +409,10 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
             columnHelper.setColBestFit(column, true);
         }
     }
-    
+
     /**
      * Return the sheet's existing drawing, or null if there isn't yet one.
-     * 
+     *
      * Use {@link #createDrawingPatriarch()} to get or create
      *
      * @return a SpreadsheetML drawing
@@ -447,7 +447,7 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
         if (ctDrawing != null) {
             return getDrawingPatriarch();
         }
-        
+
         //drawingNumber = #drawings.size() + 1
         int drawingNumber = getPackagePart().getPackage().getPartsByContentType(XSSFRelation.DRAWINGS.getContentType()).size() + 1;
         XSSFDrawing drawing = (XSSFDrawing)createRelationship(XSSFRelation.DRAWINGS, XSSFFactory.getInstance(), drawingNumber);
@@ -457,7 +457,7 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
         //The relationship Id references the part containing the drawingML definitions.
         ctDrawing = worksheet.addNewDrawing();
         ctDrawing.setId(relId);
-        
+
         // Return the newly created drawing
         return drawing;
     }
@@ -606,14 +606,14 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
         XSSFRow prev = _rows.get(rownum);
         if(prev != null){
             // the Cells in an existing row are invalidated on-purpose, in order to clean up correctly, we
-            // need to call the remove, so things like ArrayFormulas and CalculationChain updates are done 
-            // correctly. 
-            // We remove the cell this way as the internal cell-list is changed by the remove call and 
+            // need to call the remove, so things like ArrayFormulas and CalculationChain updates are done
+            // correctly.
+            // We remove the cell this way as the internal cell-list is changed by the remove call and
             // thus would cause ConcurrentModificationException otherwise
             while(prev.getFirstCellNum() != -1) {
                 prev.removeCell(prev.getCell(prev.getFirstCellNum()));
             }
-            
+
             ctRow = prev.getCTRow();
             ctRow.set(CTRow.Factory.newInstance());
         } else {
@@ -733,7 +733,7 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
 
     /**
      * Get the actual column width in pixels
-     * 
+     *
      * <p>
      * Please note, that this method works correctly only for workbooks
      * with the default font size (Calibri 11pt for .xlsx).
@@ -744,7 +744,7 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
         float widthIn256 = getColumnWidth(columnIndex);
         return (float)(widthIn256/256.0*XSSFWorkbook.DEFAULT_CHARACTER_WIDTH);
     }
-    
+
     /**
      * Get the default column width for the sheet (if the columns do not define their own width) in
      * characters.
@@ -1206,8 +1206,8 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
     }
 
     /**
-     * Sets the sheet password. 
-     * 
+     * Sets the sheet password.
+     *
      * @param password if null, the password will be removed
      * @param hashAlgo if null, the password will be set as XOR password (Excel 2010 and earlier)
      *  otherwise the given algorithm is used for calculating the hash password (Excel 2013)
@@ -1226,7 +1226,7 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
         if (!isSheetProtectionEnabled()) return (password == null);
         return validatePassword(safeGetProtectionField(), password, null);
     }
-    
+
     /**
      * Returns the logical row ( 0-based).  If you ask for a row that is not
      * defined you get a null.  This is to say row 4 represents the fifth row on a sheet.
@@ -1646,7 +1646,7 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
     @Override
     public void removeMergedRegion(int index) {
         if (!worksheet.isSetMergeCells()) return;
-        
+
         CTMergeCells ctMergeCells = worksheet.getMergeCells();
         int size = ctMergeCells.sizeOfMergeCellArray();
         assert(0 <= index && index < size);
@@ -1669,7 +1669,7 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
     @SuppressWarnings("deprecation")
     public void removeMergedRegions(Set<Integer> indices) {
         if (!worksheet.isSetMergeCells()) return;
-        
+
         CTMergeCells ctMergeCells = worksheet.getMergeCells();
         List<CTMergeCell> newMergeCells = new ArrayList<CTMergeCell>(ctMergeCells.sizeOfMergeCellArray());
 
@@ -1677,7 +1677,7 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
         for (CTMergeCell mc : ctMergeCells.getMergeCellArray()) {
             if (!indices.contains(idx++)) newMergeCells.add(mc);
         }
-        
+
         if (newMergeCells.isEmpty()) {
             worksheet.unsetMergeCells();
         } else{
@@ -2629,15 +2629,15 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
         }
 
         // then do the actual moving and also adjust comments/rowHeight
-        // we need to sort it in a way so the shifting does not mess up the structures, 
+        // we need to sort it in a way so the shifting does not mess up the structures,
         // i.e. when shifting down, start from down and go up, when shifting up, vice-versa
         SortedMap<XSSFComment, Integer> commentsToShift = new TreeMap<XSSFComment, Integer>(new Comparator<XSSFComment>() {
 			public int compare(XSSFComment o1, XSSFComment o2) {
 				int row1 = o1.getRow();
 				int row2 = o2.getRow();
-				
+
 				if(row1 == row2) {
-					// ordering is not important when row is equal, but don't return zero to still 
+					// ordering is not important when row is equal, but don't return zero to still
 					// get multiple comments per row into the map
 					return o1.hashCode() - o2.hashCode();
 				}
@@ -2652,7 +2652,7 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
 			}
 		});
 
-        
+
         for (Iterator<Row> it = rowIterator() ; it.hasNext() ; ) {
             XSSFRow row = (XSSFRow)it.next();
             int rownum = row.getRowNum();
@@ -2660,19 +2660,19 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
             if(sheetComments != null){
             	// calculate the new rownum
             	int newrownum = shiftedRowNum(startRow, endRow, n, rownum);
-            	
+
             	// is there a change necessary for the current row?
             	if(newrownum != rownum) {
                     CTCommentList lst = sheetComments.getCTComments().getCommentList();
                     for (CTComment comment : lst.getCommentArray()) {
                     	String oldRef = comment.getRef();
                     	CellReference ref = new CellReference(oldRef);
-                    	
+
                     	// is this comment part of the current row?
                     	if(ref.getRow() == rownum) {
                         	XSSFComment xssfComment = new XSSFComment(sheetComments, comment,
                                     vml == null ? null : vml.findCommentShape(rownum, ref.getCol()));
-                        	
+
                         	// we should not perform the shifting right here as we would then find
                         	// already shifted comments and would shift them again...
                         	commentsToShift.put(xssfComment, newrownum);
@@ -2689,14 +2689,14 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
 
             row.shift(n);
         }
-        
+
         // adjust all the affected comment-structures now
-        // the Map is sorted and thus provides them in the order that we need here, 
+        // the Map is sorted and thus provides them in the order that we need here,
         // i.e. from down to up if shifting down, vice-versa otherwise
         for(Map.Entry<XSSFComment, Integer> entry : commentsToShift.entrySet()) {
         	entry.getKey().setRow(entry.getValue());
         }
-        
+
         XSSFRowShifter rowShifter = new XSSFRowShifter(this);
 
         int sheetIndex = getWorkbook().getSheetIndex(this);
@@ -2722,24 +2722,24 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
     	if(rownum < startRow && (n > 0 || (startRow - rownum) > n)) {
 			return rownum;
 		}
-		
+
     	// no change if after any affected row
     	if(rownum > endRow && (n < 0 || (rownum - endRow) > n)) {
     		return rownum;
     	}
-    	
+
     	// row before and things are moved up
     	if(rownum < startRow) {
     		// row is moved down by the shifting
     		return rownum + (endRow - startRow);
     	}
-    	
+
     	// row is after and things are moved down
     	if(rownum > endRow) {
     		// row is moved up by the shifting
     		return rownum - (endRow - startRow);
     	}
-    	
+
     	// row is part of the shifted block
 		return rownum + n;
 	}
@@ -3946,7 +3946,7 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
         }
         return createPivotTable(source, position, this);
     }
-    
+
     /**
      * Returns all the pivot tables for this Sheet
      */
@@ -3960,7 +3960,7 @@ public class XSSFSheet extends POIXMLDocumentPart implements Sheet {
         }
         return tables;
     }
-    
+
     public int getColumnOutlineLevel(int columnIndex) {
         CTCol col = columnHelper.getColumn(columnIndex, false);
         if (col == null) {

@@ -45,7 +45,7 @@ import com.mysql.jdbc.StringUtils;
 public class MetadataTest extends BaseTestCase {
     /**
      * Creates a new MetadataTest object.
-     * 
+     *
      * @param name
      */
     public MetadataTest(String name) {
@@ -54,7 +54,7 @@ public class MetadataTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -224,10 +224,10 @@ public class MetadataTest extends BaseTestCase {
 
     /**
      * Tests the implementation of metadata for views.
-     * 
+     *
      * This test automatically detects whether or not the server it is running
      * against supports the creation of views.
-     * 
+     *
      * @throws SQLException
      *             if the test fails.
      */
@@ -281,7 +281,7 @@ public class MetadataTest extends BaseTestCase {
 
     /**
      * Tests detection of read-only fields when the server is 4.1.0 or newer.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -731,9 +731,9 @@ public class MetadataTest extends BaseTestCase {
 
     /**
      * WL#411 - Generated columns.
-     * 
+     *
      * Test for new syntax and support in DatabaseMetaData.getColumns().
-     * 
+     *
      * New syntax for CREATE TABLE, introduced in MySQL 5.7.6:
      * -col_name data_type [GENERATED ALWAYS] AS (expression) [VIRTUAL | STORED] [UNIQUE [KEY]] [COMMENT comment] [[NOT] NULL] [[PRIMARY] KEY]
      */

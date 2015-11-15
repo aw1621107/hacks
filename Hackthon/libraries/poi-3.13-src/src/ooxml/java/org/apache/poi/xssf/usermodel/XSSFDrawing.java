@@ -55,7 +55,7 @@ public final class XSSFDrawing extends POIXMLDocumentPart implements Drawing {
      */
     private CTDrawing drawing;
     private long numOfGraphicFrames = 0L;
-    
+
     protected static final String NAMESPACE_A = "http://schemas.openxmlformats.org/drawingml/2006/main";
     protected static final String NAMESPACE_C = "http://schemas.openxmlformats.org/drawingml/2006/chart";
 
@@ -317,7 +317,7 @@ public final class XSSFDrawing extends POIXMLDocumentPart implements Drawing {
         if(comments.findCellComment(ref) != null) {
             throw new IllegalArgumentException("Multiple cell comments in one cell are not allowed, cell: " + ref);
         }
-        
+
         return new XSSFComment(comments, comments.newComment(ref), vmlShape);
     }
 
@@ -340,7 +340,7 @@ public final class XSSFDrawing extends POIXMLDocumentPart implements Drawing {
         graphicFrame.setName("Diagramm" + frameId);
         return graphicFrame;
     }
-    
+
     /**
      * Returns all charts in this drawing.
      */
