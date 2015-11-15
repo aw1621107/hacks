@@ -25,7 +25,10 @@ public class DisplayMain extends JFrame implements ActionListener {
 	private static JLabel lable = new JLabel(tempout);
 
 	public static void main(String[] args) {
-
+		display();
+	}
+		
+	public void display(){	
 		// Container pane = aFrame.getContentPane()...
 		JButton button = new JButton("Button 1 (PAGE_START)");
 		frame.add(button, BorderLayout.PAGE_START);
@@ -33,7 +36,7 @@ public class DisplayMain extends JFrame implements ActionListener {
 		// Make the center component big, since that's the
 		// typical usage of BorderLayout.
 		button = new JButton("Button 2 (CENTER)");
-		//button.setPreferredSize(new Dimension(200, 100));
+		// button.setPreferredSize(new Dimension(200, 100));
 		frame.add(button, BorderLayout.CENTER);
 
 		button = new JButton("Button 3 (LINE_START)");
@@ -42,14 +45,11 @@ public class DisplayMain extends JFrame implements ActionListener {
 		button = new JButton("Long-Named Button 4 (PAGE_END)");
 		frame.add(button, BorderLayout.PAGE_END);
 
-		button = new JButton("5 (LINE_END)");
-		
-		button.addActionListener(thi);
+		JButton button2 = new JButton("5 (LINE_END)");
+
+		button2.addActionListener(this);
 		frame.add(button, BorderLayout.LINE_END);
-		
-		
-		
-		
+
 		// JTextArea textArea = new JTextArea(5, 20);
 		// JScrollPane scrollPane = new JScrollPane(textArea);
 		// textArea.setEditable(false);
@@ -59,7 +59,6 @@ public class DisplayMain extends JFrame implements ActionListener {
 		frame.setTitle(TITLE);
 		// frame.add(textArea);
 
-		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
@@ -86,10 +85,10 @@ public class DisplayMain extends JFrame implements ActionListener {
 
 		button = new JButton("5 (LINE_END)");
 		frame.add(button, BorderLayout.LINE_END);
-		
+
 	}
 
-	public void actionPerformed(ActionEvent e){
-		
+	public void actionPerformed(ActionEvent e) {
+
 	}
-	}
+}
