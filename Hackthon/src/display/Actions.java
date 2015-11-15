@@ -1,12 +1,11 @@
 package display;
 
-public class Actions {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-	public  String todis(){
+static class Actions implements ActionListener{
+
+	public void actionPerformed (ActionEvent e){
 		
-		
-		
-		
-		return null;
 	}
 }
