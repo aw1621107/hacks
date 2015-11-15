@@ -1,6 +1,6 @@
 package display;
 
-public class ToDisplay {
+public class Actions {
 
 	public  String todis(){
 		
