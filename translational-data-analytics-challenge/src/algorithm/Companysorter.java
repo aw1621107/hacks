@@ -51,7 +51,7 @@ public class Companysorter {
 			jobname += cell1 + ";";
 			
 			cell2 = data.rows.get(1).cellContents.get(1);
-			//secondcell();
+			secondcell();
 			
 			cell3 = data.rows.get(1).cellContents.get(2);//type of emploment
 			
@@ -88,7 +88,13 @@ public class Companysorter {
 		
 	}
 	private static void thirdcell(){
+		String tempinput = "";
+		MajorType major = MajorType.valueOf(tempinput);
+		switch (major){
 		
+		
+		
+		}
 	}
 	private static void forthcell(){
 		
