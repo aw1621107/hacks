@@ -17,7 +17,7 @@ public class Applicant {
 	final Collection<PreviousEmployment> previousEmployment;
 	final Set<SkillType> skills;
 
-	public Applicant(Set<MajorType> major,
+	public Applicant(Set<MajorType> majors,
 	                 Set<MajorType> minors,
 	                 YearMonth gradDate,
 	                 Set<Degree> priorDegrees,
