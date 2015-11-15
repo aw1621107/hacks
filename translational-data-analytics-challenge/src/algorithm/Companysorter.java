@@ -19,7 +19,7 @@ public class Companysorter {
 	public static String cell4;
 	public static String cell5;
 	
-	private static String tempscore = 0;
+	private static String tempscore;
 	// ideal job
 
 	public String bestjob;
@@ -27,6 +27,8 @@ public class Companysorter {
 	
 	
 	//list of jobs (requirments)
+
+	private static String[] keywordstowant={"quantitative", "hands-on", "communication", "learn", "lead", "collaborate", "experience", "problem solving"," technical", "passion", "team", "interest", "analyze", "flexible","motivated"};
 	
 	public static String jobname = "";
 	public static String[] jobnames;
@@ -38,25 +40,54 @@ public class Companysorter {
 	public static String[] skills;
 	
 	public static void main(String[] args) throws EncryptedDocumentException, InvalidFormatException, IOException {
-
+		
 		Reader inputer = new Reader();
 		SheetData data = inputer.readToStructs(Paths.get("C:", "Users", "dogbi_000" , "Downloads", "Copy of TDA Jobs Data Test.xls" ));
 		
-		
-		for (int i = 1; i < 262; i++) {
-			row = data.rows.get(i).row;
-			cell1 = data.rows.get(i).cellContents.get(1);
+
+	//	for (int i = 1; i < 262; i++) {
+			row = data.rows.get(1).row;
+			cell1 = data.rows.get(1).cellContents.get(0);
 			jobname += cell1 + ";";
-			cell2 = data.rows.get(i).cellContents.get(2);//
 			
-			cell3 = data.rows.get(i).cellContents.get(3);
-			cell4 = data.rows.get(i).cellContents.get(4);
-			cell5 = data.rows.get(i).cellContents.get(5);//
+			cell2 = data.rows.get(1).cellContents.get(1);
+			secondcell();
 			
-			companyscorse[i] = tempscore;
+			cell3 = data.rows.get(1).cellContents.get(2);//type of emploment
+			
+			//cell4 = data.rows.get(i).cellContents.get(3);
+			//cell5 = data.rows.get(i).cellContents.get(4);//compare to skillsneeded
+			
+			//companyscorse[i] = tempscore;
 			tempscore = "";
-		}
+		//}
 		jobnames = jobname.split(";");
+		skills = skill.split(";");
 	}
 
+	private static void secondcell(){
+		boolean keytest = true;
+		while (keytest){
+			int temp = cell2.indexOf(" ");
+			if (temp<0){
+				keytest = false;
+				System.out.println(skill);
+				skill += ";";
+			}else{
+			String temp2 = cell2.substring(0, temp);
+			System.out.println(temp2);
+			for (int j =0; j<keywordstowant.length; j++ ){
+				if (temp2.endsWith(keywordstowant[j])){
+					skill += keywordstowant[j];
+				}
+			}
+			cell2 = cell2.substring(temp +1);
+			}
+		}
+		
+		
+	}
+	private static void thirdcell(){
+		
+	}
 }
