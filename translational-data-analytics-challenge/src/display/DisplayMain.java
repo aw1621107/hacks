@@ -64,7 +64,7 @@ public class DisplayMain extends JFrame/* implements ActionListener */ {
 
 			JButton button = new JButton("Button 1)");
 			button.setPreferredSize(new Dimension(bwidth, bheight));
-			panil.add(button/*, BorderLayout.PAGE_START*/);
+			panil.add(button, BorderLayout.PAGE_START);
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					System.out.println("this is from button one");
