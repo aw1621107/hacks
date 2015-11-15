@@ -51,13 +51,13 @@ public class Companysorter {
 			jobname += cell1 + ";";
 			
 			cell2 = data.rows.get(1).cellContents.get(1);
-			secondcell();
+			//secondcell();
 			
 			cell3 = data.rows.get(1).cellContents.get(2);//type of emploment
 			
 			//cell4 = data.rows.get(i).cellContents.get(3);
-			//cell5 = data.rows.get(i).cellContents.get(4);//compare to skillsneeded
-			
+			cell5 = data.rows.get(1).cellContents.get(4);//compare to skillsneeded
+			fithcell();
 			//companyscorse[i] = tempscore;
 			tempscore = "";
 		//}
@@ -90,4 +90,32 @@ public class Companysorter {
 	private static void thirdcell(){
 		
 	}
+	private static void forthcell(){
+		
+	}
+	private static void fithcell(){
+		boolean keytest = true;
+		while (keytest){
+			int temp = cell5.indexOf(" ");
+			if (temp<0){
+				keytest = false;
+				System.out.println(skill);
+				skill += ";";
+			}else{
+			String temp2 = cell5.substring(0, temp);
+			System.out.println(temp2);
+			for (int j =0; j<keywordstowant.length; j++ ){
+				if (temp2.endsWith(keywordstowant[j])){
+					skill += keywordstowant[j];
+				}
+			}
+			cell5 = cell5.substring(temp +1);
+			}
+		}
+		
+		
+	}
+
+
+
 }
