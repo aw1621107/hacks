@@ -47,10 +47,11 @@ public class Companysorter {
 			row = data.rows.get(i).row;
 			cell1 = data.rows.get(i).cellContents.get(1);
 			jobname += cell1 + ";";
-			cell2 = data.rows.get(i).cellContents.get(2);
+			cell2 = data.rows.get(i).cellContents.get(2);//
+			
 			cell3 = data.rows.get(i).cellContents.get(3);
 			cell4 = data.rows.get(i).cellContents.get(4);
-			cell5 = data.rows.get(i).cellContents.get(5);
+			cell5 = data.rows.get(i).cellContents.get(5);//
 			
 			companyscorse[i] = tempscore;
 			tempscore = "";
