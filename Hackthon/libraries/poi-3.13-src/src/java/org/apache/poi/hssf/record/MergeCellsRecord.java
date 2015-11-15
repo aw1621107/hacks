@@ -29,7 +29,7 @@ import org.apache.poi.util.LittleEndianOutput;
  */
 public final class MergeCellsRecord extends StandardRecord {
     public final static short sid = 0x00E5;
-    /** sometimes the regions array is shared with other MergedCellsRecords */ 
+    /** sometimes the regions array is shared with other MergedCellsRecords */
     private CellRangeAddress[] _regions;
     private final int _startIndex;
     private final int _numberOfRegions;

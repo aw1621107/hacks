@@ -66,7 +66,7 @@ public class TestArrayUtil extends TestCase {
 	private static void assertEquals(int exp, Integer act) {
 		assertEquals(exp, act.intValue());
 	}
-	
+
 	/**
 	 * Test to ensure that arrayMoveWithin works as expected
 	 */

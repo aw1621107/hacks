@@ -45,7 +45,7 @@ public class TestRegressions extends BaseFabricTestCase {
 
     /**
      * Test for Bug#73070 - prepareCall() throws NPE
-     * 
+     *
      * To test this, we create a basic stored procedure with a
      * parameter, call it and check the result.
      */

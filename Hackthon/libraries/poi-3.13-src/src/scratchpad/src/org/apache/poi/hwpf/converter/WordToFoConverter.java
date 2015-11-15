@@ -65,7 +65,7 @@ public class WordToFoConverter extends AbstractWordConverter
 
     /**
      * Java main() interface to interact with {@link WordToFoConverter}
-     * 
+     *
      * <p>
      * Usage: WordToFoConverter infile outfile
      * </p>
@@ -116,7 +116,7 @@ public class WordToFoConverter extends AbstractWordConverter
     /**
      * Creates new instance of {@link WordToFoConverter}. Can be used for output
      * several {@link HWPFDocument}s into single FO document.
-     * 
+     *
      * @param document
      *            XML DOM Document used as XSL FO document. Shall support
      *            namespaces
@@ -167,7 +167,7 @@ public class WordToFoConverter extends AbstractWordConverter
 
         /*
          * 6.4.14 fo:region-body
-         * 
+         *
          * The values of the padding and border-width traits must be "0".
          */
         // WordToFoUtils.setBorder(regionBody, sep.getBrcTop(), "top");

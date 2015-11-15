@@ -30,12 +30,12 @@ import org.apache.poi.util.Internal;
 /**
  * Table Properties. Properties descriptions quoted from official 97-2007 binary file
         format specification.
-    
+
  * <p>
  * NOTE: This source is automatically generated please do not modify this file.  Either subclass or
  *       remove the record in src/types/definitions.
  * <p>
- * This class is internal. It content or properties may change without notice 
+ * This class is internal. It content or properties may change without notice
  * due to changes in our knowledge of internal Microsoft Word binary structures.
 
  * @author S. Ryan Ackley

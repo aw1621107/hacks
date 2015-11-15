@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndian;
 
 /**
  * Hyphenation. Substructure of the {@link CharacterProperties}.
- * 
+ *
  * @author Sergey Vladimirov ( vlsergey {at} gmail {dot} com )
  */
 @Internal

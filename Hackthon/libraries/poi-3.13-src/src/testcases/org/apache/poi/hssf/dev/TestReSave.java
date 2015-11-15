@@ -29,13 +29,13 @@ import org.apache.poi.util.LocaleUtil;
 public class TestReSave extends BaseXLSIteratingTest {
 	static {
 		// these are likely ok to fail
-		EXCLUDED.add("password.xls"); 
+		EXCLUDED.add("password.xls");
 		EXCLUDED.add("43493.xls");	// HSSFWorkbook cannot open it as well
-		EXCLUDED.add("46904.xls"); 
-		EXCLUDED.add("51832.xls");	// password 
+		EXCLUDED.add("46904.xls");
+		EXCLUDED.add("51832.xls");	// password
         EXCLUDED.add("44958_1.xls");   // known bad file
 	}
-	
+
 	@Override
 	void runOneFile(File fileIn) throws Exception {
 		// avoid running on files leftover from previous failed runs
@@ -51,7 +51,7 @@ public class TestReSave extends BaseXLSIteratingTest {
 			File reSavedFile = new File(fileIn.getParentFile(), fileIn.getName().replace(".xls", "-saved.xls"));
 			try {
 				ReSave.main(new String[] { fileIn.getAbsolutePath() });
-				
+
 				// also try BiffViewer on the saved file
                 new TestBiffViewer().runOneFile(reSavedFile);
 
@@ -83,7 +83,7 @@ public class TestReSave extends BaseXLSIteratingTest {
 		List<String> failed = new ArrayList<String>();
 		runOneFile(new File(dataDirName + "/spreadsheet", "49931.xls"));
 
-		assertTrue("Expected to have no failed except the ones excluded, but had: " + failed, 
+		assertTrue("Expected to have no failed except the ones excluded, but had: " + failed,
 				failed.isEmpty());
 	}
 }

@@ -91,7 +91,7 @@ public class FailoverConnectionProxy extends MultiHostConnectionProxy {
 
     /**
      * Instantiates a new FailoverConnectionProxy for the given list of host and connection properties.
-     * 
+     *
      * @param hosts
      *            The lists of hosts available to switch on.
      * @param props
@@ -117,7 +117,7 @@ public class FailoverConnectionProxy extends MultiHostConnectionProxy {
 
     /*
      * Gets locally bound instances of FailoverJdbcInterfaceProxy.
-     * 
+     *
      * @see com.mysql.jdbc.MultiHostConnectionProxy#getNewJdbcInterfaceProxy(java.lang.Object)
      */
     @Override
@@ -127,7 +127,7 @@ public class FailoverConnectionProxy extends MultiHostConnectionProxy {
 
     /*
      * Local implementation for the connection switch exception checker.
-     * 
+     *
      * @see com.mysql.jdbc.MultiHostConnectionProxy#shouldExceptionTriggerConnectionSwitch(java.lang.Throwable)
      */
     @Override
@@ -154,7 +154,7 @@ public class FailoverConnectionProxy extends MultiHostConnectionProxy {
 
     /*
      * Local implementation for the new connection picker.
-     * 
+     *
      * @see com.mysql.jdbc.MultiHostConnectionProxy#pickNewConnection()
      */
     @Override
@@ -177,7 +177,7 @@ public class FailoverConnectionProxy extends MultiHostConnectionProxy {
 
     /**
      * Creates a new connection instance for host pointed out by the given host index.
-     * 
+     *
      * @param hostIndex
      *            The host index in the global hosts list.
      * @return
@@ -189,7 +189,7 @@ public class FailoverConnectionProxy extends MultiHostConnectionProxy {
 
     /**
      * Connects this dynamic failover connection proxy to the host pointed out by the given host index.
-     * 
+     *
      * @param hostIndex
      *            The host index in the global hosts list.
      */
@@ -208,7 +208,7 @@ public class FailoverConnectionProxy extends MultiHostConnectionProxy {
 
     /**
      * Replaces the previous underlying connection by the connection given. State from previous connection, if any, is synchronized with the new one.
-     * 
+     *
      * @param hostIndex
      *            The host index in the global hosts list that matches the given connection.
      * @param connection
@@ -244,7 +244,7 @@ public class FailoverConnectionProxy extends MultiHostConnectionProxy {
     /**
      * Initiates a default failover procedure starting at the given host index.
      * This process tries to connect, sequentially, to the next host in the list. The primary host may or may not be excluded from the connection attempts.
-     * 
+     *
      * @param failedHostIdx
      *            The host index where to start from. First connection attempt will be the next one.
      */
@@ -322,7 +322,7 @@ public class FailoverConnectionProxy extends MultiHostConnectionProxy {
      * - not currently connected to any host.
      * - primary host is vouched (usually because connection to all secondary hosts has failed).
      * - conditions to fall back to primary host are met (or they are disabled).
-     * 
+     *
      * @param currHostIdx
      *            Current host index.
      * @param vouchForPrimaryHost
@@ -361,7 +361,7 @@ public class FailoverConnectionProxy extends MultiHostConnectionProxy {
 
     /**
      * Checks if the given host index points to the primary host.
-     * 
+     *
      * @param hostIndex
      *            The host index in the global hosts list.
      */

@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
 public class ExpressionParser {
     static final HashMap<String, Class<? extends Expression>> impls =
         new HashMap<String, Class<? extends Expression>>();
-    
+
     static {
         impls.put("\\*/ +([\\-\\w]+) +([\\-\\w]+) +([\\-\\w]+)", MultiplyDivideExpression.class);
         impls.put("\\+- +([\\-\\w]+) +([\\-\\w]+) +([\\-\\w]+)( 0)?", AddSubtractExpression.class);

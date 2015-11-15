@@ -111,7 +111,7 @@ public final class NewOleFile extends RandomAccessFile
         NewOleFile nof = new NewOleFile(args[0], "r");
         nof.close();
     }
-    
+
     protected int[] readChain(int[] blockChain, int startBlock) {
 
         int[] tempChain = new int[blockChain.length];

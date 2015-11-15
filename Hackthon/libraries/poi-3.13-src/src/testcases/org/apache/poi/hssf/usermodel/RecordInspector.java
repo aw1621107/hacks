@@ -25,7 +25,7 @@ import org.apache.poi.hssf.record.aggregates.RecordAggregate.RecordVisitor;
 
 /**
  * Test utility class to get {@link Record}s out of HSSF objects
- * 
+ *
  * @author Josh Micich
  */
 public final class RecordInspector {

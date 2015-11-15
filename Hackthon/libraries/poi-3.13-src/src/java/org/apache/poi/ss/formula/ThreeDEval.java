@@ -21,7 +21,7 @@ import org.apache.poi.ss.formula.eval.AreaEval;
 import org.apache.poi.ss.formula.eval.ValueEval;
 
 /**
- * Optional Extension to the likes of {@link AreaEval} and 
+ * Optional Extension to the likes of {@link AreaEval} and
  *  {@link org.apache.poi.ss.formula.eval.AreaEvalBase},
  *  which allows for looking up 3D (sheet+row+column) evaluations
  */

@@ -54,7 +54,7 @@ public class JDBC42UpdatableResultSet extends JDBC4UpdatableResultSet {
 
     /**
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param columnIndex
      * @param type
      * @return
@@ -90,7 +90,7 @@ public class JDBC42UpdatableResultSet extends JDBC4UpdatableResultSet {
 
     /**
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param columnIndex
      * @param x
      * @throws SQLException
@@ -102,7 +102,7 @@ public class JDBC42UpdatableResultSet extends JDBC4UpdatableResultSet {
 
     /**
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param columnIndex
      * @param x
      * @param scaleOrLength
@@ -115,7 +115,7 @@ public class JDBC42UpdatableResultSet extends JDBC4UpdatableResultSet {
 
     /**
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param columnLabel
      * @param x
      * @throws SQLException
@@ -127,7 +127,7 @@ public class JDBC42UpdatableResultSet extends JDBC4UpdatableResultSet {
 
     /**
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param columnLabel
      * @param x
      * @param scaleOrLength
@@ -141,7 +141,7 @@ public class JDBC42UpdatableResultSet extends JDBC4UpdatableResultSet {
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param columnIndex
      * @param x
      * @param targetSqlType
@@ -154,7 +154,7 @@ public class JDBC42UpdatableResultSet extends JDBC4UpdatableResultSet {
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param columnIndex
      * @param x
      * @param targetSqlType
@@ -168,7 +168,7 @@ public class JDBC42UpdatableResultSet extends JDBC4UpdatableResultSet {
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param columnLabel
      * @param x
      * @param targetSqlType
@@ -181,7 +181,7 @@ public class JDBC42UpdatableResultSet extends JDBC4UpdatableResultSet {
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param columnLabel
      * @param x
      * @param targetSqlType

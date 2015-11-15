@@ -23,21 +23,21 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * CHART (0x1002) <p/>
- * 
+ *
  * The chart record is used to define the location and size of a chart.<p/>
- * 
- * Chart related records don't seem to be covered in either the 
- * <A HREF="http://sc.openoffice.org/excelfileformat.pdf">OOO</A> 
- *  or the  
- * <A HREF="http://download.microsoft.com/download/0/B/E/0BE8BDD7-E5E8-422A-ABFD-4342ED7AD886/Excel97-2007BinaryFileFormat(xls)Specification.pdf">MS</A> 
- *  documentation. 
- * 
+ *
+ * Chart related records don't seem to be covered in either the
+ * <A HREF="http://sc.openoffice.org/excelfileformat.pdf">OOO</A>
+ *  or the
+ * <A HREF="http://download.microsoft.com/download/0/B/E/0BE8BDD7-E5E8-422A-ABFD-4342ED7AD886/Excel97-2007BinaryFileFormat(xls)Specification.pdf">MS</A>
+ *  documentation.
+ *
  * The book "Microsoft Excel 97 Developer's Kit" ISBN: (1-57231-498-2) seems to have an entire
- * chapter (10) devoted to Chart records.  One  
+ * chapter (10) devoted to Chart records.  One
  * <A HREF="http://ooxmlisdefectivebydesign.blogspot.com/2008/03/bad-surprise-in-microsoft-office-binary.html">blog</A>
  *  suggests that some documentation for these records is available in "MSDN Library, Feb 1998",
  * but no later.
- *  
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class ChartRecord extends StandardRecord {
@@ -89,7 +89,7 @@ public final class ChartRecord extends StandardRecord {
 
     public Object clone() {
         ChartRecord rec = new ChartRecord();
-    
+
         rec.field_1_x = field_1_x;
         rec.field_2_y = field_2_y;
         rec.field_3_width = field_3_width;

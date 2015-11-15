@@ -140,14 +140,14 @@ public final class TestLinkTable extends TestCase {
 	 * when reading the workbook of attachment 23468 from bugzilla 47001
 	 */
 	public void testMissingExternSheetRecord_bug47001b() {
-		
+
 		Record[] recs = {
 				SupBookRecord.createAddInFunctions(),
 				new SSTRecord(),
 		};
 		List<Record> recList = Arrays.asList(recs);
 		WorkbookRecordList wrl = new WorkbookRecordList();
-		
+
 		LinkTable lt;
 		try {
 			lt = new LinkTable(recList, 0, wrl, Collections.<String, NameCommentRecord>emptyMap());
@@ -155,11 +155,11 @@ public final class TestLinkTable extends TestCase {
 			if (e.getMessage().equals("Expected an EXTERNSHEET record but got (org.apache.poi.hssf.record.SSTRecord)")) {
 				throw new AssertionFailedError("Identified bug 47001b");
 			}
-		
+
 			throw e;
 		}
 		assertNotNull(lt);
-	}	
+	}
 
 	/**
 	 *
@@ -218,12 +218,12 @@ public final class TestLinkTable extends TestCase {
         assertEquals(0, namex1.getSheetRefIndex());
         assertEquals(0, namex1.getNameIndex());
         assertEquals(namex1.toString(), tbl.getNameXPtg("ISODD", -1).toString());
-        
+
         // Can only find on the right sheet ref, if restricting
         assertEquals(namex1.toString(), tbl.getNameXPtg("ISODD", 0).toString());
         assertNull(tbl.getNameXPtg("ISODD", 1));
         assertNull(tbl.getNameXPtg("ISODD", 2));
-        
+
         // assure they are in place:
         //    [BOFRecord]
         //    [CountryRecord]

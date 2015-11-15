@@ -37,7 +37,7 @@ import org.apache.poi.util.LocaleUtil;
 import org.junit.Test;
 
 /**
- * 
+ *
  */
 public final class TestOLE2Embeding {
 
@@ -48,7 +48,7 @@ public final class TestOLE2Embeding {
 
         // Check we can get at the Escher layer still
         workbook.getAllPictures();
-        
+
         workbook.close();
     }
 
@@ -62,10 +62,10 @@ public final class TestOLE2Embeding {
                 objects.get(0).getDirectory().getName());
         assertEquals("Wrong name for second object", "MBD06CAC85A",
                 objects.get(1).getDirectory().getName());
-        
+
         workbook.close();
     }
-    
+
     @Test
     public void testReallyEmbedSomething() throws Exception {
     	HSSFWorkbook wb1 = new HSSFWorkbook();
@@ -81,7 +81,7 @@ public final class TestOLE2Embeding {
     	int imgPPT = wb1.addPicture(picturePPT, HSSFWorkbook.PICTURE_TYPE_JPEG);
     	int xlsIdx = wb1.addOlePackage(xlsPoifs, "Sample-XLS", "sample.xls", "sample.xls");
     	int txtIdx = wb1.addOlePackage(getSampleTXT(), "Sample-TXT", "sample.txt", "sample.txt");
-    	
+
         int rowoffset = 5;
         int coloffset = 5;
 
@@ -89,21 +89,21 @@ public final class TestOLE2Embeding {
         HSSFClientAnchor anchor = (HSSFClientAnchor)ch.createClientAnchor();
         anchor.setAnchor((short)(2+coloffset), 1+rowoffset, 0, 0, (short)(3+coloffset), 5+rowoffset, 0, 0);
         anchor.setAnchorType(ClientAnchor.DONT_MOVE_AND_RESIZE);
-    	
+
         patriarch.createObjectData(anchor, pptIdx, imgPPT);
 
         anchor = (HSSFClientAnchor)ch.createClientAnchor();
         anchor.setAnchor((short)(5+coloffset), 1+rowoffset, 0, 0, (short)(6+coloffset), 5+rowoffset, 0, 0);
         anchor.setAnchorType(ClientAnchor.DONT_MOVE_AND_RESIZE);
-        
+
         patriarch.createObjectData(anchor, xlsIdx, imgIdx);
-        
+
         anchor = (HSSFClientAnchor)ch.createClientAnchor();
         anchor.setAnchor((short)(3+coloffset), 10+rowoffset, 0, 0, (short)(5+coloffset), 11+rowoffset, 0, 0);
         anchor.setAnchorType(ClientAnchor.DONT_MOVE_AND_RESIZE);
-        
+
         patriarch.createObjectData(anchor, txtIdx, imgIdx);
-        
+
         anchor = (HSSFClientAnchor)ch.createClientAnchor();
         anchor.setAnchor((short)(1+coloffset), -2+rowoffset, 0, 0, (short)(7+coloffset), 14+rowoffset, 0, 0);
         anchor.setAnchorType(ClientAnchor.DONT_MOVE_AND_RESIZE);
@@ -117,10 +117,10 @@ public final class TestOLE2Embeding {
 //	        wb.write(fos);
 //	        fos.close();
 //        }
-        
+
         HSSFWorkbook wb2 = HSSFTestDataSamples.writeOutAndReadBack(wb1);
         wb1.close();
-        
+
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         HSSFObjectData od = wb2.getAllEmbeddedObjects().get(0);
         Ole10Native ole10 = Ole10Native.createFromEmbeddedOleObject((DirectoryNode)od.getDirectory());
@@ -137,21 +137,21 @@ public final class TestOLE2Embeding {
         od = wb2.getAllEmbeddedObjects().get(2);
         ole10 = Ole10Native.createFromEmbeddedOleObject((DirectoryNode)od.getDirectory());
         assertArrayEquals(ole10.getDataBuffer(), getSampleTXT());
-    
+
         xlsPoifs.close();
         pptPoifs.close();
         wb2.close();
     }
-    
+
     static POIFSFileSystem getSamplePPT() throws IOException {
     	// scratchpad classes are not available, so we use something pre-cooked
     	InputStream is = POIDataSamples.getSlideShowInstance().openResourceAsStream("with_textbox.ppt");
     	POIFSFileSystem poifs = new POIFSFileSystem(is);
     	is.close();
-        
+
         return poifs;
     }
-    
+
     static POIFSFileSystem getSampleXLS() throws IOException {
         HSSFWorkbook wb = new HSSFWorkbook();
         HSSFSheet sheet = wb.createSheet();
@@ -161,11 +161,11 @@ public final class TestOLE2Embeding {
     	wb.write(bos);
     	wb.close();
     	POIFSFileSystem poifs = new POIFSFileSystem(new ByteArrayInputStream(bos.toByteArray()));
-        
+
         return poifs;
     }
-    
+
     static byte[] getSampleTXT() {
         return "All your base are belong to us".getBytes(LocaleUtil.CHARSET_1252);
-    }    
+    }
 }

@@ -28,10 +28,10 @@ import org.apache.poi.util.LittleEndianOutput;
  * <p>Title:        Reference 3D Ptg</p>
  * <p>Description:  Defined a cell in extern sheet.</p>
  * <p>REFERENCE: </p>
- * 
+ *
  * <p>This is HSSF only, as it matches the HSSF file format way of
  *  referring to the sheet by an extern index. The XSSF equivalent
- *  is {@link Ref3DPxg} 
+ *  is {@link Ref3DPxg}
  */
 public final class Ref3DPtg extends RefPtgBase implements WorkbookDependentFormula, ExternSheetReferenceToken {
     public final static byte sid  = 0x3a;

@@ -33,7 +33,7 @@ public final class IconMultiStateThreshold extends Threshold {
      * Cell values that are equal to the threshold value pass the threshold.
      */
     public static final byte EQUALS_INCLUDE = 1;
-    
+
     private byte equals;
 
     public IconMultiStateThreshold() {

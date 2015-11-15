@@ -44,7 +44,7 @@ public final class TestTime {
 	private HSSFWorkbook wb;
 	private HSSFDataFormatter form;
 	private HSSFCellStyle style;
-	
+
 	@Before
 	public void setUp() {
 		wb = new HSSFWorkbook();

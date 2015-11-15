@@ -25,21 +25,21 @@ import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTDialogsheet;
 
 
 public class TestXSSFDialogSheet extends TestCase {
-	
+
 
 	public void testCreateDialogSheet() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         Sheet dialogsheet = workbook.createDialogsheet("Dialogsheet 1", CTDialogsheet.Factory.newInstance());
         assertNotNull(dialogsheet);
 	}
-    
+
     public void testGetDialog() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFDialogsheet dialogsheet = workbook.createDialogsheet("Dialogsheet 1", null);
         assertTrue(dialogsheet.getDialog());
-    	
+
     }
-	
+
 	public void testAddRow() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         Sheet dialogsheet = workbook.createDialogsheet("Dialogsheet 1", CTDialogsheet.Factory.newInstance());
@@ -47,7 +47,7 @@ public class TestXSSFDialogSheet extends TestCase {
         Row row = dialogsheet.createRow(0);
         assertNull(row);
 	}
-    
+
     public void testGetSetAutoBreaks() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFDialogsheet sheet = workbook.createDialogsheet("Dialogsheet 1", null);
@@ -55,7 +55,7 @@ public class TestXSSFDialogSheet extends TestCase {
         sheet.setAutobreaks(false);
         assertFalse(sheet.getAutobreaks());
     }
-    
+
     public void testIsSetFitToPage() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFDialogsheet sheet = workbook.createDialogsheet("Dialogsheet 1", null);
@@ -65,8 +65,8 @@ public class TestXSSFDialogSheet extends TestCase {
         sheet.setFitToPage(false);
         assertFalse(sheet.getFitToPage());
     }
-    
-   
+
+
     public void testGetFooter() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFDialogsheet sheet = workbook.createDialogsheet("Dialogsheet 1", null);
@@ -74,7 +74,7 @@ public class TestXSSFDialogSheet extends TestCase {
         sheet.getFooter().setCenter("test center footer");
         assertEquals("test center footer", sheet.getFooter().getCenter());
     }
-    
+
     public void testGetAllHeadersFooters() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFDialogsheet sheet = workbook.createDialogsheet("Dialogsheet 1", null);
@@ -85,33 +85,33 @@ public class TestXSSFDialogSheet extends TestCase {
         assertNotNull(sheet.getOddHeader());
         assertNotNull(sheet.getEvenHeader());
         assertNotNull(sheet.getFirstHeader());
-        
+
         assertEquals("", sheet.getOddFooter().getLeft());
         sheet.getOddFooter().setLeft("odd footer left");
         assertEquals("odd footer left", sheet.getOddFooter().getLeft());
-        
+
         assertEquals("", sheet.getEvenFooter().getLeft());
         sheet.getEvenFooter().setLeft("even footer left");
         assertEquals("even footer left", sheet.getEvenFooter().getLeft());
-        
+
         assertEquals("", sheet.getFirstFooter().getLeft());
         sheet.getFirstFooter().setLeft("first footer left");
         assertEquals("first footer left", sheet.getFirstFooter().getLeft());
-        
+
         assertEquals("", sheet.getOddHeader().getLeft());
         sheet.getOddHeader().setLeft("odd header left");
         assertEquals("odd header left", sheet.getOddHeader().getLeft());
-        
+
         assertEquals("", sheet.getOddHeader().getRight());
         sheet.getOddHeader().setRight("odd header right");
         assertEquals("odd header right", sheet.getOddHeader().getRight());
-        
+
         assertEquals("", sheet.getOddHeader().getCenter());
         sheet.getOddHeader().setCenter("odd header center");
         assertEquals("odd header center", sheet.getOddHeader().getCenter());
 
     }
-    
+
     public void testGetSetHorizontallyCentered() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFDialogsheet sheet = workbook.createDialogsheet("Dialogsheet 1", null);
@@ -121,7 +121,7 @@ public class TestXSSFDialogSheet extends TestCase {
         sheet.setHorizontallyCenter(false);
         assertFalse(sheet.getHorizontallyCenter());
     }
-    
+
     public void testGetSetVerticallyCentered() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFDialogsheet sheet = workbook.createDialogsheet("Dialogsheet 1", null);
@@ -131,7 +131,7 @@ public class TestXSSFDialogSheet extends TestCase {
         sheet.setVerticallyCenter(false);
         assertFalse(sheet.getVerticallyCenter());
     }
-    
+
     public void testIsSetPrintGridlines() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFDialogsheet sheet = workbook.createDialogsheet("Dialogsheet 1", null);
@@ -139,7 +139,7 @@ public class TestXSSFDialogSheet extends TestCase {
         sheet.setPrintGridlines(true);
         assertTrue(sheet.isPrintGridlines());
     }
-    
+
     public void testIsSetDisplayFormulas() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFDialogsheet sheet = workbook.createDialogsheet("Dialogsheet 1", null);
@@ -147,7 +147,7 @@ public class TestXSSFDialogSheet extends TestCase {
         sheet.setDisplayFormulas(true);
         assertTrue(sheet.isDisplayFormulas());
     }
-    
+
     public void testIsSetDisplayGridLines() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFDialogsheet sheet = workbook.createDialogsheet("Dialogsheet 1", null);
@@ -155,7 +155,7 @@ public class TestXSSFDialogSheet extends TestCase {
         sheet.setDisplayGridlines(false);
         assertFalse(sheet.isDisplayGridlines());
     }
-    
+
     public void testIsSetDisplayRowColHeadings() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFDialogsheet sheet = workbook.createDialogsheet("Dialogsheet 1", null);
@@ -163,11 +163,11 @@ public class TestXSSFDialogSheet extends TestCase {
         sheet.setDisplayRowColHeadings(false);
         assertFalse(sheet.isDisplayRowColHeadings());
     }
-    
+
     public void testGetScenarioProtect() {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFDialogsheet sheet = workbook.createDialogsheet("Dialogsheet 1", null);
         assertFalse(sheet.getScenarioProtect());
     }
-	
+
 }

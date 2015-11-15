@@ -48,12 +48,12 @@ import org.openxmlformats.schemas.drawingml.x2006.main.ThemeDocument;
 public class XSLFTheme extends POIXMLDocumentPart {
     private CTOfficeStyleSheet _theme;
     private Map<String, CTColor> _schemeColors;
-    
+
     XSLFTheme() {
         super();
         _theme = CTOfficeStyleSheet.Factory.newInstance();
     }
-    
+
     public XSLFTheme(PackagePart part, PackageRelationship rel) throws IOException, XmlException {
         super(part, rel);
         ThemeDocument doc =
@@ -61,7 +61,7 @@ public class XSLFTheme extends POIXMLDocumentPart {
         _theme = doc.getTheme();
         initialize();
     }
-    
+
     public void importTheme(XSLFTheme theme) {
         _theme = theme.getXmlObject();
         _schemeColors = theme._schemeColors;
@@ -70,7 +70,7 @@ public class XSLFTheme extends POIXMLDocumentPart {
     private void initialize(){
     	CTBaseStyles elems = _theme.getThemeElements();
     	CTColorScheme scheme = elems.getClrScheme();
-    	// The color scheme is responsible for defining a list of twelve colors. 
+    	// The color scheme is responsible for defining a list of twelve colors.
     	_schemeColors = new HashMap<String, CTColor>(12);
     	for(XmlObject o : scheme.selectPath("*")){
     		CTColor c = (CTColor)o;
@@ -110,13 +110,13 @@ public class XSLFTheme extends POIXMLDocumentPart {
 
     /**
      * Get a color from the theme's color scheme by name
-     * 
+     *
      * @return a theme color or <code>null</code> if not found
      */
     CTColor getCTColor(String name){
     	return _schemeColors.get(name);
     }
-    
+
     /**
      * While developing only!
      */

@@ -40,7 +40,7 @@ import org.apache.poi.util.StringUtil;
  *               It is considered more desirable then repeating it in all of them.<p/>
  *               This is often called a XLUnicodeRichExtendedString in MS documentation.<p/>
  * REFERENCE:  PG 264 Microsoft Excel 97 Developer's Kit (ISBN: 1-57231-498-2)<p/>
- * REFERENCE:  PG 951 Excel Binary File Format (.xls) Structure Specification v20091214 
+ * REFERENCE:  PG 951 Excel Binary File Format (.xls) Structure Specification v20091214
  */
 public class UnicodeString implements Comparable<UnicodeString> { // TODO - make this final when the compatibility version is removed
     private static POILogger _logger = POILogFactory.getLogger(UnicodeString.class);
@@ -110,19 +110,19 @@ public class UnicodeString implements Comparable<UnicodeString> { // TODO - make
             out.writeShort(_fontIndex);
         }
     }
-    
+
     // See page 681
     public static class ExtRst implements Comparable<ExtRst> {
        private short reserved;
-       
+
        // This is a Phs (see page 881)
        private short formattingFontIndex;
        private short formattingOptions;
-       
+
        // This is a RPHSSub (see page 894)
        private int numberOfRuns;
        private String phoneticText;
-       
+
        // This is an array of PhRuns (see page 881)
        private PhRun[] phRuns;
        // Sometimes there's some cruft at the end
@@ -134,19 +134,19 @@ public class UnicodeString implements Comparable<UnicodeString> { // TODO - make
           phRuns = new PhRun[0];
           extraData = new byte[0];
        }
-       
+
        protected ExtRst() {
           populateEmpty();
        }
        protected ExtRst(LittleEndianInput in, int expectedLength) {
           reserved = in.readShort();
-          
+
           // Old style detection (Reserved = 0xFF)
           if(reserved == -1) {
              populateEmpty();
              return;
           }
-          
+
           // Spot corrupt records
           if(reserved != 1) {
              _logger.log(POILogger.WARN, "Warning - ExtRst has wrong magic marker, expecting 1 but found " + reserved + " - ignoring");
@@ -161,10 +161,10 @@ public class UnicodeString implements Comparable<UnicodeString> { // TODO - make
 
           // Carry on reading in as normal
           short stringDataSize = in.readShort();
-          
+
           formattingFontIndex = in.readShort();
           formattingOptions   = in.readShort();
-          
+
           // RPHSSub
           numberOfRuns = in.readUShort();
           short length1 = in.readShort();
@@ -182,7 +182,7 @@ public class UnicodeString implements Comparable<UnicodeString> { // TODO - make
              );
           }
           phoneticText = StringUtil.readUnicodeLE(in, length1);
-          
+
           int runData = stringDataSize - 4 - 6 - (2*phoneticText.length());
           int numRuns = (runData / 6);
           phRuns = new PhRun[numRuns];
@@ -201,34 +201,34 @@ public class UnicodeString implements Comparable<UnicodeString> { // TODO - make
           }
        }
        /**
-        * Returns our size, excluding our 
+        * Returns our size, excluding our
         *  4 byte header
         */
        protected int getDataSize() {
-          return 4 + 6 + (2*phoneticText.length()) + 
+          return 4 + 6 + (2*phoneticText.length()) +
              (6*phRuns.length) + extraData.length;
        }
        protected void serialize(ContinuableRecordOutput out) {
           int dataSize = getDataSize();
-          
+
           out.writeContinueIfRequired(8);
           out.writeShort(reserved);
           out.writeShort(dataSize);
           out.writeShort(formattingFontIndex);
           out.writeShort(formattingOptions);
-          
+
           out.writeContinueIfRequired(6);
           out.writeShort(numberOfRuns);
           out.writeShort(phoneticText.length());
           out.writeShort(phoneticText.length());
-          
+
           out.writeContinueIfRequired(phoneticText.length()*2);
           StringUtil.putUnicodeLE(phoneticText, out);
-          
+
           for(int i=0; i<phRuns.length; i++) {
              phRuns[i].serialize(out);
           }
-          
+
           out.write(extraData);
        }
 
@@ -241,7 +241,7 @@ public class UnicodeString implements Comparable<UnicodeString> { // TODO - make
        }
        public int compareTo(ExtRst o) {
           int result;
-          
+
           result = reserved - o.reserved;
           if(result != 0) return result;
           result = formattingFontIndex - o.formattingFontIndex;
@@ -250,10 +250,10 @@ public class UnicodeString implements Comparable<UnicodeString> { // TODO - make
           if(result != 0) return result;
           result = numberOfRuns - o.numberOfRuns;
           if(result != 0) return result;
-          
+
           result = phoneticText.compareTo(o.phoneticText);
           if(result != 0) return result;
-          
+
           result = phRuns.length - o.phRuns.length;
           if(result != 0) return result;
           for(int i=0; i<phRuns.length; i++) {
@@ -264,9 +264,9 @@ public class UnicodeString implements Comparable<UnicodeString> { // TODO - make
              result = phRuns[i].realTextLength - o.phRuns[i].realTextLength;
              if(result != 0) return result;
           }
-          
+
           result = Arrays.hashCode(extraData)-Arrays.hashCode(o.extraData);
-          
+
           return result;
        }
 
@@ -305,7 +305,7 @@ public class UnicodeString implements Comparable<UnicodeString> { // TODO - make
           }
           return ext;
        }
-       
+
        public short getFormattingFontIndex() {
          return formattingFontIndex;
        }
@@ -326,7 +326,7 @@ public class UnicodeString implements Comparable<UnicodeString> { // TODO - make
        private int phoneticTextFirstCharacterOffset;
        private int realTextFirstCharacterOffset;
        private int realTextLength;
-       
+
        public PhRun(int phoneticTextFirstCharacterOffset,
             int realTextFirstCharacterOffset, int realTextLength) {
          this.phoneticTextFirstCharacterOffset = phoneticTextFirstCharacterOffset;
@@ -723,7 +723,7 @@ public class UnicodeString implements Comparable<UnicodeString> { // TODO - make
         if (isExtendedText() && field_5_ext_rst != null) {
             extendedDataSize = 4 + field_5_ext_rst.getDataSize();
         }
-       
+
         // Serialise the bulk of the String
         // The writeString handles tricky continue stuff for us
         out.writeString(field_3_string, numberOfRichTextRuns, extendedDataSize);
@@ -787,7 +787,7 @@ public class UnicodeString implements Comparable<UnicodeString> { // TODO - make
         if ((field_5_ext_rst != null) && (str.field_5_ext_rst == null))
           return -1;
 
-        result = field_5_ext_rst.compareTo(str.field_5_ext_rst); 
+        result = field_5_ext_rst.compareTo(str.field_5_ext_rst);
         if (result != 0)
            return result;
 

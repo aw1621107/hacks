@@ -26,17 +26,17 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The Tick record defines how tick marks and label positioning/formatting<p/>
- * 
+ *
  * @author Andrew C. Oliver(acoliver at apache.org)
  */
 public final class TickRecord extends StandardRecord {
     public final static short sid = 0x101E;
-    
+
     private static final BitField autoTextColor      = BitFieldFactory.getInstance(0x1);
     private static final BitField autoTextBackground = BitFieldFactory.getInstance(0x2);
     private static final BitField rotation           = BitFieldFactory.getInstance(0x1c);
     private static final BitField autorotate         = BitFieldFactory.getInstance(0x20);
-    
+
     private  byte       field_1_majorTickType;
     private  byte       field_2_minorTickType;
     private  byte       field_3_labelPosition;
@@ -68,7 +68,7 @@ public final class TickRecord extends StandardRecord {
         field_7_zero2                  = in.readInt();
         field_8_zero3                  = in.readInt();
         field_9_zero4                  = in.readInt();
-        
+
         field_10_options                = in.readShort();
         field_11_tickColor              = in.readShort();
         field_12_zero5                 = in.readShort();
@@ -82,47 +82,47 @@ public final class TickRecord extends StandardRecord {
         buffer.append("    .majorTickType        = ")
             .append("0x").append(HexDump.toHex(  getMajorTickType ()))
             .append(" (").append( getMajorTickType() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .minorTickType        = ")
             .append("0x").append(HexDump.toHex(  getMinorTickType ()))
             .append(" (").append( getMinorTickType() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .labelPosition        = ")
             .append("0x").append(HexDump.toHex(  getLabelPosition ()))
             .append(" (").append( getLabelPosition() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .background           = ")
             .append("0x").append(HexDump.toHex(  getBackground ()))
             .append(" (").append( getBackground() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .labelColorRgb        = ")
             .append("0x").append(HexDump.toHex(  getLabelColorRgb ()))
             .append(" (").append( getLabelColorRgb() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .zero1                = ")
             .append("0x").append(HexDump.toHex(  getZero1 ()))
             .append(" (").append( getZero1() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .zero2                = ")
             .append("0x").append(HexDump.toHex(  getZero2 ()))
             .append(" (").append( getZero2() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .options              = ")
             .append("0x").append(HexDump.toHex(  getOptions ()))
             .append(" (").append( getOptions() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
-        buffer.append("         .autoTextColor            = ").append(isAutoTextColor()).append('\n'); 
-        buffer.append("         .autoTextBackground       = ").append(isAutoTextBackground()).append('\n'); 
-            buffer.append("         .rotation                 = ").append(getRotation()).append('\n'); 
-        buffer.append("         .autorotate               = ").append(isAutorotate()).append('\n'); 
+        buffer.append(System.getProperty("line.separator"));
+        buffer.append("         .autoTextColor            = ").append(isAutoTextColor()).append('\n');
+        buffer.append("         .autoTextBackground       = ").append(isAutoTextBackground()).append('\n');
+            buffer.append("         .rotation                 = ").append(getRotation()).append('\n');
+        buffer.append("         .autorotate               = ").append(isAutorotate()).append('\n');
         buffer.append("    .tickColor            = ")
             .append("0x").append(HexDump.toHex(  getTickColor ()))
             .append(" (").append( getTickColor() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .zero3                = ")
             .append("0x").append(HexDump.toHex(  getZero3 ()))
             .append(" (").append( getZero3() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/TICK]\n");
         return buffer.toString();
@@ -154,7 +154,7 @@ public final class TickRecord extends StandardRecord {
 
     public Object clone() {
         TickRecord rec = new TickRecord();
-    
+
         rec.field_1_majorTickType = field_1_majorTickType;
         rec.field_2_minorTickType = field_2_minorTickType;
         rec.field_3_labelPosition = field_3_labelPosition;

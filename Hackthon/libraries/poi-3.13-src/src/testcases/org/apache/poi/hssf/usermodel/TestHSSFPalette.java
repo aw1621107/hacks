@@ -140,7 +140,7 @@ public final class TestHSSFPalette extends TestCase {
     public void testFindSimilar() {
         HSSFWorkbook book = new HSSFWorkbook();
         HSSFPalette p = book.getCustomPalette();
-        
+
         /* first test the defaults */
         assertArrayEquals(
         				new short[] {(short) 255, (short) 255, (short) 0}, // not [204, 255, 255]
@@ -209,7 +209,7 @@ public final class TestHSSFPalette extends TestCase {
                 p.getColor((short)12).getHexString(),
                 p.findSimilarColor((byte)-1, (byte)2, (byte)10).getHexString()
         );
-        
+
         // And with ints not bytes
         assertEquals(
                 p.getColor((short)11).getHexString(),
@@ -220,7 +220,7 @@ public final class TestHSSFPalette extends TestCase {
                 p.findSimilarColor(255, 2, 10).getHexString()
         );
     }
-    
+
     /**
      * Verifies that the generated gnumeric-format string values match the
      * hardcoded values in the HSSFColor default color palette

@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_Path2DLineTo complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_Path2DLineTo">
  *   &lt;complexContent>
@@ -39,8 +39,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_Path2DLineTo", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main", propOrder = {
@@ -53,11 +53,11 @@ public class CTPath2DLineTo {
 
     /**
      * Gets the value of the pt property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTAdjPoint2D }
-     *     
+     *
      */
     public CTAdjPoint2D getPt() {
         return pt;
@@ -65,11 +65,11 @@ public class CTPath2DLineTo {
 
     /**
      * Sets the value of the pt property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTAdjPoint2D }
-     *     
+     *
      */
     public void setPt(CTAdjPoint2D value) {
         this.pt = value;

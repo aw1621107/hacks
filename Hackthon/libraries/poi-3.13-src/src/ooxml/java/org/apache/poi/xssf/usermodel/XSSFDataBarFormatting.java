@@ -23,7 +23,7 @@ import org.apache.poi.ss.usermodel.DataBarFormatting;
 import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTDataBar;
 
 /**
- * High level representation for DataBar / Data Bar Formatting 
+ * High level representation for DataBar / Data Bar Formatting
  *  component of Conditional Formatting settings
  */
 public class XSSFDataBarFormatting implements DataBarFormatting {

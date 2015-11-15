@@ -312,7 +312,7 @@ public class LbsDataSubRecord extends SubRecord {
         public static final int STYLE_COMBO_SIMPLE_DROPDOWN = 2;
 
         /**
-         *  An unsigned integer that specifies the style of this dropdown. 
+         *  An unsigned integer that specifies the style of this dropdown.
          */
         private int _wStyle;
 

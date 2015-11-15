@@ -44,17 +44,17 @@ public class TestTempFile {
 
         // Can't think of a good way to check whether a file is actually deleted since it would require the VM to stop.
     }
-    
+
     @Test
     public void testConstructor() {
         // can currently be constructed...
         new TempFile();
     }
-    
+
     @Test(expected=IllegalArgumentException.class)
     public void testSetTempFileCreationStrategy() throws IOException {
         TempFile.setTempFileCreationStrategy(new TempFile.DefaultTempFileCreationStrategy());
-        
+
         File file1 = TempFile.createTempFile("TestTempFile", ".tst");
         File file2 = TempFile.createTempFile("TestTempFile", ".tst");
         assertFalse(file1.equals(file2));
@@ -62,7 +62,7 @@ public class TestTempFile {
         assertTrue(file2.delete());
         assertNotNull(file1);
         assertTrue(file1.delete());
-        
+
         TempFile.setTempFileCreationStrategy(null);
     }
 }

@@ -72,12 +72,12 @@ public interface FontFormatting {
      * @param color font colour index
      */
     void setFontColorIndex(short color);
-    
+
     /**
      * @return The colour of the font, or null if no colour applied
      */
     Color getFontColor();
-    
+
     /**
      * Sets the colour to use
      * @param color font colour to use

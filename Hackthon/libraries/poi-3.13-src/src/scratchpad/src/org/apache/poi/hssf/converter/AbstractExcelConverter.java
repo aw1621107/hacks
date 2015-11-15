@@ -32,7 +32,7 @@ import org.w3c.dom.Document;
 
 /**
  * Common class for {@link ExcelToFoConverter} and {@link ExcelToHtmlConverter}
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  * @see AbstractWordConverter
  */
@@ -68,7 +68,7 @@ public abstract class AbstractExcelConverter
     /**
      * Generates name for output as column header in case
      * <tt>{@link #isOutputColumnHeaders()} == true</tt>
-     * 
+     *
      * @param columnIndex
      *            0-based column index
      */

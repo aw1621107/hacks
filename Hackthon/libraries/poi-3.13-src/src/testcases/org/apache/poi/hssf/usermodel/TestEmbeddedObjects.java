@@ -36,7 +36,7 @@ public class TestEmbeddedObjects extends TestCase{
         assertNotNull(obj.getDirectory());
         assertNotNull(obj.getOLE2ClassName());
     }
-    
+
     /**
      * Need to recurse into the shapes to find this one
      * See https://github.com/apache/poi/pull/2
@@ -49,7 +49,7 @@ public class TestEmbeddedObjects extends TestCase{
         assertNotNull(obj.getObjectData());
         assertNotNull(obj.getOLE2ClassName());
     }
-    
+
     /**
      * One with large numbers of recursivly embedded resources
      * See https://github.com/apache/poi/pull/2

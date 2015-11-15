@@ -29,7 +29,7 @@ public enum TextVerticalOverflow {
 
     /**
      * Pay attention to top and bottom barriers. Use an
-     * ellipsis to denote that there is text which is not visible.     
+     * ellipsis to denote that there is text which is not visible.
      */
     ELLIPSIS,
 

@@ -59,9 +59,9 @@ public class MysqlSavepoint implements Savepoint {
 
     /**
      * Creates an unnamed savepoint.
-     * 
+     *
      * @param conn
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -71,10 +71,10 @@ public class MysqlSavepoint implements Savepoint {
 
     /**
      * Creates a named savepoint
-     * 
+     *
      * @param name
      *            the name of the savepoint.
-     * 
+     *
      * @throws SQLException
      *             if name == null or is empty.
      */

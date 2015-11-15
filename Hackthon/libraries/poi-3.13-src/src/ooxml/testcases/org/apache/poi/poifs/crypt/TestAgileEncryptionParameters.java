@@ -45,7 +45,7 @@ import org.junit.runners.Parameterized.Parameters;
 public class TestAgileEncryptionParameters {
 
     static byte testData[];
-    
+
     @Parameter(value = 0)
     public CipherAlgorithm ca;
     @Parameter(value = 1)
@@ -67,22 +67,22 @@ public class TestAgileEncryptionParameters {
                 }
             }
         }
-        
+
         return data;
     }
-    
+
     @BeforeClass
     public static void initTestData() throws Exception {
         InputStream testFile = POIDataSamples.getDocumentInstance().openResourceAsStream("SampleDoc.docx");
         testData = IOUtils.toByteArray(testFile);
         testFile.close();
     }
-    
+
     @Test
     public void testAgileEncryptionModes() throws Exception {
         int maxKeyLen = Cipher.getMaxAllowedKeyLength(ca.jceId);
         Assume.assumeTrue("Please install JCE Unlimited Strength Jurisdiction Policy files", maxKeyLen >= ca.defaultKeySize);
-        
+
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
 
         POIFSFileSystem fsEnc = new POIFSFileSystem();
@@ -94,7 +94,7 @@ public class TestAgileEncryptionParameters {
         os.close();
         bos.reset();
         fsEnc.writeFilesystem(bos);
-        
+
         POIFSFileSystem fsDec = new POIFSFileSystem(new ByteArrayInputStream(bos.toByteArray()));
         EncryptionInfo infoDec = new EncryptionInfo(fsDec);
         Decryptor dec = infoDec.getDecryptor();

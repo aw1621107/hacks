@@ -40,7 +40,7 @@ public final class TestFractionFormat {
         String ret = f.format(val);
         assertEquals("26027/81", ret);
     }
-     
+
     @Test
     public void testTruthFile() throws Exception {
         File truthFile = HSSFTestDataSamples.getSampleFile("54686_fraction_formats.txt");

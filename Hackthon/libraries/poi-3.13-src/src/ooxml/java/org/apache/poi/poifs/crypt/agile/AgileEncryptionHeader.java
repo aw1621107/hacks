@@ -29,11 +29,11 @@ import com.microsoft.schemas.office.x2006.encryption.STCipherChaining;
 
 public class AgileEncryptionHeader extends EncryptionHeader {
     private byte encryptedHmacKey[], encryptedHmacValue[];
-    
+
     public AgileEncryptionHeader(String descriptor) {
         this(AgileEncryptionInfoBuilder.parseDescriptor(descriptor));
     }
-    
+
     protected AgileEncryptionHeader(EncryptionDocument ed) {
         CTKeyData keyData;
         try {
@@ -52,7 +52,7 @@ public class AgileEncryptionHeader extends EncryptionHeader {
         setBlockSize(keyData.getBlockSize());
 
         int keyBits = (int)keyData.getKeyBits();
-        
+
         CipherAlgorithm ca = CipherAlgorithm.fromXmlId(keyData.getCipherAlgorithm().toString(), keyBits);
         setCipherAlgorithm(ca);
         setCipherProvider(ca.provider);
@@ -67,14 +67,14 @@ public class AgileEncryptionHeader extends EncryptionHeader {
         default:
             throw new EncryptedDocumentException("Unsupported chaining mode - "+keyData.getCipherChaining().toString());
         }
-    
+
         int hashSize = keyData.getHashSize();
-        
+
         HashAlgorithm ha = HashAlgorithm.fromEcmaId(keyData.getHashAlgorithm().toString());
         setHashAlgorithm(ha);
 
         if (getHashAlgorithmEx().hashSize != hashSize) {
-            throw new EncryptedDocumentException("Unsupported hash algorithm: " + 
+            throw new EncryptedDocumentException("Unsupported hash algorithm: " +
                     keyData.getHashAlgorithm() + " @ " + hashSize + " bytes");
         }
 
@@ -83,13 +83,13 @@ public class AgileEncryptionHeader extends EncryptionHeader {
         if (getKeySalt().length != saltLength) {
             throw new EncryptedDocumentException("Invalid salt length");
         }
-        
+
         CTDataIntegrity di = ed.getEncryption().getDataIntegrity();
         setEncryptedHmacKey(di.getEncryptedHmacKey());
         setEncryptedHmacValue(di.getEncryptedHmacValue());
     }
-    
-    
+
+
     public AgileEncryptionHeader(CipherAlgorithm algorithm, HashAlgorithm hashAlgorithm, int keyBits, int blockSize, ChainingMode chainingMode) {
         setCipherAlgorithm(algorithm);
         setHashAlgorithm(hashAlgorithm);

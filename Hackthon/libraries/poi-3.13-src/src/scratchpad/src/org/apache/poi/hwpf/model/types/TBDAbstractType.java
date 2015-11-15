@@ -24,17 +24,17 @@ import org.apache.poi.util.Internal;
 /**
  * The TBD is a substructure of the PAP. <p>Class and fields descriptions are quoted from
         Microsoft Office Word 97-2007 Binary File Format
-    
+
  * <p>
  * NOTE: This source is automatically generated please do not modify this file.  Either subclass or
  *       remove the record in src/types/definitions.
  * <p>
- * This class is internal. It content or properties may change without notice 
+ * This class is internal. It content or properties may change without notice
  * due to changes in our knowledge of internal Microsoft Word binary structures.
 
  * @author Sergey Vladimirov; according to Microsoft Office Word 97-2007 Binary File Format
         Specification [*.doc]
-    
+
  */
 @Internal
 public abstract class TBDAbstractType
@@ -141,7 +141,7 @@ public abstract class TBDAbstractType
 
     /**
      * Sets the reserved field value.
-     * 
+     *
      */
     @Internal
     public void setReserved( byte value )
@@ -150,7 +150,7 @@ public abstract class TBDAbstractType
     }
 
     /**
-     * 
+     *
      * @return  the reserved field value.
      */
     @Internal

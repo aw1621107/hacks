@@ -30,7 +30,7 @@ public class TestZipPackage {
     public void testBug56479() throws Exception {
         InputStream is = OpenXML4JTestDataSamples.openSampleStream("dcterms_bug_56479.zip");
         OPCPackage p = OPCPackage.open(is);
-        
+
         // Check we found the contents of it
         boolean foundCoreProps = false, foundDocument = false, foundTheme1 = false;
         for (PackagePart part : p.getParts()) {

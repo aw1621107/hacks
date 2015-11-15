@@ -183,7 +183,7 @@ public final class TestHSSFName extends BaseTestNamedRange {
 
         assertEquals(sheetName+"!$D$17:$G$27", namedRange2.getRefersToFormula());
         assertEquals("SecondNamedRange", namedRange2.getNameName());
-        
+
         wb.close();
     }
 
@@ -206,7 +206,7 @@ public final class TestHSSFName extends BaseTestNamedRange {
 
         name.setRefersToFormula(newReference);
         assertEquals(newReference, name.getRefersToFormula());
-        
+
         wb.close();
     }
 

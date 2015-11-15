@@ -58,10 +58,10 @@ public final class TestXSSFReader extends TestCase {
 
 		assertEquals(3, r.getStylesTable().getFonts().size());
 		assertEquals(0, r.getStylesTable()._getNumberFormatSize());
-		
+
 		// The Styles Table should have the themes associated with it too
 		assertNotNull(r.getStylesTable().getTheme());
-		
+
 		// Check we get valid data for the two
 		assertNotNull(r.getStylesData());
       assertNotNull(r.getThemesData());
@@ -127,12 +127,12 @@ public final class TestXSSFReader extends TestCase {
 		}
 		assertEquals(4, count);
 	}
-	
+
 	public void testComments() throws Exception {
       OPCPackage pkg =  XSSFTestDataSamples.openSamplePackage("comments.xlsx");
       XSSFReader r = new XSSFReader(pkg);
       XSSFReader.SheetIterator it = (XSSFReader.SheetIterator)r.getSheetsData();
-      
+
       int count = 0;
       while(it.hasNext()) {
          count++;
@@ -150,7 +150,7 @@ public final class TestXSSFReader extends TestCase {
       }
       assertEquals(3, count);
 	}
-   
+
    /**
     * Iterating over a workbook with chart sheets in it, using the
     *  XSSFReader method
@@ -160,7 +160,7 @@ public final class TestXSSFReader extends TestCase {
       OPCPackage pkg =  XSSFTestDataSamples.openSamplePackage("WithChartSheet.xlsx");
       XSSFReader r = new XSSFReader(pkg);
       XSSFReader.SheetIterator it = (XSSFReader.SheetIterator)r.getSheetsData();
-      
+
       while(it.hasNext())
       {
           InputStream stream = it.next();
@@ -175,10 +175,10 @@ public final class TestXSSFReader extends TestCase {
        OPCPackage pkg =  XSSFTestDataSamples.openSamplePackage("WithTextBox.xlsx");
        XSSFReader r = new XSSFReader(pkg);
        XSSFReader.SheetIterator it = (XSSFReader.SheetIterator)r.getSheetsData();
-       
+
        StringBuilder sb = new StringBuilder();
        while(it.hasNext())
-       {    
+       {
           it.next();
           List<XSSFShape> shapes = it.getShapes();
           if (shapes != null){

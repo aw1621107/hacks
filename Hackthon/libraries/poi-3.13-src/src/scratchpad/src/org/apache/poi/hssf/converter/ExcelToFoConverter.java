@@ -50,7 +50,7 @@ import org.w3c.dom.Text;
 
 /**
  * Converts xls files (97-2007) to XSL FO.
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 @Beta
@@ -69,7 +69,7 @@ public class ExcelToFoConverter extends AbstractExcelConverter
 
     /**
      * Java main() interface to interact with {@link ExcelToFoConverter}
-     * 
+     *
      * <p>
      * Usage: ExcelToHtmlConverter infile outfile
      * </p>
@@ -101,7 +101,7 @@ public class ExcelToFoConverter extends AbstractExcelConverter
 
     /**
      * Converts Excel file (97-2007) into XSL FO file.
-     * 
+     *
      * @param xlsFile
      *            file to process
      * @return DOM representation of result XSL FO
@@ -185,7 +185,7 @@ public class ExcelToFoConverter extends AbstractExcelConverter
     /**
      * Returns <tt>false</tt> if cell style by itself (without text, i.e.
      * borders, fill, etc.) worth a mention, <tt>true</tt> otherwise
-     * 
+     *
      * @return <tt>false</tt> if cell style by itself (without text, i.e.
      *         borders, fill, etc.) worth a mention, <tt>true</tt> otherwise
      */
@@ -478,7 +478,7 @@ public class ExcelToFoConverter extends AbstractExcelConverter
     /**
      * Creates COLGROUP element with width specified for all columns. (Except
      * first if <tt>{@link #isOutputRowNumbers()}==true</tt>)
-     * 
+     *
      * @return table width in inches
      */
     protected float processColumnWidths( HSSFSheet sheet, int maxSheetColumns,
@@ -739,7 +739,7 @@ public class ExcelToFoConverter extends AbstractExcelConverter
 
     /**
      * Process single sheet (as specified by 0-based sheet index)
-     * 
+     *
      * @return <tt>true</tt> if result were added to FO document, <tt>false</tt>
      *         otherwise
      */

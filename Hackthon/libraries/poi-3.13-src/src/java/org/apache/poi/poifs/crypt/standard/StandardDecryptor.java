@@ -69,7 +69,7 @@ public class StandardDecryptor extends Decryptor {
             // ... The number of bytes used by the encrypted Verifier hash MUST be 32 ...
             // TODO: check and trim/pad the hashes to 32
             byte[] verifierHash = Arrays.copyOf(decryptedVerifierHash, calcVerifierHash.length);
-    
+
             if (Arrays.equals(calcVerifierHash, verifierHash)) {
                 setSecretKey(skey);
                 return true;
@@ -80,7 +80,7 @@ public class StandardDecryptor extends Decryptor {
             throw new EncryptedDocumentException(e);
         }
     }
-    
+
     protected static SecretKey generateSecretKey(String password, EncryptionVerifier ver, int keySize) {
         HashAlgorithm hashAlgo = ver.getHashAlgorithm();
 
@@ -96,7 +96,7 @@ public class StandardDecryptor extends Decryptor {
         byte[] x3 = new byte[x1.length + x2.length];
         System.arraycopy(x1, 0, x3, 0, x1.length);
         System.arraycopy(x2, 0, x3, x1.length, x2.length);
-        
+
         byte[] key = Arrays.copyOf(x3, keySize);
 
         SecretKey skey = new SecretKeySpec(key, ver.getCipherAlgorithm().jceId);
@@ -128,12 +128,12 @@ public class StandardDecryptor extends Decryptor {
         _length = dis.readLong();
 
         // limit wrong calculated ole entries - (bug #57080)
-        // standard encryption always uses aes encoding, so blockSize is always 16 
+        // standard encryption always uses aes encoding, so blockSize is always 16
         // http://stackoverflow.com/questions/3283787/size-of-data-after-aes-encryption
         int blockSize = builder.getHeader().getCipherAlgorithm().blockSize;
         long cipherLen = (_length/blockSize + 1) * blockSize;
         Cipher cipher = getCipher(getSecretKey());
-        
+
         InputStream boundedDis = new BoundedInputStream(dis, cipherLen);
         return new BoundedInputStream(new CipherInputStream(boundedDis, cipher), _length);
     }

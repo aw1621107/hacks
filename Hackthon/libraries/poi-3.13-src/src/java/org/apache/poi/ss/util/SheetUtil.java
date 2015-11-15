@@ -75,7 +75,7 @@ public class SheetUtil {
         public void setupReferencedWorkbooks(Map<String, FormulaEvaluator> workbooks) {}
         public void setDebugEvaluationOutputForNextEval(boolean value) {}
         public void setIgnoreMissingWorkbooks(boolean ignore) {}
-        
+
         public void evaluateAll() {}
         public int evaluateFormulaCell(Cell cell) {
             return cell.getCachedFormulaResultType();
@@ -195,7 +195,7 @@ public class SheetUtil {
     public static double getColumnWidth(Sheet sheet, int column, boolean useMergedCells) {
         return getColumnWidth(sheet, column, useMergedCells, sheet.getFirstRowNum(), sheet.getLastRowNum());
     }
-    
+
     /**
      * Compute width of a column based on a subset of the rows and return the result
      *
@@ -236,11 +236,11 @@ public class SheetUtil {
 
     /**
      * Check if the Fonts are installed correctly so that Java can compute the size of
-     * columns. 
-     * 
-     * If a Cell uses a Font which is not available on the operating system then Java may 
+     * columns.
+     *
+     * If a Cell uses a Font which is not available on the operating system then Java may
      * fail to return useful Font metrics and thus lead to an auto-computed size of 0.
-     * 
+     *
      *  This method allows to check if computing the sizes for a given Font will succeed or not.
      *
      * @param font The Font that is used in the Cell
@@ -282,7 +282,7 @@ public class SheetUtil {
     /**
      * Return the cell, taking account of merged regions. Allows you to find the
      *  cell who's contents are shown in a given position in the sheet.
-     * 
+     *
      * <p>If the cell at the given co-ordinates is a merged cell, this will
      *  return the primary (top-left) most cell of the merged region.
      * <p>If the cell at the given co-ordinates is not in a merged region,
@@ -299,7 +299,7 @@ public class SheetUtil {
                 return c;
             }
         }
-        
+
         for (int mr=0; mr<sheet.getNumMergedRegions(); mr++) {
             CellRangeAddress mergedRegion = sheet.getMergedRegion(mr);
             if (mergedRegion.isInRange(rowIx, colIx)) {
@@ -311,7 +311,7 @@ public class SheetUtil {
                 }
             }
         }
-        
+
         // If we get here, then the cell isn't defined, and doesn't
         //  live within any merged regions
         return null;

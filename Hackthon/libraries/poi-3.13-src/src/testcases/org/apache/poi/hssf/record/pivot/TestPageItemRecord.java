@@ -27,11 +27,11 @@ import org.apache.poi.util.HexRead;
 
 /**
  * Tests for {@link PageItemRecord}
- * 
+ *
  * @author Josh Micich
  */
 public final class TestPageItemRecord extends TestCase {
-	
+
 	public void testMoreThanOneInfoItem_bug46917() {
 		byte[] data = HexRead.readFromString("01 02 03 04 05 06 07 08 09 0A 0B 0C");
 		RecordInputStream in = TestcaseRecordInputStream.create(PageItemRecord.sid, data);
@@ -40,10 +40,10 @@ public final class TestPageItemRecord extends TestCase {
 			throw new AssertionFailedError("Identified bug 46917");
 		}
 		assertEquals(0, in.remaining());
-		
+
 		assertEquals(4+data.length, rec.getRecordSize());
 	}
-	
+
 	public void testSerialize() {
 		confirmSerialize("01 02 03 04 05 06");
 		confirmSerialize("01 02 03 04 05 06 07 08 09 0A 0B 0C");

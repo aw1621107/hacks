@@ -78,11 +78,11 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
 
     /**
      * This setting is used for supporting a deprecated alignment
-     * 
+     *
      * @see <a href=""></a>
      */
     boolean alignToBaseline = false;
-    
+
     /**
      * Used to calculate text bounds
      */
@@ -138,11 +138,11 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
         super.afterInsert(sh);
 
         storeText();
-        
+
         EscherTextboxWrapper thisTxtbox = getEscherTextboxWrapper();
         if(thisTxtbox != null){
             _escherContainer.addChildRecord(thisTxtbox.getEscherRecord());
-            
+
             PPDrawing ppdrawing = sh.getPPDrawing();
             ppdrawing.addTextboxWrapper(thisTxtbox);
             // Ensure the escher layer knows about the added records
@@ -161,10 +161,10 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
 
     protected EscherTextboxWrapper getEscherTextboxWrapper(){
         if(_txtbox != null) return _txtbox;
-        
+
         EscherTextboxRecord textRecord = getEscherChild(EscherTextboxRecord.RECORD_ID);
         if (textRecord == null) return null;
-        
+
         HSLFSheet sheet = getSheet();
         if (sheet != null) {
             PPDrawing drawing = sheet.getPPDrawing();
@@ -181,7 +181,7 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
                 }
             }
         }
-        
+
         _txtbox = new EscherTextboxWrapper(textRecord);
         return _txtbox;
     }
@@ -198,15 +198,15 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
             anchor.setSize(200, (int)anchor.getHeight());
             setAnchor(anchor);
         }
-        double height = getTextHeight(); 
+        double height = getTextHeight();
         height += 1; // add a pixel to compensate rounding errors
-        
+
         anchor.setRect(anchor.getX(), anchor.getY(), anchor.getWidth(), height);
         setAnchor(anchor);
-        
+
         return anchor;
-    }   
-    
+    }
+
     /**
     * Returns the type of the text, from the TextHeaderAtom.
     * Possible values can be seen from TextHeaderAtom
@@ -233,7 +233,7 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
             paras.get(0).setRunType(type);
         }
     }
-    
+
     /**
      * Returns the type of vertical alignment for the text.
      * One of the <code>Anchor*</code> constants defined in this class.
@@ -272,7 +272,7 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
 
         alignToBaseline = (align == AnchorBottomBaseline || align == AnchorBottomCenteredBaseline
             || align == AnchorTopBaseline || align == AnchorTopCenteredBaseline);
-        
+
         return align;
     }
 
@@ -296,12 +296,12 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
             align = new int[]{AnchorBottom, AnchorBottomCentered, AnchorBottomBaseline, AnchorBottomCenteredBaseline};
             break;
         }
-        
+
         int align2 = align[(isCentered ? 1 : 0)+(alignToBaseline ? 2 : 0)];
-        
+
         setEscherProperty(EscherProperties.TEXT__ANCHORTEXT, align2);
     }
-    
+
     @Override
     public VerticalAlignment getVerticalAlignment() {
         int va = getAlignment();
@@ -322,7 +322,7 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
 
     /**
      * @return true, if vertical alignment is relative to baseline
-     * this is only used for older versions less equals Office 2003 
+     * this is only used for older versions less equals Office 2003
      */
     public boolean isAlignToBaseline() {
         getAlignment();
@@ -338,7 +338,7 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
         this.alignToBaseline = alignToBaseline;
         setAlignment(isHorizontalCentered(), getVerticalAlignment());
     }
-    
+
     @Override
     public boolean isHorizontalCentered() {
         int va = getAlignment();
@@ -353,7 +353,7 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
             return false;
         }
     }
-    
+
     public void setVerticalAlignment(VerticalAlignment vAlign) {
         setAlignment(isHorizontalCentered(), vAlign);
     }
@@ -363,7 +363,7 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
      *
      * @param isCentered true, if the paragraphs are horizontal centered
      * A {@code null} values unsets this property.
-     * 
+     *
      * @see TextShape#isHorizontalCentered()
      */
     public void setHorizontalCentered(Boolean isCentered){
@@ -460,7 +460,7 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
      * Returns the distance (in points) between the edge of the text frame
      * and the edge of the inscribed rectangle of the shape that contains the text.
      * Default value is 1/20 inch.
-     * 
+     *
      * @param propId the id of the inset edge
      * @return the inset in points
      */
@@ -468,7 +468,7 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
         AbstractEscherOptRecord opt = getEscherOptRecord();
         EscherSimpleProperty prop = getEscherProperty(opt, propId);
         int val = prop == null ? (int)(Units.toEMU(Units.POINT_DPI)*defaultInch) : prop.getPropertyValue();
-        return Units.toPoints(val);        
+        return Units.toPoints(val);
     }
 
     /**
@@ -477,8 +477,8 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
      */
     private void setInset(short propId, double margin){
         setEscherProperty(propId, Units.toEMU(margin));
-    }    
-    
+    }
+
     @Override
     public boolean getWordWrap(){
         int ww = getWordWrapEx();
@@ -530,7 +530,7 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
     @Override
     public List<HSLFTextParagraph> getTextParagraphs(){
         if (!_paragraphs.isEmpty()) return _paragraphs;
-        
+
         _txtbox = getEscherTextboxWrapper();
         if (_txtbox == null) {
             _paragraphs.addAll(HSLFTextParagraph.createEmptyParagraph());
@@ -541,7 +541,7 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
                 // there are actually TextBoxRecords without extra data - see #54722
                 _paragraphs = HSLFTextParagraph.createEmptyParagraph(_txtbox);
             }
-                
+
             if (_paragraphs.isEmpty()) {
                 logger.log(POILogger.WARN, "TextRecord didn't contained any text lines");
             }
@@ -557,7 +557,7 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
         for (HSLFTextParagraph p : _paragraphs) {
             p.setParentShape(this);
         }
-        
+
         return _paragraphs;
     }
 
@@ -638,7 +638,7 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
         //  them to \n
         String text = rawText.replace('\r','\n').replace('\u000b', replChr);
      */
-    
+
     /**
      * Return <code>OEPlaceholderAtom</code>, the atom that describes a placeholder.
      *
@@ -732,13 +732,13 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
         return HSLFTextParagraph.toExternalString(rawText, getRunType());
     }
 
-    
+
     // Update methods follow
 
       /**
        * Adds the supplied text onto the end of the TextParagraphs,
        * creating a new RichTextRun for it to sit in.
-       * 
+       *
        * @param text the text string used by this object.
        */
       public HSLFTextRun appendText(String text, boolean newParagraph) {
@@ -750,9 +750,9 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
       /**
        * Sets (overwrites) the current text.
        * Uses the properties of the first paragraph / textrun
-       * 
+       *
        * @param text the text string used by this object.
-       * 
+       *
        * @return the last text run of the splitted text
        */
       public HSLFTextRun setText(String text) {
@@ -762,7 +762,7 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
           setTextId(text.hashCode());
           return htr;
       }
-      
+
       /**
        * Saves the modified paragraphs/textrun to the records.
        * Also updates the styles to the correct text length.
@@ -775,7 +775,7 @@ implements TextShape<HSLFShape,HSLFTextParagraph> {
 
     /**
      * Returns the array of all hyperlinks in this text run
-     * 
+     *
      * @return the array of all hyperlinks in this text run or <code>null</code>
      *         if not found.
      */

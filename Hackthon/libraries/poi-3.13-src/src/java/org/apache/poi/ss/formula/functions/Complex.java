@@ -96,7 +96,7 @@ public class Complex extends Var2or3ArgFunction implements FreeRefFunction {
         if (suffixValue.length() == 0) {
             suffixValue = DEFAULT_SUFFIX;
         }
-        if (suffixValue.equals(DEFAULT_SUFFIX.toUpperCase(Locale.ROOT)) || 
+        if (suffixValue.equals(DEFAULT_SUFFIX.toUpperCase(Locale.ROOT)) ||
                 suffixValue.equals(SUPPORTED_SUFFIX.toUpperCase(Locale.ROOT))) {
             return ErrorEval.VALUE_INVALID;
         }

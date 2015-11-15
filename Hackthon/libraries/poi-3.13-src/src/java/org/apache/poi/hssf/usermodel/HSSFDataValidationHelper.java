@@ -29,7 +29,7 @@ import org.apache.poi.ss.util.CellRangeAddressList;
 public class HSSFDataValidationHelper implements DataValidationHelper {
 	@SuppressWarnings("unused")
 	private HSSFSheet sheet;
-	
+
 	public HSSFDataValidationHelper(HSSFSheet sheet) {
 		super();
 		this.sheet = sheet;
@@ -37,7 +37,7 @@ public class HSSFDataValidationHelper implements DataValidationHelper {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.apache.poi.ss.usermodel.DataValidationHelper#createDateConstraint
 	 * (int, java.lang.String, java.lang.String, java.lang.String)
@@ -48,7 +48,7 @@ public class HSSFDataValidationHelper implements DataValidationHelper {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.apache.poi.ss.usermodel.DataValidationHelper#createExplicitListConstraint
 	 * (java.lang.String[])
@@ -59,7 +59,7 @@ public class HSSFDataValidationHelper implements DataValidationHelper {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.apache.poi.ss.usermodel.DataValidationHelper#createFormulaListConstraint
 	 * (java.lang.String)
@@ -68,8 +68,8 @@ public class HSSFDataValidationHelper implements DataValidationHelper {
 		return DVConstraint.createFormulaListConstraint(listFormula);
 	}
 
-	
-	
+
+
 	public DataValidationConstraint createNumericConstraint(int validationType,int operatorType, String formula1, String formula2) {
 		return DVConstraint.createNumericConstraint(validationType, operatorType, formula1, formula2);
 	}
@@ -77,10 +77,10 @@ public class HSSFDataValidationHelper implements DataValidationHelper {
 	public DataValidationConstraint createIntegerConstraint(int operatorType, String formula1, String formula2) {
 		return DVConstraint.createNumericConstraint(ValidationType.INTEGER, operatorType, formula1, formula2);
 	}
-	
+
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.apache.poi.ss.usermodel.DataValidationHelper#createNumericConstraint
 	 * (int, java.lang.String, java.lang.String)
@@ -91,7 +91,7 @@ public class HSSFDataValidationHelper implements DataValidationHelper {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.apache.poi.ss.usermodel.DataValidationHelper#createTextLengthConstraint
 	 * (int, java.lang.String, java.lang.String)
@@ -102,7 +102,7 @@ public class HSSFDataValidationHelper implements DataValidationHelper {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.apache.poi.ss.usermodel.DataValidationHelper#createTimeConstraint
 	 * (int, java.lang.String, java.lang.String, java.lang.String)
@@ -111,21 +111,21 @@ public class HSSFDataValidationHelper implements DataValidationHelper {
 		return DVConstraint.createTimeConstraint(operatorType, formula1, formula2);
 	}
 
-	
-	
+
+
 	public DataValidationConstraint createCustomConstraint(String formula) {
 		return DVConstraint.createCustomFormulaConstraint(formula);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.apache.poi.ss.usermodel.DataValidationHelper#createValidation(org
 	 * .apache.poi.ss.usermodel.DataValidationConstraint,
 	 * org.apache.poi.ss.util.CellRangeAddressList)
 	 */
 	public DataValidation createValidation(DataValidationConstraint constraint, CellRangeAddressList cellRangeAddressList) {
-		return new HSSFDataValidation(cellRangeAddressList, constraint); 
+		return new HSSFDataValidation(cellRangeAddressList, constraint);
 	}
 }

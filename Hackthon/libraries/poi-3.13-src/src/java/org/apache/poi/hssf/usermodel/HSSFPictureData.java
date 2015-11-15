@@ -110,7 +110,7 @@ public class HSSFPictureData implements PictureData
                 return "";
         }
     }
-    
+
     /**
      * Returns the mime type for the image
      */
@@ -132,7 +132,7 @@ public class HSSFPictureData implements PictureData
                return "image/unknown";
        }
     }
-    
+
     /**
      * @return the POI internal image type, -1 if not unknown image type
      *
@@ -159,6 +159,6 @@ public class HSSFPictureData implements PictureData
                 return Workbook.PICTURE_TYPE_DIB;
             default:
                 return -1;
-        }        
+        }
     }
 }

@@ -23,7 +23,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * MULRK (0x00BD) <p/>
- * 
+ *
  * Used to store multiple RK numbers on a row.  1 MulRk = Multiple Cell values.
  * HSSF just converts this into multiple NUMBER records.  READ-ONLY SUPPORT!<P>
  * REFERENCE:  PG 330 Microsoft Excel 97 Developer's Kit (ISBN: 1-57231-498-2)<P>

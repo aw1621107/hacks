@@ -51,20 +51,20 @@ public class XSSFFileHandler extends SpreadsheetHandler {
         IOUtils.copy(stream, out);
 
         XSSFWorkbook wb = new XSSFWorkbook(new ByteArrayInputStream(out.toByteArray()));
-        
+
         // use the combined handler for HSSF/XSSF
         handleWorkbook(wb, ".xlsx");
-        
+
         // TODO: some documents fail currently...
         //XSSFFormulaEvaluator evaluator = new XSSFFormulaEvaluator(wb);
         //evaluator.evaluateAll();
 
         // also verify general POIFS-stuff
         new POIXMLDocumentHandler().handlePOIXMLDocument(wb);
-        
+
         // and finally ensure that exporting to XML works
         exportToXML(wb);
-        
+
         checkXSSFReader(OPCPackage.open(new ByteArrayInputStream(out.toByteArray())));
     }
 
@@ -72,7 +72,7 @@ public class XSSFFileHandler extends SpreadsheetHandler {
     private void checkXSSFReader(OPCPackage p)
             throws IOException, OpenXML4JException, InvalidFormatException {
         XSSFReader reader = new XSSFReader(p);
-        
+
         // these can be null...
         InputStream sharedStringsData = reader.getSharedStringsData();
         if(sharedStringsData != null) {
@@ -85,21 +85,21 @@ public class XSSFFileHandler extends SpreadsheetHandler {
             stylesData.close();
         }
         reader.getStylesTable();
-        
+
         InputStream themesData = reader.getThemesData();
         if(themesData != null) {
             themesData.close();
         }
 
         assertNotNull(reader.getWorkbookData());
-        
+
         Iterator<InputStream> sheetsData = reader.getSheetsData();
         while(sheetsData.hasNext()) {
             InputStream str = sheetsData.next();
             str.close();
         }
     }
-    
+
     private void exportToXML(XSSFWorkbook wb) throws SAXException,
             ParserConfigurationException, TransformerException {
         for (XSSFMap map : wb.getCustomXMLMappings()) {
@@ -109,7 +109,7 @@ public class XSSFFileHandler extends SpreadsheetHandler {
             exporter.exportToXML(os, true);
         }
     }
-    
+
     // a test-case to test this locally without executing the full TestAllFiles
     @Test
     public void test() throws Exception {

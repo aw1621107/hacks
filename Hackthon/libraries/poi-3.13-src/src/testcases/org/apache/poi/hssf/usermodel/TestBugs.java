@@ -316,7 +316,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
         confirmSameCellText(b1, rb2);
         confirmSameCellText(c1, rc2);
         confirmSameCellText(d1, rd2);
-        
+
         rw.close();
     }
 
@@ -485,7 +485,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
         HSSFSheet s = wb.getSheetAt(0);
         s.setRowBreak(1);
         writeOutAndReadBack(wb).close();
-        
+
         wb.close();
     }
 
@@ -522,7 +522,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
         assertEquals(false, sheet.getProtect());
 
         writeOutAndReadBack(wb).close();
-        
+
         wb.close();
     }
 
@@ -536,7 +536,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
         HSSFSheet sheet = wb.getSheetAt( 0 );
         assertNotNull(sheet);
         writeOutAndReadBack(wb).close();
-        
+
         wb.close();
     }
 
@@ -976,7 +976,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
 
     /**
      * Test that fonts get added properly
-     * @throws IOException 
+     * @throws IOException
      */
     @Test
     public void bug45338() throws IOException {
@@ -1058,7 +1058,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
                    "Thingy", false, true, (short)2, (byte)2
                )
         );
-        
+
         wb.close();
     }
 
@@ -1208,7 +1208,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
     /**
      * People are all getting confused about the last
      *  row and cell number
-     * @throws IOException 
+     * @throws IOException
      */
     @Test
     public void bug30635() throws IOException {
@@ -1254,7 +1254,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
         assertEquals(0, r.getFirstCellNum());
         assertEquals(5, r.getLastCellNum()); // last cell # + 1
         assertEquals(3, r.getPhysicalNumberOfCells());
-        
+
         wb.close();
     }
 
@@ -1403,7 +1403,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
         // footer can be more than 256 bytes
         s.getFooter().setCenter(s250); // 256 bytes required
         s.getFooter().setCenter(s251); // 257 bytes required
-        
+
         wb.close();
     }
 
@@ -1878,7 +1878,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
        assertEquals(Cell.CELL_TYPE_FORMULA, row.getCell(1).getCellType());
        assertEquals("'[$http://example.com/FormulaRefs.xls]Sheet1'!B1", row.getCell(1).getCellFormula());
        assertEquals(234.0, row.getCell(1).getNumericCellValue(), 0);*/
-       
+
        wb2.close();
     }
 
@@ -1987,7 +1987,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
        assertEquals("Testing", wb2.getCellStyleAt((short)21).getUserStyleName());
        assertEquals("Testing 2", wb2.getCellStyleAt((short)22).getUserStyleName());
        assertEquals("Testing 3", wb2.getCellStyleAt((short)23).getUserStyleName());
-       
+
        wb2.close();
     }
 
@@ -2066,7 +2066,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
 
     /**
      * Last row number when shifting rows
-     * @throws IOException 
+     * @throws IOException
      */
     @Test
     public void bug50416LastRowNumber() throws IOException {
@@ -2118,7 +2118,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
        assertEquals("Cell A,2", sheet.getRow(0).getCell(0).getStringCellValue());
        assertEquals("Cell A,1", sheet.getRow(1).getCell(0).getStringCellValue());
        assertEquals("Cell A,3", sheet.getRow(2).getCell(0).getStringCellValue());
-       
+
        workbook.close();
     }
 
@@ -2232,9 +2232,9 @@ public final class TestBugs extends BaseTestBugzillaIssues {
         try {
            HSSFWorkbook wb = openSample("48968.xls");
            assertEquals(1, wb.getNumberOfSheets());
-    
+
            DataFormatter fmt = new DataFormatter();
-    
+
            // Check the dates
            HSSFSheet s = wb.getSheetAt(0);
            Cell cell_d20110325 = s.getRow(0).getCell(0);
@@ -2245,7 +2245,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
            // There is no such thing as 00/01/1900...
            assertEquals("00/01/1900 06:14:24", s.getRow(21).getCell(3).getStringCellValue());
            assertEquals("31/12/1899 06:14:24", fmt.formatCellValue(cell_d19000100));
-    
+
            // Check the cached values
            assertEquals("HOUR(A1)",   s.getRow(5).getCell(0).getCellFormula());
            assertEquals(11.0,         s.getRow(5).getCell(0).getNumericCellValue(), 0);
@@ -2253,7 +2253,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
            assertEquals(39.0,         s.getRow(6).getCell(0).getNumericCellValue(), 0);
            assertEquals("SECOND(A1)", s.getRow(7).getCell(0).getCellFormula());
            assertEquals(54.0,         s.getRow(7).getCell(0).getNumericCellValue(), 0);
-    
+
            // Re-evaluate and check
            HSSFFormulaEvaluator.evaluateAllFormulaCells(wb);
            assertEquals("HOUR(A1)",   s.getRow(5).getCell(0).getCellFormula());
@@ -2262,11 +2262,11 @@ public final class TestBugs extends BaseTestBugzillaIssues {
            assertEquals(39.0,         s.getRow(6).getCell(0).getNumericCellValue(), 0);
            assertEquals("SECOND(A1)", s.getRow(7).getCell(0).getCellFormula());
            assertEquals(54.0,         s.getRow(7).getCell(0).getNumericCellValue(), 0);
-    
+
            // Push the time forward a bit and check
            double date = s.getRow(0).getCell(0).getNumericCellValue();
            s.getRow(0).getCell(0).setCellValue(date + 1.26);
-    
+
            HSSFFormulaEvaluator.evaluateAllFormulaCells(wb);
            assertEquals("HOUR(A1)",   s.getRow(5).getCell(0).getCellFormula());
            assertEquals(11.0+6.0,     s.getRow(5).getCell(0).getNumericCellValue(), 0);
@@ -2274,13 +2274,13 @@ public final class TestBugs extends BaseTestBugzillaIssues {
            assertEquals(39.0+14.0+1,  s.getRow(6).getCell(0).getNumericCellValue(), 0);
            assertEquals("SECOND(A1)", s.getRow(7).getCell(0).getCellFormula());
            assertEquals(54.0+24.0-60, s.getRow(7).getCell(0).getNumericCellValue(), 0);
-           
+
            wb.close();
         } finally {
             LocaleUtil.setUserTimeZone(userTimeZone);
         }
     }
-       
+
 
     /**
      * Mixture of Ascii and Unicode strings in a
@@ -2411,7 +2411,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
 
         // make sure we are still readable
         writeOutAndReadBack(wb).close();
-        
+
         wb.close();
     }
 
@@ -2470,7 +2470,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
 
         HSSFSheet sh2 = wb.cloneSheet(0);
         assertNotNull(sh2.getDrawingPatriarch());
-        
+
         wb.close();
     }
 
@@ -2493,7 +2493,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
         Workbook wb3 = writeOutAndReadBack((HSSFWorkbook) wb2);
         wb2.close();
         assertEquals(wb3.getAllPictures().size(), 1);
-        
+
         wb3.close();
     }
 
@@ -2510,7 +2510,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
         tb.setAnchor(new HSSFClientAnchor(0,0,0,0,(short)0,0,(short)10,10));
 
         writeOutAndReadBack(wb).close();
-        
+
         wb.close();
     }
 
@@ -2520,7 +2520,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
         Sheet sheet = wb.getSheet("test-sheet");
         int rowCount = sheet.getLastRowNum() + 1;
         int newRows = 5;
-        Calendar cal = LocaleUtil.getLocaleCalendar(); 
+        Calendar cal = LocaleUtil.getLocaleCalendar();
         for (int r = rowCount; r < rowCount + newRows; r++) {
             Row row = sheet.createRow((short) r);
             row.createCell(0).setCellValue(1.03 * (r + 7));
@@ -2533,7 +2533,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
         }
 
         writeOutAndReadBack(wb).close();
-        
+
         wb.close();
     }
 
@@ -2633,7 +2633,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
 
         HSSFWorkbook wb3 = writeOutAndReadBack(wb2);
         wb2.close();
-        
+
         assertEquals(0, wb3.getNumberOfSheets());
         wb3.close();
     }
@@ -2739,7 +2739,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
         assertFormula(wb, s.getRow(8).getCell(0), "Tabelle2!E:F Tabelle2!$A11:$IV12", null);
         wb.close();
     }
-    
+
     private void assertFormula(Workbook wb, Cell intF, String expectedFormula, String expectedResultOrNull) {
         assertEquals(Cell.CELL_TYPE_FORMULA, intF.getCellType());
         if (null == expectedResultOrNull) {
@@ -2749,7 +2749,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
         else {
             assertEquals(Cell.CELL_TYPE_NUMERIC, intF.getCachedFormulaResultType());
         }
-        
+
         assertEquals(expectedFormula, intF.getCellFormula());
 
         // Check we can evaluate it correctly
@@ -2853,32 +2853,32 @@ public final class TestBugs extends BaseTestBugzillaIssues {
     @Test
     public void test53109() throws IOException {
         HSSFWorkbook wb1 = openSample("53109.xls");
-        
+
         HSSFWorkbook wb2 = writeOutAndReadBack(wb1);
         assertNotNull(wb2);
         wb2.close();
-        
+
         wb1.close();
     }
-    
+
     @Test
     public void test53109a() throws IOException {
         HSSFWorkbook wb1 = openSample("com.aida-tour.www_SPO_files_maldives%20august%20october.xls");
-        
+
         Workbook wb2 = writeOutAndReadBack(wb1);
         assertNotNull(wb2);
         wb2.close();
-        
+
         wb1.close();
     }
-    
+
     @Test
     public void test48043() throws IOException {
         HSSFWorkbook wb = HSSFTestDataSamples.openSampleWorkbook("56325a.xls");
-        
+
         wb.removeSheetAt(2);
         wb.removeSheetAt(1);
-        
+
         //Sheet s = wb.createSheet("sheetname");
         Sheet s = wb.getSheetAt(0);
         Row row = s.createRow(0);
@@ -2886,33 +2886,33 @@ public final class TestBugs extends BaseTestBugzillaIssues {
 
         cell.setCellFormula(
                 "IF(AND(ISBLANK(A10)," +
-                "ISBLANK(B10)),\"\"," + 
+                "ISBLANK(B10)),\"\"," +
                 "CONCATENATE(A10,\"-\",B10))");
-        
+
         FormulaEvaluator eval = wb.getCreationHelper().createFormulaEvaluator();
-        
+
         eval.evaluateAll();
-        
+
         /*OutputStream out = new FileOutputStream("C:\\temp\\48043.xls");
         try {
           wb.write(out);
         } finally {
           out.close();
         }*/
-        
+
         Workbook wbBack = HSSFTestDataSamples.writeOutAndReadBack(wb);
         assertNotNull(wbBack);
         wbBack.close();
 
         wb.close();
     }
-    
+
     @Test
     public void test57925() throws IOException {
         Workbook wb = HSSFTestDataSamples.openSampleWorkbook("57925.xls");
-        
+
         wb.getCreationHelper().createFormulaEvaluator().evaluateAll();
-        
+
         for(int i = 0;i < wb.getNumberOfSheets();i++) {
             Sheet sheet = wb.getSheetAt(i);
             for(Row row : sheet) {
@@ -2921,7 +2921,7 @@ public final class TestBugs extends BaseTestBugzillaIssues {
                 }
             }
         }
-        
+
         wb.close();
     }
 }

@@ -162,7 +162,7 @@ public final class FunctionEval {
 
         retval[FunctionID.INDIRECT] = null; // Indirect.evaluate has different signature
 
-        retval[162] = TextFunction.CLEAN;    
+        retval[162] = TextFunction.CLEAN;
         retval[167] = new IPMT();
         retval[168] = new PPMT();
         retval[169] = new Counta();

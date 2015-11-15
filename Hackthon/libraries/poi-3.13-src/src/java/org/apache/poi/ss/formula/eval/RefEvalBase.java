@@ -46,7 +46,7 @@ public abstract class RefEvalBase implements RefEval {
     protected RefEvalBase(int onlySheetIndex, int rowIndex, int columnIndex) {
         this(onlySheetIndex, onlySheetIndex, rowIndex, columnIndex);
     }
-    
+
 	public int getNumberOfSheets() {
 	    return _lastSheetIndex-_firstSheetIndex+1;
     }

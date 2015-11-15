@@ -36,7 +36,7 @@ public class DrawTextShape extends DrawSimpleShape {
     @Override
     public void drawContent(Graphics2D graphics) {
         fixFonts(graphics);
-        
+
         Rectangle2D anchor = DrawShape.getAnchor(graphics, getShape());
         Insets2D insets = getShape().getInsets();
         double x = anchor.getX() + insets.left;
@@ -105,7 +105,7 @@ public class DrawTextShape extends DrawSimpleShape {
 
         double y0 = y;
         Iterator<? extends TextParagraph<?,?,? extends TextRun>> paragraphs = getShape().iterator();
-        
+
         boolean isFirstLine = true;
         for (int autoNbrIdx=0; paragraphs.hasNext(); autoNbrIdx++){
             TextParagraph<?,?,? extends TextRun> p = paragraphs.next();
@@ -136,7 +136,7 @@ public class DrawTextShape extends DrawSimpleShape {
                 }
             }
             isFirstLine = false;
-            
+
             dp.setPosition(x, y);
             dp.draw(graphics);
             y += dp.getY();
@@ -167,7 +167,7 @@ public class DrawTextShape extends DrawSimpleShape {
         fixFonts(graphics);
         return drawParagraphs(graphics, 0, 0);
     }
-    
+
     @SuppressWarnings("unchecked")
     private static void fixFonts(Graphics2D graphics) {
         if (!JvmBugs.hasLineBreakMeasurerBug()) return;
@@ -176,7 +176,7 @@ public class DrawTextShape extends DrawSimpleShape {
             fontMap = new HashMap<String,String>();
             graphics.setRenderingHint(Drawable.FONT_MAP, fontMap);
         }
-        
+
         if (!fontMap.containsKey("Calibri")) fontMap.put("Calibri", "Lucida Sans");
         if (!fontMap.containsKey("Cambria")) fontMap.put("Cambria", "Lucida Bright");
     }

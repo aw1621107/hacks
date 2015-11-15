@@ -25,7 +25,7 @@ import java.util.Collection;
 
 /**
  * Parent class for POI JUnit TestCases, which provide additional
- *  features 
+ *  features
  */
 public class POITestCase {
     public static void assertContains(String haystack, String needle) {
@@ -40,7 +40,7 @@ public class POITestCase {
               haystack.contains(needle)
         );
      }
-    
+
     public static <T> void assertContains(T needle, T[] haystack)
     {
        // Check
@@ -60,7 +60,7 @@ public class POITestCase {
 
         fail(sb.toString());
      }
-    
+
      public static  <T> void assertContains(T needle, Collection<T> haystack) {
         if (haystack.contains(needle)) {
            return;

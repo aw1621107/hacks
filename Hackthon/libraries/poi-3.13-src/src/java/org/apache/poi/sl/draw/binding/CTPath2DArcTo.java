@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_Path2DArcTo complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_Path2DArcTo">
  *   &lt;complexContent>
@@ -40,8 +40,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_Path2DArcTo", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main")
@@ -58,11 +58,11 @@ public class CTPath2DArcTo {
 
     /**
      * Gets the value of the wr property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getWR() {
         return wr;
@@ -70,11 +70,11 @@ public class CTPath2DArcTo {
 
     /**
      * Sets the value of the wr property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setWR(String value) {
         this.wr = value;
@@ -86,11 +86,11 @@ public class CTPath2DArcTo {
 
     /**
      * Gets the value of the hr property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getHR() {
         return hr;
@@ -98,11 +98,11 @@ public class CTPath2DArcTo {
 
     /**
      * Sets the value of the hr property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setHR(String value) {
         this.hr = value;
@@ -114,11 +114,11 @@ public class CTPath2DArcTo {
 
     /**
      * Gets the value of the stAng property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getStAng() {
         return stAng;
@@ -126,11 +126,11 @@ public class CTPath2DArcTo {
 
     /**
      * Sets the value of the stAng property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setStAng(String value) {
         this.stAng = value;
@@ -142,11 +142,11 @@ public class CTPath2DArcTo {
 
     /**
      * Gets the value of the swAng property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getSwAng() {
         return swAng;
@@ -154,11 +154,11 @@ public class CTPath2DArcTo {
 
     /**
      * Sets the value of the swAng property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setSwAng(String value) {
         this.swAng = value;

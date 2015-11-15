@@ -28,11 +28,11 @@ public interface Drawable {
         protected DrawableHint(int id) {
             super(id);
         }
-        
+
         public boolean isCompatibleValue(Object val) {
             return true;
         }
-        
+
         public String toString() {
             switch (intKey()) {
             case 1: return "DRAW_FACTORY";
@@ -50,7 +50,7 @@ public interface Drawable {
             }
         }
     }
-    
+
     /**
      * {@link DrawFactory} which will be used to draw objects into this graphics context
      */
@@ -94,7 +94,7 @@ public interface Drawable {
      * Internal key for caching the preset geometries
      */
     DrawableHint PRESET_GEOMETRY_CACHE = new DrawableHint(6);
-    
+
     /**
      * draw text via {@link java.awt.Graphics2D#drawString(java.text.AttributedCharacterIterator, float, float)}
      */
@@ -111,30 +111,30 @@ public interface Drawable {
     DrawableHint FONT_HANDLER = new DrawableHint(7);
     DrawableHint FONT_FALLBACK = new DrawableHint(8);
     DrawableHint FONT_MAP = new DrawableHint(9);
-    
+
     DrawableHint GSAVE = new DrawableHint(10);
     DrawableHint GRESTORE = new DrawableHint(11);
-    
-    
-    
+
+
+
     /**
      * Apply 2-D transforms before drawing this shape. This includes rotation and flipping.
      *
      * @param graphics the graphics whos transform matrix will be modified
      */
     void applyTransform(Graphics2D graphics);
-    
+
     /**
      * Draw this shape into the supplied canvas
      *
      * @param graphics the graphics to draw into
      */
     void draw(Graphics2D graphics);
-    
+
     /**
      * draw any content within this shape (image, text, etc.).
      *
      * @param graphics the graphics to draw into
      */
-    void drawContent(Graphics2D graphics);    
+    void drawContent(Graphics2D graphics);
 }

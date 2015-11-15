@@ -119,7 +119,7 @@ public final class TestTable {
 
         }
     }
-    
+
     /**
      * Bug 57820: initTable throws NullPointerException
      * when the table is positioned with its top at -1

@@ -41,7 +41,7 @@ final class SheetRangeEvaluator implements SheetRange {
     public SheetRangeEvaluator(int onlySheetIndex, SheetRefEvaluator sheetEvaluator) {
         this(onlySheetIndex, onlySheetIndex, new SheetRefEvaluator[] {sheetEvaluator});
     }
-	
+
 	public SheetRefEvaluator getSheetEvaluator(int sheetIndex) {
 	    if (sheetIndex < _firstSheetIndex || sheetIndex > _lastSheetIndex) {
             throw new IllegalArgumentException("Invalid SheetIndex: " + sheetIndex +
@@ -49,7 +49,7 @@ final class SheetRangeEvaluator implements SheetRange {
 	    }
 	    return _sheetEvaluators[sheetIndex-_firstSheetIndex];
 	}
-	
+
 	public int getFirstSheetIndex() {
 	    return _firstSheetIndex;
 	}

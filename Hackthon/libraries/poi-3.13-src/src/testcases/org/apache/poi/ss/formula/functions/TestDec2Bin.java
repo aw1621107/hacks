@@ -78,7 +78,7 @@ public final class TestDec2Bin extends TestCase {
 
     public void testEvalOperationEvaluationContext() {
         OperationEvaluationContext ctx = createContext();
-        
+
         ValueEval[] args = new ValueEval[] { ctx.getRefEval(0, 0) };
         ValueEval result = new Dec2Bin().evaluate(args, ctx);
 
@@ -88,7 +88,7 @@ public final class TestDec2Bin extends TestCase {
 
     public void testEvalOperationEvaluationContextFails() {
         OperationEvaluationContext ctx = createContext();
-        
+
         ValueEval[] args = new ValueEval[] { ErrorEval.VALUE_INVALID };
         ValueEval result = new Dec2Bin().evaluate(args, ctx);
 
@@ -111,19 +111,19 @@ public final class TestDec2Bin extends TestCase {
 
         HSSFEvaluationWorkbook workbook = HSSFEvaluationWorkbook.create(wb);
         WorkbookEvaluator workbookEvaluator = new WorkbookEvaluator(workbook, new IStabilityClassifier() {
-            
+
             public boolean isCellFinal(int sheetIndex, int rowIndex, int columnIndex) {
                 return true;
             }
         }, null);
-        OperationEvaluationContext ctx = new OperationEvaluationContext(workbookEvaluator, 
+        OperationEvaluationContext ctx = new OperationEvaluationContext(workbookEvaluator,
                 workbook, 0, 0, 0, null);
         return ctx;
     }
 
     public void testRefs() {
         OperationEvaluationContext ctx = createContext();
-        
+
         ValueEval[] args = new ValueEval[] { ctx.getRefEval(0, 0) };
         ValueEval result = new Dec2Bin().evaluate(args, -1, -1);
 
@@ -133,7 +133,7 @@ public final class TestDec2Bin extends TestCase {
 
     public void testWithPlacesIntInt() {
         OperationEvaluationContext ctx = createContext();
-        
+
         ValueEval[] args = new ValueEval[] { ctx.getRefEval(0, 0), ctx.getRefEval(0, 1) };
         ValueEval result = new Dec2Bin().evaluate(args, -1, -1);
 
@@ -144,7 +144,7 @@ public final class TestDec2Bin extends TestCase {
 
     public void testWithPlaces() {
         OperationEvaluationContext ctx = createContext();
-        
+
         ValueEval[] args = new ValueEval[] { ctx.getRefEval(0, 0), ctx.getRefEval(0, 1) };
         ValueEval result = new Dec2Bin().evaluate(args, ctx);
 
@@ -155,7 +155,7 @@ public final class TestDec2Bin extends TestCase {
 
     public void testWithToShortPlaces() {
         OperationEvaluationContext ctx = createContext();
-        
+
         ValueEval[] args = new ValueEval[] { ctx.getRefEval(0, 0), ctx.getRefEval(0, 3) };
         ValueEval result = new Dec2Bin().evaluate(args, -1, -1);
 
@@ -165,7 +165,7 @@ public final class TestDec2Bin extends TestCase {
 
     public void testWithTooManyParamsIntInt() {
         OperationEvaluationContext ctx = createContext();
-        
+
         ValueEval[] args = new ValueEval[] { ctx.getRefEval(0, 0), ctx.getRefEval(0, 1), ctx.getRefEval(0, 1) };
         ValueEval result = new Dec2Bin().evaluate(args, -1, -1);
 
@@ -175,7 +175,7 @@ public final class TestDec2Bin extends TestCase {
 
     public void testWithTooManyParams() {
         OperationEvaluationContext ctx = createContext();
-        
+
         ValueEval[] args = new ValueEval[] { ctx.getRefEval(0, 0), ctx.getRefEval(0, 1), ctx.getRefEval(0, 1) };
         ValueEval result = new Dec2Bin().evaluate(args, ctx);
 
@@ -185,7 +185,7 @@ public final class TestDec2Bin extends TestCase {
 
     public void testWithErrorPlaces() {
         OperationEvaluationContext ctx = createContext();
-        
+
         ValueEval[] args = new ValueEval[] { ctx.getRefEval(0, 0), ErrorEval.NULL_INTERSECTION };
         ValueEval result = new Dec2Bin().evaluate(args, -1, -1);
 
@@ -195,7 +195,7 @@ public final class TestDec2Bin extends TestCase {
 
     public void testWithNegativePlaces() {
         OperationEvaluationContext ctx = createContext();
-        
+
         ValueEval[] args = new ValueEval[] { ctx.getRefEval(0, 0), ctx.getRefEval(0, 2) };
         ValueEval result = new Dec2Bin().evaluate(args, -1, -1);
 
@@ -205,7 +205,7 @@ public final class TestDec2Bin extends TestCase {
 
     public void testWithZeroPlaces() {
         OperationEvaluationContext ctx = createContext();
-        
+
         ValueEval[] args = new ValueEval[] { ctx.getRefEval(0, 0), new NumberEval(0.0) };
         ValueEval result = new Dec2Bin().evaluate(args, -1, -1);
 
@@ -215,14 +215,14 @@ public final class TestDec2Bin extends TestCase {
 
     public void testWithEmptyPlaces() {
         OperationEvaluationContext ctx = createContext();
-        
+
         ValueEval[] args = new ValueEval[] { ctx.getRefEval(0, 0), ctx.getRefEval(1, 0) };
         ValueEval result = new Dec2Bin().evaluate(args, -1, -1);
 
         assertEquals(ErrorEval.class, result.getClass());
         assertEquals(ErrorEval.VALUE_INVALID, result);
     }
-    
+
     public void testBackAndForth() {
         for (int i = -512; i < 512; i++) {
             ValueEval result = invokeValue(Integer.toString(i));

@@ -45,7 +45,7 @@ import org.apache.poi.util.Internal;
  * This class holds much of the core of a Word document, but
  *  without some of the table structure information.
  * You generally want to work with one of
- *  {@link HWPFDocument} or {@link HWPFOldDocument} 
+ *  {@link HWPFDocument} or {@link HWPFOldDocument}
  */
 public abstract class HWPFDocumentCore extends POIDocument
 {

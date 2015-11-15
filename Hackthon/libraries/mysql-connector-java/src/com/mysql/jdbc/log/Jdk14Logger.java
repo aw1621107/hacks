@@ -51,7 +51,7 @@ public class Jdk14Logger implements Log {
 
     /**
      * Creates a new Jdk14Logger object.
-     * 
+     *
      * @param name
      */
     public Jdk14Logger(String name) {
@@ -102,7 +102,7 @@ public class Jdk14Logger implements Log {
 
     /**
      * Logs the given message instance using the 'debug' level
-     * 
+     *
      * @param message
      *            the message to log
      */
@@ -112,7 +112,7 @@ public class Jdk14Logger implements Log {
 
     /**
      * Logs the given message and Throwable at the 'debug' level.
-     * 
+     *
      * @param message
      *            the message to log
      * @param exception
@@ -124,7 +124,7 @@ public class Jdk14Logger implements Log {
 
     /**
      * Logs the given message instance using the 'error' level
-     * 
+     *
      * @param message
      *            the message to log
      */
@@ -134,7 +134,7 @@ public class Jdk14Logger implements Log {
 
     /**
      * Logs the given message and Throwable at the 'error' level.
-     * 
+     *
      * @param message
      *            the message to log
      * @param exception
@@ -146,7 +146,7 @@ public class Jdk14Logger implements Log {
 
     /**
      * Logs the given message instance using the 'fatal' level
-     * 
+     *
      * @param message
      *            the message to log
      */
@@ -156,7 +156,7 @@ public class Jdk14Logger implements Log {
 
     /**
      * Logs the given message and Throwable at the 'fatal' level.
-     * 
+     *
      * @param message
      *            the message to log
      * @param exception
@@ -168,7 +168,7 @@ public class Jdk14Logger implements Log {
 
     /**
      * Logs the given message instance using the 'info' level
-     * 
+     *
      * @param message
      *            the message to log
      */
@@ -178,7 +178,7 @@ public class Jdk14Logger implements Log {
 
     /**
      * Logs the given message and Throwable at the 'info' level.
-     * 
+     *
      * @param message
      *            the message to log
      * @param exception
@@ -190,7 +190,7 @@ public class Jdk14Logger implements Log {
 
     /**
      * Logs the given message instance using the 'trace' level
-     * 
+     *
      * @param message
      *            the message to log
      */
@@ -200,7 +200,7 @@ public class Jdk14Logger implements Log {
 
     /**
      * Logs the given message and Throwable at the 'trace' level.
-     * 
+     *
      * @param message
      *            the message to log
      * @param exception
@@ -212,7 +212,7 @@ public class Jdk14Logger implements Log {
 
     /**
      * Logs the given message instance using the 'warn' level
-     * 
+     *
      * @param message
      *            the message to log
      */
@@ -222,7 +222,7 @@ public class Jdk14Logger implements Log {
 
     /**
      * Logs the given message and Throwable at the 'warn' level.
-     * 
+     *
      * @param message
      *            the message to log
      * @param exception

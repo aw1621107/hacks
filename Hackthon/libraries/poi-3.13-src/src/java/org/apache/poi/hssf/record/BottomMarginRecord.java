@@ -24,7 +24,7 @@ import org.apache.poi.util.*;
 
 /**
  * Record for the bottom margin.<p/>
- * 
+ *
  * @author Shawn Laubach (slaubach at apache dot org)
  */
 public final class BottomMarginRecord extends StandardRecord implements Margin {
@@ -87,4 +87,4 @@ public final class BottomMarginRecord extends StandardRecord implements Margin {
         return rec;
     }
 
-}  // END OF 
+}  // END OF

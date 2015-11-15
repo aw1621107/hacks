@@ -51,14 +51,14 @@ public final class DateAndTime
     _info = LittleEndian.getShort(buf, offset);
     _info2 = LittleEndian.getShort(buf, offset + LittleEndian.SHORT_SIZE);
   }
-  
+
   public Calendar getDate() {
      // TODO Discover if the timezone is stored somewhere else or not
      Calendar cal = LocaleUtil.getLocaleCalendar(
-           _years.getValue(_info2)+1900, 
-           _months.getValue(_info2)-1, 
-           _dom.getValue(_info), 
-           _hours.getValue(_info), 
+           _years.getValue(_info2)+1900,
+           _months.getValue(_info2)-1,
+           _dom.getValue(_info),
+           _hours.getValue(_info),
            _minutes.getValue(_info),
            0
      );
@@ -84,7 +84,7 @@ public final class DateAndTime
       assert false : "hashCode not designed";
       return 42; // any arbitrary constant will do
   }
-  
+
   public Object clone()
     throws CloneNotSupportedException
   {

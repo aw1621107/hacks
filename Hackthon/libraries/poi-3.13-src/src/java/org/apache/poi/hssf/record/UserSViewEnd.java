@@ -74,5 +74,5 @@ public final class UserSViewEnd extends StandardRecord {
         return cloneViaReserialise();
     }
 
-    
+
 }

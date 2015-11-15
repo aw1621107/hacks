@@ -55,15 +55,15 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
     protected XSSFSimpleShape(XSSFDrawing drawing, CTShape ctShape) {
         this.drawing = drawing;
         this.ctShape = ctShape;
-        
+
         _paragraphs = new ArrayList<XSSFTextParagraph>();
-        
-        // initialize any existing paragraphs - this will be the default body paragraph in a new shape, 
+
+        // initialize any existing paragraphs - this will be the default body paragraph in a new shape,
         // or existing paragraphs that have been loaded from the file
         CTTextBody body = ctShape.getTxBody();
         if(body != null) {
             for(int i = 0; i < body.sizeOfPArray(); i++) {
-                _paragraphs.add(new XSSFTextParagraph(body.getPArray(i), ctShape));        	
+                _paragraphs.add(new XSSFTextParagraph(body.getPArray(i), ctShape));
             }
         }
     }
@@ -102,10 +102,10 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
             p.addNewPPr().setAlgn(STTextAlignType.L);
             CTTextCharacterProperties endPr = p.addNewEndParaRPr();
             endPr.setLang("en-US");
-            endPr.setSz(1100);   
+            endPr.setSz(1100);
             CTSolidColorFillProperties scfpr = endPr.addNewSolidFill();
             scfpr.addNewSrgbClr().setVal(new byte[] { 0, 0, 0 });
-                        
+
             body.addNewLstStyle();
 
             prototype = shape;
@@ -125,7 +125,7 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
 
     /**
      * Returns the text from all paragraphs in the shape. Paragraphs are separated by new lines.
-     * 
+     *
      * @return  text contained within this shape or empty string
      */
     public String getText() {
@@ -133,7 +133,7 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
         StringBuilder out = new StringBuilder();
         List<Integer> levelCount = new ArrayList<Integer>(MAX_LEVELS);	// maximum 9 levels
         XSSFTextParagraph p = null;
-        
+
         // initialise the levelCount array - this maintains a record of the numbering to be used at each level
         for (int k = 0; k < MAX_LEVELS; k++){
         	levelCount.add(0);
@@ -144,50 +144,50 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
             p = _paragraphs.get(i);
 
             if(p.isBullet() && p.getText().length() > 0){
-               
+
                 int level = Math.min(p.getLevel(), MAX_LEVELS - 1);
-                
+
                 if(p.isBulletAutoNumber()){
                     i = processAutoNumGroup(i, level, levelCount, out);
                 } else {
                     // indent appropriately for the level
                     for(int j = 0; j < level; j++){
                         out.append('\t');
-                    }               
+                    }
                     String character = p.getBulletCharacter();
                     out.append(character.length() > 0 ? character + " " : "- ");
                     out.append(p.getText());
-                }               
+                }
             } else {
                 out.append(p.getText());
-                
+
                 // this paragraph is not a bullet, so reset the count array
                 for (int k = 0; k < MAX_LEVELS; k++){
                     levelCount.set(k, 0);
                 }
-            }            
+            }
         }
 
         return out.toString();
     }
 
     /**
-     * 
+     *
      */
     private int processAutoNumGroup(int index, int level, List<Integer> levelCount, StringBuilder out){
         XSSFTextParagraph p = null;
         XSSFTextParagraph nextp = null;
         ListAutoNumber scheme, nextScheme;
         int startAt, nextStartAt;
-        
+
         p = _paragraphs.get(index);
-        
+
         // The rules for generating the auto numbers are as follows. If the following paragraph is also
         // an auto-number, has the same type/scheme (and startAt if defined on this paragraph) then they are
         // considered part of the same group. An empty bullet paragraph is counted as part of the same
         // group but does not increment the count for the group. A change of type, startAt or the paragraph
         // not being a bullet resets the count for that level to 1.
-        
+
         // first auto-number paragraph so initialise to 1 or the bullets startAt if present
         startAt = p.getBulletAutoNumberStart();
         scheme = p.getBulletAutoNumberScheme();
@@ -202,23 +202,23 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
             out.append(getBulletPrefix(scheme, levelCount.get(level)));
             out.append(p.getText());
         }
-        while(true) {                        
+        while(true) {
             nextp = (index + 1) == _paragraphs.size() ? null : _paragraphs.get(index + 1);
             if(nextp == null) break; // out of paragraphs
-            if(!(nextp.isBullet() && p.isBulletAutoNumber())) break; // not an auto-number bullet                      
-            if(nextp.getLevel() > level) { 
+            if(!(nextp.isBullet() && p.isBulletAutoNumber())) break; // not an auto-number bullet
+            if(nextp.getLevel() > level) {
                 // recurse into the new level group
                 if (out.length() > 0) out.append('\n');
                 index = processAutoNumGroup(index + 1, nextp.getLevel(), levelCount, out);
                 continue; // restart the loop given the new index
             } else if(nextp.getLevel() < level) {
-                break; // changed level   
+                break; // changed level
             }
             nextScheme = nextp.getBulletAutoNumberScheme();
             nextStartAt = nextp.getBulletAutoNumberStart();
-            
+
             if(nextScheme == scheme && nextStartAt == startAt) {
-                // bullet is valid, so increment i 
+                // bullet is valid, so increment i
                 ++index;
                 if (out.length() > 0) out.append('\n');
                 // indent for the level
@@ -234,13 +234,13 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
                 }
             } else {
                 // something doesn't match so stop
-                break; 
+                break;
             }
         }
-        // end of the group so reset the count for this level 
-        levelCount.set(level, 0);      
-        
-        return index; 
+        // end of the group so reset the count for this level
+        levelCount.set(level, 0);
+
+        return index;
     }
     /**
      * Returns a string containing an appropriate prefix for an auto-numbering bullet
@@ -250,7 +250,7 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
      */
     private String getBulletPrefix(ListAutoNumber scheme, int value){
         StringBuilder out = new StringBuilder();
-        
+
         switch(scheme) {
         case ALPHA_LC_PARENT_BOTH:
         case ALPHA_LC_PARENT_R:
@@ -263,7 +263,7 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
             if(scheme == ListAutoNumber.ALPHA_UC_PARENT_BOTH) out.append('(');
             out.append(valueToAlpha(value));
             out.append(')');
-            break;        
+            break;
         case ALPHA_LC_PERIOD:
             out.append(valueToAlpha(value).toLowerCase(Locale.ROOT));
             out.append('.');
@@ -284,7 +284,7 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
             break;
         case ARABIC_PLAIN:
             out.append(value);
-            break;            
+            break;
         case ROMAN_LC_PARENT_BOTH:
         case ROMAN_LC_PARENT_R:
             if(scheme == ListAutoNumber.ROMAN_LC_PARENT_BOTH) out.append('(');
@@ -296,7 +296,7 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
             if(scheme == ListAutoNumber.ROMAN_UC_PARENT_BOTH) out.append('(');
             out.append(valueToRoman(value));
             out.append(')');
-            break;        
+            break;
         case ROMAN_LC_PERIOD:
             out.append(valueToRoman(value).toLowerCase(Locale.ROOT));
             out.append('.');
@@ -307,12 +307,12 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
             break;
         default:
             out.append('\u2022');   // can't set the font to wingdings so use the default bullet character
-            break;            
+            break;
         }
-        out.append(" ");        
+        out.append(" ");
         return out.toString();
     }
-    
+
     /**
      * Convert an integer to its alpha equivalent e.g. 1 = A, 2 = B, 27 = AA etc
      */
@@ -326,10 +326,10 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
         }
         return alpha;
     }
-    
+
     private static String[] _romanChars = new String[] { "M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I" };
     private static int[] _romanAlphaValues = new int[] { 1000,900,500,400,100,90,50,40,10,9,5,4,1 };
-        
+
     /**
      * Convert an integer to its roman equivalent e.g. 1 = I, 9 = IX etc
      */
@@ -343,7 +343,7 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
         }
         return out.toString();
     }
-    
+
     /**
      * Clear all text from this shape
      */
@@ -352,7 +352,7 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
         CTTextBody txBody = ctShape.getTxBody();
         txBody.setPArray(null); // remove any existing paragraphs
     }
-    
+
     /**
      * Set a single paragraph of text on the shape. Note this will replace all existing paragraphs created on the shape.
      * @param text	string representing the paragraph text
@@ -395,15 +395,15 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
                 r.setT(lt.getT());
             }
         }
-        
-        clearText();                
+
+        clearText();
         ctShape.getTxBody().setPArray(new CTTextParagraph[]{p});
         _paragraphs.add(new XSSFTextParagraph(ctShape.getTxBody().getPArray(0), ctShape));
-    }    
-    
+    }
+
     /**
      * Returns a collection of the XSSFTextParagraphs that are attached to this shape
-     * 
+     *
      * @return text paragraphs in this shape
      */
     public List<XSSFTextParagraph> getTextParagraphs() {
@@ -421,7 +421,7 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
         XSSFTextParagraph paragraph = new XSSFTextParagraph(p, ctShape);
         _paragraphs.add(paragraph);
         return paragraph;
-    }    
+    }
 
     /**
      * Add a new paragraph run to this shape, set to the provided string
@@ -432,17 +432,17 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
         XSSFTextParagraph paragraph = addNewTextParagraph();
         paragraph.addNewTextRun().setText(text);
         return paragraph;
-    }   
-    
+    }
+
     /**
-     * Add a new paragraph run to this shape, set to the provided rich text string 
+     * Add a new paragraph run to this shape, set to the provided rich text string
      *
      * @return created paragraph run
      */
     public XSSFTextParagraph addNewTextParagraph(XSSFRichTextString str) {
         CTTextBody txBody = ctShape.getTxBody();
         CTTextParagraph p = txBody.addNewP();
-       
+
         if(str.numFormattingRuns() == 0){
             CTRegularTextRun r = p.addNewR();
             CTTextCharacterProperties rPr = r.addNewRPr();
@@ -465,11 +465,11 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
                 r.setT(lt.getT());
             }
         }
-        
+
         // Note: the XSSFTextParagraph constructor will create its required XSSFTextRuns from the provided CTTextParagraph
         XSSFTextParagraph paragraph = new XSSFTextParagraph(p, ctShape);
         _paragraphs.add(paragraph);
-        
+
         return paragraph;
     }
 
@@ -500,11 +500,11 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
     	if(bodyPr != null) {
     		if(bodyPr.isSetHorzOverflow()){
     			return TextHorizontalOverflow.values()[bodyPr.getHorzOverflow().intValue() - 1];
-    		}    			
+    		}
     	}
     	return TextHorizontalOverflow.OVERFLOW;
-    }    
-    
+    }
+
     /**
      * Sets the type of vertical overflow for the text.
      *
@@ -532,11 +532,11 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
     	if(bodyPr != null) {
     		if(bodyPr.isSetVertOverflow()){
     			return TextVerticalOverflow.values()[bodyPr.getVertOverflow().intValue() - 1];
-    		}    			
+    		}
     	}
     	return TextVerticalOverflow.OVERFLOW;
-    }   
-    
+    }
+
     /**
      * Sets the type of vertical alignment for the text within the shape.
      *
@@ -564,14 +564,14 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
     	if(bodyPr != null) {
     		if(bodyPr.isSetAnchor()){
     			return VerticalAlignment.values()[bodyPr.getAnchor().intValue() - 1];
-    		}    			
+    		}
     	}
     	return VerticalAlignment.TOP;
     }
 
     /**
      * Sets the vertical orientation of the text
-     * 
+     *
      * @param orientation vertical orientation of the text
      * A <code>null</code> values unsets this property.
      */
@@ -588,7 +588,7 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
 
     /**
      * Gets the vertical orientation of the text
-     * 
+     *
      * @return vertical orientation of the text
      */
     public TextDirection getTextDirection(){
@@ -617,7 +617,7 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
         	}
         }
         // If this attribute is omitted, then a value of 0.05 inches is implied
-        return 3.6;	
+        return 3.6;
     }
 
     /**
@@ -670,7 +670,7 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
         	}
         }
         // If this attribute is omitted, then a value of 0.05 inches is implied
-        return 3.6;    	
+        return 3.6;
     }
 
     /**
@@ -793,7 +793,7 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
         }
         return TextAutofit.NORMAL;
     }
-    
+
     /**
      * Gets the shape type, one of the constants defined in {@link org.apache.poi.ss.usermodel.ShapeTypes}.
      *
@@ -842,7 +842,7 @@ public class XSSFSimpleShape extends XSSFShape implements Iterable<XSSFTextParag
             int sz = (int)(pr.getSzArray(0).getVal()*100);
             rPr.setSz(sz);
         }
-        
+
         if(pr.sizeOfColorArray() > 0) {
             CTSolidColorFillProperties fill = rPr.isSetSolidFill() ? rPr.getSolidFill() : rPr.addNewSolidFill();
             org.openxmlformats.schemas.spreadsheetml.x2006.main.CTColor xlsColor = pr.getColorArray(0);

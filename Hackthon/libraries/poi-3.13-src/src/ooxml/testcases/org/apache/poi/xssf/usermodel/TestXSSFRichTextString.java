@@ -93,8 +93,8 @@ public final class TestXSSFRichTextString extends TestCase {
         assertEquals(7, rt.getIndexOfFormattingRun(3));
         assertEquals(2, rt.getLengthOfFormattingRun(3));
         assertEquals("89", rt.getCTRst().getRArray(3).getT());
-        
-        
+
+
         assertEquals(-1, rt.getIndexOfFormattingRun(9999));
         assertEquals(-1, rt.getLengthOfFormattingRun(9999));
         assertNull(rt.getFontAtIndex(9999));
@@ -103,25 +103,25 @@ public final class TestXSSFRichTextString extends TestCase {
     public void testApplyFontIndex() {
         XSSFRichTextString rt = new XSSFRichTextString("Apache POI");
         rt.applyFont(0, 10, (short)1);
-        
+
         rt.applyFont((short)1);
-        
+
         assertNotNull(rt.getFontAtIndex(0));
     }
 
     public void testApplyFontWithStyles() {
         XSSFRichTextString rt = new XSSFRichTextString("Apache POI");
-        
+
         StylesTable tbl = new StylesTable();
         rt.setStylesTableReference(tbl);
-        
+
         try {
             rt.applyFont(0, 10, (short)1);
             fail("Fails without styles in the table");
         } catch (IndexOutOfBoundsException e) {
             // expected
         }
-        
+
         tbl.putFont(new XSSFFont());
         rt.applyFont(0, 10, (short)1);
         rt.applyFont((short)1);
@@ -129,7 +129,7 @@ public final class TestXSSFRichTextString extends TestCase {
 
     public void testApplyFontException() {
         XSSFRichTextString rt = new XSSFRichTextString("Apache POI");
-        
+
         rt.applyFont(0, 0, (short)1);
 
         try {
@@ -174,9 +174,9 @@ public final class TestXSSFRichTextString extends TestCase {
         rt.applyFont(7, 10, font);
         assertEquals(2, rt.numFormattingRuns());
         assertEquals(true, rt.hasFormatting());
-        
+
         rt.clearFormatting();
-        
+
         assertEquals("Apache POI", rt.getString());
         assertEquals(0, rt.numFormattingRuns());
         assertEquals(false, rt.hasFormatting());
@@ -234,7 +234,7 @@ public final class TestXSSFRichTextString extends TestCase {
         XSSFRichTextString rt = new XSSFRichTextString(st);
         //_x000D_ is converted into carriage return
         assertEquals("abc\r2ef\r", rt.getString());
-        
+
     }
 
     public void testApplyFont_lowlevel(){
@@ -438,7 +438,7 @@ public final class TestXSSFRichTextString extends TestCase {
         assertEquals("<xml-fragment xml:space=\"preserve\">\n\n</xml-fragment>", t3.xmlText());
     }
 
-    
+
     @Test
     public void testBug56511() {
         XSSFWorkbook wb = XSSFTestDataSamples.openSampleWorkbook("56511.xlsx");
@@ -448,13 +448,13 @@ public final class TestXSSFRichTextString extends TestCase {
                 Row row = sheet.getRow(rowIdx);
                 if(row != null) {
                     int lastCell = row.getLastCellNum();
-    
+
                     for (int cellIdx = row.getFirstCellNum(); cellIdx <= lastCell; cellIdx++) {
-    
+
                         Cell cell = row.getCell(cellIdx);
                         if (cell != null) {
                             //System.out.println("row " + rowIdx + " column " + cellIdx + ": " + cell.getCellType() + ": " + cell.toString());
-                            
+
                             XSSFRichTextString richText = (XSSFRichTextString) cell.getRichStringCellValue();
                             int anzFormattingRuns = richText.numFormattingRuns();
                             for (int run = 0; run < anzFormattingRuns; run++) {
@@ -475,35 +475,35 @@ public final class TestXSSFRichTextString extends TestCase {
         Sheet sheet = wb.getSheetAt(0);
         Row row = sheet.getRow(0);
 
-        // verify the values to ensure future changes keep the returned information equal 
+        // verify the values to ensure future changes keep the returned information equal
         XSSFRichTextString rt = (XSSFRichTextString) row.getCell(0).getRichStringCellValue();
         assertEquals(0, rt.numFormattingRuns());
         assertNull(rt.getFontOfFormattingRun(0));
         assertEquals(-1, rt.getLengthOfFormattingRun(0));
-        
+
         rt = (XSSFRichTextString) row.getCell(1).getRichStringCellValue();
         assertEquals(0, row.getCell(1).getRichStringCellValue().numFormattingRuns());
         assertNull(rt.getFontOfFormattingRun(1));
         assertEquals(-1, rt.getLengthOfFormattingRun(1));
-               
+
         rt = (XSSFRichTextString) row.getCell(2).getRichStringCellValue();
         assertEquals(2, rt.numFormattingRuns());
         assertNotNull(rt.getFontOfFormattingRun(0));
         assertEquals(4, rt.getLengthOfFormattingRun(0));
-        
+
         assertNotNull(rt.getFontOfFormattingRun(1));
         assertEquals(9, rt.getLengthOfFormattingRun(1));
 
         assertNull(rt.getFontOfFormattingRun(2));
-        
+
         rt = (XSSFRichTextString) row.getCell(3).getRichStringCellValue();
         assertEquals(3, rt.numFormattingRuns());
         assertNull(rt.getFontOfFormattingRun(0));
         assertEquals(1, rt.getLengthOfFormattingRun(0));
-        
+
         assertNotNull(rt.getFontOfFormattingRun(1));
         assertEquals(3, rt.getLengthOfFormattingRun(1));
-        
+
         assertNotNull(rt.getFontOfFormattingRun(2));
         assertEquals(9, rt.getLengthOfFormattingRun(2));
     }
@@ -511,7 +511,7 @@ public final class TestXSSFRichTextString extends TestCase {
     public void testToString() {
         XSSFRichTextString rt = new XSSFRichTextString("Apache POI");
         assertNotNull(rt.toString());
-        
+
         // TODO: normally toString() should never return null, should we adjust this?
         rt = new XSSFRichTextString();
         assertNull(rt.toString());

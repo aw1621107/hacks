@@ -38,7 +38,7 @@ public abstract class POIOLE2TextExtractor extends POITextExtractor {
 
 	/**
 	 * Creates a new text extractor for the given document
-	 * 
+	 *
 	 * @param document The POIDocument to use in this extractor.
 	 */
 	public POIOLE2TextExtractor(POIDocument document) {
@@ -53,11 +53,11 @@ public abstract class POIOLE2TextExtractor extends POITextExtractor {
 	protected POIOLE2TextExtractor(POIOLE2TextExtractor otherExtractor) {
 		this.document = otherExtractor.document;
 	}
-	
+
 	/**
 	 * Returns the document information metadata for the document
-	 * 
-     * @return The Document Summary Information or null 
+	 *
+     * @return The Document Summary Information or null
      *      if it could not be read for this document.
 	 */
 	public DocumentSummaryInformation getDocSummaryInformation() {
@@ -65,7 +65,7 @@ public abstract class POIOLE2TextExtractor extends POITextExtractor {
 	}
 	/**
 	 * Returns the summary information metadata for the document.
-	 * 
+	 *
      * @return The Summary information for the document or null
      *      if it could not be read for this document.
 	 */
@@ -76,7 +76,7 @@ public abstract class POIOLE2TextExtractor extends POITextExtractor {
 	/**
 	 * Returns an HPSF powered text extractor for the
 	 *  document properties metadata, such as title and author.
-	 *  
+	 *
 	 * @return an instance of POIExtractor that can extract meta-data.
 	 */
 	public POITextExtractor getMetadataTextExtractor() {

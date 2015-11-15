@@ -51,7 +51,7 @@ public final class TestStylesTable extends TestCase {
 		assertEquals(1, st._getXfsSize());
 		assertEquals(1, st._getStyleXfsSize());
 		assertEquals(0, st._getNumberFormatSize());
-        
+
         assertNotNull(XSSFTestDataSamples.writeOutAndReadBack(wb));
 	}
 
@@ -62,7 +62,7 @@ public final class TestStylesTable extends TestCase {
 		StylesTable st = workbook.getStylesSource();
 
 		doTestExisting(st);
-        
+
         assertNotNull(XSSFTestDataSamples.writeOutAndReadBack(workbook));
 	}
 
@@ -129,7 +129,7 @@ public final class TestStylesTable extends TestCase {
 		assertEquals("yyyy-mm-dd", st.getNumberFormatAt(nf1));
 		assertEquals(nf1, st.putNumberFormat("yyyy-mm-dd"));
 		assertEquals(nf2, st.putNumberFormat("yyyy-mm-DD"));
-        
+
         assertNotNull(XSSFTestDataSamples.writeOutAndReadBack(wb));
 	}
 
@@ -155,7 +155,7 @@ public final class TestStylesTable extends TestCase {
 		assertEquals("YYYY-mm-dd", st.getNumberFormatAt(nf1));
 		assertEquals(nf1, st.putNumberFormat("YYYY-mm-dd"));
 		assertEquals(nf2, st.putNumberFormat("YYYY-mm-DD"));
-        
+
         assertNotNull(XSSFTestDataSamples.writeOutAndReadBack(workbook));
 	}
 }

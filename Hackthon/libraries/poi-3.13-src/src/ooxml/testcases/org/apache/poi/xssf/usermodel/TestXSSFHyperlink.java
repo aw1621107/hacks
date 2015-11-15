@@ -50,7 +50,7 @@ public final class TestXSSFHyperlink extends BaseTestHyperlink {
         XSSFSheet sheet = workbook.createSheet();
         XSSFRow row = sheet.createRow(0);
         XSSFCreationHelper createHelper = workbook.getCreationHelper();
-        
+
         String[] urls = {
                 "http://apache.org",
                 "www.apache.org",

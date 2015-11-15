@@ -25,7 +25,7 @@ import org.apache.poi.util.LittleEndian;
 /**
  * This class is used to represent a sprm operation from a Word 97/2000/XP
  * document.
- * 
+ *
  * @author Ryan Ackley
  * @version 1.0
  */
@@ -96,7 +96,7 @@ public final class SprmOperation
     {
         return _gOffset;
     }
-    
+
     public int getOperand()
     {
         switch ( getSizeCode() )

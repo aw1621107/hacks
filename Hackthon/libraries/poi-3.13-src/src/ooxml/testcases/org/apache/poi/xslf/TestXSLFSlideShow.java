@@ -47,12 +47,12 @@ public class TestXSLFSlideShow extends TestCase {
 	public void testOpen() throws Exception {
 
 		XSLFSlideShow xml;
-		
+
 		// With the finalised uri, should be fine
 		xml = new XSLFSlideShow(pack);
 		// Check the core
 		assertNotNull(xml.getPresentation());
-		
+
 		// Check it has some slides
 		assertTrue(
 			xml.getSlideReferences().sizeOfSldIdArray() > 0
@@ -61,11 +61,11 @@ public class TestXSLFSlideShow extends TestCase {
 				xml.getSlideMasterReferences().sizeOfSldMasterIdArray() > 0
 			);
 	}
-	
+
     @SuppressWarnings("deprecation")
 	public void testSlideBasics() throws Exception {
 		XSLFSlideShow xml = new XSLFSlideShow(pack);
-		
+
 		// Should have 1 master
 		assertEquals(1, xml.getSlideMasterReferences().sizeOfSldMasterIdArray());
 
@@ -79,33 +79,33 @@ public class TestXSLFSlideShow extends TestCase {
 		assertEquals(257, slides[1].getId());
 		assertEquals("rId2", slides[0].getId2());
 		assertEquals("rId3", slides[1].getId2());
-		
+
 		// Now get those objects
 		assertNotNull(xml.getSlide(slides[0]));
 		assertNotNull(xml.getSlide(slides[1]));
-		
+
 		// And check they have notes as expected
 		assertNotNull(xml.getNotes(slides[0]));
 		assertNotNull(xml.getNotes(slides[1]));
-		
+
 		// And again for the master
 		CTSlideMasterIdListEntry[] masters = xml.getSlideMasterReferences().getSldMasterIdArray();
-		
+
 		assertEquals(2147483648l, masters[0].getId());
 		assertEquals("rId1", masters[0].getId2());
 		assertNotNull(xml.getSlideMaster(masters[0]));
 	}
-	
+
 	public void testMetadataBasics() throws Exception {
 		XSLFSlideShow xml = new XSLFSlideShow(pack);
-		
+
 		assertNotNull(xml.getProperties().getCoreProperties());
 		assertNotNull(xml.getProperties().getExtendedProperties());
-		
+
 		assertEquals("Microsoft Office PowerPoint", xml.getProperties().getExtendedProperties().getUnderlyingProperties().getApplication());
 		assertEquals(0, xml.getProperties().getExtendedProperties().getUnderlyingProperties().getCharacters());
 		assertEquals(0, xml.getProperties().getExtendedProperties().getUnderlyingProperties().getLines());
-		
+
 		assertEquals(null, xml.getProperties().getCoreProperties().getTitle());
 		assertEquals(null, xml.getProperties().getCoreProperties().getUnderlyingProperties().getSubjectProperty().getValue());
 	}

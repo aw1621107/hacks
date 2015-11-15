@@ -83,12 +83,12 @@ public final class HSSFRow implements Row {
         this.sheet = sheet;
         row = record;
         setRowNum(record.getRowNumber());
-        
+
         // Size the initial cell list such that a read only case won't waste
         //  lots of memory, and a create/read followed by adding new cells can
         //  add a bit without needing a resize
         cells = new HSSFCell[record.getLastCol()+INITIAL_CAPACITY];
-        
+
         // Don't trust colIx boundaries as read by other apps
         // set the RowRecord empty for the moment
         record.setEmpty();
@@ -128,7 +128,7 @@ public final class HSSFRow implements Row {
      * Use this to create new cells within the row and return it.
      * <p>
      * The cell that is returned will be of the requested type.
-     * The type can be changed either through calling setCellValue 
+     * The type can be changed either through calling setCellValue
      *  or setCellType, but there is a small overhead to doing this,
      *  so it is best to create of the required type up front.
      *

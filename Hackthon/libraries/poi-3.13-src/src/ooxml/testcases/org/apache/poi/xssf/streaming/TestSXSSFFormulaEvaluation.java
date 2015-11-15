@@ -32,7 +32,7 @@ import org.junit.Test;
 
 /**
  * Formula Evaluation with SXSSF.
- * 
+ *
  * Note that SXSSF can only evaluate formulas where the
  *  cell is in the current window, and all references
  *  from the cell are in the current window
@@ -49,13 +49,13 @@ public final class TestSXSSFFormulaEvaluation {
     public void testEvaluateAllFails() throws IOException {
         SXSSFWorkbook wb = new SXSSFWorkbook(5);
         SXSSFSheet s = wb.createSheet();
-        
+
         FormulaEvaluator eval = wb.getCreationHelper().createFormulaEvaluator();
-        
+
         s.createRow(0).createCell(0).setCellFormula("1+2");
         s.createRow(1).createCell(0).setCellFormula("A21");
         for (int i=2; i<19; i++) { s.createRow(i); }
-        
+
         // Cells outside window will fail, whether referenced or not
         s.createRow(19).createCell(0).setCellFormula("A1+A2");
         s.createRow(20).createCell(0).setCellFormula("A1+A11+100");
@@ -65,42 +65,42 @@ public final class TestSXSSFFormulaEvaluation {
         } catch(SXSSFFormulaEvaluator.RowFlushedException e) {
             // Expected
         }
-        
-        
+
+
         // Inactive sheets will fail
         XSSFWorkbook xwb = new XSSFWorkbook();
         xwb.createSheet("Open");
         xwb.createSheet("Closed");
-        
+
         wb = new SXSSFWorkbook(xwb, 5);
         s = wb.getSheet("Closed");
         s.flushRows();
         s = wb.getSheet("Open");
         s.createRow(0).createCell(0).setCellFormula("1+2");
-        
+
         eval = wb.getCreationHelper().createFormulaEvaluator();
         try {
             eval.evaluateAll();
             fail("Evaluate All shouldn't work, as sheets flushed");
         } catch (SXSSFFormulaEvaluator.SheetsFlushedException e) {}
     }
-    
+
     @Test
     public void testEvaluateRefOutsideWindowFails() {
         SXSSFWorkbook wb = new SXSSFWorkbook(5);
         SXSSFSheet s = wb.createSheet();
-        
+
         s.createRow(0).createCell(0).setCellFormula("1+2");
         assertEquals(false, s.areAllRowsFlushed());
         assertEquals(-1, s.getLastFlushedRowNum());
-        
+
         for (int i=1; i<=19; i++) { s.createRow(i); }
         Cell c = s.createRow(20).createCell(0);
         c.setCellFormula("A1+100");
-        
+
         assertEquals(false, s.areAllRowsFlushed());
         assertEquals(15, s.getLastFlushedRowNum());
-        
+
         FormulaEvaluator eval = wb.getCreationHelper().createFormulaEvaluator();
         try {
             eval.evaluateFormulaCell(c);
@@ -109,7 +109,7 @@ public final class TestSXSSFFormulaEvaluation {
             // Expected
         }
     }
-    
+
     /**
      * If all formula cells + their references are inside the window,
      *  then evaluation works
@@ -121,46 +121,46 @@ public final class TestSXSSFFormulaEvaluation {
         s.createRow(0).createCell(0).setCellFormula("1+2");
         s.createRow(1).createCell(1).setCellFormula("A1+10");
         s.createRow(2).createCell(2).setCellFormula("B2+100");
-        
+
         FormulaEvaluator eval = wb.getCreationHelper().createFormulaEvaluator();
         eval.evaluateAll();
-        
+
         assertEquals(3, (int)s.getRow(0).getCell(0).getNumericCellValue());
         assertEquals(13, (int)s.getRow(1).getCell(1).getNumericCellValue());
         assertEquals(113, (int)s.getRow(2).getCell(2).getNumericCellValue());
     }
-    
+
     @Test
     public void testEvaluateRefInsideWindow() {
         SXSSFWorkbook wb = new SXSSFWorkbook(5);
         SXSSFSheet s = wb.createSheet();
-        
+
         FormulaEvaluator eval = wb.getCreationHelper().createFormulaEvaluator();
-        
+
         SXSSFCell c = s.createRow(0).createCell(0);
         c.setCellValue(1.5);
-        
+
         c = s.createRow(1).createCell(0);
         c.setCellFormula("A1*2");
-        
+
         assertEquals(0, (int)c.getNumericCellValue());
         eval.evaluateFormulaCell(c);
         assertEquals(3, (int)c.getNumericCellValue());
     }
-    
+
     @Test
     public void testEvaluateSimple() {
         SXSSFWorkbook wb = new SXSSFWorkbook(5);
         SXSSFSheet s = wb.createSheet();
-        
+
         FormulaEvaluator eval = wb.getCreationHelper().createFormulaEvaluator();
-        
+
         SXSSFCell c = s.createRow(0).createCell(0);
         c.setCellFormula("1+2");
         assertEquals(0, (int)c.getNumericCellValue());
         eval.evaluateFormulaCell(c);
         assertEquals(3, (int)c.getNumericCellValue());
-        
+
         c = s.createRow(1).createCell(0);
         c.setCellFormula("CONCATENATE(\"hello\",\" \",\"world\")");
         eval.evaluateFormulaCell(c);

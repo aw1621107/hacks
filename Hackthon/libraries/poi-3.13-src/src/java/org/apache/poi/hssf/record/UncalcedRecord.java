@@ -22,9 +22,9 @@ import org.apache.poi.util.LittleEndianOutput;
 /**
  * Title: Uncalced Record
  * <P>
- * If this record occurs in the Worksheet Substream, it indicates that the formulas have not 
+ * If this record occurs in the Worksheet Substream, it indicates that the formulas have not
  * been recalculated before the document was saved.
- * 
+ *
  * @author Olivier Leprince
  */
 public final class UncalcedRecord extends StandardRecord  {

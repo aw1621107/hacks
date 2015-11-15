@@ -40,11 +40,11 @@ import org.apache.poi.util.LittleEndianOutput;
 import org.apache.poi.util.POILogger;
 
 /**
- * Conditional Formatting v12 Rule Record (0x087A). 
- * 
+ * Conditional Formatting v12 Rule Record (0x087A).
+ *
  * <p>This is for newer-style Excel conditional formattings,
  *  from Excel 2007 onwards.
- *  
+ *
  * <p>{@link CFRuleRecord} is used where the condition type is
  *  {@link #CONDITION_TYPE_CELL_VALUE_IS} or {@link #CONDITION_TYPE_FORMULA},
  *  this is only used for the other types
@@ -61,7 +61,7 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
     private int template_type;
     private byte template_param_length;
     private byte[] template_params;
-    
+
     private DataBarFormatting data_bar;
     private IconMultiStateFormatting multistate;
     private ColorGradientFormatting color_gradient;
@@ -82,12 +82,12 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
     private void setDefaults() {
         futureHeader = new FtrHeader();
         futureHeader.setRecordType(sid);
-        
+
         ext_formatting_length = 0;
         ext_formatting_data = new byte[4];
-        
+
         formula_scale = Formula.create(Ptg.EMPTY_PTG_ARRAY);
-        
+
         ext_opts = 0;
         priority = 0;
         template_type = getConditionType();
@@ -110,7 +110,7 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
             String formulaText1, String formulaText2) {
         Ptg[] formula1 = parseFormula(formulaText1, sheet);
         Ptg[] formula2 = parseFormula(formulaText2, sheet);
-        return new CFRule12Record(CONDITION_TYPE_CELL_VALUE_IS, comparisonOperation, 
+        return new CFRule12Record(CONDITION_TYPE_CELL_VALUE_IS, comparisonOperation,
                 formula1, formula2, null);
     }
     /**
@@ -121,28 +121,28 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
         Ptg[] formula1 = parseFormula(formulaText1, sheet);
         Ptg[] formula2 = parseFormula(formulaText2, sheet);
         Ptg[] formula3 = parseFormula(formulaTextScale, sheet);
-        return new CFRule12Record(CONDITION_TYPE_CELL_VALUE_IS, comparisonOperation, 
+        return new CFRule12Record(CONDITION_TYPE_CELL_VALUE_IS, comparisonOperation,
                 formula1, formula2, formula3);
     }
     /**
      * Creates a new Data Bar formatting
      */
     public static CFRule12Record create(HSSFSheet sheet, ExtendedColor color) {
-        CFRule12Record r = new CFRule12Record(CONDITION_TYPE_DATA_BAR, 
+        CFRule12Record r = new CFRule12Record(CONDITION_TYPE_DATA_BAR,
                                               ComparisonOperator.NO_COMPARISON);
         DataBarFormatting dbf = r.createDataBarFormatting();
         dbf.setColor(color);
         dbf.setPercentMin((byte)0);
         dbf.setPercentMax((byte)100);
-        
+
         DataBarThreshold min = new DataBarThreshold();
         min.setType(RangeType.MIN.id);
         dbf.setThresholdMin(min);
-        
+
         DataBarThreshold max = new DataBarThreshold();
         max.setType(RangeType.MAX.id);
         dbf.setThresholdMax(max);
-        
+
         return r;
     }
     /**
@@ -153,8 +153,8 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
         for (int i=0; i<ts.length; i++) {
             ts[i] = new IconMultiStateThreshold();
         }
-        
-        CFRule12Record r = new CFRule12Record(CONDITION_TYPE_ICON_SET, 
+
+        CFRule12Record r = new CFRule12Record(CONDITION_TYPE_ICON_SET,
                                               ComparisonOperator.NO_COMPARISON);
         IconMultiStateFormatting imf = r.createMultiStateFormatting();
         imf.setIconSet(iconSet);
@@ -172,8 +172,8 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
             ts[i] = new ColorGradientThreshold();
             colors[i] = new ExtendedColor();
         }
-        
-        CFRule12Record r = new CFRule12Record(CONDITION_TYPE_COLOR_SCALE, 
+
+        CFRule12Record r = new CFRule12Record(CONDITION_TYPE_COLOR_SCALE,
                                               ComparisonOperator.NO_COMPARISON);
         ColorGradientFormatting cgf = r.createColorGradientFormatting();
         cgf.setNumControlPoints(numPoints);
@@ -188,7 +188,7 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
         setComparisonOperation(in.readByte());
         int field_3_formula1_len = in.readUShort();
         int field_4_formula2_len = in.readUShort();
-        
+
         ext_formatting_length = in.readInt();
         ext_formatting_data = new byte[0];
         if (ext_formatting_length == 0) {
@@ -201,13 +201,13 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
                 in.readFully(ext_formatting_data);
             }
         }
-        
+
         setFormula1(Formula.read(field_3_formula1_len, in));
         setFormula2(Formula.read(field_4_formula2_len, in));
-        
+
         int formula_scale_len = in.readUShort();
         formula_scale = Formula.read(formula_scale_len, in);
-        
+
         ext_opts = in.readByte();
         priority = in.readUShort();
         template_type = in.readUShort();
@@ -219,7 +219,7 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
             logger.log(POILogger.WARN, "CF Rule v12 template params length should be 0 or 16, found " + template_param_length);
             in.readRemainder();
         }
-        
+
         byte type = getConditionType();
         if (type == CONDITION_TYPE_COLOR_SCALE) {
             color_gradient = new ColorGradientFormatting(in);
@@ -231,7 +231,7 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
             multistate = new IconMultiStateFormatting(in);
         }
     }
-    
+
     public boolean containsDataBarBlock() {
         return (data_bar != null);
     }
@@ -240,7 +240,7 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
     }
     public DataBarFormatting createDataBarFormatting() {
         if (data_bar != null) return data_bar;
-        
+
         // Convert, setup and return
         setConditionType(CONDITION_TYPE_DATA_BAR);
         data_bar = new DataBarFormatting();
@@ -255,7 +255,7 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
     }
     public IconMultiStateFormatting createMultiStateFormatting() {
         if (multistate != null) return multistate;
-        
+
         // Convert, setup and return
         setConditionType(CONDITION_TYPE_ICON_SET);
         multistate = new IconMultiStateFormatting();
@@ -270,7 +270,7 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
     }
     public ColorGradientFormatting createColorGradientFormatting() {
         if (color_gradient != null) return color_gradient;
-        
+
         // Convert, setup and return
         setConditionType(CONDITION_TYPE_COLOR_SCALE);
         color_gradient = new ColorGradientFormatting();
@@ -305,7 +305,7 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
      */
     public void serialize(LittleEndianOutput out) {
         futureHeader.serialize(out);
-        
+
         int formula1Len=getFormulaSize(getFormula1());
         int formula2Len=getFormulaSize(getFormula2());
 
@@ -313,7 +313,7 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
         out.writeByte(getComparisonOperation());
         out.writeShort(formula1Len);
         out.writeShort(formula2Len);
-        
+
         // TODO Update ext_formatting_length
         if (ext_formatting_length == 0) {
             out.writeInt(0);
@@ -323,18 +323,18 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
             serializeFormattingBlock(out);
             out.write(ext_formatting_data);
         }
-        
+
         getFormula1().serializeTokens(out);
         getFormula2().serializeTokens(out);
         out.writeShort(getFormulaSize(formula_scale));
         formula_scale.serializeTokens(out);
-        
+
         out.writeByte(ext_opts);
         out.writeShort(priority);
         out.writeShort(template_type);
         out.writeByte(template_param_length);
         out.write(template_params);
-        
+
         byte type = getConditionType();
         if (type == CONDITION_TYPE_COLOR_SCALE) {
             color_gradient.serialize(out);
@@ -358,7 +358,7 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
         len += getFormulaSize(getFormula2());
         len += 2 + getFormulaSize(formula_scale);
         len += 6 + template_params.length;
-        
+
         byte type = getConditionType();
         if (type == CONDITION_TYPE_COLOR_SCALE) {
             len += color_gradient.getDataLength();
@@ -412,15 +412,15 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
     public Object clone() {
         CFRule12Record rec = new CFRule12Record(getConditionType(), getComparisonOperation());
         rec.futureHeader.setAssociatedRange(futureHeader.getAssociatedRange().copy());
-        
+
         super.copyTo(rec);
-        
+
         rec.ext_formatting_length = ext_formatting_length;
         rec.ext_formatting_data = new byte[ext_formatting_length];
         System.arraycopy(ext_formatting_data, 0, rec.ext_formatting_data, 0, ext_formatting_length);
-        
+
         rec.formula_scale = formula_scale.copy();
-        
+
         rec.ext_opts = ext_opts;
         rec.priority = priority;
         rec.template_type = template_type;
@@ -441,10 +441,10 @@ public final class CFRule12Record extends CFRuleBase implements FutureRecord {
             rec.filter_data = new byte[filter_data.length];
             System.arraycopy(filter_data, 0, rec.filter_data, 0, filter_data.length);
         }
-        
+
         return rec;
     }
-    
+
     public short getFutureRecordType() {
         return futureHeader.getRecordType();
     }

@@ -54,7 +54,7 @@ public final class PowerPointExtractor extends POIOLE2TextExtractor {
 		boolean notes = false;
 		boolean comments = false;
         boolean master = true;
-        
+
 		String file;
 		if (args.length > 1) {
 			notes = true;
@@ -124,7 +124,7 @@ public final class PowerPointExtractor extends POIOLE2TextExtractor {
 	public PowerPointExtractor(DirectoryNode dir, POIFSFileSystem fs) throws IOException {
 		this(new HSLFSlideShowImpl(dir, fs));
 	}
-   
+
 	/**
 	 * Creates a PowerPointExtractor, from a HSLFSlideShow
 	 *

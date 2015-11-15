@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.poifs.dev;
 
@@ -46,7 +46,7 @@ public interface POIFSViewable
      */
 
     public Object [] getViewableArray();
-    
+
     /**
      * Get an Iterator of objects, some of which may implement
      * POIFSViewable

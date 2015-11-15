@@ -32,7 +32,7 @@ import org.openxmlformats.schemas.spreadsheetml.x2006.main.STDataConsolidateFunc
 
 public class TestXSSFPivotTable extends TestCase {
     private XSSFPivotTable pivotTable;
-    
+
     @Override
     public void setUp(){
         Workbook wb = new XSSFWorkbook();
@@ -81,18 +81,18 @@ public class TestXSSFPivotTable extends TestCase {
         int columnIndex = 0;
 
         assertEquals(0, pivotTable.getRowLabelColumns().size());
-        
+
         pivotTable.addRowLabel(columnIndex);
         CTPivotTableDefinition defintion = pivotTable.getCTPivotTableDefinition();
 
         assertEquals(defintion.getRowFields().getFieldArray(0).getX(), columnIndex);
         assertEquals(defintion.getRowFields().getCount(), 1);
         assertEquals(1, pivotTable.getRowLabelColumns().size());
-        
+
         columnIndex = 1;
         pivotTable.addRowLabel(columnIndex);
         assertEquals(2, pivotTable.getRowLabelColumns().size());
-        
+
         assertEquals(0, (int)pivotTable.getRowLabelColumns().get(0));
         assertEquals(1, (int)pivotTable.getRowLabelColumns().get(1));
     }
@@ -137,8 +137,8 @@ public class TestXSSFPivotTable extends TestCase {
 
         assertEquals(defintion.getDataFields().getDataFieldList().size(), 3);
     }
-    
-    
+
+
     /**
      * Verify that it's possible to create three column labels with the same DataConsolidateFunction
      */
@@ -154,7 +154,7 @@ public class TestXSSFPivotTable extends TestCase {
 
         assertEquals(defintion.getDataFields().getDataFieldList().size(), 3);
     }
-    
+
     /**
      * Verify that when creating two column labels, a col field is being created and X is set to -2.
      */
@@ -183,7 +183,7 @@ public class TestXSSFPivotTable extends TestCase {
         assertEquals(defintion.getDataFields().getDataFieldArray(0).getSubtotal(),
                 STDataConsolidateFunction.Enum.forInt(DataConsolidateFunction.SUM.getValue()));
     }
-    
+
     /**
      * Verify that it's possible to set a custom name when creating a data column
      */
@@ -191,7 +191,7 @@ public class TestXSSFPivotTable extends TestCase {
         int columnIndex = 0;
 
         String customName = "Custom Name";
-        
+
         pivotTable.addColumnLabel(DataConsolidateFunction.SUM, columnIndex, customName);
 
         CTPivotTableDefinition defintion = pivotTable.getCTPivotTableDefinition();

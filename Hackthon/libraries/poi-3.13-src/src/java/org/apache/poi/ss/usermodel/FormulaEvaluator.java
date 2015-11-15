@@ -21,11 +21,11 @@ import java.util.Map;
 
 /**
  * Evaluates formula cells.<p/>
- * 
+ *
  * For performance reasons, this class keeps a cache of all previously calculated intermediate
  * cell values.  Be sure to call {@link #clearAllCachedResultValues()} if any workbook cells are changed between
  * calls to evaluate~ methods on this class.
- * 
+ *
  * @author Amol S. Deshmukh &lt; amolweb at ya hoo dot com &gt;
  * @author Josh Micich
  */
@@ -38,7 +38,7 @@ public interface FormulaEvaluator {
      */
     void clearAllCachedResultValues();
 	/**
-	 * Should be called to tell the cell value cache that the specified (value or formula) cell 
+	 * Should be called to tell the cell value cache that the specified (value or formula) cell
 	 * has changed.
 	 * Failure to call this method after changing cell values will cause incorrect behaviour
 	 * of the evaluate~ methods of this class
@@ -46,7 +46,7 @@ public interface FormulaEvaluator {
     void notifySetFormula(Cell cell);
 	/**
 	 * Should be called to tell the cell value cache that the specified cell has just become a
-	 * formula cell, or the formula text has changed 
+	 * formula cell, or the formula text has changed
 	 */
     void notifyDeleteCell(Cell cell);
 
@@ -60,14 +60,14 @@ public interface FormulaEvaluator {
 
     /**
     * Loops over all cells in all sheets of the associated workbook.
-    * For cells that contain formulas, their formulas are evaluated, 
+    * For cells that contain formulas, their formulas are evaluated,
     *  and the results are saved. These cells remain as formula cells.
     * For cells that do not contain formulas, no changes are made.
-    * This is a helpful wrapper around looping over all cells, and 
+    * This is a helpful wrapper around looping over all cells, and
     *  calling evaluateFormulaCell on each one.
      */
     void evaluateAll();
-    
+
     /**
      * If cell contains a formula, the formula is evaluated and returned,
      * else the CellValue simply copies the appropriate cell value from
@@ -95,7 +95,7 @@ public interface FormulaEvaluator {
      *  and the result. If you want the cell replaced with
      *  the result of the formula, use {@link #evaluateInCell(Cell)}
      * @param cell The cell to evaluate
-     * @return The type of the formula result, i.e. -1 if the cell is not a formula, 
+     * @return The type of the formula result, i.e. -1 if the cell is not a formula,
      *      or one of Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_STRING, Cell.CELL_TYPE_BOOLEAN, Cell.CELL_TYPE_ERROR
      *      Note: the cell's type remains as Cell.CELL_TYPE_FORMULA however.
      */
@@ -118,7 +118,7 @@ public interface FormulaEvaluator {
      * @param cell
      */
     Cell evaluateInCell(Cell cell);
-    
+
     /**
      * Sets up the Formula Evaluator to be able to reference and resolve
      *  links to other workbooks, eg [Test.xls]Sheet1!A1.
@@ -136,7 +136,7 @@ public interface FormulaEvaluator {
      * In some cases external workbooks referenced by formulas in the main workbook are not available.
      * With this method you can control how POI handles such missing references:
      * <ul>
-     *     <li>by default ignoreMissingWorkbooks=false and POI throws 
+     *     <li>by default ignoreMissingWorkbooks=false and POI throws
      *     {@link org.apache.poi.ss.formula.CollaboratingWorkbooksEnvironment.WorkbookNotFoundException}
      *     if an external reference cannot be resolved</li>
      *     <li>if ignoreMissingWorkbooks=true then POI uses cached formula result
@@ -146,13 +146,13 @@ public interface FormulaEvaluator {
      * @param ignore whether to ignore missing references to external workbooks
      */
     void setIgnoreMissingWorkbooks(boolean ignore);
-    
+
     /**
      * Perform detailed output of formula evaluation for next evaluation only?
      * Is for developer use only (also developers using POI for their XLS files).
      * Log-Level WARN is for basic info, INFO for detailed information. These quite
      * high levels are used because you have to explicitly enable this specific logging.
-	 
+
      * @param value whether to perform detailed output
      */
     void setDebugEvaluationOutputForNextEval(boolean value);

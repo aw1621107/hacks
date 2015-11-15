@@ -315,7 +315,7 @@ public abstract class SpecialPropertySet extends MutablePropertySet
     }
 
 
-    
+
     /**
      * Fetches the property with the given ID, then does its
      *  best to return it as a String
@@ -329,7 +329,7 @@ public abstract class SpecialPropertySet extends MutablePropertySet
         // Normal cases
         if (propertyValue == null) return null;
         if (propertyValue instanceof String) return (String)propertyValue;
-        
+
         // Do our best with some edge cases
         if (propertyValue instanceof byte[]) {
             byte[] b = (byte[])propertyValue;

@@ -41,17 +41,17 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * The Java SQL framework allows for multiple database drivers. Each driver should supply a class that implements the Driver interface
- * 
+ *
  * <p>
  * The DriverManager will try to load as many drivers as it can find and then for any given connection request, it will ask each driver in turn to try to
  * connect to the target URL.
  * </p>
- * 
+ *
  * <p>
  * It is strongly recommended that each Driver class should be small and standalone so that the Driver class can be loaded and queried without bringing in vast
  * quantities of supporting code.
  * </p>
- * 
+ *
  * <p>
  * When a Driver class is loaded, it should create an instance of itself and register it with the DriverManager. This means that a user can load and register a
  * driver by doing Class.forName("foo.bah.Driver")
@@ -83,7 +83,7 @@ public class NonRegisteringDriver implements java.sql.Driver {
     /*
      * Standardizes OS name information to align with other drivers/clients
      * for MySQL connection attributes
-     * 
+     *
      * @return the transformed, standardized OS name
      */
     public static String getOSName() {
@@ -93,7 +93,7 @@ public class NonRegisteringDriver implements java.sql.Driver {
     /*
      * Standardizes platform information to align with other drivers/clients
      * for MySQL connection attributes
-     * 
+     *
      * @return the transformed, standardized platform details
      */
     public static String getPlatform() {
@@ -159,7 +159,7 @@ public class NonRegisteringDriver implements java.sql.Driver {
 
     /**
      * Gets the drivers major version number
-     * 
+     *
      * @return the drivers major version number
      */
     static int getMajorVersionInternal() {
@@ -168,7 +168,7 @@ public class NonRegisteringDriver implements java.sql.Driver {
 
     /**
      * Get the drivers minor version number
-     * 
+     *
      * @return the drivers minor version number
      */
     static int getMinorVersionInternal() {
@@ -180,12 +180,12 @@ public class NonRegisteringDriver implements java.sql.Driver {
      * element of index HOST_NAME_INDEX being the host (or null if not
      * specified), and the element of index PORT_NUMBER_INDEX being the port (or
      * null if not specified).
-     * 
+     *
      * @param hostPortPair
      *            host and port in form of of [host][:port]
-     * 
+     *
      * @return array containing host and port as Strings
-     * 
+     *
      * @throws SQLException
      *             if a parse error occurs
      */
@@ -233,7 +233,7 @@ public class NonRegisteringDriver implements java.sql.Driver {
 
     /**
      * Construct a new driver and register it with DriverManager
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs.
      */
@@ -245,15 +245,15 @@ public class NonRegisteringDriver implements java.sql.Driver {
      * Typically, drivers will return true if they understand the subprotocol
      * specified in the URL and false if they don't. This driver's protocols
      * start with jdbc:mysql:
-     * 
+     *
      * @param url
      *            the URL of the driver
-     * 
+     *
      * @return true if this driver accepts the given URL
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs or the url is null
-     * 
+     *
      * @see java.sql.Driver#acceptsURL
      */
     public boolean acceptsURL(String url) throws SQLException {
@@ -270,36 +270,36 @@ public class NonRegisteringDriver implements java.sql.Driver {
     /**
      * Try to make a database connection to the given URL. The driver should return "null" if it realizes it is the wrong kind of driver to connect to the given
      * URL. This will be common, as when the JDBC driverManager is asked to connect to a given URL, it passes the URL to each loaded driver in turn.
-     * 
+     *
      * <p>
      * The driver should raise an SQLException if the URL is null or if it is the right driver to connect to the given URL, but has trouble connecting to the
      * database.
      * </p>
-     * 
+     *
      * <p>
      * The java.util.Properties argument can be used to pass arbitrary string tag/value pairs as connection arguments. These properties take precedence over any
      * properties sent in the URL.
      * </p>
-     * 
+     *
      * <p>
      * MySQL protocol takes the form:
-     * 
+     *
      * <PRE>
      * jdbc:mysql://host:port/database
      * </PRE>
-     * 
+     *
      * </p>
-     * 
+     *
      * @param url
      *            the URL of the database to connect to
      * @param info
      *            a list of arbitrary tag/value pairs as connection arguments
-     * 
+     *
      * @return a connection to the URL or null if it isn't us
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs or the url is null
-     * 
+     *
      * @see java.sql.Driver#connect
      */
     public java.sql.Connection connect(String url, Properties info) throws SQLException {
@@ -474,10 +474,10 @@ public class NonRegisteringDriver implements java.sql.Driver {
 
     /**
      * Returns the database property from <code>props</code>
-     * 
+     *
      * @param props
      *            the Properties to look for the database property.
-     * 
+     *
      * @return the database name.
      */
     public String database(Properties props) {
@@ -486,7 +486,7 @@ public class NonRegisteringDriver implements java.sql.Driver {
 
     /**
      * Gets the drivers major version number
-     * 
+     *
      * @return the drivers major version number
      */
     public int getMajorVersion() {
@@ -495,7 +495,7 @@ public class NonRegisteringDriver implements java.sql.Driver {
 
     /**
      * Get the drivers minor version number
-     * 
+     *
      * @return the drivers minor version number
      */
     public int getMinorVersion() {
@@ -506,25 +506,25 @@ public class NonRegisteringDriver implements java.sql.Driver {
      * The getPropertyInfo method is intended to allow a generic GUI tool to
      * discover what properties it should prompt a human for in order to get
      * enough information to connect to a database.
-     * 
+     *
      * <p>
      * Note that depending on the values the human has supplied so far, additional values may become necessary, so it may be necessary to iterate through
      * several calls to getPropertyInfo
      * </p>
-     * 
+     *
      * @param url
      *            the Url of the database to connect to
      * @param info
      *            a proposed list of tag/value pairs that will be sent on
      *            connect open.
-     * 
+     *
      * @return An array of DriverPropertyInfo objects describing possible
      *         properties. This array may be an empty array if no properties are
      *         required
-     * 
+     *
      * @exception SQLException
      *                if a database-access error occurs
-     * 
+     *
      * @see java.sql.Driver#getPropertyInfo
      */
     public DriverPropertyInfo[] getPropertyInfo(String url, Properties info) throws SQLException {
@@ -573,11 +573,11 @@ public class NonRegisteringDriver implements java.sql.Driver {
 
     /**
      * Returns the hostname property
-     * 
+     *
      * @param props
      *            the java.util.Properties instance to retrieve the hostname
      *            from.
-     * 
+     *
      * @return the hostname
      */
     public String host(Properties props) {
@@ -589,11 +589,11 @@ public class NonRegisteringDriver implements java.sql.Driver {
      * may only report "true" here if it passes the JDBC compliance tests,
      * otherwise it is required to return false. JDBC compliance requires full
      * support for the JDBC API and full support for SQL 92 Entry Level.
-     * 
+     *
      * <p>
      * MySQL is not SQL92 compliant
      * </p>
-     * 
+     *
      * @return is this driver JDBC compliant?
      */
     public boolean jdbcCompliant() {
@@ -813,10 +813,10 @@ public class NonRegisteringDriver implements java.sql.Driver {
 
     /**
      * Returns the port number property
-     * 
+     *
      * @param props
      *            the properties to get the port number from
-     * 
+     *
      * @return the port number
      */
     public int port(Properties props) {
@@ -825,12 +825,12 @@ public class NonRegisteringDriver implements java.sql.Driver {
 
     /**
      * Returns the given property from <code>props</code>
-     * 
+     *
      * @param name
      *            the property name
      * @param props
      *            the property instance to look in
-     * 
+     *
      * @return the property value, or null if not found.
      */
     public String property(String name, Properties props) {

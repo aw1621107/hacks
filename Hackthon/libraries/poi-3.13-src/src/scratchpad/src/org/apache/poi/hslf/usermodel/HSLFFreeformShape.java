@@ -172,7 +172,7 @@ public final class HSLFFreeformShape extends HSLFAutoShape implements FreeformSh
         opt.sortProperties();
 
         setAnchor(bounds);
-        
+
         return numPoints;
     }
 
@@ -240,7 +240,7 @@ public final class HSLFFreeformShape extends HSLFAutoShape implements FreeformSh
                 }
             }
         }
-        
+
         Rectangle2D anchor = getAnchor();
         Rectangle2D bounds = path.getBounds2D();
         AffineTransform at = new AffineTransform();

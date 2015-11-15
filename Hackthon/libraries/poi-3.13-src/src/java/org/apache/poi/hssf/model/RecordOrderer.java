@@ -332,7 +332,7 @@ final class RecordOrderer {
 			// ConditionalFormattingTable
 			case HyperlinkRecord.sid:
 			case UnknownRecord.QUICKTIP_0800:
-            // name of a VBA module    
+            // name of a VBA module
             case UnknownRecord.CODENAME_1BA:
 				return true;
 		}

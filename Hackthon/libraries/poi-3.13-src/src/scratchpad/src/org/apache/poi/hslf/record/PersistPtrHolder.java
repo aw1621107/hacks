@@ -56,7 +56,7 @@ public final class PersistPtrHolder extends PositionDependentRecordAtom
 
 	private static final BitField persistIdFld = new BitField(0X000FFFFF);
 	private static final BitField cntPersistFld  = new BitField(0XFFF00000);
-	
+
     /**
      * Return the value we were given at creation, be it 6001 or 6002
      */
@@ -83,11 +83,11 @@ public final class PersistPtrHolder extends PositionDependentRecordAtom
 	public Hashtable<Integer,Integer> getSlideLocationsLookup() {
 		return _slideLocations;
 	}
-	
+
 	/**
 	 * Get the lookup from slide numbers to their offsets inside
 	 *  _ptrData, used when adding or moving slides.
-	 * 
+	 *
 	 * @deprecated since POI 3.11, not supported anymore
 	 */
 	@Deprecated
@@ -128,7 +128,7 @@ public final class PersistPtrHolder extends PositionDependentRecordAtom
 			// Remaining 12 bits = offset count
             int offset_no = persistIdFld.getValue(info);
 			int offset_count = cntPersistFld.getValue(info);
-			
+
 			// Wind on by the 4 byte info header
 			pos += 4;
 
@@ -146,13 +146,13 @@ public final class PersistPtrHolder extends PositionDependentRecordAtom
 
     /**
      *  remove all slide references
-     *  
+     *
      *  Convenience method provided, for easier reviewing of invocations
      */
     public void clear() {
         _slideLocations.clear();
     }
-    
+
     /**
      * Adds a new slide, notes or similar, to be looked up by this.
      */
@@ -187,7 +187,7 @@ public final class PersistPtrHolder extends PositionDependentRecordAtom
 
 	private void normalizePersistDirectory() {
         TreeMap<Integer,Integer> orderedSlideLocations = new TreeMap<Integer,Integer>(_slideLocations);
-        
+
         @SuppressWarnings("resource")
         BufAccessBAOS bos = new BufAccessBAOS();
         byte intbuf[] = new byte[4];
@@ -200,7 +200,7 @@ public final class PersistPtrHolder extends PositionDependentRecordAtom
                 // Building the info block
                 // First 20 bits = offset number = slide ID (persistIdFld, i.e. first slide ID of a continuous group)
                 // Remaining 12 bits = offset count = 1 (cntPersistFld, i.e. continuous entries in a group)
-                
+
                 if (lastSlideId+1 == nextSlideId) {
                     // use existing PersistDirectoryEntry, need to increase entry count
                     assert(lastPersistEntry != -1);
@@ -225,14 +225,14 @@ public final class PersistPtrHolder extends PositionDependentRecordAtom
                 throw new RuntimeException(e);
             }
         }
-        
+
         // Save the new ptr data
         _ptrData = bos.toByteArray();
 
         // Update the atom header
         LittleEndian.putInt(_header,4,bos.size());
 	}
-	
+
 	/**
 	 * Write the contents of the record back, so it can be written
 	 *  to disk
@@ -242,7 +242,7 @@ public final class PersistPtrHolder extends PositionDependentRecordAtom
 		out.write(_header);
 		out.write(_ptrData);
 	}
-	
+
     private static class BufAccessBAOS extends ByteArrayOutputStream {
         public byte[] getBuf() {
             return buf;

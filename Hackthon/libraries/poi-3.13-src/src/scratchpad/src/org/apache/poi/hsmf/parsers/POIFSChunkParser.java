@@ -57,7 +57,7 @@ public final class POIFSChunkParser {
    }
    public static ChunkGroup[] parse(DirectoryNode node) throws IOException {
       Chunks mainChunks = new Chunks();
-      
+
       ArrayList<ChunkGroup> groups = new ArrayList<ChunkGroup>();
       groups.add(mainChunks);
 
@@ -68,7 +68,7 @@ public final class POIFSChunkParser {
          if(entry instanceof DirectoryNode) {
             DirectoryNode dir = (DirectoryNode)entry;
             ChunkGroup group = null;
-            
+
             // Do we know what to do with it?
             if(dir.getName().startsWith(AttachmentChunks.PREFIX)) {
                group = new AttachmentChunks(dir.getName());
@@ -79,7 +79,7 @@ public final class POIFSChunkParser {
             if(dir.getName().startsWith(RecipientChunks.PREFIX)) {
                group = new RecipientChunks(dir.getName());
             }
-            
+
             if(group != null) {
                processChunks(dir, group);
                groups.add(group);
@@ -88,23 +88,23 @@ public final class POIFSChunkParser {
             }
          }
       }
-      
+
       // Now do the top level chunks
       processChunks(node, mainChunks);
-      
+
       // All chunks are now processed, have the ChunkGroup
       // match up variable-length properties and their chunks
       for (ChunkGroup group : groups) {
          group.chunksComplete();
       }
-      
+
       // Finish
       return groups.toArray(new ChunkGroup[groups.size()]);
    }
-   
+
    /**
     * Creates all the chunks for a given Directory, but
-    *  doesn't recurse or descend 
+    *  doesn't recurse or descend
     */
    protected static void processChunks(DirectoryNode node, ChunkGroup grouping) {
       for(Entry entry : node) {
@@ -117,14 +117,14 @@ public final class POIFSChunkParser {
          }
       }
    }
-   
+
    /**
-    * Creates a chunk, and gives it to its parent group 
+    * Creates a chunk, and gives it to its parent group
     */
    protected static void process(Entry entry, ChunkGroup grouping) {
       String entryName = entry.getName();
       Chunk chunk = null;
-      
+
       // Is it a properties chunk? (They have special names)
       if (entryName.equals(PropertiesChunk.NAME)) {
          if (grouping instanceof Chunks) {
@@ -144,13 +144,13 @@ public final class POIFSChunkParser {
             // Name in the wrong format
             return;
          }
-         
+
          // Split it into its parts
          int splitAt = entryName.lastIndexOf('_');
          String namePrefix = entryName.substring(0, splitAt+1);
          String ids = entryName.substring(splitAt+1);
-         
-         // Make sure we got what we expected, should be of 
+
+         // Make sure we got what we expected, should be of
          //  the form __<name>_<id><type>
          if(namePrefix.equals("Olk10SideProps") ||
             namePrefix.equals("Olk10SideProps_")) {
@@ -163,21 +163,21 @@ public final class POIFSChunkParser {
             // Underscores not the right place, something's wrong
             throw new IllegalArgumentException("Invalid chunk name " + entryName);
          }
-         
+
          // Now try to turn it into id + type
          try {
             int chunkId = Integer.parseInt(ids.substring(0, 4), 16);
             int typeId  = Integer.parseInt(ids.substring(4, 8), 16);
-            
+
             MAPIType type = Types.getById(typeId);
             if (type == null) {
                type = Types.createCustom(typeId);
             }
-            
+
             // Special cases based on the ID
             if(chunkId == MAPIProperty.MESSAGE_SUBMISSION_ID.id) {
                chunk = new MessageSubmissionChunk(namePrefix, chunkId, type);
-            } 
+            }
             else {
                // Nothing special about this ID
                // So, do the usual thing which is by type
@@ -192,9 +192,9 @@ public final class POIFSChunkParser {
                else if (type == Types.ASCII_STRING ||
                         type == Types.UNICODE_STRING) {
                   chunk = new StringChunk(namePrefix, chunkId, type);
-               } 
+               }
                else {
-                  // Type of an unsupported type! Skipping... 
+                  // Type of an unsupported type! Skipping...
                }
             }
          } catch(NumberFormatException e) {
@@ -202,7 +202,7 @@ public final class POIFSChunkParser {
             return;
          }
       }
-         
+
       if(chunk != null) {
           if(entry instanceof DocumentNode) {
              DocumentInputStream inp = null;

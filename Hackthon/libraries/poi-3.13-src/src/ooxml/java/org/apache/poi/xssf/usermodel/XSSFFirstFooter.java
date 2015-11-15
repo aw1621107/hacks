@@ -22,11 +22,11 @@ import org.apache.poi.xssf.usermodel.extensions.XSSFHeaderFooter;
 import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTHeaderFooter;
 
 /**
- * 
- * First page footer content. Corresponds to first printed page.  
- * The first logical page in the sheet may not be printed, for example, if the print area is specified to 
+ *
+ * First page footer content. Corresponds to first printed page.
+ * The first logical page in the sheet may not be printed, for example, if the print area is specified to
  * be a range such that it falls outside the first page's scope.
- * 
+ *
  */
 public class XSSFFirstFooter extends XSSFHeaderFooter implements Footer{
 
@@ -39,7 +39,7 @@ public class XSSFFirstFooter extends XSSFHeaderFooter implements Footer{
         super(headerFooter);
         headerFooter.setDifferentFirst(true);
     }
-    
+
     /**
      * Get the content text representing the footer
      * @return text
@@ -47,11 +47,11 @@ public class XSSFFirstFooter extends XSSFHeaderFooter implements Footer{
     public String getText() {
         return getHeaderFooter().getFirstFooter();
     }
-    
+
     /**
      * Set a text for the footer. If null unset the value.
      * @see XSSFHeaderFooter to see how to create a string with Header/Footer Formatting Syntax
-     * @param text - a string representing the footer. 
+     * @param text - a string representing the footer.
      */
     public void setText(String text) {
     	if(text == null) {

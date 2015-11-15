@@ -34,14 +34,14 @@ import org.apache.poi.ss.usermodel.CellValue;
  * @author Josh Micich
  */
 public final class TestMissingArgEval extends TestCase {
-	
+
 	public void testEvaluateMissingArgs() {
 		HSSFWorkbook wb = new HSSFWorkbook();
 		HSSFFormulaEvaluator fe = new HSSFFormulaEvaluator(wb);
 		HSSFSheet sheet = wb.createSheet("Sheet1");
 		HSSFCell cell = sheet.createRow(0).createCell(0);
-		
-		cell.setCellFormula("if(true,)"); 
+
+		cell.setCellFormula("if(true,)");
 		fe.clearAllCachedResultValues();
 		CellValue cv;
 		try {
@@ -51,23 +51,23 @@ public final class TestMissingArgEval extends TestCase {
 		}
 		// MissingArg -> BlankEval -> zero (as formula result)
 		assertEquals(0.0, cv.getNumberValue(), 0.0);
-		
+
 		// MissingArg -> BlankEval -> empty string (in concatenation)
-		cell.setCellFormula("\"abc\"&if(true,)"); 
+		cell.setCellFormula("\"abc\"&if(true,)");
 		fe.clearAllCachedResultValues();
 		assertEquals("abc", fe.evaluate(cell).getStringValue());
 	}
-	
+
 	public void testCountFuncs() {
 		HSSFWorkbook wb = new HSSFWorkbook();
 		HSSFFormulaEvaluator fe = new HSSFFormulaEvaluator(wb);
 		HSSFSheet sheet = wb.createSheet("Sheet1");
 		HSSFCell cell = sheet.createRow(0).createCell(0);
-		
-		cell.setCellFormula("COUNT(C5,,,,)"); // 4 missing args, C5 is blank 
+
+		cell.setCellFormula("COUNT(C5,,,,)"); // 4 missing args, C5 is blank
 		assertEquals(4.0, fe.evaluate(cell).getNumberValue(), 0.0);
 
-		cell.setCellFormula("COUNTA(C5,,)"); // 2 missing args, C5 is blank 
+		cell.setCellFormula("COUNTA(C5,,)"); // 2 missing args, C5 is blank
 		fe.clearAllCachedResultValues();
 		assertEquals(2.0, fe.evaluate(cell).getNumberValue(), 0.0);
 	}

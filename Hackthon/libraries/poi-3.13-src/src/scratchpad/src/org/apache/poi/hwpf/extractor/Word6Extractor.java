@@ -32,7 +32,7 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
  * Class to extract the text from old (Word 6 / Word 95) Word Documents.
  *
  * This should only be used on the older files, for most uses you
- *  should call {@link WordExtractor} which deals properly 
+ *  should call {@link WordExtractor} which deals properly
  *  with HWPF.
  *
  * @author Nick Burch
@@ -50,7 +50,7 @@ public final class Word6Extractor extends POIOLE2TextExtractor {
 
     /**
      * Create a new Word Extractor
-     * 
+     *
      * @param fs
      *            POIFSFileSystem containing the word file
      */
@@ -102,7 +102,7 @@ public final class Word6Extractor extends POIOLE2TextExtractor {
 	        ret = new String[doc.getTextTable().getTextPieces().size()];
 	        for(int i=0; i<ret.length; i++) {
 	            ret[i] = doc.getTextTable().getTextPieces().get(i).getStringBuilder().toString();
-	            
+
 	            // Fix the line endings
 	            ret[i].replaceAll("\r", "\ufffe");
                 ret[i].replaceAll("\ufffe","\r\n");

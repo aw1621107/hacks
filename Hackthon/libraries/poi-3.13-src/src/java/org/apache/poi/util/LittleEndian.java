@@ -26,7 +26,7 @@ import java.io.Serializable;
  * a utility class for handling little-endian numbers, which the 80x86 world is
  * replete with. The methods are all static, and input/output is from/to byte
  * arrays, or from InputStreams.
- * 
+ *
  * @author Marc Johnson (mjohnson at apache dot org)
  * @author Andrew Oliver (acoliver at apache dot org)
  */
@@ -35,14 +35,14 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * Exception to handle buffer underruns
-     * 
+     *
      * @author Marc Johnson (mjohnson at apache dot org)
      */
     public static final class BufferUnderrunException extends IOException
     {
         /**
          * Serial version UID
-         * 
+         *
          * @see Serializable
          */
         private static final long serialVersionUID = 8736973884877006145L;
@@ -55,7 +55,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * Copy a portion of a byte array
-     * 
+     *
      * @param data
      *            the original byte array
      * @param offset
@@ -78,7 +78,7 @@ public class LittleEndian implements LittleEndianConsts
      * get a double value from a byte array, reads it in little endian format
      * then converts the resulting revolting IEEE 754 (curse them) floating
      * point number to a happy java double
-     * 
+     *
      * @param data
      *            the byte array
      * @return the double (64-bit) value
@@ -92,7 +92,7 @@ public class LittleEndian implements LittleEndianConsts
      * get a double value from a byte array, reads it in little endian format
      * then converts the resulting revolting IEEE 754 (curse them) floating
      * point number to a happy java double
-     * 
+     *
      * @param data
      *            the byte array
      * @param offset
@@ -108,7 +108,7 @@ public class LittleEndian implements LittleEndianConsts
      * get a float value from a byte array, reads it in little endian format
      * then converts the resulting revolting IEEE 754 (curse them) floating
      * point number to a happy java float
-     * 
+     *
      * @param data
      *            the byte array
      * @return the double (64-bit) value
@@ -122,7 +122,7 @@ public class LittleEndian implements LittleEndianConsts
      * get a float value from a byte array, reads it in little endian format
      * then converts the resulting revolting IEEE 754 (curse them) floating
      * point number to a happy java float
-     * 
+     *
      * @param data
      *            the byte array
      * @param offset
@@ -136,7 +136,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * get an int value from the beginning of a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @return the int (32-bit) value
@@ -148,7 +148,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * get an int value from a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @param offset
@@ -167,7 +167,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * get a long value from a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @return the long (64-bit) value
@@ -179,7 +179,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * get a long value from a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @param offset
@@ -200,7 +200,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * get a short value from the beginning of a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @return the short (16-bit) value
@@ -212,7 +212,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * get a short value from a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @param offset
@@ -228,7 +228,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * Read short array
-     * 
+     *
      * @param data
      *            the original byte array
      * @param offset
@@ -250,7 +250,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * get the unsigned value of a byte.
-     * 
+     *
      * @param data
      *            the byte array.
      * @return the unsigned value of the byte as a 16 bit short
@@ -262,7 +262,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * get the unsigned value of a byte.
-     * 
+     *
      * @param data
      *            the byte array.
      * @param offset
@@ -276,7 +276,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * get an unsigned int value from a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @return the unsigned int (32-bit) value in a long
@@ -288,7 +288,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * get an unsigned int value from a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @param offset
@@ -303,7 +303,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * get the unsigned value of a byte.
-     * 
+     *
      * @param data
      *            the byte array.
      * @param offset
@@ -319,7 +319,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * get an unsigned short value from the beginning of a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @return the unsigned short (16-bit) value in an int
@@ -331,7 +331,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * get an unsigned short value from a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @param offset
@@ -361,7 +361,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * put a double value into a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @param offset
@@ -376,7 +376,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * put a double value into a byte array
-     * 
+     *
      * @param value
      *            the double (64-bit) value
      * @param outputStream
@@ -392,7 +392,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * put a float value into a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @param offset
@@ -407,7 +407,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * put a float value into a byte array
-     * 
+     *
      * @param value
      *            the float (32-bit) value
      * @param outputStream
@@ -423,7 +423,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * put an int value into beginning of a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @param value
@@ -438,7 +438,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * put an int value into a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @param offset
@@ -457,7 +457,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * Put int into output stream
-     * 
+     *
      * @param value
      *            the int (32-bit) value
      * @param outputStream
@@ -476,7 +476,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * put a long value into a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @param offset
@@ -498,7 +498,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * Put long into output stream
-     * 
+     *
      * @param value
      *            the long (64-bit) value
      * @param outputStream
@@ -521,7 +521,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * put a short value into a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @param offset
@@ -538,7 +538,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * put a short value into beginning of a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @param value
@@ -553,7 +553,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * Put signed short into output stream
-     * 
+     *
      * @param value
      *            the short (16-bit) value
      * @param outputStream
@@ -570,7 +570,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * Stores short array in buffer
-     * 
+     *
      * @param data
      *            the byte array
      * @param startOffset
@@ -591,14 +591,14 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * put an unsigned byte value into a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @param offset
      *            a starting offset into the byte array
      * @param value
      *            the short (16-bit) value
-     * 
+     *
      * @exception ArrayIndexOutOfBoundsException
      *                may be thrown
      */
@@ -609,14 +609,14 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * put an unsigned int value into a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @param offset
      *            a starting offset into the byte array
      * @param value
      *            the int (32-bit) value
-     * 
+     *
      * @exception ArrayIndexOutOfBoundsException
      *                may be thrown
      */
@@ -631,7 +631,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * put an unsigned int value into beginning of a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @param value
@@ -646,7 +646,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * Put unsigned int into output stream
-     * 
+     *
      * @param value
      *            the int (32-bit) value
      * @param outputStream
@@ -665,14 +665,14 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * put an unsigned short value into a byte array
-     * 
+     *
      * @param data
      *            the byte array
      * @param offset
      *            a starting offset into the byte array
      * @param value
      *            the short (16-bit) value
-     * 
+     *
      * @exception ArrayIndexOutOfBoundsException
      *                may be thrown
      */
@@ -685,7 +685,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * Put unsigned short into output stream
-     * 
+     *
      * @param value
      *            the unsigned short (16-bit) value
      * @param outputStream
@@ -702,7 +702,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * get an int value from an InputStream
-     * 
+     *
      * @param stream
      *            the InputStream from which the int is to be read
      * @return the int (32-bit) value
@@ -724,10 +724,10 @@ public class LittleEndian implements LittleEndianConsts
         }
         return ( ch4 << 24 ) + ( ch3 << 16 ) + ( ch2 << 8 ) + ( ch1 << 0 );
     }
-    
+
     /**
      * get an unsigned int value from an InputStream
-     * 
+     *
      * @param stream
      *            the InputStream from which the int is to be read
      * @return the unsigned int (32-bit) value
@@ -745,7 +745,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * get a long value from an InputStream
-     * 
+     *
      * @param stream
      *            the InputStream from which the long is to be read
      * @return the long (64-bit) value
@@ -779,7 +779,7 @@ public class LittleEndian implements LittleEndianConsts
 
     /**
      * get a short value from an InputStream
-     * 
+     *
      * @param stream
      *            the InputStream from which the short is to be read
      * @return the short (16-bit) value
@@ -809,7 +809,7 @@ public class LittleEndian implements LittleEndianConsts
     /**
      * Convert an 'unsigned' byte to an integer. ie, don't carry across the
      * sign.
-     * 
+     *
      * @param b
      *            Description of the Parameter
      * @return Description of the Return Value

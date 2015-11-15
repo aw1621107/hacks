@@ -80,7 +80,7 @@ public class XSSFPatternFormatting implements PatternFormatting {
             ptrn.setBgColor(color);
         }
     }
-    
+
     public void setFillForegroundColor(Color fg) {
         XSSFColor xcolor = XSSFColor.toXSSFColor(fg);
         if (xcolor == null) setFillForegroundColor((CTColor)null);

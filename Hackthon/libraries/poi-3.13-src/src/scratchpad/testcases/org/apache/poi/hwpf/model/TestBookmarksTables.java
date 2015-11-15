@@ -28,7 +28,7 @@ import org.apache.poi.hwpf.usermodel.Bookmarks;
 /**
  * Test cases for {@link BookmarksTables} and default implementation of
  * {@link Bookmarks}
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 public class TestBookmarksTables extends TestCase

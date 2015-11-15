@@ -52,7 +52,7 @@ public class TypeWriter
      * @param out The stream to write to.
      * @param n The value to write.
      * @exception IOException if an I/O error occurs
-     * @return The number of bytes written to the output stream. 
+     * @return The number of bytes written to the output stream.
      */
     public static int writeToStream( final OutputStream out, final int n )
             throws IOException
@@ -134,7 +134,7 @@ public class TypeWriter
     /**
      * <p>Writes an array of {@link Property} instances to an output stream
      * according to the Horrible Property Stream Format.</p>
-     * 
+     *
      * @param out The stream to write to
      * @param properties The array to write to the stream
      * @param codepage The codepage number to use for writing strings
@@ -178,7 +178,7 @@ public class TypeWriter
      * @param out The stream to write to.
      * @param n The value to write.
      * @exception IOException if an I/O error occurs
-     * @return The number of bytes written to the output stream. 
+     * @return The number of bytes written to the output stream.
      */
     public static int writeToStream( final OutputStream out, final double n )
             throws IOException

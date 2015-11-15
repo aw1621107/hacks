@@ -23,11 +23,11 @@ import org.apache.poi.hssf.record.RecordFormatException;
 /**
  */
 abstract class DummyRecordBase extends Record {
-	
+
 	protected DummyRecordBase() {
 		//
 	}
-	
+
 	public final short getSid() {
 		return -1;
 	}

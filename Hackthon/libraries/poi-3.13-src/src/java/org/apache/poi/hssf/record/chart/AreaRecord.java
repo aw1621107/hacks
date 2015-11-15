@@ -26,7 +26,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The area record is used to define a area chart.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class AreaRecord extends StandardRecord {
@@ -56,10 +56,10 @@ public final class AreaRecord extends StandardRecord {
         buffer.append("    .formatFlags          = ")
             .append("0x").append(HexDump.toHex(  getFormatFlags ()))
             .append(" (").append( getFormatFlags() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
-        buffer.append("         .stacked                  = ").append(isStacked()).append('\n'); 
-        buffer.append("         .displayAsPercentage      = ").append(isDisplayAsPercentage()).append('\n'); 
-        buffer.append("         .shadow                   = ").append(isShadow()).append('\n'); 
+        buffer.append(System.getProperty("line.separator"));
+        buffer.append("         .stacked                  = ").append(isStacked()).append('\n');
+        buffer.append("         .displayAsPercentage      = ").append(isDisplayAsPercentage()).append('\n');
+        buffer.append("         .shadow                   = ").append(isShadow()).append('\n');
 
         buffer.append("[/AREA]\n");
         return buffer.toString();
@@ -80,7 +80,7 @@ public final class AreaRecord extends StandardRecord {
 
     public Object clone() {
         AreaRecord rec = new AreaRecord();
-    
+
         rec.field_1_formatFlags = field_1_formatFlags;
         return rec;
     }

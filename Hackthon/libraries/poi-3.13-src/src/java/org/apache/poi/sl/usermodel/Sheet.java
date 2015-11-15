@@ -35,11 +35,11 @@ public interface Sheet<
      * check this setting in the sheet XML
      */
 	boolean getFollowMasterGraphics();
-	
+
 	MasterSheet<S,P> getMasterSheet();
 
 	Background<S,P> getBackground();
-	
+
 	/**
 	 * Convenience method to draw a sheet to a graphics context
 	 *

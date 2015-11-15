@@ -76,7 +76,7 @@ public class XSLFTableRow implements Iterable<XSLFTableCell> {
         _cells.add(cell);
 
         if(_table.getNumberOfColumns() < _row.sizeOfTcArray()) {
-            _table.getCTTable().getTblGrid().addNewGridCol().setW(Units.toEMU(100.0));    
+            _table.getCTTable().getTblGrid().addNewGridCol().setW(Units.toEMU(100.0));
         }
         return cell;
     }

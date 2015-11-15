@@ -18,9 +18,9 @@
 /* ====================================================================
    This product contains an ASLv2 licensed version of the OOXML signer
    package from the eID Applet project
-   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt  
+   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt
    Copyright (C) 2008-2014 FedICT.
-   ================================================================= */ 
+   ================================================================= */
 
 package org.apache.poi.poifs.crypt.dsig.facets;
 
@@ -71,7 +71,7 @@ import com.microsoft.schemas.office.x2006.digsig.SignatureInfoV1Document;
 
 /**
  * Office OpenXML Signature Facet implementation.
- * 
+ *
  * @author fcorneli
  * @see <a href="http://msdn.microsoft.com/en-us/library/cc313071.aspx">[MS-OFFCRYPTO]: Office Document Cryptography Structure</a>
  */
@@ -99,7 +99,7 @@ public class OOXMLSignatureFacet extends SignatureFacet {
         List<Reference> manifestReferences = new ArrayList<Reference>();
         addManifestReferences(manifestReferences);
         Manifest manifest =  getSignatureFactory().newManifest(manifestReferences);
-        
+
         String objectId = "idPackageObject"; // really has to be this value.
         List<XMLStructure> objectContent = new ArrayList<XMLStructure>();
         objectContent.add(manifest);
@@ -130,11 +130,11 @@ public class OOXMLSignatureFacet extends SignatureFacet {
             } catch (InvalidFormatException e) {
                 throw new XMLSignatureException("Invalid relationship descriptor: "+pp.getPartName().getName(), e);
             }
-            
+
             RelationshipTransformParameterSpec parameterSpec = new RelationshipTransformParameterSpec();
             for (PackageRelationship relationship : prc) {
                 String relationshipType = relationship.getRelationshipType();
-                
+
                 /*
                  * ECMA-376 Part 2 - 3rd edition
                  * 13.2.4.16 Manifest Element
@@ -156,7 +156,7 @@ public class OOXMLSignatureFacet extends SignatureFacet {
                 } catch (URISyntaxException e) {
                     throw new XMLSignatureException(e);
                 }
-                
+
                 String contentType;
                 try {
                     PackagePartName relName = PackagingURIHelper.createPartName(partName);
@@ -165,13 +165,13 @@ public class OOXMLSignatureFacet extends SignatureFacet {
                 } catch (InvalidFormatException e) {
                     throw new XMLSignatureException(e);
                 }
-                
+
                 if (relationshipType.endsWith("customXml")
                     && !(contentType.equals("inkml+xml") || contentType.equals("text/xml"))) {
                     LOG.log(POILogger.DEBUG, "skipping customXml with content type: " + contentType);
                     continue;
                 }
-                
+
                 if (!digestedPartNames.contains(partName)) {
                     // We only digest a part once.
                     String uri = partName + "?ContentType=" + contentType;
@@ -180,7 +180,7 @@ public class OOXMLSignatureFacet extends SignatureFacet {
                     digestedPartNames.add(partName);
                 }
             }
-            
+
             if (parameterSpec.hasSourceIds()) {
                 List<Transform> transforms = new ArrayList<Transform>();
                 transforms.add(newTransform(RelationshipTransformService.TRANSFORM_URI, parameterSpec));
@@ -233,7 +233,7 @@ public class OOXMLSignatureFacet extends SignatureFacet {
         ctSigV1.setManifestHashAlgorithm(signatureConfig.getDigestMethodUri());
         Element n = (Element)document.importNode(ctSigV1.getDomNode(), true);
         n.setAttributeNS(XML_NS, XMLConstants.XMLNS_ATTRIBUTE, MS_DIGSIG_NS);
-        
+
         List<XMLStructure> signatureInfoContent = new ArrayList<XMLStructure>();
         signatureInfoContent.add(new DOMStructure(n));
         SignatureProperty signatureInfoSignatureProperty = getSignatureFactory()
@@ -276,7 +276,7 @@ public class OOXMLSignatureFacet extends SignatureFacet {
         }
         return false;
     }
-    
+
     public static final String[] contentTypes = {
         /*
          * Word

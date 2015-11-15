@@ -43,7 +43,7 @@ public final class TestNumberComparer {
 			success &= confirm(i, ce.getNegA(), ce.getNegB(), -ce.getExpectedResult());
 			success &= confirm(i, ce.getNegB(), ce.getNegA(), +ce.getExpectedResult());
 		}
-		
+
 		assertTrue("One or more cases failed.  See stderr", success);
 	}
 
@@ -58,7 +58,7 @@ public final class TestNumberComparer {
 			success &= confirmRoundTrip(i, ce.getB());
 			success &= confirmRoundTrip(i, ce.getNegB());
 		}
-		
+
 		assertTrue("One or more cases failed.  See stderr", success);
 	}
 

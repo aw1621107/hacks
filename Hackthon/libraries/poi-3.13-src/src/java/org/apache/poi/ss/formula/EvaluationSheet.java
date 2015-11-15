@@ -19,9 +19,9 @@ package org.apache.poi.ss.formula;
 
 /**
  * Abstracts a sheet for the purpose of formula evaluation.<br/>
- * 
+ *
  * For POI internal use only
- * 
+ *
  * @author Josh Micich
  */
 public interface EvaluationSheet {

@@ -55,7 +55,7 @@ public final class VisioTextExtractor extends POIOLE2TextExtractor {
       this(new HDGFDiagram(dir));
    }
    /**
-    * @deprecated Use {@link #VisioTextExtractor(DirectoryNode)} instead 
+    * @deprecated Use {@link #VisioTextExtractor(DirectoryNode)} instead
     */
    @Deprecated
 	public VisioTextExtractor(DirectoryNode dir, POIFSFileSystem fs) throws IOException {
@@ -91,7 +91,7 @@ public final class VisioTextExtractor extends POIOLE2TextExtractor {
 						chunk.getName() != null &&
 						chunk.getName().equals("Text") &&
 						chunk.getCommands().length > 0) {
-				   
+
 					// First command
 					Command cmd = chunk.getCommands()[0];
 					if(cmd != null && cmd.getValue() != null) {
@@ -139,7 +139,7 @@ public final class VisioTextExtractor extends POIOLE2TextExtractor {
 
 		// Print not PrintLn as already has \n added to it
 		System.out.print(extractor.getText());
-		
+
 		extractor.close();
 	}
 }

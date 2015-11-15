@@ -142,7 +142,7 @@ implements XSLFShapeContainer, Sheet<XSLFShape,XSLFTextParagraph> {
         initDrawingAndShapes();
         return _shapes;
     }
-    
+
     /**
      * Helper method for initializing drawing and shapes in one go.
      * If they are initialized separately, there's a risk that shapes
@@ -244,7 +244,7 @@ implements XSLFShapeContainer, Sheet<XSLFShape,XSLFTextParagraph> {
         return sh;
     }
 
-    
+
     /**
      * Returns an iterator over the shapes in this sheet
      *
@@ -259,7 +259,7 @@ implements XSLFShapeContainer, Sheet<XSLFShape,XSLFTextParagraph> {
             "Adding a shape from a different container is not supported -"
             + " create it from scratch witht XSLFSheet.create* methods");
     }
-    
+
     /**
      * Removes the specified shape from this sheet, if it is present
      * (optional operation).  If this sheet does not contain the element,
@@ -345,8 +345,8 @@ implements XSLFShapeContainer, Sheet<XSLFShape,XSLFTextParagraph> {
         _placeholders = null;
 
         // fix-me: wth would this ever happen to work ...
-        
-        
+
+
         // first copy the source xml
         getSpTree().set(src.getSpTree());
 
@@ -567,13 +567,13 @@ implements XSLFShapeContainer, Sheet<XSLFShape,XSLFTextParagraph> {
     PackagePart importPart(PackageRelationship srcRel, PackagePart srcPafrt) {
         PackagePart destPP = getPackagePart();
         PackagePartName srcPPName = srcPafrt.getPartName();
-        
+
         OPCPackage pkg = destPP.getPackage();
         if(pkg.containPart(srcPPName)){
             // already exists
             return pkg.getPart(srcPPName);
-        }            
-            
+        }
+
         destPP.addRelationship(srcPPName, TargetMode.INTERNAL, srcRel.getRelationshipType());
 
         PackagePart part = pkg.createPart(srcPPName, srcPafrt.getContentType());

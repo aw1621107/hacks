@@ -37,7 +37,7 @@ import org.apache.poi.hpsf.ClassID;
  * A DirectoryEntry filter, which exposes another
  *  DirectoryEntry less certain parts.
  * This is typically used when copying or comparing
- *  Filesystems. 
+ *  Filesystems.
  */
 public class FilteringDirectoryNode implements DirectoryEntry
 {
@@ -49,20 +49,20 @@ public class FilteringDirectoryNode implements DirectoryEntry
     * Excludes of our child directories
     */
    private Map<String,List<String>> childExcludes;
-   
+
    private DirectoryEntry directory;
-   
+
    /**
     * Creates a filter round the specified directory, which
     *  will exclude entries such as "MyNode" and "MyDir/IgnoreNode".
     * The excludes can stretch into children, if they contain a /.
-    *  
+    *
     * @param directory The Directory to filter
     * @param excludes The Entries to exclude
     */
    public FilteringDirectoryNode(DirectoryEntry directory, Collection<String> excludes) {
       this.directory = directory;
-      
+
       // Process the excludes
       this.excludes = new HashSet<String>();
       this.childExcludes = new HashMap<String, List<String>>();
@@ -104,7 +104,7 @@ public class FilteringDirectoryNode implements DirectoryEntry
    public Iterator<Entry> iterator() {
       return getEntries();
    }
-   
+
    public int getEntryCount() {
       int size = directory.getEntryCount();
       for (String excl : excludes) {
@@ -114,7 +114,7 @@ public class FilteringDirectoryNode implements DirectoryEntry
       }
       return size;
    }
-   
+
    public Set<String> getEntryNames() {
        Set<String> names = new HashSet<String>();
        for (String name : directory.getEntryNames()) {
@@ -140,7 +140,7 @@ public class FilteringDirectoryNode implements DirectoryEntry
       if (excludes.contains(name)) {
          throw new FileNotFoundException(name);
       }
-      
+
       Entry entry = directory.getEntry(name);
       return wrapEntry(entry);
    }
@@ -148,7 +148,7 @@ public class FilteringDirectoryNode implements DirectoryEntry
       String name = entry.getName();
       if (childExcludes.containsKey(name) && entry instanceof DirectoryEntry) {
          return new FilteringDirectoryNode(
-               (DirectoryEntry)entry, childExcludes.get(name)); 
+               (DirectoryEntry)entry, childExcludes.get(name));
       }
       return entry;
    }
@@ -168,7 +168,7 @@ public class FilteringDirectoryNode implements DirectoryEntry
    public boolean renameTo(String newName) {
       return directory.renameTo(newName);
    }
-   
+
    public String getName() {
       return directory.getName();
    }
@@ -184,11 +184,11 @@ public class FilteringDirectoryNode implements DirectoryEntry
    public boolean isDocumentEntry() {
       return false;
    }
-   
+
    private class FilteringIterator implements Iterator<Entry> {
       private Iterator<Entry> parent;
       private Entry next;
-      
+
       private FilteringIterator() {
          parent = directory.getEntries();
          locateNext();
@@ -203,17 +203,17 @@ public class FilteringDirectoryNode implements DirectoryEntry
             }
          }
       }
-      
+
       public boolean hasNext() {
          return (next != null);
       }
-      
+
       public Entry next() {
          Entry e = next;
          locateNext();
          return e;
       }
-      
+
       public void remove() {
          throw new UnsupportedOperationException("Remove not supported");
       }

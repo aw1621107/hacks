@@ -25,7 +25,7 @@ import org.apache.poi.hwpf.model.types.LFOAbstractType;
  * contains a paragraph. An LFO can also specify formatting information that
  * overrides the LSTF element to which it corresponds." -- [MS-DOC] -- v20110315
  * Word (.doc) Binary File Format
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 @Internal

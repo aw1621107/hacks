@@ -30,21 +30,21 @@ import java.util.Map;
 /**
  * Implement this interface to provide a new load balancing strategy for URLs of the form "jdbc:mysql:loadbalance://..", and provide the implementation class
  * name as the configuration parameter "loadBalanceStrategy".
- * 
+ *
  * The driver will not pass in a Connection instance when calling init(), but it will pass in the Properties, otherwise it acts like a normal Extension.
- * 
+ *
  * One instance of a strategy *per* JDBC connection instance will be created. If you need singleton-like behavior, you're on your own to provide it.
  */
 public interface BalanceStrategy extends Extension {
     /**
      * Called by the driver to pick a new connection to route requests over.
-     * 
+     *
      * @param proxy
      *            the InvocationHandler that deals with actual method calls to
      *            the JDBC connection, and serves as a factory for new
      *            connections for this strategy via the
      *            createConnectionForHost() method.
-     * 
+     *
      *            This proxy takes care of maintaining the response time list, map of
      *            host/ports to live connections, and taking connections out of the live
      *            connections map if they receive a network-related error while they are in
@@ -65,7 +65,7 @@ public interface BalanceStrategy extends Extension {
      * @throws SQLException
      *             if a new connection can not be found or created by this
      *             strategy.
-     * 
+     *
      * @see LoadBalancingConnectionProxy#createConnectionForHost(String)
      */
     public abstract ConnectionImpl pickConnection(LoadBalancingConnectionProxy proxy, List<String> configuredHosts,

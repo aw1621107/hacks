@@ -28,18 +28,18 @@ import org.apache.poi.util.LittleEndian;
         descriptions are quoted from [MS-DOC] -- v20121003 Word (.doc) Binary
         File Format; Copyright (c) 2012 Microsoft Corporation; Release:
         October 8, 2012
-    
+
  * <p>
  * NOTE: This source is automatically generated please do not modify this file.  Either subclass or
  *       remove the record in src/types/definitions.
  * <p>
- * This class is internal. It content or properties may change without notice 
+ * This class is internal. It content or properties may change without notice
  * due to changes in our knowledge of internal Microsoft Word binary structures.
 
  * @author Sergey Vladimirov; according to [MS-DOC] -- v20121003 Word
         (.doc) Binary File Format; Copyright (c) 2012 Microsoft Corporation;
         Release: October 8, 2012
-    
+
  */
 @Internal
 public abstract class FFDataBaseAbstractType
@@ -247,7 +247,7 @@ public abstract class FFDataBaseAbstractType
 
     /**
      * Sets the iType field value.
-     * An unsigned integer that specifies the type of the form field. 
+     * An unsigned integer that specifies the type of the form field.
      */
     @Internal
     public void setIType( byte value )
@@ -256,7 +256,7 @@ public abstract class FFDataBaseAbstractType
     }
 
     /**
-     * An unsigned integer that specifies the type of the form field. 
+     * An unsigned integer that specifies the type of the form field.
      * @return  the iType field value.
      */
     @Internal

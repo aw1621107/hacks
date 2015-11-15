@@ -37,7 +37,7 @@ public class TestEscherDump {
     public void testSimple() throws Exception {
         // simple test to at least cover some parts of the class
         EscherDump.main(new String[] {}, new NullPrinterStream());
-        
+
         new EscherDump().dump(0, new byte[] {}, new NullPrinterStream());
         new EscherDump().dump(new byte[] {}, 0, 0, new NullPrinterStream());
         new EscherDump().dumpOld(0, new ByteArrayInputStream(new byte[] {}), new NullPrinterStream());
@@ -54,14 +54,14 @@ public class TestEscherDump {
         byte[] data = POIDataSamples.getDDFInstance().readFile("Container.dat");
         new EscherDump().dump(data.length, data, new NullPrinterStream());
         //new EscherDump().dumpOld(data.length, new ByteArrayInputStream(data), System.out);
-        
+
         data = new byte[2586114];
         int bytes = IOUtils.readFully(HSSFTestDataSamples.openSampleFileStream("44593.xls"), data);
         assertTrue(bytes != -1);
         //new EscherDump().dump(bytes, data, System.out);
         //new EscherDump().dumpOld(bytes, new ByteArrayInputStream(data), System.out);
     }
-    
+
     /**
      * Implementation of an OutputStream which does nothing, used
      * to redirect stdout to avoid spamming the console with output
@@ -86,6 +86,6 @@ public class TestEscherDump {
             @Override
             public void write(byte[] b) throws IOException {
             }
-        }        
-    }    
+        }
+    }
 }

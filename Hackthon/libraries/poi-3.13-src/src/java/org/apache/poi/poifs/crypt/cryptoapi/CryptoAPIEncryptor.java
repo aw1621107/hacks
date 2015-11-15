@@ -100,26 +100,26 @@ public class CryptoAPIEncryptor extends Encryptor {
     public Cipher initCipherForBlock(Cipher cipher, int block)
     throws GeneralSecurityException {
         return CryptoAPIDecryptor.initCipherForBlock(cipher, block, builder, getSecretKey(), Cipher.ENCRYPT_MODE);
-    }    
-    
+    }
+
     /**
      * Encrypt the Document-/SummaryInformation and other optionally streams.
      * Opposed to other crypto modes, cryptoapi is record based and can't be used
      * to stream-encrypt a whole file
-     * 
+     *
      * @see <a href="http://msdn.microsoft.com/en-us/library/dd943321(v=office.12).aspx">2.3.5.4 RC4 CryptoAPI Encrypted Summary Stream</a>
      */
     public OutputStream getDataStream(DirectoryNode dir)
     throws IOException, GeneralSecurityException {
         CipherByteArrayOutputStream bos = new CipherByteArrayOutputStream();
         byte buf[] = new byte[8];
-        
+
         bos.write(buf, 0, 8); // skip header
         String entryNames[] = {
             SummaryInformation.DEFAULT_STREAM_NAME,
             DocumentSummaryInformation.DEFAULT_STREAM_NAME
         };
-        
+
         List<StreamDescriptorEntry> descList = new ArrayList<StreamDescriptorEntry>();
 
         int block = 0;
@@ -131,26 +131,26 @@ public class CryptoAPIEncryptor extends Encryptor {
             descEntry.streamName = entryName;
             descEntry.flags = StreamDescriptorEntry.flagStream.setValue(0, 1);
             descEntry.reserved2 = 0;
-            
+
             bos.setBlock(block);
             DocumentInputStream dis = dir.createDocumentInputStream(entryName);
             IOUtils.copy(dis, bos);
             dis.close();
-            
+
             descEntry.streamSize = bos.size() - descEntry.streamOffset;
             descList.add(descEntry);
-            
+
             dir.getEntry(entryName).delete();
-            
+
             block++;
         }
-        
+
         int streamDescriptorArrayOffset = bos.size();
-        
+
         bos.setBlock(0);
         LittleEndian.putUInt(buf, 0, descList.size());
         bos.write(buf, 0, 4);
-        
+
         for (StreamDescriptorEntry sde : descList) {
             LittleEndian.putUInt(buf, 0, sde.streamOffset);
             bos.write(buf, 0, 4);
@@ -169,7 +169,7 @@ public class CryptoAPIEncryptor extends Encryptor {
             LittleEndian.putShort(buf, 0, (short)0); // null-termination
             bos.write(buf, 0, 2);
         }
-        
+
         int savedSize = bos.size();
         int streamDescriptorArraySize = savedSize - streamDescriptorArrayOffset;
         LittleEndian.putUInt(buf, 0, streamDescriptorArrayOffset);
@@ -179,16 +179,16 @@ public class CryptoAPIEncryptor extends Encryptor {
         bos.setBlock(0);
         bos.write(buf, 0, 8);
         bos.setSize(savedSize);
-        
+
         dir.createDocument("EncryptedSummary", new ByteArrayInputStream(bos.getBuf(), 0, savedSize));
         DocumentSummaryInformation dsi = PropertySetFactory.newDocumentSummaryInformation();
-        
+
         try {
             dsi.write(dir, DocumentSummaryInformation.DEFAULT_STREAM_NAME);
         } catch (WritingNotSupportedException e) {
             throw new IOException(e);
         }
-        
+
         return bos;
     }
 
@@ -219,19 +219,19 @@ public class CryptoAPIEncryptor extends Encryptor {
         public CipherByteArrayOutputStream() throws GeneralSecurityException {
             setBlock(0);
         }
-        
+
         public byte[] getBuf() {
             return buf;
         }
-        
+
         public void setSize(int count) {
             this.count = count;
         }
-        
+
         public void setBlock(int block) throws GeneralSecurityException {
             cipher = initCipherForBlock(cipher, block);
         }
-        
+
         public void write(int b) {
             try {
                 oneByte[0] = (byte)b;

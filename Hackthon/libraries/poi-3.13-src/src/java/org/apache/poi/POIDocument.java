@@ -41,7 +41,7 @@ import org.apache.poi.util.POILogger;
 /**
  * This holds the common functionality for all POI
  *  Document classes.
- * Currently, this relates to Document Information Properties 
+ * Currently, this relates to Document Information Properties
  */
 public abstract class POIDocument {
     /** Holds metadata on our document */
@@ -56,7 +56,7 @@ public abstract class POIDocument {
 
     /* Have the property streams been read yet? (Only done on-demand) */
     private boolean initialized = false;
-    
+
     /**
      * Constructs a POIDocument with the given directory node.
      *
@@ -87,8 +87,8 @@ public abstract class POIDocument {
 
     /**
      * Fetch the Document Summary Information of the document
-     * 
-     * @return The Document Summary Information or null 
+     *
+     * @return The Document Summary Information or null
      *      if it could not be read for this document.
      */
     public DocumentSummaryInformation getDocumentSummaryInformation() {
@@ -96,9 +96,9 @@ public abstract class POIDocument {
         return dsInf;
     }
 
-    /** 
+    /**
      * Fetch the Summary Information of the document
-     * 
+     *
      * @return The Summary information for the document or null
      *      if it could not be read for this document.
      */
@@ -106,7 +106,7 @@ public abstract class POIDocument {
         if(!initialized) readProperties();
         return sInf;
     }
-	
+
     /**
      * Will create whichever of SummaryInformation
      *  and DocumentSummaryInformation (HPSF) properties
@@ -155,28 +155,28 @@ public abstract class POIDocument {
         initialized = true;
     }
 
-    /** 
+    /**
      * For a given named property entry, either return it or null if
      *  if it wasn't found
-     *  
+     *
      *  @param setName The property to read
      *  @return The value of the given property or null if it wasn't found.
      */
     protected PropertySet getPropertySet(String setName) {
         return getPropertySet(setName, null);
     }
-    
-    /** 
+
+    /**
      * For a given named property entry, either return it or null if
      *  if it wasn't found
-     *  
+     *
      *  @param setName The property to read
      *  @param encryptionInfo the encryption descriptor in case of cryptoAPI encryption
      *  @return The value of the given property or null if it wasn't found.
      */
     protected PropertySet getPropertySet(String setName, EncryptionInfo encryptionInfo) {
         DirectoryNode dirNode = directory;
-        
+
         NPOIFSFileSystem encPoifs = null;
         if (encryptionInfo != null) {
             try {
@@ -189,9 +189,9 @@ public abstract class POIDocument {
                 return null;
             }
         }
-        
+
         //directory can be null when creating new documents
-        if (dirNode == null || !dirNode.hasEntry(setName)) 
+        if (dirNode == null || !dirNode.hasEntry(setName))
             return null;
 
         DocumentInputStream dis;
@@ -222,12 +222,12 @@ public abstract class POIDocument {
         }
         return null;
     }
-    
+
     /**
      * Writes out the updated standard Document Information Properties (HPSF)
      *  into the currently open NPOIFSFileSystem
      * TODO Implement in-place update
-     * 
+     *
      * @throws IOException if an error when writing to the open
      *      {@link NPOIFSFileSystem} occurs
      * TODO throws exception if open from stream not file
@@ -239,8 +239,8 @@ public abstract class POIDocument {
     /**
      * Writes out the standard Document Information Properties (HPSF)
      * @param outFS the POIFSFileSystem to write the properties into
-     * 
-     * @throws IOException if an error when writing to the 
+     *
+     * @throws IOException if an error when writing to the
      *      {@link NPOIFSFileSystem} occurs
      */
     protected void writeProperties(NPOIFSFileSystem outFS) throws IOException {
@@ -250,8 +250,8 @@ public abstract class POIDocument {
      * Writes out the standard Document Information Properties (HPSF)
      * @param outFS the NPOIFSFileSystem to write the properties into
      * @param writtenEntries a list of POIFS entries to add the property names too
-     * 
-     * @throws IOException if an error when writing to the 
+     *
+     * @throws IOException if an error when writing to the
      *      {@link NPOIFSFileSystem} occurs
      */
     protected void writeProperties(NPOIFSFileSystem outFS, List<String> writtenEntries) throws IOException {
@@ -270,14 +270,14 @@ public abstract class POIDocument {
             }
         }
     }
-	
+
     /**
      * Writes out a given ProperySet
      * @param name the (POIFS Level) name of the property to write
-     * @param set the PropertySet to write out 
+     * @param set the PropertySet to write out
      * @param outFS the NPOIFSFileSystem to write the property into
-     * 
-     * @throws IOException if an error when writing to the 
+     *
+     * @throws IOException if an error when writing to the
      *      {@link NPOIFSFileSystem} occurs
      */
     protected void writePropertySet(String name, PropertySet set, NPOIFSFileSystem outFS) throws IOException {
@@ -299,9 +299,9 @@ public abstract class POIDocument {
     /**
      * Writes the document out to the specified output stream. The
      * stream is not closed as part of this operation.
-     * 
+     *
      * @param out The stream to write to.
-     * 
+     *
      * @throws IOException thrown on errors writing to the stream
      */
     public abstract void write(OutputStream out) throws IOException;

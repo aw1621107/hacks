@@ -31,7 +31,7 @@ public final class TestTableRecord extends TestCase {
 			0x36, 02, 0x10, 00, // sid=x236, 16 bytes long
 	};
 	byte[] data = new byte[] {
-			03, 00,  // from row 3 
+			03, 00,  // from row 3
 			8, 00,   // to row 8
 			04,      // from col 4
 			06,      // to col 6

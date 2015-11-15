@@ -32,7 +32,7 @@ public class AssertionFailedException extends RuntimeException {
 
     /**
      * Convenience method.
-     * 
+     *
      * @param ex
      *            the exception that should never have been thrown.
      * @throws AssertionFailedException
@@ -45,7 +45,7 @@ public class AssertionFailedException extends RuntimeException {
     /**
      * Creates an AssertionFailedException for the given exception that should
      * never have been thrown.
-     * 
+     *
      * @param ex
      *            the exception that should never have been thrown.
      */

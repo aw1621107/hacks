@@ -18,7 +18,7 @@
 package org.apache.poi.ss.formula.ptg;
 
 /**
- * Common superclass for 
+ * Common superclass for
  * tExp
  * tTbl
  * tParen

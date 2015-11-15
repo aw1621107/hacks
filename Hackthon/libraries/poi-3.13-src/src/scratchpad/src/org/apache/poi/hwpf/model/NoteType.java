@@ -17,7 +17,7 @@
 
 /**
  * Word document notes types (and their FIB field indices)
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {doc} com)
  */
 package org.apache.poi.hwpf.model;

@@ -25,7 +25,7 @@ import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTIconSet;
 import org.openxmlformats.schemas.spreadsheetml.x2006.main.STIconSetType;
 
 /**
- * High level representation for Icon / Multi-State Formatting 
+ * High level representation for Icon / Multi-State Formatting
  *  component of Conditional Formatting settings
  */
 public class XSSFIconMultiStateFormatting implements IconMultiStateFormatting {
@@ -65,7 +65,7 @@ public class XSSFIconMultiStateFormatting implements IconMultiStateFormatting {
     @SuppressWarnings("deprecation")
     public XSSFConditionalFormattingThreshold[] getThresholds() {
         CTCfvo[] cfvos = _iconset.getCfvoArray();
-        XSSFConditionalFormattingThreshold[] t = 
+        XSSFConditionalFormattingThreshold[] t =
                 new XSSFConditionalFormattingThreshold[cfvos.length];
         for (int i=0; i<cfvos.length; i++) {
             t[i] = new XSSFConditionalFormattingThreshold(cfvos[i]);

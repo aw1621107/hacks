@@ -39,7 +39,7 @@ import org.apache.poi.ss.formula.eval.ValueEval;
 
  * If order is 0 (zero) or omitted, Microsoft Excel ranks number as if ref were a list sorted in descending order.
  * If order is any nonzero value, Microsoft Excel ranks number as if ref were a list sorted in ascending order.
- * 
+ *
  * @author Rubin Wang
  */
 public class Rank extends Var2or3ArgFunction {
@@ -73,7 +73,7 @@ public class Rank extends Var2or3ArgFunction {
 				throw new EvaluationException(ErrorEval.NUM_ERROR);
 			}
 			aeRange = convertRangeArg(arg1);
-			
+
 			ve = OperandResolver.getSingleValue(arg2, srcRowIndex, srcColumnIndex);
 			int order_value = OperandResolver.coerceValueToInt(ve);
 			if(order_value==0){
@@ -81,7 +81,7 @@ public class Rank extends Var2or3ArgFunction {
 			}else if(order_value==1){
 				order=false;
 			}else throw new EvaluationException(ErrorEval.NUM_ERROR);
-			
+
 		} catch (EvaluationException e) {
 			return e.getErrorEval();
 		}
@@ -89,13 +89,13 @@ public class Rank extends Var2or3ArgFunction {
 	}
 
 	private static ValueEval eval(int srcRowIndex, int srcColumnIndex, double arg0, AreaEval aeRange, boolean descending_order) {
-		
+
 		int rank = 1;
 		int height=aeRange.getHeight();
 		int width= aeRange.getWidth();
 		for (int r=0; r<height; r++) {
 			for (int c=0; c<width; c++) {
-				
+
 				Double value = getValue(aeRange, r, c);
 				if(value==null)continue;
 				if(descending_order && value>arg0 || !descending_order && value<arg0){
@@ -105,7 +105,7 @@ public class Rank extends Var2or3ArgFunction {
 		}
 		return new NumberEval(rank);
 	}
-	
+
 	private static Double getValue(AreaEval aeRange, int relRowIndex, int relColIndex) {
 
 		ValueEval addend = aeRange.getRelativeValue(relRowIndex, relColIndex);

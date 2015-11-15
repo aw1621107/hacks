@@ -45,7 +45,7 @@ public final class SectionProperties extends SEPAbstractType
 
         return copy;
     }
-    
+
     @Override
     public boolean equals( Object obj )
     {

@@ -45,7 +45,7 @@ public class TestPackagingURIHelper extends TestCase {
 		// Image to document is up a directory
 		URI retURI2to1 = PackagingURIHelper.relativizeURI(uri2, uri1);
 		assertEquals("../document.xml", retURI2to1.getPath());
-		
+
 		// Document and CustomXML parts totally different [Julien C.]
 		URI uriCustomXml = new URI("/customXml/item1.xml");
 		URI uriRes = PackagingURIHelper.relativizeURI(uri1, uriCustomXml);

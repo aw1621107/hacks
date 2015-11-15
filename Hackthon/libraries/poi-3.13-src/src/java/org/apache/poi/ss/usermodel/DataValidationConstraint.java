@@ -60,7 +60,7 @@ public interface DataValidationConstraint {
 	 * Sets a formula for expression 2.
 	 */
 	public abstract void setFormula2(String formula2);
-	
+
 	/**
 	 * ValidationType enum
 	 */
@@ -103,7 +103,7 @@ public interface DataValidationConstraint {
 		public static final int LESS_OR_EQUAL = 0x07;
 		/** default value to supply when the operator type is not used */
 		public static final int IGNORED = BETWEEN;
-		
+
 		/* package */ public static void validateSecondArg(int comparisonOperator, String paramValue) {
 			switch (comparisonOperator) {
 				case BETWEEN:

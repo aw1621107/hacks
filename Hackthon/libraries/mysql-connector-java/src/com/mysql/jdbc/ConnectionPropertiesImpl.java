@@ -636,7 +636,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /**
      * Exposes all ConnectionPropertyInfo instances as DriverPropertyInfo
-     * 
+     *
      * @param info
      *            the properties to load into these ConnectionPropertyInfo
      *            instances
@@ -1367,7 +1367,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#exposeAsXml()
      */
     public String exposeAsXml() throws SQLException {
@@ -1495,7 +1495,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getAllowLoadLocalInfile()
      */
     public boolean getAllowLoadLocalInfile() {
@@ -1504,7 +1504,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getAllowMultiQueries()
      */
     public boolean getAllowMultiQueries() {
@@ -1513,7 +1513,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getAllowNanAndInf()
      */
     public boolean getAllowNanAndInf() {
@@ -1522,7 +1522,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getAllowUrlInLocalInfile()
      */
     public boolean getAllowUrlInLocalInfile() {
@@ -1531,7 +1531,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getAlwaysSendSetIsolation()
      */
     public boolean getAlwaysSendSetIsolation() {
@@ -1540,7 +1540,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getAutoDeserialize()
      */
     public boolean getAutoDeserialize() {
@@ -1549,7 +1549,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getAutoGenerateTestcaseScript()
      */
     public boolean getAutoGenerateTestcaseScript() {
@@ -1558,7 +1558,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getAutoReconnectForPools()
      */
     public boolean getAutoReconnectForPools() {
@@ -1567,7 +1567,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getBlobSendChunkSize()
      */
     public int getBlobSendChunkSize() {
@@ -1576,7 +1576,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getCacheCallableStatements()
      */
     public boolean getCacheCallableStatements() {
@@ -1585,7 +1585,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getCachePreparedStatements()
      */
     public boolean getCachePreparedStatements() {
@@ -1594,7 +1594,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getCacheResultSetMetadata()
      */
     public boolean getCacheResultSetMetadata() {
@@ -1603,7 +1603,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getCacheServerConfiguration()
      */
     public boolean getCacheServerConfiguration() {
@@ -1612,7 +1612,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getCallableStatementCacheSize()
      */
     public int getCallableStatementCacheSize() {
@@ -1621,7 +1621,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getCapitalizeTypeNames()
      */
     public boolean getCapitalizeTypeNames() {
@@ -1630,7 +1630,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getCharacterSetResults()
      */
     public String getCharacterSetResults() {
@@ -1647,7 +1647,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getClobberStreamingResults()
      */
     public boolean getClobberStreamingResults() {
@@ -1656,7 +1656,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getClobCharacterEncoding()
      */
     public String getClobCharacterEncoding() {
@@ -1665,7 +1665,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getConnectionCollation()
      */
     public String getConnectionCollation() {
@@ -1674,7 +1674,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getConnectTimeout()
      */
     public int getConnectTimeout() {
@@ -1683,7 +1683,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getContinueBatchOnError()
      */
     public boolean getContinueBatchOnError() {
@@ -1692,7 +1692,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getCreateDatabaseIfNotExist()
      */
     public boolean getCreateDatabaseIfNotExist() {
@@ -1701,7 +1701,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getDefaultFetchSize()
      */
     public int getDefaultFetchSize() {
@@ -1710,7 +1710,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getDontTrackOpenResources()
      */
     public boolean getDontTrackOpenResources() {
@@ -1719,7 +1719,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getDumpQueriesOnException()
      */
     public boolean getDumpQueriesOnException() {
@@ -1728,7 +1728,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getDynamicCalendars()
      */
     public boolean getDynamicCalendars() {
@@ -1737,7 +1737,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getElideSetAutoCommits()
      */
     public boolean getElideSetAutoCommits() {
@@ -1746,7 +1746,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getEmptyStringsConvertToZero()
      */
     public boolean getEmptyStringsConvertToZero() {
@@ -1755,7 +1755,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getEmulateLocators()
      */
     public boolean getEmulateLocators() {
@@ -1764,7 +1764,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getEmulateUnsupportedPstmts()
      */
     public boolean getEmulateUnsupportedPstmts() {
@@ -1773,7 +1773,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getEnablePacketDebug()
      */
     public boolean getEnablePacketDebug() {
@@ -1782,7 +1782,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getEncoding()
      */
     public String getEncoding() {
@@ -1791,7 +1791,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getExplainSlowQueries()
      */
     public boolean getExplainSlowQueries() {
@@ -1800,7 +1800,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getFailOverReadOnly()
      */
     public boolean getFailOverReadOnly() {
@@ -1809,7 +1809,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getGatherPerformanceMetrics()
      */
     public boolean getGatherPerformanceMetrics() {
@@ -1822,7 +1822,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getHoldResultsOpenOverStatementClose()
      */
     public boolean getHoldResultsOpenOverStatementClose() {
@@ -1831,7 +1831,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getIgnoreNonTxTables()
      */
     public boolean getIgnoreNonTxTables() {
@@ -1840,7 +1840,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getInitialTimeout()
      */
     public int getInitialTimeout() {
@@ -1849,7 +1849,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getInteractiveClient()
      */
     public boolean getInteractiveClient() {
@@ -1858,7 +1858,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getIsInteractiveClient()
      */
     public boolean getIsInteractiveClient() {
@@ -1867,7 +1867,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getJdbcCompliantTruncation()
      */
     public boolean getJdbcCompliantTruncation() {
@@ -1876,7 +1876,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getLocatorFetchBufferSize()
      */
     public int getLocatorFetchBufferSize() {
@@ -1885,7 +1885,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getLogger()
      */
     public String getLogger() {
@@ -1894,7 +1894,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getLoggerClassName()
      */
     public String getLoggerClassName() {
@@ -1903,7 +1903,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getLogSlowQueries()
      */
     public boolean getLogSlowQueries() {
@@ -1912,7 +1912,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getMaintainTimeStats()
      */
     public boolean getMaintainTimeStats() {
@@ -1921,7 +1921,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getMaxQuerySizeToLog()
      */
     public int getMaxQuerySizeToLog() {
@@ -1930,7 +1930,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getMaxReconnects()
      */
     public int getMaxReconnects() {
@@ -1939,7 +1939,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getMaxRows()
      */
     public int getMaxRows() {
@@ -1948,7 +1948,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getMetadataCacheSize()
      */
     public int getMetadataCacheSize() {
@@ -1957,7 +1957,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getNoDatetimeStringSync()
      */
     public boolean getNoDatetimeStringSync() {
@@ -1966,7 +1966,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getNullCatalogMeansCurrent()
      */
     public boolean getNullCatalogMeansCurrent() {
@@ -1975,7 +1975,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getNullNamePatternMatchesAll()
      */
     public boolean getNullNamePatternMatchesAll() {
@@ -1984,7 +1984,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getPacketDebugBufferSize()
      */
     public int getPacketDebugBufferSize() {
@@ -1993,7 +1993,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getParanoid()
      */
     public boolean getParanoid() {
@@ -2002,7 +2002,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getPedantic()
      */
     public boolean getPedantic() {
@@ -2011,7 +2011,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getPreparedStatementCacheSize()
      */
     public int getPreparedStatementCacheSize() {
@@ -2020,7 +2020,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getPreparedStatementCacheSqlLimit()
      */
     public int getPreparedStatementCacheSqlLimit() {
@@ -2029,7 +2029,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getProfileSql()
      */
     public boolean getProfileSql() {
@@ -2038,7 +2038,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getProfileSQL()
      */
     public boolean getProfileSQL() {
@@ -2047,7 +2047,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getPropertiesTransform()
      */
     public String getPropertiesTransform() {
@@ -2056,7 +2056,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getQueriesBeforeRetryMaster()
      */
     public int getQueriesBeforeRetryMaster() {
@@ -2065,7 +2065,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getReconnectAtTxEnd()
      */
     public boolean getReconnectAtTxEnd() {
@@ -2074,7 +2074,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getRelaxAutoCommit()
      */
     public boolean getRelaxAutoCommit() {
@@ -2083,7 +2083,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getReportMetricsIntervalMillis()
      */
     public int getReportMetricsIntervalMillis() {
@@ -2092,7 +2092,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getRequireSSL()
      */
     public boolean getRequireSSL() {
@@ -2105,7 +2105,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getRollbackOnPooledClose()
      */
     public boolean getRollbackOnPooledClose() {
@@ -2114,7 +2114,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getRoundRobinLoadBalance()
      */
     public boolean getRoundRobinLoadBalance() {
@@ -2123,7 +2123,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getRunningCTS13()
      */
     public boolean getRunningCTS13() {
@@ -2132,7 +2132,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getSecondsBeforeRetryMaster()
      */
     public int getSecondsBeforeRetryMaster() {
@@ -2141,7 +2141,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getServerTimezone()
      */
     public String getServerTimezone() {
@@ -2150,7 +2150,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getSessionVariables()
      */
     public String getSessionVariables() {
@@ -2159,7 +2159,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getSlowQueryThresholdMillis()
      */
     public int getSlowQueryThresholdMillis() {
@@ -2168,7 +2168,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getSocketFactoryClassName()
      */
     public String getSocketFactoryClassName() {
@@ -2177,7 +2177,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getSocketTimeout()
      */
     public int getSocketTimeout() {
@@ -2186,7 +2186,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getStrictFloatingPoint()
      */
     public boolean getStrictFloatingPoint() {
@@ -2195,7 +2195,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getStrictUpdates()
      */
     public boolean getStrictUpdates() {
@@ -2204,7 +2204,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getTinyInt1isBit()
      */
     public boolean getTinyInt1isBit() {
@@ -2213,7 +2213,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getTraceProtocol()
      */
     public boolean getTraceProtocol() {
@@ -2222,7 +2222,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getTransformedBitIsBoolean()
      */
     public boolean getTransformedBitIsBoolean() {
@@ -2231,7 +2231,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseCompression()
      */
     public boolean getUseCompression() {
@@ -2240,7 +2240,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseFastIntParsing()
      */
     public boolean getUseFastIntParsing() {
@@ -2249,7 +2249,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseHostsInPrivileges()
      */
     public boolean getUseHostsInPrivileges() {
@@ -2258,7 +2258,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseInformationSchema()
      */
     public boolean getUseInformationSchema() {
@@ -2267,7 +2267,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseLocalSessionState()
      */
     public boolean getUseLocalSessionState() {
@@ -2276,7 +2276,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseOldUTF8Behavior()
      */
     public boolean getUseOldUTF8Behavior() {
@@ -2285,7 +2285,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseOnlyServerErrorMessages()
      */
     public boolean getUseOnlyServerErrorMessages() {
@@ -2294,7 +2294,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseReadAheadInput()
      */
     public boolean getUseReadAheadInput() {
@@ -2303,7 +2303,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseServerPreparedStmts()
      */
     public boolean getUseServerPreparedStmts() {
@@ -2312,7 +2312,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseSqlStateCodes()
      */
     public boolean getUseSqlStateCodes() {
@@ -2321,7 +2321,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseSSL()
      */
     public boolean getUseSSL() {
@@ -2330,7 +2330,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseStreamLengthsInPrepStmts()
      */
     public boolean getUseStreamLengthsInPrepStmts() {
@@ -2339,7 +2339,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseTimezone()
      */
     public boolean getUseTimezone() {
@@ -2348,7 +2348,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseUltraDevWorkAround()
      */
     public boolean getUseUltraDevWorkAround() {
@@ -2357,7 +2357,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseUnbufferedInput()
      */
     public boolean getUseUnbufferedInput() {
@@ -2366,7 +2366,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseUnicode()
      */
     public boolean getUseUnicode() {
@@ -2375,7 +2375,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseUsageAdvisor()
      */
     public boolean getUseUsageAdvisor() {
@@ -2384,7 +2384,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getYearIsDateType()
      */
     public boolean getYearIsDateType() {
@@ -2393,7 +2393,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getZeroDateTimeBehavior()
      */
     public String getZeroDateTimeBehavior() {
@@ -2404,7 +2404,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
      * Initializes driver properties that come from a JNDI reference (in the
      * case of a javax.sql.DataSource bound into some name service that doesn't
      * handle Java objects directly).
-     * 
+     *
      * @param ref
      *            The JNDI Reference that holds RefAddrs for all properties
      * @throws SQLException
@@ -2432,7 +2432,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
     /**
      * Initializes driver properties that come from URL or properties passed to
      * the driver manager.
-     * 
+     *
      * @param info
      * @throws SQLException
      */
@@ -2535,7 +2535,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setAllowLoadLocalInfile(boolean)
      */
     public void setAllowLoadLocalInfile(boolean property) {
@@ -2544,7 +2544,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setAllowMultiQueries(boolean)
      */
     public void setAllowMultiQueries(boolean property) {
@@ -2553,7 +2553,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setAllowNanAndInf(boolean)
      */
     public void setAllowNanAndInf(boolean flag) {
@@ -2562,7 +2562,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setAllowUrlInLocalInfile(boolean)
      */
     public void setAllowUrlInLocalInfile(boolean flag) {
@@ -2571,7 +2571,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setAlwaysSendSetIsolation(boolean)
      */
     public void setAlwaysSendSetIsolation(boolean flag) {
@@ -2580,7 +2580,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setAutoDeserialize(boolean)
      */
     public void setAutoDeserialize(boolean flag) {
@@ -2589,7 +2589,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setAutoGenerateTestcaseScript(boolean)
      */
     public void setAutoGenerateTestcaseScript(boolean flag) {
@@ -2599,7 +2599,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setAutoReconnect(boolean)
      */
     public void setAutoReconnect(boolean flag) {
@@ -2608,7 +2608,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setAutoReconnectForConnectionPools(boolean)
      */
     public void setAutoReconnectForConnectionPools(boolean property) {
@@ -2618,7 +2618,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setAutoReconnectForPools(boolean)
      */
     public void setAutoReconnectForPools(boolean flag) {
@@ -2627,7 +2627,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setBlobSendChunkSize(java.lang.String)
      */
     public void setBlobSendChunkSize(String value) throws SQLException {
@@ -2636,7 +2636,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setCacheCallableStatements(boolean)
      */
     public void setCacheCallableStatements(boolean flag) {
@@ -2645,7 +2645,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setCachePreparedStatements(boolean)
      */
     public void setCachePreparedStatements(boolean flag) {
@@ -2654,7 +2654,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setCacheResultSetMetadata(boolean)
      */
     public void setCacheResultSetMetadata(boolean property) {
@@ -2664,7 +2664,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setCacheServerConfiguration(boolean)
      */
     public void setCacheServerConfiguration(boolean flag) {
@@ -2673,7 +2673,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setCallableStatementCacheSize(int)
      */
     public void setCallableStatementCacheSize(int size) throws SQLException {
@@ -2682,7 +2682,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setCapitalizeDBMDTypes(boolean)
      */
     public void setCapitalizeDBMDTypes(boolean property) {
@@ -2691,7 +2691,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setCapitalizeTypeNames(boolean)
      */
     public void setCapitalizeTypeNames(boolean flag) {
@@ -2700,7 +2700,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setCharacterEncoding(java.lang.String)
      */
     public void setCharacterEncoding(String encoding) {
@@ -2709,7 +2709,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setCharacterSetResults(java.lang.String)
      */
     public void setCharacterSetResults(String characterSet) {
@@ -2718,7 +2718,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setClobberStreamingResults(boolean)
      */
     public void setClobberStreamingResults(boolean flag) {
@@ -2727,7 +2727,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setClobCharacterEncoding(java.lang.String)
      */
     public void setClobCharacterEncoding(String encoding) {
@@ -2736,7 +2736,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setConnectionCollation(java.lang.String)
      */
     public void setConnectionCollation(String collation) {
@@ -2745,7 +2745,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setConnectTimeout(int)
      */
     public void setConnectTimeout(int timeoutMs) throws SQLException {
@@ -2754,7 +2754,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setContinueBatchOnError(boolean)
      */
     public void setContinueBatchOnError(boolean property) {
@@ -2763,7 +2763,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setCreateDatabaseIfNotExist(boolean)
      */
     public void setCreateDatabaseIfNotExist(boolean flag) {
@@ -2772,7 +2772,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setDefaultFetchSize(int)
      */
     public void setDefaultFetchSize(int n) throws SQLException {
@@ -2781,7 +2781,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setDetectServerPreparedStmts(boolean)
      */
     public void setDetectServerPreparedStmts(boolean property) {
@@ -2790,7 +2790,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setDontTrackOpenResources(boolean)
      */
     public void setDontTrackOpenResources(boolean flag) {
@@ -2799,7 +2799,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setDumpQueriesOnException(boolean)
      */
     public void setDumpQueriesOnException(boolean flag) {
@@ -2808,7 +2808,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setDynamicCalendars(boolean)
      */
     public void setDynamicCalendars(boolean flag) {
@@ -2817,7 +2817,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setElideSetAutoCommits(boolean)
      */
     public void setElideSetAutoCommits(boolean flag) {
@@ -2826,7 +2826,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setEmptyStringsConvertToZero(boolean)
      */
     public void setEmptyStringsConvertToZero(boolean flag) {
@@ -2835,7 +2835,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setEmulateLocators(boolean)
      */
     public void setEmulateLocators(boolean property) {
@@ -2844,7 +2844,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setEmulateUnsupportedPstmts(boolean)
      */
     public void setEmulateUnsupportedPstmts(boolean flag) {
@@ -2853,7 +2853,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setEnablePacketDebug(boolean)
      */
     public void setEnablePacketDebug(boolean flag) {
@@ -2862,7 +2862,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setEncoding(java.lang.String)
      */
     public void setEncoding(String property) {
@@ -2872,7 +2872,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setExplainSlowQueries(boolean)
      */
     public void setExplainSlowQueries(boolean flag) {
@@ -2881,7 +2881,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setFailOverReadOnly(boolean)
      */
     public void setFailOverReadOnly(boolean flag) {
@@ -2890,7 +2890,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setGatherPerformanceMetrics(boolean)
      */
     public void setGatherPerformanceMetrics(boolean flag) {
@@ -2904,7 +2904,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setHoldResultsOpenOverStatementClose(boolean)
      */
     public void setHoldResultsOpenOverStatementClose(boolean flag) {
@@ -2913,7 +2913,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setIgnoreNonTxTables(boolean)
      */
     public void setIgnoreNonTxTables(boolean property) {
@@ -2922,7 +2922,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setInitialTimeout(int)
      */
     public void setInitialTimeout(int property) throws SQLException {
@@ -2931,7 +2931,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setIsInteractiveClient(boolean)
      */
     public void setIsInteractiveClient(boolean property) {
@@ -2940,7 +2940,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setJdbcCompliantTruncation(boolean)
      */
     public void setJdbcCompliantTruncation(boolean flag) {
@@ -2949,7 +2949,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setLocatorFetchBufferSize(java.lang.String)
      */
     public void setLocatorFetchBufferSize(String value) throws SQLException {
@@ -2958,7 +2958,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setLogger(java.lang.String)
      */
     public void setLogger(String property) {
@@ -2967,7 +2967,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setLoggerClassName(java.lang.String)
      */
     public void setLoggerClassName(String className) {
@@ -2976,7 +2976,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setLogSlowQueries(boolean)
      */
     public void setLogSlowQueries(boolean flag) {
@@ -2985,7 +2985,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setMaintainTimeStats(boolean)
      */
     public void setMaintainTimeStats(boolean flag) {
@@ -2995,7 +2995,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setMaxQuerySizeToLog(int)
      */
     public void setMaxQuerySizeToLog(int sizeInBytes) throws SQLException {
@@ -3004,7 +3004,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setMaxReconnects(int)
      */
     public void setMaxReconnects(int property) throws SQLException {
@@ -3013,7 +3013,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setMaxRows(int)
      */
     public void setMaxRows(int property) throws SQLException {
@@ -3023,7 +3023,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setMetadataCacheSize(int)
      */
     public void setMetadataCacheSize(int value) throws SQLException {
@@ -3032,7 +3032,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setNoDatetimeStringSync(boolean)
      */
     public void setNoDatetimeStringSync(boolean flag) {
@@ -3041,7 +3041,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setNullCatalogMeansCurrent(boolean)
      */
     public void setNullCatalogMeansCurrent(boolean value) {
@@ -3050,7 +3050,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setNullNamePatternMatchesAll(boolean)
      */
     public void setNullNamePatternMatchesAll(boolean value) {
@@ -3059,7 +3059,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setPacketDebugBufferSize(int)
      */
     public void setPacketDebugBufferSize(int size) throws SQLException {
@@ -3068,7 +3068,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setParanoid(boolean)
      */
     public void setParanoid(boolean property) {
@@ -3077,7 +3077,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setPedantic(boolean)
      */
     public void setPedantic(boolean property) {
@@ -3086,7 +3086,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setPreparedStatementCacheSize(int)
      */
     public void setPreparedStatementCacheSize(int cacheSize) throws SQLException {
@@ -3095,7 +3095,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setPreparedStatementCacheSqlLimit(int)
      */
     public void setPreparedStatementCacheSqlLimit(int cacheSqlLimit) throws SQLException {
@@ -3104,7 +3104,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setProfileSql(boolean)
      */
     public void setProfileSql(boolean property) {
@@ -3114,7 +3114,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setProfileSQL(boolean)
      */
     public void setProfileSQL(boolean flag) {
@@ -3123,7 +3123,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setPropertiesTransform(java.lang.String)
      */
     public void setPropertiesTransform(String value) {
@@ -3132,7 +3132,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setQueriesBeforeRetryMaster(int)
      */
     public void setQueriesBeforeRetryMaster(int property) throws SQLException {
@@ -3141,7 +3141,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setReconnectAtTxEnd(boolean)
      */
     public void setReconnectAtTxEnd(boolean property) {
@@ -3151,7 +3151,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setRelaxAutoCommit(boolean)
      */
     public void setRelaxAutoCommit(boolean property) {
@@ -3160,7 +3160,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setReportMetricsIntervalMillis(int)
      */
     public void setReportMetricsIntervalMillis(int millis) throws SQLException {
@@ -3169,7 +3169,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setRequireSSL(boolean)
      */
     public void setRequireSSL(boolean property) {
@@ -3178,7 +3178,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setRetainStatementAfterResultSetClose(boolean)
      */
     public void setRetainStatementAfterResultSetClose(boolean flag) {
@@ -3187,7 +3187,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setRollbackOnPooledClose(boolean)
      */
     public void setRollbackOnPooledClose(boolean flag) {
@@ -3196,7 +3196,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setRoundRobinLoadBalance(boolean)
      */
     public void setRoundRobinLoadBalance(boolean flag) {
@@ -3205,7 +3205,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setRunningCTS13(boolean)
      */
     public void setRunningCTS13(boolean flag) {
@@ -3214,7 +3214,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setSecondsBeforeRetryMaster(int)
      */
     public void setSecondsBeforeRetryMaster(int property) throws SQLException {
@@ -3223,7 +3223,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setServerTimezone(java.lang.String)
      */
     public void setServerTimezone(String property) {
@@ -3232,7 +3232,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setSessionVariables(java.lang.String)
      */
     public void setSessionVariables(String variables) {
@@ -3241,7 +3241,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setSlowQueryThresholdMillis(int)
      */
     public void setSlowQueryThresholdMillis(int millis) throws SQLException {
@@ -3250,7 +3250,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setSocketFactoryClassName(java.lang.String)
      */
     public void setSocketFactoryClassName(String property) {
@@ -3259,7 +3259,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setSocketTimeout(int)
      */
     public void setSocketTimeout(int property) throws SQLException {
@@ -3268,7 +3268,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setStrictFloatingPoint(boolean)
      */
     public void setStrictFloatingPoint(boolean property) {
@@ -3277,7 +3277,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setStrictUpdates(boolean)
      */
     public void setStrictUpdates(boolean property) {
@@ -3286,7 +3286,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setTinyInt1isBit(boolean)
      */
     public void setTinyInt1isBit(boolean flag) {
@@ -3295,7 +3295,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setTraceProtocol(boolean)
      */
     public void setTraceProtocol(boolean flag) {
@@ -3304,7 +3304,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setTransformedBitIsBoolean(boolean)
      */
     public void setTransformedBitIsBoolean(boolean flag) {
@@ -3313,7 +3313,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseCompression(boolean)
      */
     public void setUseCompression(boolean property) {
@@ -3322,7 +3322,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseFastIntParsing(boolean)
      */
     public void setUseFastIntParsing(boolean flag) {
@@ -3331,7 +3331,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseHostsInPrivileges(boolean)
      */
     public void setUseHostsInPrivileges(boolean property) {
@@ -3340,7 +3340,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseInformationSchema(boolean)
      */
     public void setUseInformationSchema(boolean flag) {
@@ -3349,7 +3349,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseLocalSessionState(boolean)
      */
     public void setUseLocalSessionState(boolean flag) {
@@ -3358,7 +3358,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseOldUTF8Behavior(boolean)
      */
     public void setUseOldUTF8Behavior(boolean flag) {
@@ -3368,7 +3368,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseOnlyServerErrorMessages(boolean)
      */
     public void setUseOnlyServerErrorMessages(boolean flag) {
@@ -3377,7 +3377,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseReadAheadInput(boolean)
      */
     public void setUseReadAheadInput(boolean flag) {
@@ -3386,7 +3386,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseServerPreparedStmts(boolean)
      */
     public void setUseServerPreparedStmts(boolean flag) {
@@ -3395,7 +3395,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseSqlStateCodes(boolean)
      */
     public void setUseSqlStateCodes(boolean flag) {
@@ -3404,7 +3404,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseSSL(boolean)
      */
     public void setUseSSL(boolean property) {
@@ -3413,7 +3413,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseStreamLengthsInPrepStmts(boolean)
      */
     public void setUseStreamLengthsInPrepStmts(boolean property) {
@@ -3422,7 +3422,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseTimezone(boolean)
      */
     public void setUseTimezone(boolean property) {
@@ -3431,7 +3431,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseUltraDevWorkAround(boolean)
      */
     public void setUseUltraDevWorkAround(boolean property) {
@@ -3440,7 +3440,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseUnbufferedInput(boolean)
      */
     public void setUseUnbufferedInput(boolean flag) {
@@ -3449,7 +3449,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseUnicode(boolean)
      */
     public void setUseUnicode(boolean flag) {
@@ -3459,7 +3459,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseUsageAdvisor(boolean)
      */
     public void setUseUsageAdvisor(boolean useUsageAdvisorFlag) {
@@ -3469,7 +3469,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setYearIsDateType(boolean)
      */
     public void setYearIsDateType(boolean flag) {
@@ -3478,7 +3478,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setZeroDateTimeBehavior(java.lang.String)
      */
     public void setZeroDateTimeBehavior(String behavior) {
@@ -3505,7 +3505,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#useUnbufferedInput()
      */
     public boolean useUnbufferedInput() {
@@ -3514,7 +3514,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseCursorFetch()
      */
     public boolean getUseCursorFetch() {
@@ -3523,7 +3523,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseCursorFetch(boolean)
      */
     public void setUseCursorFetch(boolean flag) {
@@ -3532,7 +3532,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getOverrideSupportsIntegrityEnhancementFacility()
      */
     public boolean getOverrideSupportsIntegrityEnhancementFacility() {
@@ -3541,7 +3541,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setOverrideSupportsIntegrityEnhancementFacility(boolean)
      */
     public void setOverrideSupportsIntegrityEnhancementFacility(boolean flag) {
@@ -3550,7 +3550,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getNoTimezoneConversionForTimeType()
      */
     public boolean getNoTimezoneConversionForTimeType() {
@@ -3559,7 +3559,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setNoTimezoneConversionForTimeType(boolean)
      */
     public void setNoTimezoneConversionForTimeType(boolean flag) {
@@ -3568,7 +3568,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getNoTimezoneConversionForDateType()
      */
     public boolean getNoTimezoneConversionForDateType() {
@@ -3577,7 +3577,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setNoTimezoneConversionForDateType(boolean)
      */
     public void setNoTimezoneConversionForDateType(boolean flag) {
@@ -3586,7 +3586,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getCacheDefaultTimezone()
      */
     public boolean getCacheDefaultTimezone() {
@@ -3595,7 +3595,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setCacheDefaultTimezone(boolean)
      */
     public void setCacheDefaultTimezone(boolean flag) {
@@ -3604,7 +3604,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseJDBCCompliantTimezoneShift()
      */
     public boolean getUseJDBCCompliantTimezoneShift() {
@@ -3613,7 +3613,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseJDBCCompliantTimezoneShift(boolean)
      */
     public void setUseJDBCCompliantTimezoneShift(boolean flag) {
@@ -3622,7 +3622,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getAutoClosePStmtStreams()
      */
     public boolean getAutoClosePStmtStreams() {
@@ -3631,7 +3631,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setAutoClosePStmtStreams(boolean)
      */
     public void setAutoClosePStmtStreams(boolean flag) {
@@ -3640,7 +3640,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getProcessEscapeCodesForPrepStmts()
      */
     public boolean getProcessEscapeCodesForPrepStmts() {
@@ -3649,7 +3649,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setProcessEscapeCodesForPrepStmts(boolean)
      */
     public void setProcessEscapeCodesForPrepStmts(boolean flag) {
@@ -3658,7 +3658,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseGmtMillisForDatetimes()
      */
     public boolean getUseGmtMillisForDatetimes() {
@@ -3667,7 +3667,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseGmtMillisForDatetimes(boolean)
      */
     public void setUseGmtMillisForDatetimes(boolean flag) {
@@ -3676,7 +3676,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getDumpMetadataOnColumnNotFound()
      */
     public boolean getDumpMetadataOnColumnNotFound() {
@@ -3685,7 +3685,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setDumpMetadataOnColumnNotFound(boolean)
      */
     public void setDumpMetadataOnColumnNotFound(boolean flag) {
@@ -3694,7 +3694,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getResourceId()
      */
     public String getResourceId() {
@@ -3703,7 +3703,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setResourceId(java.lang.String)
      */
     public void setResourceId(String resourceId) {
@@ -3712,7 +3712,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getRewriteBatchedStatements()
      */
     public boolean getRewriteBatchedStatements() {
@@ -3721,7 +3721,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setRewriteBatchedStatements(boolean)
      */
     public void setRewriteBatchedStatements(boolean flag) {
@@ -3730,7 +3730,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getJdbcCompliantTruncationForReads()
      */
     public boolean getJdbcCompliantTruncationForReads() {
@@ -3739,7 +3739,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setJdbcCompliantTruncationForReads(boolean)
      */
     public void setJdbcCompliantTruncationForReads(boolean jdbcCompliantTruncationForReads) {
@@ -3748,7 +3748,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseJvmCharsetConverters()
      */
     public boolean getUseJvmCharsetConverters() {
@@ -3757,7 +3757,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseJvmCharsetConverters(boolean)
      */
     public void setUseJvmCharsetConverters(boolean flag) {
@@ -3766,7 +3766,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getPinGlobalTxToPhysicalConnection()
      */
     public boolean getPinGlobalTxToPhysicalConnection() {
@@ -3775,7 +3775,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setPinGlobalTxToPhysicalConnection(boolean)
      */
     public void setPinGlobalTxToPhysicalConnection(boolean flag) {
@@ -3789,7 +3789,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setGatherPerfMetrics(boolean)
      */
     public void setGatherPerfMetrics(boolean flag) {
@@ -3798,7 +3798,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getGatherPerfMetrics()
      */
     public boolean getGatherPerfMetrics() {
@@ -3807,7 +3807,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUltraDevHack(boolean)
      */
     public void setUltraDevHack(boolean flag) {
@@ -3816,7 +3816,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUltraDevHack()
      */
     public boolean getUltraDevHack() {
@@ -3825,7 +3825,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setInteractiveClient(boolean)
      */
     public void setInteractiveClient(boolean property) {
@@ -3834,7 +3834,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setSocketFactory(java.lang.String)
      */
     public void setSocketFactory(String name) {
@@ -3843,7 +3843,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getSocketFactory()
      */
     public String getSocketFactory() {
@@ -3852,7 +3852,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseServerPrepStmts(boolean)
      */
     public void setUseServerPrepStmts(boolean flag) {
@@ -3861,7 +3861,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseServerPrepStmts()
      */
     public boolean getUseServerPrepStmts() {
@@ -3870,7 +3870,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setCacheCallableStmts(boolean)
      */
     public void setCacheCallableStmts(boolean flag) {
@@ -3879,7 +3879,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getCacheCallableStmts()
      */
     public boolean getCacheCallableStmts() {
@@ -3888,7 +3888,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setCachePrepStmts(boolean)
      */
     public void setCachePrepStmts(boolean flag) {
@@ -3897,7 +3897,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getCachePrepStmts()
      */
     public boolean getCachePrepStmts() {
@@ -3906,7 +3906,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setCallableStmtCacheSize(int)
      */
     public void setCallableStmtCacheSize(int cacheSize) throws SQLException {
@@ -3915,7 +3915,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getCallableStmtCacheSize()
      */
     public int getCallableStmtCacheSize() {
@@ -3924,7 +3924,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setPrepStmtCacheSize(int)
      */
     public void setPrepStmtCacheSize(int cacheSize) throws SQLException {
@@ -3933,7 +3933,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getPrepStmtCacheSize()
      */
     public int getPrepStmtCacheSize() {
@@ -3942,7 +3942,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setPrepStmtCacheSqlLimit(int)
      */
     public void setPrepStmtCacheSqlLimit(int sqlLimit) throws SQLException {
@@ -3951,7 +3951,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getPrepStmtCacheSqlLimit()
      */
     public int getPrepStmtCacheSqlLimit() {
@@ -3960,7 +3960,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getNoAccessToProcedureBodies()
      */
     public boolean getNoAccessToProcedureBodies() {
@@ -3969,7 +3969,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setNoAccessToProcedureBodies(boolean)
      */
     public void setNoAccessToProcedureBodies(boolean flag) {
@@ -3978,7 +3978,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseOldAliasMetadataBehavior()
      */
     public boolean getUseOldAliasMetadataBehavior() {
@@ -3987,7 +3987,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseOldAliasMetadataBehavior(boolean)
      */
     public void setUseOldAliasMetadataBehavior(boolean flag) {
@@ -3996,7 +3996,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getClientCertificateKeyStorePassword()
      */
     public String getClientCertificateKeyStorePassword() {
@@ -4005,7 +4005,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setClientCertificateKeyStorePassword(java.lang.String)
      */
     public void setClientCertificateKeyStorePassword(String value) {
@@ -4014,7 +4014,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getClientCertificateKeyStoreType()
      */
     public String getClientCertificateKeyStoreType() {
@@ -4023,7 +4023,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setClientCertificateKeyStoreType(java.lang.String)
      */
     public void setClientCertificateKeyStoreType(String value) {
@@ -4032,7 +4032,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getClientCertificateKeyStoreUrl()
      */
     public String getClientCertificateKeyStoreUrl() {
@@ -4041,7 +4041,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setClientCertificateKeyStoreUrl(java.lang.String)
      */
     public void setClientCertificateKeyStoreUrl(String value) {
@@ -4050,7 +4050,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getTrustCertificateKeyStorePassword()
      */
     public String getTrustCertificateKeyStorePassword() {
@@ -4059,7 +4059,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setTrustCertificateKeyStorePassword(java.lang.String)
      */
     public void setTrustCertificateKeyStorePassword(String value) {
@@ -4068,7 +4068,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getTrustCertificateKeyStoreType()
      */
     public String getTrustCertificateKeyStoreType() {
@@ -4077,7 +4077,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setTrustCertificateKeyStoreType(java.lang.String)
      */
     public void setTrustCertificateKeyStoreType(String value) {
@@ -4086,7 +4086,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getTrustCertificateKeyStoreUrl()
      */
     public String getTrustCertificateKeyStoreUrl() {
@@ -4095,7 +4095,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setTrustCertificateKeyStoreUrl(java.lang.String)
      */
     public void setTrustCertificateKeyStoreUrl(String value) {
@@ -4104,7 +4104,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseSSPSCompatibleTimezoneShift()
      */
     public boolean getUseSSPSCompatibleTimezoneShift() {
@@ -4113,7 +4113,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseSSPSCompatibleTimezoneShift(boolean)
      */
     public void setUseSSPSCompatibleTimezoneShift(boolean flag) {
@@ -4122,7 +4122,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getTreatUtilDateAsTimestamp()
      */
     public boolean getTreatUtilDateAsTimestamp() {
@@ -4131,7 +4131,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setTreatUtilDateAsTimestamp(boolean)
      */
     public void setTreatUtilDateAsTimestamp(boolean flag) {
@@ -4140,7 +4140,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseFastDateParsing()
      */
     public boolean getUseFastDateParsing() {
@@ -4149,7 +4149,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseFastDateParsing(boolean)
      */
     public void setUseFastDateParsing(boolean flag) {
@@ -4158,7 +4158,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getLocalSocketAddress()
      */
     public String getLocalSocketAddress() {
@@ -4167,7 +4167,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setLocalSocketAddress(java.lang.String)
      */
     public void setLocalSocketAddress(String address) {
@@ -4176,7 +4176,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseConfigs(java.lang.String)
      */
     public void setUseConfigs(String configs) {
@@ -4185,7 +4185,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseConfigs()
      */
     public String getUseConfigs() {
@@ -4194,7 +4194,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getGenerateSimpleParameterMetadata()
      */
     public boolean getGenerateSimpleParameterMetadata() {
@@ -4203,7 +4203,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setGenerateSimpleParameterMetadata(boolean)
      */
     public void setGenerateSimpleParameterMetadata(boolean flag) {
@@ -4212,7 +4212,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getLogXaCommands()
      */
     public boolean getLogXaCommands() {
@@ -4221,7 +4221,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setLogXaCommands(boolean)
      */
     public void setLogXaCommands(boolean flag) {
@@ -4230,7 +4230,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getResultSetSizeThreshold()
      */
     public int getResultSetSizeThreshold() {
@@ -4239,7 +4239,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setResultSetSizeThreshold(int)
      */
     public void setResultSetSizeThreshold(int threshold) throws SQLException {
@@ -4248,7 +4248,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getNetTimeoutForStreamingResults()
      */
     public int getNetTimeoutForStreamingResults() {
@@ -4257,7 +4257,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setNetTimeoutForStreamingResults(int)
      */
     public void setNetTimeoutForStreamingResults(int value) throws SQLException {
@@ -4266,7 +4266,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getEnableQueryTimeouts()
      */
     public boolean getEnableQueryTimeouts() {
@@ -4275,7 +4275,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setEnableQueryTimeouts(boolean)
      */
     public void setEnableQueryTimeouts(boolean flag) {
@@ -4284,7 +4284,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getPadCharsWithSpace()
      */
     public boolean getPadCharsWithSpace() {
@@ -4293,7 +4293,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setPadCharsWithSpace(boolean)
      */
     public void setPadCharsWithSpace(boolean flag) {
@@ -4302,7 +4302,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getUseDynamicCharsetInfo()
      */
     public boolean getUseDynamicCharsetInfo() {
@@ -4311,7 +4311,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setUseDynamicCharsetInfo(boolean)
      */
     public void setUseDynamicCharsetInfo(boolean flag) {
@@ -4320,7 +4320,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#getClientInfoProvider()
      */
     public String getClientInfoProvider() {
@@ -4329,7 +4329,7 @@ public class ConnectionPropertiesImpl implements Serializable, ConnectionPropert
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.IConnectionProperties#setClientInfoProvider(java.lang.String)
      */
     public void setClientInfoProvider(String classname) {

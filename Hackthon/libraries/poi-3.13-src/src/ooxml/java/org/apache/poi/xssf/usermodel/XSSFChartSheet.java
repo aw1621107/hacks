@@ -80,12 +80,12 @@ public class XSSFChartSheet extends XSSFSheet  {
     protected CTDrawing getCTDrawing() {
        return chartsheet.getDrawing();
     }
-    
+
     @Override
     protected CTLegacyDrawing getCTLegacyDrawing() {
        return chartsheet.getLegacyDrawing();
     }
-    
+
     @Override
     protected void write(OutputStream out) throws IOException {
         XmlOptions xmlOptions = new XmlOptions(DEFAULT_XML_OPTIONS);

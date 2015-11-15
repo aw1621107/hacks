@@ -33,15 +33,15 @@ public interface ZipEntrySource {
 	 * Returns an Enumeration of all the Entries
 	 */
 	public Enumeration<? extends ZipEntry> getEntries();
-	
+
 	/**
-	 * Returns an InputStream of the decompressed 
+	 * Returns an InputStream of the decompressed
 	 *  data that makes up the entry
 	 */
 	public InputStream getInputStream(ZipEntry entry) throws IOException;
-	
+
 	/**
-	 * Indicates we are done with reading, and 
+	 * Indicates we are done with reading, and
 	 *  resources may be freed
 	 */
 	public void close() throws IOException;

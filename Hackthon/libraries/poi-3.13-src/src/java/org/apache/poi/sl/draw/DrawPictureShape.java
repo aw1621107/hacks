@@ -33,7 +33,7 @@ public class DrawPictureShape extends DrawSimpleShape {
     public DrawPictureShape(PictureShape<?,?> shape) {
         super(shape);
     }
-    
+
     @Override
     public void drawContent(Graphics2D graphics) {
         PictureData data = getShape().getPictureData();
@@ -41,7 +41,7 @@ public class DrawPictureShape extends DrawSimpleShape {
 
         ImageRenderer renderer = (ImageRenderer)graphics.getRenderingHint(Drawable.IMAGE_RENDERER);
         if (renderer == null) renderer = new ImageRenderer();
-        
+
         Rectangle2D anchor = getAnchor(graphics, getShape());
 
         Insets insets = getShape().getClipping();
@@ -53,13 +53,13 @@ public class DrawPictureShape extends DrawSimpleShape {
             // TODO: draw specific runtime exception?
             throw new RuntimeException(e);
         }
-    }    
+    }
 
     @Override
     protected PictureShape<?,?> getShape() {
         return (PictureShape<?,?>)shape;
     }
-    
+
     /**
      * Resize this picture to the default size.
      *

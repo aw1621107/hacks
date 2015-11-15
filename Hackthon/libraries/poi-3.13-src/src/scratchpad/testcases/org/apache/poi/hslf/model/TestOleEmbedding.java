@@ -98,27 +98,27 @@ public final class TestOleEmbedding {
         }
         assertEquals("Expected 2 OLE shapes", 2, cnt);
     }
-    
+
     @Test
     public void testEmbedding() throws Exception {
     	HSLFSlideShowImpl _hslfSlideShow = HSLFSlideShowImpl.create();
     	HSLFSlideShow ppt = new HSLFSlideShow(_hslfSlideShow);
-    	
+
     	File pict = POIDataSamples.getSlideShowInstance().getFile("clock.jpg");
     	HSLFPictureData pictData = ppt.addPicture(pict, PictureType.JPEG);
-    	
+
     	InputStream is = POIDataSamples.getSpreadSheetInstance().openResourceAsStream("Employee.xls");
     	POIFSFileSystem poiData1 = new POIFSFileSystem(is);
     	is.close();
-    	
+
     	int oleObjectId1 = ppt.addEmbed(poiData1);
-    	
+
     	HSLFSlide slide1 = ppt.createSlide();
     	OLEShape oleShape1 = new OLEShape(pictData);
     	oleShape1.setObjectID(oleObjectId1);
     	slide1.addShape(oleShape1);
     	oleShape1.setAnchor(new Rectangle(100,100,100,100));
-    	
+
     	// add second slide with different order in object creation
     	HSLFSlide slide2 = ppt.createSlide();
     	OLEShape oleShape2 = new OLEShape(pictData);
@@ -126,28 +126,28 @@ public final class TestOleEmbedding {
         is = POIDataSamples.getSpreadSheetInstance().openResourceAsStream("SimpleWithImages.xls");
         POIFSFileSystem poiData2 = new POIFSFileSystem(is);
         is.close();
-    	
+
         int oleObjectId2 = ppt.addEmbed(poiData2);
 
         oleShape2.setObjectID(oleObjectId2);
         slide2.addShape(oleShape2);
         oleShape2.setAnchor(new Rectangle(100,100,100,100));
-        
+
     	ByteArrayOutputStream bos = new ByteArrayOutputStream();
     	ppt.write(bos);
-    	
+
     	ppt = new HSLFSlideShow(new ByteArrayInputStream(bos.toByteArray()));
     	OLEShape comp = (OLEShape)ppt.getSlides().get(0).getShapes().get(0);
     	byte compData[] = IOUtils.toByteArray(comp.getObjectData().getData());
-    	
+
     	bos.reset();
     	poiData1.writeFilesystem(bos);
     	byte expData[] = bos.toByteArray();
-    	
+
     	assertArrayEquals(expData, compData);
-    	
+
     	poiData1.close();
     	poiData2.close();
-    	
+
     }
 }

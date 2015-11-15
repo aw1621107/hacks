@@ -31,7 +31,7 @@ import junit.framework.TestCase;
 public final class TestSorters extends TestCase {
    public void testAttachmentChunksSorter() {
       AttachmentChunks[] chunks;
-      
+
       // Simple
       chunks = new AttachmentChunks[] {
             new AttachmentChunks("__attach_version1.0_#00000001"),
@@ -40,7 +40,7 @@ public final class TestSorters extends TestCase {
       Arrays.sort(chunks, new AttachmentChunksSorter());
       assertEquals("__attach_version1.0_#00000000", chunks[0].getPOIFSName());
       assertEquals("__attach_version1.0_#00000001", chunks[1].getPOIFSName());
-      
+
       // Lots, with gaps
       chunks = new AttachmentChunks[] {
             new AttachmentChunks("__attach_version1.0_#00000101"),
@@ -60,10 +60,10 @@ public final class TestSorters extends TestCase {
       assertEquals("__attach_version1.0_#000000AB", chunks[5].getPOIFSName());
       assertEquals("__attach_version1.0_#00000101", chunks[6].getPOIFSName());
    }
-   
+
    public void testRecipientChunksSorter() {
       RecipientChunks[] chunks;
-      
+
       // Simple
       chunks = new RecipientChunks[] {
             new RecipientChunks("__recip_version1.0_#00000001"),
@@ -72,7 +72,7 @@ public final class TestSorters extends TestCase {
       Arrays.sort(chunks, new RecipientChunksSorter());
       assertEquals(0, chunks[0].recipientNumber);
       assertEquals(1, chunks[1].recipientNumber);
-      
+
       // Lots, with gaps
       chunks = new RecipientChunks[] {
             new RecipientChunks("__recip_version1.0_#00020001"),

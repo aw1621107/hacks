@@ -41,18 +41,18 @@ public final class CompressedRTF extends LZWDecompresser {
       LittleEndian.getInt(COMPRESSED_SIGNATURE);
    public static final int UNCOMPRESSED_SIGNATURE_INT =
       LittleEndian.getInt(UNCOMPRESSED_SIGNATURE);
-   
+
    // The 4096 byte LZW dictionary is pre-loaded with some common
    //  RTF fragments. These come from RTFLIB32.LIB, which ships
    //  with older versions of Visual Studio or the EDK
-   public static final String LZW_RTF_PRELOAD = 
+   public static final String LZW_RTF_PRELOAD =
       "{\\rtf1\\ansi\\mac\\deff0\\deftab720{\\fonttbl;}{\\f0\\fnil \\froman \\fswiss " +
       "\\fmodern \\fscript \\fdecor MS Sans SerifSymbolArialTimes New RomanCourier" +
       "{\\colortbl\\red0\\green0\\blue0\n\r\\par \\pard\\plain\\f0\\fs20\\b\\i\\u\\tab\\tx";
 
    private int compressedSize;
    private int decompressedSize;
-   
+
    public CompressedRTF() {
       // Out flag has the normal meaning
       // Length wise, we're 2 longer than we say, so the max len is 18
@@ -74,9 +74,9 @@ public final class CompressedRTF extends LZWDecompresser {
       decompressedSize = LittleEndian.readInt(src);
       int compressionType = LittleEndian.readInt(src);
       /* int dataCRC = */ LittleEndian.readInt(src);
-      
+
       // TODO - Handle CRC checking on the output side
-      
+
       // Do we need to do anything?
       if(compressionType == UNCOMPRESSED_SIGNATURE_INT) {
          // Nope, nothing fancy to do
@@ -90,7 +90,7 @@ public final class CompressedRTF extends LZWDecompresser {
       // Have it processed
       super.decompress(src, res);
    }
-   
+
    /**
     * Returns how big the compressed version was.
     */
@@ -98,7 +98,7 @@ public final class CompressedRTF extends LZWDecompresser {
       // Return the size less the header
       return compressedSize - 12;
    }
-   
+
    /**
     * Returns how big the decompressed version was.
     */
@@ -117,10 +117,10 @@ public final class CompressedRTF extends LZWDecompresser {
 
    @Override
    protected int populateDictionary(byte[] dict) {
-     // Copy in the RTF constants 
+     // Copy in the RTF constants
      byte[] preload = LZW_RTF_PRELOAD.getBytes(Charset.forName("US-ASCII"));
      System.arraycopy(preload, 0, dict, 0, preload.length);
-     
+
      // Start adding new codes after the constants
      return preload.length;
    }

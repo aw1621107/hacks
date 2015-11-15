@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_CustomGeometry2D complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_CustomGeometry2D">
  *   &lt;complexContent>
@@ -44,8 +44,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_CustomGeometry2D", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main", propOrder = {
@@ -73,11 +73,11 @@ public class CTCustomGeometry2D {
 
     /**
      * Gets the value of the avLst property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTGeomGuideList }
-     *     
+     *
      */
     public CTGeomGuideList getAvLst() {
         return avLst;
@@ -85,11 +85,11 @@ public class CTCustomGeometry2D {
 
     /**
      * Sets the value of the avLst property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTGeomGuideList }
-     *     
+     *
      */
     public void setAvLst(CTGeomGuideList value) {
         this.avLst = value;
@@ -101,11 +101,11 @@ public class CTCustomGeometry2D {
 
     /**
      * Gets the value of the gdLst property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTGeomGuideList }
-     *     
+     *
      */
     public CTGeomGuideList getGdLst() {
         return gdLst;
@@ -113,11 +113,11 @@ public class CTCustomGeometry2D {
 
     /**
      * Sets the value of the gdLst property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTGeomGuideList }
-     *     
+     *
      */
     public void setGdLst(CTGeomGuideList value) {
         this.gdLst = value;
@@ -129,11 +129,11 @@ public class CTCustomGeometry2D {
 
     /**
      * Gets the value of the ahLst property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTAdjustHandleList }
-     *     
+     *
      */
     public CTAdjustHandleList getAhLst() {
         return ahLst;
@@ -141,11 +141,11 @@ public class CTCustomGeometry2D {
 
     /**
      * Sets the value of the ahLst property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTAdjustHandleList }
-     *     
+     *
      */
     public void setAhLst(CTAdjustHandleList value) {
         this.ahLst = value;
@@ -157,11 +157,11 @@ public class CTCustomGeometry2D {
 
     /**
      * Gets the value of the cxnLst property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTConnectionSiteList }
-     *     
+     *
      */
     public CTConnectionSiteList getCxnLst() {
         return cxnLst;
@@ -169,11 +169,11 @@ public class CTCustomGeometry2D {
 
     /**
      * Sets the value of the cxnLst property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTConnectionSiteList }
-     *     
+     *
      */
     public void setCxnLst(CTConnectionSiteList value) {
         this.cxnLst = value;
@@ -185,11 +185,11 @@ public class CTCustomGeometry2D {
 
     /**
      * Gets the value of the rect property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTGeomRect }
-     *     
+     *
      */
     public CTGeomRect getRect() {
         return rect;
@@ -197,11 +197,11 @@ public class CTCustomGeometry2D {
 
     /**
      * Sets the value of the rect property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTGeomRect }
-     *     
+     *
      */
     public void setRect(CTGeomRect value) {
         this.rect = value;
@@ -213,11 +213,11 @@ public class CTCustomGeometry2D {
 
     /**
      * Gets the value of the pathLst property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTPath2DList }
-     *     
+     *
      */
     public CTPath2DList getPathLst() {
         return pathLst;
@@ -225,11 +225,11 @@ public class CTCustomGeometry2D {
 
     /**
      * Sets the value of the pathLst property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTPath2DList }
-     *     
+     *
      */
     public void setPathLst(CTPath2DList value) {
         this.pathLst = value;

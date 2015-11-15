@@ -83,7 +83,7 @@ public class WordToTextConverter extends AbstractWordConverter
 
     /**
      * Java main() interface to interact with {@link WordToTextConverter}
-     * 
+     *
      * <p>
      * Usage: WordToTextConverter infile outfile
      * </p>
@@ -135,7 +135,7 @@ public class WordToTextConverter extends AbstractWordConverter
     /**
      * Creates new instance of {@link WordToTextConverter}. Can be used for
      * output several {@link HWPFDocument}s into single text document.
-     * 
+     *
      * @throws ParserConfigurationException
      *             if an internal {@link DocumentBuilder} cannot be created
      */
@@ -149,7 +149,7 @@ public class WordToTextConverter extends AbstractWordConverter
     /**
      * Creates new instance of {@link WordToTextConverter}. Can be used for
      * output several {@link HWPFDocument}s into single text document.
-     * 
+     *
      * @param document
      *            XML DOM Document used as storage for text pieces
      */

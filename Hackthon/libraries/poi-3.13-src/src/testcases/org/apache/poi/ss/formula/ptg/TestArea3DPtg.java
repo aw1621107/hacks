@@ -22,7 +22,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 /**
  * Tests for Area3DPtg
- * 
+ *
  * @author Josh Micich
  */
 public final class TestArea3DPtg extends AbstractPtgTestCase {

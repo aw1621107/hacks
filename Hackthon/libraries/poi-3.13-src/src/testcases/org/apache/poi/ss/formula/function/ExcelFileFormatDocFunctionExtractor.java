@@ -339,7 +339,7 @@ public final class ExcelFileFormatDocFunctionExtractor {
 			processFunction(cellData, noteFlags, 0);
 			processFunction(cellData, noteFlags, 8);
 		}
-		
+
 		public void processFunction(String[] cellData, Boolean[] noteFlags, int i) {
 			String funcIxStr = cellData[i + 0];
 			if (funcIxStr.length() < 1) {
@@ -465,7 +465,7 @@ public final class ExcelFileFormatDocFunctionExtractor {
 		public SimpleAsciiOutputStream(OutputStream os) {
 			_os = os;
 		}
-		
+
 		@Override
         public void write(int b) throws IOException {
 			checkByte(b);

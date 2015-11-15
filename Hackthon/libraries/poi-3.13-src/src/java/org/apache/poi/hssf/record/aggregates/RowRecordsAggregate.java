@@ -116,7 +116,7 @@ public final class RowRecordsAggregate extends RecordAggregate {
 		// Integer integer = Integer.valueOf(row.getRowNumber());
 		_rowRecords.put(Integer.valueOf(row.getRowNumber()), row);
 		// Clear the cached values
-		_rowRecordValues = null; 
+		_rowRecordValues = null;
 		if ((row.getRowNumber() < _firstrow) || (_firstrow == -1)) {
 			_firstrow = row.getRowNumber();
 		}
@@ -137,7 +137,7 @@ public final class RowRecordsAggregate extends RecordAggregate {
 			_rowRecords.put(key, rr);
 			throw new RuntimeException("Attempt to remove row that does not belong to this sheet");
 		}
-		
+
 		// Clear the cached values
 		_rowRecordValues = null;
 	}
@@ -438,7 +438,7 @@ public final class RowRecordsAggregate extends RecordAggregate {
 
 		return startHidden;
 	}
-	
+
 	/**
 	 * Returns an iterator for the cell values
 	 */

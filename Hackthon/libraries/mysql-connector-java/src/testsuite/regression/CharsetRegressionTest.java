@@ -41,10 +41,10 @@ public class CharsetRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for Bug#73663 (19479242), utf8mb4 does not work for connector/j >=5.1.13
-     * 
+     *
      * This test is only run when character_set_server=utf8mb4 and collation-server set to one of utf8mb4 collations (it's better to test two configurations:
      * with default utf8mb4_general_ci and one of non-default, say utf8mb4_bin)
-     * 
+     *
      * @throws Exception
      */
     public void testBug73663() throws Exception {
@@ -82,11 +82,11 @@ public class CharsetRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for Bug#72630 (18758686), NullPointerException during handshake in some situations
-     * 
+     *
      * @throws Exception
      */
     public void testBug72630() throws Exception {
-        // bug is related to authentication plugins, available only in 5.5.7+ 
+        // bug is related to authentication plugins, available only in 5.5.7+
         if (versionMeetsMinimum(5, 5, 7)) {
             try {
                 createUser("'Bug72630User'@'%'", "IDENTIFIED WITH mysql_native_password AS 'pwd'");

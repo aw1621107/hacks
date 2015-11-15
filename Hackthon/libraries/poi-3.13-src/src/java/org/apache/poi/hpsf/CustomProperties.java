@@ -294,7 +294,7 @@ public class CustomProperties extends HashMap<Object,CustomProperty>
 
     /**
      * Returns a set of all the names of our
-     *  custom properties. Equivalent to 
+     *  custom properties. Equivalent to
      *  {@link #nameSet()}
      */
     public Set keySet() {
@@ -360,7 +360,7 @@ public class CustomProperties extends HashMap<Object,CustomProperty>
    }
 
    /**
-    * Checks against both the property, and its values. 
+    * Checks against both the property, and its values.
     */
    public boolean containsValue(Object value) {
       if(value instanceof CustomProperty) {

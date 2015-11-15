@@ -45,11 +45,11 @@ public class Security {
     /*
      * Convert password in salted form to binary string password and hash-salt
      * For old password this involes one more hashing
-     * 
+     *
      * SYNOPSIS get_hash_and_password() salt IN Salt to convert from pversion IN
      * Password version to use hash OUT Store zero ended hash here bin_password
      * OUT Store binary password here (no zero at the end)
-     * 
+     *
      * RETURN 0 for pre 4.1 passwords !0 password version char for newer
      * passwords
      */
@@ -57,12 +57,12 @@ public class Security {
     /**
      * Creates key from old password to decode scramble Used in 4.1
      * authentication with passwords stored pre-4.1 hashing.
-     * 
+     *
      * @param passwd
      *            the password to create the key from
-     * 
+     *
      * @return 20 byte generated key
-     * 
+     *
      * @throws NoSuchAlgorithmException
      *             if the message digest 'SHA-1' is not available.
      */
@@ -80,7 +80,7 @@ public class Security {
     /**
      * @param salt
      * @param usingNewPasswords
-     * 
+     *
      * @throws NoSuchAlgorithmException
      *             if the message digest 'SHA-1' is not available.
      */
@@ -184,14 +184,14 @@ public class Security {
 
     /**
      * Creates password to be stored in user database from raw string.
-     * 
+     *
      * Handles Pre-MySQL 4.1 passwords.
-     * 
+     *
      * @param password
      *            plaintext password
-     * 
+     *
      * @return scrambled password
-     * 
+     *
      * @throws NoSuchAlgorithmException
      *             if the message digest 'SHA-1' is not available.
      */
@@ -207,9 +207,9 @@ public class Security {
 
     /**
      * Encrypt/Decrypt function used for password encryption in authentication
-     * 
+     *
      * Simple XOR is used here but it is OK as we crypt random strings
-     * 
+     *
      * @param from
      *            IN Data for encryption
      * @param to
@@ -231,12 +231,12 @@ public class Security {
 
     /**
      * Stage one password hashing, used in MySQL 4.1 password handling
-     * 
+     *
      * @param password
      *            plaintext password
-     * 
+     *
      * @return stage one hash of password
-     * 
+     *
      * @throws NoSuchAlgorithmException
      *             if the message digest 'SHA-1' is not available.
      */
@@ -261,14 +261,14 @@ public class Security {
 
     /**
      * Stage two password hashing used in MySQL 4.1 password handling
-     * 
+     *
      * @param hash
      *            from passwordHashStage1
      * @param salt
      *            salt used for stage two hashing
-     * 
+     *
      * @return result of stage two password hash
-     * 
+     *
      * @throws NoSuchAlgorithmException
      *             if the message digest 'SHA-1' is not available.
      */

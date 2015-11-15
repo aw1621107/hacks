@@ -131,12 +131,12 @@ public class HPSFPropertiesExtractor extends POIOLE2TextExtractor {
     public POITextExtractor getMetadataTextExtractor() {
         throw new IllegalStateException("You already have the Metadata Text Extractor, not recursing!");
     }
-    
-    
-    
+
+
+
     public void close() throws IOException {
         super.close();
-        
+
         if(toClose != null) {
             toClose.close();
             toClose = null;

@@ -38,7 +38,7 @@ public class JDBC42PreparedStatementWrapper extends JDBC4PreparedStatementWrappe
 
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
-     * 
+     *
      * @param parameterIndex
      * @param x
      * @param targetSqlType
@@ -58,7 +58,7 @@ public class JDBC42PreparedStatementWrapper extends JDBC4PreparedStatementWrappe
 
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
-     * 
+     *
      * @param parameterIndex
      * @param x
      * @param targetSqlType

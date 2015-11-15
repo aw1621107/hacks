@@ -125,9 +125,9 @@ public final class ContentType {
 		 * quoted-pair = "\" CHAR
 		 */
 
-		patternTypeSubType       = Pattern.compile("^(" + token + "+)/(" + 
+		patternTypeSubType       = Pattern.compile("^(" + token + "+)/(" +
 		                                           token + "+)$");
-		patternTypeSubTypeParams = Pattern.compile("^(" + token + "+)/(" + 
+		patternTypeSubTypeParams = Pattern.compile("^(" + token + "+)/(" +
 		                                           token + "+)(;" + parameter + ")*$");
 		patternParams            = Pattern.compile(";" + parameter);
 	}
@@ -157,7 +157,7 @@ public final class ContentType {
 		if (mMediaType.groupCount() >= 2) {
 			this.type = mMediaType.group(1);
 			this.subType = mMediaType.group(2);
-			
+
 			// Parameters
 			this.parameters = new Hashtable<String, String>(1);
 			// Java RegExps are unhelpful, and won't do multiple group captures
@@ -226,14 +226,14 @@ public final class ContentType {
 	public String getType() {
 		return this.type;
 	}
-	
+
 	/**
 	 * Does this content type have any parameters associated with it?
 	 */
 	public boolean hasParameters() {
 	    return (parameters != null) && !parameters.isEmpty();
 	}
-	
+
 	/**
 	 * Return the parameter keys
 	 */

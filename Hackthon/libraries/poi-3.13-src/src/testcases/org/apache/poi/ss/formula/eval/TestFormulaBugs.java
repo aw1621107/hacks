@@ -64,14 +64,14 @@ public final class TestFormulaBugs {
 
 		assertEquals(HSSFCell.CELL_TYPE_NUMERIC, cv.getCellType());
 		assertEquals(3.0, cv.getNumberValue(), 0.0);
-		
+
 		wb.close();
 		is.close();
 	}
 
 	/**
 	 * Bug 27405 - isnumber() formula always evaluates to false in if statement<p/>
-	 * 
+	 *
 	 * seems to be a duplicate of 24925
 	 */
     @Test
@@ -106,24 +106,24 @@ public final class TestFormulaBugs {
 //				throw new RuntimeException(e);
 //			}
 //		}
-		
+
 		// use POI's evaluator as an extra sanity check
 		HSSFFormulaEvaluator fe = new HSSFFormulaEvaluator(wb);
 		CellValue cv;
 		cv = fe.evaluate(cell);
 		assertEquals(HSSFCell.CELL_TYPE_NUMERIC, cv.getCellType());
 		assertEquals(1.0, cv.getNumberValue(), 0.0);
-		
+
 		cv = fe.evaluate(row.getCell(1));
 		assertEquals(HSSFCell.CELL_TYPE_BOOLEAN, cv.getCellType());
 		assertEquals(true, cv.getBooleanValue());
-		
+
 		wb.close();
 	}
 
 	/**
 	 * Bug 42448 - Can't parse SUMPRODUCT(A!C7:A!C67, B8:B68) / B69 <p/>
-	 * @throws IOException 
+	 * @throws IOException
 	 */
     @Test
 	public void test42448() throws IOException {
@@ -142,7 +142,7 @@ public final class TestFormulaBugs {
 
 		String inputFormula = "SUMPRODUCT(A!C7:A!C67, B8:B68) / B69"; // as per bug report
 		try {
-			cell.setCellFormula(inputFormula); 
+			cell.setCellFormula(inputFormula);
 		} catch (StringIndexOutOfBoundsException e) {
 			fail("Identified bug 42448");
 		}

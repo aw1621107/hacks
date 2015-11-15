@@ -155,7 +155,7 @@ public final class TestSharedStringsTable extends TestCase {
         try {
             w = XSSFTestDataSamples.writeOutAndReadBack(w);
         } catch (POIXMLException e){
-            fail("Detected Bug #48936");        
+            fail("Detected Bug #48936");
         }
         s = w.getSheetAt(0);
         i = 0;
@@ -163,7 +163,7 @@ public final class TestSharedStringsTable extends TestCase {
             String val = s.getRow(i++).getCell(0).getStringCellValue();
             assertEquals(str, val);
         }
-        
+
         assertNotNull(XSSFTestDataSamples.writeOutAndReadBack(w));
     }
 

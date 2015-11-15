@@ -34,10 +34,10 @@ public class HPBFFileHandler extends POIFSFileHandler {
 		assertNotNull(pub.getEscherDelayStm());
 		assertNotNull(pub.getMainContents());
 		assertNotNull(pub.getQuillContents());
-		
+
 		// writing is not yet implemented... handlePOIDocument(pub);
 	}
-	
+
 	// a test-case to test this locally without executing the full TestAllFiles
 	@Test
 	public void test() throws Exception {
@@ -49,9 +49,9 @@ public class HPBFFileHandler extends POIFSFileHandler {
 		} finally {
 			stream.close();
 		}
-		
+
 		handleExtracting(file);
-		
+
 		stream = new FileInputStream(file);
 		try {
 			PublisherTextExtractor extractor = new PublisherTextExtractor(stream);
@@ -64,5 +64,5 @@ public class HPBFFileHandler extends POIFSFileHandler {
 			stream.close();
 		}
 	}
-	
+
 }

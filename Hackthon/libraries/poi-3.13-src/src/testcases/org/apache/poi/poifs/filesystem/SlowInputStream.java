@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.poifs.filesystem;
 
@@ -29,7 +29,7 @@ import java.util.Random;
 public class SlowInputStream extends FilterInputStream
 {
     private Random r = new Random(0);
-    
+
     public SlowInputStream(InputStream in) {
         super(in);
     }

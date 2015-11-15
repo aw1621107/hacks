@@ -25,7 +25,7 @@ package com.mysql.jdbc;
 
 /**
  * This interface is a duplicate of java.sql.Wrapper, added in Java 1.6, and it's used to backport wrapping ability to older JDBC versions.
- * 
+ *
  * @see java.sql.Wrapper
  */
 public interface Wrapper {

@@ -23,7 +23,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * Describes the frozen and unfozen panes.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class PaneRecord extends StandardRecord {
@@ -64,23 +64,23 @@ public final class PaneRecord extends StandardRecord {
         buffer.append("    .x                    = ")
             .append("0x").append(HexDump.toHex(  getX ()))
             .append(" (").append( getX() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .y                    = ")
             .append("0x").append(HexDump.toHex(  getY ()))
             .append(" (").append( getY() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .topRow               = ")
             .append("0x").append(HexDump.toHex(  getTopRow ()))
             .append(" (").append( getTopRow() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .leftColumn           = ")
             .append("0x").append(HexDump.toHex(  getLeftColumn ()))
             .append(" (").append( getLeftColumn() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .activePane           = ")
             .append("0x").append(HexDump.toHex(  getActivePane ()))
             .append(" (").append( getActivePane() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/PANE]\n");
         return buffer.toString();
@@ -105,7 +105,7 @@ public final class PaneRecord extends StandardRecord {
 
     public Object clone() {
         PaneRecord rec = new PaneRecord();
-    
+
         rec.field_1_x = field_1_x;
         rec.field_2_y = field_2_y;
         rec.field_3_topRow = field_3_topRow;
@@ -184,7 +184,7 @@ public final class PaneRecord extends StandardRecord {
     /**
      * Get the active pane field for the Pane record.
      *
-     * @return  One of 
+     * @return  One of
      *        ACTIVE_PANE_LOWER_RIGHT
      *        ACTIVE_PANE_UPPER_RIGHT
      *        ACTIVE_PANE_LOWER_LEFT
@@ -199,7 +199,7 @@ public final class PaneRecord extends StandardRecord {
      * Set the active pane field for the Pane record.
      *
      * @param field_5_activePane
-     *        One of 
+     *        One of
      *        ACTIVE_PANE_LOWER_RIGHT
      *        ACTIVE_PANE_UPPER_RIGHT
      *        ACTIVE_PANE_LOWER_LEFT

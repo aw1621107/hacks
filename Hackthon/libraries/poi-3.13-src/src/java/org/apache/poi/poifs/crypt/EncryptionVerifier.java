@@ -18,7 +18,7 @@ package org.apache.poi.poifs.crypt;
 
 
 /**
- * Used when checking if a key is valid for a document 
+ * Used when checking if a key is valid for a document
  */
 public abstract class EncryptionVerifier {
     private byte[] salt;
@@ -30,7 +30,7 @@ public abstract class EncryptionVerifier {
     private CipherAlgorithm cipherAlgorithm;
     private ChainingMode chainingMode;
     private HashAlgorithm hashAlgorithm;
-    
+
     protected EncryptionVerifier() {}
 
     public byte[] getSalt() {
@@ -48,8 +48,8 @@ public abstract class EncryptionVerifier {
 
     public byte[] getEncryptedVerifier() {
         return encryptedVerifier;
-    }    
-    
+    }
+
     /**
      * The method name is misleading - you'll get the encrypted verifier hash, not the plain verifier hash
      * @deprecated use getEnryptedVerifierHash
@@ -61,8 +61,8 @@ public abstract class EncryptionVerifier {
 
     public byte[] getEncryptedVerifierHash() {
         return encryptedVerifierHash;
-    }    
-    
+    }
+
     public int getSpinCount() {
         return spinCount;
     }
@@ -86,15 +86,15 @@ public abstract class EncryptionVerifier {
     public byte[] getEncryptedKey() {
         return encryptedKey;
     }
-    
+
     public CipherAlgorithm getCipherAlgorithm() {
         return cipherAlgorithm;
     }
-    
+
     public HashAlgorithm getHashAlgorithm() {
         return hashAlgorithm;
     }
-    
+
     public ChainingMode getChainingMode() {
         return chainingMode;
     }
@@ -130,6 +130,6 @@ public abstract class EncryptionVerifier {
     protected void setHashAlgorithm(HashAlgorithm hashAlgorithm) {
         this.hashAlgorithm = hashAlgorithm;
     }
-    
-    
+
+
 }

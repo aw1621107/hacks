@@ -32,7 +32,7 @@ import org.apache.xmlbeans.XmlException;
 import com.microsoft.schemas.office.x2006.encryption.EncryptionDocument;
 
 public class AgileEncryptionInfoBuilder implements EncryptionInfoBuilder {
-    
+
     EncryptionInfo info;
     AgileEncryptionHeader header;
     AgileEncryptionVerifier verifier;
@@ -41,7 +41,7 @@ public class AgileEncryptionInfoBuilder implements EncryptionInfoBuilder {
 
     public void initialize(EncryptionInfo info, LittleEndianInput dis) throws IOException {
         this.info = info;
-        
+
         EncryptionDocument ed = parseDescriptor((InputStream)dis);
         header = new AgileEncryptionHeader(ed);
         verifier = new AgileEncryptionVerifier(ed);
@@ -88,7 +88,7 @@ public class AgileEncryptionInfoBuilder implements EncryptionInfoBuilder {
         decryptor = new AgileDecryptor(this);
         encryptor = new AgileEncryptor(this);
     }
-    
+
     public AgileEncryptionHeader getHeader() {
         return header;
     }
@@ -108,7 +108,7 @@ public class AgileEncryptionInfoBuilder implements EncryptionInfoBuilder {
     protected EncryptionInfo getInfo() {
         return info;
     }
-    
+
     protected static EncryptionDocument parseDescriptor(String descriptor) {
         try {
             return EncryptionDocument.Factory.parse(descriptor);

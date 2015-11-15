@@ -36,7 +36,7 @@ import org.apache.poi.util.StringUtil;
 
 public class BinaryRC4Decryptor extends Decryptor {
     private long _length = -1L;
-    
+
     private class BinaryRC4CipherInputStream extends ChunkedCipherInputStream {
 
         protected Cipher initCipherForBlock(Cipher existing, int block)
@@ -128,7 +128,7 @@ public class BinaryRC4Decryptor extends Decryptor {
         if (_length == -1L) {
             throw new IllegalStateException("Decryptor.getDataStream() was not called");
         }
-        
+
         return _length;
     }
 }

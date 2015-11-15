@@ -29,11 +29,11 @@ public class HSSFFileHandler extends SpreadsheetHandler {
     public void handleFile(InputStream stream) throws Exception {
 		HSSFWorkbook wb = new HSSFWorkbook(stream);
 		handleWorkbook(wb, ".xls");
-		
+
 		// TODO: some documents fail currently...
         //HSSFFormulaEvaluator evaluator = new HSSFFormulaEvaluator(wb);
         //evaluator.evaluateAll();
-        
+
 		delegate.handlePOIDocument(wb);
 
 		// also try to see if some of the Records behave incorrectly

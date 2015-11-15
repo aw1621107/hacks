@@ -26,35 +26,35 @@ public class TextAlignmentProp extends TextProp {
 	 * For vertical text, top aligned.
 	 */
     public static final int LEFT = 0;
-    
+
     /**
      * For horizontal text, centered.
      * For vertical text, middle aligned.
      */
 	public static final int CENTER = 1;
-	
+
 	/**
 	 * For horizontal text, right aligned.
 	 * For vertical text, bottom aligned.
 	 */
 	public static final int RIGHT = 2;
-	
+
 	/**
 	 * For horizontal text, flush left and right.
 	 * For vertical text, flush top and bottom.
 	 */
 	public static final int JUSTIFY = 3;
-	
+
 	/**
 	 * Distribute space between characters.
 	 */
 	public static final int DISTRIBUTED = 4;
-	
+
 	/**
 	 * Thai distribution justification.
 	 */
 	public static final int THAIDISTRIBUTED = 5;
-	
+
 	/**
 	 * Kashida justify low.
 	 */

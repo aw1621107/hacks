@@ -51,7 +51,7 @@ public interface CreationHelper {
      * @return a FormulaEvaluator instance
      */
     FormulaEvaluator createFormulaEvaluator();
-    
+
     /**
      * Creates a XSSF-style Color object, used for extended sheet
      *  formattings and conditional formattings

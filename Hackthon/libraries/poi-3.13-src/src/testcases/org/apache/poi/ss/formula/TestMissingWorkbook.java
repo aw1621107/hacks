@@ -35,37 +35,37 @@ import org.apache.poi.ss.usermodel.Workbook;
 public class TestMissingWorkbook extends TestCase {
     protected Workbook mainWorkbook;
     protected Workbook sourceWorkbook;
-    
+
     protected final String MAIN_WORKBOOK_FILENAME;
     protected final String SOURCE_DUMMY_WORKBOOK_FILENAME;
     protected final String SOURCE_WORKBOOK_FILENAME;
-    
+
     public TestMissingWorkbook() {
         this("52575_main.xls", "source_dummy.xls", "52575_source.xls");
     }
-    protected TestMissingWorkbook(String MAIN_WORKBOOK_FILENAME, 
+    protected TestMissingWorkbook(String MAIN_WORKBOOK_FILENAME,
             String SOURCE_DUMMY_WORKBOOK_FILENAME, String SOURCE_WORKBOOK_FILENAME) {
-        this.MAIN_WORKBOOK_FILENAME = MAIN_WORKBOOK_FILENAME; 
+        this.MAIN_WORKBOOK_FILENAME = MAIN_WORKBOOK_FILENAME;
         this.SOURCE_DUMMY_WORKBOOK_FILENAME = SOURCE_DUMMY_WORKBOOK_FILENAME;
         this.SOURCE_WORKBOOK_FILENAME = SOURCE_WORKBOOK_FILENAME;
     }
-	
+
 	@Override
 	protected void setUp() throws Exception {
 		mainWorkbook = HSSFTestDataSamples.openSampleWorkbook(MAIN_WORKBOOK_FILENAME);
 		sourceWorkbook = HSSFTestDataSamples.openSampleWorkbook(SOURCE_WORKBOOK_FILENAME);
-		
+
 		assertNotNull(mainWorkbook);
 		assertNotNull(sourceWorkbook);
 	}
 
 	public void testMissingWorkbookMissing() throws IOException {
 		FormulaEvaluator evaluator = mainWorkbook.getCreationHelper().createFormulaEvaluator();
-		
+
 		Sheet lSheet = mainWorkbook.getSheetAt(0);
 		Row lARow = lSheet.getRow(0);
 		Cell lA1Cell = lARow.getCell(0);
-		
+
 		assertEquals(Cell.CELL_TYPE_FORMULA, lA1Cell.getCellType());
 		try {
 			evaluator.evaluateFormulaCell(lA1Cell);
@@ -74,13 +74,13 @@ public class TestMissingWorkbook extends TestCase {
 			assertTrue("Unexpected exception: " + re, re.getMessage().indexOf(SOURCE_DUMMY_WORKBOOK_FILENAME) != -1);
 		}
 	}
-	
+
 	public void testMissingWorkbookMissingOverride() throws IOException {
 		Sheet lSheet = mainWorkbook.getSheetAt(0);
 		Cell lA1Cell = lSheet.getRow(0).getCell(0);
 		Cell lB1Cell = lSheet.getRow(1).getCell(0);
 		Cell lC1Cell = lSheet.getRow(2).getCell(0);
-		
+
 		assertEquals(Cell.CELL_TYPE_FORMULA, lA1Cell.getCellType());
 		assertEquals(Cell.CELL_TYPE_FORMULA, lB1Cell.getCellType());
 		assertEquals(Cell.CELL_TYPE_FORMULA, lC1Cell.getCellType());
@@ -89,7 +89,7 @@ public class TestMissingWorkbook extends TestCase {
         assertEquals(10.0d, lA1Cell.getNumericCellValue(), 0.00001d);
         assertEquals("POI rocks!", lB1Cell.getStringCellValue());
         assertEquals(true, lC1Cell.getBooleanCellValue());
-		
+
         // Evaluate
 		FormulaEvaluator evaluator = mainWorkbook.getCreationHelper().createFormulaEvaluator();
         evaluator.setIgnoreMissingWorkbooks(true);
@@ -102,14 +102,14 @@ public class TestMissingWorkbook extends TestCase {
 		assertEquals("POI rocks!", lB1Cell.getStringCellValue());
 		assertEquals(true, lC1Cell.getBooleanCellValue());
 	}
-	
+
 
 	public void testExistingWorkbook() throws IOException {
 		Sheet lSheet = mainWorkbook.getSheetAt(0);
 		Cell lA1Cell = lSheet.getRow(0).getCell(0);
 		Cell lB1Cell = lSheet.getRow(1).getCell(0);
 		Cell lC1Cell = lSheet.getRow(2).getCell(0);
-		
+
 		assertEquals(Cell.CELL_TYPE_FORMULA, lA1Cell.getCellType());
 		assertEquals(Cell.CELL_TYPE_FORMULA, lB1Cell.getCellType());
 		assertEquals(Cell.CELL_TYPE_FORMULA, lC1Cell.getCellType());
@@ -120,7 +120,7 @@ public class TestMissingWorkbook extends TestCase {
 		workbooks.put(MAIN_WORKBOOK_FILENAME, lMainWorkbookEvaluator);
 		workbooks.put(SOURCE_DUMMY_WORKBOOK_FILENAME, lSourceEvaluator);
 		lMainWorkbookEvaluator.setupReferencedWorkbooks(workbooks);
-		
+
 		assertEquals(Cell.CELL_TYPE_NUMERIC, lMainWorkbookEvaluator.evaluateFormulaCell(lA1Cell));
 		assertEquals(Cell.CELL_TYPE_STRING, lMainWorkbookEvaluator.evaluateFormulaCell(lB1Cell));
 		assertEquals(Cell.CELL_TYPE_BOOLEAN, lMainWorkbookEvaluator.evaluateFormulaCell(lC1Cell));

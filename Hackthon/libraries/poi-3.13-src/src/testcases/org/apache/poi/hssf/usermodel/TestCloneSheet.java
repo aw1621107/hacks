@@ -45,13 +45,13 @@ public final class TestCloneSheet extends TestCase {
 		HSSFSheet clonedSheet = b.cloneSheet(0);
 
 		assertEquals("One merged area", 1, clonedSheet.getNumMergedRegions());
-		
+
 		b.close();
 	}
 
 	/**
 	 * Ensures that pagebreak cloning works properly
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public void testPageBreakClones() throws IOException {
 		HSSFWorkbook b = new HSSFWorkbook();
@@ -66,20 +66,20 @@ public final class TestCloneSheet extends TestCase {
 		s.removeRowBreak(3);
 
 		assertTrue("Row 3 still should be broken", clone.isRowBroken(3));
-		
+
 		b.close();
 	}
-    
+
     public void testCloneSheetWithoutDrawings(){
         HSSFWorkbook b = new HSSFWorkbook();
         HSSFSheet s = b.createSheet("Test");
         HSSFSheet s2 = s.cloneSheet(b);
-        
+
         assertNull(s.getDrawingPatriarch());
         assertNull(s2.getDrawingPatriarch());
         assertEquals(HSSFTestHelper.getSheetForTest(s).getRecords().size(), HSSFTestHelper.getSheetForTest(s2).getRecords().size());
     }
-    
+
     public void testCloneSheetWithEmptyDrawingAggregate(){
         HSSFWorkbook b = new HSSFWorkbook();
         HSSFSheet s = b.createSheet("Test");
@@ -114,7 +114,7 @@ public final class TestCloneSheet extends TestCase {
         assertEquals(agg1.toXml(""), agg2.toXml(""));
         assertArrayEquals(agg1.serialize(), agg2.serialize());
     }
-    
+
     public void testCloneComment() throws IOException {
         HSSFWorkbook wb = new HSSFWorkbook();
         HSSFSheet sh = wb.createSheet();
@@ -123,7 +123,7 @@ public final class TestCloneSheet extends TestCase {
         c.setColumn(1);
         c.setRow(2);
         c.setString(new HSSFRichTextString("qwertyuio"));
-        
+
         HSSFSheet sh2 = wb.cloneSheet(0);
         HSSFPatriarch p2 = sh2.getDrawingPatriarch();
         HSSFComment c2 = (HSSFComment) p2.getChildren().get(0);
@@ -132,11 +132,11 @@ public final class TestCloneSheet extends TestCase {
         assertEquals(c.getRow(), c2.getRow());
         assertEquals(c.getColumn(), c2.getColumn());
 
-        // The ShapeId is not equal? 
+        // The ShapeId is not equal?
         // assertEquals(c.getNoteRecord().getShapeId(), c2.getNoteRecord().getShapeId());
-        
+
         assertArrayEquals(c2.getTextObjectRecord().serialize(), c.getTextObjectRecord().serialize());
-        
+
         // ShapeId is different
         CommonObjectDataSubRecord subRecord = (CommonObjectDataSubRecord) c2.getObjRecord().getSubRecords().get(0);
         subRecord.setObjectId(1025);
@@ -152,7 +152,7 @@ public final class TestCloneSheet extends TestCase {
         EscherSpRecord sp = (EscherSpRecord) c2.getEscherContainer().getChild(0);
         sp.setShapeId(1025);
         assertArrayEquals(c2.getEscherContainer().serialize(), c.getEscherContainer().serialize());
-        
+
         wb.close();
     }
 }

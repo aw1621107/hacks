@@ -171,7 +171,7 @@ public final class TestHSSFFormulaEvaluator extends BaseTestFormulaEvaluator {
 		assertEquals(3, evalCount);
 		assertEquals(2.0, ((NumberEval)ve).getNumberValue(), 0D);
 	}
-	
+
 	/**
 	 * Ensures that we can handle NameXPtgs in the formulas
 	 *  we parse.
@@ -180,7 +180,7 @@ public final class TestHSSFFormulaEvaluator extends BaseTestFormulaEvaluator {
       HSSFWorkbook wb = HSSFTestDataSamples.openSampleWorkbook("XRefCalc.xls");
       HSSFWorkbook wbData = HSSFTestDataSamples.openSampleWorkbook("XRefCalcData.xls");
       Cell cell;
-      
+
       // VLookup on a name in another file
       cell = wb.getSheetAt(0).getRow(1).getCell(2);
       assertEquals(Cell.CELL_TYPE_FORMULA, cell.getCellType());
@@ -190,8 +190,8 @@ public final class TestHSSFFormulaEvaluator extends BaseTestFormulaEvaluator {
       // The file name should be showing, but bug #45970 is fixed
       //  we seem to loose it
       assertEquals("VLOOKUP(PART,COSTS,2,FALSE)", cell.getCellFormula());
-      
-      
+
+
       // Simple reference to a name in another file
       cell = wb.getSheetAt(0).getRow(1).getCell(4);
       assertEquals(Cell.CELL_TYPE_FORMULA, cell.getCellType());
@@ -200,8 +200,8 @@ public final class TestHSSFFormulaEvaluator extends BaseTestFormulaEvaluator {
       // TODO Correct this!
       // The file name should be shown too, see bug #56742
       assertEquals("Cost*Markup_Cost", cell.getCellFormula());
-      
-      
+
+
       // Evaluate the cells
       HSSFFormulaEvaluator eval = new HSSFFormulaEvaluator(wb);
       HSSFFormulaEvaluator.setupEnvironment(
@@ -213,49 +213,49 @@ public final class TestHSSFFormulaEvaluator extends BaseTestFormulaEvaluator {
       );
       eval.evaluateFormulaCell(
             wb.getSheetAt(0).getRow(1).getCell(2)
-      );      
+      );
       eval.evaluateFormulaCell(
             wb.getSheetAt(0).getRow(1).getCell(4)
-      );      
-      
+      );
+
 
       // Re-check VLOOKUP one
       cell = wb.getSheetAt(0).getRow(1).getCell(2);
       assertEquals(Cell.CELL_TYPE_FORMULA, cell.getCellType());
       assertEquals(Cell.CELL_TYPE_NUMERIC, cell.getCachedFormulaResultType());
       assertEquals(12.30, cell.getNumericCellValue(), 0.0001);
-      
+
       // Re-check ref one
       cell = wb.getSheetAt(0).getRow(1).getCell(4);
       assertEquals(Cell.CELL_TYPE_FORMULA, cell.getCellType());
       assertEquals(Cell.CELL_TYPE_NUMERIC, cell.getCachedFormulaResultType());
       assertEquals(36.90, cell.getNumericCellValue(), 0.0001);
-      
-      
+
+
       // Add a formula that refers to one of the existing external workbooks
       cell = wb.getSheetAt(0).getRow(1).createCell(40);
       cell.setCellFormula("Cost*[XRefCalcData.xls]MarkupSheet!$B$1");
-      
+
       // Check is was stored correctly
       assertEquals("Cost*[XRefCalcData.xls]MarkupSheet!$B$1", cell.getCellFormula());
-      
+
       // Check it evaluates correctly
       eval.evaluateFormulaCell(cell);
       assertEquals(24.60*1.8, cell.getNumericCellValue());
-      
-      
+
+
       // Try to add a formula for a new external workbook, won't be allowed to start
       try {
           cell = wb.getSheetAt(0).getRow(1).createCell(42);
           cell.setCellFormula("[alt.xls]Sheet0!$A$1");
           fail("New workbook not linked, shouldn't be able to add");
       } catch(Exception e) {}
-      
+
       // Link our new workbook
       HSSFWorkbook alt = new HSSFWorkbook();
       alt.createSheet().createRow(0).createCell(0).setCellValue("In another workbook");
       wb.linkExternalWorkbook("alt.xls", alt);
-      
+
       // Now add a formula that refers to our new workbook
       cell.setCellFormula("[alt.xls]Sheet0!$A$1");
       assertEquals("[alt.xls]Sheet0!$A$1", cell.getCellFormula());
@@ -265,7 +265,7 @@ public final class TestHSSFFormulaEvaluator extends BaseTestFormulaEvaluator {
           eval.evaluate(cell);
           fail("No cached value and no link to workbook, shouldn't evaluate");
       } catch(Exception e) {}
-      
+
       // Add a link, check it does
       HSSFFormulaEvaluator.setupEnvironment(
               new String[] { "XRefCalc.xls", "XRefCalcData.xls", "alt.xls" },
@@ -277,8 +277,8 @@ public final class TestHSSFFormulaEvaluator extends BaseTestFormulaEvaluator {
       );
       eval.evaluateFormulaCell(cell);
       assertEquals("In another workbook", cell.getStringCellValue());
-      
-      
+
+
       // Save and re-load
       wb = HSSFTestDataSamples.writeOutAndReadBack(wb);
       eval = new HSSFFormulaEvaluator(wb);
@@ -290,13 +290,13 @@ public final class TestHSSFFormulaEvaluator extends BaseTestFormulaEvaluator {
                     new HSSFFormulaEvaluator(alt)
               }
       );
-      
+
       // Check the one referring to the previously existing workbook behaves
       cell = wb.getSheetAt(0).getRow(1).getCell(40);
       assertEquals("Cost*[XRefCalcData.xls]MarkupSheet!$B$1", cell.getCellFormula());
       eval.evaluateFormulaCell(cell);
       assertEquals(24.60*1.8, cell.getNumericCellValue());
-      
+
       // Now check the newly added reference
       cell = wb.getSheetAt(0).getRow(1).getCell(42);
       assertEquals("[alt.xls]Sheet0!$A$1", cell.getCellFormula());

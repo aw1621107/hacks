@@ -1,4 +1,4 @@
-        
+
 /* ====================================================================
    Licensed to the Apache Software Foundation (ASF) under one or more
    contributor license agreements.  See the NOTICE file distributed with
@@ -32,7 +32,7 @@ public final class TestAreaPtg extends TestCase {
 
 	AreaPtg relative;
 	AreaPtg absolute;
-	
+
 	protected void setUp() {
 		short firstRow=5;
 		short lastRow=13;
@@ -70,7 +70,7 @@ public final class TestAreaPtg extends TestCase {
 		assertEquals(fc , aptg.getFirstColumn() );
 		assertEquals(lc , aptg.getLastColumn() );
 	}
-	
+
     public void testAbsoluteRelativeRefs() {
         AreaPtg sca1 = new AreaPtg(4, 5, 6, 7, true, false, true, false);
         AreaPtg sca2 = new AreaPtg(4, 5, 6, 7, false, true, false, true);
@@ -99,20 +99,20 @@ public final class TestAreaPtg extends TestCase {
                 a.isFirstRowRelative(), a.isLastRowRelative(), a.isFirstColRelative(), a.isLastColRelative()
         );
     }
-	
+
 	public void testFormulaParser()
 	{
 		String formula1="SUM($E$5:$E$6)";
 		String expectedFormula1="SUM($F$5:$F$6)";
 		String newFormula1 = shiftAllColumnsBy1(formula1);
 		assertEquals("Absolute references changed", expectedFormula1, newFormula1);
-		
+
 		String formula2="SUM(E5:E6)";
 		String expectedFormula2="SUM(F5:F6)";
 		String newFormula2 = shiftAllColumnsBy1(formula2);
 		assertEquals("Relative references changed", expectedFormula2, newFormula2);
 	}
-	
+
 	private static String shiftAllColumnsBy1(String  formula) {
 		int letUsShiftColumn1By1Column=1;
 		HSSFWorkbook wb = null;

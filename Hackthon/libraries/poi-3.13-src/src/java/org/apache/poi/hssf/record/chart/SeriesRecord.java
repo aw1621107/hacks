@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The series record describes the overall data for a series.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class SeriesRecord extends StandardRecord {
@@ -73,27 +73,27 @@ public final class SeriesRecord extends StandardRecord {
         buffer.append("    .categoryDataType     = ")
             .append("0x").append(HexDump.toHex(  getCategoryDataType ()))
             .append(" (").append( getCategoryDataType() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .valuesDataType       = ")
             .append("0x").append(HexDump.toHex(  getValuesDataType ()))
             .append(" (").append( getValuesDataType() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .numCategories        = ")
             .append("0x").append(HexDump.toHex(  getNumCategories ()))
             .append(" (").append( getNumCategories() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .numValues            = ")
             .append("0x").append(HexDump.toHex(  getNumValues ()))
             .append(" (").append( getNumValues() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .bubbleSeriesType     = ")
             .append("0x").append(HexDump.toHex(  getBubbleSeriesType ()))
             .append(" (").append( getBubbleSeriesType() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .numBubbleValues      = ")
             .append("0x").append(HexDump.toHex(  getNumBubbleValues ()))
             .append(" (").append( getNumBubbleValues() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/SERIES]\n");
         return buffer.toString();
@@ -119,7 +119,7 @@ public final class SeriesRecord extends StandardRecord {
 
     public Object clone() {
         SeriesRecord rec = new SeriesRecord();
-    
+
         rec.field_1_categoryDataType = field_1_categoryDataType;
         rec.field_2_valuesDataType = field_2_valuesDataType;
         rec.field_3_numCategories = field_3_numCategories;
@@ -135,7 +135,7 @@ public final class SeriesRecord extends StandardRecord {
     /**
      * Get the category data type field for the Series record.
      *
-     * @return  One of 
+     * @return  One of
      *        CATEGORY_DATA_TYPE_DATES
      *        CATEGORY_DATA_TYPE_NUMERIC
      *        CATEGORY_DATA_TYPE_SEQUENCE
@@ -150,7 +150,7 @@ public final class SeriesRecord extends StandardRecord {
      * Set the category data type field for the Series record.
      *
      * @param field_1_categoryDataType
-     *        One of 
+     *        One of
      *        CATEGORY_DATA_TYPE_DATES
      *        CATEGORY_DATA_TYPE_NUMERIC
      *        CATEGORY_DATA_TYPE_SEQUENCE
@@ -164,7 +164,7 @@ public final class SeriesRecord extends StandardRecord {
     /**
      * Get the values data type field for the Series record.
      *
-     * @return  One of 
+     * @return  One of
      *        VALUES_DATA_TYPE_DATES
      *        VALUES_DATA_TYPE_NUMERIC
      *        VALUES_DATA_TYPE_SEQUENCE
@@ -179,7 +179,7 @@ public final class SeriesRecord extends StandardRecord {
      * Set the values data type field for the Series record.
      *
      * @param field_2_valuesDataType
-     *        One of 
+     *        One of
      *        VALUES_DATA_TYPE_DATES
      *        VALUES_DATA_TYPE_NUMERIC
      *        VALUES_DATA_TYPE_SEQUENCE
@@ -225,7 +225,7 @@ public final class SeriesRecord extends StandardRecord {
     /**
      * Get the bubble series type field for the Series record.
      *
-     * @return  One of 
+     * @return  One of
      *        BUBBLE_SERIES_TYPE_DATES
      *        BUBBLE_SERIES_TYPE_NUMERIC
      *        BUBBLE_SERIES_TYPE_SEQUENCE
@@ -240,7 +240,7 @@ public final class SeriesRecord extends StandardRecord {
      * Set the bubble series type field for the Series record.
      *
      * @param field_5_bubbleSeriesType
-     *        One of 
+     *        One of
      *        BUBBLE_SERIES_TYPE_DATES
      *        BUBBLE_SERIES_TYPE_NUMERIC
      *        BUBBLE_SERIES_TYPE_SEQUENCE

@@ -124,16 +124,16 @@ public class PkiTestUtils {
         } else {
             issuerName = new X500Name(subjectDn);
         }
-        
+
         RSAPublicKey rsaPubKey = (RSAPublicKey)subjectPublicKey;
         RSAKeyParameters rsaSpec = new RSAKeyParameters(false, rsaPubKey.getModulus(), rsaPubKey.getPublicExponent());
 
-        SubjectPublicKeyInfo subjectPublicKeyInfo = 
+        SubjectPublicKeyInfo subjectPublicKeyInfo =
             SubjectPublicKeyInfoFactory.createSubjectPublicKeyInfo(rsaSpec);
 
         DigestCalculator digestCalc = new JcaDigestCalculatorProviderBuilder()
             .setProvider("BC").build().get(CertificateID.HASH_SHA1);
-        
+
         X509v3CertificateBuilder certificateGenerator = new X509v3CertificateBuilder(
               issuerName
             , new BigInteger(128, new SecureRandom())
@@ -145,7 +145,7 @@ public class PkiTestUtils {
 
         X509ExtensionUtils exUtils = new X509ExtensionUtils(digestCalc);
         SubjectKeyIdentifier subKeyId = exUtils.createSubjectKeyIdentifier(subjectPublicKeyInfo);
-        AuthorityKeyIdentifier autKeyId = (issuerCertificate != null) 
+        AuthorityKeyIdentifier autKeyId = (issuerCertificate != null)
             ? exUtils.createAuthorityKeyIdentifier(new X509CertificateHolder(issuerCertificate.getEncoded()))
             : exUtils.createAuthorityKeyIdentifier(subjectPublicKeyInfo);
 
@@ -154,7 +154,7 @@ public class PkiTestUtils {
 
         if (caFlag) {
             BasicConstraints bc;
-            
+
             if (-1 == pathLength) {
                 bc = new BasicConstraints(true);
             } else {
@@ -170,7 +170,7 @@ public class PkiTestUtils {
 
             DERSequence gnDer = new DERSequence(gn);
             GeneralNames gns = GeneralNames.getInstance(gnDer);
-            
+
             DistributionPointName dpn = new DistributionPointName(0, gns);
             DistributionPoint distp = new DistributionPoint(dpn, null, null);
             DERSequence distpDer = new DERSequence(distp);
@@ -180,10 +180,10 @@ public class PkiTestUtils {
         if (null != ocspUri) {
             int uri = GeneralName.uniformResourceIdentifier;
             GeneralName ocspName = new GeneralName(uri, ocspUri);
-            
+
             AuthorityInformationAccess authorityInformationAccess =
                 new AuthorityInformationAccess(X509ObjectIdentifiers.ocspAccessMethod, ocspName);
-            
+
             certificateGenerator.addExtension(Extension.authorityInfoAccess, false, authorityInformationAccess);
         }
 
@@ -193,7 +193,7 @@ public class PkiTestUtils {
 
         JcaContentSignerBuilder signerBuilder = new JcaContentSignerBuilder(signatureAlgorithm);
         signerBuilder.setProvider("BC");
-        
+
         X509CertificateHolder certHolder =
             certificateGenerator.build(signerBuilder.build(issuerPrivateKey));
 
@@ -240,14 +240,14 @@ public class PkiTestUtils {
 
     public static X509CRL generateCrl(X509Certificate issuer, PrivateKey issuerPrivateKey)
     throws CertificateEncodingException, IOException, CRLException, OperatorCreationException {
-        
+
         X509CertificateHolder holder = new X509CertificateHolder(issuer.getEncoded());
         X509v2CRLBuilder crlBuilder = new X509v2CRLBuilder(holder.getIssuer(), new Date());
         crlBuilder.setNextUpdate(new Date(new Date().getTime() + 100000));
         JcaContentSignerBuilder contentBuilder = new JcaContentSignerBuilder("SHA1withRSA").setProvider("BC");
 
         CRLNumber crlNumber = new CRLNumber(new BigInteger("1234"));
-        
+
         crlBuilder.addExtension(Extension.cRLNumber, false, crlNumber);
         X509CRLHolder x509Crl = crlBuilder.build(contentBuilder.build(issuerPrivateKey));
         return new JcaX509CRLConverter().setProvider("BC").getCRL(x509Crl);
@@ -263,23 +263,23 @@ public class PkiTestUtils {
             .setProvider("BC").build().get(CertificateID.HASH_SHA1);
         X509CertificateHolder issuerHolder = new X509CertificateHolder(issuerCertificate.getEncoded());
         CertificateID certId = new CertificateID(digestCalc, issuerHolder, certificate.getSerialNumber());
-        
+
         // request
         //create a nonce to avoid replay attack
         BigInteger nonce = BigInteger.valueOf(nonceTimeinMillis);
         DEROctetString nonceDer = new DEROctetString(nonce.toByteArray());
         Extension ext = new Extension(OCSPObjectIdentifiers.id_pkix_ocsp_nonce, true, nonceDer);
         Extensions exts = new Extensions(ext);
-        
+
         OCSPReqBuilder ocspReqBuilder = new OCSPReqBuilder();
         ocspReqBuilder.addRequest(certId);
         ocspReqBuilder.setRequestExtensions(exts);
         OCSPReq ocspReq = ocspReqBuilder.build();
 
-        
+
         SubjectPublicKeyInfo keyInfo = new SubjectPublicKeyInfo
             (CertificateID.HASH_SHA1, ocspResponderCertificate.getPublicKey().getEncoded());
-        
+
         BasicOCSPRespBuilder basicOCSPRespBuilder = new BasicOCSPRespBuilder(keyInfo, digestCalc);
         basicOCSPRespBuilder.setResponseExtensions(exts);
 
@@ -303,12 +303,12 @@ public class PkiTestUtils {
                 issuerHolder
             };
         }
-        
+
         ContentSigner contentSigner = new JcaContentSignerBuilder("SHA1withRSA")
             .setProvider("BC").build(ocspResponderPrivateKey);
         BasicOCSPResp basicOCSPResp = basicOCSPRespBuilder.build(contentSigner, chain, new Date(nonceTimeinMillis));
 
-        
+
         OCSPRespBuilder ocspRespBuilder = new OCSPRespBuilder();
         OCSPResp ocspResp = ocspRespBuilder.build(OCSPRespBuilder.SUCCESSFUL, basicOCSPResp);
 

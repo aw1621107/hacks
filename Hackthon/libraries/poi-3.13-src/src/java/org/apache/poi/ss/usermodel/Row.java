@@ -41,7 +41,7 @@ public interface Row extends Iterable<Cell> {
      * Use this to create new cells within the row and return it.
      * <p>
      * The cell that is returned will be of the requested type.
-     * The type can be changed either through calling setCellValue 
+     * The type can be changed either through calling setCellValue
      *  or setCellType, but there is a small overhead to doing this,
      *  so it is best to create of the required type up front.
      *
@@ -90,7 +90,7 @@ public interface Row extends Iterable<Cell> {
      * @see #getCell(int, org.apache.poi.ss.usermodel.Row.MissingCellPolicy)
      */
     Cell getCell(int cellnum);
-    
+
     /**
      * Returns the cell at the given (0 based) index, with the specified {@link org.apache.poi.ss.usermodel.Row.MissingCellPolicy}
      *
@@ -191,19 +191,19 @@ public interface Row extends Iterable<Cell> {
      *  can get the formatting from {@link #getRowStyle()}
      */
     boolean isFormatted();
-    
+
     /**
      * Returns the whole-row cell styles. Most rows won't
      *  have one of these, so will return null. Call
      *  {@link #isFormatted()} to check first.
      */
     CellStyle getRowStyle();
-    
+
     /**
      * Applies a whole-row cell styling to the row.
      */
     void setRowStyle(CellStyle style);
-    
+
     /**
      * @return Cell iterator of the physically defined cells.  Note element 4 may
      * actually be row cell depending on how many are defined!
@@ -234,7 +234,7 @@ public interface Row extends Iterable<Cell> {
     public static final MissingCellPolicy RETURN_BLANK_AS_NULL = new MissingCellPolicy();
     /** A new, blank cell is created for missing cells. Blank cells are returned as normal */
     public static final MissingCellPolicy CREATE_NULL_AS_BLANK = new MissingCellPolicy();
-    
+
     /**
      * Returns the rows outline level. Increased as you
      *  put it into more groups (outlines), reduced as

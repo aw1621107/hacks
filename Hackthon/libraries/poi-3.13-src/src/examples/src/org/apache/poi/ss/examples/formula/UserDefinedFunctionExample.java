@@ -32,25 +32,25 @@ import org.apache.poi.ss.util.CellReference ;
 /**
  * An example class of how to invoke a User Defined Function for a given
  * XLS instance using POI's UDFFinder implementation.
- * 
+ *
  * @author Jon Svede ( jon [at] loquatic [dot] com )
  * @author Brian Bush ( brian [dot] bush [at] nrel [dot] gov )
- * 
+ *
  */
 public class UserDefinedFunctionExample {
 
     public static void main( String[] args ) {
-        
+
         if(  args.length != 2 ) {
             System.out.println( "usage: UserDefinedFunctionExample fileName cellId" ) ;
             return;
         }
-        
+
         System.out.println( "fileName: " + args[0] ) ;
         System.out.println( "cell: " + args[1] ) ;
-        
+
         File workbookFile = new File( args[0] ) ;
-        
+
         try {
             FileInputStream fis = new FileInputStream(workbookFile);
             Workbook workbook = WorkbookFactory.create(fis);
@@ -58,7 +58,7 @@ public class UserDefinedFunctionExample {
 
             String[] functionNames = { "calculatePayment" } ;
             FreeRefFunction[] functionImpls = { new CalculateMortgage() } ;
-            
+
             UDFFinder udfToolpack = new DefaultUDFFinder( functionNames, functionImpls ) ;
 
             // register the user-defined function in the workbook
@@ -73,9 +73,9 @@ public class UserDefinedFunctionExample {
             int colIdx = cr.getCol() ;
             Row row = sheet.getRow( rowIdx ) ;
             Cell cell = row.getCell( colIdx ) ;
-            
+
             CellValue value = evaluator.evaluate( cell ) ;
-            
+
             System.out.println("returns value: " +  value ) ;
 
         } catch( FileNotFoundException e ) {

@@ -43,7 +43,7 @@ public class OPCFileHandler extends AbstractFileHandler {
                 assertEquals(ContentTypes.CORE_PROPERTIES_PART, part.getContentType());
             }
             if (part.getPartName().toString().equals("/word/document.xml")) {
-                assertTrue("Expected one of " + XWPFRelation.MACRO_DOCUMENT + ", " + XWPFRelation.DOCUMENT + ", " + XWPFRelation.TEMPLATE + 
+                assertTrue("Expected one of " + XWPFRelation.MACRO_DOCUMENT + ", " + XWPFRelation.DOCUMENT + ", " + XWPFRelation.TEMPLATE +
                         ", but had " + part.getContentType(),
                         XWPFRelation.DOCUMENT.getContentType().equals(part.getContentType()) ||
                         XWPFRelation.MACRO_DOCUMENT.getContentType().equals(part.getContentType()) ||
@@ -54,7 +54,7 @@ public class OPCFileHandler extends AbstractFileHandler {
             }
         }
     }
-	
+
     public void handleExtracting(File file) throws Exception {
         // text-extraction is not possible currenlty for these types of files
     }
@@ -70,7 +70,7 @@ public class OPCFileHandler extends AbstractFileHandler {
 		} finally {
 			stream.close();
 		}
-		
+
 		handleExtracting(file);
 	}
 }

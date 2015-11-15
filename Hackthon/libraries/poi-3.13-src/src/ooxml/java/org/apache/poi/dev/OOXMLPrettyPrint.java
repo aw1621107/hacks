@@ -46,10 +46,10 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
 /**
- * Reads a zipped OOXML file and produces a copy with the included 
+ * Reads a zipped OOXML file and produces a copy with the included
  * pretty-printed XML files.
- * 
- *  This is useful for comparing OOXML files produced by different tools as the often 
+ *
+ *  This is useful for comparing OOXML files produced by different tools as the often
  *  use different formatting of the XML.
  */
 public class OOXMLPrettyPrint {
@@ -59,7 +59,7 @@ public class OOXMLPrettyPrint {
     public OOXMLPrettyPrint() throws ParserConfigurationException {
         // allow files with much lower inflation rate here as there is no risk of Zip Bomb attacks in this developer tool
         ZipSecureFile.setMinInflateRatio(0.00001);
-        
+
         documentBuilder = documentBuilderFactory.newDocumentBuilder();
     }
 
@@ -69,7 +69,7 @@ public class OOXMLPrettyPrint {
 			System.err.println("\tjava OOXMLPrettyPrint [<filename> <outfilename>] ...");
 			System.exit(1);
 		}
-		
+
 		for(int i = 0;i < args.length;i+=2) {
     		File f = new File(args[i]);
     		if(! f.exists()) {
@@ -139,5 +139,5 @@ public class OOXMLPrettyPrint {
 	    Result result = new StreamResult(outputStream);
 	    Source source = new DOMSource(document);
 	    transformer.transform(source, result);
-	}	
+	}
 }

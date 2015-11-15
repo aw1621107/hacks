@@ -24,7 +24,7 @@ import org.apache.poi.hssf.record.cf.Threshold;
 import org.apache.poi.ss.usermodel.ConditionalFormattingThreshold;
 
 /**
- * High level representation for Icon / Multi-State Formatting 
+ * High level representation for Icon / Multi-State Formatting
  *  component of Conditional Formatting settings
  */
 public final class HSSFIconMultiStateFormatting implements org.apache.poi.ss.usermodel.IconMultiStateFormatting {

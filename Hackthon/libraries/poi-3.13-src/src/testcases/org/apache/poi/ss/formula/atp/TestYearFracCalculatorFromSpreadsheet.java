@@ -40,7 +40,7 @@ import org.junit.Test;
  * Tests YearFracCalculator using test-cases listed in a sample spreadsheet
  */
 public final class TestYearFracCalculatorFromSpreadsheet {
-	
+
 	private static final class SS {
 
 		public static final int BASIS_COLUMN = 1; // "B"
@@ -52,7 +52,7 @@ public final class TestYearFracCalculatorFromSpreadsheet {
 
 	@Test
 	public void testAll() throws Exception {
-		
+
 		HSSFWorkbook wb = HSSFTestDataSamples.openSampleWorkbook("yearfracExamples.xls");
 		HSSFSheet sheet = wb.getSheetAt(0);
 		HSSFFormulaEvaluator formulaEvaluator = new HSSFFormulaEvaluator(wb);
@@ -60,7 +60,7 @@ public final class TestYearFracCalculatorFromSpreadsheet {
 		Iterator<Row> rowIterator = sheet.rowIterator();
 		while(rowIterator.hasNext()) {
 			HSSFRow row = (HSSFRow) rowIterator.next();
-			
+
 			HSSFCell cell = row.getCell(SS.YEARFRAC_FORMULA_COLUMN);
 			if (cell == null || cell.getCellType() != HSSFCell.CELL_TYPE_FORMULA) {
 				continue;
@@ -72,17 +72,17 @@ public final class TestYearFracCalculatorFromSpreadsheet {
 		assertTrue("No test sample cases found", nSuccess > 0);
 		wb.close();
 	}
-	
+
 	private void processRow(HSSFRow row, HSSFCell cell, HSSFFormulaEvaluator formulaEvaluator)
 	throws EvaluationException {
-		
+
 		double startDate = makeDate(row, SS.START_YEAR_COLUMN);
 		double endDate = makeDate(row, SS.END_YEAR_COLUMN);
-		
+
 		int basis = getIntCell(row, SS.BASIS_COLUMN);
-		
+
 		double expectedValue = getDoubleCell(row, SS.EXPECTED_RESULT_COLUMN);
-		
+
 		double actualValue = YearFracCalculator.calculate(startDate, endDate, basis);
 
 		String loc = " - row " + (row.getRowNum()+1);

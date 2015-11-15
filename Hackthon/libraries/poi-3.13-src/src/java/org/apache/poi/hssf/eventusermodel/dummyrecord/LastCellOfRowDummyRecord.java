@@ -25,12 +25,12 @@ package org.apache.poi.hssf.eventusermodel.dummyrecord;
 public final class LastCellOfRowDummyRecord extends DummyRecordBase {
 	private int row;
 	private int lastColumnNumber;
-	
+
 	public LastCellOfRowDummyRecord(int row, int lastColumnNumber) {
 		this.row = row;
 		this.lastColumnNumber = lastColumnNumber;
 	}
-	
+
 	/**
 	 * Returns the (0 based) number of the row we are
 	 *  currently working on.
@@ -44,7 +44,7 @@ public final class LastCellOfRowDummyRecord extends DummyRecordBase {
 	 *  for the row.
 	 */
 	public int getLastColumnNumber() { return lastColumnNumber; }
-	
+
 	public String toString() {
 	    return "End-of-Row for Row=" + row + " at Column=" + lastColumnNumber;
 	}

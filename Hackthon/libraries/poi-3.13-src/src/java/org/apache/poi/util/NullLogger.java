@@ -57,7 +57,7 @@ public class NullLogger extends POILogger {
         // do nothing
     }
 
-    
+
     /**
      * Check if a logger is enabled to log at the specified level
      *

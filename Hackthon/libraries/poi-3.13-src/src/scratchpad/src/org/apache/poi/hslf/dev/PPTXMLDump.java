@@ -53,7 +53,7 @@ public final class PPTXMLDump {
     public PPTXMLDump(File ppt) throws IOException {
         NPOIFSFileSystem fs = new NPOIFSFileSystem(ppt, true);
         DocumentInputStream is = null;
-        
+
         try {
             //read the document entry from OLE file system
             DocumentEntry entry = (DocumentEntry)fs.getRoot().getEntry(PPDOC_ENTRY);

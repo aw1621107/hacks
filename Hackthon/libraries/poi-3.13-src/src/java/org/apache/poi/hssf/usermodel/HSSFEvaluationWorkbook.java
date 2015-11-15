@@ -70,7 +70,7 @@ public final class HSSFEvaluationWorkbook implements FormulaRenderingWorkbook, E
     public int getExternalSheetIndex(String workbookName, String sheetName) {
         return _iBook.getExternalSheetIndex(workbookName, sheetName);
     }
-    
+
     public Ptg get3DReferencePtg(CellReference cr, SheetIdentifier sheet) {
         int extIx = getSheetExtIx(sheet);
         return new Ref3DPtg(cr, extIx);
@@ -134,10 +134,10 @@ public final class HSSFEvaluationWorkbook implements FormulaRenderingWorkbook, E
                 // Not actually sheet based at all - is workbook scoped
                 return null;
             }
-            
+
             // Look up the local sheet
             String sheetName = getSheetName(localSheetIndex);
-            
+
             // Is it a single local sheet, or a range?
             int lastLocalSheetIndex = _iBook.getLastSheetIndexFromExternSheetIndex(externSheetIndex);
             if (lastLocalSheetIndex == localSheetIndex) {
@@ -236,14 +236,14 @@ public final class HSSFEvaluationWorkbook implements FormulaRenderingWorkbook, E
         if (sheetIden == null) {
             extIx = -1;
         } else {
-            String workbookName = sheetIden.getBookName(); 
+            String workbookName = sheetIden.getBookName();
             String firstSheetName = sheetIden.getSheetIdentifier().getName();
             String lastSheetName = firstSheetName;
-            
+
             if (sheetIden instanceof SheetRangeIdentifier) {
                 lastSheetName = ((SheetRangeIdentifier)sheetIden).getLastSheetIdentifier().getName();
             }
-            
+
             if (workbookName == null) {
                 int firstSheetIndex = _uBook.getSheetIndex(firstSheetName);
                 int lastSheetIndex = _uBook.getSheetIndex(lastSheetName);

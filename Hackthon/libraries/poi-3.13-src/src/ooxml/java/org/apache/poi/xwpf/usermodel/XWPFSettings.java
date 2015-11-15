@@ -84,7 +84,7 @@ public class XWPFSettings extends POIXMLDocumentPart {
             zoom = ctSettings.getZoom();
         }
 
-        
+
         BigInteger percent = zoom.getPercent();
         if(percent == null) {
             return 100;
@@ -208,7 +208,7 @@ public class XWPFSettings extends POIXMLDocumentPart {
             if (hashAlgo == null) {
                 hashAlgo = HashAlgorithm.sha1;
             }
-            
+
             switch (hashAlgo) {
                 case md2:
                     providerType = STCryptProv.RSA_FULL;

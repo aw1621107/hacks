@@ -196,8 +196,8 @@ public class TestXSLFTextShape {
         assertEquals("Content", pr1.getRawText());
         assertEquals("Calibri", pr1.getFontFamily());
         assertEquals(32.0, pr1.getFontSize(), 0);
-        assertEquals(27.0, pr1.getParentParagraph().getLeftMargin(), 0); 
-        assertEquals("\u2022", pr1.getParentParagraph().getBulletCharacter()); 
+        assertEquals(27.0, pr1.getParentParagraph().getLeftMargin(), 0);
+        assertEquals("\u2022", pr1.getParentParagraph().getBulletCharacter());
         assertEquals("Arial", pr1.getParentParagraph().getBulletFont());
 
         XSLFTextRun pr2 = shape2.getTextParagraphs().get(1).getTextRuns().get(0);
@@ -422,7 +422,7 @@ public class TestXSLFTextShape {
         XSLFSlideLayout layout = slide.getSlideLayout();
         List<XSLFShape> shapes = slide.getShapes();
         // TODO
-    }    
+    }
 
     void verifySlide7(XSLFSlide slide){
         XSLFSlideLayout layout = slide.getSlideLayout();
@@ -703,7 +703,7 @@ public class TestXSLFTextShape {
         assertEquals("Calibri", textRun.getFontFamily());
         lv5PPr.setAlgn(STTextAlignType.CTR);
         assertEquals(TextAlign.CENTER, paragraph.getTextAlign());
-        
+
         ppt.close();
     }
 
@@ -907,7 +907,7 @@ public class TestXSLFTextShape {
         assertEquals("Calibri", r3.getFontFamily());
         lv3PPr.setAlgn(STTextAlignType.CTR);
         assertEquals(TextAlign.CENTER, p3.getTextAlign());
-        
+
         ppt.close();
     }
 }

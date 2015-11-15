@@ -248,7 +248,7 @@ implements SlideShow<XSLFShape,XSLFTextParagraph> {
         _slides.add(slide);
         return slide;
     }
-    
+
     /**
      * Create a blank slide using the default (first) master.
      */
@@ -259,20 +259,20 @@ implements SlideShow<XSLFShape,XSLFTextParagraph> {
 
         return createSlide(layout);
     }
-    
+
     /**
      * Return notes slide for the specified slide or create new if it does not exist yet.
      */
     public XSLFNotes getNotesSlide(XSLFSlide slide) {
-        
+
         XSLFNotes notesSlide = slide.getNotes();
         if (notesSlide == null) {
             notesSlide = createNotesSlide(slide);
         }
-        
+
         return notesSlide;
-    }    
-    
+    }
+
     /**
      * Create a blank notes slide.
      */
@@ -281,43 +281,43 @@ implements SlideShow<XSLFShape,XSLFTextParagraph> {
         if (_notesMaster == null) {
             createNotesMaster();
         }
-        
+
         Integer slideIndex = XSLFRelation.SLIDE.getFileNameIndex(slide);
-        
+
         XSLFNotes notesSlide = (XSLFNotes) createRelationship(XSLFRelation.NOTES, XSLFFactory.getInstance(), slideIndex);
-        
+
         notesSlide.addRelation(_notesMaster.getPackageRelationship().getId(), _notesMaster);
         PackagePartName notesMasterPackagePartName = _notesMaster.getPackagePart().getPartName();
         notesSlide.getPackagePart().addRelationship(notesMasterPackagePartName, TargetMode.INTERNAL,
                 _notesMaster.getPackageRelationship().getRelationshipType());
-                
+
         slide.addRelation(notesSlide.getPackageRelationship().getId(), notesSlide);
         PackagePartName notesSlidesPackagePartName = notesSlide.getPackagePart().getPartName();
-        slide.getPackagePart().addRelationship(notesSlidesPackagePartName, TargetMode.INTERNAL, 
+        slide.getPackagePart().addRelationship(notesSlidesPackagePartName, TargetMode.INTERNAL,
                 notesSlide.getPackageRelationship().getRelationshipType());
 
         notesSlide.addRelation(slide.getPackageRelationship().getId(), slide);
         PackagePartName slidesPackagePartName = slide.getPackagePart().getPartName();
-        notesSlide.getPackagePart().addRelationship(slidesPackagePartName, TargetMode.INTERNAL, 
+        notesSlide.getPackagePart().addRelationship(slidesPackagePartName, TargetMode.INTERNAL,
                 slide.getPackageRelationship().getRelationshipType());
 
         notesSlide.importContent(_notesMaster);
-        
+
         return notesSlide;
     }
 
     /**
      * Create a notes master.
-     */ 
+     */
     public void createNotesMaster() {
 
-        _notesMaster = (XSLFNotesMaster) createRelationship(XSLFRelation.NOTES_MASTER, 
+        _notesMaster = (XSLFNotesMaster) createRelationship(XSLFRelation.NOTES_MASTER,
                 XSLFFactory.getInstance(), 1);
-        
+
         CTNotesMasterIdList notesMasterIdList = _presentation.addNewNotesMasterIdLst();
         CTNotesMasterIdListEntry notesMasterId = notesMasterIdList.addNewNotesMasterId();
         notesMasterId.setId(_notesMaster.getPackageRelationship().getId());
-        
+
         Integer themeIndex = 1;
         List<Integer> themeIndexList = new ArrayList<Integer>();
         for (POIXMLDocumentPart p : getRelations()) {
@@ -325,7 +325,7 @@ implements SlideShow<XSLFShape,XSLFTextParagraph> {
                 themeIndexList.add(XSLFRelation.THEME.getFileNameIndex(p));
             }
         }
-         
+
         if (!themeIndexList.isEmpty()) {
             Boolean found = false;
             for (Integer i = 1; i <= themeIndexList.size(); i++) {
@@ -338,23 +338,23 @@ implements SlideShow<XSLFShape,XSLFTextParagraph> {
                 themeIndex = themeIndexList.size() + 1;
             }
         }
-        
-        XSLFTheme theme = (XSLFTheme) createRelationship(XSLFRelation.THEME, 
+
+        XSLFTheme theme = (XSLFTheme) createRelationship(XSLFRelation.THEME,
                 XSLFFactory.getInstance(), themeIndex);
         theme.importTheme(getSlides().get(0).getTheme());
-        
+
         _notesMaster.addRelation(theme.getPackageRelationship().getId(), theme);
         PackagePartName themePackagePartName = theme.getPackagePart().getPartName();
-        _notesMaster.getPackagePart().addRelationship(themePackagePartName, TargetMode.INTERNAL, 
+        _notesMaster.getPackagePart().addRelationship(themePackagePartName, TargetMode.INTERNAL,
                 theme.getPackageRelationship().getRelationshipType());
     }
-    
+
     /**
      * Return the Notes Master, if there is one.
-     * (May not be present if no notes exist)  
+     * (May not be present if no notes exist)
      */
     public XSLFNotesMaster getNotesMaster() {
-        return _notesMaster; 
+        return _notesMaster;
     }
 
     @Override
@@ -368,7 +368,7 @@ implements SlideShow<XSLFShape,XSLFTextParagraph> {
     public List<XSLFSlide> getSlides() {
         return _slides;
     }
-    
+
     /**
      * Returns the list of comment authors, if there is one.
      * Will only be present if at least one slide has comments on it.
@@ -409,7 +409,7 @@ implements SlideShow<XSLFShape,XSLFTextParagraph> {
          _presentation.getSldIdLst().removeSldId(index);
         return slide;
     }
-    
+
     /**
      * Returns the current page size
      *
@@ -437,7 +437,7 @@ implements SlideShow<XSLFShape,XSLFTextParagraph> {
 
     @Internal
     public CTPresentation getCTPresentation(){
-        return _presentation;        
+        return _presentation;
     }
 
     /**
@@ -452,7 +452,7 @@ implements SlideShow<XSLFShape,XSLFTextParagraph> {
         XSLFPictureData img = findPictureData(pictureData);
 
         if (img != null) return img;
-        
+
         int imageNumber = _pictures.size();
         XSLFRelation relType = XSLFPictureData.getRelationForType(format);
         if (relType == null) {
@@ -468,7 +468,7 @@ implements SlideShow<XSLFShape,XSLFTextParagraph> {
         } catch (IOException e) {
             throw new POIXMLException(e);
         }
-        
+
         return img;
     }
 

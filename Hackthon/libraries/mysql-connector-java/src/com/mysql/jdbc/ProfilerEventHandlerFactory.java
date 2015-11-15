@@ -37,7 +37,7 @@ public class ProfilerEventHandlerFactory {
     /**
      * Returns the ProfilerEventHandlerFactory that handles profiler events for the given
      * connection.
-     * 
+     *
      * @param conn
      *            the connection to handle events for
      * @return the ProfilerEventHandlerFactory that handles profiler events

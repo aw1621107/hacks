@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for ST_BlackWhiteMode.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -44,7 +44,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
+ *
  */
 @XmlType(name = "ST_BlackWhiteMode", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main")
 @XmlEnum
@@ -53,77 +53,77 @@ public enum STBlackWhiteMode {
 
     /**
      * Color
-     * 
+     *
      */
     @XmlEnumValue("clr")
     CLR("clr"),
 
     /**
      * Automatic
-     * 
+     *
      */
     @XmlEnumValue("auto")
     AUTO("auto"),
 
     /**
      * Gray
-     * 
+     *
      */
     @XmlEnumValue("gray")
     GRAY("gray"),
 
     /**
      * Light Gray
-     * 
+     *
      */
     @XmlEnumValue("ltGray")
     LT_GRAY("ltGray"),
 
     /**
      * Inverse Gray
-     * 
+     *
      */
     @XmlEnumValue("invGray")
     INV_GRAY("invGray"),
 
     /**
      * Gray and White
-     * 
+     *
      */
     @XmlEnumValue("grayWhite")
     GRAY_WHITE("grayWhite"),
 
     /**
      * Black and Gray
-     * 
+     *
      */
     @XmlEnumValue("blackGray")
     BLACK_GRAY("blackGray"),
 
     /**
      * Black and White
-     * 
+     *
      */
     @XmlEnumValue("blackWhite")
     BLACK_WHITE("blackWhite"),
 
     /**
      * Black
-     * 
+     *
      */
     @XmlEnumValue("black")
     BLACK("black"),
 
     /**
      * White
-     * 
+     *
      */
     @XmlEnumValue("white")
     WHITE("white"),
 
     /**
      * Hidden
-     * 
+     *
      */
     @XmlEnumValue("hidden")
     HIDDEN("hidden");

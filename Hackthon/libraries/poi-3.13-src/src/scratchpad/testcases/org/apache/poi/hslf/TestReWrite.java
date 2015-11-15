@@ -49,7 +49,7 @@ public final class TestReWrite extends TestCase {
     public void setUp() throws Exception {
 
         POIDataSamples slTests = POIDataSamples.getSlideShowInstance();
-        
+
 		pfsA = new POIFSFileSystem(slTests.openResourceAsStream("basic_test_ppt_file.ppt"));
 		hssA = new HSLFSlideShowImpl(pfsA);
 
@@ -162,7 +162,7 @@ public final class TestReWrite extends TestCase {
 			assertEquals(_oData[i], _nData[i]);
 		}
 	}
-    
+
     public void test48593() throws Exception {
 		HSLFSlideShow slideShow = new HSLFSlideShow();
 		slideShow.createSlide();

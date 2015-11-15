@@ -53,11 +53,11 @@ public class DataSpaceMapUtils {
           );
           IRMDSTransformInfo irm = new IRMDSTransformInfo(tih, 0, null);
           createEncryptionEntry(dir, "\u0006DataSpaces/TransformInfo/StrongEncryptionTransform/\u0006Primary", irm);
-          
+
           DataSpaceVersionInfo dsvi = new DataSpaceVersionInfo("Microsoft.Container.DataSpaces", 1, 0, 1, 0, 1, 0);
           createEncryptionEntry(dir, "\u0006DataSpaces/Version", dsvi);
     }
-    
+
     public static DocumentEntry createEncryptionEntry(DirectoryEntry dir, String path, EncryptionRecord out) throws IOException {
         String parts[] = path.split("/");
         for (int i=0; i<parts.length-1; i++) {
@@ -65,17 +65,17 @@ public class DataSpaceMapUtils {
                 ? (DirectoryEntry)dir.getEntry(parts[i])
                 : dir.createDirectory(parts[i]);
         }
-        
-        final byte buf[] = new byte[5000];        
+
+        final byte buf[] = new byte[5000];
         LittleEndianByteArrayOutputStream bos = new LittleEndianByteArrayOutputStream(buf, 0);
         out.write(bos);
-        
+
         String fileName = parts[parts.length-1];
-        
+
         if (dir.hasEntry(fileName)) {
             dir.getEntry(fileName).delete();
         }
-        
+
         return dir.createDocument(fileName, bos.getWriteIndex(), new POIFSWriterListener(){
             public void processPOIFSWriterEvent(POIFSWriterEvent event) {
                 try {
@@ -85,15 +85,15 @@ public class DataSpaceMapUtils {
                 }
             }
         });
-    }   
-    
+    }
+
     public static class DataSpaceMap implements EncryptionRecord {
         DataSpaceMapEntry entries[];
-        
+
         public DataSpaceMap(DataSpaceMapEntry entries[]) {
             this.entries = entries;
         }
-        
+
         public DataSpaceMap(LittleEndianInput is) {
             /*int length = */ is.readInt();
             int entryCount = is.readInt();
@@ -102,7 +102,7 @@ public class DataSpaceMapUtils {
                 entries[i] = new DataSpaceMapEntry(is);
             }
         }
-    
+
         public void write(LittleEndianByteArrayOutputStream os) {
             os.writeInt(8);
             os.writeInt(entries.length);
@@ -111,18 +111,18 @@ public class DataSpaceMapUtils {
             }
         }
     }
-    
+
     public static class DataSpaceMapEntry implements EncryptionRecord {
         int referenceComponentType[];
         String referenceComponent[];
         String dataSpaceName;
-        
+
         public DataSpaceMapEntry(int referenceComponentType[], String referenceComponent[], String dataSpaceName) {
             this.referenceComponentType = referenceComponentType;
             this.referenceComponent = referenceComponent;
             this.dataSpaceName = dataSpaceName;
         }
-        
+
         public DataSpaceMapEntry(LittleEndianInput is) {
             /*int length = */ is.readInt();
             int referenceComponentCount = is.readInt();
@@ -134,7 +134,7 @@ public class DataSpaceMapUtils {
             }
             dataSpaceName = readUnicodeLPP4(is);
         }
-        
+
         public void write(LittleEndianByteArrayOutputStream os) {
             int start = os.getWriteIndex();
             LittleEndianOutput sizeOut = os.createDelayedOutput(LittleEndianConsts.INT_SIZE);
@@ -147,14 +147,14 @@ public class DataSpaceMapUtils {
             sizeOut.writeInt(os.getWriteIndex()-start);
         }
     }
-    
+
     public static class DataSpaceDefinition implements EncryptionRecord {
         String transformer[];
-        
+
         public DataSpaceDefinition(String transformer[]) {
             this.transformer = transformer;
         }
-        
+
         public DataSpaceDefinition(LittleEndianInput is) {
             /* int headerLength = */ is.readInt();
             int transformReferenceCount = is.readInt();
@@ -163,7 +163,7 @@ public class DataSpaceMapUtils {
                 transformer[i] = readUnicodeLPP4(is);
             }
         }
-        
+
         public void write(LittleEndianByteArrayOutputStream bos) {
             bos.writeInt(8);
             bos.writeInt(transformer.length);
@@ -172,25 +172,25 @@ public class DataSpaceMapUtils {
             }
         }
     }
-    
+
     public static class IRMDSTransformInfo implements EncryptionRecord {
         TransformInfoHeader transformInfoHeader;
         int extensibilityHeader;
         String xrMLLicense;
-        
+
         public IRMDSTransformInfo(TransformInfoHeader transformInfoHeader, int extensibilityHeader, String xrMLLicense) {
             this.transformInfoHeader = transformInfoHeader;
             this.extensibilityHeader = extensibilityHeader;
             this.xrMLLicense = xrMLLicense;
         }
-        
+
         public IRMDSTransformInfo(LittleEndianInput is) {
             transformInfoHeader = new TransformInfoHeader(is);
             extensibilityHeader = is.readInt();
             xrMLLicense = readUtf8LPP4(is);
             // finish with 0x04 (int) ???
         }
-        
+
         public void write(LittleEndianByteArrayOutputStream bos) {
             transformInfoHeader.write(bos);
             bos.writeInt(extensibilityHeader);
@@ -198,7 +198,7 @@ public class DataSpaceMapUtils {
             bos.writeInt(4); // where does this 4 come from???
         }
     }
-    
+
     public static class TransformInfoHeader implements EncryptionRecord {
         int transformType;
         String transformerId;
@@ -213,7 +213,7 @@ public class DataSpaceMapUtils {
             String transformerName,
             int readerVersionMajor, int readerVersionMinor,
             int updaterVersionMajor, int updaterVersionMinor,
-            int writerVersionMajor, int writerVersionMinor                
+            int writerVersionMajor, int writerVersionMinor
         ){
             this.transformType = transformType;
             this.transformerId = transformerId;
@@ -225,7 +225,7 @@ public class DataSpaceMapUtils {
             this.writerVersionMajor = writerVersionMajor;
             this.writerVersionMinor = writerVersionMinor;
         }
-        
+
         public TransformInfoHeader(LittleEndianInput is) {
             /* int length = */ is.readInt();
             transformType = is.readInt();
@@ -238,7 +238,7 @@ public class DataSpaceMapUtils {
             writerVersionMajor = is.readShort();
             writerVersionMinor = is.readShort();
         }
-        
+
         public void write(LittleEndianByteArrayOutputStream bos) {
             int start = bos.getWriteIndex();
             LittleEndianOutput sizeOut = bos.createDelayedOutput(LittleEndianConsts.INT_SIZE);
@@ -247,20 +247,20 @@ public class DataSpaceMapUtils {
             sizeOut.writeInt(bos.getWriteIndex()-start);
             writeUnicodeLPP4(bos, transformerName);
             bos.writeShort(readerVersionMajor);
-            bos.writeShort(readerVersionMinor); 
+            bos.writeShort(readerVersionMinor);
             bos.writeShort(updaterVersionMajor);
             bos.writeShort(updaterVersionMinor);
-            bos.writeShort(writerVersionMajor); 
-            bos.writeShort(writerVersionMinor); 
+            bos.writeShort(writerVersionMajor);
+            bos.writeShort(writerVersionMinor);
         }
     }
-    
+
     public static class DataSpaceVersionInfo implements EncryptionRecord {
         String featureIdentifier;
         int readerVersionMajor = 1, readerVersionMinor = 0;
         int updaterVersionMajor = 1, updaterVersionMinor = 0;
         int writerVersionMajor = 1, writerVersionMinor = 0;
-        
+
         public DataSpaceVersionInfo(LittleEndianInput is) {
             featureIdentifier = readUnicodeLPP4(is);
             readerVersionMajor = is.readShort();
@@ -270,12 +270,12 @@ public class DataSpaceMapUtils {
             writerVersionMajor = is.readShort();
             writerVersionMinor = is.readShort();
         }
-        
+
         public DataSpaceVersionInfo(
             String featureIdentifier,
             int readerVersionMajor, int readerVersionMinor,
             int updaterVersionMajor, int updaterVersionMinor,
-            int writerVersionMajor, int writerVersionMinor                
+            int writerVersionMajor, int writerVersionMinor
         ){
             this.featureIdentifier = featureIdentifier;
             this.readerVersionMajor = readerVersionMajor;
@@ -285,18 +285,18 @@ public class DataSpaceMapUtils {
             this.writerVersionMajor = writerVersionMajor;
             this.writerVersionMinor = writerVersionMinor;
         }
-        
+
         public void write(LittleEndianByteArrayOutputStream bos) {
             writeUnicodeLPP4(bos, featureIdentifier);
             bos.writeShort(readerVersionMajor);
-            bos.writeShort(readerVersionMinor); 
+            bos.writeShort(readerVersionMinor);
             bos.writeShort(updaterVersionMajor);
             bos.writeShort(updaterVersionMinor);
-            bos.writeShort(writerVersionMajor); 
-            bos.writeShort(writerVersionMinor); 
+            bos.writeShort(writerVersionMajor);
+            bos.writeShort(writerVersionMinor);
         }
     }
-    
+
     public static String readUnicodeLPP4(LittleEndianInput is) {
         int length = is.readInt();
         if (length%2 != 0) {
@@ -304,18 +304,18 @@ public class DataSpaceMapUtils {
                 "UNICODE-LP-P4 structure is a multiple of 4 bytes. "
                 + "If Padding is present, it MUST be exactly 2 bytes long");
         }
-        
+
         String result = StringUtil.readUnicodeLE(is, length/2);
         if (length%4==2) {
-            // Padding (variable): A set of bytes that MUST be of the correct size such that the size of the 
-            // UNICODE-LP-P4 structure is a multiple of 4 bytes. If Padding is present, it MUST be exactly 
-            // 2 bytes long, and each byte MUST be 0x00.            
+            // Padding (variable): A set of bytes that MUST be of the correct size such that the size of the
+            // UNICODE-LP-P4 structure is a multiple of 4 bytes. If Padding is present, it MUST be exactly
+            // 2 bytes long, and each byte MUST be 0x00.
             is.readShort();
         }
-        
+
         return result;
     }
-    
+
     public static void writeUnicodeLPP4(LittleEndianOutput os, String string) {
         byte buf[] = StringUtil.getToUnicodeLE(string);
         os.writeInt(buf.length);
@@ -331,14 +331,14 @@ public class DataSpaceMapUtils {
             /* int skip = */ is.readInt();
             return length == 0 ? null : "";
         }
-        
+
         byte data[] = new byte[length];
         is.readFully(data);
 
         // Padding (variable): A set of bytes that MUST be of correct size such that the size of the UTF-8-LP-P4
-        // structure is a multiple of 4 bytes. If Padding is present, each byte MUST be 0x00. If 
-        // the length is exactly 0x00000000, this specifies a null string, and the entire structure uses 
-        // exactly 4 bytes. If the length is exactly 0x00000004, this specifies an empty string, and the 
+        // structure is a multiple of 4 bytes. If Padding is present, each byte MUST be 0x00. If
+        // the length is exactly 0x00000000, this specifies a null string, and the entire structure uses
+        // exactly 4 bytes. If the length is exactly 0x00000004, this specifies an empty string, and the
         // entire structure also uses exactly 4 bytes
         int scratchedBytes = length%4;
         if (scratchedBytes > 0) {
@@ -349,7 +349,7 @@ public class DataSpaceMapUtils {
 
         return new String(data, 0, data.length, Charset.forName("UTF-8"));
     }
-    
+
     public static void writeUtf8LPP4(LittleEndianOutput os, String str) {
         if (str == null || "".equals(str)) {
             os.writeInt(str == null ? 0 : 4);
@@ -364,7 +364,7 @@ public class DataSpaceMapUtils {
                     os.writeByte(0);
                 }
             }
-        }        
+        }
     }
 
 }

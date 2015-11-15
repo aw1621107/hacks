@@ -66,7 +66,7 @@ public final class ZipPackage extends Package {
     public ZipPackage() {
     	super(defaultPackageAccess);
     	this.zipArchive = null;
-    	
+
     	try {
     	    this.contentTypeManager = new ZipContentTypeManager(null, this);
     	} catch (InvalidFormatException e) {}
@@ -349,7 +349,7 @@ public final class ZipPackage extends Package {
 				// Save the final package to a temporary file
 				try {
 					save(tempFile);
-					
+
 					// Close the current zip file, so we can
 					//  overwrite it on all platforms
 					this.zipArchive.close();
@@ -369,7 +369,7 @@ public final class ZipPackage extends Package {
 				throw new InvalidOperationException(
 						"Can't close a package not previously open with the open() method !");
 			}
-		} 
+		}
 	}
 
 	/**
@@ -441,7 +441,7 @@ public final class ZipPackage extends Package {
 			if (this.getPartsByRelationshipType(PackageRelationshipTypes.CORE_PROPERTIES).size() == 0 &&
                 this.getPartsByRelationshipType(PackageRelationshipTypes.CORE_PROPERTIES_ECMA376).size() == 0    ) {
 				logger.log(POILogger.DEBUG,"Save core properties part");
-				
+
 				// Ensure that core properties are added if missing
 				getPackageProperties();
 				// Add core properties to part list ...

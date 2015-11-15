@@ -14,7 +14,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 package org.apache.poi.hssf.usermodel;
 
 import junit.framework.TestCase;
@@ -54,7 +54,7 @@ public final class TestRowStyle extends TestCase {
             r.createCell(0);
         }
         wb = HSSFTestDataSamples.writeOutAndReadBack(wb);
-        		
+
         SanityChecker sanityChecker = new SanityChecker();
         sanityChecker.checkHSSFWorkbook(wb);
         assertEquals("LAST ROW == 99", 99, s.getLastRowNum());
@@ -83,7 +83,7 @@ public final class TestRowStyle extends TestCase {
         row.createCell(0);
 
         wb = HSSFTestDataSamples.writeOutAndReadBack(wb);
-        
+
         SanityChecker sanityChecker = new SanityChecker();
         sanityChecker.checkHSSFWorkbook(wb);
 
@@ -128,27 +128,27 @@ public final class TestRowStyle extends TestCase {
             r.createCell(0);
 
             rownum++;
-            if (rownum >= 100) break; // I feel too lazy to check if this isreqd :-/ 
-            
+            if (rownum >= 100) break; // I feel too lazy to check if this isreqd :-/
+
             r = s.createRow(rownum);
             r.setRowStyle(cs2);
             r.createCell(0);
         }
         wb = HSSFTestDataSamples.writeOutAndReadBack(wb);
-        
+
         SanityChecker sanityChecker = new SanityChecker();
         sanityChecker.checkHSSFWorkbook(wb);
         assertEquals("LAST ROW == 99", 99, s.getLastRowNum());
         assertEquals("FIRST ROW == 0", 0, s.getFirstRowNum());
-        
+
         s    = wb.getSheetAt(0);
         assertNotNull("Sheet is not null", s);
-        
+
         for (int rownum = 0; rownum < 100; rownum++)
         {
             r = s.getRow(rownum);
             assertNotNull("Row is not null", r);
-            
+
             cs = r.getRowStyle();
             assertEquals("FillForegroundColor for row: ", cs.getBorderBottom(), HSSFCellStyle.BORDER_THIN);
             assertEquals("FillPattern for row: ", cs.getBorderLeft(), HSSFCellStyle.BORDER_THIN);
@@ -156,10 +156,10 @@ public final class TestRowStyle extends TestCase {
             assertEquals("FillPattern for row: ", cs.getBorderTop(), HSSFCellStyle.BORDER_THIN);
             assertEquals("FillForegroundColor for row: ", cs.getFillForegroundColor(), 0xA);
             assertEquals("FillPattern for row: ", cs.getFillPattern(), (short) 0x1);
-            
+
             rownum++;
-            if (rownum >= 100) break; // I feel too lazy to check if this isreqd :-/ 
-            
+            if (rownum >= 100) break; // I feel too lazy to check if this isreqd :-/
+
             r = s.getRow(rownum);
             assertNotNull("Row is not null", r);
             cs2 = r.getRowStyle();

@@ -19,7 +19,7 @@ package org.apache.poi.ss.usermodel;
 
 /**
  * The enumeration value indicating the line style of a border in a cell,
- * i.e., whether it is borded dash dot, dash dot dot, dashed, dotted, double, hair, medium, 
+ * i.e., whether it is borded dash dot, dash dot dot, dashed, dotted, double, hair, medium,
  * medium dash dot, medium dash dot dot, medium dashed, none, slant dash dot, thick or thin.
  */
  public enum BorderStyle {

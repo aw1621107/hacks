@@ -21,7 +21,7 @@ import java.io.IOException;
 
 /**
  * Common Parent for Text Extractors
- *  of POI Documents. 
+ *  of POI Documents.
  * You will typically find the implementation of
  *  a given format's text extractor under
  *  org.apache.poi.[format].extractor .
@@ -39,19 +39,19 @@ public abstract class POITextExtractor implements Closeable {
 	 * @return All the text from the document
 	 */
 	public abstract String getText();
-	
+
 	/**
 	 * Returns another text extractor, which is able to
 	 *  output the textual content of the document
 	 *  metadata / properties, such as author and title.
 	 */
 	public abstract POITextExtractor getMetadataTextExtractor();
-	
+
 	/**
 	 * Allows to free resources of the Extractor as soon as
 	 * it is not needed any more. This may include closing
 	 * open file handles and freeing memory.
-	 * 
+	 *
 	 * The Extractor cannot be used after close has been called.
 	 */
 	public void close() throws IOException {

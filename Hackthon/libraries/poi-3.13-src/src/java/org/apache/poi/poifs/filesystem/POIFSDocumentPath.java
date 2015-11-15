@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.poifs.filesystem;
 
@@ -34,7 +34,7 @@ import org.apache.poi.util.POILogger;
 public class POIFSDocumentPath
 {
     private static final POILogger log = POILogFactory.getLogger(POIFSDocumentPath.class);
-          
+
     private String[] components;
     private int      hashcode = 0;
 
@@ -140,7 +140,7 @@ public class POIFSDocumentPath
                     log.log(POILogger.WARN, "Directory under " + path + " has an empty name, " +
                             "not all OLE2 readers will handle this file correctly!");
                 }
-                
+
                 this.components[ j + path.components.length ] =
                     components[ j ];
             }

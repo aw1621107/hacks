@@ -23,7 +23,7 @@ import org.apache.poi.ss.usermodel.Font;
 
 /**
  * Represents a Font used in a workbook.
- * 
+ *
  * @see org.apache.poi.hssf.usermodel.HSSFWorkbook#createFont()
  * @see org.apache.poi.hssf.usermodel.HSSFWorkbook#getFontAt(short)
  * @see org.apache.poi.hssf.usermodel.HSSFCellStyle#setFont(HSSFFont)
@@ -190,7 +190,7 @@ public final class HSSFFont implements Font {
     {
         return font.getColorPaletteIndex();
     }
-    
+
     /**
      * get the color value for the font
      */
@@ -210,7 +210,7 @@ public final class HSSFFont implements Font {
     {
         font.setBoldWeight(boldweight);
     }
-    
+
     /**
      * sets the font to be bold or not
      */
@@ -232,7 +232,7 @@ public final class HSSFFont implements Font {
     {
         return font.getBoldWeight();
     }
-    
+
     /**
      * get if the font is bold or not
      */

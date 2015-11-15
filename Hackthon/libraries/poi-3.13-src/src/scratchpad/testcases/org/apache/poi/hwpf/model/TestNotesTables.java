@@ -25,7 +25,7 @@ import org.apache.poi.hwpf.usermodel.Notes;
 /**
  * Test cases for {@link NotesTables} and default implementation of
  * {@link Notes}
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 public class TestNotesTables extends TestCase

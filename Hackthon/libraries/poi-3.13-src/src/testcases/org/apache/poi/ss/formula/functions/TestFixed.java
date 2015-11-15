@@ -86,13 +86,13 @@ public final class TestFixed extends TestCase {
         // rounding propagation
         confirm("FIXED(99.9,0,TRUE)", "100");
     }
-    
+
     public void testOptionalParams() {
         Fixed fixed = new Fixed();
         ValueEval evaluate = fixed.evaluate(0, 0, new NumberEval(1234.56789));
         assertTrue(evaluate instanceof StringEval);
         assertEquals("1,234.57", ((StringEval)evaluate).getStringValue());
-        
+
         evaluate = fixed.evaluate(0, 0, new NumberEval(1234.56789), new NumberEval(1));
         assertTrue(evaluate instanceof StringEval);
         assertEquals("1,234.6", ((StringEval)evaluate).getStringValue());
@@ -116,12 +116,12 @@ public final class TestFixed extends TestCase {
         String actualValue = cv.getStringValue();
         assertEquals(expectedResult, actualValue);
     }
-    
+
     private void confirmValueError(String formulaText) {
         cell11.setCellFormula(formulaText);
         evaluator.clearAllCachedResultValues();
         CellValue cv = evaluator.evaluate(cell11);
-        assertTrue("Wrong result type: " + cv.formatAsString(), 
+        assertTrue("Wrong result type: " + cv.formatAsString(),
                 cv.getCellType() == Cell.CELL_TYPE_ERROR
                 && cv.getErrorValue() == ErrorConstants.ERROR_VALUE);
     }

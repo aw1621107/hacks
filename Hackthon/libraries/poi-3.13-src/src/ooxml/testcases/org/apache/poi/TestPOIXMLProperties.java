@@ -52,7 +52,7 @@ public final class TestPOIXMLProperties {
 		_coreProperties = _props.getCoreProperties();
 		assertNotNull(_props);
 	}
-	
+
 	@After
 	public void closeResources() throws Exception {
 	    sampleDoc.close();
@@ -94,13 +94,13 @@ public final class TestPOIXMLProperties {
 
         assertEquals(application, newProperties.getApplication());
         assertEquals(appVersion, newProperties.getAppVersion());
-        
+
 		org.openxmlformats.schemas.officeDocument.x2006.extendedProperties.CTProperties
 				newCtProps = newProperties.getUnderlyingProperties();
 
 		assertEquals(application, newCtProps.getApplication());
 		assertEquals(appVersion, newCtProps.getAppVersion());
-		
+
 		newWorkbook.close();
 	}
 
@@ -155,7 +155,7 @@ public final class TestPOIXMLProperties {
         assertEquals("test-4", p.getName());
         assertEquals(true, p.getBool());
         assertEquals(5, p.getPid());
-        
+
         wb2.close();
     }
 
@@ -204,18 +204,18 @@ public final class TestPOIXMLProperties {
 		_coreProperties.setRevision("20xx");
 		assertEquals("20", _coreProperties.getRevision());
 	}
-	
+
 	public static boolean dateTimeEqualToUTCString(Date dateTime, String utcString) {
 		Calendar utcCalendar = LocaleUtil.getLocaleCalendar(LocaleUtil.TIMEZONE_UTC);
         utcCalendar.setTimeInMillis(dateTime.getTime());
-        String dateTimeUtcString = utcCalendar.get(Calendar.YEAR) + "-" + 
-               zeroPad((utcCalendar.get(Calendar.MONTH)+1)) + "-" + 
-               zeroPad(utcCalendar.get(Calendar.DAY_OF_MONTH)) + "T" + 
+        String dateTimeUtcString = utcCalendar.get(Calendar.YEAR) + "-" +
+               zeroPad((utcCalendar.get(Calendar.MONTH)+1)) + "-" +
+               zeroPad(utcCalendar.get(Calendar.DAY_OF_MONTH)) + "T" +
                zeroPad(utcCalendar.get(Calendar.HOUR_OF_DAY)) + ":" +
-               zeroPad(utcCalendar.get(Calendar.MINUTE)) + ":" + 
+               zeroPad(utcCalendar.get(Calendar.MINUTE)) + ":" +
                zeroPad(utcCalendar.get(Calendar.SECOND)) + "Z";
-		
-		
+
+
         return utcString.equals(dateTimeUtcString);
     }
 

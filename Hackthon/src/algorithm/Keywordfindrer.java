@@ -4,14 +4,14 @@ public class Keywordfindrer extends Sorter {
 
 	private int goodtemp = 0;
 	private int badtemp = 0;
-	
-	
+
+
 	static void goodfind() {
 		String[] good = { "very", "lots", "interested" };
 		for (int i = 0; i < good.length; i++) {
 			System.out.println(i);
 			if (Sorter.temp.contentEquals(good[i])) {
-				
+
 			}
 		}
 	}
@@ -23,7 +23,7 @@ public class Keywordfindrer extends Sorter {
 			System.out.println(i);
 			if (Sorter.temp.contentEquals(bad[i])) {
 				System.out.println(bad[i]);
-				
+
 			}
 
 		}

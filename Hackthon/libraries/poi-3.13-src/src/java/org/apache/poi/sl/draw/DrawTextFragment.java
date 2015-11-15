@@ -25,7 +25,7 @@ public class DrawTextFragment implements Drawable  {
     final TextLayout layout;
     final AttributedString str;
     double x, y;
-    
+
     public DrawTextFragment(TextLayout layout, AttributedString str) {
         this.layout = layout;
         this.str = str;
@@ -57,7 +57,7 @@ public class DrawTextFragment implements Drawable  {
 
     public void drawContent(Graphics2D graphics) {
     }
-    
+
     public TextLayout getLayout() {
         return layout;
     }
@@ -65,7 +65,7 @@ public class DrawTextFragment implements Drawable  {
     public AttributedString getAttributedString() {
         return str;
     }
-    
+
     /**
      * @return full height of this text run which is sum of ascent, descent and leading
      */
@@ -101,5 +101,5 @@ public class DrawTextFragment implements Drawable  {
     public String toString(){
         return "[" + getClass().getSimpleName() + "] " + getString();
     }
-    
+
 }

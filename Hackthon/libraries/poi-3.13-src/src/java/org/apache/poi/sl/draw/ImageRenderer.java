@@ -81,7 +81,7 @@ import org.apache.poi.util.POILogger;
  */
 public class ImageRenderer {
     private final static POILogger LOG = POILogFactory.getLogger(ImageRenderer.class);
-    
+
     protected BufferedImage img;
 
     /**
@@ -105,22 +105,22 @@ public class ImageRenderer {
     }
 
     /**
-     * Add alpha channel to buffered image 
+     * Add alpha channel to buffered image
      */
     private static BufferedImage convertBufferedImage(BufferedImage img, String contentType) {
         if (img == null) {
             LOG.log(POILogger.WARN, "Content-type: "+contentType+" is not support. Image ignored.");
             return null;
         }
-        
+
         BufferedImage bi = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics g = bi.getGraphics();
         g.drawImage(img, 0, 0, null);
         g.dispose();
         return bi;
     }
-    
-    
+
+
     /**
      * @return the buffered image
      */
@@ -149,7 +149,7 @@ public class ImageRenderer {
         RescaleOp op = new RescaleOp(new float[]{1.0f, 1.0f, 1.0f, (float)alpha}, new float[]{0,0,0,0}, null);
         g.drawImage(img, op, 0, 0);
         g.dispose();
-        
+
         img = newImg;
     }
 
@@ -185,7 +185,7 @@ public class ImageRenderer {
         int iw = img.getWidth();
         int ih = img.getHeight();
 
-        
+
         double cw = (100000-clip.left-clip.right) / 100000.0;
         double ch = (100000-clip.top-clip.bottom) / 100000.0;
         double sx = anchor.getWidth()/(iw*cw);

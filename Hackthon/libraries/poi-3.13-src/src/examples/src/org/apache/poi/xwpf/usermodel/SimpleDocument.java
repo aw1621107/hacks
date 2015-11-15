@@ -72,13 +72,13 @@ public class SimpleDocument {
         XWPFParagraph p3 = doc.createParagraph();
         p3.setWordWrap(true);
         p3.setPageBreak(true);
-                
+
         //p3.setAlignment(ParagraphAlignment.DISTRIBUTE);
         p3.setAlignment(ParagraphAlignment.BOTH);
         p3.setSpacingLineRule(LineSpacingRule.EXACT);
 
         p3.setIndentationFirstLine(600);
-        
+
 
         XWPFRun r4 = p3.createRun();
         r4.setTextPosition(20);
@@ -107,7 +107,7 @@ public class SimpleDocument {
         r5.addBreak();
         r5.setText("For who would bear the whips and scorns of time,"
                 + "The oppressor's wrong, the proud man's contumely,");
-        
+
         r5.addBreak(BreakClear.ALL);
         r5.setText("The pangs of despised love, the law's delay,"
                 + "The insolence of office and the spurns" + ".......");

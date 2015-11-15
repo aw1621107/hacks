@@ -52,7 +52,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      *            ignored
      */
@@ -63,7 +63,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
     /**
      * Tests fix for BUG#3539 getProcedures() does not return any procedures in
      * result set
-     * 
+     *
      * @throws Exception
      *             if an error occurs.
      */
@@ -83,7 +83,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
     /**
      * Tests fix for BUG#3540 getProcedureColumns doesn't work with wildcards
      * for procedure name
-     * 
+     *
      * @throws Exception
      *             if an error occurs.
      */
@@ -110,7 +110,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
     /**
      * Tests fix for BUG#7026 - DBMD.getProcedures() doesn't respect catalog
      * parameter
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -152,7 +152,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * Tests fix for BUG#9319 -- Stored procedures with same name in different
      * databases confuse the driver when it tries to determine parameter
      * counts/types.
-     * 
+     *
      * @throws Exception
      *             if the test fails
      */
@@ -261,73 +261,73 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * public void testBug9319() throws Exception { boolean doASelect = false;
      * // SELECT currently causes the server to hang on the // last execution of
      * this testcase, filed as BUG#9405
-     * 
+     *
      * if (versionMeetsMinimum(5, 0, 2)) { if (isAdminConnectionConfigured()) {
      * Connection db2Connection = null; Connection db1Connection = null;
-     * 
+     *
      * try { db2Connection = getAdminConnection();
-     * 
+     *
      * db2Connection.createStatement().executeUpdate( "CREATE DATABASE IF NOT
      * EXISTS db_9319"); db2Connection.setCatalog("db_9319");
-     * 
+     *
      * db2Connection.createStatement().executeUpdate( "DROP PROCEDURE IF EXISTS
      * COMPROVAR_USUARI");
-     * 
+     *
      * db2Connection.createStatement().executeUpdate( "CREATE PROCEDURE
      * COMPROVAR_USUARI(IN p_CodiUsuari VARCHAR(10)," + "\nIN p_contrasenya
      * VARCHAR(10)," + "\nOUT p_userId INTEGER," + "\nOUT p_userName
      * VARCHAR(30)," + "\nOUT p_administrador VARCHAR(1)," + "\nOUT p_idioma
      * VARCHAR(2))" + "\nBEGIN" + (doASelect ? "\nselect 2;" : "\nSELECT 2 INTO
      * p_administrador;" ) + "\nEND");
-     * 
+     *
      * this.stmt .executeUpdate("DROP PROCEDURE IF EXISTS COMPROVAR_USUARI");
      * this.stmt .executeUpdate("CREATE PROCEDURE COMPROVAR_USUARI(IN
      * p_CodiUsuari VARCHAR(10)," + "\nIN p_contrasenya VARCHAR(10)," + "\nOUT
      * p_userId INTEGER," + "\nOUT p_userName VARCHAR(30)," + "\nOUT
      * p_administrador VARCHAR(1))" + "\nBEGIN" + (doASelect ? "\nselect 1;" :
      * "\nSELECT 1 INTO p_administrador;" ) + "\nEND");
-     * 
+     *
      * CallableStatement cstmt = db2Connection .prepareCall("{ call
      * COMPROVAR_USUARI(?, ?, ?, ?, ?, ?) }"); cstmt.setString(1, "abc");
      * cstmt.setString(2, "def"); cstmt.registerOutParameter(3,
      * java.sql.Types.INTEGER); cstmt.registerOutParameter(4,
      * java.sql.Types.VARCHAR); cstmt.registerOutParameter(5,
      * java.sql.Types.VARCHAR);
-     * 
+     *
      * cstmt.registerOutParameter(6, java.sql.Types.VARCHAR);
-     * 
+     *
      * cstmt.execute();
-     * 
+     *
      * if (doASelect) { this.rs = cstmt.getResultSet();
      * assertTrue(this.rs.next()); assertEquals(2, this.rs.getInt(1)); } else {
      * assertEquals(2, cstmt.getInt(5)); }
-     * 
+     *
      * cstmt = this.conn .prepareCall("{ call COMPROVAR_USUARI(?, ?, ?, ?, ?, ?)
      * }"); cstmt.setString(1, "abc"); cstmt.setString(2, "def");
      * cstmt.registerOutParameter(3, java.sql.Types.INTEGER);
      * cstmt.registerOutParameter(4, java.sql.Types.VARCHAR);
      * cstmt.registerOutParameter(5, java.sql.Types.VARCHAR);
-     * 
+     *
      * try { cstmt.registerOutParameter(6, java.sql.Types.VARCHAR);
      * fail("Should've thrown an exception"); } catch (SQLException sqlEx) {
      * assertEquals(SQLError.SQL_STATE_ILLEGAL_ARGUMENT, sqlEx .getSQLState());
      * }
-     * 
+     *
      * cstmt = this.conn .prepareCall("{ call COMPROVAR_USUARI(?, ?, ?, ?, ?)
      * }"); cstmt.setString(1, "abc"); cstmt.setString(2, "def");
      * cstmt.registerOutParameter(3, java.sql.Types.INTEGER);
      * cstmt.registerOutParameter(4, java.sql.Types.VARCHAR);
      * cstmt.registerOutParameter(5, java.sql.Types.VARCHAR);
-     * 
+     *
      * cstmt.execute();
-     * 
+     *
      * if (doASelect) { this.rs = cstmt.getResultSet();
      * assertTrue(this.rs.next()); assertEquals(1, this.rs.getInt(1)); } else {
      * assertEquals(1, cstmt.getInt(5)); }
-     * 
+     *
      * String quoteChar =
      * db2Connection.getMetaData().getIdentifierQuoteString();
-     * 
+     *
      * cstmt = db2Connection .prepareCall("{ call " + quoteChar +
      * this.conn.getCatalog() + quoteChar + "." + quoteChar + "COMPROVAR_USUARI"
      * + quoteChar + "(?, ?, ?, ?, ?) }"); cstmt.setString(1, "abc");
@@ -335,9 +335,9 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * java.sql.Types.INTEGER); cstmt.registerOutParameter(4,
      * java.sql.Types.VARCHAR); cstmt.registerOutParameter(5,
      * java.sql.Types.VARCHAR);
-     * 
+     *
      * cstmt.execute();
-     * 
+     *
      * if (doASelect) { this.rs = cstmt.getResultSet();
      * assertTrue(this.rs.next()); assertEquals(1, this.rs.getInt(1)); } else {
      * assertEquals(1, cstmt.getInt(5)); } } finally { if (db2Connection !=
@@ -345,7 +345,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * EXISTS COMPROVAR_USUARI"); //
      * db2Connection.createStatement().executeUpdate( // "DROP DATABASE IF
      * EXISTS db_9319"); }
-     * 
+     *
      * this.stmt .executeUpdate("DROP PROCEDURE IF EXISTS COMPROVAR_USUARI"); }
      * } } }
      */
@@ -353,7 +353,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
     /**
      * Tests fix for BUG#9682 - Stored procedures with DECIMAL parameters with
      * storage specifications that contained "," in them would fail.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -381,7 +381,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * Tests fix forBUG#10310 - Driver doesn't support {?=CALL(...)} for calling
      * stored functions. This involved adding support for function retrieval to
      * DatabaseMetaData.getProcedures() and getProcedureColumns() as well.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -506,7 +506,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * Tests fix for Bug#12417 - stored procedure catalog name is case-sensitive
      * on Windows (this is actually a server bug, but we have a workaround in
      * place for it now).
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -561,7 +561,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#15464 - INOUT parameter does not store IN value.
-     * 
+     *
      * @throws Exception
      *             if the test fails
      */
@@ -592,7 +592,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * parameters pre-populated. Still waiting for feedback from JDBC experts
      * group to determine what correct parameter count from getMetaData() should
      * be, however.
-     * 
+     *
      * @throws Exception
      *             if the test fails
      */
@@ -618,7 +618,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * Tests fix for BUG#21462 - JDBC (and ODBC) specifications allow
      * no-parenthesis CALL statements for procedures with no arguments, MySQL
      * server does not.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -645,7 +645,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
     /**
      * Tests fix for BUG#22024 - Newlines causing whitespace to span confuse
      * procedure parser when getting parameter metadata for stored procedures.
-     * 
+     *
      * @throws Exception
      *             if the test fails
      */
@@ -678,7 +678,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * Tests workaround for server crash when calling stored procedures via a
      * server-side prepared statement (driver now detects prepare(stored
      * procedure) and substitutes client-side prepared statement).
-     * 
+     *
      * @throws Exception
      *             if the test fails
      */
@@ -784,7 +784,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
     /**
      * Tests fix for BUG#25379 - INOUT parameters in CallableStatements get
      * doubly-escaped.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -808,7 +808,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * Tests fix for BUG#25715 - CallableStatements with OUT/INOUT parameters
      * that are "binary" have extra 7 bytes (which happens to be the _binary
      * introducer!)
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -889,7 +889,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#26959 - comments confuse procedure parser.
-     * 
+     *
      * @throws Exception
      *             if the test fails
      */
@@ -1015,11 +1015,11 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * Tests fix for BUG#28689 - CallableStatement.executeBatch() doesn't work
      * when connection property "noAccessToProcedureBodies" has been set to
      * "true".
-     * 
+     *
      * The fix involves changing the behavior of "noAccessToProcedureBodies", in
      * that the driver will now report all paramters as "IN" paramters but allow
      * callers to call registerOutParameter() on them.
-     * 
+     *
      * @throws Exception
      */
     public void testBug28689() throws Exception {
@@ -1060,7 +1060,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * Tests fix for Bug#31823 - CallableStatement.setNull() on a stored
      * function would throw an ArrayIndexOutOfBounds when setting the last
      * parameter to null when calling setNull().
-     * 
+     *
      * @throws Exception
      */
     public void testBug31823() throws Exception {
@@ -1210,7 +1210,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * error message packets to the internal method which decodes them
      * correctly, so no exception is rasied, and the driver than hangs trying to
      * read rows that aren't there...
-     * 
+     *
      * @throws Exception
      *             if the test fails
      */
@@ -1489,7 +1489,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
      * determineParameterTypes() throws SQLException if (procName.indexOf(".")
      * == -1) { useCatalog = true; } The fix will be to "sanitize" db.sp call
      * just like in noAccessToProcedureBodies.
-     * 
+     *
      * @throws Exception
      *             if the test fails
      */
@@ -1543,7 +1543,7 @@ public class CallableStatementRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#60816 - Cannot pass NULL to an INOUT procedure parameter
-     * 
+     *
      * @throws Exception
      */
     public void testBug60816() throws Exception {

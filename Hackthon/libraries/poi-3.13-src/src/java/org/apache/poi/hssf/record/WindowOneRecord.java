@@ -184,7 +184,7 @@ public final class WindowOneRecord extends StandardRecord {
 	}
     /**
      * deprecated May 2008
-     * @deprecated - Misleading name - use setActiveSheetIndex() 
+     * @deprecated - Misleading name - use setActiveSheetIndex()
      */
     public void setSelectedTab(short s)
     {
@@ -202,7 +202,7 @@ public final class WindowOneRecord extends StandardRecord {
 
     /**
      * deprecated May 2008
-     * @deprecated - Misleading name - use setFirstVisibleTab() 
+     * @deprecated - Misleading name - use setFirstVisibleTab()
      */
     public void setDisplayedTab(short t) {
         setFirstVisibleTab(t);
@@ -333,16 +333,16 @@ public final class WindowOneRecord extends StandardRecord {
 
     // end options bitfields
 
-    
+
     /**
-     * @return the index of the currently displayed sheet 
+     * @return the index of the currently displayed sheet
      */
     public int getActiveSheetIndex() {
     	return field_6_active_sheet;
     }
     /**
      * deprecated May 2008
-     * @deprecated - Misleading name - use getActiveSheetIndex() 
+     * @deprecated - Misleading name - use getActiveSheetIndex()
      */
     public short getSelectedTab()
     {
@@ -350,7 +350,7 @@ public final class WindowOneRecord extends StandardRecord {
     }
 
     /**
-     * @return the first visible sheet in the worksheet tab-bar. 
+     * @return the first visible sheet in the worksheet tab-bar.
      * I.E. the scroll position of the tab-bar.
      */
     public int getFirstVisibleTab() {
@@ -358,7 +358,7 @@ public final class WindowOneRecord extends StandardRecord {
     }
     /**
      * deprecated May 2008
-     * @deprecated - Misleading name - use getFirstVisibleTab() 
+     * @deprecated - Misleading name - use getFirstVisibleTab()
      */
     public short getDisplayedTab()
     {

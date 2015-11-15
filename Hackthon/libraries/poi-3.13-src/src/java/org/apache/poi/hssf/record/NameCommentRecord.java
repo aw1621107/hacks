@@ -105,7 +105,7 @@ public final class NameCommentRecord extends StandardRecord {
         field_7_comment_text = StringUtil.readCompressedUnicode(in, field_5_comment_length);
     } else {
         field_7_comment_text = StringUtil.readUnicodeLE(in, field_5_comment_length);
-    }    
+    }
   }
 
   /**
@@ -139,7 +139,7 @@ public final class NameCommentRecord extends StandardRecord {
   public String getNameText() {
     return field_6_name_text;
   }
-  
+
   /**
    * Updates the name we're associated with, normally used
    *  when renaming that Name
@@ -154,7 +154,7 @@ public final class NameCommentRecord extends StandardRecord {
   public String getCommentText() {
     return field_7_comment_text;
   }
-  
+
   public void setCommentText(String comment) {
      field_7_comment_text = comment;
   }

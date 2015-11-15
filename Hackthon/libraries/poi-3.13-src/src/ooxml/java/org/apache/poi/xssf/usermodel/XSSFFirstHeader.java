@@ -22,9 +22,9 @@ import org.apache.poi.xssf.usermodel.extensions.XSSFHeaderFooter;
 import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTHeaderFooter;
 
 /**
- * 
+ *
  * First page header content. Corresponds to first printed page.
- * The first logical page in the sheet may not be printed, for example, if the print area is specified to 
+ * The first logical page in the sheet may not be printed, for example, if the print area is specified to
  * be a range such that it falls outside the first page's scope.
  *
  */
@@ -39,7 +39,7 @@ public class XSSFFirstHeader extends XSSFHeaderFooter implements Header{
         super(headerFooter);
         headerFooter.setDifferentFirst(true);
     }
-    
+
     /**
      * Get the content text representing this header
      * @return text
@@ -47,11 +47,11 @@ public class XSSFFirstHeader extends XSSFHeaderFooter implements Header{
     public String getText() {
         return getHeaderFooter().getFirstHeader();
     }
-    
+
     /**
      * Set a text for the header. If null unset the value
      * @see XSSFHeaderFooter to see how to create a string with Header/Footer Formatting Syntax
-     * @param text - a string representing the header. 
+     * @param text - a string representing the header.
      */
     public void setText(String text) {
     	if(text == null) {

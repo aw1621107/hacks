@@ -71,7 +71,7 @@ public final class TestCurrentUserAtom {
 
 		new CurrentUserAtom(fs);
 		assertTrue(true); // not yet failed
-		
+
 		new HSLFSlideShowImpl(fs);
 	}
 

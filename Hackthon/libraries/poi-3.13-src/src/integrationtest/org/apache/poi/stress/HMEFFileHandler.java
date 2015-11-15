@@ -31,22 +31,22 @@ public class HMEFFileHandler extends AbstractFileHandler {
 	@Override
     public void handleFile(InputStream stream) throws Exception {
 		HMEFMessage msg = new HMEFMessage(stream);
-		
+
 		// list all properties
 		StringBuilder props = new StringBuilder();
 		for(MAPIAttribute att : msg.getMessageMAPIAttributes()) {
 			props.append(att.getType()).append(": ").append(MAPIStringAttribute.getAsString( att)).append("\n");
 		}
-		
+
 		// there are two test-files that have no body...
 		if(!msg.getSubject().equals("Testing TNEF Message") && !msg.getSubject().equals("TNEF test message with attachments")) {
-    		assertNotNull("Had: " + msg.getBody() + ", " + msg.getSubject() + ", " + msg.getAttachments() + ": " + props.toString(), 
+    		assertNotNull("Had: " + msg.getBody() + ", " + msg.getSubject() + ", " + msg.getAttachments() + ": " + props.toString(),
     				msg.getBody());
 		}
-		assertNotNull("Had: " + msg.getBody() + ", " + msg.getSubject() + ", " + msg.getAttachments() + ": " + props.toString(), 
+		assertNotNull("Had: " + msg.getBody() + ", " + msg.getSubject() + ", " + msg.getAttachments() + ": " + props.toString(),
 				msg.getSubject());
 	}
-	
+
 	// a test-case to test this locally without executing the full TestAllFiles
 	@Test
 	public void test() throws Exception {

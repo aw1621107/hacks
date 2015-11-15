@@ -208,7 +208,7 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
 		// We'll also want to be able to turn the slide IDs into a position
 		// in this array
 		_sheetIdToCoreRecordsLookup = new HashMap<Integer,Integer>();
-		Integer[] allIDs = mostRecentByBytes.keySet().toArray(new Integer[mostRecentByBytes.size()]); 
+		Integer[] allIDs = mostRecentByBytes.keySet().toArray(new Integer[mostRecentByBytes.size()]);
 		Arrays.sort(allIDs);
 		for (int i = 0; i < allIDs.length; i++) {
 			_sheetIdToCoreRecordsLookup.put(allIDs[i], i);
@@ -218,18 +218,18 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
 		for (Map.Entry<Integer,Integer> me : mostRecentByBytes.entrySet()) {
 		    mostRecentByBytesRev.put(me.getValue(), me.getKey());
 		}
-		
+
 		// Now convert the byte offsets back into record offsets
 		for (Record record : _hslfSlideShow.getRecords()) {
 			if (!(record instanceof PositionDependentRecord)) continue;
-			
+
 			PositionDependentRecord pdr = (PositionDependentRecord) record;
 			int recordAt = pdr.getLastOnDiskOffset();
 
 			Integer thisID = mostRecentByBytesRev.get(recordAt);
-			
+
 			if (thisID == null) continue;
-			
+
 			// Bingo. Now, where do we store it?
 			int storeAt = _sheetIdToCoreRecordsLookup.get(thisID);
 
@@ -355,7 +355,7 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
 			notesRecords = new org.apache.poi.hslf.record.Notes[0];
 		} else {
 			// Match up the records and the SlideAtomSets
-			List<org.apache.poi.hslf.record.Notes> notesRecordsL = 
+			List<org.apache.poi.hslf.record.Notes> notesRecordsL =
 			   new ArrayList<org.apache.poi.hslf.record.Notes>();
 			int idx = -1;
 			for (SlideAtomsSet notesSet : notesSLWT.getSlideAtomsSets()) {
@@ -365,7 +365,7 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
                 SlidePersistAtom spa = notesSet.getSlidePersistAtom();
 
 				String loggerLoc = "A Notes SlideAtomSet at "+idx+" said its record was at refID "+spa.getRefID();
-				        
+
 				// Ensure it really is a notes record
 				if (r == null || r instanceof org.apache.poi.hslf.record.Notes) {
 				    if (r == null) {
@@ -463,8 +463,8 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
 	            if (isDirty) hts.storeText();
 	        }
 	    }
-	    
-	    
+
+
 		_hslfSlideShow.write(out);
 	}
 
@@ -504,7 +504,7 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
 	public List<HSLFSlideMaster> getSlideMasters() {
 		return _masters;
 	}
-	
+
 	/**
 	 * Returns an array of all the normal Title Masters found in the slideshow
 	 */
@@ -604,13 +604,13 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
 		Collections.swap(_slides, oldSlideNumber - 1, newSlideNumber - 1);
 		_slides.get(newSlideNumber - 1).setSlideNumber(newSlideNumber);
 		_slides.get(oldSlideNumber - 1).setSlideNumber(oldSlideNumber);
-		
+
 		ArrayList<Record> lst = new ArrayList<Record>();
 		for (SlideAtomsSet s : sas) {
 			lst.add(s.getSlidePersistAtom());
 			lst.addAll(Arrays.asList(s.getSlideRecords()));
 		}
-		
+
 		Record[] r = lst.toArray(new Record[lst.size()]);
 		slwt.setChildRecord(r);
 	}
@@ -642,10 +642,10 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
 		HSLFSlide removedSlide = _slides.remove(index);
 		_notes.remove(removedSlide.getNotes());
 		sa.remove(index);
-		
+
 		int i=0;
 		for (HSLFSlide s : _slides) s.setSlideNumber(i++);
-		
+
 		for (SlideAtomsSet s : sa) {
             records.add(s.getSlidePersistAtom());
             records.addAll(Arrays.asList(s.getSlideRecords()));
@@ -753,7 +753,7 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
 		int psrId = addPersistentObject(slideRecord);
 		sp.setRefID(psrId);
 		slideRecord.setSheetId(psrId);
-		
+
 		slide.setMasterSheet(_masters.get(0));
 		// All done and added
 		return slide;
@@ -762,9 +762,9 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
 	@Override
 	public HSLFPictureData addPicture(byte[] data, PictureType format) throws IOException {
 	    if (format == null || format.nativeId == -1) {
-	        throw new IllegalArgumentException("Unsupported picture format: " + format); 
+	        throw new IllegalArgumentException("Unsupported picture format: " + format);
 	    }
-	    
+
 	    byte[] uid = HSLFPictureData.getChecksum(data);
 
 		for (HSLFPictureData pd : getPictureData()) {
@@ -772,7 +772,7 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
 		        return pd;
 		    }
 		}
-		
+
 		EscherContainerRecord bstore;
 
 		EscherContainerRecord dggContainer = _documentRecord.getPPDrawingGroup().getDggContainer();
@@ -969,7 +969,7 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
 
 		int objectId = addToObjListAtom(mci);
 		exVideo.getExMediaAtom().setObjectId(objectId);
-		
+
 		return objectId;
 	}
 
@@ -988,12 +988,12 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
 		ctrl.setProgId(progId);
 		ctrl.setMenuName(name);
 		ctrl.setClipboardName(name);
-		
+
 		ExOleObjAtom oleObj = ctrl.getExOleObjAtom();
 		oleObj.setDrawAspect(ExOleObjAtom.DRAW_ASPECT_VISIBLE);
 		oleObj.setType(ExOleObjAtom.TYPE_CONTROL);
 		oleObj.setSubType(ExOleObjAtom.SUBTYPE_DEFAULT);
-		
+
 		int objectId = addToObjListAtom(ctrl);
 		oleObj.setObjID(objectId);
 		return objectId;
@@ -1028,7 +1028,7 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
 	 */
 	public int addEmbed(POIFSFileSystem poiData) {
         DirectoryNode root = poiData.getRoot();
-        
+
         // prepare embedded data
         if (new ClassID().equals(root.getStorageClsid())) {
         	// need to set class id
@@ -1041,12 +1041,12 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
 	    		}
 	    	}
 	    	if (classID == null) {
-	    		throw new IllegalArgumentException("Unsupported embedded document");    		
+	    		throw new IllegalArgumentException("Unsupported embedded document");
 	    	}
-	    	
+
 	    	root.setStorageClsid(classID);
         }
-        
+
 		ExEmbed exEmbed = new ExEmbed();
         // remove unneccessary infos, so we don't need to specify the type
         // of the ole object multiple times
@@ -1074,7 +1074,7 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
 	            // OlePresXXX, but it seems, that they aren't neccessary
 	            byte oleBytes[] = { 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	            poiData.createDocument(new ByteArrayInputStream(oleBytes), OLESTREAM_NAME);
-	        }        
+	        }
 
 	        ByteArrayOutputStream bos = new ByteArrayOutputStream();
 	        poiData.writeFilesystem(bos);
@@ -1082,11 +1082,11 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
         } catch (IOException e) {
         	throw new HSLFException(e);
         }
-        
+
         int psrId = addPersistentObject(exOleObjStg);
         exOleObjStg.setPersistId(psrId);
         eeAtom.setObjStgDataRef(psrId);
-        
+
 		int objectId = addToObjListAtom(exEmbed);
 		eeAtom.setObjID(objectId);
 		return objectId;
@@ -1104,7 +1104,7 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
 		objAtom.setObjectIDSeed(objectId);
 
 		lst.addChildAfter(exObj, objAtom);
-		
+
 		return objectId;
 	}
 
@@ -1133,7 +1133,7 @@ public final class HSLFSlideShow implements SlideShow<HSLFShape,HSLFTextParagrap
         } catch (IOException e) {
             throw new HSLFException(e);
         }
-		
+
 		PersistPtrHolder ptr = (PersistPtrHolder)interestingRecords.get(RecordTypes.PersistPtrIncrementalBlock);
 		UserEditAtom usr = (UserEditAtom)interestingRecords.get(RecordTypes.UserEditAtom);
 

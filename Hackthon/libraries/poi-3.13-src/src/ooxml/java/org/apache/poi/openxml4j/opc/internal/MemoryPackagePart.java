@@ -33,7 +33,7 @@ import org.apache.poi.util.IOUtils;
 
 /**
  * Memory version of a package part. Use to
- * 
+ *
  * @author Julien Chable
  * @version 1.0
  */
@@ -46,7 +46,7 @@ public final class MemoryPackagePart extends PackagePart {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param pack
 	 *            The owner package.
 	 * @param partName
@@ -63,7 +63,7 @@ public final class MemoryPackagePart extends PackagePart {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param pack
 	 *            The owner package.
 	 * @param partName
@@ -121,10 +121,10 @@ public final class MemoryPackagePart extends PackagePart {
 	   } catch(IOException e) {
 	      throw new InvalidFormatException(e.getMessage());
 	   }
-	   
+
 	   // Save it
 	   data = baos.toByteArray();
-	   
+
 	   // All done
 	   return true;
 	}

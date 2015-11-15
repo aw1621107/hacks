@@ -141,7 +141,7 @@ public class DrawShape implements Drawable {
         }
         return anchor;
     }
-    
+
     protected Shape<?,?> getShape() {
         return shape;
     }

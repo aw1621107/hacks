@@ -32,8 +32,8 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
- * Centralises logic for finding/opening sample files in the test-data/spreadsheet folder. 
- * 
+ * Centralises logic for finding/opening sample files in the test-data/spreadsheet folder.
+ *
  * @author Josh Micich
  */
 public class XSSFTestDataSamples {
@@ -82,9 +82,9 @@ public class XSSFTestDataSamples {
 		R r = (R) result;
 		return r;
     }
-    
+
     /**
-     * Writes the Workbook either into a file or into a byte array, depending on presence of 
+     * Writes the Workbook either into a file or into a byte array, depending on presence of
      * the system property {@value #TEST_OUTPUT_DIR}, and reads it in a new instance of the Workbook back.
      * @param wb workbook to write
      * @param testName file name to be used if writing into a file. The old file with the same name will be overridden.

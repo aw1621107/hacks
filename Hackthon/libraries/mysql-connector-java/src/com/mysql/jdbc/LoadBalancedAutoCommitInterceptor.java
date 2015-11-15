@@ -39,7 +39,7 @@ public class LoadBalancedAutoCommitInterceptor implements StatementInterceptorV2
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.StatementInterceptorV2#executeTopLevelOnly()
      */
     public boolean executeTopLevelOnly() {
@@ -66,7 +66,7 @@ public class LoadBalancedAutoCommitInterceptor implements StatementInterceptorV2
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.StatementInterceptorV2#postProcess(java.lang.String, com.mysql.jdbc.Statement, com.mysql.jdbc.ResultSetInternalMethods,
      * com.mysql.jdbc.Connection, int, boolean, boolean, java.sql.SQLException)
      */

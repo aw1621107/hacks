@@ -27,12 +27,12 @@ import org.apache.poi.util.*;
  * NOTE: This source is automatically generated please do not modify this file.  Either subclass or
  *       remove the record in src/types/definitions.
  * <p>
- * This class is internal. It content or properties may change without notice 
+ * This class is internal. It content or properties may change without notice
  * due to changes in our knowledge of internal Microsoft Word binary structures.
 
  * @author S. Ryan Ackley. Field descriptions are quoted from Microsoft Office Word 97-2007 Binary
         File Format (.doc) Specification
-    
+
  */
 @Internal
 public abstract class TCAbstractType

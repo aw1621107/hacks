@@ -25,14 +25,14 @@ import org.apache.poi.util.LittleEndianOutput;
 /**
  * EXTERNSHEET (0x0017)<br/>
  * A List of Indexes to  EXTERNALBOOK (supplemental book) Records <p/>
- * 
+ *
  * @author Libin Roman (Vista Portal LDT. Developer)
  */
 public class ExternSheetRecord extends StandardRecord {
 
     public final static short sid = 0x0017;
 	private List<RefSubRecord> _list;
-	
+
 	private static final class RefSubRecord {
 		public static final int ENCODED_SIZE = 6;
 
@@ -40,12 +40,12 @@ public class ExternSheetRecord extends StandardRecord {
 		private int _extBookIndex;
 		private int _firstSheetIndex; // may be -1 (0xFFFF)
 		private int _lastSheetIndex;  // may be -1 (0xFFFF)
-		
+
 		public void adjustIndex(int offset) {
 			_firstSheetIndex += offset;
 			_lastSheetIndex += offset;
 		}
-		
+
 		/** a Constructor for making new sub record
 		 */
 		public RefSubRecord(int extBookIndex, int firstSheetIndex, int lastSheetIndex) {
@@ -53,7 +53,7 @@ public class ExternSheetRecord extends StandardRecord {
 			_firstSheetIndex = firstSheetIndex;
 			_lastSheetIndex = lastSheetIndex;
 		}
-		
+
 		/**
 		 * @param in the RecordInputstream to read the record from
 		 */
@@ -69,7 +69,7 @@ public class ExternSheetRecord extends StandardRecord {
 		public int getLastSheetIndex(){
 			return _lastSheetIndex;
 		}
-		
+
 		@Override
 		public String toString() {
 			StringBuffer buffer = new StringBuffer();
@@ -78,55 +78,55 @@ public class ExternSheetRecord extends StandardRecord {
 			buffer.append(" lastSheet=").append(_lastSheetIndex);
 			return buffer.toString();
 		}
-		
+
 		public void serialize(LittleEndianOutput out) {
 			out.writeShort(_extBookIndex);
 			out.writeShort(_firstSheetIndex);
 			out.writeShort(_lastSheetIndex);
 		}
-	}	
-	
-	
-	
+	}
+
+
+
 	public ExternSheetRecord() {
 		_list = new ArrayList<RefSubRecord>();
 	}
 
 	public ExternSheetRecord(RecordInputStream in) {
 		_list = new ArrayList<RefSubRecord>();
-		
+
 		int nItems  = in.readShort();
-		
+
 		for (int i = 0 ; i < nItems ; ++i) {
 			RefSubRecord rec = new RefSubRecord(in);
 			_list.add(rec);
 		}
 	}
-	
 
-	/**  
+
+	/**
 	 * @return number of REF structures
 	 */
 	public int getNumOfRefs() {
 		return _list.size();
 	}
-	
-	/** 
+
+	/**
 	 * adds REF struct (ExternSheetSubRecord)
 	 * @param rec REF struct
 	 */
 	public void addREFRecord(RefSubRecord rec) {
 		_list.add(rec);
 	}
-	
+
 	/** returns the number of REF Records, which is in model
 	 * @return number of REF records
 	 */
 	public int getNumOfREFRecords() {
 		return _list.size();
 	}
-	
-	
+
+
 	@Override
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
@@ -139,22 +139,22 @@ public class ExternSheetRecord extends StandardRecord {
 			sb.append('\n');
 		}
 		sb.append("[/EXTERNSHEET]\n");
-		
-		
+
+
 		return sb.toString();
 	}
-	
+
 	@Override
 	protected int getDataSize() {
 		return 2 + _list.size() * RefSubRecord.ENCODED_SIZE;
 	}
-	
+
 	@Override
 	public void serialize(LittleEndianOutput out) {
 		int nItems = _list.size();
 
 		out.writeShort(nItems);
-		
+
 		for (int i = 0; i < nItems; i++) {
 			getRef(i).serialize(out);
 		}
@@ -163,35 +163,35 @@ public class ExternSheetRecord extends StandardRecord {
 	private RefSubRecord getRef(int i) {
 		return _list.get(i);
 	}
-	
+
     /**
-     * @deprecated Was prevously used for removing sheets, which we now do differently 
+     * @deprecated Was prevously used for removing sheets, which we now do differently
      */
     @Deprecated
     public void adjustIndex(int extRefIndex, int offset) {
         getRef(extRefIndex).adjustIndex(offset);
     }
-	
+
 	public void removeSheet(int sheetIdx) {
         int nItems = _list.size();
         int toRemove = -1;
         for (int i = 0; i < nItems; i++) {
             RefSubRecord refSubRecord = _list.get(i);
-            if(refSubRecord.getFirstSheetIndex() == sheetIdx && 
+            if(refSubRecord.getFirstSheetIndex() == sheetIdx &&
                     refSubRecord.getLastSheetIndex() == sheetIdx) {
                 toRemove = i;
-            } else if (refSubRecord.getFirstSheetIndex() > sheetIdx && 
+            } else if (refSubRecord.getFirstSheetIndex() > sheetIdx &&
                     refSubRecord.getLastSheetIndex() > sheetIdx) {
                 _list.set(i, new RefSubRecord(refSubRecord.getExtBookIndex(), refSubRecord.getFirstSheetIndex()-1, refSubRecord.getLastSheetIndex()-1));
             }
         }
-        
+
         // finally remove entries for sheet indexes that we remove
         if(toRemove != -1) {
             _list.remove(toRemove);
         }
 	}
-	
+
 	/**
 	 * return the non static version of the id for this record.
 	 */
@@ -283,7 +283,7 @@ public class ExternSheetRecord extends StandardRecord {
 			if (ref.getExtBookIndex() != externalBookIndex) {
 				continue;
 			}
-			if (ref.getFirstSheetIndex() == firstSheetIndex && 
+			if (ref.getFirstSheetIndex() == firstSheetIndex &&
 			        ref.getLastSheetIndex() == lastSheetIndex) {
 				return i;
 			}

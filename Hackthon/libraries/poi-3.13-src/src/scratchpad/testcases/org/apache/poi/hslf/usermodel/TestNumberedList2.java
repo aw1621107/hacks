@@ -36,7 +36,7 @@ import org.junit.Test;
  * if a paragraph has autonumber ()
  * @see <a href="http://social.msdn.microsoft.com/Forums/mr-IN/os_binaryfile/thread/650888db-fabd-4b95-88dc-f0455f6e2d28">
  *     PPT: Missing TextAutoNumberScheme structure providing the style of the number bullets</a>
- * 
+ *
  * @author Alex Nikiforov [mailto:anikif@gmail.com]
  */
 public final class TestNumberedList2 {
@@ -62,14 +62,14 @@ public final class TestNumberedList2 {
 		assertNotNull(numberedListInfoForTextBox1);
 		final TextPFException9[] autoNumbersOfTextBox0 = numberedListInfoForTextBox0.getAutoNumberTypes();
 		assertEquals(Short.valueOf((short)1), autoNumbersOfTextBox0[0].getfBulletHasAutoNumber());
-		assertEquals(Short.valueOf((short)1), autoNumbersOfTextBox0[0].getAutoNumberStartNumber());//Default value = 1 will be used 
+		assertEquals(Short.valueOf((short)1), autoNumbersOfTextBox0[0].getAutoNumberStartNumber());//Default value = 1 will be used
 		assertTrue(AutoNumberingScheme.arabicPeriod == autoNumbersOfTextBox0[0].getAutoNumberScheme());
 		final TextPFException9[] autoNumbersOfTextBox1 = numberedListInfoForTextBox1.getAutoNumberTypes();
 		assertEquals(Short.valueOf((short)1), autoNumbersOfTextBox1[0].getfBulletHasAutoNumber());
-		assertEquals(Short.valueOf((short)6), autoNumbersOfTextBox1[0].getAutoNumberStartNumber());//Default value = 1 will be used 
+		assertEquals(Short.valueOf((short)6), autoNumbersOfTextBox1[0].getAutoNumberStartNumber());//Default value = 1 will be used
 		assertTrue(AutoNumberingScheme.arabicPeriod == autoNumbersOfTextBox1[0].getAutoNumberScheme());
 
-		
+
 		List<List<HSLFTextParagraph>> textParass = s.getTextParagraphs();
 		assertEquals(2, textParass.size());
 
@@ -83,7 +83,7 @@ public final class TestNumberedList2 {
 	        "This would be used as a continuation list on another page\r" +
             "This list should start with #6";
 		assertEquals(expected, HSLFTextParagraph.getRawText(textParass.get(1)));
-		
+
 		final EscherTextboxWrapper[] styleAtoms = s.getTextboxWrappers();
 		assertEquals(textParass.size(), styleAtoms.length);
 		checkSingleRunWrapper(44, styleAtoms[0]);
@@ -97,9 +97,9 @@ public final class TestNumberedList2 {
 		assertNotNull(numberedListInfoForTextBox);
 		final TextPFException9[] autoNumbersOfTextBox = numberedListInfoForTextBox.getAutoNumberTypes();
 		assertEquals(Short.valueOf((short)1), autoNumbersOfTextBox[0].getfBulletHasAutoNumber());
-		assertEquals(Short.valueOf((short)1), autoNumbersOfTextBox[0].getAutoNumberStartNumber());//Default value = 1 will be used 
+		assertEquals(Short.valueOf((short)1), autoNumbersOfTextBox[0].getAutoNumberStartNumber());//Default value = 1 will be used
 		assertTrue(AutoNumberingScheme.arabicPeriod == autoNumbersOfTextBox[0].getAutoNumberScheme());
-			
+
 		List<List<HSLFTextParagraph>> textParass = s.getTextParagraphs();
 		assertEquals(3, textParass.size());
 
@@ -112,7 +112,7 @@ public final class TestNumberedList2 {
 		assertEquals(expected, HSLFTextParagraph.getRawText(textParass.get(1)));
 		expected = "Second bulleted list \u2013 should appear after numbered list\rMore bullets";
 		assertEquals(expected, HSLFTextParagraph.getRawText(textParass.get(2)));
-		
+
 		final EscherTextboxWrapper[] styleAtoms = s.getTextboxWrappers();
 		assertEquals(textParass.size(), styleAtoms.length);
 		checkSingleRunWrapper(27, styleAtoms[0]);

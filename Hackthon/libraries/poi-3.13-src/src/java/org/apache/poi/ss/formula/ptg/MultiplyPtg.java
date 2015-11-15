@@ -30,7 +30,7 @@ public final class MultiplyPtg extends ValueOperatorPtg {
     private MultiplyPtg() {
     	// enforce singleton
     }
-    
+
     protected byte getSid() {
     	return sid;
     }
@@ -38,7 +38,7 @@ public final class MultiplyPtg extends ValueOperatorPtg {
     public int getNumberOfOperands() {
         return 2;
     }
-    
+
     public String toFormulaString(String[] operands) {
         StringBuffer buffer = new StringBuffer();
 
@@ -46,5 +46,5 @@ public final class MultiplyPtg extends ValueOperatorPtg {
         buffer.append("*");
         buffer.append(operands[ 1 ]);
         return buffer.toString();
-    }                  
+    }
 }

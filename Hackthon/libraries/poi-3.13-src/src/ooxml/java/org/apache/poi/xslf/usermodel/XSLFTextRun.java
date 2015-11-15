@@ -89,14 +89,14 @@ public class XSLFTextRun implements TextRun {
     public void setFontColor(Color color) {
         setFontColor(DrawPaint.createSolidPaint(color));
     }
-    
+
     @Override
     public void setFontColor(PaintStyle color) {
         if (!(color instanceof SolidPaint)) {
             throw new IllegalArgumentException("Currently only SolidPaint is supported!");
         }
         SolidPaint sp = (SolidPaint)color;
-        
+
         CTTextCharacterProperties rPr = getRPr();
         CTSolidColorFillProperties fill = rPr.isSetSolidFill() ? rPr.getSolidFill() : rPr.addNewSolidFill();
         CTSRgbColor clr = fill.isSetSrgbClr() ? fill.getSrgbClr() : fill.addNewSrgbClr();
@@ -127,7 +127,7 @@ public class XSLFTextRun implements TextRun {
                     setValue(ps);
                     return true;
                 }
-                
+
                 return false;
             }
         };
@@ -494,10 +494,10 @@ public class XSLFTextRun implements TextRun {
 
         if (_r.isSetRPr()) ok = fetcher.fetch(getRPr());
         if (ok) return true;
-        
+
         ok = shape.fetchShapeProperty(fetcher);
         if (ok) return true;
-        
+
         CTPlaceholder ph = shape.getCTPlaceholder();
         if (ph == null){
             // if it is a plain text box then take defaults from presentation.xml

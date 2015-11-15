@@ -48,7 +48,7 @@ import org.openxmlformats.schemas.drawingml.x2006.main.STShapeType;
  * @author Yegor Kozlov
  */
 public class TestXSLFSimpleShape {
-    
+
     @Test
     public void testLineStyles() throws IOException {
         XMLSlideShow ppt = new XMLSlideShow();
@@ -137,7 +137,7 @@ public class TestXSLFSimpleShape {
         assertEquals(null, ln3.getLineDash());
         ln3.setLineCap(null);
         assertEquals(null, ln3.getLineDash());
-        
+
         ppt.close();
     }
 
@@ -282,7 +282,7 @@ public class TestXSLFSimpleShape {
         }
         ppt.close();
     }
-    
+
     @Test
     public void testValidGeometry() throws Exception {
         XMLSlideShow ppt = new XMLSlideShow();
@@ -290,23 +290,23 @@ public class TestXSLFSimpleShape {
 
         XSLFSimpleShape shape = slide.createAutoShape();
         CTShapeProperties spPr = shape.getSpPr();
-        
+
         CTPresetGeometry2D prstGeom = CTPresetGeometry2D.Factory.newInstance();
         prstGeom.setPrst(STShapeType.Enum.forInt(1));
-        
+
         assertNotNull(prstGeom.getPrst());
         assertNotNull(prstGeom.getPrst().toString());
         assertNotNull(spPr.getPrstGeom());
         spPr.setPrstGeom(prstGeom);
         assertNotNull(spPr.getPrstGeom().getPrst());
         assertNotNull(spPr.getPrstGeom().getPrst().toString());
-        
+
         assertNotNull(shape.getGeometry());
-        
+
         ppt.close();
     }
 
-    
+
     @Test
     public void testInvalidGeometry() throws Exception {
         XMLSlideShow ppt = new XMLSlideShow();
@@ -314,17 +314,17 @@ public class TestXSLFSimpleShape {
 
         XSLFSimpleShape shape = slide.createAutoShape();
         CTShapeProperties spPr = shape.getSpPr();
-        
+
         CTPresetGeometry2D prstGeom = CTPresetGeometry2D.Factory.newInstance();
         prstGeom.setPrst(STShapeType.Enum.forInt(1));
-        
+
         assertNotNull(prstGeom.getPrst());
         assertNotNull(prstGeom.getPrst().toString());
         assertNotNull(spPr.getPrstGeom());
         spPr.setPrstGeom(prstGeom);
         assertNotNull(spPr.getPrstGeom().getPrst());
         assertNotNull(spPr.getPrstGeom().getPrst().toString());
-        
+
         try {
             // cause the geometries to be not found
             TestPresetGeometries.clearPreset();
@@ -338,7 +338,7 @@ public class TestXSLFSimpleShape {
             // reset to not affect other tests
             TestPresetGeometries.resetPreset();
         }
-        
+
         ppt.close();
     }
 }

@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.poifs.storage;
 
@@ -83,7 +83,7 @@ public class SmallBlockTableWriter
      *
      * @return number of SBAT big blocks
      */
-    
+
     public int getSBATBlockCount()
     {
 	return (_big_block_count + 15) / 16;

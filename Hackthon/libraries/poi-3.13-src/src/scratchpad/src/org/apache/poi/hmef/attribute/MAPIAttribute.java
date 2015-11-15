@@ -41,7 +41,7 @@ public class MAPIAttribute {
    private final MAPIProperty property;
    private final int type;
    private final byte[] data;
-   
+
    /**
     * Constructs a single new attribute from
     *  the contents of the stream
@@ -63,7 +63,7 @@ public class MAPIAttribute {
    public byte[] getData() {
       return data;
    }
-   
+
    public String toString() {
       String hex;
       if(data.length <= 16) {
@@ -74,10 +74,10 @@ public class MAPIAttribute {
          hex = HexDump.toHex(d);
          hex = hex.substring(0, hex.length()-1) + ", ....]";
       }
-      
+
       return property.toString() + " " + hex;
    }
-   
+
    /**
     * Parses a MAPI Properties TNEF Attribute, and returns
     *  the list of MAPI Attributes contained within it
@@ -97,16 +97,16 @@ public class MAPIAttribute {
          );
       }
       ByteArrayInputStream inp = new ByteArrayInputStream(parent.getData());
-      
+
       // First up, get the number of attributes
       int count = LittleEndian.readInt(inp);
       List<MAPIAttribute> attrs = new ArrayList<MAPIAttribute>();
-      
+
       // Now, read each one in in turn
       for(int i=0; i<count; i++) {
          int typeAndMV = LittleEndian.readUShort(inp);
          int id = LittleEndian.readUShort(inp);
-         
+
          // Is it either Multi-Valued or Variable-Length?
          boolean isMV = false;
          boolean isVL = false;
@@ -119,13 +119,13 @@ public class MAPIAttribute {
                typeId == Types.BINARY.getId() || typeId == Types.DIRECTORY.getId()) {
             isVL = true;
          }
-         
+
          // Turn the type ID into a strongly typed thing
          MAPIType type = Types.getById(typeId);
          if (type == null) {
             type = Types.createCustom(typeId);
          }
-         
+
          // If it's a named property, rather than a standard
          //  MAPI property, grab the details of it
          MAPIProperty prop = MAPIProperty.get(id);
@@ -133,7 +133,7 @@ public class MAPIAttribute {
             byte[] guid = new byte[16];
             IOUtils.readFully(inp, guid);
             int mptype = LittleEndian.readInt(inp);
-            
+
             // Get the name of it
             String name;
             if(mptype == 0) {
@@ -149,14 +149,14 @@ public class MAPIAttribute {
                name = StringUtil.getFromUnicodeLE(mpdata, 0, (mplen/2)-1);
                skipToBoundary(mplen, inp);
             }
-            
+
             // Now create
             prop = MAPIProperty.createCustom(id, type, name);
          }
          if(prop == MAPIProperty.UNKNOWN) {
             prop = MAPIProperty.createCustom(id, type, "(unknown " + Integer.toHexString(id) + ")");
          }
-         
+
          // Now read in the value(s)
          int values = 1;
          if(isMV || isVL) {
@@ -167,7 +167,7 @@ public class MAPIAttribute {
             byte[] data = new byte[len];
             IOUtils.readFully(inp, data);
             skipToBoundary(len, inp);
-            
+
             // Create
             MAPIAttribute attr;
             if(type == Types.UNICODE_STRING || type == Types.ASCII_STRING) {
@@ -182,7 +182,7 @@ public class MAPIAttribute {
             attrs.add(attr);
          }
       }
-      
+
       // All done
       return attrs;
    }

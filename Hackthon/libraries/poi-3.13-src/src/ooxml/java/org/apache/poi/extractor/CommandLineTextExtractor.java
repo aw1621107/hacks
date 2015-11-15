@@ -26,26 +26,26 @@ import org.apache.poi.POITextExtractor;
  */
 public class CommandLineTextExtractor {
    public static final String DIVIDER = "=======================";
-   
+
    public static void main(String[] args) throws Exception {
       if(args.length < 1) {
          System.err.println("Use:");
          System.err.println("   CommandLineTextExtractor <filename> [filename] [filename]");
          System.exit(1);
       }
-      
+
       for(int i=0; i<args.length; i++) {
          System.out.println(DIVIDER);
-         
+
          File f = new File(args[i]);
          System.out.println(f);
-         
-         POITextExtractor extractor = 
+
+         POITextExtractor extractor =
             ExtractorFactory.createExtractor(f);
          try {
              POITextExtractor metadataExtractor =
                 extractor.getMetadataTextExtractor();
-             
+
              System.out.println("   " + DIVIDER);
              System.out.println(metadataExtractor.getText());
              System.out.println("   " + DIVIDER);

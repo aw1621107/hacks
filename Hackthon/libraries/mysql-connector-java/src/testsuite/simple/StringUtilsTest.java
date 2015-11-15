@@ -37,7 +37,7 @@ import com.mysql.jdbc.StringUtils.SearchMode;
 public class StringUtilsTest extends BaseTestCase {
     /**
      * Creates a new StringUtilsTest.
-     * 
+     *
      * @param name
      *            the name of the test
      */
@@ -47,7 +47,7 @@ public class StringUtilsTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -56,7 +56,7 @@ public class StringUtilsTest extends BaseTestCase {
 
     /**
      * Tests StringUtil.indexOfIgnoreCase() methods
-     * 
+     *
      * @throws Exception
      */
     public void testIndexOfIgnoreCase() throws Exception {
@@ -513,7 +513,7 @@ public class StringUtilsTest extends BaseTestCase {
 
     /**
      * Tests StringUtil.indexOfQuoteDoubleAware() method
-     * 
+     *
      * @throws Exception
      */
     public void testIndexOfQuoteDoubleAware() throws Exception {
@@ -545,7 +545,7 @@ public class StringUtilsTest extends BaseTestCase {
 
     /**
      * Tests StringUtil.appendAsHex() methods.
-     * 
+     *
      * @throws Exception
      */
     public void testAppendAsHex() throws Exception {
@@ -580,7 +580,7 @@ public class StringUtilsTest extends BaseTestCase {
 
     /**
      * Tests StringUtil.getBytes() methods.
-     * 
+     *
      * @throws Exception
      */
     public void testGetBytes() throws Exception {
@@ -639,7 +639,7 @@ public class StringUtilsTest extends BaseTestCase {
 
     /**
      * Tests StringUtil.quoteIdentifier() and StringUtil.unQuoteIdentifier() methods using back quote marks.
-     * 
+     *
      * @throws Exception
      */
     public void testQuoteUnQuoteIdentifierWithBackQuote() throws Exception {
@@ -729,7 +729,7 @@ public class StringUtilsTest extends BaseTestCase {
 
     /**
      * Tests StringUtil.quoteIdentifier() and StringUtil.unQuoteIdentifier() methods using double quote marks.
-     * 
+     *
      * @throws Exception
      */
     public void testQuoteUnQuoteIdentifierWithDoubleQuote() throws Exception {

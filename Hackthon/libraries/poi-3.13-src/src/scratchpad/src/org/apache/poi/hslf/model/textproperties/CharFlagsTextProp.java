@@ -17,7 +17,7 @@
 
 package org.apache.poi.hslf.model.textproperties;
 
-/** 
+/**
  * Definition for the common character text property bitset, which
  *  handles bold/italic/underline etc.
  */

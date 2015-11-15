@@ -78,7 +78,7 @@ public final class CFHeader12Record extends CFHeaderBase implements FutureRecord
     public CellRangeAddress getAssociatedRange() {
         return futureHeader.getAssociatedRange();
     }
-    
+
     public Object clone() {
         CFHeader12Record result = new CFHeader12Record();
         result.futureHeader = (FtrHeader)futureHeader.clone();

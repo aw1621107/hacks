@@ -30,7 +30,7 @@ import org.apache.poi.util.LittleEndianOutput;
  */
 public final class FilePassRecord extends StandardRecord {
 	public final static short sid = 0x002F;
-	
+
 	private int _encryptionType;
 	private KeyData _keyData;
 
@@ -39,20 +39,20 @@ public final class FilePassRecord extends StandardRecord {
 	    void serialize(LittleEndianOutput out);
 	    int getDataSize();
 	    void appendToString(StringBuffer buffer);
-	} 
-	
+	}
+
 	public static class Rc4KeyData implements KeyData {
 	    private static final int ENCRYPTION_OTHER_RC4 = 1;
 	    private static final int ENCRYPTION_OTHER_CAPI_2 = 2;
 	    private static final int ENCRYPTION_OTHER_CAPI_3 = 3;
         private static final int ENCRYPTION_OTHER_CAPI_4 = 4;
-	    
+
 	    private byte[] _salt;
 	    private byte[] _encryptedVerifier;
 	    private byte[] _encryptedVerifierHash;
 	    private int _encryptionInfo;
 	    private int _minorVersionNo;
-	    
+
 	    public void read(RecordInputStream in) {
 	        _encryptionInfo = in.readUShort();
 	        switch (_encryptionInfo) {
@@ -75,7 +75,7 @@ public final class FilePassRecord extends StandardRecord {
 	        _encryptedVerifier = FilePassRecord.read(in, 16);
 	        _encryptedVerifierHash = FilePassRecord.read(in, 16);
 	    }
-	    
+
 	    public void serialize(LittleEndianOutput out) {
             out.writeShort(_encryptionInfo);
             out.writeShort(_minorVersionNo);
@@ -83,7 +83,7 @@ public final class FilePassRecord extends StandardRecord {
             out.write(_encryptedVerifier);
             out.write(_encryptedVerifierHash);
 	    }
-	    
+
 	    public int getDataSize() {
 	        return 54;
 	    }
@@ -111,7 +111,7 @@ public final class FilePassRecord extends StandardRecord {
         public void setEncryptedVerifierHash(byte[] encryptedVerifierHash) {
             this._encryptedVerifierHash = encryptedVerifierHash.clone();
         }
-        
+
         public void appendToString(StringBuffer buffer) {
             buffer.append("    .rc4.info = ").append(HexDump.shortToHex(_encryptionInfo)).append("\n");
             buffer.append("    .rc4.ver  = ").append(HexDump.shortToHex(_minorVersionNo)).append("\n");
@@ -123,7 +123,7 @@ public final class FilePassRecord extends StandardRecord {
 
 	public static class XorKeyData implements KeyData {
 	    /**
-	     * key (2 bytes): An unsigned integer that specifies the obfuscation key. 
+	     * key (2 bytes): An unsigned integer that specifies the obfuscation key.
 	     * See [MS-OFFCRYPTO], 2.3.6.2 section, the first step of initializing XOR
 	     * array where it describes the generation of 16-bit XorKey value.
 	     */
@@ -134,7 +134,7 @@ public final class FilePassRecord extends StandardRecord {
 	     * the password verification identifier.
 	     */
 	    private int _verifier;
-	    
+
         public void read(RecordInputStream in) {
             _key = in.readUShort();
             _verifier = in.readUShort();
@@ -153,26 +153,26 @@ public final class FilePassRecord extends StandardRecord {
         public int getKey() {
             return _key;
         }
-        
+
         public int getVerifier() {
             return _verifier;
         }
-        
+
         public void setKey(int key) {
             this._key = key;
         }
-        
+
         public void setVerifier(int verifier) {
             this._verifier = verifier;
         }
-        
+
         public void appendToString(StringBuffer buffer) {
             buffer.append("    .xor.key = ").append(HexDump.intToHex(_key)).append("\n");
             buffer.append("    .xor.verifier  = ").append(HexDump.intToHex(_verifier)).append("\n");
         }
 	}
-	
-	
+
+
 	private static final int ENCRYPTION_XOR = 0;
 	private static final int ENCRYPTION_OTHER = 1;
 
@@ -215,13 +215,13 @@ public final class FilePassRecord extends StandardRecord {
             ? (Rc4KeyData) _keyData
             : null;
 	}
-	
+
     public XorKeyData getXorKeyData() {
         return (_keyData instanceof XorKeyData)
             ? (XorKeyData) _keyData
             : null;
     }
-    
+
     private Rc4KeyData checkRc4() {
         Rc4KeyData rc4 = getRc4KeyData();
         if (rc4 == null) {
@@ -229,7 +229,7 @@ public final class FilePassRecord extends StandardRecord {
         }
         return rc4;
     }
-    
+
     /**
      * @deprecated use getRc4KeyData().getSalt()
      * @return the rc4 salt
@@ -281,7 +281,7 @@ public final class FilePassRecord extends StandardRecord {
 	public short getSid() {
 		return sid;
 	}
-	
+
     public Object clone() {
 		// currently immutable
 		return this;

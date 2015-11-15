@@ -49,7 +49,7 @@ public class JDBC42CallableStatement extends JDBC4CallableStatement {
 
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
-     * 
+     *
      * @param parameterIndex
      * @param sqlType
      * @throws SQLException
@@ -60,7 +60,7 @@ public class JDBC42CallableStatement extends JDBC4CallableStatement {
 
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
-     * 
+     *
      * @param parameterIndex
      * @param sqlType
      * @param scale
@@ -72,7 +72,7 @@ public class JDBC42CallableStatement extends JDBC4CallableStatement {
 
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
-     * 
+     *
      * @param parameterIndex
      * @param sqlType
      * @param typeName
@@ -84,7 +84,7 @@ public class JDBC42CallableStatement extends JDBC4CallableStatement {
 
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
-     * 
+     *
      * @param parameterName
      * @param sqlType
      * @throws SQLException
@@ -95,7 +95,7 @@ public class JDBC42CallableStatement extends JDBC4CallableStatement {
 
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
-     * 
+     *
      * @param parameterName
      * @param sqlType
      * @param scale
@@ -107,7 +107,7 @@ public class JDBC42CallableStatement extends JDBC4CallableStatement {
 
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
-     * 
+     *
      * @param parameterName
      * @param sqlType
      * @param typeName
@@ -119,7 +119,7 @@ public class JDBC42CallableStatement extends JDBC4CallableStatement {
 
     /**
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param parameterIndex
      * @param x
      * @throws SQLException
@@ -133,7 +133,7 @@ public class JDBC42CallableStatement extends JDBC4CallableStatement {
 
     /**
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param parameterIndex
      * @param x
      * @param targetSqlType
@@ -148,7 +148,7 @@ public class JDBC42CallableStatement extends JDBC4CallableStatement {
 
     /**
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param parameterIndex
      * @param x
      * @param targetSqlType
@@ -165,7 +165,7 @@ public class JDBC42CallableStatement extends JDBC4CallableStatement {
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param parameterIndex
      * @param x
      * @param targetSqlType
@@ -180,7 +180,7 @@ public class JDBC42CallableStatement extends JDBC4CallableStatement {
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param parameterIndex
      * @param x
      * @param targetSqlType
@@ -196,7 +196,7 @@ public class JDBC42CallableStatement extends JDBC4CallableStatement {
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param parameterName
      * @param x
      * @param targetSqlType
@@ -211,7 +211,7 @@ public class JDBC42CallableStatement extends JDBC4CallableStatement {
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param parameterName
      * @param x
      * @param targetSqlType

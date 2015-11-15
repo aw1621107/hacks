@@ -30,7 +30,7 @@ public class TestXSLFPowerPointExtractor extends TestCase {
     */
    private XSLFSlideShow xmlA;
    private OPCPackage pkg;
-	
+
    private POIDataSamples slTests = POIDataSamples.getSlideShowInstance();
 
    protected void setUp() throws Exception {
@@ -45,14 +45,14 @@ public class TestXSLFPowerPointExtractor extends TestCase {
 	public void testGetSimpleText() throws Exception {
 		new XSLFPowerPointExtractor(xmlA).close();
 		new XSLFPowerPointExtractor(pkg).close();
-		
-		XSLFPowerPointExtractor extractor = 
+
+		XSLFPowerPointExtractor extractor =
 			new XSLFPowerPointExtractor(xmlA);
 		extractor.getText();
-		
+
 		String text = extractor.getText();
 		assertTrue(text.length() > 0);
-		
+
 		// Check Basics
 		assertTrue(text.startsWith("Lorem ipsum dolor sit amet\n"));
 		assertTrue(text.contains("amet\n\n"));
@@ -69,7 +69,7 @@ public class TestXSLFPowerPointExtractor extends TestCase {
          "Third level\n" +
          "Fourth level\n" +
          "Fifth level\n";
-		
+
 		// Just slides, no notes
 		text = extractor.getText(true, false, false);
 		assertEquals(
@@ -85,13 +85,13 @@ public class TestXSLFPowerPointExtractor extends TestCase {
 				"\n"
 				, text
 		);
-		
+
 		// Just notes, no slides
 		text = extractor.getText(false, true);
 		assertEquals(
 				"\n\n\n\n", text
 		);
-		
+
 		// Both
 		text = extractor.getText(true, true, false);
 		assertEquals(
@@ -107,7 +107,7 @@ public class TestXSLFPowerPointExtractor extends TestCase {
 				"\n\n\n"
 				, text
 		);
-		
+
 		// With Slides and Master Text
       text = extractor.getText(true, false, true);
       assertEquals(
@@ -123,7 +123,7 @@ public class TestXSLFPowerPointExtractor extends TestCase {
             "\n"
             , text
       );
-		
+
 		// With Slides, Notes and Master Text
       text = extractor.getText(true, true, true);
       assertEquals(
@@ -140,7 +140,7 @@ public class TestXSLFPowerPointExtractor extends TestCase {
             "\n\n\n"
             , text
       );
-		
+
 		// Via set defaults
 		extractor.setSlidesByDefault(false);
 		extractor.setNotesByDefault(true);
@@ -148,14 +148,14 @@ public class TestXSLFPowerPointExtractor extends TestCase {
 		assertEquals(
 				"\n\n\n\n", text
 		);
-		
+
 		extractor.close();
 	}
-	
+
    public void testGetComments() throws Exception {
-      XSLFSlideShow xml = 
+      XSLFSlideShow xml =
          new XSLFSlideShow(OPCPackage.open(slTests.openResourceAsStream("45545_Comment.pptx")));
-      XSLFPowerPointExtractor extractor = 
+      XSLFPowerPointExtractor extractor =
          new XSLFPowerPointExtractor(xml);
 
       String text = extractor.getText();
@@ -167,35 +167,35 @@ public class TestXSLFPowerPointExtractor extends TestCase {
 
       // Check the authors came through too
       assertTrue("Unable to find expected word in text\n" + text, text.contains("XPVMWARE01"));
-		
+
 		extractor.close();
    }
-	
+
 	public void testGetMasterText() throws Exception {
-      XSLFSlideShow xml = 
+      XSLFSlideShow xml =
          new XSLFSlideShow(OPCPackage.open(slTests.openResourceAsStream("WithMaster.pptx")));
-      XSLFPowerPointExtractor extractor = 
+      XSLFPowerPointExtractor extractor =
          new XSLFPowerPointExtractor(xml);
       extractor.setSlidesByDefault(true);
       extractor.setNotesByDefault(false);
       extractor.setMasterByDefault(true);
-      
+
       String text = extractor.getText();
       assertTrue(text.length() > 0);
 
       // Check master text is there
-      assertTrue("Unable to find expected word in text\n" + text, 
+      assertTrue("Unable to find expected word in text\n" + text,
             text.contains("Footer from the master slide"));
 
       // Theme text shouldn't show up
-      String themeText = 
+      String themeText =
          "Theme Master Title\n" +
          "Theme Master first level\n" +
          "And the 2nd level\n" +
          "Our 3rd level goes here\n" +
          "And onto the 4th, such fun....\n" +
          "Finally is the Fifth level\n";
-      
+
       // Check the whole text
       assertEquals(
             "First page title\n" +
@@ -210,12 +210,12 @@ public class TestXSLFPowerPointExtractor extends TestCase {
             "This text comes from the Master Slide\n"
             , text
       );
-		
+
 		extractor.close();
 	}
 
     public void testTable() throws Exception {
-        XSLFSlideShow xml = 
+        XSLFSlideShow xml =
            new XSLFSlideShow(OPCPackage.open(slTests.openResourceAsStream("present1.pptx")));
         XSLFPowerPointExtractor extractor =
             new XSLFPowerPointExtractor(xml);
@@ -225,24 +225,24 @@ public class TestXSLFPowerPointExtractor extends TestCase {
 
         // Check comments are there
         assertTrue("Unable to find expected word in text\n" + text, text.contains("TEST"));
-		
+
 		extractor.close();
     }
-    
+
     /**
      * Test that we can get the text from macro enabled,
-     *  template, theme, slide enabled etc formats, as 
+     *  template, theme, slide enabled etc formats, as
      *  well as from the normal file
      */
     public void testDifferentSubformats() throws Exception {
        String[] extensions = new String[] {
              "pptx", "pptm", "ppsm", "ppsx",
-             "thmx", 
+             "thmx",
              //"xps" // Doesn't have a core document
        };
        for(String extension : extensions) {
           String filename = "testPPT." + extension;
-          XSLFSlideShow xml = 
+          XSLFSlideShow xml =
              new XSLFSlideShow(OPCPackage.open(slTests.openResourceAsStream(filename)));
           XSLFPowerPointExtractor extractor =
              new XSLFPowerPointExtractor(xml);
@@ -253,29 +253,29 @@ public class TestXSLFPowerPointExtractor extends TestCase {
             assertEquals(0, text.length());
             continue;
          }
-         
+
          assertTrue(text.length() > 0);
          assertTrue(
-               "Text missing for " + filename + "\n" + text, 
+               "Text missing for " + filename + "\n" + text,
                text.contains("Attachment Test")
          );
          assertTrue(
-               "Text missing for " + filename + "\n" + text, 
+               "Text missing for " + filename + "\n" + text,
                text.contains("This is a test file data with the same content")
          );
          assertTrue(
-               "Text missing for " + filename + "\n" + text, 
+               "Text missing for " + filename + "\n" + text,
                text.contains("content parsing")
          );
          assertTrue(
-               "Text missing for " + filename + "\n" + text, 
+               "Text missing for " + filename + "\n" + text,
                text.contains("Different words to test against")
          );
          assertTrue(
-               "Text missing for " + filename + "\n" + text, 
+               "Text missing for " + filename + "\n" + text,
                text.contains("Mystery")
          );
-         
+
  		 extractor.close();
        }
     }

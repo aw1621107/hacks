@@ -33,9 +33,9 @@ public class EscherPlaceholder extends EscherRecord {
     byte placementId = 0;
     byte size = 0;
     short unused = 0;
-    
+
     public EscherPlaceholder() {}
-    
+
     public int fillFields(byte[] data, int offset, EscherRecordFactory recordFactory) {
         int bytesRemaining = readHeader( data, offset );
 
@@ -43,14 +43,14 @@ public class EscherPlaceholder extends EscherRecord {
         placementId = data[offset+12];
         size = data[offset+13];
         unused = LittleEndian.getShort(data, offset+14);
-        
+
         assert(bytesRemaining + 8 == 16);
         return bytesRemaining + 8;
     }
 
     public int serialize(int offset, byte[] data, EscherSerializationListener listener) {
         listener.beforeRecordSerialize( offset, getRecordId(), this );
-        
+
         LittleEndian.putShort(data, offset, getOptions());
         LittleEndian.putShort(data, offset+2, getRecordId());
         LittleEndian.putInt(data, offset+4, 8);
@@ -58,7 +58,7 @@ public class EscherPlaceholder extends EscherRecord {
         LittleEndian.putByte(data, offset+12, placementId);
         LittleEndian.putByte(data, offset+13, size);
         LittleEndian.putShort(data, offset+14, unused);
-        
+
         listener.afterRecordSerialize( offset+getRecordSize(), getRecordId(), getRecordSize(), this );
         return getRecordSize();
     }
@@ -71,5 +71,5 @@ public class EscherPlaceholder extends EscherRecord {
         return "ClientTextboxPlaceholder";
     }
 
-    
+
 }

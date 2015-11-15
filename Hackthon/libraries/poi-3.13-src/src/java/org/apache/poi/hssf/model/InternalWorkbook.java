@@ -626,7 +626,7 @@ public final class InternalWorkbook {
         int sheetNumber = getSheetIndex(sheetname);
         //remove the sheet that needs to be reordered and place it in the spot we want
         boundsheets.add(pos, boundsheets.remove(sheetNumber));
-        
+
         // also adjust order of Records, calculate the position of the Boundsheets via getBspos()...
         int pos0 = records.getBspos() - (boundsheets.size() - 1);
         Record removed = records.get(pos0 + sheetNumber);
@@ -774,7 +774,7 @@ public final class InternalWorkbook {
                 nr.setSheetNumber(nr.getSheetNumber()-1);
             }
         }
-        
+
         if (linkTable != null) {
             // also tell the LinkTable about the removed sheet
             // +1 because we already removed it from the count of sheets!
@@ -853,7 +853,7 @@ public final class InternalWorkbook {
         records.remove(rec); // this updates XfPos for us
         numxfs--;
     }
-    
+
     /**
      * Removes ExtendedFormatRecord record with given index from the
      *  file's list. This will make all
@@ -1325,16 +1325,16 @@ public final class InternalWorkbook {
         // we'll need multiple editions for
         // the different formats
 
-        
+
         switch (id) {
-            case 0: return new FormatRecord(5, BuiltinFormats.getBuiltinFormat(5)); 
-            case 1: return new FormatRecord(6, BuiltinFormats.getBuiltinFormat(6)); 
-            case 2: return new FormatRecord(7, BuiltinFormats.getBuiltinFormat(7)); 
-            case 3: return new FormatRecord(8, BuiltinFormats.getBuiltinFormat(8)); 
-            case 4: return new FormatRecord(0x2a, BuiltinFormats.getBuiltinFormat(0x2a)); 
-            case 5: return new FormatRecord(0x29, BuiltinFormats.getBuiltinFormat(0x29)); 
-            case 6: return new FormatRecord(0x2c, BuiltinFormats.getBuiltinFormat(0x2c)); 
-            case 7: return new FormatRecord(0x2b, BuiltinFormats.getBuiltinFormat(0x2b)); 
+            case 0: return new FormatRecord(5, BuiltinFormats.getBuiltinFormat(5));
+            case 1: return new FormatRecord(6, BuiltinFormats.getBuiltinFormat(6));
+            case 2: return new FormatRecord(7, BuiltinFormats.getBuiltinFormat(7));
+            case 3: return new FormatRecord(8, BuiltinFormats.getBuiltinFormat(8));
+            case 4: return new FormatRecord(0x2a, BuiltinFormats.getBuiltinFormat(0x2a));
+            case 5: return new FormatRecord(0x29, BuiltinFormats.getBuiltinFormat(0x29));
+            case 6: return new FormatRecord(0x2c, BuiltinFormats.getBuiltinFormat(0x2c));
+            case 7: return new FormatRecord(0x2b, BuiltinFormats.getBuiltinFormat(0x2b));
         }
         throw new  IllegalArgumentException("Unexpected id " + id);
     }
@@ -1806,12 +1806,12 @@ public final class InternalWorkbook {
         }
         return linkTable;
     }
-    
+
     public int linkExternalWorkbook(String name, Workbook externalWorkbook) {
         return getOrCreateLinkTable().linkExternalWorkbook(name, externalWorkbook);
     }
 
-    /** 
+    /**
      * Finds the first sheet name by his extern sheet index
      * @param externSheetIndex extern sheet index
      * @return first sheet name.
@@ -1836,7 +1836,7 @@ public final class InternalWorkbook {
         }
         return getSheetName(internalSheetIndex);
     }
-    
+
     public ExternalSheet getExternalSheet(int externSheetIndex) {
         String[] extNames = linkTable.getExternalBookAndSheetName(externSheetIndex);
         if (extNames == null) {
@@ -1878,7 +1878,7 @@ public final class InternalWorkbook {
         return linkTable.getLastInternalSheetIndexForExtIndex(externSheetNumber);
     }
 
-    /** 
+    /**
      * Returns the extern sheet number for specific sheet number.
      * If this sheet doesn't exist in extern sheet, add it
      * @param sheetNumber local sheet number
@@ -1887,7 +1887,7 @@ public final class InternalWorkbook {
     public short checkExternSheet(int sheetNumber){
         return (short)getOrCreateLinkTable().checkExternSheet(sheetNumber);
     }
-    /** 
+    /**
      * Returns the extern sheet number for specific range of sheets.
      * If this sheet range doesn't exist in extern sheet, add it
      * @param firstSheetNumber first local sheet number
@@ -2144,7 +2144,7 @@ public final class InternalWorkbook {
            // We already have it!
            return drawingManager;
         }
-        
+
         // Need to find a DrawingGroupRecord that
         //  contains a EscherDggRecord
         for(Record r : records) {
@@ -2491,7 +2491,7 @@ public final class InternalWorkbook {
             }
         }
     }
-    
+
     public NameRecord cloneFilter(int filterDbNameIndex, int newSheetIndex){
         NameRecord origNameRecord = getNameRecord(filterDbNameIndex);
         // copy original formula but adjust 3D refs to the new external sheet index
@@ -2545,10 +2545,10 @@ public final class InternalWorkbook {
         return record;
     }
 
-        
+
 	/**
 	 * Changes an external referenced file to another file.
-	 * A formular in Excel which refers a cell in another file is saved in two parts: 
+	 * A formular in Excel which refers a cell in another file is saved in two parts:
 	 * The referenced file is stored in an reference table. the row/cell information is saved separate.
 	 * This method invokation will only change the reference in the lookup-table itself.
 	 * @param oldUrl The old URL to search for and which is to be replaced

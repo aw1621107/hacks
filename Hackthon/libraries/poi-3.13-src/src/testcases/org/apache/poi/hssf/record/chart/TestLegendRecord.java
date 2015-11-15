@@ -24,8 +24,8 @@ import junit.framework.TestCase;
 /**
  * Tests the serialization and deserialization of the LegendRecord class works
  * correctly. Test data taken directly from a real Excel file.
- * 
- * 
+ *
+ *
  * @author Andrew C. Oliver (acoliver at apache.org)
  */
 public final class TestLegendRecord extends TestCase {

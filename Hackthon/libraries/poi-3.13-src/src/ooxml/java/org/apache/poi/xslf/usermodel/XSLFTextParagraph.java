@@ -214,7 +214,7 @@ public class XSLFTextParagraph implements TextParagraph<XSLFShape,XSLFTextParagr
         }
     }
 
-    
+
 
     /**
      * @return the font to be used on bullet characters within a given paragraph
@@ -287,8 +287,8 @@ public class XSLFTextParagraph implements TextParagraph<XSLFShape,XSLFTextParagr
     public void setBulletFontColor(Color color) {
         setBulletFontColor(DrawPaint.createSolidPaint(color));
     }
-    
-    
+
+
     /**
      * Set the color to be used on bullet characters within a given paragraph.
      *
@@ -302,7 +302,7 @@ public class XSLFTextParagraph implements TextParagraph<XSLFShape,XSLFTextParagr
         // TODO: implement setting bullet color to null
         SolidPaint sp = (SolidPaint)color;
         Color col = DrawPaint.applyColorTransform(sp.getSolidColor());
-        
+
         CTTextParagraphProperties pr = _p.isSetPPr() ? _p.getPPr() : _p.addNewPPr();
         CTColor c = pr.isSetBuClr() ? pr.getBuClr() : pr.addNewBuClr();
         CTSRgbColor clr = c.isSetSrgbClr() ? c.getSrgbClr() : c.addNewSrgbClr();
@@ -397,8 +397,8 @@ public class XSLFTextParagraph implements TextParagraph<XSLFShape,XSLFTextParagr
         fetchParagraphProperty(fetcher);
         return fetcher.getValue();
     }
-    
-    
+
+
     @Override
     public void setIndent(Double indent){
         if ((indent == null) && !_p.isSetPPr()) return;
@@ -574,7 +574,7 @@ public class XSLFTextParagraph implements TextParagraph<XSLFShape,XSLFTextParagr
                 lnSpc *= scale;
             }
         }
-        
+
         return lnSpc;
     }
 
@@ -717,7 +717,7 @@ public class XSLFTextParagraph implements TextParagraph<XSLFShape,XSLFTextParagr
 
     /* package */ CTTextParagraphProperties getDefaultMasterStyle(){
         CTPlaceholder ph = _shape.getCTPlaceholder();
-        String defaultStyleSelector;   
+        String defaultStyleSelector;
         switch(ph == null ? -1 : ph.getType().intValue()) {
             case STPlaceholderType.INT_TITLE:
             case STPlaceholderType.INT_CTR_TITLE:
@@ -755,7 +755,7 @@ public class XSLFTextParagraph implements TextParagraph<XSLFShape,XSLFTextParagr
             }
         }
 
-        
+
 //        for (CTTextBody txBody : (CTTextBody[])xo.selectPath(nsDecl+".//p:txBody")) {
 //            CTTextParagraphProperties defaultPr = null, lastPr = null;
 //            boolean hasLvl = false;
@@ -774,10 +774,10 @@ public class XSLFTextParagraph implements TextParagraph<XSLFShape,XSLFTextParagr
 //            if (lastPr != null) return lastPr;
 //            break;
 //        }
-//           
+//
 //        String err = "Failed to fetch default style for " + defaultStyleSelector + " and level=" + level;
 //        throw new IllegalArgumentException(err);
-        
+
         return null;
     }
 
@@ -785,14 +785,14 @@ public class XSLFTextParagraph implements TextParagraph<XSLFShape,XSLFTextParagr
         boolean ok = false;
         XSLFTextShape shape = getParentShape();
         XSLFSheet sheet = shape.getSheet();
-        
+
         if(_p.isSetPPr()) ok = visitor.fetch(_p.getPPr());
         if (ok) return true;
 
         ok = shape.fetchShapeProperty(visitor);
         if (ok) return true;
-                
-        
+
+
         CTPlaceholder ph = shape.getCTPlaceholder();
         if(ph == null){
             // if it is a plain text box then take defaults from presentation.xml
@@ -814,13 +814,13 @@ public class XSLFTextParagraph implements TextParagraph<XSLFShape,XSLFTextParagr
     @SuppressWarnings("deprecation")
     void copy(XSLFTextParagraph other){
         if (other == this) return;
-        
+
         CTTextParagraph thisP = getXmlObject();
         CTTextParagraph otherP = other.getXmlObject();
-        
+
         if (thisP.isSetPPr()) thisP.unsetPPr();
         if (thisP.isSetEndParaRPr()) thisP.unsetEndParaRPr();
-        
+
         _runs.clear();
         for (int i=thisP.sizeOfBrArray(); i>0; i--) {
             thisP.removeBr(i-1);
@@ -838,7 +838,7 @@ public class XSLFTextParagraph implements TextParagraph<XSLFShape,XSLFTextParagr
         otherC.copyXmlContents(thisC);
         otherC.dispose();
         thisC.dispose();
-        
+
         List<XSLFTextRun> otherRs = other.getTextRuns();
         int i=0;
         for(CTRegularTextRun rtr : thisP.getRArray()) {
@@ -846,8 +846,8 @@ public class XSLFTextParagraph implements TextParagraph<XSLFShape,XSLFTextParagr
             run.copy(otherRs.get(i++));
             _runs.add(run);
         }
-        
-        
+
+
         // set properties again, in case we are based on a different
         // template
         TextAlign srcAlign = other.getTextAlign();
@@ -892,12 +892,12 @@ public class XSLFTextParagraph implements TextParagraph<XSLFShape,XSLFTextParagr
         if (!doubleEquals(spaceAfter, getSpaceAfter())) {
             setSpaceAfter(spaceAfter);
         }
-        
+
         Double spaceBefore = other.getSpaceBefore();
         if (!doubleEquals(spaceBefore, getSpaceBefore())) {
             setSpaceBefore(spaceBefore);
         }
-        
+
         Double lineSpacing = other.getLineSpacing();
         if (!doubleEquals(lineSpacing, getLineSpacing())) {
             setLineSpacing(lineSpacing);
@@ -907,7 +907,7 @@ public class XSLFTextParagraph implements TextParagraph<XSLFShape,XSLFTextParagr
     private static boolean doubleEquals(Double d1, Double d2) {
         return (d1 == d2 || (d1 != null && d1.equals(d2)));
     }
-    
+
     @Override
     public Double getDefaultFontSize() {
         CTTextCharacterProperties endPr = _p.getEndParaRPr();
@@ -942,7 +942,7 @@ public class XSLFTextParagraph implements TextParagraph<XSLFShape,XSLFTextParagr
             public PaintStyle getBulletFontColor() {
                 return XSLFTextParagraph.this.getBulletFontColor();
             }
-            
+
             @Override
             public void setBulletFontColor(Color color) {
                 setBulletFontColor(DrawPaint.createSolidPaint(color));
@@ -952,7 +952,7 @@ public class XSLFTextParagraph implements TextParagraph<XSLFShape,XSLFTextParagr
             public void setBulletFontColor(PaintStyle color) {
                 XSLFTextParagraph.this.setBulletFontColor(color);
             }
-            
+
             @Override
             public AutoNumberingScheme getAutoNumberingScheme() {
                 return XSLFTextParagraph.this.getAutoNumberingScheme();

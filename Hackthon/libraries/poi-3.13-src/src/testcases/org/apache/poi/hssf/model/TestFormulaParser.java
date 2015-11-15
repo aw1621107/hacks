@@ -152,7 +152,7 @@ public final class TestFormulaParser extends TestCase {
 
 		cell = row.createCell(1);
 		cell.setCellFormula("'Quotes Needed Here &#$@'!A1");
-		
+
 		wb.close();
 	}
 
@@ -229,7 +229,7 @@ public final class TestFormulaParser extends TestCase {
 		confirmTokenClasses("40000/2", IntPtg.class, IntPtg.class, DividePtg.class);
 	}
 
-	/** bug 35027, underscore in sheet name 
+	/** bug 35027, underscore in sheet name
 	 * @throws IOException */
 	public void testUnderscore() throws IOException {
 		HSSFWorkbook wb = new HSSFWorkbook();
@@ -242,11 +242,11 @@ public final class TestFormulaParser extends TestCase {
 
 		cell = row.createCell(0);
 		cell.setCellFormula("Cash_Flow!A1");
-		
+
 		wb.close();
 	}
 
-    /** bug 49725, defined names with underscore 
+    /** bug 49725, defined names with underscore
      * @throws IOException */
     public void testNamesWithUnderscore() throws IOException {
         HSSFWorkbook wb = new HSSFWorkbook(); //or new XSSFWorkbook();
@@ -289,7 +289,7 @@ public final class TestFormulaParser extends TestCase {
 
         cell.setCellFormula("INDEX(DA6_LEO_WBS_Name,MATCH($A3,DA6_LEO_WBS_Number,0))");
         assertEquals("INDEX(DA6_LEO_WBS_Name,MATCH($A3,DA6_LEO_WBS_Number,0))", cell.getCellFormula());
-        
+
         wb.close();
     }
 
@@ -369,7 +369,7 @@ public final class TestFormulaParser extends TestCase {
 		cell.setCellFormula("-10E-1/3.1E2*4E3/3E4");
 		formula = cell.getCellFormula();
 		assertEquals("Exponential formula string", "-1/310*4000/30000", formula);
-		
+
 		wb.close();
 	}
 
@@ -410,7 +410,7 @@ public final class TestFormulaParser extends TestCase {
 		cell.setCellFormula("10E-1");
 		formula = cell.getCellFormula();
 		assertEquals("1", formula);
-		
+
 		wb.close();
 	}
 
@@ -435,7 +435,7 @@ public final class TestFormulaParser extends TestCase {
 		cell.setCellFormula("A1...A2");
 		formula = cell.getCellFormula();
 		assertEquals("A1:A2", formula);
-		
+
 		wb.close();
 	}
 
@@ -444,51 +444,51 @@ public final class TestFormulaParser extends TestCase {
 
         wb.createSheet("Cash_Flow");
         wb.createSheet("Test Sheet");
-	    
+
         HSSFSheet sheet = wb.createSheet("Test");
         HSSFRow row = sheet.createRow(0);
         HSSFCell cell = row.createCell(0);
         String formula = null;
 
-        
+
         // References to a single cell:
-        
+
         // One sheet
         cell.setCellFormula("Cash_Flow!A1");
         formula = cell.getCellFormula();
         assertEquals("Cash_Flow!A1", formula);
-        
+
         // Then the other
         cell.setCellFormula("\'Test Sheet\'!A1");
         formula = cell.getCellFormula();
         assertEquals("\'Test Sheet\'!A1", formula);
-        
+
         // Now both
         cell.setCellFormula("Cash_Flow:\'Test Sheet\'!A1");
         formula = cell.getCellFormula();
         assertEquals("Cash_Flow:\'Test Sheet\'!A1", formula);
 
-        
+
         // References to a range (area) of cells:
-        
+
         // One sheet
         cell.setCellFormula("Cash_Flow!A1:B2");
         formula = cell.getCellFormula();
         assertEquals("Cash_Flow!A1:B2", formula);
-        
+
         // Then the other
         cell.setCellFormula("\'Test Sheet\'!A1:B2");
         formula = cell.getCellFormula();
         assertEquals("\'Test Sheet\'!A1:B2", formula);
-        
+
         // Now both
         cell.setCellFormula("Cash_Flow:\'Test Sheet\'!A1:B2");
         formula = cell.getCellFormula();
         assertEquals("Cash_Flow:\'Test Sheet\'!A1:B2", formula);
-        
+
         wb.close();
 	}
-	
+
 	/**
 	 * Test for bug observable at svn revision 618865 (5-Feb-2008)<br/>
 	 * a formula consisting of a single no-arg function got rendered without the function braces
@@ -664,7 +664,7 @@ public final class TestFormulaParser extends TestCase {
 		try {
     		HSSFSheet sheet = wb.createSheet();
     		wb.setSheetName(0, "Sheet1");
-    
+
     		HSSFRow row = sheet.createRow(0);
     		HSSFCell cell = row.createCell(0);
     		cell.setCellFormula("right(\"test\"\"ing\", 3)");
@@ -738,7 +738,7 @@ public final class TestFormulaParser extends TestCase {
 			fail("Identified bug 44539");
 		}
 		assertEquals("SUM(A32769:A32770)", cell.getCellFormula());
-		
+
 		wb.close();
 	}
 
@@ -996,7 +996,7 @@ public final class TestFormulaParser extends TestCase {
 		wb.setSheetName(0, "A1...A2");
 		cell.setCellFormula("A1...A2!B1");
 		assertEquals("A1...A2!B1", cell.getCellFormula());
-		
+
 		wb.close();
 	}
 
@@ -1007,7 +1007,7 @@ public final class TestFormulaParser extends TestCase {
 		cell.setCellFormula("'true'!B2");
 
 		assertEquals("'true'!B2", cell.getCellFormula());
-		
+
 		wb.close();
 	}
 
@@ -1088,36 +1088,36 @@ public final class TestFormulaParser extends TestCase {
         // This used to be an error but now parses.  Union has the same behaviour.
         confirmTokenClasses("1 2", MemAreaPtg.class, IntPtg.class, IntPtg.class, IntersectionPtg.class);
 	}
-	
+
 	public void testComparisonInParen() {
-	    confirmTokenClasses("(A1 > B2)", 
-            RefPtg.class, 
-            RefPtg.class, 
-            GreaterThanPtg.class, 
+	    confirmTokenClasses("(A1 > B2)",
+            RefPtg.class,
+            RefPtg.class,
+            GreaterThanPtg.class,
             ParenthesisPtg.class
         );
 	}
-	
+
 	public void testUnionInParen() {
-	    confirmTokenClasses("(A1:B2,B2:C3)", 
-          MemAreaPtg.class, 
-          AreaPtg.class, 
-          AreaPtg.class, 
-          UnionPtg.class, 
+	    confirmTokenClasses("(A1:B2,B2:C3)",
+          MemAreaPtg.class,
+          AreaPtg.class,
+          AreaPtg.class,
+          UnionPtg.class,
           ParenthesisPtg.class
         );
 	}
 
     public void testIntersectionInParen() {
-        confirmTokenClasses("(A1:B2 B2:C3)", 
-            MemAreaPtg.class, 
-            AreaPtg.class, 
-            AreaPtg.class, 
-            IntersectionPtg.class, 
+        confirmTokenClasses("(A1:B2 B2:C3)",
+            MemAreaPtg.class,
+            AreaPtg.class,
+            AreaPtg.class,
+            IntersectionPtg.class,
             ParenthesisPtg.class
         );
     }
-    
+
 	public void testRange_bug46643() {
 		String formula = "Sheet1!A1:Sheet1!B3";
 		HSSFWorkbook wb = new HSSFWorkbook();
@@ -1139,7 +1139,7 @@ public final class TestFormulaParser extends TestCase {
 		assertEquals(15, mf.getLenRefSubexpression());
 	}
 
-	/** Named ranges with backslashes, e.g. 'POI\\2009' 
+	/** Named ranges with backslashes, e.g. 'POI\\2009'
 	 * @throws IOException */
 	public void testBackSlashInNames() throws IOException {
 		HSSFWorkbook wb = new HSSFWorkbook();
@@ -1158,7 +1158,7 @@ public final class TestFormulaParser extends TestCase {
 		HSSFCell cell_D1 = row.createCell(2);
 		cell_D1.setCellFormula("NOT(POI\\2009=\"3.5-final\")");
 		assertEquals("NOT(POI\\2009=\"3.5-final\")", cell_D1.getCellFormula());
-		
+
 		wb.close();
 	}
 
@@ -1412,9 +1412,9 @@ public final class TestFormulaParser extends TestCase {
     @Test
     public void test57196_Formula() {
         HSSFWorkbook wb = new HSSFWorkbook();
-        Ptg[] ptgs = HSSFFormulaParser.parse("DEC2HEX(HEX2DEC(O8)-O2+D2)", wb, FormulaType.CELL, -1); 
+        Ptg[] ptgs = HSSFFormulaParser.parse("DEC2HEX(HEX2DEC(O8)-O2+D2)", wb, FormulaType.CELL, -1);
         assertNotNull("Ptg array should not be null", ptgs);
-        
+
         confirmTokenClasses(ptgs,
             NameXPtg.class, // ??
             NameXPtg.class, // ??
@@ -1439,5 +1439,5 @@ public final class TestFormulaParser extends TestCase {
         assertEquals("O2", o2.toFormulaString());
         assertEquals("D2", d2.toFormulaString());
         assertEquals(255, dec2Hex.getFunctionIndex());
-    }    
+    }
 }

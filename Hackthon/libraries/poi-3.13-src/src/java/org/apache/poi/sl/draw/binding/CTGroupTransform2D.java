@@ -26,9 +26,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_GroupTransform2D complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_GroupTransform2D">
  *   &lt;complexContent>
@@ -46,8 +46,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_GroupTransform2D", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main", propOrder = {
@@ -75,11 +75,11 @@ public class CTGroupTransform2D {
 
     /**
      * Gets the value of the off property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTPoint2D }
-     *     
+     *
      */
     public CTPoint2D getOff() {
         return off;
@@ -87,11 +87,11 @@ public class CTGroupTransform2D {
 
     /**
      * Sets the value of the off property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTPoint2D }
-     *     
+     *
      */
     public void setOff(CTPoint2D value) {
         this.off = value;
@@ -103,11 +103,11 @@ public class CTGroupTransform2D {
 
     /**
      * Gets the value of the ext property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTPositiveSize2D }
-     *     
+     *
      */
     public CTPositiveSize2D getExt() {
         return ext;
@@ -115,11 +115,11 @@ public class CTGroupTransform2D {
 
     /**
      * Sets the value of the ext property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTPositiveSize2D }
-     *     
+     *
      */
     public void setExt(CTPositiveSize2D value) {
         this.ext = value;
@@ -131,11 +131,11 @@ public class CTGroupTransform2D {
 
     /**
      * Gets the value of the chOff property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTPoint2D }
-     *     
+     *
      */
     public CTPoint2D getChOff() {
         return chOff;
@@ -143,11 +143,11 @@ public class CTGroupTransform2D {
 
     /**
      * Sets the value of the chOff property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTPoint2D }
-     *     
+     *
      */
     public void setChOff(CTPoint2D value) {
         this.chOff = value;
@@ -159,11 +159,11 @@ public class CTGroupTransform2D {
 
     /**
      * Gets the value of the chExt property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTPositiveSize2D }
-     *     
+     *
      */
     public CTPositiveSize2D getChExt() {
         return chExt;
@@ -171,11 +171,11 @@ public class CTGroupTransform2D {
 
     /**
      * Sets the value of the chExt property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTPositiveSize2D }
-     *     
+     *
      */
     public void setChExt(CTPositiveSize2D value) {
         this.chExt = value;
@@ -187,11 +187,11 @@ public class CTGroupTransform2D {
 
     /**
      * Gets the value of the rot property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Integer }
-     *     
+     *
      */
     public int getRot() {
         if (rot == null) {
@@ -203,11 +203,11 @@ public class CTGroupTransform2D {
 
     /**
      * Sets the value of the rot property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *     
+     *
      */
     public void setRot(int value) {
         this.rot = value;
@@ -223,11 +223,11 @@ public class CTGroupTransform2D {
 
     /**
      * Gets the value of the flipH property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public boolean isFlipH() {
         if (flipH == null) {
@@ -239,11 +239,11 @@ public class CTGroupTransform2D {
 
     /**
      * Sets the value of the flipH property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setFlipH(boolean value) {
         this.flipH = value;
@@ -259,11 +259,11 @@ public class CTGroupTransform2D {
 
     /**
      * Gets the value of the flipV property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public boolean isFlipV() {
         if (flipV == null) {
@@ -275,11 +275,11 @@ public class CTGroupTransform2D {
 
     /**
      * Sets the value of the flipV property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setFlipV(boolean value) {
         this.flipV = value;

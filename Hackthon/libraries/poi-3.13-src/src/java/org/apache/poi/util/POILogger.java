@@ -98,10 +98,10 @@ public abstract class POILogger {
                 sb.append(objs[i]);
             }
         }
-        
+
         String msg = sb.toString();
         msg = msg.replaceAll("[\r\n]+", " ");  // log forging escape
-        
+
         // somehow this ambiguity works and doesn't lead to a loop,
         // but it's confusing ...
         if (lastEx == null) {

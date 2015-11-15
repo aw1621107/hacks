@@ -38,7 +38,7 @@ public class LogFactory {
     /**
      * Returns a logger instance of the given class, with the given instance
      * name.
-     * 
+     *
      * @param className
      *            the class to instantiate
      * @param instanceName

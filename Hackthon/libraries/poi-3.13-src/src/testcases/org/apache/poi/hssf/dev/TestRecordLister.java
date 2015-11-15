@@ -25,13 +25,13 @@ import org.apache.poi.util.LocaleUtil;
 public class TestRecordLister extends BaseXLSIteratingTest {
 	static {
 		// these are likely ok to fail
-		EXCLUDED.add("46904.xls"); 
+		EXCLUDED.add("46904.xls");
         EXCLUDED.add("testEXCEL_3.xls");  // Biff 3 / Excel 3, pre-OLE2
         EXCLUDED.add("testEXCEL_4.xls");   // old unsupported format
         EXCLUDED.add("testEXCEL_5.xls");  // Biff 5 / Excel 5
         EXCLUDED.add("testEXCEL_95.xls"); // Biff 5 / Excel 95
 	}
-	
+
 	@Override
 	void runOneFile(File fileIn) throws IOException {
 		PrintStream save = System.out;

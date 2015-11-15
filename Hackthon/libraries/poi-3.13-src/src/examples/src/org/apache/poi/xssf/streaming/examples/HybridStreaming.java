@@ -30,12 +30,12 @@ import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTSheet;
 import org.xml.sax.SAXException;
 
 /**
- * This demonstrates how a hybrid approach to workbook read can be taken, using 
+ * This demonstrates how a hybrid approach to workbook read can be taken, using
  * a mix of traditional XSSF and streaming one particular worksheet (perhaps one
  * which is too big for the ordinary DOM parse).
  */
 public class HybridStreaming {
-    
+
     private static final String SHEET_TO_STREAM = "large sheet";
 
     public static void main(String[] args) throws IOException, SAXException {
@@ -48,7 +48,7 @@ public class HybridStreaming {
                 }
             };
         };
-        
+
         // Having avoided a DOM-based parse of the sheet, we can stream it instead.
         ReadOnlySharedStringsTable strings = new ReadOnlySharedStringsTable(workbook.getPackage());
         new XSSFSheetXMLHandler(workbook.getStylesSource(), strings, createSheetContentsHandler(), false);
@@ -57,16 +57,16 @@ public class HybridStreaming {
 
     private static SheetContentsHandler createSheetContentsHandler() {
         return new SheetContentsHandler() {
-            
+
             public void startRow(int rowNum) {
             }
-            
+
             public void headerFooter(String text, boolean isHeader, String tagName) {
             }
-            
+
             public void endRow(int rowNum) {
             }
-            
+
             public void cell(String cellReference, String formattedValue, XSSFComment comment) {
             }
         };

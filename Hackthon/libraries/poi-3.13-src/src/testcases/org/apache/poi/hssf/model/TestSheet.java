@@ -599,7 +599,7 @@ public final class TestSheet {
 			fail("Identified bug 45699");
 		}
 		assertEquals("Informations", cell.getRichStringCellValue().getString());
-		
+
 		wb.close();
 	}
 	/**

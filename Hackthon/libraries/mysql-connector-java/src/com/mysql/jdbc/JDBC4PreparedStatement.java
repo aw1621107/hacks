@@ -55,12 +55,12 @@ public class JDBC4PreparedStatement extends PreparedStatement {
 
     /**
      * JDBC 4.0 Set a NCLOB parameter.
-     * 
+     *
      * @param i
      *            the first parameter is 1, the second is 2, ...
      * @param x
      *            an object representing a NCLOB
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */

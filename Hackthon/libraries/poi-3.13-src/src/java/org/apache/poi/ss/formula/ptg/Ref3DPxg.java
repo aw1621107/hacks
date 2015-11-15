@@ -27,7 +27,7 @@ import org.apache.poi.util.LittleEndianOutput;
  * <p>Title:        XSSF 3D Reference</p>
  * <p>Description:  Defines a cell in an external or different sheet.</p>
  * <p>REFERENCE: </p>
- * 
+ *
  * <p>This is XSSF only, as it stores the sheet / book references
  *  in String form. The HSSF equivalent using indexes is {@link Ref3DPtg}</p>
  */
@@ -42,7 +42,7 @@ public final class Ref3DPxg extends RefPtgBase implements Pxg3D {
     public Ref3DPxg(int externalWorkbookNumber, SheetIdentifier sheetName, CellReference c) {
         super(c);
         this.externalWorkbookNumber = externalWorkbookNumber;
-        
+
         this.firstSheetName = sheetName.getSheetIdentifier().getName();
         if (sheetName instanceof SheetRangeIdentifier) {
             this.lastSheetName = ((SheetRangeIdentifier)sheetName).getLastSheetIdentifier().getName();
@@ -50,7 +50,7 @@ public final class Ref3DPxg extends RefPtgBase implements Pxg3D {
             this.lastSheetName = null;
         }
     }
-    
+
     public Ref3DPxg(SheetIdentifier sheetName, String cellref) {
         this(sheetName, new CellReference(cellref));
     }
@@ -77,7 +77,7 @@ public final class Ref3DPxg extends RefPtgBase implements Pxg3D {
         sb.append("]");
         return sb.toString();
     }
-    
+
     public int getExternalWorkbookNumber() {
         return externalWorkbookNumber;
     }
@@ -87,14 +87,14 @@ public final class Ref3DPxg extends RefPtgBase implements Pxg3D {
     public String getLastSheetName() {
         return lastSheetName;
     }
-    
+
     public void setSheetName(String sheetName) {
         this.firstSheetName = sheetName;
     }
     public void setLastSheetName(String sheetName) {
         this.lastSheetName = sheetName;
     }
-    
+
     public String format2DRefAsString() {
         return formatReferenceAsString();
     }
@@ -117,7 +117,7 @@ public final class Ref3DPxg extends RefPtgBase implements Pxg3D {
         sb.append(formatReferenceAsString());
         return sb.toString();
     }
-    
+
     public int getSize() {
         return 1;
     }

@@ -24,13 +24,13 @@ import org.apache.poi.poifs.crypt.CryptoFunctions;
 
 public class Biff8XORKey extends Biff8EncryptionKey {
     final int _xorKey;
-    
+
     public Biff8XORKey(String password, int xorKey) {
         _xorKey = xorKey;
         byte xorArray[] = CryptoFunctions.createXorArray1(password);
         _secretKey = new SecretKeySpec(xorArray, "XOR");
     }
-    
+
     public static Biff8XORKey create(String password, int xorKey) {
         return new Biff8XORKey(password, xorKey);
     }

@@ -101,7 +101,7 @@ public class Util {
 
         //
         // Detect the ColdFusion MX environment
-        // 
+        //
         // Unfortunately, no easy-to-discern classes are available to our classloader to check...
         //
 
@@ -280,7 +280,7 @@ public class Util {
      * Given a ResultSet and an index into the columns of that ResultSet, read
      * binary data from the column which represents a serialized object, and
      * re-create the object.
-     * 
+     *
      * @param resultSet
      *            the ResultSet to use.
      * @param index
@@ -345,10 +345,10 @@ public class Util {
 
     /**
      * Converts a nested exception into a nicer message
-     * 
+     *
      * @param ex
      *            the exception to expand into a message.
-     * 
+     *
      * @return a message containing the exception, the message (if any), and a
      *         stacktrace.
      */
@@ -425,7 +425,7 @@ public class Util {
 
     /**
      * Does a network interface exist locally with the given hostname?
-     * 
+     *
      * @param hostname
      *            the hostname (or IP address in string form) to check
      * @return true if it exists, false if no, or unable to determine due to VM
@@ -512,7 +512,7 @@ public class Util {
     /**
      * Returns initialized instances of classes listed in extensionClassNames.
      * There is no need to call Extension.init() method after that if you don't change connection or properties.
-     * 
+     *
      * @param conn
      * @param props
      * @param extensionClassNames
@@ -551,7 +551,7 @@ public class Util {
 
     /**
      * Recursively checks for interfaces on the given class to determine if it implements a java.sql, javax.sql or com.mysql.jdbc interface.
-     * 
+     *
      * @param clazz
      *            The class to investigate.
      */
@@ -600,7 +600,7 @@ public class Util {
 
     /**
      * Check if the package name is a known JDBC package.
-     * 
+     *
      * @param packageName
      *            The package name to check.
      */
@@ -615,7 +615,7 @@ public class Util {
     /**
      * Retrieves a list with all interfaces implemented by the given class. If possible gets this information from a cache instead of navigating through the
      * object hierarchy. Results are stored in a cache for future reference.
-     * 
+     *
      * @param clazz
      *            The class from which the interface list will be retrieved.
      * @return
@@ -640,7 +640,7 @@ public class Util {
 
     /**
      * Computes the number of seconds elapsed since the given time in milliseconds.
-     * 
+     *
      * @param timeInMillis
      *            The past instant in milliseconds.
      * @return
@@ -652,7 +652,7 @@ public class Util {
 
     /**
      * Converts long to int, truncating to maximum/minimum value if needed.
-     * 
+     *
      * @param longValue
      * @return
      */
@@ -662,7 +662,7 @@ public class Util {
 
     /**
      * Converts long[] to int[], truncating to maximum/minimum value if needed.
-     * 
+     *
      * @param longArray
      * @return
      */

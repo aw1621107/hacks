@@ -20,13 +20,13 @@ package org.apache.poi.hssf.record;
 import org.apache.poi.util.HexDump;
 
 /**
- * Base class for all old (Biff 2 - Biff 4) cell value records 
+ * Base class for all old (Biff 2 - Biff 4) cell value records
  *  (implementors of {@link CellValueRecordInterface}).
  * Subclasses are expected to manage the cell data values (of various types).
  */
 public abstract class OldCellRecord {
     private short    sid;
-    private boolean  isBiff2;   
+    private boolean  isBiff2;
     private int      field_1_row;
     private short    field_2_column;
     private int      field_3_cell_attrs; // Biff 2
@@ -37,7 +37,7 @@ public abstract class OldCellRecord {
         this.isBiff2 = isBiff2;
         field_1_row  = in.readUShort();
         field_2_column = in.readShort();
-        
+
         if (isBiff2) {
             field_3_cell_attrs = in.readUShort() << 8;
             field_3_cell_attrs += in.readUByte();
@@ -77,7 +77,7 @@ public abstract class OldCellRecord {
     public short getSid() {
         return sid;
     }
-    
+
     @Override
     public final String toString() {
         StringBuilder sb = new StringBuilder();
@@ -96,7 +96,7 @@ public abstract class OldCellRecord {
         sb.append("[/").append(recordName).append("]\n");
         return sb.toString();
     }
-    
+
     /**
      * Append specific debug info (used by {@link #toString()} for the value
      * contained in this record. Trailing new-line should not be appended

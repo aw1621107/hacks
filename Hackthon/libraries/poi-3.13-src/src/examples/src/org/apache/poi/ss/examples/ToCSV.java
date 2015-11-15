@@ -728,9 +728,9 @@ public class ToCSV {
             ex.printStackTrace(System.out);
             converted = false;
         }
-        
+
         if (converted) {
-            System.out.println("Conversion took " + 
+            System.out.println("Conversion took " +
                   (int)((System.currentTimeMillis() - startTime)/1000) + " seconds");
         }
     }

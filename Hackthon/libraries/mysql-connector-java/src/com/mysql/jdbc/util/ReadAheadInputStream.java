@@ -238,7 +238,7 @@ public class ReadAheadInputStream extends InputStream {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.io.Closeable#close()
      */
     @Override
@@ -256,7 +256,7 @@ public class ReadAheadInputStream extends InputStream {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.io.InputStream#markSupported()
      */
     @Override
@@ -266,7 +266,7 @@ public class ReadAheadInputStream extends InputStream {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.io.InputStream#skip(long)
      */
     @Override

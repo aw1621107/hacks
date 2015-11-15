@@ -196,7 +196,7 @@ public class TextPiece extends PropertyNode<TextPiece>
      if (!(o instanceof TextPiece)) return false;
      TextPiece tp = (TextPiece)o;
      assert(_buf != null && tp._buf != null && _pd != null && tp._pd != null);
-     
+
      return (
             limitsAreEqual(o)
          && tp._usesUnicode == this._usesUnicode

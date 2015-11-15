@@ -33,7 +33,7 @@ import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTPivotCacheRecords;
 
 public class XSSFPivotCacheRecords extends POIXMLDocumentPart {
     private CTPivotCacheRecords ctPivotCacheRecords;
-    
+
     @Beta
     public XSSFPivotCacheRecords() {
         super();

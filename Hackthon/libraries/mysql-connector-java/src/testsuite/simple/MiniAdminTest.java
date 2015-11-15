@@ -38,7 +38,7 @@ public class MiniAdminTest extends BaseTestCase {
 
     /**
      * Creates a new test case
-     * 
+     *
      * @param name
      *            the test to run
      */
@@ -48,7 +48,7 @@ public class MiniAdminTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -57,9 +57,9 @@ public class MiniAdminTest extends BaseTestCase {
 
     /**
      * Tests whether or not you can shutdown the server with MiniAdmin.
-     * 
+     *
      * Only runs if SHUTDOWN_PROP is defined.
-     * 
+     *
      * @throws Exception
      *             if an error occurs
      */
@@ -71,7 +71,7 @@ public class MiniAdminTest extends BaseTestCase {
 
     /**
      * Tests whether or not you can construct a MiniAdmin with a JDBC URL.
-     * 
+     *
      * @throws Exception
      *             if an error occurs
      */

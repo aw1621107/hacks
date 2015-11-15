@@ -33,12 +33,12 @@ import org.apache.poi.poifs.filesystem.DirectoryNode;
  */
 public class DirectoryChunk extends Chunk {
     private DirectoryNode dir;
-    
+
     public DirectoryChunk(DirectoryNode dir, String namePrefix, int chunkId, MAPIType type) {
         super(namePrefix, chunkId, type);
         this.dir = dir;
     }
-    
+
     /**
      * Returns the directory entry for this chunk.
      * You can then use standard POIFS methods to
@@ -47,7 +47,7 @@ public class DirectoryChunk extends Chunk {
     public DirectoryNode getDirectory() {
         return dir;
     }
-    
+
     /**
      * Treats the directory as an embeded MAPIMessage
      *  (it normally is one), and returns a MAPIMessage

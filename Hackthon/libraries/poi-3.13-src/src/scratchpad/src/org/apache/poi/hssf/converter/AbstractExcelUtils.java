@@ -31,7 +31,7 @@ import org.apache.poi.util.IOUtils;
 
 /**
  * Common class for {@link ExcelToFoUtils} and {@link ExcelToHtmlUtils}
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  * @see AbstractWordUtils
  */

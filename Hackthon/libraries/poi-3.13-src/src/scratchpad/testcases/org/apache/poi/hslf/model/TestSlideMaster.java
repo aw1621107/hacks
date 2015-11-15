@@ -223,7 +223,7 @@ public final class TestSlideMaster {
     public void testIndentation() throws Exception {
         HSLFSlideShow ppt = new HSLFSlideShow(_slTests.openResourceAsStream("slide_master.ppt"));
         HSLFSlide slide = ppt.getSlides().get(0);
-        
+
         for (List<HSLFTextParagraph> tparas : slide.getTextParagraphs()) {
             HSLFTextParagraph tpara = tparas.get(0);
             if (tpara.getRunType() == TextHeaderAtom.TITLE_TYPE){

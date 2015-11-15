@@ -26,7 +26,7 @@ import org.apache.poi.POIDataSamples;
 public final class HWPFDocFixture
 {
   public static final String DEFAULT_TEST_FILE = "test.doc";
-  
+
   public byte[] _tableStream;
   public byte[] _mainStream;
   public FileInformationBlock _fib;

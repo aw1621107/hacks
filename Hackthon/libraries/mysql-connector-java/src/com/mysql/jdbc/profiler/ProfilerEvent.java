@@ -140,7 +140,7 @@ public class ProfilerEvent {
 
     /**
      * Creates a new profiler event
-     * 
+     *
      * @param eventType
      *            the event type (from the constants TYPE_????)
      * @param hostName
@@ -179,7 +179,7 @@ public class ProfilerEvent {
 
     /**
      * Returns the description of when this event was created.
-     * 
+     *
      * @return a description of when this event was created.
      */
     public String getEventCreationPointAsString() {
@@ -188,7 +188,7 @@ public class ProfilerEvent {
 
     /**
      * Returns a representation of this event as a String.
-     * 
+     *
      * @return a String representation of this event.
      */
     @Override
@@ -253,7 +253,7 @@ public class ProfilerEvent {
 
     /**
      * Unpacks a binary representation of this event.
-     * 
+     *
      * @param buf
      *            the binary representation of this event
      * @return the unpacked Event
@@ -304,7 +304,7 @@ public class ProfilerEvent {
 
     /**
      * Creates a binary representation of this event.
-     * 
+     *
      * @return a binary representation of this event
      * @throws Exception
      *             if an error occurs while packing this event.
@@ -426,7 +426,7 @@ public class ProfilerEvent {
 
     /**
      * Returns the catalog in use
-     * 
+     *
      * @return the catalog in use
      */
     public String getCatalog() {
@@ -435,7 +435,7 @@ public class ProfilerEvent {
 
     /**
      * Returns the id of the connection in use when this event was created.
-     * 
+     *
      * @return the connection in use
      */
     public long getConnectionId() {
@@ -445,7 +445,7 @@ public class ProfilerEvent {
     /**
      * Returns the time (in System.currentTimeMillis() form) when this event was
      * created
-     * 
+     *
      * @return the time this event was created
      */
     public long getEventCreationTime() {
@@ -454,7 +454,7 @@ public class ProfilerEvent {
 
     /**
      * Returns the duration of the event in milliseconds
-     * 
+     *
      * @return the duration of the event in milliseconds
      */
     public long getEventDuration() {
@@ -470,7 +470,7 @@ public class ProfilerEvent {
 
     /**
      * Returns the event type flag
-     * 
+     *
      * @return the event type flag
      */
     public byte getEventType() {
@@ -479,7 +479,7 @@ public class ProfilerEvent {
 
     /**
      * Returns the id of the result set in use when this event was created.
-     * 
+     *
      * @return the result set in use
      */
     public int getResultSetId() {
@@ -488,7 +488,7 @@ public class ProfilerEvent {
 
     /**
      * Returns the id of the statement in use when this event was created.
-     * 
+     *
      * @return the statement in use
      */
     public int getStatementId() {
@@ -497,7 +497,7 @@ public class ProfilerEvent {
 
     /**
      * Returns the optional message for this event
-     * 
+     *
      * @return the message stored in this event
      */
     public String getMessage() {

@@ -31,34 +31,34 @@ public final class TestRevisionMarkAuthorTable extends TestCase {
     */
    public void testEmptyDocument() {
       HWPFDocument doc = HWPFTestDataSamples.openSampleFile("empty.doc");
-      
+
       RevisionMarkAuthorTable rmt = doc.getRevisionMarkAuthorTable();
       assertNull(rmt);
    }
-   
+
    /**
     * Tests that we can load a document with
     *  only simple entries in the table
     */
 	public void testSimpleDocument() {
 		HWPFDocument doc = HWPFTestDataSamples.openSampleFile("two_images.doc");
-		
+
 		RevisionMarkAuthorTable rmt = doc.getRevisionMarkAuthorTable();
 		assertNotNull(rmt);
 		assertEquals(1, rmt.getSize());
 		assertEquals("Unknown", rmt.getAuthor(0));
-		
+
 		assertEquals(null, rmt.getAuthor(1));
       assertEquals(null, rmt.getAuthor(2));
       assertEquals(null, rmt.getAuthor(3));
 	}
-	
+
 	/**
 	 * Several authors, one of whom has no name
 	 */
 	public void testMultipleAuthors() {
       HWPFDocument doc = HWPFTestDataSamples.openSampleFile("MarkAuthorsTable.doc");
-      
+
       RevisionMarkAuthorTable rmt = doc.getRevisionMarkAuthorTable();
       assertNotNull(rmt);
       assertEquals(4, rmt.getSize());
@@ -66,7 +66,7 @@ public final class TestRevisionMarkAuthorTable extends TestCase {
       assertEquals("BSanders", rmt.getAuthor(1));
       assertEquals(" ", rmt.getAuthor(2));
       assertEquals("Ryan Lauck", rmt.getAuthor(3));
-      
+
       assertEquals(null, rmt.getAuthor(4));
       assertEquals(null, rmt.getAuthor(5));
       assertEquals(null, rmt.getAuthor(6));

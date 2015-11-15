@@ -22,7 +22,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 
 /**
  * A helper class to allow testing of protected methods and constructors.
- * 
+ *
  * @author jsvede
  *
  */
@@ -46,5 +46,5 @@ public class ExcelAntWorkbookUtilTestHelper extends ExcelAntWorkbookUtil {
 		return super.getEvaluator(excelFileName);
 	}
 
-	
+
 }

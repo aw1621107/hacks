@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndian;
 /**
  * Common abstract class for {@link EscherOptRecord} and
  * {@link EscherTertiaryOptRecord}
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  * @author Glen Stampoultzis
  */

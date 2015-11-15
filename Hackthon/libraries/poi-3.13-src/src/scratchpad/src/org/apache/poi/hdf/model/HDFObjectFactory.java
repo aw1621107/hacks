@@ -71,7 +71,7 @@ public final class HDFObjectFactory {
     public static void main(String args[]) throws Exception {
         new HDFObjectFactory(new FileInputStream("c:\\test.doc"));
     }
-    
+
     /** Creates a new instance of HDFObjectFactory
      *
      * @param istream The InputStream that is the Word document
@@ -129,13 +129,13 @@ public final class HDFObjectFactory {
             filesystem = new POIFSFileSystem(istream);
             DocumentEntry headerProps =
                 (DocumentEntry)filesystem.getRoot().getEntry("WordDocument");
-    
+
             byte[] mainDocument = new byte[headerProps.getSize()];
             filesystem.createDocumentInputStream("WordDocument").read(mainDocument);
-    
+
             FileInformationBlock fib = new FileInformationBlock(mainDocument);
-    
-    
+
+
             results.add(fib);
             return results;
         } finally {

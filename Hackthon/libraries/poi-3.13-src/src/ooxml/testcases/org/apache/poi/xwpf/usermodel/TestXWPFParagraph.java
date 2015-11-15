@@ -496,19 +496,19 @@ public final class TestXWPFParagraph extends TestCase {
 
         assertTrue(p.removeRun(0));
     }
-    
+
     public void testFieldRuns() throws Exception {
         XWPFDocument doc = XWPFTestDataSamples.openSampleDocument("FldSimple.docx");
         List<XWPFParagraph> ps = doc.getParagraphs();
         assertEquals(1, ps.size());
-        
+
         XWPFParagraph p = ps.get(0);
         assertEquals(1, p.getRuns().size());
         assertEquals(1, p.getIRuns().size());
-        
+
         XWPFRun r = p.getRuns().get(0);
         assertEquals(XWPFFieldRun.class, r.getClass());
-        
+
         XWPFFieldRun fr = (XWPFFieldRun)r;
         assertEquals(" FILENAME   \\* MERGEFORMAT ", fr.getFieldInstruction());
         assertEquals("FldSimple.docx", fr.text());

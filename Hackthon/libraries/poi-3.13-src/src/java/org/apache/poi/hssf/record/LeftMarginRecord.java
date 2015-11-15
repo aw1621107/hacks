@@ -21,7 +21,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * Record for the left margin.<p/>
- * 
+ *
  * @author Shawn Laubach (slaubach at apache dot org)
  */
 public final class LeftMarginRecord extends StandardRecord implements Margin
@@ -78,4 +78,4 @@ public final class LeftMarginRecord extends StandardRecord implements Margin
         rec.field_1_margin = this.field_1_margin;
         return rec;
     }
-}  // END OF 
+}  // END OF

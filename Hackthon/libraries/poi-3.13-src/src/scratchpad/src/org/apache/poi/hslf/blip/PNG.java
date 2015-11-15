@@ -52,7 +52,7 @@ public final class PNG extends Bitmap {
     public int getSignature(){
         return (uidInstanceCount == 1 ? 0x6E00 : 0x6E10);
     }
-    
+
     /**
      * Sets the PNG signature - either {@code 0x6E00} or {@code 0x6E10}
      */
@@ -66,6 +66,6 @@ public final class PNG extends Bitmap {
                 break;
             default:
                 throw new IllegalArgumentException(signature+" is not a valid instance/signature value for PNG");
-        }        
+        }
     }
 }

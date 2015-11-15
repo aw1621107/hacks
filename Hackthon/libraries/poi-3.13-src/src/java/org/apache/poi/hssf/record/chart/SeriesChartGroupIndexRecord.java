@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The series chart group index record stores the index to the CHARTFORMAT record (0 based).<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class SeriesChartGroupIndexRecord extends StandardRecord {
@@ -50,7 +50,7 @@ public final class SeriesChartGroupIndexRecord extends StandardRecord {
         buffer.append("    .chartGroupIndex      = ")
             .append("0x").append(HexDump.toHex(  getChartGroupIndex ()))
             .append(" (").append( getChartGroupIndex() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/SERTOCRT]\n");
         return buffer.toString();
@@ -71,7 +71,7 @@ public final class SeriesChartGroupIndexRecord extends StandardRecord {
 
     public Object clone() {
         SeriesChartGroupIndexRecord rec = new SeriesChartGroupIndexRecord();
-    
+
         rec.field_1_chartGroupIndex = field_1_chartGroupIndex;
         return rec;
     }

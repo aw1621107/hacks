@@ -31,14 +31,14 @@ import org.apache.poi.hssf.record.UnknownRecord;
 
 /**
  * enclosing_type describe the purpose here
- * 
+ *
  * @author Andrew C. Oliver acoliver@apache.org
  * @author Csaba Nagy (ncsaba at yahoo dot com)
  */
 public final class TestEventRecordFactory extends TestCase {
 
     /**
-     * tests that the records can be processed and properly return 
+     * tests that the records can be processed and properly return
      * values.
      */
     public void testProcessRecords()
@@ -49,12 +49,12 @@ public final class TestEventRecordFactory extends TestCase {
             public boolean processRecord(Record rec) {
                 wascalled[0] = true;
                 assertTrue("must be BOFRecord got SID="+rec.getSid(),
-                           (rec.getSid() == BOFRecord.sid));                  
-                return true;              
+                           (rec.getSid() == BOFRecord.sid));
+                return true;
             }
         };
     	EventRecordFactory factory = new EventRecordFactory(listener, new short[] {BOFRecord.sid});
-        
+
         BOFRecord bof = new BOFRecord();
         bof.setBuild((short)0);
         bof.setBuildYear((short)1999);
@@ -62,20 +62,20 @@ public final class TestEventRecordFactory extends TestCase {
         bof.setType(BOFRecord.TYPE_WORKBOOK);
         bof.setVersion((short)0x06);
         bof.setHistoryBitMask(BOFRecord.HISTORY_MASK);
-        
+
         EOFRecord eof = EOFRecord.instance;
     	byte[] bytes = new byte[bof.getRecordSize() + eof.getRecordSize()];
         int offset = 0;
         offset = bof.serialize(offset,bytes);
         offset = eof.serialize(offset,bytes);
-                
-        factory.processRecords(new ByteArrayInputStream(bytes));    
-        assertTrue("The record listener must be called", wascalled[0]);    
+
+        factory.processRecords(new ByteArrayInputStream(bytes));
+        assertTrue("The record listener must be called", wascalled[0]);
     }
-    
+
 
     /**
-     * tests that the create record function returns a properly 
+     * tests that the create record function returns a properly
      * constructed record in the simple case.
      */
     public void testCreateRecord() {
@@ -86,14 +86,14 @@ public final class TestEventRecordFactory extends TestCase {
         bof.setType(BOFRecord.TYPE_WORKBOOK);
         bof.setVersion((short)0x06);
         bof.setHistoryBitMask(BOFRecord.HISTORY_MASK);
-        
+
         byte[] bytes = bof.serialize();
-            
+
         Record[] records = RecordFactory.createRecord(TestcaseRecordInputStream.create(bytes));
-        
+
         assertTrue("record.length must be 1, was ="+records.length,records.length == 1);
         assertTrue("record is the same", compareRec(bof,records[0]));
-        
+
     }
 
     /**
@@ -105,21 +105,21 @@ public final class TestEventRecordFactory extends TestCase {
     private static boolean compareRec(Record first, Record second) {
         byte[] rec1 = first.serialize();
         byte[] rec2 = second.serialize();
-        
+
         if (rec1.length != rec2.length) {
-            return false;   
+            return false;
         }
         for (int k=0; k<rec1.length; k++) {
             if (rec1[k] != rec2[k]) {
                 return false;
-            }   
+            }
         }
         return true;
     }
 
-    
+
     /**
-     * tests that the create record function returns a properly 
+     * tests that the create record function returns a properly
      * constructed record in the case of a continued record.
      * TODO - need a real world example to put in a unit test
      */
@@ -127,7 +127,7 @@ public final class TestEventRecordFactory extends TestCase {
     {
       //  fail("not implemented");
     }
-    
+
 
     /**
      * TEST NAME:  Test Creating ContinueRecords After Unknown Records From An InputStream <P>

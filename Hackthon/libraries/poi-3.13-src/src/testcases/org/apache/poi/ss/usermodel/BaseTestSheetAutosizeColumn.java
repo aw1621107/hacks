@@ -41,18 +41,18 @@ public abstract class BaseTestSheetAutosizeColumn {
     private final ITestDataProvider _testDataProvider;
 
     private static Locale userLocale;
-    
+
     @BeforeClass
     public static void initLocale() {
         userLocale = LocaleUtil.getUserLocale();
         LocaleUtil.setUserLocale(Locale.ROOT);
     }
-    
+
     @AfterClass
     public static void resetLocale() {
         LocaleUtil.setUserLocale(userLocale);
     }
-    
+
     protected BaseTestSheetAutosizeColumn(ITestDataProvider testDataProvider) {
         _testDataProvider = testDataProvider;
     }
@@ -95,7 +95,7 @@ public abstract class BaseTestSheetAutosizeColumn {
         assertEquals(sheet.getColumnWidth(1), sheet.getColumnWidth(2)); // columns 1, 2 and 3 should have the same width
         assertEquals(sheet.getColumnWidth(2), sheet.getColumnWidth(3)); // columns 1, 2 and 3 should have the same width
         assertEquals(sheet.getColumnWidth(4), sheet.getColumnWidth(5)); // 10.0000 and '10.0000'
-        
+
         workbook.close();
     }
 
@@ -193,7 +193,7 @@ public abstract class BaseTestSheetAutosizeColumn {
         assertTrue(sheet.getColumnWidth(5) > sheet.getColumnWidth(3));  // 'mmm/dd/yyyy' is wider than 'mmm'
         assertEquals(sheet.getColumnWidth(6), sheet.getColumnWidth(5)); // date formatted as 'mmm/dd/yyyy'
         assertEquals(sheet.getColumnWidth(4), sheet.getColumnWidth(7)); // date formula formatted as 'mmm'
-        
+
         workbook.close();
     }
 
@@ -203,7 +203,7 @@ public abstract class BaseTestSheetAutosizeColumn {
         fixFonts(workbook);
         Sheet sheet = workbook.createSheet();
         Row row = sheet.createRow(0);
-        
+
         Font defaultFont = workbook.getFontAt((short)0);
 
         CellStyle style1 = workbook.createCellStyle();
@@ -228,7 +228,7 @@ public abstract class BaseTestSheetAutosizeColumn {
         assertEquals(sheet.getColumnWidth(4), sheet.getColumnWidth(3));
         boolean ignoreFontSizeX2 = JvmBugs.hasLineBreakMeasurerBug();
         assertTrue(ignoreFontSizeX2 || sheet.getColumnWidth(5) > sheet.getColumnWidth(4)); //larger font results in a wider column width
-        
+
         workbook.close();
     }
 
@@ -255,7 +255,7 @@ public abstract class BaseTestSheetAutosizeColumn {
         int w1 = sheet.getColumnWidth(1);
 
         assertTrue(w0*5 < w1); // rotated text occupies at least five times less horizontal space than normal text
-        
+
         workbook.close();
     }
 
@@ -278,11 +278,11 @@ public abstract class BaseTestSheetAutosizeColumn {
 
         sheet.autoSizeColumn(0, true);
         assertTrue(sheet.getColumnWidth(0) > defaulWidth);
-        
+
         workbook.close();
     }
 
-    
+
     /**
      * Auto-Sizing a column needs to work when we have rows
      *  passed the 32767 boundary. See bug #48079
@@ -292,40 +292,40 @@ public abstract class BaseTestSheetAutosizeColumn {
        Workbook workbook = _testDataProvider.createWorkbook();
        fixFonts(workbook);
        Sheet sheet = workbook.createSheet();
-       
+
        Row r0 = sheet.createRow(0);
        r0.createCell(0).setCellValue("I am ROW 0");
        Row r200 = sheet.createRow(200);
        r200.createCell(0).setCellValue("I am ROW 200");
-       
+
        // This should work fine
        sheet.autoSizeColumn(0);
-       
+
        // Get close to 32767
        Row r32765 = sheet.createRow(32765);
        r32765.createCell(0).setCellValue("Nearly there...");
        sheet.autoSizeColumn(0);
-       
+
        // To it
        Row r32767 = sheet.createRow(32767);
        r32767.createCell(0).setCellValue("At the boundary");
        sheet.autoSizeColumn(0);
-       
+
        // And passed it
        Row r32768 = sheet.createRow(32768);
        r32768.createCell(0).setCellValue("Passed");
        Row r32769 = sheet.createRow(32769);
        r32769.createCell(0).setCellValue("More Passed");
        sheet.autoSizeColumn(0);
-       
+
        // Long way passed
        Row r60708 = sheet.createRow(60708);
        r60708.createCell(0).setCellValue("Near the end");
        sheet.autoSizeColumn(0);
-       
+
        workbook.close();
     }
-    
+
     // TODO should we have this stuff in the FormulaEvaluator?
     private void evaluateWorkbook(Workbook workbook){
         FormulaEvaluator eval = workbook.getCreationHelper().createFormulaEvaluator();

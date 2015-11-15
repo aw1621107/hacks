@@ -23,25 +23,25 @@ import org.apache.poi.util.LittleEndianOutput;
 /**
  * Title: FeatHdr (Feature Header) Record
  * <P>
- * This record specifies common information for Shared Features, and 
- *  specifies the beginning of a collection of records to define them. 
- * The collection of data (Globals Substream ABNF, macro sheet substream 
+ * This record specifies common information for Shared Features, and
+ *  specifies the beginning of a collection of records to define them.
+ * The collection of data (Globals Substream ABNF, macro sheet substream
  *  ABNF or worksheet substream ABNF) specifies Shared Feature data.
  */
 public final class FeatHdrRecord extends StandardRecord  {
 	/**
-	 * Specifies the enhanced protection type. Used to protect a 
-	 * shared workbook by restricting access to some areas of it 
+	 * Specifies the enhanced protection type. Used to protect a
+	 * shared workbook by restricting access to some areas of it
 	 */
 	public static final int SHAREDFEATURES_ISFPROTECTION = 0x02;
 	/**
-	 * Specifies that formula errors should be ignored 
+	 * Specifies that formula errors should be ignored
 	 */
 	public static final int SHAREDFEATURES_ISFFEC2       = 0x03;
 	/**
 	 * Specifies the smart tag type. Recognises certain
 	 * types of entries (proper names, dates/times etc) and
-	 * flags them for action 
+	 * flags them for action
 	 */
 	public static final int SHAREDFEATURES_ISFFACTOID    = 0x04;
 	/**
@@ -50,13 +50,13 @@ public final class FeatHdrRecord extends StandardRecord  {
 	 */
 	public static final int SHAREDFEATURES_ISFLIST       = 0x05;
 
-	
+
 	public final static short sid = 0x0867;
 
 	private FtrHeader futureHeader;
 	private int isf_sharedFeatureType; // See SHAREDFEATURES_
 	private byte reserved; // Should always be one
-	/** 
+	/**
 	 * 0x00000000 = rgbHdrData not present
 	 * 0xffffffff = rgbHdrData present
 	 */
@@ -75,7 +75,7 @@ public final class FeatHdrRecord extends StandardRecord  {
 
 	public FeatHdrRecord(RecordInputStream in) {
 		futureHeader = new FtrHeader(in);
-		
+
 		isf_sharedFeatureType = in.readShort();
 		reserved = in.readByte();
 		cbHdrData = in.readInt();
@@ -86,16 +86,16 @@ public final class FeatHdrRecord extends StandardRecord  {
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("[FEATURE HEADER]\n");
-		
+
 		// TODO ...
-		
+
 		buffer.append("[/FEATURE HEADER]\n");
 		return buffer.toString();
 	}
 
 	public void serialize(LittleEndianOutput out) {
 		futureHeader.serialize(out);
-		
+
 		out.writeShort(isf_sharedFeatureType);
 		out.writeByte(reserved);
 		out.writeInt((int)cbHdrData);
@@ -105,11 +105,11 @@ public final class FeatHdrRecord extends StandardRecord  {
 	protected int getDataSize() {
 		return 12 + 2+1+4+rgbHdrData.length;
 	}
-    
+
     //HACK: do a "cheat" clone, see Record.java for more information
     public Object clone() {
         return cloneViaReserialise();
     }
 
-    
+
 }

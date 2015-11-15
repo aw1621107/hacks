@@ -74,11 +74,11 @@ public class CalculationChain extends POIXMLDocumentPart {
 
     /**
      * Remove a formula reference from the calculation chain
-     * 
+     *
      * @param sheetId  the sheet Id of a sheet the formula belongs to.
      * @param ref  A1 style reference to the cell containing the formula.
      */
-    @SuppressWarnings("deprecation") //  getXYZArray() array accessors are deprecated 
+    @SuppressWarnings("deprecation") //  getXYZArray() array accessors are deprecated
     public void removeItem(int sheetId, String ref){
         //sheet Id of a sheet the cell belongs to
         int id = -1;

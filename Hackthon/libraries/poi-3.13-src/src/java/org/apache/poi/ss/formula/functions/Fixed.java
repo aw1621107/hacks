@@ -64,7 +64,7 @@ public final class Fixed implements Function1Arg, Function2Arg, Function3Arg {
         }
         return ErrorEval.VALUE_INVALID;
     }
-    
+
     private ValueEval fixed(
             ValueEval numberParam, ValueEval placesParam,
             ValueEval skipThousandsSeparatorParam,
@@ -85,10 +85,10 @@ public final class Fixed implements Function1Arg, Function2Arg, Function3Arg {
             Boolean skipThousandsSeparator =
                     OperandResolver.coerceValueToBoolean(
                     skipThousandsSeparatorValueEval, false);
-            
+
             // Round number to respective places.
             number = number.setScale(places, RoundingMode.HALF_UP);
-            
+
             // Format number conditionally using a thousands separator.
             NumberFormat nf = NumberFormat.getNumberInstance(Locale.US);
             DecimalFormat formatter = (DecimalFormat)nf;

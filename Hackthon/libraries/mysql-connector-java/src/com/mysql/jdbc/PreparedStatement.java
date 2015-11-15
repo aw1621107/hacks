@@ -65,12 +65,12 @@ import com.mysql.jdbc.profiler.ProfilerEvent;
 
 /**
  * A SQL Statement is pre-compiled and stored in a PreparedStatement object. This object can then be used to efficiently execute this statement multiple times.
- * 
+ *
  * <p>
  * <B>Note:</B> The setXXX methods for setting IN parameter values must specify types that are compatible with the defined SQL type of the input parameter. For
  * instance, if the IN parameter has SQL type Integer, then setInt should be used.
  * </p>
- * 
+ *
  * <p>
  * If arbitrary parameter type conversions are required, then the setObject method should be used with a target SQL type.
  * </p>
@@ -628,11 +628,11 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Reads length bytes from reader into buf. Blocks until enough input is
      * available
-     * 
+     *
      * @param reader
      * @param buf
      * @param length
-     * 
+     *
      * @throws IOException
      */
     protected static int readFully(Reader reader, char[] buf, int length) throws IOException {
@@ -654,7 +654,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Does the batch (if any) contain "plain" statements added by
      * Statement.addBatch(String)?
-     * 
+     *
      * If so, we can't re-write it to use multi-value or multi-queries.
      */
     protected boolean batchHasPlainStatements = false;
@@ -779,12 +779,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * Constructor used by server-side prepared statements
-     * 
+     *
      * @param conn
      *            the connection that created us
      * @param catalog
      *            the catalog in use when we were created
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -801,14 +801,14 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * Constructor for the PreparedStatement class.
-     * 
+     *
      * @param conn
      *            the connection creating this statement
      * @param sql
      *            the SQL for this statement
      * @param catalog
      *            the catalog/database this statement should be issued against
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs.
      */
@@ -845,7 +845,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * Creates a new PreparedStatement object.
-     * 
+     *
      * @param conn
      *            the connection creating this statement
      * @param sql
@@ -854,7 +854,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      *            the catalog/database this statement should be issued against
      * @param cachedParseInfo
      *            already created parseInfo.
-     * 
+     *
      * @throws SQLException
      */
     public PreparedStatement(MySQLConnection conn, String sql, String catalog, ParseInfo cachedParseInfo) throws SQLException {
@@ -886,10 +886,10 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * JDBC 2.0 Add a set of parameters to the batch.
-     * 
+     *
      * @exception SQLException
      *                if a database-access error occurs.
-     * 
+     *
      * @see StatementImpl#addBatch
      */
     public void addBatch() throws SQLException {
@@ -1017,7 +1017,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * value. However, in some cases, it is useful to immediately release the
      * resources used by the current parameter values; this can be done by
      * calling clearParameters
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -1108,7 +1108,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * Check to see if the statement is safe for read-only slaves after failover.
-     * 
+     *
      * @return true if safe for read-only.
      * @throws SQLException
      */
@@ -1122,10 +1122,10 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * Some prepared statements return multiple results; the execute method
      * handles these complex statements as well as the simpler form of
      * statements handled by executeQuery and executeUpdate
-     * 
+     *
      * @return true if the next result is a ResultSet; false if it is an update
      *         count or there are no more results
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -1275,9 +1275,9 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * Rewrites the already prepared statement into a multi-statement
      * query of 'statementsPerBatch' values and executes the entire batch
      * using this new statement.
-     * 
+     *
      * @return update counts in the same fashion as executeBatch()
-     * 
+     *
      * @throws SQLException
      */
 
@@ -1466,9 +1466,9 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * Rewrites the already prepared statement into a multi-value insert
      * statement of 'statementsPerBatch' values and executes the entire batch
      * using this new statement.
-     * 
+     *
      * @return update counts in the same fashion as executeBatch()
-     * 
+     *
      * @throws SQLException
      */
     protected long[] executeBatchedInserts(int batchTimeout) throws SQLException {
@@ -1614,7 +1614,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Computes the optimum number of batched parameter lists to send
      * without overflowing max_allowed_packet.
-     * 
+     *
      * @param numBatchedArgs
      * @throws SQLException
      */
@@ -1638,7 +1638,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Computes the maximum parameter set size, and entire batch size given
      * the number of arguments in the batch.
-     * 
+     *
      * @throws SQLException
      */
     protected long[] computeMaxParameterSetSizeAndBatchSize(int numBatchedArgs) throws SQLException {
@@ -1670,7 +1670,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
                             sizeOfParameterSet += paramArg.parameterStrings[j].length;
                         }
                     } else {
-                        sizeOfParameterSet += 4; // for NULL literal in SQL 
+                        sizeOfParameterSet += 4; // for NULL literal in SQL
                     }
                 }
 
@@ -1699,7 +1699,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * Executes the current batch of statements by executing them one-by-one.
-     * 
+     *
      * @return a list of update counts
      * @throws SQLException
      *             if an error occurs
@@ -1811,7 +1811,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Actually execute the prepared statement. This is here so server-side
      * PreparedStatements can re-use most of the code from this class.
-     * 
+     *
      * @param maxRowsToRetrieve
      *            the max number of rows to return
      * @param sendPacket
@@ -1821,9 +1821,9 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * @param queryIsSelectOnly
      *            is this query doing a SELECT?
      * @param unpackFields
-     * 
+     *
      * @return the results as a ResultSet
-     * 
+     *
      * @throws SQLException
      *             if an error occurs.
      */
@@ -1911,10 +1911,10 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * A Prepared SQL query is executed and its ResultSet is returned
-     * 
+     *
      * @return a ResultSet that contains the data produced by the query - never
      *         null
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -1983,10 +1983,10 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * Execute a SQL INSERT, UPDATE or DELETE statement. In addition, SQL
      * statements that return nothing such as SQL DDL statements can be
      * executed.
-     * 
+     *
      * @return either the row count for INSERT, UPDATE or DELETE; or 0 for SQL
      *         statements that return nothing.
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -2012,7 +2012,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * Added to allow batch-updates
-     * 
+     *
      * @param batchedParameterStrings
      *            string values used in single statement
      * @param batchedParameterStreams
@@ -2023,9 +2023,9 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      *            lengths of streams to be read.
      * @param batchedIsNull
      *            flags for parameters that are null
-     * 
+     *
      * @return the update count
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */
@@ -2103,10 +2103,10 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * Creates the packet that contains the query to be sent to the server.
-     * 
+     *
      * @return A Buffer filled with the query representing the
      *         PreparedStatement.
-     * 
+     *
      * @throws SQLException
      *             if an error occurs.
      */
@@ -2118,7 +2118,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * Creates the packet that contains the query to be sent to the server.
-     * 
+     *
      * @param batchedParameterStrings
      *            the parameters as strings
      * @param batchedParameterStreams
@@ -2127,9 +2127,9 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      *            is the given parameter a stream?
      * @param batchedStreamLengths
      *            the lengths of the streams (if appropriate)
-     * 
+     *
      * @return a Buffer filled with the query that represents this statement
-     * 
+     *
      * @throws SQLException
      *             if an error occurs.
      */
@@ -2247,7 +2247,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * @param parameterIndex
-     * 
+     *
      * @throws SQLException
      */
     public byte[] getBytesRepresentation(int parameterIndex) throws SQLException {
@@ -2276,7 +2276,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * Get bytes representation for a parameter in a statement batch.
-     * 
+     *
      * @param parameterIndex
      * @param commandIndex
      * @throws SQLException
@@ -2480,9 +2480,9 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * The number, types and properties of a ResultSet's columns are provided by
      * the getMetaData method.
-     * 
+     *
      * @return the description of a ResultSet's columns
-     * 
+     *
      * @exception SQLException
      *                if a database-access error occurs.
      */
@@ -2492,7 +2492,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
             //
             // We could just tack on a LIMIT 0 here no matter what the  statement, and check if a result set was returned or not, but I'm not comfortable with
             // that, myself, so we take the "safer" road, and only allow metadata for _actual_ SELECTS (but not SHOWs).
-            // 
+            //
             // CALL's are trapped further up and you end up with a  CallableStatement anyway.
             //
 
@@ -2593,7 +2593,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * Used to escape binary data with hex for mb charsets
-     * 
+     *
      * @param buf
      * @param packet
      * @param size
@@ -2671,10 +2671,10 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * Closes this statement, releasing all resources
-     * 
+     *
      * @param calledExplicitly
      *            was this called by close()?
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -2720,12 +2720,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * JDBC 2.0 Set an Array parameter.
-     * 
+     *
      * @param i
      *            the first parameter is 1, the second is 2, ...
      * @param x
      *            an object representing an SQL array
-     * 
+     *
      * @throws SQLException
      *             because this method is not implemented.
      * @throws NotImplemented
@@ -2740,18 +2740,18 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * the data from the stream as needed, until it reaches end-of-file. The
      * JDBC driver will do any necessary conversion from ASCII to the database
      * char format.
-     * 
+     *
      * <P>
      * <B>Note:</B> This stream object can either be a standard Java stream object or your own subclass that implements the standard interface.
      * </p>
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param x
      *            the parameter value
      * @param length
      *            the number of bytes in the stream
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -2766,12 +2766,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Set a parameter to a java.math.BigDecimal value. The driver converts this
      * to a SQL NUMERIC value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param x
      *            the parameter value
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -2789,18 +2789,18 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * When a very large binary value is input to a LONGVARBINARY parameter, it
      * may be more practical to send it via a java.io.InputStream. JDBC will
      * read the data from the stream as needed, until it reaches end-of-file.
-     * 
+     *
      * <P>
      * <B>Note:</B> This stream object can either be a standard Java stream object or your own subclass that implements the standard interface.
      * </p>
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param x
      *            the parameter value
      * @param length
      *            the number of bytes to read from the stream (ignored)
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -2835,12 +2835,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * JDBC 2.0 Set a BLOB parameter.
-     * 
+     *
      * @param i
      *            the first parameter is 1, the second is 2, ...
      * @param x
      *            an object representing a BLOB
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */
@@ -2863,12 +2863,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Set a parameter to a Java boolean value. The driver converts this to a
      * SQL BIT value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param x
      *            the parameter value
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -2885,12 +2885,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Set a parameter to a Java byte value. The driver converts this to a SQL
      * TINYINT value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param x
      *            the parameter value
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -2904,12 +2904,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * Set a parameter to a Java array of bytes. The driver converts this to a
      * SQL VARBINARY or LONGVARBINARY (depending on the argument's size relative
      * to the driver's limits on VARBINARYs) when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param x
      *            the parameter value
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -3046,12 +3046,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Used by updatable result sets for refreshRow() because the parameter has
      * already been escaped for updater or inserter prepared statements.
-     * 
+     *
      * @param parameterIndex
      *            the parameter to set.
      * @param parameterAsBytes
      *            the parameter as a string.
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -3074,18 +3074,18 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * will read the data from the stream as needed, until it reaches
      * end-of-file. The JDBC driver will do any necessary conversion from
      * UNICODE to the database char format.
-     * 
+     *
      * <P>
      * <B>Note:</B> This stream object can either be a standard Java stream object or your own subclass that implements the standard interface.
      * </p>
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1, the second is 2, ...
      * @param reader
      *            the java reader which contains the UNICODE data
      * @param length
      *            the number of characters in the stream
-     * 
+     *
      * @exception SQLException
      *                if a database-access error occurs.
      */
@@ -3148,12 +3148,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * JDBC 2.0 Set a CLOB parameter.
-     * 
+     *
      * @param i
      *            the first parameter is 1, the second is 2, ...
      * @param x
      *            an object representing a CLOB
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */
@@ -3184,12 +3184,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Set a parameter to a java.sql.Date value. The driver converts this to a
      * SQL DATE value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param x
      *            the parameter value
-     * 
+     *
      * @exception java.sql.SQLException
      *                if a database access error occurs
      */
@@ -3200,14 +3200,14 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Set a parameter to a java.sql.Date value. The driver converts this to a
      * SQL DATE value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1, the second is 2, ...
      * @param x
      *            the parameter value
      * @param cal
      *            the calendar to interpret the date with
-     * 
+     *
      * @exception SQLException
      *                if a database-access error occurs.
      */
@@ -3237,12 +3237,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Set a parameter to a Java double value. The driver converts this to a SQL
      * DOUBLE value when it sends it to the database
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param x
      *            the parameter value
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -3263,12 +3263,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Set a parameter to a Java float value. The driver converts this to a SQL
      * FLOAT value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param x
      *            the parameter value
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -3281,12 +3281,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Set a parameter to a Java int value. The driver converts this to a SQL
      * INTEGER value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param x
      *            the parameter value
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -3345,12 +3345,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Set a parameter to a Java long value. The driver converts this to a SQL
      * BIGINT value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param x
      *            the parameter value
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -3362,16 +3362,16 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * Set a parameter to SQL NULL
-     * 
+     *
      * <p>
      * <B>Note:</B> You must specify the parameters SQL type (although MySQL ignores it)
      * </p>
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1, etc...
      * @param sqlType
      *            the SQL type code defined in java.sql.Types
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -3386,18 +3386,18 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * Set a parameter to SQL NULL.
-     * 
+     *
      * <P>
      * <B>Note:</B> You must specify the parameter's SQL type.
      * </p>
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1, the second is 2, ...
      * @param sqlType
      *            SQL type code defined by java.sql.Types
      * @param arg
      *            argument parameters for null
-     * 
+     *
      * @exception SQLException
      *                if a database-access error occurs.
      */
@@ -3562,7 +3562,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * @param parameterIndex
      * @param parameterObj
      * @param targetSqlType
-     * 
+     *
      * @throws SQLException
      */
     public void setObject(int parameterIndex, Object parameterObj, int targetSqlType) throws SQLException {
@@ -3576,16 +3576,16 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Set the value of a parameter using an object; use the java.lang
      * equivalent objects for integral values.
-     * 
+     *
      * <P>
      * The given Java object will be converted to the targetSqlType before being sent to the database.
      * </p>
-     * 
+     *
      * <P>
      * note that this method may be used to pass database-specific abstract data types. This is done by using a Driver-specific Java type and using a
      * targetSqlType of java.sql.Types.OTHER
      * </p>
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param parameterObj
@@ -3596,7 +3596,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      *            For java.sql.Types.DECIMAL or java.sql.Types.NUMERIC types
      *            this is the number of digits after the decimal. For all other
      *            types this value will be ignored.
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
      */
@@ -3784,12 +3784,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * JDBC 2.0 Set a REF(&lt;structured-type&gt;) parameter.
-     * 
+     *
      * @param i
      *            the first parameter is 1, the second is 2, ...
      * @param x
      *            an object representing data of an SQL REF Type
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      * @throws NotImplemented
@@ -3801,10 +3801,10 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Sets the value for the placeholder as a serialized Java object (used by
      * various forms of setObject()
-     * 
+     *
      * @param parameterIndex
      * @param parameterObj
-     * 
+     *
      * @throws SQLException
      */
     private final void setSerializableObject(int parameterIndex, Object parameterObj) throws SQLException {
@@ -3833,12 +3833,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Set a parameter to a Java short value. The driver converts this to a SQL
      * SMALLINT value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param x
      *            the parameter value
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -3852,12 +3852,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * Set a parameter to a Java String value. The driver converts this to a SQL
      * VARCHAR or LONGVARCHAR value (depending on the arguments size relative to
      * the driver's limits on VARCHARs) when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param x
      *            the parameter value
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -4071,14 +4071,14 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Set a parameter to a java.sql.Time value. The driver converts this to a
      * SQL TIME value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1, the second is 2, ...
      * @param x
      *            the parameter value
      * @param cal
      *            the cal specifying the timezone
-     * 
+     *
      * @throws SQLException
      *             if a database-access error occurs.
      */
@@ -4091,12 +4091,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Set a parameter to a java.sql.Time value. The driver converts this to a
      * SQL TIME value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...));
      * @param x
      *            the parameter value
-     * 
+     *
      * @throws java.sql.SQLException
      *             if a database access error occurs
      */
@@ -4110,14 +4110,14 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * Set a parameter to a java.sql.Time value. The driver converts this to a
      * SQL TIME value when it sends it to the database, using the given
      * timezone.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...));
      * @param x
      *            the parameter value
      * @param tz
      *            the timezone to use
-     * 
+     *
      * @throws java.sql.SQLException
      *             if a database access error occurs
      */
@@ -4144,14 +4144,14 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Set a parameter to a java.sql.Timestamp value. The driver converts this
      * to a SQL TIMESTAMP value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1, the second is 2, ...
      * @param x
      *            the parameter value
      * @param cal
      *            the calendar specifying the timezone to use
-     * 
+     *
      * @throws SQLException
      *             if a database-access error occurs.
      */
@@ -4164,12 +4164,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Set a parameter to a java.sql.Timestamp value. The driver converts this
      * to a SQL TIMESTAMP value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param x
      *            the parameter value
-     * 
+     *
      * @throws java.sql.SQLException
      *             if a database access error occurs
      */
@@ -4182,14 +4182,14 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
     /**
      * Set a parameter to a java.sql.Timestamp value. The driver converts this
      * to a SQL TIMESTAMP value when it sends it to the database.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1, the second is 2, ...
      * @param x
      *            the parameter value
      * @param tz
      *            the timezone to use
-     * 
+     *
      * @throws SQLException
      *             if a database-access error occurs.
      */
@@ -4382,21 +4382,21 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * read the data from the stream as needed, until it reaches end-of-file.
      * The JDBC driver will do any necessary conversion from UNICODE to the
      * database char format.
-     * 
+     *
      * <P>
      * <B>Note:</B> This stream object can either be a standard Java stream object or your own subclass that implements the standard interface.
      * </p>
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param x
      *            the parameter value
      * @param length
      *            the number of bytes to read from the stream
-     * 
+     *
      * @throws SQLException
      *             if a database access error occurs
-     * 
+     *
      * @deprecated
      */
     @Deprecated
@@ -4585,7 +4585,7 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * Returns this PreparedStatement represented as a string.
-     * 
+     *
      * @return this PreparedStatement represented as a string.
      */
     @Override
@@ -4661,12 +4661,12 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * VARCHAR or LONGVARCHAR value with introducer _utf8 (depending on the
      * arguments size relative to the driver's limits on VARCHARs) when it sends
      * it to the database. If charset is set as utf8, this method just call setString.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1...
      * @param x
      *            the parameter value
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -4774,18 +4774,18 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
      * will read the data from the stream as needed, until it reaches
      * end-of-file. The JDBC driver will do any necessary conversion from
      * UNICODE to the database char format.
-     * 
+     *
      * <P>
      * <B>Note:</B> This stream object can either be a standard Java stream object or your own subclass that implements the standard interface.
      * </p>
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1, the second is 2, ...
      * @param reader
      *            the java reader which contains the UNICODE data
      * @param length
      *            the number of characters in the stream
-     * 
+     *
      * @exception SQLException
      *                if a database-access error occurs.
      */
@@ -4835,14 +4835,14 @@ public class PreparedStatement extends com.mysql.jdbc.StatementImpl implements j
 
     /**
      * JDBC 4.0 Set a NCLOB parameter.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1, the second is 2, ...
      * @param reader
      *            the java reader which contains the UNICODE data
      * @param length
      *            the number of characters in the stream
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */

@@ -25,11 +25,11 @@ import org.apache.poi.util.LocaleUtil;
 
 public final class TestAttachments extends HMEFTest {
    private HMEFMessage quick;
-   
+
    @Override
    protected void setUp() throws Exception {
       super.setUp();
-      
+
       quick = new HMEFMessage(
             _samples.openResourceAsStream("quick-winmail.dat")
       );
@@ -42,59 +42,59 @@ public final class TestAttachments extends HMEFTest {
       // Should have 5 attachments
       assertEquals(5, quick.getAttachments().size());
 	}
-   
+
 	/**
-	 * Check some basic bits about the attachments 
+	 * Check some basic bits about the attachments
 	 */
    public void testBasicAttachments() throws Exception {
       List<Attachment> attachments = quick.getAttachments();
-      
+
       // Word first
       assertEquals("quick.doc", attachments.get(0).getFilename());
       assertEquals("quick.doc", attachments.get(0).getLongFilename());
       assertEquals(".doc", attachments.get(0).getExtension());
-      
+
       // Then HTML
       assertEquals("QUICK~1.HTM", attachments.get(1).getFilename());
       assertEquals("quick.html", attachments.get(1).getLongFilename());
       assertEquals(".html", attachments.get(1).getExtension());
-      
+
       // Then PDF
       assertEquals("quick.pdf", attachments.get(2).getFilename());
       assertEquals("quick.pdf", attachments.get(2).getLongFilename());
       assertEquals(".pdf", attachments.get(2).getExtension());
-      
+
       // Then Text
       assertEquals("quick.txt", attachments.get(3).getFilename());
       assertEquals("quick.txt", attachments.get(3).getLongFilename());
       assertEquals(".txt", attachments.get(3).getExtension());
-      
+
       // And finally XML
       assertEquals("quick.xml", attachments.get(4).getFilename());
       assertEquals("quick.xml", attachments.get(4).getLongFilename());
       assertEquals(".xml", attachments.get(4).getExtension());
    }
-   
+
    /**
     * Query the attachments in detail, and check we see
     *  the right values for key things
     */
    public void testAttachmentDetails() throws Exception {
       List<Attachment> attachments = quick.getAttachments();
-      
+
       // Pick a predictable date format + timezone
       DateFormat fmt = DateFormat.getDateTimeInstance(
             DateFormat.MEDIUM, DateFormat.MEDIUM, Locale.UK
       );
       fmt.setTimeZone(LocaleUtil.TIMEZONE_UTC);
-      
+
       // They should all have the same date on them
       assertEquals("28-Apr-2010 12:40:56", fmt.format( attachments.get(0).getModifiedDate()));
       assertEquals("28-Apr-2010 12:40:56", fmt.format( attachments.get(1).getModifiedDate()));
       assertEquals("28-Apr-2010 12:40:56", fmt.format( attachments.get(2).getModifiedDate()));
       assertEquals("28-Apr-2010 12:40:56", fmt.format( attachments.get(3).getModifiedDate()));
       assertEquals("28-Apr-2010 12:40:56", fmt.format( attachments.get(4).getModifiedDate()));
-      
+
       // They should all have a 3512 byte metafile rendered version
       assertEquals(3512, attachments.get(0).getRenderedMetaFile().length);
       assertEquals(3512, attachments.get(1).getRenderedMetaFile().length);
@@ -104,11 +104,11 @@ public final class TestAttachments extends HMEFTest {
    }
 
    /**
-    * Ensure the attachment contents come back as they should do 
+    * Ensure the attachment contents come back as they should do
     */
    public void testAttachmentContents() throws Exception {
       List<Attachment> attachments = quick.getAttachments();
-      
+
       assertContents("quick.doc", attachments.get(0));
       assertContents("quick.html", attachments.get(1));
       assertContents("quick.pdf", attachments.get(2));

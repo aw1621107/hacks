@@ -26,7 +26,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * Defines a legend for a chart.<p/>
- * 
+ *
  * @author Andrew C. Oliver (acoliver at apache.org)
  */
 public final class LegendRecord extends StandardRecord {
@@ -81,37 +81,37 @@ public final class LegendRecord extends StandardRecord {
         buffer.append("    .xAxisUpperLeft       = ")
             .append("0x").append(HexDump.toHex(  getXAxisUpperLeft ()))
             .append(" (").append( getXAxisUpperLeft() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .yAxisUpperLeft       = ")
             .append("0x").append(HexDump.toHex(  getYAxisUpperLeft ()))
             .append(" (").append( getYAxisUpperLeft() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .xSize                = ")
             .append("0x").append(HexDump.toHex(  getXSize ()))
             .append(" (").append( getXSize() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .ySize                = ")
             .append("0x").append(HexDump.toHex(  getYSize ()))
             .append(" (").append( getYSize() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .type                 = ")
             .append("0x").append(HexDump.toHex(  getType ()))
             .append(" (").append( getType() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .spacing              = ")
             .append("0x").append(HexDump.toHex(  getSpacing ()))
             .append(" (").append( getSpacing() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .options              = ")
             .append("0x").append(HexDump.toHex(  getOptions ()))
             .append(" (").append( getOptions() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
-        buffer.append("         .autoPosition             = ").append(isAutoPosition()).append('\n'); 
-        buffer.append("         .autoSeries               = ").append(isAutoSeries()).append('\n'); 
-        buffer.append("         .autoXPositioning         = ").append(isAutoXPositioning()).append('\n'); 
-        buffer.append("         .autoYPositioning         = ").append(isAutoYPositioning()).append('\n'); 
-        buffer.append("         .vertical                 = ").append(isVertical()).append('\n'); 
-        buffer.append("         .dataTable                = ").append(isDataTable()).append('\n'); 
+        buffer.append(System.getProperty("line.separator"));
+        buffer.append("         .autoPosition             = ").append(isAutoPosition()).append('\n');
+        buffer.append("         .autoSeries               = ").append(isAutoSeries()).append('\n');
+        buffer.append("         .autoXPositioning         = ").append(isAutoXPositioning()).append('\n');
+        buffer.append("         .autoYPositioning         = ").append(isAutoYPositioning()).append('\n');
+        buffer.append("         .vertical                 = ").append(isVertical()).append('\n');
+        buffer.append("         .dataTable                = ").append(isDataTable()).append('\n');
 
         buffer.append("[/LEGEND]\n");
         return buffer.toString();
@@ -138,7 +138,7 @@ public final class LegendRecord extends StandardRecord {
 
     public Object clone() {
         LegendRecord rec = new LegendRecord();
-    
+
         rec.field_1_xAxisUpperLeft = field_1_xAxisUpperLeft;
         rec.field_2_yAxisUpperLeft = field_2_yAxisUpperLeft;
         rec.field_3_xSize = field_3_xSize;
@@ -219,7 +219,7 @@ public final class LegendRecord extends StandardRecord {
     /**
      * Get the type field for the Legend record.
      *
-     * @return  One of 
+     * @return  One of
      *        TYPE_BOTTOM
      *        TYPE_CORNER
      *        TYPE_TOP
@@ -236,7 +236,7 @@ public final class LegendRecord extends StandardRecord {
      * Set the type field for the Legend record.
      *
      * @param field_5_type
-     *        One of 
+     *        One of
      *        TYPE_BOTTOM
      *        TYPE_CORNER
      *        TYPE_TOP
@@ -252,7 +252,7 @@ public final class LegendRecord extends StandardRecord {
     /**
      * Get the spacing field for the Legend record.
      *
-     * @return  One of 
+     * @return  One of
      *        SPACING_CLOSE
      *        SPACING_MEDIUM
      *        SPACING_OPEN
@@ -266,7 +266,7 @@ public final class LegendRecord extends StandardRecord {
      * Set the spacing field for the Legend record.
      *
      * @param field_6_spacing
-     *        One of 
+     *        One of
      *        SPACING_CLOSE
      *        SPACING_MEDIUM
      *        SPACING_OPEN

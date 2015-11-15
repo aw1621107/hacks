@@ -141,13 +141,13 @@ public final class TestXSSFCell extends BaseTestXCell {
         try {
             XSSFCell cell = wb.createSheet().createRow(0).createCell(0);
             CTCell ctCell = cell.getCTCell(); //low-level bean holding cell's xml
-    
+
             cell.setCellFormula("A2");
             assertEquals(XSSFCell.CELL_TYPE_FORMULA, cell.getCellType());
             assertEquals("A2", cell.getCellFormula());
             //the value is not set and cell's type='N' which means blank
             assertEquals(STCellType.N, ctCell.getT());
-    
+
             //set cached formula value
             cell.setCellValue("t='str'");
             //we are still of 'formula' type
@@ -156,14 +156,14 @@ public final class TestXSSFCell extends BaseTestXCell {
             //cached formula value is set and cell's type='STR'
             assertEquals(STCellType.STR, ctCell.getT());
             assertEquals("t='str'", cell.getStringCellValue());
-    
+
             //now remove the formula, the cached formula result remains
             cell.setCellFormula(null);
             assertEquals(XSSFCell.CELL_TYPE_STRING, cell.getCellType());
             assertEquals(STCellType.STR, ctCell.getT());
             //the line below failed prior to fix of Bug #47889
             assertEquals("t='str'", cell.getStringCellValue());
-    
+
             //revert to a blank cell
             cell.setCellValue((String)null);
             assertEquals(XSSFCell.CELL_TYPE_BLANK, cell.getCellType());
@@ -228,7 +228,7 @@ public final class TestXSSFCell extends BaseTestXCell {
         XSSFWorkbook wb2 = (XSSFWorkbook)_testDataProvider.writeOutAndReadBack(wb1);
         row = wb2.getSheetAt(0).getRow(0);
         assertCellsWithMissingR(row);
-        
+
         wb2.close();
         wb1.close();
     }
@@ -301,7 +301,7 @@ public final class TestXSSFCell extends BaseTestXCell {
         wbRef.close();
         wb.close();
     }
-    
+
     @Test
     public void test56170() throws IOException {
         final Workbook wb1 = XSSFTestDataSamples.openSampleWorkbook("56170.xlsx");
@@ -309,7 +309,7 @@ public final class TestXSSFCell extends BaseTestXCell {
 
         Workbook wb2 = XSSFTestDataSamples.writeOutAndReadBack(wb1);
         Cell cell;
-        
+
         // add some contents to table so that the table will need expansion
         Row row = sheet.getRow(0);
         Workbook wb3 = XSSFTestDataSamples.writeOutAndReadBack(wb2);
@@ -326,7 +326,7 @@ public final class TestXSSFCell extends BaseTestXCell {
         cell.setCellValue("demo3");
 
         Workbook wb9 = XSSFTestDataSamples.writeOutAndReadBack(wb8);
-        
+
         row = sheet.getRow(1);
         cell = row.createCell(0);
         cell.setCellValue("demo1");
@@ -336,7 +336,7 @@ public final class TestXSSFCell extends BaseTestXCell {
         cell.setCellValue("demo3");
 
         Workbook wb10 = XSSFTestDataSamples.writeOutAndReadBack(wb9);
-        
+
         // expand table
         XSSFTable table = sheet.getTables().get(0);
         final CellReference startRef = table.getStartCellReference();
@@ -358,36 +358,36 @@ public final class TestXSSFCell extends BaseTestXCell {
         wb2.close();
         wb1.close();
     }
-    
+
     @Test
     public void test56170Reproduce() throws IOException {
         final Workbook wb = new XSSFWorkbook();
         try {
             final Sheet sheet = wb.createSheet();
             Row row = sheet.createRow(0);
-            
+
             // by creating Cells out of order we trigger the handling in onDocumentWrite()
             Cell cell1 = row.createCell(1);
             Cell cell2 = row.createCell(0);
-    
+
             validateRow(row);
-            
+
             validateRow(row);
-    
+
             // once again with removing one cell
             row.removeCell(cell1);
-    
+
             validateRow(row);
-    
+
             // once again with removing one cell
             row.removeCell(cell1);
-    
+
             // now check again
             validateRow(row);
-    
+
             // once again with removing one cell
             row.removeCell(cell2);
-    
+
             // now check again
             validateRow(row);
         } finally {
@@ -398,11 +398,11 @@ public final class TestXSSFCell extends BaseTestXCell {
     private void validateRow(Row row) {
         // trigger bug with CArray handling
         ((XSSFRow)row).onDocumentWrite();
-        
+
         for(Cell cell : row) {
             cell.toString();
         }
-    }    
+    }
 
     @Test
     public void testBug56644ReturnNull() throws IOException {
@@ -457,10 +457,10 @@ public final class TestXSSFCell extends BaseTestXCell {
         int pos = 0;
         while(pos < strAll.length()) {
         	String str = strAll.substring(pos, Math.min(strAll.length(), pos+SpreadsheetVersion.EXCEL2007.getMaxTextLength()));
-        	
+
             Workbook wb = HSSFITestDataProvider.instance.createWorkbook();
             Cell cell = wb.createSheet().createRow(0).createCell(0);
-            
+
             Workbook xwb = XSSFITestDataProvider.instance.createWorkbook();
             Cell xCell = xwb.createSheet().createRow(0).createCell(0);
 
@@ -473,19 +473,19 @@ public final class TestXSSFCell extends BaseTestXCell {
         	assertEquals(str, xCell.getStringCellValue());
         	sCell.setCellValue(str);
         	assertEquals(str, sCell.getStringCellValue());
-        	
+
         	Workbook wbBack = HSSFITestDataProvider.instance.writeOutAndReadBack(wb);
         	Workbook xwbBack = XSSFITestDataProvider.instance.writeOutAndReadBack(xwb);
         	Workbook swbBack = SXSSFITestDataProvider.instance.writeOutAndReadBack(swb);
         	cell = wbBack.getSheetAt(0).createRow(0).createCell(0);
         	xCell = xwbBack.getSheetAt(0).createRow(0).createCell(0);
         	sCell = swbBack.getSheetAt(0).createRow(0).createCell(0);
-        	
+
         	assertEquals(cell.getStringCellValue(), xCell.getStringCellValue());
         	assertEquals(cell.getStringCellValue(), sCell.getStringCellValue());
-        	
+
         	pos += SpreadsheetVersion.EXCEL97.getMaxTextLength();
-        	
+
         	swbBack.close();
         	xwbBack.close();
         	wbBack.close();

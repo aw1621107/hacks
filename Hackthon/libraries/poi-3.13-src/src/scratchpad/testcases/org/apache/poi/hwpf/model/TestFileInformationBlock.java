@@ -45,7 +45,7 @@ public final class TestFileInformationBlock extends TestCase {
             assertEquals(fields[x].get(_fileInformationBlock),
                     fields[x].get(newFileInformationBlock));
         }
-        
+
         assertNotNull(_fileInformationBlock.toString());
     }
 

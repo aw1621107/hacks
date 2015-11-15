@@ -23,7 +23,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * preceeds and identifies a frame as belonging to the plot area.<p/>
- * 
+ *
  * @author Andrew C. Oliver (acoliver at apache.org)
  */
 public final class PlotAreaRecord extends StandardRecord {
@@ -67,7 +67,7 @@ public final class PlotAreaRecord extends StandardRecord {
 
     public Object clone() {
         PlotAreaRecord rec = new PlotAreaRecord();
-    
+
         return rec;
     }
 }

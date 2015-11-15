@@ -14,7 +14,7 @@
  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
- * ==================================================================== 
+ * ====================================================================
  */
 
 package org.apache.poi.xslf.usermodel;
@@ -50,11 +50,11 @@ public final class DataExtraction {
         for (PackagePart p : embeds) {
             String type = p.getContentType();
             String name = p.getPartName().getName();  //typically file name
-            
+
             InputStream pIs = p.getInputStream();
             // make sense of the part data
             pIs.close();
-            
+
         }
 
         // Get the document's embedded files.
@@ -88,7 +88,7 @@ public final class DataExtraction {
                 }
             }
         }
-        
+
         ppt.close();
     }
 

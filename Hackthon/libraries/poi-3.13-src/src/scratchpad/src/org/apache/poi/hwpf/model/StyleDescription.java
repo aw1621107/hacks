@@ -37,7 +37,7 @@ public final class StyleDescription implements HDFType
 {
 
     private static final POILogger logger = POILogFactory.getLogger( StyleDescription.class );
-    
+
   private final static int PARAGRAPH_STYLE = 1;
   private final static int CHARACTER_STYLE = 2;
   // private final static int TABLE_STYLE = 3;

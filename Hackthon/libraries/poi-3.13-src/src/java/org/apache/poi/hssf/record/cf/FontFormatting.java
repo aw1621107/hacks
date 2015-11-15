@@ -509,7 +509,7 @@ public final class FontFormatting {
             append(getFontWeight()).
             append(
                     getFontWeight() == FONT_WEIGHT_NORMAL ? "(Normal)"
-                    : getFontWeight() == FONT_WEIGHT_BOLD ? "(Bold)" 
+                    : getFontWeight() == FONT_WEIGHT_BOLD ? "(Bold)"
                     : "0x"+Integer.toHexString(getFontWeight())).
             append("\n");
         }

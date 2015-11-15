@@ -37,12 +37,12 @@ public class DrawingManager2
     {
         this.dgg = dgg;
     }
-    
+
     /**
      * Clears the cached list of drawing groups
      */
     public void clearDrawingGroups() {
-    	drawingGroups.clear(); 
+    	drawingGroups.clear();
     }
 
     public EscherDgRecord createDgRecord()
@@ -106,13 +106,13 @@ public class DrawingManager2
         return result;
     }
     ////////////  Non-public methods /////////////
-    
+
     /**
      * Finds the next available (1 based) drawing group id
      */
     public short findNewDrawingGroupId()
     {
-        short dgId = 1; 
+        short dgId = 1;
         while ( drawingGroupExists( dgId ) )
             dgId++;
         return dgId;

@@ -29,19 +29,19 @@ public final class TestHSSFColor extends TestCase {
 		assertTrue(HSSFColor.YELLOW.index > 0);
 		assertTrue(HSSFColor.YELLOW.index2 > 0);
 	}
-	
+
 	public void testContents() {
 		assertEquals(3, HSSFColor.YELLOW.triplet.length);
 		assertEquals(255, HSSFColor.YELLOW.triplet[0]);
 		assertEquals(255, HSSFColor.YELLOW.triplet[1]);
 		assertEquals(0, HSSFColor.YELLOW.triplet[2]);
-		
+
 		assertEquals("FFFF:FFFF:0", HSSFColor.YELLOW.hexString);
 	}
-	
+
 	public void testTrippletHash() {
 		Hashtable tripplets = HSSFColor.getTripletHash();
-		
+
 		assertEquals(
 				HSSFColor.MAROON.class,
 				tripplets.get(HSSFColor.MAROON.hexString).getClass()

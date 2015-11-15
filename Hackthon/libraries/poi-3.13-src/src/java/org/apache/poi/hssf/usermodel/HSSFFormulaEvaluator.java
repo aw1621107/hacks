@@ -109,12 +109,12 @@ public class HSSFFormulaEvaluator implements FormulaEvaluator, WorkbookEvaluator
     public void setupReferencedWorkbooks(Map<String, FormulaEvaluator> evaluators) {
         CollaboratingWorkbooksEnvironment.setupFormulaEvaluator(evaluators);
     }
-	
+
     @Override
     public WorkbookEvaluator _getWorkbookEvaluator() {
         return _bookEvaluator;
     }
-    
+
     /**
 	 * Does nothing
 	 * @deprecated (Aug 2008) - not needed, since the current row can be derived from the cell
@@ -320,7 +320,7 @@ public class HSSFFormulaEvaluator implements FormulaEvaluator, WorkbookEvaluator
 	public static void evaluateAllFormulaCells(HSSFWorkbook wb) {
 	   evaluateAllFormulaCells(wb, new HSSFFormulaEvaluator(wb));
 	}
-	
+
    /**
     * Loops over all cells in all sheets of the supplied
     *  workbook.
@@ -349,7 +349,7 @@ public class HSSFFormulaEvaluator implements FormulaEvaluator, WorkbookEvaluator
          }
       }
 	}
-	
+
    /**
     * Loops over all cells in all sheets of the supplied
     *  workbook.

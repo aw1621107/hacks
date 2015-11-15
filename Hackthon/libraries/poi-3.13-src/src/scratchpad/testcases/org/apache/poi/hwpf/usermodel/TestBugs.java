@@ -47,7 +47,7 @@ import org.apache.poi.util.POILogger;
 
 /**
  * Test different problems reported in Apache Bugzilla
- * 
+ *
  * @author Nick Burch (nick at torchbox dot com)
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
@@ -118,7 +118,7 @@ public class TestBugs extends TestCase
             extractor.close();
         }
     }
-    
+
     private String getTextOldFile(String samplefile) throws IOException {
         HWPFOldDocument doc = HWPFTestDataSamples.openOldSampleFile(samplefile);
         Word6Extractor extractor = new Word6Extractor(doc);
@@ -131,7 +131,7 @@ public class TestBugs extends TestCase
 
     /**
      * Bug 33519 - HWPF fails to read a file
-     * @throws IOException 
+     * @throws IOException
      */
     public void test33519() throws IOException
     {
@@ -140,7 +140,7 @@ public class TestBugs extends TestCase
 
     /**
      * Bug 34898 - WordExtractor doesn't read the whole string from the file
-     * @throws IOException 
+     * @throws IOException
      */
     public void test34898() throws IOException
     {
@@ -181,7 +181,7 @@ public class TestBugs extends TestCase
 
     /**
      * Bug 44331 - HWPFDocument.write destroys fields
-     * @throws IOException 
+     * @throws IOException
      */
     public void test44431() throws IOException
     {
@@ -190,14 +190,14 @@ public class TestBugs extends TestCase
         WordExtractor extractor1 = new WordExtractor(doc1);
         try {
             HWPFDocument doc2 = HWPFTestDataSamples.writeOutAndReadBack(doc1);
-            
+
             WordExtractor extractor2 = new WordExtractor(doc2);
             try {
                 assertEqualsIgnoreNewline(extractor1.getFooterText(), extractor2.getFooterText());
                 assertEqualsIgnoreNewline(extractor1.getHeaderText(), extractor2.getHeaderText());
                 assertEqualsIgnoreNewline(Arrays.toString(extractor1.getParagraphText() ),
                         Arrays.toString(extractor2.getParagraphText()));
-        
+
                 assertEqualsIgnoreNewline(extractor1.getText(), extractor2.getText());
             } finally {
                 extractor2.close();
@@ -209,35 +209,35 @@ public class TestBugs extends TestCase
 
     /**
      * Bug 44331 - HWPFDocument.write destroys fields
-     * @throws IOException 
+     * @throws IOException
      */
     public void test44431_2() throws IOException
     {
-        assertEqualsIgnoreNewline("File name=FieldsTest.doc\n" + 
-        		"\n" + 
-        		"\n" + 
-        		"STYLEREF test\n" + 
-        		"\n" + 
-        		"\n" + 
-        		"\n" + 
-        		"TEST TABLE OF CONTENTS\n" + 
-        		"\n" + 
-        		"Heading paragraph in next page\t2\n" + 
-        		"Another heading paragraph in further page\t3\n" + 
-        		"Another heading paragraph in further page\t3\n" + 
-        		"\n" + 
-        		"\n" + 
-        		"Heading paragraph in next page\n" + 
-        		"Another heading paragraph in further page\n" + 
-        		"\n" + 
-        		"\n" + 
-        		"\n" + 
+        assertEqualsIgnoreNewline("File name=FieldsTest.doc\n" +
+        		"\n" +
+        		"\n" +
+        		"STYLEREF test\n" +
+        		"\n" +
+        		"\n" +
+        		"\n" +
+        		"TEST TABLE OF CONTENTS\n" +
+        		"\n" +
+        		"Heading paragraph in next page\t2\n" +
+        		"Another heading paragraph in further page\t3\n" +
+        		"Another heading paragraph in further page\t3\n" +
+        		"\n" +
+        		"\n" +
+        		"Heading paragraph in next page\n" +
+        		"Another heading paragraph in further page\n" +
+        		"\n" +
+        		"\n" +
+        		"\n" +
         		"Page 3 of 3", getText("Bug44431.doc"));
     }
 
     /**
      * Bug 45473 - HWPF cannot read file after save
-     * @throws IOException 
+     * @throws IOException
      */
     public void test45473() throws IOException
     {
@@ -289,7 +289,7 @@ public class TestBugs extends TestCase
     /**
      * [RESOLVED FIXED] Bug 46817 - Regression: Text from some table cells
      * missing
-     * @throws IOException 
+     * @throws IOException
      */
     public void test46817() throws IOException
     {
@@ -303,7 +303,7 @@ public class TestBugs extends TestCase
     /**
      * [FAILING] Bug 47286 - Word documents saves in wrong format if source
      * contains form elements
-     * 
+     *
      * @throws IOException
      */
     public void test47286() throws IOException
@@ -445,7 +445,7 @@ public class TestBugs extends TestCase
             byte[] expectedBytes = IOUtils.toByteArray(is);
             String expectedText = new String(expectedBytes, "utf-8" )
                     .substring(1); // strip-off the unicode marker
-    
+
             assertEqualsIgnoreNewline(expectedText, foundText);
         } finally {
             is.close();
@@ -519,7 +519,7 @@ public class TestBugs extends TestCase
 
     /**
      * [FAILING] Bug 50955 - error while retrieving the text file
-     * @throws IOException 
+     * @throws IOException
      */
     public void test50955() throws IOException
     {
@@ -564,7 +564,7 @@ public class TestBugs extends TestCase
     /**
      * [RESOLVED FIXED] Bug 51604 - replace text fails for doc (poi 3.8 beta
      * release from download site )
-     * 
+     *
      * @throws IOException
      * @throws FileNotFoundException
      */
@@ -668,7 +668,7 @@ public class TestBugs extends TestCase
     /**
      * Bug 51678 - Extracting text from Bug51524.zip is slow Bug 51524 -
      * PapBinTable constructor is slow
-     * @throws IOException 
+     * @throws IOException
      */
     public void test51678And51524() throws IOException
     {
@@ -788,11 +788,11 @@ public class TestBugs extends TestCase
     {
         assertNotNull(getText("Bug53380_4.doc"));
     }
-    
+
     /**
-     * java.lang.UnsupportedOperationException: Non-extended character 
+     * java.lang.UnsupportedOperationException: Non-extended character
      *  Pascal strings are not supported right now
-     * 
+     *
      * Disabled pending a fix for the bug
      */
     public void DISABLEDtest56880() throws Exception {
@@ -801,7 +801,7 @@ public class TestBugs extends TestCase
         assertEqualsIgnoreNewline("Check Request", doc.getRange().text());
     }
 
-    
+
     // These are the values the are explected to be read when the file
     // is checked.
     private int section1LeftMargin = 1440;
@@ -814,7 +814,7 @@ public class TestBugs extends TestCase
     private int section2TopMargin = 1440;
     private int section2BottomMargin = 1440;
     private int section2NumColumns = 3;
-    
+
     public void testHWPFSections() {
         HWPFDocument document = null;
         Paragraph para = null;
@@ -843,7 +843,7 @@ public class TestBugs extends TestCase
                     assertEquals(section2RightMargin, section.getMarginRight());
                     assertEquals(section2TopMargin, section.getMarginTop());
                     assertEquals(section2NumColumns, section.getNumColumns());
-                    
+
                     // Change the margin widths
                     this.section2BottomMargin = (int)(1.5 * AbstractWordUtils.TWIPS_PER_INCH);
                     this.section2TopMargin = (int)(1.75 * AbstractWordUtils.TWIPS_PER_INCH);
@@ -856,7 +856,7 @@ public class TestBugs extends TestCase
                 }
             }
         }
-        
+
         // Save away and re-read the document to prove the chages are permanent
         document = HWPFTestDataSamples.writeOutAndReadBack(document);
         overallRange = document.getOverallRange();

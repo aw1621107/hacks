@@ -68,7 +68,7 @@ public class ConnectionGroup {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.ConnectionGroupMBean#getGroupName()
      */
     public String getGroupName() {
@@ -77,7 +77,7 @@ public class ConnectionGroup {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.ConnectionGroupMBean#getInitialHostList()
      */
     public Collection<String> getInitialHosts() {
@@ -86,7 +86,7 @@ public class ConnectionGroup {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.ConnectionGroupMBean#getActiveHostCount()
      */
     public int getActiveHostCount() {
@@ -99,7 +99,7 @@ public class ConnectionGroup {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.ConnectionGroupMBean#getTotalLogicalConnectionCount()
      */
     public long getTotalLogicalConnectionCount() {
@@ -108,7 +108,7 @@ public class ConnectionGroup {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.ConnectionGroupMBean#getActiveLogicalConnectionCount()
      */
     public long getActiveLogicalConnectionCount() {
@@ -117,7 +117,7 @@ public class ConnectionGroup {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.ConnectionGroupMBean#getActivePhysicalConnectionCount()
      */
     public long getActivePhysicalConnectionCount() {
@@ -137,7 +137,7 @@ public class ConnectionGroup {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.ConnectionGroupMBean#getTotalPhysicalConnectionCount()
      */
     public long getTotalPhysicalConnectionCount() {
@@ -157,7 +157,7 @@ public class ConnectionGroup {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.ConnectionGroupMBean#getTotalTransactionCount()
      */
     public long getTotalTransactionCount() {
@@ -195,7 +195,7 @@ public class ConnectionGroup {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.ConnectionGroupMBean#removeHost(java.lang.String, boolean, boolean)
      */
     public synchronized void removeHost(String host, boolean killExistingConnections, boolean waitForGracefulFailover) throws SQLException {
@@ -235,7 +235,7 @@ public class ConnectionGroup {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.ConnectionGroupMBean#addHost(java.lang.String, boolean)
      */
     public void addHost(String host, boolean forExisting) {

@@ -338,7 +338,7 @@ public class CellReference {
     private static final class CellRefParts {
         final String sheetName;
         final String rowRef;
-        final String colRef; 
+        final String colRef;
 
         private CellRefParts(String sheetName, String rowRef, String colRef) {
             this.sheetName = sheetName;
@@ -349,7 +349,7 @@ public class CellReference {
 
     /**
      * Separates the sheet name, row, and columns from a cell reference string.
-     * 
+     *
      * @param reference is a string that identifies a cell within the sheet or workbook
      * reference may not refer to a cell in an external workbook
      * reference may be absolute or relative.

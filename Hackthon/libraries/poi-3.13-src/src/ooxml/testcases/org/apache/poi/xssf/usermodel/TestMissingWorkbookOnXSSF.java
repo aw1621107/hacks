@@ -28,12 +28,12 @@ public final class TestMissingWorkbookOnXSSF extends TestMissingWorkbook {
     public TestMissingWorkbookOnXSSF() {
         super("52575_main.xlsx", "source_dummy.xlsx", "52575_source.xls");
     }
-    
+
     @Override
     protected void setUp() throws Exception {
         mainWorkbook = XSSFTestDataSamples.openSampleWorkbook(MAIN_WORKBOOK_FILENAME);
         sourceWorkbook = HSSFTestDataSamples.openSampleWorkbook(SOURCE_WORKBOOK_FILENAME);
-        
+
         assertNotNull(mainWorkbook);
         assertNotNull(sourceWorkbook);
     }

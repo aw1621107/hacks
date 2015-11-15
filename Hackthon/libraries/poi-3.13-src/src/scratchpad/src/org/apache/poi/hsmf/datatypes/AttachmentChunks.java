@@ -46,21 +46,21 @@ import org.apache.poi.util.POILogger;
 public class AttachmentChunks implements ChunkGroup {
    private static POILogger logger = POILogFactory.getLogger(AttachmentChunks.class);
    public static final String PREFIX = "__attach_version1.0_#";
-   
+
    public ByteChunk attachData;
    public StringChunk attachExtension;
    public StringChunk attachFileName;
    public StringChunk attachLongFileName;
    public StringChunk attachMimeTag;
    public DirectoryChunk attachmentDirectory;
-   
-   /** 
+
+   /**
     * This is in WMF Format. You'll probably want to pass it
     *  to Apache Batik to turn it into a SVG that you can
-    *  then display. 
+    *  then display.
     */
    public ByteChunk attachRenderingWMF;
-   
+
    /**
     * What the POIFS name of this attachment is.
     */
@@ -69,12 +69,12 @@ public class AttachmentChunks implements ChunkGroup {
    /** Holds all the chunks that were found. */
    private List<Chunk> allChunks = new ArrayList<Chunk>();
 
-   
+
    public AttachmentChunks(String poifsName) {
       this.poifsName = poifsName;
    }
-   
-   
+
+
    /**
     * Is this Attachment an embedded MAPI message?
     */
@@ -91,7 +91,7 @@ public class AttachmentChunks implements ChunkGroup {
       }
       return null;
    }
-   
+
    /**
     * Returns the embedded object, if the attachment is an
     *  object based embedding (image, document etc), or null
@@ -103,18 +103,18 @@ public class AttachmentChunks implements ChunkGroup {
       }
       return null;
    }
-   
+
    public Chunk[] getAll() {
       return allChunks.toArray(new Chunk[allChunks.size()]);
    }
    public Chunk[] getChunks() {
       return getAll();
    }
-   
+
    public String getPOIFSName() {
       return poifsName;
    }
-   
+
    /**
     * Called by the parser whenever a chunk is found.
     */

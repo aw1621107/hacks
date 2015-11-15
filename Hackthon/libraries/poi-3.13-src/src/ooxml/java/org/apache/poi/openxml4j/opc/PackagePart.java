@@ -226,11 +226,11 @@ public abstract class PackagePart implements RelationshipSource, Comparable<Pack
 	 * @return The newly created and added relationship
 	 *
 	 * @throws InvalidOperationException
-	 *             If a writing operation is done on a read only package or 
+	 *             If a writing operation is done on a read only package or
 	 *             invalid nested relations are created.
 	 * @throws InvalidFormatException
 	 *             If the URI point to a relationship part URI.
-	 * @throws IllegalArgumentException if targetPartName, targetMode 
+	 * @throws IllegalArgumentException if targetPartName, targetMode
 	 *             or relationshipType are passed as null
 	 * @see org.apache.poi.openxml4j.opc.RelationshipSource#addRelationship(org.apache.poi.openxml4j.opc.PackagePartName,
 	 *      org.apache.poi.openxml4j.opc.TargetMode, java.lang.String, java.lang.String)
@@ -461,7 +461,7 @@ public abstract class PackagePart implements RelationshipSource, Comparable<Pack
    /**
     * Get the PackagePart that is the target of a relationship.
     *
-    * @param rel A relationship from this part to another one 
+    * @param rel A relationship from this part to another one
     * @return The target part of the relationship
     */
    public PackagePart getRelatedPart(PackageRelationship rel) throws InvalidFormatException {
@@ -469,7 +469,7 @@ public abstract class PackagePart implements RelationshipSource, Comparable<Pack
        if(! isRelationshipExists(rel)) {
           throw new IllegalArgumentException("Relationship " + rel + " doesn't start with this part " + _partName);
        }
-       
+
        // Get the target URI, excluding any relative fragments
        URI target = rel.getTargetURI();
        if(target.getFragment() != null) {
@@ -480,7 +480,7 @@ public abstract class PackagePart implements RelationshipSource, Comparable<Pack
              throw new InvalidFormatException("Invalid target URI: " + target);
           }
        }
-   
+
        // Turn that into a name, and fetch
        PackagePartName relName = PackagingURIHelper.createPartName(target);
        PackagePart part = _container.getPart(relName);
@@ -489,7 +489,7 @@ public abstract class PackagePart implements RelationshipSource, Comparable<Pack
        }
        return part;
    }
-   
+
 	/**
 	 * Get the input stream of this part to read its content.
 	 *
@@ -636,7 +636,7 @@ public abstract class PackagePart implements RelationshipSource, Comparable<Pack
 	public void setDeleted(boolean isDeleted) {
 		this._isDeleted = isDeleted;
 	}
-	
+
 	/**
 	 * @return The length of the part in bytes, or -1 if not known
 	 */

@@ -45,7 +45,7 @@ import com.mysql.jdbc.Wrapper;
 public class UtilsTest extends BaseTestCase {
     /**
      * Creates a new UtilsTest.
-     * 
+     *
      * @param name
      *            the name of the test
      */
@@ -55,7 +55,7 @@ public class UtilsTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -64,7 +64,7 @@ public class UtilsTest extends BaseTestCase {
 
     /**
      * Tests Util.isJdbcInterface()
-     * 
+     *
      * @throws Exception
      */
     public void testIsJdbcInterface() throws Exception {
@@ -88,7 +88,7 @@ public class UtilsTest extends BaseTestCase {
 
     /**
      * Tests Util.isJdbcPackage()
-     * 
+     *
      * @throws Exception
      */
     public void testIsJdbcPackage() throws Exception {
@@ -109,7 +109,7 @@ public class UtilsTest extends BaseTestCase {
 
     /**
      * Tests Util.isJdbcPackage()
-     * 
+     *
      * @throws Exception
      */
     public void testGetImplementedInterfaces() throws Exception {

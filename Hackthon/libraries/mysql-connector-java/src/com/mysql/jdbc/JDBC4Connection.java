@@ -71,7 +71,7 @@ public class JDBC4Connection extends ConnectionImpl {
      * this method is called.
      * <p>
      * The query submitted by the driver to validate the connection shall be executed in the context of the current transaction.
-     * 
+     *
      * @param timeout
      *            - The time in seconds to wait for the database operation
      *            used to validate the connection to complete. If
@@ -146,7 +146,7 @@ public class JDBC4Connection extends ConnectionImpl {
      * This method should be implemented as a low-cost operation compared to <code>unwrap</code> so that
      * callers can use this method to avoid expensive <code>unwrap</code> calls that may fail. If this method
      * returns true then calling <code>unwrap</code> with the same argument should succeed.
-     * 
+     *
      * @param interfaces
      *            a Class defining an interface.
      * @return true if this implements the interface or directly or indirectly wraps an object that does.
@@ -170,7 +170,7 @@ public class JDBC4Connection extends ConnectionImpl {
      * and the wrapped object implements the interface then that is the object. Otherwise the object is
      * the result of calling <code>unwrap</code> recursively on the wrapped object. If the receiver is not a
      * wrapper and does not implement the interface, then an <code>SQLException</code> is thrown.
-     * 
+     *
      * @param iface
      *            A Class defining an interface that the result must implement.
      * @return an object that implements the interface. May be a proxy for the actual implementing object.

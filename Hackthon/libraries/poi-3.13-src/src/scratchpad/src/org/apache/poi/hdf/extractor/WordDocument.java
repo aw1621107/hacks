@@ -114,7 +114,7 @@ public final class WordDocument {
   /**
    *  right now this function takes one parameter: a Word file, and outputs an
    *  XSL-FO document at c:\test.xml (this is hardcoded)
-   *  
+   *
    *  @param args The document to read
    */
   public static void main(String args[])

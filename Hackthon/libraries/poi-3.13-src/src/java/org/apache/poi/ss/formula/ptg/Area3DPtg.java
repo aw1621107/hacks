@@ -28,7 +28,7 @@ import org.apache.poi.util.LittleEndianOutput;
  * <p>Title:        Area 3D Ptg - 3D reference (Sheet + Area)</p>
  * <p>Description:  Defined an area in Extern Sheet. </p>
  * <p>REFERENCE:  </p>
- * 
+ *
  * <p>This is HSSF only, as it matches the HSSF file format way of
  *  referring to the sheet by an extern index. The XSSF equivalent
  *  is {@link Area3DPxg}

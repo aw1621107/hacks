@@ -39,8 +39,8 @@ public class ClassID
     public static final ClassID POWERPOINT97 = new ClassID("{64818D10-4F9B-11CF-86EA-00AA00B929E8}");
     public static final ClassID POWERPOINT95 = new ClassID("{EA7BAE70-FB3B-11CD-A903-00AA00510EA3}");
     public static final ClassID EQUATION30   = new ClassID("{0002CE02-0000-0000-C000-000000000046}");
-	
-	
+
+
     /**
      * <p>The bytes making out the class ID in correct order,
      * i.e. big-endian.</p>
@@ -75,9 +75,9 @@ public class ClassID
 
 
     /**
-     * <p>Creates a {@link ClassID} from a human-readable representation of the Class ID in standard 
+     * <p>Creates a {@link ClassID} from a human-readable representation of the Class ID in standard
      * format <code>"{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"</code>.</p>
-     * 
+     *
      * @param externalForm representation of the Class ID represented by this object.
      */
     public ClassID(String externalForm) {
@@ -87,7 +87,7 @@ public class ClassID
         	bytes[i/2] = (byte)Integer.parseInt(clsStr.substring(i, i+2), 16);
         }
     }
-    
+
 
     /** <p>The number of bytes occupied by this object in the byte
      * stream.</p> */
@@ -240,9 +240,9 @@ public class ClassID
     }
 
     /**
-     * <p>Returns a human-readable representation of the Class ID in standard 
+     * <p>Returns a human-readable representation of the Class ID in standard
      * format <code>"{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"</code>.</p>
-     * 
+     *
      * @return String representation of the Class ID represented by this object.
      */
     public String toString()

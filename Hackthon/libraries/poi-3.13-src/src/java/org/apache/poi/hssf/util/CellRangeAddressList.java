@@ -23,13 +23,13 @@ import org.apache.poi.hssf.record.RecordInputStream;
  * Implementation of the cell range address lists,like is described
  * in OpenOffice.org's Excel Documentation: excelfileformat.pdf sec 2.5.14 -
  * 'Cell Range Address List'
- * 
+ *
  * In BIFF8 there is a common way to store absolute cell range address lists in
  * several records (not formulas). A cell range address list consists of a field
  * with the number of ranges and the list of the range addresses. Each cell
  * range address (called an ADDR structure) contains 4 16-bit-values.
  * </p>
- * 
+ *
  * @deprecated use {@link org.apache.poi.ss.util.CellRangeAddressList}
  */
 public class CellRangeAddressList extends org.apache.poi.ss.util.CellRangeAddressList {

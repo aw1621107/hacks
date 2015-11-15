@@ -26,7 +26,7 @@ import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.CellRangeAddressList;
 
 /**
- * 
+ *
  * @author Josh Micich
  */
 public final class MergedCellsTable extends RecordAggregate {

@@ -34,7 +34,7 @@ public class TestBugs extends TestCase {
         String bodyStr = new String(bodyHtml.getData(), getEncoding(tnefDat));
         assertTrue(bodyStr.contains("This is the message body."));
     }
-    
+
     public void test52400ReadAttachedTNEF() throws Exception {
         POIDataSamples samples = POIDataSamples.getHMEFInstance();
         String testFile = "bug52400-winmail-with-attachments.dat";
@@ -44,7 +44,7 @@ public class TestBugs extends TestCase {
         assertTrue(bodyStr.contains("There are also two attachments."));
         assertEquals(2, tnefDat.getAttachments().size());
     }
-    
+
     private String getEncoding(HMEFMessage tnefDat) {
         TNEFAttribute oemCP = tnefDat.getMessageAttribute(TNEFProperty.ID_OEMCODEPAGE);
         MAPIAttribute cpId = tnefDat.getMessageMAPIAttribute(MAPIProperty.INTERNET_CPID);

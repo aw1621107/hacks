@@ -38,7 +38,7 @@ public class MysqlDataTruncation extends DataTruncation {
 
     /**
      * Creates a new MysqlDataTruncation exception/warning.
-     * 
+     *
      * @param message
      *            the message from the server
      * @param index
@@ -66,7 +66,7 @@ public class MysqlDataTruncation extends DataTruncation {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Throwable#getMessage()
      */
     @Override

@@ -29,7 +29,7 @@ public class DrawGroupShape extends DrawShape {
     public DrawGroupShape(GroupShape<?,?> shape) {
         super(shape);
     }
-    
+
     public void draw(Graphics2D graphics) {
 
         // the coordinate system of this group of shape
@@ -49,7 +49,7 @@ public class DrawGroupShape extends DrawShape {
 
         DrawFactory drawFact = DrawFactory.getInstance(graphics);
         AffineTransform at2 = graphics.getTransform();
-        
+
         for (Shape<?,?> child : getShape()) {
             // remember the initial transform and restore it after we are done with the drawing
             AffineTransform at = graphics.getTransform();

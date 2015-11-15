@@ -27,7 +27,7 @@ import org.apache.poi.poifs.dev.POIFSViewable;
 import org.apache.poi.util.CloseIgnoringInputStream;
 
 /**
- * Transition class for the move from {@link POIFSFileSystem} to 
+ * Transition class for the move from {@link POIFSFileSystem} to
  *  {@link OPOIFSFileSystem}, and from {@link NPOIFSFileSystem} to
  *  {@link POIFSFileSystem}. Currently, this is OPOIFS-powered
  */
@@ -89,11 +89,11 @@ public class POIFSFileSystem
     /**
      * <p>Creates a POIFSFileSystem from a <tt>File</tt>. This uses less memory than
      *  creating from an <tt>InputStream</tt>. The File will be opened read-only</p>
-     *  
+     *
      * <p>Note that with this constructor, you will need to call {@link #close()}
      *  when you're done to have the underlying file closed, as the file is
-     *  kept open during normal operation to read the data out.</p> 
-     *  
+     *  kept open during normal operation to read the data out.</p>
+     *
      * @param file the File from which to read the data
      *
      * @exception IOException on errors reading, or on invalid data
@@ -101,7 +101,7 @@ public class POIFSFileSystem
     public POIFSFileSystem(File file) throws IOException {
         super(file);
     }
-    
+
     /**
      * Checks that the supplied InputStream (which MUST
      *  support mark and reset, or be a PushbackInputStream)

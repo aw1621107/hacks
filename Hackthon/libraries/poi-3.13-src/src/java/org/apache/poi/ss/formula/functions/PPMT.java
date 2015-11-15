@@ -23,7 +23,7 @@ import org.apache.poi.ss.formula.eval.*;
 
 /**
   * Compute the interest portion of a payment.
-  * 
+  *
   * @author Mike Argyriou micharg@gmail.com
   */
 public class PPMT extends NumericFunction {
@@ -49,10 +49,10 @@ public class PPMT extends NumericFunction {
 		result = Finance.ppmt(interestRate, period, numberPayments, PV) ;
 
 		checkValue(result);
-		
+
 		return result;
 	}
 
-	
+
 
 }

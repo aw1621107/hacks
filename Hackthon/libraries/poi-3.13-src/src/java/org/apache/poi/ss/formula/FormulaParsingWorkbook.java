@@ -36,7 +36,7 @@ public interface FormulaParsingWorkbook {
 	EvaluationName getName(String name, int sheetIndex);
 
 	Ptg getNameXPtg(String name, SheetIdentifier sheet);
-	
+
 	/**
 	 * Produce the appropriate Ptg for a 3d cell reference
 	 */

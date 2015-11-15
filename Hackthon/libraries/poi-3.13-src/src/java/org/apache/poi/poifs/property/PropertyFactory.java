@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.poifs.property;
 
@@ -66,7 +66,7 @@ class PropertyFactory
         }
         return properties;
     }
-    
+
     static void convertToProperties(byte[] data, List<Property> properties)
         throws IOException
     {
@@ -97,10 +97,10 @@ class PropertyFactory
              properties.add(null);
              break;
           }
-          
+
           offset += POIFSConstants.PROPERTY_SIZE;
        }
     }
-    
+
 }   // end package scope class PropertyFactory
 

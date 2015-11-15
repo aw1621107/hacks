@@ -652,7 +652,7 @@ public class CharsetMapping {
      * for this mapping then javaEncoding value as is; this is required when result should match to connection encoding, for example if connection encoding is
      * Cp943 we must avoid getting SHIFT_JIS for sjis mysql charset <li>if static mapping exists and javaEncoding doesn't match any Java encoding canonical
      * names or aliases available for this mapping then return default Java encoding (the first in mapping list)
-     * 
+     *
      * @param mysqlCharsetName
      * @param javaEncoding
      */
@@ -691,7 +691,7 @@ public class CharsetMapping {
      * has gone through initialization phase and determined server configuration,
      * as not enough information is available to make an intelligent decision
      * until then.
-     * 
+     *
      * @param conn
      *            the connection to the MySQL server
      * @return the Java encoding name that error messages use
@@ -701,7 +701,7 @@ public class CharsetMapping {
     final static String getCharacterEncodingForErrorMessages(ConnectionImpl conn) throws SQLException {
 
         // As of MySQL 5.5, the server constructs error messages using UTF-8 and returns them to clients in the character set specified by the
-        // character_set_results system variable. 
+        // character_set_results system variable.
         if (conn.versionMeetsMinimum(5, 5, 0)) {
             String errorMessageCharsetName = conn.getServerVariable(ConnectionImpl.JDBC_LOCAL_CHARACTER_SET_RESULTS);
             if (errorMessageCharsetName != null) {
@@ -767,7 +767,7 @@ public class CharsetMapping {
 
     /**
      * Character sets that we can't convert ourselves.
-     * 
+     *
      * @param javaEncodingName
      */
     final public static boolean isMultibyteCharset(String javaEncodingName) {
@@ -797,7 +797,7 @@ class MysqlCharset {
 
     /**
      * Constructs MysqlCharset object
-     * 
+     *
      * @param charsetName
      *            MySQL charset name
      * @param mblen
@@ -882,7 +882,7 @@ class MysqlCharset {
     /**
      * If javaEncoding parameter value is one of available java encodings for this charset
      * then returns javaEncoding value as is. Otherwise returns first available java encoding name.
-     * 
+     *
      * @param javaEncoding
      * @throws SQLException
      */

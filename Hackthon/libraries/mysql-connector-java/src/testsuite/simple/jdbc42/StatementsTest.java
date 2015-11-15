@@ -766,7 +766,7 @@ public class StatementsTest extends BaseTestCase {
      * 3 - `t` TIME (or any kind of *CHAR)
      * 4 - `dt` DATETIME (or any kind of *CHAR)
      * 5 - `ts` TIMESTAMP (or any kind of *CHAR)
-     * 
+     *
      * @param pstmt
      * @return the row count of inserted records.
      * @throws Exception
@@ -873,9 +873,9 @@ public class StatementsTest extends BaseTestCase {
      * 3 - `t` TIME (or any kind of *CHAR)
      * 4 - `dt` DATETIME (or any kind of *CHAR)
      * 5 - `ts` TIMESTAMP (or any kind of *CHAR)
-     * 
+     *
      * Additionally validate support for the types java.time.Local[Date][Time] in ResultSet.getObject().
-     * 
+     *
      * @param tableName
      * @param expectedRowCount
      * @throws Exception
@@ -931,7 +931,7 @@ public class StatementsTest extends BaseTestCase {
      * 3 - `ot2` BLOB
      * 4 - `odt1` VARCHAR
      * 5 - `odt2` BLOB
-     * 
+     *
      * @param pstmt
      * @return the row count of inserted records.
      * @throws Exception
@@ -968,9 +968,9 @@ public class StatementsTest extends BaseTestCase {
      * 3 - `ot2` BLOB
      * 4 - `odt1` VARCHAR
      * 5 - `odt2` BLOB
-     * 
+     *
      * Additionally validate support for the types java.time.Offset[Date]Time in ResultSet.getObject().
-     * 
+     *
      * @param tableName
      * @param expectedRowCount
      * @throws Exception
@@ -1005,7 +1005,7 @@ public class StatementsTest extends BaseTestCase {
      * Helper method for *SetObject* tests.
      * Check unsupported types behavior for the given PreparedStatement with a single placeholder. If this is a CallableStatement then the placeholder must
      * coincide with a parameter named `param`.
-     * 
+     *
      * @param pstmt
      */
     private void checkUnsupportedTypesBehavior(final PreparedStatement pstmt) {

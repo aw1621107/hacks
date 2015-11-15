@@ -135,7 +135,7 @@ public class StringUtil {
      * <li>byte[]/char[] characterData</li>
      * </ol>
      * For this encoding, the is16BitFlag is always present even if nChars==0.
-     * 
+     *
      * This structure is also known as a XLUnicodeString.
      */
     public static String readUnicodeString(LittleEndianInput in) {
@@ -370,7 +370,7 @@ public class StringUtil {
 	public static boolean isUnicodeString(final String value) {
         return !value.equals(new String(value.getBytes(ISO_8859_1), ISO_8859_1));
 	}
-	
+
    /**
     * An Iterator over an array of Strings.
     */
@@ -401,18 +401,18 @@ public class StringUtil {
    /**
     * Some strings may contain encoded characters of the unicode private use area.
     * Currently the characters of the symbol fonts are mapped to the corresponding
-    * characters in the normal unicode range. 
+    * characters in the normal unicode range.
     *
-    * @param string the original string 
+    * @param string the original string
     * @return the string with mapped characters
-    * 
+    *
     * @see <a href="http://www.alanwood.net/unicode/private_use_area.html#symbol">Private Use Area (symbol)</a>
     * @see <a href="http://www.alanwood.net/demos/symbol.html">Symbol font - Unicode alternatives for Greek and special characters in HTML</a>
     */
    public static String mapMsCodepointString(String string) {
        if (string == null || "".equals(string)) return string;
        initMsCodepointMap();
-       
+
        StringBuilder sb = new StringBuilder();
        final int length = string.length();
        for (int offset = 0; offset < length; ) {
@@ -421,15 +421,15 @@ public class StringUtil {
           sb.appendCodePoint(uniCodepoint == null ? msCodepoint : uniCodepoint);
           offset += Character.charCount(msCodepoint);
        }
-       
+
        return sb.toString();
    }
-   
+
    public static synchronized void mapMsCodepoint(int msCodepoint, int unicodeCodepoint) {
        initMsCodepointMap();
        msCodepointToUnicode.put(msCodepoint, unicodeCodepoint);
    }
-   
+
    private static synchronized void initMsCodepointMap() {
        if (msCodepointToUnicode != null) return;
        msCodepointToUnicode = new HashMap<Integer,Integer>();
@@ -440,9 +440,9 @@ public class StringUtil {
        i = 0xf0a0;
        for (int ch : symbolMap_f0a0) {
            msCodepointToUnicode.put(i++, ch);
-       }       
+       }
    }
-   
+
    private static final int symbolMap_f020[] = {
        ' ', // 0xf020 space
        '!', // 0xf021 exclam

@@ -39,7 +39,7 @@ public class SignatureMarshalListener implements EventListener, SignatureConfigu
     public void setEventTarget(EventTarget target) {
         this.target.set(target);
     }
-    
+
     public void handleEvent(Event e) {
         if (!(e instanceof MutationEvent)) return;
         MutationEvent mutEvt = (MutationEvent)e;
@@ -73,19 +73,19 @@ public class SignatureMarshalListener implements EventListener, SignatureConfigu
             target.removeEventListener(type, listener, useCapture);
         }
     }
-    
+
     protected void setPrefix(Node el) {
         String prefix = signatureConfig.getNamespacePrefixes().get(el.getNamespaceURI());
         if (prefix != null && el.getPrefix() == null) {
             el.setPrefix(prefix);
         }
-        
+
         NodeList nl = el.getChildNodes();
         for (int i=0; i<nl.getLength(); i++) {
             setPrefix(nl.item(i));
         }
     }
-    
+
     public void setSignatureConfig(SignatureConfig signatureConfig) {
         this.signatureConfig = signatureConfig;
     }

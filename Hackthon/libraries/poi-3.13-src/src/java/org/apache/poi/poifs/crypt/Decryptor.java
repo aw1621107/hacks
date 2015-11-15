@@ -31,7 +31,7 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 public abstract class Decryptor {
     public static final String DEFAULT_PASSWORD="VelvetSweatshop";
     public static final String DEFAULT_POIFS_ENTRY="EncryptedPackage";
-    
+
     protected final EncryptionInfoBuilder builder;
     private SecretKey secretKey;
     private byte[] verifier, integrityHmacKey, integrityHmacValue;
@@ -39,7 +39,7 @@ public abstract class Decryptor {
     protected Decryptor(EncryptionInfoBuilder builder) {
         this.builder = builder;
     }
-    
+
     /**
      * Return a stream with decrypted data.
      * <p>
@@ -91,7 +91,7 @@ public abstract class Decryptor {
     public InputStream getDataStream(POIFSFileSystem fs) throws IOException, GeneralSecurityException {
         return getDataStream(fs.getRoot());
     }
-    
+
     // for tests
     public byte[] getVerifier() {
         return verifier;
@@ -100,7 +100,7 @@ public abstract class Decryptor {
     public SecretKey getSecretKey() {
         return secretKey;
     }
-    
+
     public byte[] getIntegrityHmacKey() {
         return integrityHmacKey;
     }
@@ -128,7 +128,7 @@ public abstract class Decryptor {
     protected int getBlockSizeInBytes() {
         return builder.getHeader().getBlockSize();
     }
-    
+
     protected int getKeySizeInBytes() {
         return builder.getHeader().getKeySize()/8;
     }

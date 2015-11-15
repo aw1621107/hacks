@@ -33,7 +33,7 @@ public class DrawingTextPlaceholder extends DrawingTextBody {
        super(textBody);
        this.placeholder = placeholder;
     }
-    
+
     /**
      * What kind of placeholder is this?
      */

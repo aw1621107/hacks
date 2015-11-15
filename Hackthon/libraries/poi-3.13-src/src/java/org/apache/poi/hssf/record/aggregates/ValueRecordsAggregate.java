@@ -360,7 +360,7 @@ public final class ValueRecordsAggregate implements Iterable<CellValueRecordInte
 	}
 
 	/**
-	 * Gets all the cell records contained in this aggregate. 
+	 * Gets all the cell records contained in this aggregate.
 	 * Note {@link BlankRecord}s appear separate (not in {@link MulBlankRecord}s).
 	 * @deprecated use {@link #iterator()} instead
 	 */

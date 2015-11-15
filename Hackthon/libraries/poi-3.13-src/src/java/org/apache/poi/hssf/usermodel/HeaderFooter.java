@@ -26,13 +26,13 @@ public abstract class HeaderFooter implements org.apache.poi.ss.usermodel.Header
 	protected HeaderFooter() {
 		//
 	}
-	
+
 	/**
 	 * @return the internal text representation (combining center, left and right parts).
 	 * Possibly empty string if no header or footer is set.  Never <code>null</code>.
 	 */
-	protected abstract String getRawText(); 
-	
+	protected abstract String getRawText();
+
 	private String[] splitParts() {
 		String text = getRawText();
 		// default values
@@ -99,7 +99,7 @@ outer:
 	 * @param newLeft The string to set as the left side.
 	 */
 	public final void setLeft(String newLeft) {
-		updatePart(0, newLeft); 
+		updatePart(0, newLeft);
 	}
 
 	/**
@@ -113,7 +113,7 @@ outer:
 	 * @param newCenter The string to set as the center.
 	 */
 	public final void setCenter(String newCenter) {
-		updatePart(1, newCenter); 
+		updatePart(1, newCenter);
 	}
 
 	/**
@@ -127,9 +127,9 @@ outer:
 	 * @param newRight The string to set as the right side.
 	 */
 	public final void setRight(String newRight) {
-		updatePart(2, newRight); 
+		updatePart(2, newRight);
 	}
-	
+
 	private void updatePart(int partIndex, String newValue) {
 		String[] parts = splitParts();
 		parts[partIndex] = newValue == null ? "" : newValue;
@@ -143,7 +143,7 @@ outer:
 		String _left = parts[0];
 		String _center = parts[1];
 		String _right = parts[2];
-		
+
 		if (_center.length() < 1 && _left.length() < 1 && _right.length() < 1) {
 			setHeaderFooterText("");
 			return;
@@ -321,7 +321,7 @@ outer:
 		UNDERLINE_FIELD        ("&U", true),
 		DOUBLE_UNDERLINE_FIELD ("&E", true),
 		;
-		
+
 		private final String _representation;
 		private final boolean _occursInPairs;
 		private MarkupTag(String sequence, boolean occursInPairs) {

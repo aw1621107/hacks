@@ -52,15 +52,15 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
  * <p>This class is a sample application which shows how to write or modify the
  * author and title property of an OLE 2 document. This could be done in two
  * different ways:</p>
- * 
+ *
  * <ul>
- * 
+ *
  * <li><p>The first approach is to open the OLE 2 file as a POI filesystem
  * (see class {@link POIFSFileSystem}), read the summary information property
  * set (see classes {@link SummaryInformation} and {@link PropertySet}), write
  * the author and title properties into it and write the property set back into
  * the POI filesystem.</p></li>
- * 
+ *
  * <li><p>The second approach does not modify the original POI filesystem, but
  * instead creates a new one. All documents from the original POIFS are copied
  * to the destination POIFS, except for the summary information stream. The
@@ -68,9 +68,9 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
  * it to the destination POIFS. It there are several summary information streams
  * in the original POIFS - e.g. in subordinate directories - they are modified
  * just the same.</p></li>
- * 
+ *
  * </ul>
- * 
+ *
  * <p>This sample application takes the second approach. It expects the name of
  * the existing POI filesystem's name as its first command-line parameter and
  * the name of the output POIFS as the second command-line argument. The
@@ -79,7 +79,7 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
  * encounters a summary information stream it reads its properties. Then it sets
  * the "author" and "title" properties to new values and writes the modified
  * summary information stream into the output file.</p>
- * 
+ *
  * <p>Further explanations can be found in the HPSF HOW-TO.</p>
  *
  * @author Rainer Klute <a
@@ -103,7 +103,7 @@ public class WriteAuthorAndTitle
                                " originPOIFS destinationPOIFS");
             System.exit(1);
         }
-        
+
         /* Read the names of the origin and destination POI filesystems. */
         final String srcName = args[0];
         final String dstName = args[1];
@@ -115,7 +115,7 @@ public class WriteAuthorAndTitle
         final ModifySICopyTheRest msrl = new ModifySICopyTheRest(dstName);
         r.registerListener(msrl);
         r.read(new FileInputStream(srcName));
-        
+
         /* Write the new POIFS to disk. */
         msrl.close();
     }
@@ -126,7 +126,7 @@ public class WriteAuthorAndTitle
      * <p>This class does all the work. As its name implies it modifies a
      * summary information property set and copies everything else unmodified
      * to the destination POI filesystem. Since an instance of it is registered
-     * as a {@link POIFSReader} its method {@link 
+     * as a {@link POIFSReader} its method {@link
      * #processPOIFSReaderEvent(POIFSReaderEvent)} is called for each document
      * in the origin POIFS.</p>
      */
@@ -141,7 +141,7 @@ public class WriteAuthorAndTitle
          * <p>The constructor of a {@link ModifySICopyTheRest} instance creates
          * the target POIFS. It also stores the name of the file the POIFS will
          * be written to once it is complete.</p>
-         * 
+         *
          * @param dstName The name of the disk file the destination POIFS is to
          * be written to.
          */
@@ -240,15 +240,15 @@ public class WriteAuthorAndTitle
          * @param name The original (and destination) stream's name.
          * @param si The property set. It should be a summary information
          * property set.
-         * @throws IOException 
-         * @throws WritingNotSupportedException 
+         * @throws IOException
+         * @throws WritingNotSupportedException
          */
         public void editSI(final POIFSFileSystem poiFs,
                            final POIFSDocumentPath path,
                            final String name,
                            final PropertySet si)
         throws WritingNotSupportedException, IOException
-            
+
         {
             /* Get the directory entry for the target stream. */
             final DirectoryEntry de = getPath(poiFs, path);
@@ -256,7 +256,7 @@ public class WriteAuthorAndTitle
             /* Create a mutable property set as a copy of the original read-only
              * property set. */
             final MutablePropertySet mps = new MutablePropertySet(si);
-            
+
             /* Retrieve the section containing the properties to modify. A
              * summary information property set contains exactly one section. */
             final MutableSection s =
@@ -286,8 +286,8 @@ public class WriteAuthorAndTitle
          * @param path The file's path in the POI filesystem.
          * @param name The file's name in the POI filesystem.
          * @param ps The property set to write.
-         * @throws WritingNotSupportedException 
-         * @throws IOException 
+         * @throws WritingNotSupportedException
+         * @throws IOException
          */
         public void copy(final POIFSFileSystem poiFs,
                          final POIFSDocumentPath path,
@@ -310,7 +310,7 @@ public class WriteAuthorAndTitle
          * @param path The source document's path.
          * @param name The source document's name.
          * @param stream The stream containing the source document.
-         * @throws IOException 
+         * @throws IOException
          */
         public void copy(final POIFSFileSystem poiFs,
                          final POIFSDocumentPath path,
@@ -358,7 +358,7 @@ public class WriteAuthorAndTitle
          * a POI filesystem its directory must be created first. This method
          * creates all directories between the POI filesystem root and the
          * directory the document should belong to which do not yet exist.</p>
-         * 
+         *
          * <p>Unfortunately POI does not offer a simple method to interrogate
          * the POIFS whether a certain child node (file or directory) exists in
          * a directory. However, since we always start with an empty POIFS which

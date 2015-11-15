@@ -20,7 +20,7 @@ import junit.framework.TestCase;
 
 /**
  * Test cases for {@link LFOLVLBaseAbstractType}
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 public class LFOLVLBaseAbstractTypeTest extends TestCase

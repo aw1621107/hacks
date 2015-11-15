@@ -334,15 +334,15 @@ public final class EmbeddedObjectRefSubRecord extends SubRecord {
 		sb.append("[/ftPictFmla]");
 		return sb.toString();
 	}
-	
+
 	public void setUnknownFormulaData(byte[] formularData) {
 		field_2_unknownFormulaData = formularData;
 	}
-	
+
 	public void setOleClassname(String oleClassname) {
 		field_4_ole_classname = oleClassname;
 	}
-	
+
 	public void setStorageId(int storageId) {
 		field_5_stream_id = storageId;
 	}

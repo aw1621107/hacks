@@ -101,12 +101,12 @@ public abstract class XSLFSimpleShape extends XSLFShape
         STShapeType.Enum geom = getSpPr().getPrstGeom().getPrst();
         return ShapeType.forId(geom.intValue(), true);
     }
-    
+
     protected CTTransform2D getSafeXfrm() {
         CTTransform2D xfrm = getXfrm();
         return (xfrm == null ? getSpPr().addNewXfrm() : xfrm);
     }
-    
+
     protected CTTransform2D getXfrm() {
         PropertyFetcher<CTTransform2D> fetcher = new PropertyFetcher<CTTransform2D>() {
             public boolean fetch(XSLFShape shape) {
@@ -151,7 +151,7 @@ public abstract class XSLFSimpleShape extends XSLFShape
         ext.setCx(cx);
         ext.setCy(cy);
     }
-    
+
     @Override
     public void setRotation(double theta) {
         getSafeXfrm().setRot((int) (theta * 60000));
@@ -185,7 +185,7 @@ public abstract class XSLFSimpleShape extends XSLFShape
         return (xfrm == null || !xfrm.isSetFlipV()) ? false : getXfrm().getFlipV();
     }
 
-    
+
     /**
      * Get default line properties defined in the theme (if any).
      * Used internally to resolve shape properties.
@@ -199,7 +199,7 @@ public abstract class XSLFSimpleShape extends XSLFShape
         if (lnRef == null) return null;
         // 1-based index of a line style within the style matrix
         int idx = (int)lnRef.getIdx();
-        
+
         XSLFTheme theme = getSheet().getTheme();
         if (theme == null) return null;
         CTBaseStyles styles = theme.getXmlObject().getThemeElements();
@@ -208,7 +208,7 @@ public abstract class XSLFSimpleShape extends XSLFShape
         if (styleMatrix == null) return null;
         CTLineStyleList lineStyles = styleMatrix.getLnStyleLst();
         if (lineStyles == null || lineStyles.sizeOfLnArray() < idx) return null;
-        
+
         return lineStyles.getLnArray(idx - 1);
     }
 
@@ -262,7 +262,7 @@ public abstract class XSLFSimpleShape extends XSLFShape
                         setValue(null); // use it as 'nofill' value
                         return true;
                     }
-                    
+
                     PaintStyle paint = null;
                     PackagePart pp = getSheet().getPackagePart();
                     for (XmlObject obj : spPr.selectPath("*")) {
@@ -290,11 +290,11 @@ public abstract class XSLFSimpleShape extends XSLFShape
 
         PaintStyle paint = fetcher.getValue();
         if (paint != null) return paint;
-        
+
         // line color was not found, check if it is defined in the theme
         CTShapeStyle style = getSpStyle();
         if (style == null) return null;
-        
+
         // get a reference to a line style within the style matrix.
         CTStyleMatrixReference lnRef = style.getLnRef();
         int idx = (int)lnRef.getIdx();
@@ -308,7 +308,7 @@ public abstract class XSLFSimpleShape extends XSLFShape
 
         return paint;
     }
-    
+
     /**
      *
      * @param width line width in points. <code>0</code> means no line
@@ -392,7 +392,7 @@ public abstract class XSLFSimpleShape extends XSLFShape
                 }
             }
         }
-        
+
         if (cmpd == null) return null;
 
         switch (cmpd) {
@@ -615,7 +615,7 @@ public abstract class XSLFSimpleShape extends XSLFShape
         }
         return geom;
     }
-    
+
     @Override
     void copy(XSLFShape sh){
         super.copy(sh);
@@ -635,7 +635,7 @@ public abstract class XSLFSimpleShape extends XSLFShape
             String relId = getSheet().importBlip(blipId, s.getSheet().getPackagePart());
             blip.setEmbed(relId);
         }
-        
+
         Color srcLineColor = s.getLineColor();
         Color tgtLineColor = getLineColor();
         if(srcLineColor != null && !srcLineColor.equals(tgtLineColor)) {
@@ -871,7 +871,7 @@ public abstract class XSLFSimpleShape extends XSLFShape
             public LineCompound getLineCompound() {
                 return XSLFSimpleShape.this.getLineCompound();
             }
-            
+
         };
     }
 }

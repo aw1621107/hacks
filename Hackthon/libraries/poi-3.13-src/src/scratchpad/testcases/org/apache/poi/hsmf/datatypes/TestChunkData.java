@@ -29,7 +29,7 @@ import junit.framework.TestCase;
 public final class TestChunkData extends TestCase {
 	public void testChunkCreate() {
 	   Chunk chunk;
-	   
+
 		chunk = new StringChunk(0x0200, Types.createCustom(0x001E));
 		assertEquals("__substg1.0_0200001E", chunk.getEntryName());
 		assertEquals(0x0200, chunk.getChunkId());
@@ -39,12 +39,12 @@ public final class TestChunkData extends TestCase {
       assertEquals("__substg1.0_0200001E", chunk.getEntryName());
       assertEquals(0x0200, chunk.getChunkId());
       assertEquals(0x001E, chunk.getType().getId());
-      
+
       chunk = new StringChunk("__substg1.0_", 0x0200, Types.getById(0x001E));
       assertEquals("__substg1.0_0200001E", chunk.getEntryName());
       assertEquals(0x0200, chunk.getChunkId());
       assertEquals(0x001E, chunk.getType().getId());
-      
+
 		/* test the lower and upper limits of the chunk ids */
 		chunk = new StringChunk(0x0000, Types.createCustom(0x001E));
 		assertEquals("__substg1.0_0000001E", chunk.getEntryName());

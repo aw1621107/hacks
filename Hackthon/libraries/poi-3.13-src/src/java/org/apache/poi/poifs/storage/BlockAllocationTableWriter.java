@@ -52,7 +52,7 @@ public final class BlockAllocationTableWriter implements BlockWritable, BATManag
      */
     public BlockAllocationTableWriter(POIFSBigBlockSize bigBlockSize)
     {
-       _bigBlockSize = bigBlockSize; 
+       _bigBlockSize = bigBlockSize;
         _start_block  = POIFSConstants.END_OF_CHAIN;
         _entries      = new IntList();
         _blocks       = new BATBlock[ 0 ];
@@ -156,11 +156,11 @@ public final class BlockAllocationTableWriter implements BlockWritable, BATManag
             _blocks[ j ].writeBlocks(stream);
         }
     }
-    
+
     /**
      * Write the BAT into its associated block
      */
-    public static void writeBlock(final BATBlock bat, final ByteBuffer block) 
+    public static void writeBlock(final BATBlock bat, final ByteBuffer block)
         throws IOException
     {
         bat.writeData(block);

@@ -161,12 +161,12 @@ public final class TestLbsDataSubRecord extends TestCase {
         LittleEndianInputStream in = new LittleEndianInputStream(new ByteArrayInputStream(data));
         try {
             LbsDataSubRecord.LbsDropData lbs = new LbsDataSubRecord.LbsDropData(in);
-    
+
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             LittleEndianOutputStream out = new LittleEndianOutputStream(baos);
             try {
                 lbs.serialize(out);
-        
+
                 assertArrayEquals(data, baos.toByteArray());
             } finally {
                 out.close();

@@ -88,7 +88,7 @@ public class XSSFColor extends ExtendedColor {
     public boolean isThemed() {
         return ctColor.isSetTheme();
     }
-    
+
     /**
      * A boolean value indicating if the ctColor has a tint or not
      */
@@ -312,7 +312,7 @@ public class XSSFColor extends ExtendedColor {
         }
         return (XSSFColor)color;
     }
-    
+
     public int hashCode(){
         return ctColor.toString().hashCode();
     }

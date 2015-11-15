@@ -34,7 +34,7 @@ public final class EOFRecord extends StandardRecord {
 	public static final int ENCODED_SIZE = 4;
 
 	public static final EOFRecord instance = new EOFRecord();
-	
+
     private EOFRecord() {
     	// no data fields
     }

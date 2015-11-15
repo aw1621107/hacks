@@ -39,7 +39,7 @@ public final class WindowTwoRecord extends StandardRecord {
     private static final BitField freezePanes             = BitFieldFactory.getInstance(0x08);
     private static final BitField displayZeros            = BitFieldFactory.getInstance(0x10);
     /**  if false use color in field 4 if true use default foreground for headers */
-    private static final BitField defaultHeader           = BitFieldFactory.getInstance(0x20);   
+    private static final BitField defaultHeader           = BitFieldFactory.getInstance(0x20);
     private static final BitField arabic                  = BitFieldFactory.getInstance(0x040);
     private static final BitField displayGuts             = BitFieldFactory.getInstance(0x080);
     private static final BitField freezePanesNoSplit      = BitFieldFactory.getInstance(0x100);

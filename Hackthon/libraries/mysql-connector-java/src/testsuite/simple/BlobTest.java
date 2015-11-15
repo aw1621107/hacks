@@ -59,7 +59,7 @@ public class BlobTest extends BaseTestCase {
 
     /**
      * Creates a new BlobTest object.
-     * 
+     *
      * @param name
      *            the test to run
      */
@@ -69,7 +69,7 @@ public class BlobTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -78,7 +78,7 @@ public class BlobTest extends BaseTestCase {
 
     /**
      * Setup the test case
-     * 
+     *
      * @throws Exception
      *             if an error occurs
      */
@@ -124,7 +124,7 @@ public class BlobTest extends BaseTestCase {
 
     /**
      * Tests inserting blob data as a stream
-     * 
+     *
      * @throws Exception
      *             if an error occurs
      */
@@ -180,9 +180,9 @@ public class BlobTest extends BaseTestCase {
 
     /**
      * Mark this as deprecated to avoid warnings from compiler...
-     * 
+     *
      * @deprecated
-     * 
+     *
      * @throws Exception
      *             if an error occurs retrieving the value
      */
@@ -242,7 +242,7 @@ public class BlobTest extends BaseTestCase {
         testBlobFile = File.createTempFile(TEST_BLOB_FILE_PREFIX, ".dat");
         testBlobFile.deleteOnExit();
 
-        // TODO: following cleanup doesn't work correctly during concurrent execution of testsuite 
+        // TODO: following cleanup doesn't work correctly during concurrent execution of testsuite
         // cleanupTempFiles(testBlobFile, TEST_BLOB_FILE_PREFIX);
 
         BufferedOutputStream bOut = new BufferedOutputStream(new FileOutputStream(testBlobFile));

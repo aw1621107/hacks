@@ -38,14 +38,14 @@ import org.apache.poi.hsmf.datatypes.Types.MAPIType;
 /**
  * Holds the list of MAPI Attributes, and allows lookup
  *  by friendly name, ID and MAPI Property Name.
- * 
+ *
  * These are taken from the following MSDN resources:
  *  http://msdn.microsoft.com/en-us/library/microsoft.exchange.data.contenttypes.tnef.tnefpropertyid%28v=EXCHG.140%29.aspx
  *  http://msdn.microsoft.com/en-us/library/ms526356%28v=exchg.10%29.aspx
  */
 public class MAPIProperty {
    private static Map<Integer, MAPIProperty> attributes = new HashMap<Integer, MAPIProperty>();
-   
+
    public static final MAPIProperty AB_DEFAULT_DIR =
       new MAPIProperty(0x3d06, BINARY, "AbDefaultDir", "PR_AB_DEFAULT_DIR");
    public static final MAPIProperty AB_DEFAULT_PAB =
@@ -1022,31 +1022,31 @@ public class MAPIProperty {
       new MAPIProperty(0x3f05, LONG, "Xpos", "PR_XPOS");
    public static final MAPIProperty YPOS =
       new MAPIProperty(0x3f06, LONG, "Ypos", "PR_YPOS");
-   
+
    public static final MAPIProperty UNKNOWN =
       new MAPIProperty(-1, Types.UNKNOWN, "Unknown", null);
-   
+
    // 0x8??? ones are outlook specific, and not standard MAPI
    // TODO See http://msdn.microsoft.com/en-us/library/ee157150%28v=exchg.80%29 for some
    //  info on how we might decode them properly in the future
    private static final int ID_FIRST_CUSTOM = 0x8000;
    private static final int ID_LAST_CUSTOM = 0xFFFE;
-   
+
    /* ---------------------------------------------------------------------  */
-   
+
    public final int id;
    public final MAPIType usualType;
    public final String name;
    public final String mapiProperty;
-   
+
    private MAPIProperty(int id, MAPIType usualType, String name, String mapiProperty) {
       this.id = id;
       this.usualType = usualType;
       this.name = name;
       this.mapiProperty = mapiProperty;
-      
+
       // If it isn't unknown or custom, store it for lookup
-      if(id == -1 || (id >= ID_FIRST_CUSTOM && id <= ID_LAST_CUSTOM) 
+      if(id == -1 || (id >= ID_FIRST_CUSTOM && id <= ID_LAST_CUSTOM)
             || (this instanceof CustomMAPIProperty)) {
          // Custom/Unknown, skip
       } else {
@@ -1059,7 +1059,7 @@ public class MAPIProperty {
          attributes.put(id, this);
       }
    }
-   
+
    public String asFileName() {
       String str = Integer.toHexString(id).toUpperCase(Locale.ROOT);
       while(str.length() < 4) {
@@ -1081,7 +1081,7 @@ public class MAPIProperty {
       }
       return str.toString();
    }
-   
+
    public static MAPIProperty get(int id) {
       MAPIProperty attr = attributes.get(id);
       if(attr != null) {
@@ -1093,11 +1093,11 @@ public class MAPIProperty {
    public static Collection<MAPIProperty> getAll() {
       return Collections.unmodifiableCollection( attributes.values() );
    }
-   
+
    public static MAPIProperty createCustom(int id, MAPIType type, String name) {
       return new CustomMAPIProperty(id, type, name, null);
    }
-   
+
    private static class CustomMAPIProperty extends MAPIProperty {
       private CustomMAPIProperty(int id, MAPIType usualType, String name, String mapiProperty) {
          super(id, usualType, name, mapiProperty);

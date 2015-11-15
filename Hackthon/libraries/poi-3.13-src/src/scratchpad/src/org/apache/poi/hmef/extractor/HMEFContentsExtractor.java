@@ -44,21 +44,21 @@ public final class HMEFContentsExtractor {
          System.err.println(" and <output dir> is where to place the extracted files");
          System.exit(2);
       }
-      
+
       HMEFContentsExtractor ext = new HMEFContentsExtractor(new File(args[0]));
-      
+
       File dir = new File(args[1]);
       File rtf = new File(dir, "message.rtf");
       if(! dir.exists()) {
          throw new FileNotFoundException("Output directory " + dir.getName() + " not found");
       }
-      
+
       System.out.println("Extracting...");
       ext.extractMessageBody(rtf);
       ext.extractAttachments(dir);
       System.out.println("Extraction completed");
    }
-   
+
    private HMEFMessage message;
    public HMEFContentsExtractor(File filename) throws IOException {
       this(new HMEFMessage(new FileInputStream(filename)));
@@ -66,7 +66,7 @@ public final class HMEFContentsExtractor {
    public HMEFContentsExtractor(HMEFMessage message) {
       this.message = message;
    }
-   
+
    /**
     * Extracts the RTF message body to the supplied file
     */
@@ -80,7 +80,7 @@ public final class HMEFContentsExtractor {
     	  fout.close();
       }
    }
-   
+
    /**
     * Extracts all the message attachments to the supplied directory
     */
@@ -88,7 +88,7 @@ public final class HMEFContentsExtractor {
       int count = 0;
       for(Attachment att : message.getAttachments()) {
          count++;
-         
+
          // Decide what to call it
          String filename = att.getLongFilename();
          if(filename == null || filename.length() == 0) {
@@ -100,7 +100,7 @@ public final class HMEFContentsExtractor {
                filename += att.getExtension();
             }
          }
-         
+
          // Save it
          File file = new File(dir, filename);
          OutputStream fout = new FileOutputStream(file);

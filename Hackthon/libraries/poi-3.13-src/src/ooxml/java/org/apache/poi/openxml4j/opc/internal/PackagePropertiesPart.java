@@ -584,7 +584,7 @@ public final class PackagePropertiesPart extends PackagePart implements
 		if (date == null) {
 		   return "";
 		}
-		
+
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ROOT);
 		df.setTimeZone(LocaleUtil.TIMEZONE_UTC);
 		return df.format(date);

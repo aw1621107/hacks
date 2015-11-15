@@ -36,9 +36,9 @@ public final class PICT extends Metafile {
          * skip the first 512 bytes - they are MAC specific crap
          */
         public static final int PICT_HEADER_OFFSET = 512;
-        
+
         public static final double DEFAULT_RESOLUTION = Units.POINT_DPI;
-        
+
         private static final byte V2_HEADER[] = {
             0x00, 0x11,       // v2 version opcode
             0x02, (byte)0xFF, // version number of new picture
@@ -48,7 +48,7 @@ public final class PICT extends Metafile {
 
         public final Rectangle bounds;
         public final double hRes, vRes;
-        
+
         public NativeHeader(byte data[], int offset) {
             // http://mirrors.apple2.org.za/apple.cabi.net/Graphics/PICT.and_QT.INFO/PICT.file.format.TI.txt
 
@@ -69,7 +69,7 @@ public final class PICT extends Metafile {
                     break;
                 }
             }
-            
+
             if (isV2) {
                 // 4 bytes - fixed, horizontal resolution (dpi) of source data
                 hRes = readFixedPoint(data, offset); offset += 4;
@@ -79,7 +79,7 @@ public final class PICT extends Metafile {
                 hRes = DEFAULT_RESOLUTION;
                 vRes = DEFAULT_RESOLUTION;
             }
-            
+
             bounds = new Rectangle(x1,y1,x2-x1,y2-y1);
         }
 
@@ -104,7 +104,7 @@ public final class PICT extends Metafile {
             return i / (double)0x10000;
         }
     }
-    
+
     @Override
     public byte[] getData(){
         byte[] rawdata = getRawData();
@@ -142,7 +142,7 @@ public final class PICT extends Metafile {
         // skip the first 512 bytes - they are MAC specific crap
         final int nOffset = NativeHeader.PICT_HEADER_OFFSET;
         NativeHeader nHeader = new NativeHeader(data, nOffset);
-        
+
         Header header = new Header();
         header.wmfsize = data.length - nOffset;
         byte[] compressed = compress(data, nOffset, header.wmfsize);
@@ -190,6 +190,6 @@ public final class PICT extends Metafile {
                 break;
             default:
                 throw new IllegalArgumentException(signature+" is not a valid instance/signature value for PICT");
-        }        
+        }
     }
 }

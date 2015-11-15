@@ -34,7 +34,7 @@ public class ChunkBasedPropertyValue extends PropertyValue {
       // TODO Look up the chunk based on that
       return null;
    }
-   
+
    /**
     * Stores the offset of the chunk as the property value
     */

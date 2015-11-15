@@ -45,7 +45,7 @@ public abstract class BaseTestWorkbook {
     protected BaseTestWorkbook(ITestDataProvider testDataProvider) {
     _testDataProvider = testDataProvider;
     }
-    
+
     @Test
     public void sheetIterator_forEach() {
         final Workbook wb = _testDataProvider.createWorkbook();
@@ -58,18 +58,18 @@ public abstract class BaseTestWorkbook {
             i++;
         }
     }
-    
+
     @Test
     public void sheetIterator_sheetsReordered() {
         final Workbook wb = _testDataProvider.createWorkbook();
         wb.createSheet("Sheet0");
         wb.createSheet("Sheet1");
         wb.createSheet("Sheet2");
-        
+
         Iterator<Sheet> it = wb.sheetIterator();
         it.next();
         wb.setSheetOrder("Sheet2", 1);
-        
+
         // Iterator order should be fixed when iterator is created
         try {
             assertEquals("Sheet1", it.next().getSheetName());
@@ -80,17 +80,17 @@ public abstract class BaseTestWorkbook {
             // expected
         }
     }
-    
+
     @Test
     public void sheetIterator_sheetRemoved() {
         final Workbook wb = _testDataProvider.createWorkbook();
         wb.createSheet("Sheet0");
         wb.createSheet("Sheet1");
         wb.createSheet("Sheet2");
-        
+
         Iterator<Sheet> it = wb.sheetIterator();
         wb.removeSheetAt(1);
-        
+
         // Iterator order should be fixed when iterator is created
         try {
             it.next();
@@ -101,12 +101,12 @@ public abstract class BaseTestWorkbook {
             // expected
         }
     }
-    
+
     @Test
     public void sheetIterator_remove() {
         final Workbook wb = _testDataProvider.createWorkbook();
         wb.createSheet("Sheet0");
-        
+
         Iterator<Sheet> it = wb.sheetIterator();
         it.next(); //Sheet0
         try {
@@ -271,43 +271,43 @@ public abstract class BaseTestWorkbook {
             workbook.createSheet("sheet2");
             workbook.createSheet("sheet3");
             assertEquals(3, workbook.getNumberOfSheets());
-    
+
             assertEquals(0, workbook.getActiveSheetIndex());
-    
+
             workbook.removeSheetAt(1);
             assertEquals(2, workbook.getNumberOfSheets());
             assertEquals("sheet3", workbook.getSheetName(1));
             assertEquals(0, workbook.getActiveSheetIndex());
-    
+
             workbook.removeSheetAt(0);
             assertEquals(1, workbook.getNumberOfSheets());
             assertEquals("sheet3", workbook.getSheetName(0));
             assertEquals(0, workbook.getActiveSheetIndex());
-    
+
             workbook.removeSheetAt(0);
             assertEquals(0, workbook.getNumberOfSheets());
             assertEquals(0, workbook.getActiveSheetIndex());
-    
+
             //re-create the sheets
             workbook.createSheet("sheet1");
             workbook.createSheet("sheet2");
             workbook.createSheet("sheet3");
             workbook.createSheet("sheet4");
             assertEquals(4, workbook.getNumberOfSheets());
-    
+
             assertEquals(0, workbook.getActiveSheetIndex());
             workbook.setActiveSheet(2);
             assertEquals(2, workbook.getActiveSheetIndex());
-    
+
             workbook.removeSheetAt(2);
             assertEquals(2, workbook.getActiveSheetIndex());
-    
+
             workbook.removeSheetAt(1);
             assertEquals(1, workbook.getActiveSheetIndex());
-    
+
             workbook.removeSheetAt(0);
             assertEquals(0, workbook.getActiveSheetIndex());
-    
+
             workbook.removeSheetAt(0);
             assertEquals(0, workbook.getActiveSheetIndex());
         } finally {
@@ -396,13 +396,13 @@ public abstract class BaseTestWorkbook {
 
         // check active sheet
         assertEquals(0, wb.getActiveSheetIndex());
-        
+
         // Change
         wb.setSheetOrder("Sheet 6", 0);
         assertEquals(1, wb.getActiveSheetIndex());
         wb.setSheetOrder("Sheet 3", 7);
         wb.setSheetOrder("Sheet 1", 9);
-        
+
         // now the first sheet is at index 1
         assertEquals(1, wb.getActiveSheetIndex());
 
@@ -432,7 +432,7 @@ public abstract class BaseTestWorkbook {
         assertEquals(9, wbr.getSheetIndex("Sheet 1"));
 
         assertEquals(1, wb.getActiveSheetIndex());
-        
+
         // Now get the index by the sheet, not the name
         for(int i=0; i<10; i++) {
         	Sheet s = wbr.getSheetAt(i);
@@ -497,10 +497,10 @@ public abstract class BaseTestWorkbook {
 
     /**
      * Test is kept to ensure stub for deprecated business method passes test.
-     * 
-     * @Deprecated remove this test when 
-     * {@link Workbook#setRepeatingRowsAndColumns(int, int, int, int, int)} 
-     * is removed 
+     *
+     * @Deprecated remove this test when
+     * {@link Workbook#setRepeatingRowsAndColumns(int, int, int, int, int)}
+     * is removed
      */
     @Deprecated
     @Test
@@ -746,10 +746,10 @@ public abstract class BaseTestWorkbook {
 		for(int i = 0;i < wb.getNumberOfSheets();i++) {
 			sheetNames.append(wb.getSheetAt(i).getSheetName()).append(",");
 		}
-		assertEquals("Had: " + sheetNames.toString(), 
+		assertEquals("Had: " + sheetNames.toString(),
 				sheets.length, wb.getNumberOfSheets());
 		for(int i = 0;i < wb.getNumberOfSheets();i++) {
-			assertEquals("Had: " + sheetNames.toString(), 
+			assertEquals("Had: " + sheetNames.toString(),
 					sheets[i], wb.getSheetAt(i).getSheetName());
 		}
 	}

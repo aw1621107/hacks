@@ -433,7 +433,7 @@ public final class RecordFactory {
             Integer key = Integer.valueOf(sid);
             if (result.containsKey(key)) {
                 Class<?> prevClass = result.get(key).getRecordClass();
-                throw new RuntimeException("duplicate record sid 0x" + 
+                throw new RuntimeException("duplicate record sid 0x" +
                         Integer.toHexString(sid).toUpperCase(Locale.ROOT)
                         + " for classes (" + recClass.getName() + ") and ("
                         + prevClass.getName() + ")");

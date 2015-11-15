@@ -149,7 +149,7 @@ public class Buffer {
 
     /**
      * Skip over a length-encoded string
-     * 
+     *
      * @return The position past the end of the string
      */
     public int fastSkipLenString() {
@@ -180,7 +180,7 @@ public class Buffer {
 
     /**
      * Returns the array of bytes this Buffer is using to read from.
-     * 
+     *
      * @return byte array being read from
      */
     public byte[] getByteBuffer() {
@@ -197,7 +197,7 @@ public class Buffer {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.mysql.jdbc.Buffer#getBytes(int, int)
      */
     byte[] getBytes(int offset, int len) {
@@ -217,7 +217,7 @@ public class Buffer {
 
     /**
      * Returns the current position to write to/ read from
-     * 
+     *
      * @return the current position to write to/ read from
      */
     public int getPosition() {
@@ -404,7 +404,7 @@ public class Buffer {
 
     /**
      * Read string[NUL]
-     * 
+     *
      * @param encoding
      * @param exceptionInterceptor
      * @throws SQLException
@@ -453,7 +453,7 @@ public class Buffer {
 
     /**
      * Sets the array of bytes to use as a buffer to read from.
-     * 
+     *
      * @param byteBuffer
      *            the array of bytes to use as a buffer
      */
@@ -463,7 +463,7 @@ public class Buffer {
 
     /**
      * Set the current position to write to/ read from
-     * 
+     *
      * @param position
      *            the position (0-based index)
      */
@@ -473,7 +473,7 @@ public class Buffer {
 
     /**
      * Sets whether this packet was part of a multipacket
-     * 
+     *
      * @param flag
      *            was this packet part of a multipacket?
      */
@@ -492,7 +492,7 @@ public class Buffer {
 
     /**
      * Was this packet part of a multipacket?
-     * 
+     *
      * @return was this packet part of a multipacket?
      */
     public boolean wasMultiPacket() {

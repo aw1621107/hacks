@@ -24,7 +24,7 @@ public class HeaderFooterHelper {
     private static final String HeaderFooterEntity_L = "&L";
     private static final String HeaderFooterEntity_C = "&C";
     private static final String HeaderFooterEntity_R = "&R";
-    
+
     // These are other entities that may be used in the
     //  left, center or right. Not exhaustive
     public static final String HeaderFooterEntity_File = "&F";
@@ -40,7 +40,7 @@ public class HeaderFooterHelper {
     public String getRightSection(String string) {
     	return getParts(string)[2];
     }
-    
+
     public String setLeftSection(String string, String newLeft) {
     	String[] parts = getParts(string);
     	parts[0] = newLeft;
@@ -56,7 +56,7 @@ public class HeaderFooterHelper {
     	parts[2] = newRight;
         return joinParts(parts);
     }
-    
+
     /**
      * Split into left, center, right
      */
@@ -64,18 +64,18 @@ public class HeaderFooterHelper {
     	String[] parts = new String[] { "", "", "" };
     	if(string == null)
     		return parts;
-    	
+
     	// They can come in any order, which is just nasty
     	// Work backwards from the end, picking the last
     	//  on off each time as we go
     	int lAt = 0;
     	int cAt = 0;
     	int rAt = 0;
-    	
+
     	while(
     		// Ensure all indicies get updated, then -1 tested
     		(lAt = string.indexOf(HeaderFooterEntity_L)) > -2 &&
-    		(cAt = string.indexOf(HeaderFooterEntity_C)) > -2 &&  
+    		(cAt = string.indexOf(HeaderFooterEntity_C)) > -2 &&
     		(rAt = string.indexOf(HeaderFooterEntity_R)) > -2 &&
     		(lAt > -1 || cAt > -1 || rAt > -1)
     	) {
@@ -91,7 +91,7 @@ public class HeaderFooterHelper {
         		string = string.substring(0, lAt);
     		}
     	}
-    	
+
     	return parts;
     }
     private String joinParts(String[] parts) {
@@ -113,7 +113,7 @@ public class HeaderFooterHelper {
     		ret.append(HeaderFooterEntity_R);
     		ret.append(r);
     	}
-    	
+
     	return ret.toString();
     }
 }

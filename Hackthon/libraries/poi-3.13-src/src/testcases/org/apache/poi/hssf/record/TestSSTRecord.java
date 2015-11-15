@@ -51,7 +51,7 @@ public final class TestSSTRecord {
     /**
      * decodes hexdump files and concatenates the results
      * @param hexDumpFileNames names of sample files in the hssf test data directory
-     * @throws IOException 
+     * @throws IOException
      */
     private static byte[] concatHexDumps(String... hexDumpFileNames) throws IOException {
         int nFiles = hexDumpFileNames.length;
@@ -88,7 +88,7 @@ public final class TestSSTRecord {
 
     /**
      * SST is often split over several {@link ContinueRecord}s
-     * @throws IOException 
+     * @throws IOException
      */
     @Test
     public void testContinuedRecord() throws IOException {
@@ -350,7 +350,7 @@ public final class TestSSTRecord {
         assertEquals( "01/05 (Wed)", sheet.getRow( 1 ).getCell(8 ).getStringCellValue() );
 
         HSSFTestDataSamples.writeOutAndReadBack(wb).close();
-        
+
         wb.close();
 
         // test the second file.
@@ -365,7 +365,7 @@ public final class TestSSTRecord {
         assertEquals( "Testing", sheet.getRow( row++ ).getCell(0 ).getStringCellValue() );
 
         HSSFTestDataSamples.writeOutAndReadBack(wb).close();
-        
+
         wb.close();
     }
 
@@ -1471,7 +1471,7 @@ public final class TestSSTRecord {
             assertTrue("String at idx=" + k, us1.equals(us2));
         }
     }
-    
+
     @Test
     public void test50779_1(){
         byte[] bytes = HexRead.readFromString(data_50779_1);
@@ -1518,6 +1518,6 @@ public final class TestSSTRecord {
         SSTRecord src = new SSTRecord(in);
         assertEquals(0, src.getNumStrings());
         assertEquals(0, src.getNumUniqueStrings());
-        
+
     }
 }

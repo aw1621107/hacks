@@ -35,7 +35,7 @@ public class RetrievalPerfTest extends BaseTestCase {
 
     /**
      * Constructor for RetrievalPerfTest.
-     * 
+     *
      * @param name
      *            name of the test to run
      */
@@ -45,7 +45,7 @@ public class RetrievalPerfTest extends BaseTestCase {
 
     /**
      * Runs all tests.
-     * 
+     *
      * @param args
      *            ignored
      */
@@ -74,7 +74,7 @@ public class RetrievalPerfTest extends BaseTestCase {
 
     /**
      * Tests retrieval from the query cache
-     * 
+     *
      * @throws Exception
      *             if an error occurs
      */
@@ -120,7 +120,7 @@ public class RetrievalPerfTest extends BaseTestCase {
 
     /**
      * Tests retrieval from HEAP tables
-     * 
+     *
      * @throws Exception
      *             if an error occurs
      */
@@ -164,7 +164,7 @@ public class RetrievalPerfTest extends BaseTestCase {
 
     /**
      * Tests retrieval speed from MyISAM type tables
-     * 
+     *
      * @throws Exception
      *             if an error occurs
      */

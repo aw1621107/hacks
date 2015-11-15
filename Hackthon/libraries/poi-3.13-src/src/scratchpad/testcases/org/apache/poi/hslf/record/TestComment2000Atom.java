@@ -52,7 +52,7 @@ public final class TestComment2000Atom {
 		};
 
     private static SimpleDateFormat sdf;
-    
+
     @BeforeClass
     public static void initDateFormat() {
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.ROOT);

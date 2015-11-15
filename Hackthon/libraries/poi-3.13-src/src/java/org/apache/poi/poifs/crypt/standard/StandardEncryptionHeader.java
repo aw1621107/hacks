@@ -58,7 +58,7 @@ public class StandardEncryptionHeader extends EncryptionHeader implements Encryp
         ((InputStream)is).mark(LittleEndianConsts.INT_SIZE+1);
         int checkForSalt = is.readInt();
         ((InputStream)is).reset();
-        
+
         if (checkForSalt == 16) {
             setCspName("");
         } else {
@@ -70,7 +70,7 @@ public class StandardEncryptionHeader extends EncryptionHeader implements Encryp
             }
             setCspName(builder.toString());
         }
-        
+
         setChainingMode(ChainingMode.ecb);
         setKeySalt(null);
     }
@@ -86,9 +86,9 @@ public class StandardEncryptionHeader extends EncryptionHeader implements Encryp
         // see http://msdn.microsoft.com/en-us/library/windows/desktop/bb931357(v=vs.85).aspx for a full list
         // setCspName("Microsoft Enhanced RSA and AES Cryptographic Provider");
     }
-    
+
     /**
-     * serializes the header 
+     * serializes the header
      */
     public void write(LittleEndianByteArrayOutputStream bos) {
         int startIdx = bos.getWriteIndex();
@@ -106,6 +106,6 @@ public class StandardEncryptionHeader extends EncryptionHeader implements Encryp
         bos.write(StringUtil.getToUnicodeLE(cspName));
         bos.writeShort(0);
         int headerSize = bos.getWriteIndex()-startIdx-LittleEndianConsts.INT_SIZE;
-        sizeOutput.writeInt(headerSize);        
+        sizeOutput.writeInt(headerSize);
     }
 }

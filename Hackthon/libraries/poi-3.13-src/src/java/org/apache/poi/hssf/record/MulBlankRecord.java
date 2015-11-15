@@ -56,7 +56,7 @@ public final class MulBlankRecord extends StandardRecord {
 	public int getFirstColumn() {
 		return _firstCol;
 	}
-	
+
 	/**
 	 * @return ending column (last cell this holds in the row). Zero based
 	 */

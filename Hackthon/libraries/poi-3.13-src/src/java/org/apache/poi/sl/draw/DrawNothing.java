@@ -25,11 +25,11 @@ import org.apache.poi.sl.usermodel.Shape;
 public class DrawNothing implements Drawable {
 
     protected final Shape<?,?> shape;
-    
+
     public DrawNothing(Shape<?,?> shape) {
         this.shape = shape;
     }
-    
+
     /**
      * Apply 2-D transforms before drawing this shape. This includes rotation and flipping.
      *

@@ -488,7 +488,7 @@ public final class HSLFSlide extends HSLFSheet implements Slide<HSLFShape,HSLFTe
         Drawable draw = drawFact.getDrawable(this);
         draw.draw(graphics);
     }
-    
+
     public boolean getFollowMasterColourScheme() {
         // TODO Auto-generated method stub
         return false;

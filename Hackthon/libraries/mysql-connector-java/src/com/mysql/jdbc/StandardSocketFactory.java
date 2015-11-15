@@ -81,12 +81,12 @@ public class StandardSocketFactory implements SocketFactory, SocketMetadata {
     /**
      * Called by the driver after issuing the MySQL protocol handshake and
      * reading the results of the handshake.
-     * 
+     *
      * @throws SocketException
      *             if a socket error occurs
      * @throws IOException
      *             if an I/O error occurs
-     * 
+     *
      * @return The socket to use after the handshake
      */
     public Socket afterHandshake() throws SocketException, IOException {
@@ -98,12 +98,12 @@ public class StandardSocketFactory implements SocketFactory, SocketMetadata {
     /**
      * Called by the driver before issuing the MySQL protocol handshake. Should
      * return the socket instance that should be used during the handshake.
-     * 
+     *
      * @throws SocketException
      *             if a socket error occurs
      * @throws IOException
      *             if an I/O error occurs
-     * 
+     *
      * @return the socket to use before the handshake
      */
     public Socket beforeHandshake() throws SocketException, IOException {
@@ -126,7 +126,7 @@ public class StandardSocketFactory implements SocketFactory, SocketMetadata {
     /**
      * Configures socket properties based on properties from the connection
      * (tcpNoDelay, snd/rcv buf, traffic class, etc).
-     * 
+     *
      * @param props
      * @throws SocketException
      * @throws IOException
@@ -297,7 +297,7 @@ public class StandardSocketFactory implements SocketFactory, SocketMetadata {
 
     /**
      * Decrements elapsed time since last reset from login timeout count down.
-     * 
+     *
      * @throws SocketException
      *             If the login timeout is reached or exceeded.
      */
@@ -314,7 +314,7 @@ public class StandardSocketFactory implements SocketFactory, SocketMetadata {
 
     /**
      * Validates the connection/socket timeout that must really be used.
-     * 
+     *
      * @param expectedTimeout
      *            The timeout to validate.
      * @return The timeout to be used.

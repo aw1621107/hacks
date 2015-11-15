@@ -44,11 +44,11 @@ public final class HSSFDataValidation implements DataValidation {
 	/**
 	 * Constructor which initializes the cell range on which this object will be
 	 * applied
-	 * @param constraint 
+	 * @param constraint
 	 */
 	public HSSFDataValidation(CellRangeAddressList regions, DataValidationConstraint constraint) {
 		_regions = regions;
-		
+
 		//FIXME: This cast can be avoided.
 		_constraint = (DVConstraint)constraint;
 	}
@@ -64,7 +64,7 @@ public final class HSSFDataValidation implements DataValidation {
 	public DVConstraint getConstraint() {
 		return _constraint;
 	}
-	
+
 	public CellRangeAddressList getRegions() {
 		return _regions;
 	}
@@ -193,7 +193,7 @@ public final class HSSFDataValidation implements DataValidation {
 	public DVRecord createDVRecord(HSSFSheet sheet) {
 
 		FormulaPair fp = _constraint.createFormulas(sheet);
-		
+
 		return new DVRecord(_constraint.getValidationType(),
 				_constraint.getOperator(),
 				_errorStyle, _emptyCellAllowed, getSuppressDropDownArrow(),

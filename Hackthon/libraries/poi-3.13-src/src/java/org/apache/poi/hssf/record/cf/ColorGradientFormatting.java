@@ -36,14 +36,14 @@ public final class ColorGradientFormatting implements Cloneable {
     private byte options = 0;
     private ColorGradientThreshold[] thresholds;
     private ExtendedColor[] colors;
-    
+
     private static BitField clamp = BitFieldFactory.getInstance(0x01);
     private static BitField background = BitFieldFactory.getInstance(0x02);
-    
+
     public ColorGradientFormatting() {
         options = 3;
         thresholds = new ColorGradientThreshold[3];
-        colors = new ExtendedColor[3];  
+        colors = new ExtendedColor[3];
     }
     public ColorGradientFormatting(LittleEndianInput in) {
         in.readShort(); // Ignored
@@ -54,7 +54,7 @@ public final class ColorGradientFormatting implements Cloneable {
             log.log(POILogger.WARN, "Inconsistent Color Gradient defintion, found " + numI + " vs " + numG + " entries");
         }
         options = in.readByte();
-        
+
         thresholds = new ColorGradientThreshold[numI];
         for (int i=0; i<thresholds.length; i++) {
             thresholds[i] = new ColorGradientThreshold(in);
@@ -65,7 +65,7 @@ public final class ColorGradientFormatting implements Cloneable {
             colors[i] = new ExtendedColor(in);
         }
     }
-    
+
     public int getNumControlPoints() {
         return thresholds.length;
     }
@@ -73,18 +73,18 @@ public final class ColorGradientFormatting implements Cloneable {
         if (num != thresholds.length) {
             ColorGradientThreshold[] nt = new ColorGradientThreshold[num];
             ExtendedColor[] nc = new ExtendedColor[num];
-            
+
             int copy = Math.min(thresholds.length, num);
             System.arraycopy(thresholds, 0, nt, 0, copy);
             System.arraycopy(colors, 0, nc, 0, copy);
-            
+
             this.thresholds = nt;
             this.colors = nc;
-            
+
             updateThresholdPositions();
         }
     }
-    
+
     public ColorGradientThreshold[] getThresholds() {
         return thresholds;
     }
@@ -99,7 +99,7 @@ public final class ColorGradientFormatting implements Cloneable {
     public void setColors(ExtendedColor[] colors) {
         this.colors = colors;
     }
-    
+
     public boolean isClampToCurve() {
         return getOptionFlag(clamp);
     }
@@ -116,8 +116,8 @@ public final class ColorGradientFormatting implements Cloneable {
         for (int i=0; i<thresholds.length; i++) {
             thresholds[i].setPosition(step*i);
         }
-    }    
-    
+    }
+
     public String toString() {
         StringBuffer buffer = new StringBuffer();
         buffer.append("    [Color Gradient Formatting]\n");
@@ -132,7 +132,7 @@ public final class ColorGradientFormatting implements Cloneable {
         buffer.append("    [/Color Gradient Formatting]\n");
         return buffer.toString();
     }
-    
+
     public Object clone()  {
       ColorGradientFormatting rec = new ColorGradientFormatting();
       rec.options = options;
@@ -142,7 +142,7 @@ public final class ColorGradientFormatting implements Cloneable {
       System.arraycopy(colors, 0, rec.colors, 0, colors.length);
       return rec;
     }
-    
+
     public int getDataLength() {
         int len = 6;
         for (Threshold t : thresholds) {
@@ -161,15 +161,15 @@ public final class ColorGradientFormatting implements Cloneable {
         out.writeByte(thresholds.length);
         out.writeByte(thresholds.length);
         out.writeByte(options);
-        
+
         for (ColorGradientThreshold t : thresholds) {
             t.serialize(out);
         }
-        
+
         double step = 1d / (colors.length-1);
         for (int i=0; i<colors.length; i++) {
             out.writeDouble(i*step);
-            
+
             ExtendedColor c = colors[i];
             c.serialize(out);
         }

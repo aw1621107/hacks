@@ -37,7 +37,7 @@ public enum CipherAlgorithm {
     // only for digital signatures
     rsa(null, "RSA", -1, 1024, new int[]{1024, 2048, 3072, 4096}, -1, -1, "", false);
     ;
-    
+
     public final CipherProvider provider;
     public final String jceId;
     public final int ecmaId;
@@ -47,7 +47,7 @@ public enum CipherAlgorithm {
     public final int encryptedVerifierHashLength;
     public final String xmlId;
     public final boolean needsBouncyCastle;
-    
+
     CipherAlgorithm(CipherProvider provider, String jceId, int ecmaId, int defaultKeySize, int allowedKeySize[], int blockSize, int encryptedVerifierHashLength, String xmlId, boolean needsBouncyCastle) {
         this.provider = provider;
         this.jceId = jceId;
@@ -66,7 +66,7 @@ public enum CipherAlgorithm {
         }
         throw new EncryptedDocumentException("cipher algorithm " + ecmaId + " not found");
     }
-    
+
     public static CipherAlgorithm fromXmlId(String xmlId, int keySize) {
         for (CipherAlgorithm ca : CipherAlgorithm.values()) {
             if (!ca.xmlId.equals(xmlId)) continue;

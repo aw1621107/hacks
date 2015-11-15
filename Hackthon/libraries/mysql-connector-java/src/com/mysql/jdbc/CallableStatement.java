@@ -116,7 +116,7 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.lang.Object#clone()
          */
         @Override
@@ -151,7 +151,7 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
         /**
          * Constructor that converts a full list of parameter metadata into one
          * that only represents the placeholders present in the {CALL ()}.
-         * 
+         *
          * @param fullParamInfo
          *            the metadata for all parameters for this stored
          *            procedure or function.
@@ -263,7 +263,7 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
 
         /*
          * (non-Javadoc)
-         * 
+         *
          * @see java.lang.Object#clone()
          */
         @Override
@@ -420,12 +420,12 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
 
     /**
      * Creates a new CallableStatement
-     * 
+     *
      * @param conn
      *            the connection creating this statement
      * @param paramInfo
      *            the SQL to prepare
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -531,14 +531,14 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
 
     /**
      * Creates a new CallableStatement
-     * 
+     *
      * @param conn
      *            the connection creating this statement
      * @param sql
      *            the SQL to prepare
      * @param catalog
      *            the current catalog
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -568,7 +568,7 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.sql.PreparedStatement#addBatch()
      */
     @Override
@@ -625,7 +625,7 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
 
     /**
      * @param paramIndex
-     * 
+     *
      * @throws SQLException
      */
     private void checkParameterIndexBounds(int paramIndex) throws SQLException {
@@ -638,7 +638,7 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
      * Checks whether or not this statement is supposed to be providing
      * streamable result sets...If output parameters are registered, the driver
      * can not stream the results.
-     * 
+     *
      * @throws SQLException
      */
     private void checkStreamability() throws SQLException {
@@ -665,7 +665,7 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
     /**
      * Used to fake up some metadata when we don't have access to
      * SHOW CREATE PROCEDURE or mysql.proc.
-     * 
+     *
      * @throws SQLException
      *             if we can't build the metadata.
      */
@@ -772,7 +772,7 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
                         hasResults = true;
                     }
                 } catch (Exception e) {
-                    // paramTypesRs is empty, proceed with fake params. swallow, was expected 
+                    // paramTypesRs is empty, proceed with fake params. swallow, was expected
                 }
                 if (hasResults) {
                     convertGetProcedureColumnsToInternalDescriptors(paramTypesRs);
@@ -807,7 +807,7 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.sql.PreparedStatement#execute()
      */
     @Override
@@ -841,7 +841,7 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.sql.PreparedStatement#executeQuery()
      */
     @Override
@@ -865,7 +865,7 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.sql.PreparedStatement#executeUpdate()
      */
     @Override
@@ -910,12 +910,12 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
 
     /**
      * Adds 'at' symbol to beginning of parameter names if needed.
-     * 
+     *
      * @param paramNameIn
      *            the parameter name to 'fix'
-     * 
+     *
      * @return the parameter name with an 'a' prepended, if needed
-     * 
+     *
      * @throws SQLException
      *             if the parameter name is null or empty.
      */
@@ -989,9 +989,9 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
     /**
      * @param parameterIndex
      * @param scale
-     * 
+     *
      * @throws SQLException
-     * 
+     *
      * @see java.sql.CallableStatement#getBigDecimal(int, int)
      * @deprecated
      */
@@ -1483,9 +1483,9 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
     /**
      * Returns the ResultSet that holds the output parameters, or throws an
      * appropriate exception if none exist, or they weren't returned.
-     * 
+     *
      * @return the ResultSet that holds the output parameters
-     * 
+     *
      * @throws SQLException
      *             if no output parameters were defined, or if no output
      *             parameters were returned.
@@ -1834,7 +1834,7 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
 
     /**
      * Issues a second query to retrieve all output parameters.
-     * 
+     *
      * @throws SQLException
      *             if an error occurs.
      */
@@ -2294,7 +2294,7 @@ public class CallableStatement extends PreparedStatement implements java.sql.Cal
 
     /**
      * Check whether the stored procedure alters any data or is safe for read-only usage.
-     * 
+     *
      * @return true if procedure does not alter data
      * @throws SQLException
      */

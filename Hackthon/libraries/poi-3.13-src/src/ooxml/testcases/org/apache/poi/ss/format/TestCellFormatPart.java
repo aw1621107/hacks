@@ -32,20 +32,20 @@ import org.junit.Test;
 
 /** Test the individual CellFormatPart types. */
 public class TestCellFormatPart extends CellFormatTestBase {
-    
+
     private static Locale userLocale;
-    
+
     @BeforeClass
     public static void setLocale() {
         userLocale = LocaleUtil.getUserLocale();
         LocaleUtil.setUserLocale(Locale.ROOT);
     }
-    
+
     @AfterClass
     public static void unsetLocale() {
         LocaleUtil.setUserLocale(userLocale);
     }
-    
+
     private static final Pattern NUMBER_EXTRACT_FMT = Pattern.compile(
             "([-+]?[0-9]+)(\\.[0-9]+)?.*(?:(e).*?([+-]?[0-9]+))",
             Pattern.CASE_INSENSITIVE);

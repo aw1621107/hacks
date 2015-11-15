@@ -37,7 +37,7 @@ public final class ComplexFileTable
   protected TextPieceTable _tpt;
 
   private SprmBuffer[] _grpprls;
-  
+
   public ComplexFileTable()
   {
     _tpt = new TextPieceTable();

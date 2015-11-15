@@ -30,9 +30,9 @@ import org.w3c.dom.Element;
 
 /**
  * <p>Java class for CT_OfficeArtExtension complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_OfficeArtExtension">
  *   &lt;complexContent>
@@ -45,8 +45,8 @@ import org.w3c.dom.Element;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_OfficeArtExtension", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main", propOrder = {
@@ -63,12 +63,12 @@ public class CTOfficeArtExtension {
 
     /**
      * Gets the value of the any property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Object }
      *     {@link Element }
-     *     
+     *
      */
     public Object getAny() {
         return any;
@@ -76,12 +76,12 @@ public class CTOfficeArtExtension {
 
     /**
      * Sets the value of the any property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Object }
      *     {@link Element }
-     *     
+     *
      */
     public void setAny(Object value) {
         this.any = value;
@@ -93,11 +93,11 @@ public class CTOfficeArtExtension {
 
     /**
      * Gets the value of the uri property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getUri() {
         return uri;
@@ -105,11 +105,11 @@ public class CTOfficeArtExtension {
 
     /**
      * Sets the value of the uri property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setUri(String value) {
         this.uri = value;

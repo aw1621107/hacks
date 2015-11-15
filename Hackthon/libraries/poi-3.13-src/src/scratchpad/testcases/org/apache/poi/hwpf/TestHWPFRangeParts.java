@@ -107,7 +107,7 @@ public final class TestHWPFRangeParts extends TestCase {
       HWPFDocument doc = docAscii;
       for(int run=0; run<3; run++) {
    		Range r;
-   
+
    		// Now check the real ranges
    		r = doc.getRange();
    		assertEquals(
@@ -116,7 +116,7 @@ public final class TestHWPFRangeParts extends TestCase {
    				a_page_2,
    				r.text()
    		);
-   
+
    		r = doc.getHeaderStoryRange();
    		assertEquals(
    				headerDef +
@@ -126,7 +126,7 @@ public final class TestHWPFRangeParts extends TestCase {
    				endHeaderFooter,
    				r.text()
    		);
-   
+
    		r = doc.getOverallRange();
    		assertEquals(
    				a_page_1 +
@@ -140,7 +140,7 @@ public final class TestHWPFRangeParts extends TestCase {
    				"\r",
    				r.text()
    		);
-         
+
          // Write out and read back in again, ready for
          //  the next run of the test
          // TODO run more than once

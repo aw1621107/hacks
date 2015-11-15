@@ -317,7 +317,7 @@ public final class HSSFRichTextString implements Comparable<HSSFRichTextString>,
         return 42; // any arbitrary constant will do
     }
 
-    
+
     /**
      * @return  the plain text representation of this string.
      */

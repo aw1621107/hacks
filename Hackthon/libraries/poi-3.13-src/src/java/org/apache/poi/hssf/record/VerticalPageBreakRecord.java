@@ -21,7 +21,7 @@ import java.util.Iterator;
 
 /**
  * VerticalPageBreak (0x001A) record that stores page breaks at columns<p/>
- * 
+ *
  * @see PageBreakRecord
  * @author Danny Mui (dmui at apache dot org)
  */

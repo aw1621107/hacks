@@ -30,28 +30,28 @@ public final class TestTypes extends TestCase {
    public void testTypeIds() {
       assertEquals(0x1e, Types.ASCII_STRING.getId());
       assertEquals(0x1f, Types.UNICODE_STRING.getId());
-      
+
       assertEquals(0x0102, Types.BINARY.getId());
       assertEquals(0x000B, Types.BOOLEAN.getId());
       assertEquals(0x0003, Types.LONG.getId());
       assertEquals(0x0040, Types.TIME.getId());
-      
+
       assertEquals(Types.ASCII_STRING, Types.getById(0x1e));
       assertEquals(Types.UNICODE_STRING, Types.getById(0x1f));
-      
+
       assertEquals(Types.BINARY, Types.getById(0x0102));
       assertEquals(Types.BOOLEAN, Types.getById(0x000B));
       assertEquals(Types.LONG, Types.getById(0x0003));
       assertEquals(Types.TIME, Types.getById(0x0040));
    }
-   
+
    public void testTypeFormatting() {
       assertEquals("0000", Types.asFileEnding(0x0000));
       assertEquals("0020", Types.asFileEnding(0x0020));
       assertEquals("0102", Types.asFileEnding(0x0102));
       assertEquals("FEDC", Types.asFileEnding(0xfedc));
    }
-   
+
    public void testName() {
       assertEquals("ASCII String", Types.ASCII_STRING.getName());
       assertEquals("Boolean", Types.BOOLEAN.getName());

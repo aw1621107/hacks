@@ -43,14 +43,14 @@ import org.apache.poi.util.POILogger;
  */
 public class ZipSecureFile extends ZipFile {
     private static POILogger logger = POILogFactory.getLogger(ZipSecureFile.class);
-    
+
     private static double MIN_INFLATE_RATIO = 0.01d;
     private static long MAX_ENTRY_SIZE = 0xFFFFFFFFl;
 
     /**
      * Sets the ratio between de- and inflated bytes to detect zipbomb.
      * It defaults to 1% (= 0.01d), i.e. when the compression is better than
-     * 1% for any given read package part, the parsing will fail indicating a 
+     * 1% for any given read package part, the parsing will fail indicating a
      * Zip-Bomb.
      *
      * @param ratio the ratio between de- and inflated bytes to detect zipbomb
@@ -58,13 +58,13 @@ public class ZipSecureFile extends ZipFile {
     public static void setMinInflateRatio(double ratio) {
         MIN_INFLATE_RATIO = ratio;
     }
-    
+
     /**
      * Returns the current minimum compression rate that is used.
-     * 
+     *
      * See setMinInflateRatio() for details.
      *
-     * @return The min accepted compression-ratio.  
+     * @return The min accepted compression-ratio.
      */
     public static double getMinInflateRatio() {
         return MIN_INFLATE_RATIO;
@@ -73,8 +73,8 @@ public class ZipSecureFile extends ZipFile {
     /**
      * Sets the maximum file size of a single zip entry. It defaults to 4GB,
      * i.e. the 32-bit zip format maximum.
-     * 
-     * This can be used to limit memory consumption and protect against 
+     *
+     * This can be used to limit memory consumption and protect against
      * security vulnerabilities when documents are provided by users.
      *
      * @param maxEntrySize the max. file size of a single zip entry
@@ -88,10 +88,10 @@ public class ZipSecureFile extends ZipFile {
 
     /**
      * Returns the current maximum allowed uncompressed file size.
-     * 
+     *
      * See setMaxEntrySize() for details.
      *
-     * @return The max accepted uncompressed file size. 
+     * @return The max accepted uncompressed file size.
      */
     public static long getMaxEntrySize() {
         return MAX_ENTRY_SIZE;

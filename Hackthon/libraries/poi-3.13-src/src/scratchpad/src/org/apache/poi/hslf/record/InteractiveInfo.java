@@ -30,16 +30,16 @@ import org.apache.poi.util.LittleEndian;
 public class InteractiveInfo extends RecordContainer {
 	private byte[] _header;
 	private static long _type = 4082;
-	
+
 	// Links to our more interesting children
 	private InteractiveInfoAtom infoAtom;
-	
-	/** 
+
+	/**
 	 * Returns the InteractiveInfoAtom of this InteractiveInfo
-	 */ 
+	 */
 	public InteractiveInfoAtom getInteractiveInfoAtom() { return infoAtom; }
-	
-	/** 
+
+	/**
 	 * Set things up, and find our more interesting children
 	 */
 	protected InteractiveInfo(byte[] source, int start, int len) {
@@ -56,7 +56,7 @@ public class InteractiveInfo extends RecordContainer {
 	 * Go through our child records, picking out the ones that are
 	 *  interesting, and saving those for use by the easy helper
 	 *  methods.
-	 */	
+	 */
 	private void findInterestingChildren() {
 		// First child should be the InteractiveInfoAtom
 		if(_children[0] instanceof InteractiveInfoAtom) {
@@ -65,18 +65,18 @@ public class InteractiveInfo extends RecordContainer {
 			throw new IllegalStateException("First child record wasn't a InteractiveInfoAtom, was of type " + _children[0].getRecordType());
 		}
 	}
-	
+
 	/**
 	 * Create a new InteractiveInfo, with blank fields
 	 */
 	public InteractiveInfo() {
 		_header = new byte[8];
 		_children = new Record[1];
-		
+
 		// Setup our header block
 		_header[0] = 0x0f; // We are a container record
 		LittleEndian.putShort(_header, 2, (short)_type);
-		
+
 		// Setup our child records
 		infoAtom = new InteractiveInfoAtom();
 		_children[0] = infoAtom;

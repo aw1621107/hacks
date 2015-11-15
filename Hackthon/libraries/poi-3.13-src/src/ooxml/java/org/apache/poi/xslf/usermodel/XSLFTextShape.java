@@ -158,7 +158,7 @@ public abstract class XSLFTextShape extends XSLFSimpleShape
      *
      * @param isCentered true, if the paragraphs are horizontal centered
      * A {@code null} values unsets this property.
-     * 
+     *
      * @see TextShape#isHorizontalCentered()
      */
     public void setHorizontalCentered(Boolean isCentered){
@@ -186,7 +186,7 @@ public abstract class XSLFTextShape extends XSLFSimpleShape
         fetchShapeProperty(fetcher);
         return fetcher.getValue() == null ? false : fetcher.getValue();
     }
-    
+
     /**
      *
      * @param orientation vertical orientation of the text
@@ -368,8 +368,8 @@ public abstract class XSLFTextShape extends XSLFSimpleShape
         Insets2D insets = new Insets2D(getTopInset(), getLeftInset(), getBottomInset(), getRightInset());
         return insets;
     }
-    
-    
+
+
     /**
      * @return whether to wrap words within the bounding rectangle
      */
@@ -470,15 +470,15 @@ public abstract class XSLFTextShape extends XSLFSimpleShape
         Rectangle anchor = getAnchor();
         if(anchor.getWidth() == 0.)  throw new POIXMLException(
                 "Anchor of the shape was not set.");
-        double height = getTextHeight(); 
+        double height = getTextHeight();
         height += 1; // add a pixel to compensate rounding errors
-        
+
         anchor.setRect(anchor.getX(), anchor.getY(), anchor.getWidth(), height);
         setAnchor(anchor);
-        
+
         return anchor;
-    }   
-    
+    }
+
 
     @Override
     void copy(XSLFShape other){
@@ -490,14 +490,14 @@ public abstract class XSLFTextShape extends XSLFSimpleShape
         if (otherTB == null) {
             return;
         }
-        
+
         thisTB.setBodyPr((CTTextBodyProperties)otherTB.getBodyPr().copy());
 
         if (thisTB.isSetLstStyle()) thisTB.unsetLstStyle();
         if (otherTB.isSetLstStyle()) {
             thisTB.setLstStyle((CTTextListStyle)otherTB.getLstStyle().copy());
         }
-        
+
         boolean srcWordWrap = otherTS.getWordWrap();
         if(srcWordWrap != getWordWrap()){
             setWordWrap(srcWordWrap);
@@ -526,7 +526,7 @@ public abstract class XSLFTextShape extends XSLFSimpleShape
         }
 
         clearText();
-        
+
         for (XSLFTextParagraph srcP : otherTS.getTextParagraphs()) {
             XSLFTextParagraph tgtP = addNewTextParagraph();
             tgtP.copy(srcP);

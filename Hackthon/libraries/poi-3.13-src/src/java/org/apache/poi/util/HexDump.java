@@ -109,8 +109,8 @@ public class HexDump {
 
     public static String dump(final byte [] data, final long offset, final int index) {
         return dump(data, offset, index, Integer.MAX_VALUE);
-    }    
-    
+    }
+
     /**
      * dump an array of bytes to a String
      *
@@ -132,23 +132,23 @@ public class HexDump {
         int data_length = (length == Integer.MAX_VALUE || length < 0 || index+length < 0)
             ? data.length
             : Math.min(data.length,index+length);
-        
-        
+
+
         if ((index < 0) || (index >= data.length)) {
             String err = "illegal index: "+index+" into array of length "+data.length;
             throw new ArrayIndexOutOfBoundsException(err);
         }
-        
+
         long  display_offset = offset + index;
         StringBuilder buffer = new StringBuilder(74);
-        
+
         for (int j = index; j < data_length; j += 16) {
             int chars_read = data_length - j;
 
             if (chars_read > 16) {
                 chars_read = 16;
             }
-            
+
             buffer.append(xpad(display_offset, 8, ""));
             for (int k = 0; k < 16; k++) {
                 if (k < chars_read) {
@@ -170,7 +170,7 @@ public class HexDump {
     public static char toAscii(int dataB) {
         char charB = (char)(dataB & 0xFF);
         if (Character.isISOControl(charB)) return '.';
-        
+
         switch (charB) {
         case 0xFF: case 0xDD: // printable, but not compilable with current compiler encoding
             charB = '.';
@@ -178,7 +178,7 @@ public class HexDump {
         }
         return charB;
     }
-    
+
     /**
      * Converts the parameter to a hex value.
      *
@@ -338,21 +338,21 @@ public class HexDump {
     public static String longToHex(long value) {
         return xpad(value, 16, "0x");
     }
-    
+
     /**
      * @return string of 8 (zero padded) uppercase hex chars and prefixed with '0x'
      */
     public static String intToHex(int value) {
         return xpad(value & 0xFFFFFFFF, 8, "0x");
     }
-    
+
     /**
      * @return string of 4 (zero padded) uppercase hex chars and prefixed with '0x'
      */
     public static String shortToHex(int value) {
         return xpad(value & 0xFFFF, 4, "0x");
     }
-    
+
     /**
      * @return string of 2 (zero padded) uppercase hex chars and prefixed with '0x'
      */
@@ -375,7 +375,7 @@ public class HexDump {
         }
         return sb.toString();
     }
-    
+
     public static void main(String[] args) throws Exception {
         File file = new File(args[0]);
         InputStream in = new BufferedInputStream(new FileInputStream(file));

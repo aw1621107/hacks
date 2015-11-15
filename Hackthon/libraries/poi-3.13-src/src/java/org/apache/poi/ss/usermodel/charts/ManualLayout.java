@@ -117,7 +117,7 @@ public interface ManualLayout {
 	public void setHeightMode(LayoutMode mode);
 
 	/**
-	 * Returns current height mode of this 
+	 * Returns current height mode of this
 	 * @return height mode of this manual layout.
 	 */
 	public LayoutMode getHeightMode();

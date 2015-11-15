@@ -84,219 +84,219 @@ public interface PrintSetup {
     /** A4 Rotated - 297x210 mm */
     public static final short A4_ROTATED_PAPERSIZE = 77;
 
-    /**    
-     * Set the paper size.    
-     * @param size the paper size.    
+    /**
+     * Set the paper size.
+     * @param size the paper size.
      */
     void setPaperSize(short size);
 
-    /**    
-     * Set the scale.    
-     * @param scale the scale to use    
+    /**
+     * Set the scale.
+     * @param scale the scale to use
      */
     void setScale(short scale);
 
-    /**    
-     * Set the page numbering start.    
-     * @param start the page numbering start    
+    /**
+     * Set the page numbering start.
+     * @param start the page numbering start
      */
     void setPageStart(short start);
 
-    /**    
-     * Set the number of pages wide to fit the sheet in    
-     * @param width the number of pages    
+    /**
+     * Set the number of pages wide to fit the sheet in
+     * @param width the number of pages
      */
     void setFitWidth(short width);
 
-    /**    
-     * Set the number of pages high to fit the sheet in    
-     * @param height the number of pages    
+    /**
+     * Set the number of pages high to fit the sheet in
+     * @param height the number of pages
      */
     void setFitHeight(short height);
 
     /**
-     * Set whether to go left to right or top down in ordering    
-     * @param ltor left to right    
+     * Set whether to go left to right or top down in ordering
+     * @param ltor left to right
      */
     void setLeftToRight(boolean ltor);
 
-    /**    
-     * Set whether to print in landscape    
-     * @param ls landscape    
+    /**
+     * Set whether to print in landscape
+     * @param ls landscape
      */
     void setLandscape(boolean ls);
 
-    /**    
-     * Valid settings.  I'm not for sure.    
-     * @param valid Valid    
+    /**
+     * Valid settings.  I'm not for sure.
+     * @param valid Valid
      */
     void setValidSettings(boolean valid);
 
-    /**    
-     * Set whether it is black and white    
-     * @param mono Black and white    
+    /**
+     * Set whether it is black and white
+     * @param mono Black and white
      */
     void setNoColor(boolean mono);
 
-    /**    
-     * Set whether it is in draft mode    
-     * @param d draft    
+    /**
+     * Set whether it is in draft mode
+     * @param d draft
      */
     void setDraft(boolean d);
 
-    /**    
-     * Print the include notes    
-     * @param printnotes print the notes    
+    /**
+     * Print the include notes
+     * @param printnotes print the notes
      */
     void setNotes(boolean printnotes);
 
-    /**    
-     * Set no orientation. ?    
-     * @param orientation Orientation.    
+    /**
+     * Set no orientation. ?
+     * @param orientation Orientation.
      */
     void setNoOrientation(boolean orientation);
 
-    /**    
-     * Set whether to use page start    
-     * @param page Use page start    
+    /**
+     * Set whether to use page start
+     * @param page Use page start
      */
     void setUsePage(boolean page);
 
-    /**    
-     * Sets the horizontal resolution.    
-     * @param resolution horizontal resolution    
+    /**
+     * Sets the horizontal resolution.
+     * @param resolution horizontal resolution
      */
     void setHResolution(short resolution);
 
-    /**    
-     * Sets the vertical resolution.    
-     * @param resolution vertical resolution    
+    /**
+     * Sets the vertical resolution.
+     * @param resolution vertical resolution
      */
     void setVResolution(short resolution);
 
-    /**    
-     * Sets the header margin.    
-     * @param headermargin header margin    
+    /**
+     * Sets the header margin.
+     * @param headermargin header margin
      */
     void setHeaderMargin(double headermargin);
 
-    /**    
-     * Sets the footer margin.    
-     * @param footermargin footer margin    
+    /**
+     * Sets the footer margin.
+     * @param footermargin footer margin
      */
     void setFooterMargin(double footermargin);
 
-    /**    
-     * Sets the number of copies.    
-     * @param copies number of copies    
+    /**
+     * Sets the number of copies.
+     * @param copies number of copies
      */
     void setCopies(short copies);
 
-    /**    
-     * Returns the paper size.    
-     * @return paper size    
+    /**
+     * Returns the paper size.
+     * @return paper size
      */
     short getPaperSize();
 
-    /**    
-     * Returns the scale.    
-     * @return scale    
+    /**
+     * Returns the scale.
+     * @return scale
      */
     short getScale();
 
-    /**    
-     * Returns the page start.    
-     * @return page start    
+    /**
+     * Returns the page start.
+     * @return page start
      */
     short getPageStart();
 
-    /**    
-     * Returns the number of pages wide to fit sheet in.    
-     * @return number of pages wide to fit sheet in    
+    /**
+     * Returns the number of pages wide to fit sheet in.
+     * @return number of pages wide to fit sheet in
      */
     short getFitWidth();
 
-    /**    
-     * Returns the number of pages high to fit the sheet in.    
-     * @return number of pages high to fit the sheet in    
+    /**
+     * Returns the number of pages high to fit the sheet in.
+     * @return number of pages high to fit the sheet in
      */
     short getFitHeight();
 
-    /**    
-     * Returns the left to right print order.    
-     * @return left to right print order    
+    /**
+     * Returns the left to right print order.
+     * @return left to right print order
      */
     boolean getLeftToRight();
 
-    /**    
-     * Returns the landscape mode.    
-     * @return landscape mode    
+    /**
+     * Returns the landscape mode.
+     * @return landscape mode
      */
     boolean getLandscape();
 
-    /**    
-     * Returns the valid settings.    
-     * @return valid settings    
+    /**
+     * Returns the valid settings.
+     * @return valid settings
      */
     boolean getValidSettings();
 
-    /**    
-     * Returns the black and white setting.    
-     * @return black and white setting    
+    /**
+     * Returns the black and white setting.
+     * @return black and white setting
      */
     boolean getNoColor();
 
-    /**    
-     * Returns the draft mode.    
-     * @return draft mode    
+    /**
+     * Returns the draft mode.
+     * @return draft mode
      */
     boolean getDraft();
 
-    /**    
-     * Returns the print notes.    
-     * @return print notes    
+    /**
+     * Returns the print notes.
+     * @return print notes
      */
     boolean getNotes();
 
-    /**    
-     * Returns the no orientation.    
-     * @return no orientation    
+    /**
+     * Returns the no orientation.
+     * @return no orientation
      */
     boolean getNoOrientation();
 
-    /**    
-     * Returns the use page numbers.    
-     * @return use page numbers    
+    /**
+     * Returns the use page numbers.
+     * @return use page numbers
      */
     boolean getUsePage();
 
-    /**    
-     * Returns the horizontal resolution.    
-     * @return horizontal resolution    
+    /**
+     * Returns the horizontal resolution.
+     * @return horizontal resolution
      */
     short getHResolution();
 
-    /**    
-     * Returns the vertical resolution.    
-     * @return vertical resolution    
+    /**
+     * Returns the vertical resolution.
+     * @return vertical resolution
      */
     short getVResolution();
 
-    /**    
-     * Returns the header margin.    
-     * @return header margin    
+    /**
+     * Returns the header margin.
+     * @return header margin
      */
     double getHeaderMargin();
 
-    /**    
-     * Returns the footer margin.    
-     * @return footer margin    
+    /**
+     * Returns the footer margin.
+     * @return footer margin
      */
     double getFooterMargin();
 
-    /**    
-     * Returns the number of copies.    
-     * @return number of copies    
+    /**
+     * Returns the number of copies.
+     * @return number of copies
      */
     short getCopies();
 

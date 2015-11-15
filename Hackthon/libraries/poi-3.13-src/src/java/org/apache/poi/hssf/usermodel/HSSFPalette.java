@@ -130,7 +130,7 @@ public final class HSSFPalette {
         }
         return result;
     }
-    
+
     /**
      * Turn a byte of between -127 and 127 into something between
      *  0 and 255, so distance calculations work as expected.

@@ -32,13 +32,13 @@ public final class OperandResolver {
     private static final String Digits	= "(\\p{Digit}+)";
     private static final String Exp	= "[eE][+-]?"+Digits;
     private static final String fpRegex	=
-        	    ("[\\x00-\\x20]*" +	
-        	     "[+-]?(" +	
-          	     "((("+Digits+"(\\.)?("+Digits+"?)("+Exp+")?)|"+        
-        	     "(\\.("+Digits+")("+Exp+")?))))"+       
-        	     "[\\x00-\\x20]*"); 
-    	    
-	
+        	    ("[\\x00-\\x20]*" +
+        	     "[+-]?(" +
+          	     "((("+Digits+"(\\.)?("+Digits+"?)("+Exp+")?)|"+
+        	     "(\\.("+Digits+")("+Exp+")?))))"+
+        	     "[\\x00-\\x20]*");
+
+
 	private OperandResolver() {
 		// no instances of this class
 	}
@@ -174,7 +174,7 @@ public final class OperandResolver {
 		}
 		return ae.getAbsoluteValue(ae.getFirstRow(), srcCellCol);
 	}
-	
+
 	private static ValueEval chooseSingleElementFromRef(RefEval ref) {
 	    return ref.getInnerValueEval( ref.getFirstSheetIndex() );
 	}
@@ -234,8 +234,8 @@ public final class OperandResolver {
 	/**
 	 * Converts a string to a double using standard rules that Excel would use.<br/>
 	 * Tolerates leading and trailing spaces, <p/>
-	 * 
-	 * Doesn't support currency prefixes, commas, percentage signs or arithmetic operations strings.  
+	 *
+	 * Doesn't support currency prefixes, commas, percentage signs or arithmetic operations strings.
 	 *
 	 *  Some examples:<br/>
 	 *  " 123 " -&gt; 123.0<br/>
@@ -251,7 +251,7 @@ public final class OperandResolver {
 	 * @return <code>null</code> if the specified text cannot be parsed as a number
 	 */
 	public static Double parseDouble(String pText) {
-		
+
 	    if (Pattern.matches(fpRegex, pText))
 			try {
 				return Double.parseDouble(pText);
@@ -261,7 +261,7 @@ public final class OperandResolver {
 	    else {
 	        return null;
 	    }
-		
+
 	}
 
 	/**

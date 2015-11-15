@@ -18,9 +18,9 @@
 /* ====================================================================
    This product contains an ASLv2 licensed version of the OOXML signer
    package from the eID Applet project
-   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt  
+   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt
    Copyright (C) 2008-2014 FedICT.
-   ================================================================= */ 
+   ================================================================= */
 
 package org.apache.poi.poifs.crypt.dsig.services;
 
@@ -72,9 +72,9 @@ import org.bouncycastle.tsp.TimeStampToken;
 
 /**
  * A TSP time-stamp service implementation.
- * 
+ *
  * @author Frank Cornelis
- * 
+ *
  */
 public class TSPTimeStampService implements TimeStampService {
 
@@ -123,9 +123,9 @@ public class TSPTimeStampService implements TimeStampService {
             int port = proxyUrl.getPort();
             proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(host, (port == -1 ? 80 : port)));
         }
-        
+
         HttpURLConnection huc = (HttpURLConnection)new URL(signatureConfig.getTspUrl()).openConnection(proxy);
-        
+
         if (signatureConfig.getTspUser() != null) {
             String userPassword = signatureConfig.getTspUser() + ":" + signatureConfig.getTspPass();
             String encoding = DatatypeConverter.printBase64Binary(userPassword.getBytes(Charset.forName("iso-8859-1")));
@@ -140,13 +140,13 @@ public class TSPTimeStampService implements TimeStampService {
         huc.setRequestProperty("Content-Type", signatureConfig.isTspOldProtocol()
             ? "application/timestamp-request"
             : "application/timestamp-query"); // "; charset=ISO-8859-1");
-        
+
         OutputStream hucOut = huc.getOutputStream();
         hucOut.write(encodedRequest);
-        
+
         // invoke TSP service
         huc.connect();
-        
+
         int statusCode = huc.getResponseCode();
         if (statusCode != 200) {
             LOG.log(POILogger.ERROR, "Error contacting TSP server ", signatureConfig.getTspUrl());
@@ -158,18 +158,18 @@ public class TSPTimeStampService implements TimeStampService {
         if (null == contentType) {
             throw new RuntimeException("missing Content-Type header");
         }
-        
+
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         IOUtils.copy(huc.getInputStream(), bos);
         LOG.log(POILogger.DEBUG, "response content: ", HexDump.dump(bos.toByteArray(), 0, 0));
-        
-        if (!contentType.startsWith(signatureConfig.isTspOldProtocol() 
+
+        if (!contentType.startsWith(signatureConfig.isTspOldProtocol()
             ? "application/timestamp-response"
             : "application/timestamp-reply"
         )) {
             throw new RuntimeException("invalid Content-Type: " + contentType);
         }
-        
+
         if (bos.size() == 0) {
             throw new RuntimeException("Content-Length is zero");
         }
@@ -200,7 +200,7 @@ public class TSPTimeStampService implements TimeStampService {
 
         // TSP signer certificates retrieval
         Collection<X509CertificateHolder> certificates = timeStampToken.getCertificates().getMatches(null);
-        
+
         X509CertificateHolder signerCert = null;
         Map<X500Name, X509CertificateHolder> certificateMap = new HashMap<X500Name, X509CertificateHolder>();
         for (X509CertificateHolder certificate : certificates) {
@@ -236,7 +236,7 @@ public class TSPTimeStampService implements TimeStampService {
         BcDigestCalculatorProvider calculator = new BcDigestCalculatorProvider();
         BcRSASignerInfoVerifierBuilder verifierBuilder = new BcRSASignerInfoVerifierBuilder(nameGen, sigAlgoFinder, hashAlgoFinder, calculator);
         SignerInformationVerifier verifier = verifierBuilder.build(holder);
-        
+
         timeStampToken.validate(verifier);
 
         // verify TSP signer certificate

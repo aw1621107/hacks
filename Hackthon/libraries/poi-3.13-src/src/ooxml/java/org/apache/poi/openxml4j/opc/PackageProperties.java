@@ -23,18 +23,18 @@ import org.apache.poi.openxml4j.util.Nullable;
 
 /**
  * Represents the core properties of an OPC package.
- * 
+ *
  * @author Julien Chable
  * @version 1.0
  * @see org.apache.poi.openxml4j.opc.OPCPackage
  */
 public interface PackageProperties {
-	
+
 	/**
 	 * Dublin Core Terms URI.
 	 */
 	public final static String NAMESPACE_DCTERMS = "http://purl.org/dc/terms/";
-	
+
 	/**
 	 * Dublin Core namespace URI.
 	 */
@@ -83,7 +83,7 @@ public interface PackageProperties {
 	 * Set the date of creation of the resource.
 	 */
 	public abstract void setCreatedProperty(String created);
-	
+
 	/**
 	 * Set the date of creation of the resource.
 	 */
@@ -164,7 +164,7 @@ public interface PackageProperties {
 	 * Set the date and time of the last printing.
 	 */
 	public abstract void setLastPrintedProperty(String lastPrinted);
-	
+
 	/**
 	 * Set the date and time of the last printing.
 	 */
@@ -179,7 +179,7 @@ public interface PackageProperties {
 	 * Set the date on which the resource was changed.
 	 */
 	public abstract void setModifiedProperty(String modified);
-	
+
 	/**
 	 * Set the date on which the resource was changed.
 	 */

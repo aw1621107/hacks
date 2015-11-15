@@ -65,7 +65,7 @@ public final class TestRecordInputStream extends TestCase {
 			if ("compressByte in continue records must be 1 while reading unicode LE string".equals(e.getMessage())) {
 				throw new AssertionFailedError("Identified bug 45866");
 			}
-				
+
 			throw e;
 		}
 		assertEquals("\u591A\u8A00\u8A9E - Multilingual", actual);
@@ -81,7 +81,7 @@ public final class TestRecordInputStream extends TestCase {
 		String actual = in.readCompressedUnicode(18);
 		assertEquals("Multilingual - \u591A\u8A00\u8A9E", actual);
 	}
-	
+
 	public void testReadString() {
 		byte[] changingFlagFullData = HexRead.readFromString(""
 				+ "AA AA "  // fake SID

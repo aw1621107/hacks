@@ -995,7 +995,7 @@ public final class TestXSSFSheet extends BaseTestSheet {
         assertEquals(3, xrow[2].getR());
 
     }
-    
+
     @Test
     public void createRowAfterLastRow() {
         createRowAfterLastRow(SpreadsheetVersion.EXCEL2007);
@@ -1048,11 +1048,11 @@ public final class TestXSSFSheet extends BaseTestSheet {
         xs.setSheetPassword(password, HashAlgorithm.sha384);
         wb = writeOutAndReadBack(wb);
         assertTrue(wb.getSheetAt(0).validateSheetPassword(password));
-        
+
         wb = openSampleWorkbook("workbookProtection-sheet_password-2013.xlsx");
         assertTrue(wb.getSheetAt(0).validateSheetPassword("pwd"));
     }
-    
+
 
     @Test
     public void bug49966() {
@@ -1111,7 +1111,7 @@ public final class TestXSSFSheet extends BaseTestSheet {
         XSSFSheet sheet = workbook.createSheet("Sheet 1");
 
         assertFalse(sheet.getForceFormulaRecalculation());
-        
+
         // Set
         sheet.setForceFormulaRecalculation(true);
         assertEquals(true, sheet.getForceFormulaRecalculation());
@@ -1331,7 +1331,7 @@ public final class TestXSSFSheet extends BaseTestSheet {
         XSSFPivotTable pivotTable = sheet2.createPivotTable
                 (new AreaReference("A1:B2"), new CellReference("H5"), sheet1);
         assertEquals(0, pivotTable.getRowLabelColumns().size());
-        
+
         assertEquals(1, wb.getPivotTables().size());
         assertEquals(0, sheet1.getPivotTables().size());
         assertEquals(1, sheet2.getPivotTables().size());
@@ -1361,12 +1361,12 @@ public final class TestXSSFSheet extends BaseTestSheet {
         }
         fail();
     }
-    
+
     @Test
     public void testReadFails() {
         XSSFWorkbook wb = new XSSFWorkbook();
         XSSFSheet sheet = wb.createSheet();
-        
+
         try {
             sheet.onDocumentRead();
             fail("Throws exception because we cannot read here");
@@ -1374,7 +1374,7 @@ public final class TestXSSFSheet extends BaseTestSheet {
             // expected here
         }
     }
-    
+
     @SuppressWarnings("deprecation")
     @Test
     public void testCreateComment() {

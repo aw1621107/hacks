@@ -86,7 +86,7 @@ public final class MissingRecordAwareHSSFListener implements HSSFListener {
 				// the workbook
 				case BOFRecord.sid:
 					BOFRecord bof = (BOFRecord) record;
-					if (bof.getType() == BOFRecord.TYPE_WORKBOOK || 
+					if (bof.getType() == BOFRecord.TYPE_WORKBOOK ||
 					        bof.getType() == BOFRecord.TYPE_WORKSHEET) {
 						// Reset the row and column counts - new workbook / worksheet
 						resetCounts();

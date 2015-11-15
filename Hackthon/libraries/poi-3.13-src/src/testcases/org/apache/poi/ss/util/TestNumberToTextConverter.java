@@ -29,11 +29,11 @@ import org.apache.poi.ss.formula.ptg.NumberPtg;
 import org.apache.poi.ss.util.NumberToTextConversionExamples.ExampleConversion;
 /**
  * Tests for {@link NumberToTextConverter}
- * 
+ *
  * @author Josh Micich
  */
 public final class TestNumberToTextConverter extends TestCase {
-	
+
 
 	/**
 	 * Confirms that <tt>ExcelNumberToTextConverter.toText(d)</tt> produces the right results.
@@ -42,7 +42,7 @@ public final class TestNumberToTextConverter extends TestCase {
 	 */
 	public void testAll() {
 		int failureCount = 0;
-		
+
 		ExampleConversion[] examples = NumberToTextConversionExamples.getExampleConversions();
 
 		for (int i = 0; i < examples.length; i++) {
@@ -70,14 +70,14 @@ public final class TestNumberToTextConverter extends TestCase {
 			}
 		}
 		if (failureCount > 0) {
-			throw new AssertionFailedError(failureCount 
+			throw new AssertionFailedError(failureCount
 					+ " error(s) in excel number to text conversion (see std-err)");
 		}
 	}
 
 	private static String formatExample(ExampleConversion example) {
 		String hexLong = Long.toHexString(example.getRawDoubleBits()).toUpperCase(Locale.ROOT);
-		String longRep = "0x" + "0000000000000000".substring(hexLong.length()) + hexLong+ "L";  
+		String longRep = "0x" + "0000000000000000".substring(hexLong.length()) + hexLong+ "L";
 		return "ec(" + longRep + ", \"" + example.getJavaRendering() + "\", \"" + example.getExcelRendering() + "\")";
 	}
 
@@ -86,35 +86,35 @@ public final class TestNumberToTextConverter extends TestCase {
 	 * general, Excel does not attempt to use raw NaN in the IEEE sense. In {@link FormulaRecord}s,
 	 * Excel uses the NaN bit pattern to flag non-numeric (text, boolean, error) cached results.
 	 * If the formula result actually evaluates to raw NaN, Excel transforms it to <i>#NUM!</i>.
-	 * In other places (e.g. {@link NumberRecord}, {@link NumberPtg}, array items (via {@link 
-	 * ConstantValueParser}), there seems to be no special NaN translation scheme.  If a NaN bit 
-	 * pattern is somehow encoded into any of these places Excel actually attempts to render the 
-	 * values as a plain number. That is the unusual functionality that this method is testing.<p/>   
-	 * 
+	 * In other places (e.g. {@link NumberRecord}, {@link NumberPtg}, array items (via {@link
+	 * ConstantValueParser}), there seems to be no special NaN translation scheme.  If a NaN bit
+	 * pattern is somehow encoded into any of these places Excel actually attempts to render the
+	 * values as a plain number. That is the unusual functionality that this method is testing.<p/>
+	 *
 	 * There are multiple encodings (bit patterns) for NaN, and CPUs and applications can convert
-	 * to a preferred NaN encoding  (Java prefers <tt>0x7FF8000000000000L</tt>).  Besides the 
-	 * special encoding in {@link FormulaRecord.SpecialCachedValue}, it is not known how/whether 
+	 * to a preferred NaN encoding  (Java prefers <tt>0x7FF8000000000000L</tt>).  Besides the
+	 * special encoding in {@link FormulaRecord.SpecialCachedValue}, it is not known how/whether
 	 * Excel attempts to encode NaN values.
-	 * 
+	 *
 	 * Observed NaN behaviour on HotSpot/Windows:
 	 * <tt>Double.longBitsToDouble()</tt> will set one bit 51 (the NaN signaling flag) if it isn't
-	 *  already. <tt>Double.doubleToLongBits()</tt> will return a double with bit pattern 
+	 *  already. <tt>Double.doubleToLongBits()</tt> will return a double with bit pattern
 	 *  <tt>0x7FF8000000000000L</tt> for any NaN bit pattern supplied.<br/>
 	 * Differences are likely to be observed with other architectures.<p/>
-	 *  
+	 *
 	 * <p/>
-	 * The few test case examples calling this method represent functionality which may not be 
+	 * The few test case examples calling this method represent functionality which may not be
 	 * important for POI to support.
 	 */
 	private void confirmNaN(long l, String excelRep) {
 		double d = Double.longBitsToDouble(l);
 		assertEquals("NaN", Double.toString(d));
-		
+
 		String strExcel = NumberToTextConverter.rawDoubleBitsToText(l);
-		
+
 		assertEquals(excelRep, strExcel);
 	}
-	
+
 	public void testSimpleRendering_bug56156() {
 		double dResult = 0.05+0.01; // values chosen to produce rounding anomaly
 		String actualText = NumberToTextConverter.toText(dResult);

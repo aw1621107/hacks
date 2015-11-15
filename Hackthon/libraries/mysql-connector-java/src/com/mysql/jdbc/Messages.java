@@ -63,7 +63,7 @@ public class Messages {
 
     /**
      * Returns the localized message for the given message key
-     * 
+     *
      * @param key
      *            the message key
      * @return The localized message for the key

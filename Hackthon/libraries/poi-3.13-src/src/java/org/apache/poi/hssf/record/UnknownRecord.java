@@ -87,7 +87,7 @@ public final class UnknownRecord extends StandardRecord {
 //            // unknown sids in the range 0x0004-0x0013 are probably 'sub-records' of ObjectRecord
 //            // those sids are in a different number space.
 //            // TODO - put unknown OBJ sub-records in a different class
-//            System.out.println("Unknown record 0x" + 
+//            System.out.println("Unknown record 0x" +
 //                               Integer.toHexString(_sid).toUpperCase(Locale.ROOT));
 //        }
     }
@@ -210,7 +210,7 @@ public final class UnknownRecord extends StandardRecord {
             case 0x08A7: return "CRTLAYOUT12A";
 
             case 0x08C8: return "PLV{Mac Excel}";
-            
+
             case 0x1001: return "UNITS";
             case 0x1006: return "CHARTDATAFORMAT";
             case 0x1007: return "CHARTLINEFORMAT";

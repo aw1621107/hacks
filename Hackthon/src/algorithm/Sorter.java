@@ -28,12 +28,12 @@ public class Sorter {
 		input = "DONT_CARE";
 		finddegree();
 		System.out.println(compatdegree);
-		
-		
+
+
 		//skills required vs needed
 		//grad date
 		//expirence
-		
+
 	}
 
 	public static void finddegree() {
@@ -79,24 +79,24 @@ public class Sorter {
 		}
 		input.trim();
 		String temp2 = "";
-		
+
 		for (int i = 0; i < posibledegree.length; i++) {
 			int temp3 = input.indexOf(posibledegree[i]);
 			if (temp3 >= 0) {
 				jobpoints++;
 				temp2 += posibledegree[i] + ";";
-				
+
 			}
-			
+
 		}
 		//compatdegree = temp2;
-		
+
 	}
 		/*String[] temp3 = degree.split(" ");
 
 		System.out.print(degree);
 		String compatible = "";
-		
+
 		for (int i = 0; i < temp3.length; i++) {
 			int temp31 = input.indexOf(posibledegree[i]);
 			if (temp31 >= 0) {

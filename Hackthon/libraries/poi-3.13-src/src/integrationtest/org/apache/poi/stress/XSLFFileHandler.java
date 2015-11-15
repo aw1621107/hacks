@@ -34,11 +34,11 @@ public class XSLFFileHandler extends SlideShowHandler {
 		assertNotNull(slideInner.getPresentation());
 		assertNotNull(slideInner.getSlideMasterReferences());
 		assertNotNull(slideInner.getSlideReferences());
-		
+
 		new POIXMLDocumentHandler().handlePOIXMLDocument(slide);
 
 		handleSlideShow(slide);
-		
+
 		slideInner.close();
 		slide.close();
 	}

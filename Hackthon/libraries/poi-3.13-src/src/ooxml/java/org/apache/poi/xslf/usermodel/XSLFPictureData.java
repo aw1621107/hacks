@@ -50,7 +50,7 @@ import org.apache.poi.util.Units;
 @Beta
 public final class XSLFPictureData extends POIXMLDocumentPart implements PictureData {
     private static final POILogger logger = POILogFactory.getLogger(XSLFPictureData.class);
-    
+
     private Long checksum = null;
 
     // original image dimensions (for formats supported by BufferedImage)
@@ -143,7 +143,7 @@ public final class XSLFPictureData extends POIXMLDocumentPart implements Picture
             Units.pointsToPixel(dim.getHeight())
         );
     }
-    
+
     /**
      * Determine and cache image properties
      */
@@ -151,13 +151,13 @@ public final class XSLFPictureData extends POIXMLDocumentPart implements Picture
         if (_origSize == null || checksum == null) {
             byte data[] = getData();
             checksum = IOUtils.calculateChecksum(data);
-            
+
             switch (getType()) {
             case EMF:
                 _origSize = new EMF.NativeHeader(data, 0).getSize();
                 break;
             case WMF:
-                // wmf files in pptx usually have their placeable header 
+                // wmf files in pptx usually have their placeable header
                 // stripped away, so this returns only the dummy size
                 _origSize = new WMF.NativeHeader(data, 0).getSize();
                 break;
@@ -236,7 +236,7 @@ public final class XSLFPictureData extends POIXMLDocumentPart implements Picture
             return null;
         }
     }
-    
+
     /* package */ static XSLFRelation getRelationForType(PictureType pt) {
         switch (pt) {
             case EMF: return XSLFRelation.IMAGE_EMF;

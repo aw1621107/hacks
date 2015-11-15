@@ -56,7 +56,7 @@ public class HSLFObjectData {
      * @param data the embedded data.
      */
      public void setData(byte[] data) throws IOException {
-        storage.setData(data);    
+        storage.setData(data);
     }
 
     /**

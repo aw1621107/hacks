@@ -18,9 +18,9 @@
 /* ====================================================================
    This product contains an ASLv2 licensed version of the OOXML signer
    package from the eID Applet project
-   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt  
+   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt
    Copyright (C) 2008-2014 FedICT.
-   ================================================================= */ 
+   ================================================================= */
 
 package org.apache.poi.poifs.crypt.dsig.facets;
 
@@ -91,14 +91,14 @@ import org.w3c.dom.NodeList;
 /**
  * XAdES-X-L v1.4.1 signature facet. This signature facet implementation will
  * upgrade a given XAdES-BES/EPES signature to XAdES-X-L.
- * 
+ *
  * We don't inherit from XAdESSignatureFacet as we also want to be able to use
  * this facet out of the context of a signature creation. This signature facet
  * assumes that the signature is already XAdES-BES/EPES compliant.
- * 
+ *
  * This implementation has been tested against an implementation that
  * participated multiple ETSI XAdES plugtests.
- * 
+ *
  * @author Frank Cornelis
  * @see XAdESSignatureFacet
  */
@@ -145,14 +145,14 @@ public class XAdESXLSignatureFacet extends SignatureFacet {
         if (unsignedSigProps == null) {
             unsignedSigProps = unsignedProps.addNewUnsignedSignatureProperties();
         }
-        
+
 
         // create the XAdES-T time-stamp
         NodeList nlSigVal = document.getElementsByTagNameNS(XML_DIGSIG_NS, "SignatureValue");
         if (nlSigVal.getLength() != 1) {
             throw new IllegalArgumentException("SignatureValue is not set.");
         }
-        
+
         RevocationData tsaRevocationDataXadesT = new RevocationData();
         LOG.log(POILogger.DEBUG, "creating XAdES-T time-stamp");
         XAdESTimeStampType signatureTimeStamp = createXAdESTimeStamp
@@ -176,7 +176,7 @@ public class XAdESXLSignatureFacet extends SignatureFacet {
         }
 
         // XAdES-C: complete certificate refs
-        CompleteCertificateRefsType completeCertificateRefs = 
+        CompleteCertificateRefsType completeCertificateRefs =
             unsignedSigProps.addNewCompleteCertificateRefs();
 
         CertIDListType certIdList = completeCertificateRefs.addNewCertRefs();
@@ -194,7 +194,7 @@ public class XAdESXLSignatureFacet extends SignatureFacet {
         }
 
         // XAdES-C: complete revocation refs
-        CompleteRevocationRefsType completeRevocationRefs = 
+        CompleteRevocationRefsType completeRevocationRefs =
             unsignedSigProps.addNewCompleteRevocationRefs();
         RevocationData revocationData = signatureConfig.getRevocationDataService()
             .getRevocationData(certChain);
@@ -230,22 +230,22 @@ public class XAdESXLSignatureFacet extends SignatureFacet {
             for (byte[] ocsp : revocationData.getOCSPs()) {
                 try {
                     OCSPRefType ocspRef = ocspRefs.addNewOCSPRef();
-    
+
                     DigestAlgAndValueType digestAlgAndValue = ocspRef.addNewDigestAlgAndValue();
                     XAdESSignatureFacet.setDigestAlgAndValue(digestAlgAndValue, ocsp, signatureConfig.getDigestAlgo());
-    
+
                     OCSPIdentifierType ocspIdentifier = ocspRef.addNewOCSPIdentifier();
-                    
+
                     OCSPResp ocspResp = new OCSPResp(ocsp);
-                    
+
                     BasicOCSPResp basicOcspResp = (BasicOCSPResp)ocspResp.getResponseObject();
-                    
+
                     Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Z"), Locale.ROOT);
                     cal.setTime(basicOcspResp.getProducedAt());
                     ocspIdentifier.setProducedAt(cal);
-    
+
                     ResponderIDType responderId = ocspIdentifier.addNewResponderID();
-    
+
                     RespID respId = basicOcspResp.getResponderId();
                     ResponderID ocspResponderId = respId.toASN1Object();
                     DERTaggedObject derTaggedObject = (DERTaggedObject)ocspResponderId.toASN1Primitive();
@@ -265,7 +265,7 @@ public class XAdESXLSignatureFacet extends SignatureFacet {
         }
 
         // marshal XAdES-C
-        
+
         // XAdES-X Type 1 timestamp
         List<Node> timeStampNodesXadesX1 = new ArrayList<Node>();
         timeStampNodesXadesX1.add(nlSigVal.item(0));
@@ -295,7 +295,7 @@ public class XAdESXLSignatureFacet extends SignatureFacet {
                 throw new RuntimeException("certificate encoding error: " + e.getMessage(), e);
             }
         }
-        
+
         RevocationValuesType revocationValues = unsignedSigProps.addNewRevocationValues();
         createRevocationValues(revocationValues, revocationData);
 

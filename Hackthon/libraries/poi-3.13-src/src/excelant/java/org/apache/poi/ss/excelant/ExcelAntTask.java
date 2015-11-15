@@ -34,26 +34,26 @@ import org.apache.tools.ant.Task;
 
 /**
  * Ant task class for testing Excel workbook cells.
- * 
+ *
  * @author Jon Svede ( jon [at] loquatic [dot] com )
  * @author Brian Bush ( brian [dot] bush [at] nrel [dot] gov )
  *
  */
 public class ExcelAntTask extends Task {
-    
+
     public static final String VERSION = "0.5.0" ;
-	
+
 	private String excelFileName ;
-	
+
 	private boolean failOnError = false  ;
-	
+
 	private ExcelAntWorkbookUtil workbookUtil ;
-	
+
 	private ExcelAntPrecision precision ;
-	
+
 	private LinkedList<ExcelAntTest> tests ;
 	private LinkedList<ExcelAntUserDefinedFunction> functions ;
-	
+
 	public ExcelAntTask() {
 		tests = new LinkedList<ExcelAntTest>() ;
 		functions = new LinkedList<ExcelAntUserDefinedFunction>() ;
@@ -62,28 +62,28 @@ public class ExcelAntTask extends Task {
 	public void addPrecision( ExcelAntPrecision prec ) {
 		precision = prec ;
 	}
-	
+
 	public void setFailOnError( boolean value ) {
 		failOnError = value ;
 	}
 	public void setFileName( String fileName ) {
 		excelFileName = fileName ;
 	}
-	
+
 	public void addTest( ExcelAntTest testElement ) {
 		tests.add( testElement ) ;
 	}
-	
+
 	public void addUdf( ExcelAntUserDefinedFunction def ) {
 		functions.add( def ) ;
 	}
-	
+
 	public void execute() throws BuildException {
         checkClassPath();
 
 		int totalCount = 0 ;
 		int successCount = 0 ;
-		
+
 		StringBuffer versionBffr = new StringBuffer() ;
 		versionBffr.append(  "ExcelAnt version " ) ;
 		versionBffr.append( VERSION ) ;
@@ -95,44 +95,44 @@ public class ExcelAntTask extends Task {
 		    versionBffr.append( currYear ) ;
 		}
 		log( versionBffr.toString(), Project.MSG_INFO ) ;
-		
+
 		log( "Using input file: " + excelFileName, Project.MSG_INFO ) ;
-		
+
 		Workbook targetWorkbook = loadWorkbook() ;
 		if( targetWorkbook == null ) {
-			log( "Unable to load " + excelFileName + 
+			log( "Unable to load " + excelFileName +
 					            ".  Verify the file exists and can be read.",
 					            Project.MSG_ERR ) ;
 			return ;
 		}
 		if( tests.size() > 0 ) {
-			
+
 			Iterator<ExcelAntTest> testsIt = tests.iterator() ;
 			while( testsIt.hasNext() ) {
 				ExcelAntTest test = testsIt.next();
-				
+
 				log( "executing test: " + test.getName(), Project.MSG_DEBUG ) ;
-		
+
 				workbookUtil = ExcelAntWorkbookUtilFactory.getInstance( excelFileName ) ;
-				
+
 				Iterator<ExcelAntUserDefinedFunction> functionsIt = functions.iterator() ;
 				while( functionsIt.hasNext() ) {
 					ExcelAntUserDefinedFunction eaUdf = functionsIt.next() ;
 					try {
 						workbookUtil.addFunction(eaUdf.getFunctionAlias(), eaUdf.getClassName() ) ;
 					} catch ( Exception e) {
-						throw new BuildException( e.getMessage(), e ); 
+						throw new BuildException( e.getMessage(), e );
 					}
 				}
 				test.setWorkbookUtil( workbookUtil ) ;
-				
+
 				if( precision != null && precision.getValue() > 0 ) {
-					log( "setting precision for the test " + test.getName(), Project.MSG_VERBOSE ) ; 
+					log( "setting precision for the test " + test.getName(), Project.MSG_VERBOSE ) ;
 					test.setPrecision( precision.getValue() ) ;
 				}
-				
+
 				test.execute() ;
-				
+
 				if( test.didTestPass() ) {
 					successCount++ ;
 				} else {
@@ -141,14 +141,14 @@ public class ExcelAntTask extends Task {
 					}
 				}
 				totalCount++ ;
-				
+
 				workbookUtil = null ;
 			}
 			log( successCount + "/" + totalCount + " tests passed.", Project.MSG_INFO ) ;
 			workbookUtil = null ;
 		}
 	}
-	
+
 
     private Workbook loadWorkbook() {
         if (excelFileName == null) {

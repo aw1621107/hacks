@@ -28,7 +28,7 @@ import junit.framework.TestCase;
 /**
  * Test {@link FormulaParser}'s handling of row numbers at the edge of the
  * HSSF/XSSF ranges.
- * 
+ *
  * @author David North
  */
 public class TestFormulaParser extends TestCase {

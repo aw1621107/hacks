@@ -41,7 +41,7 @@ import org.apache.poi.util.LittleEndian;
 
 /**
  * Tests the serialization and deserialization of the CFRecordsAggregate
- * class works correctly.  
+ * class works correctly.
  */
 @SuppressWarnings("resource")
 public final class TestCFRecordsAggregate extends TestCase {
@@ -129,7 +129,7 @@ public final class TestCFRecordsAggregate extends TestCase {
         }
         assertEquals(rules.length, nRules);
     }
-    
+
     public void testCantMixTypes() {
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet();
@@ -145,11 +145,11 @@ public final class TestCFRecordsAggregate extends TestCase {
             new CFRecordsAggregate(cellRanges, rules);
             fail("Shouldn't be able to mix between types");
         } catch (IllegalArgumentException e) {}
-        
-        
+
+
         rules = new CFRuleBase[] { CFRuleRecord.create(sheet, "7") };
         CFRecordsAggregate agg = new CFRecordsAggregate(cellRanges, rules);
-        
+
         try {
             agg.addRule(CFRule12Record.create(sheet, "7"));
             fail("Shouldn't be able to mix between types");

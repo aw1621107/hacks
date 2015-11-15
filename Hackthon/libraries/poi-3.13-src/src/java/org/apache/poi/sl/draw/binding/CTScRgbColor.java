@@ -30,9 +30,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_ScRgbColor complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_ScRgbColor">
  *   &lt;complexContent>
@@ -47,8 +47,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_ScRgbColor", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main", propOrder = {
@@ -96,20 +96,20 @@ public class CTScRgbColor {
 
     /**
      * Gets the value of the egColorTransform property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the egColorTransform property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getEGColorTransform().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link JAXBElement }{@code <}{@link CTPercentage }{@code >}
@@ -140,8 +140,8 @@ public class CTScRgbColor {
      * {@link JAXBElement }{@code <}{@link CTPercentage }{@code >}
      * {@link JAXBElement }{@code <}{@link CTPositivePercentage }{@code >}
      * {@link JAXBElement }{@code <}{@link CTPercentage }{@code >}
-     * 
-     * 
+     *
+     *
      */
     public List<JAXBElement<?>> getEGColorTransform() {
         if (egColorTransform == null) {
@@ -160,7 +160,7 @@ public class CTScRgbColor {
 
     /**
      * Gets the value of the r property.
-     * 
+     *
      */
     public int getR() {
         return r;
@@ -168,7 +168,7 @@ public class CTScRgbColor {
 
     /**
      * Sets the value of the r property.
-     * 
+     *
      */
     public void setR(int value) {
         this.r = value;
@@ -180,7 +180,7 @@ public class CTScRgbColor {
 
     /**
      * Gets the value of the g property.
-     * 
+     *
      */
     public int getG() {
         return g;
@@ -188,7 +188,7 @@ public class CTScRgbColor {
 
     /**
      * Sets the value of the g property.
-     * 
+     *
      */
     public void setG(int value) {
         this.g = value;
@@ -200,7 +200,7 @@ public class CTScRgbColor {
 
     /**
      * Gets the value of the b property.
-     * 
+     *
      */
     public int getB() {
         return b;
@@ -208,7 +208,7 @@ public class CTScRgbColor {
 
     /**
      * Sets the value of the b property.
-     * 
+     *
      */
     public void setB(int value) {
         this.b = value;

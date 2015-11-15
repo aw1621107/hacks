@@ -28,9 +28,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  * <p>Java class for CT_XYAdjustHandle complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_XYAdjustHandle">
  *   &lt;complexContent>
@@ -48,8 +48,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_XYAdjustHandle", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main", propOrder = {
@@ -76,11 +76,11 @@ public class CTXYAdjustHandle {
 
     /**
      * Gets the value of the pos property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTAdjPoint2D }
-     *     
+     *
      */
     public CTAdjPoint2D getPos() {
         return pos;
@@ -88,11 +88,11 @@ public class CTXYAdjustHandle {
 
     /**
      * Sets the value of the pos property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTAdjPoint2D }
-     *     
+     *
      */
     public void setPos(CTAdjPoint2D value) {
         this.pos = value;
@@ -104,11 +104,11 @@ public class CTXYAdjustHandle {
 
     /**
      * Gets the value of the gdRefX property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getGdRefX() {
         return gdRefX;
@@ -116,11 +116,11 @@ public class CTXYAdjustHandle {
 
     /**
      * Sets the value of the gdRefX property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setGdRefX(String value) {
         this.gdRefX = value;
@@ -132,11 +132,11 @@ public class CTXYAdjustHandle {
 
     /**
      * Gets the value of the minX property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getMinX() {
         return minX;
@@ -144,11 +144,11 @@ public class CTXYAdjustHandle {
 
     /**
      * Sets the value of the minX property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setMinX(String value) {
         this.minX = value;
@@ -160,11 +160,11 @@ public class CTXYAdjustHandle {
 
     /**
      * Gets the value of the maxX property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getMaxX() {
         return maxX;
@@ -172,11 +172,11 @@ public class CTXYAdjustHandle {
 
     /**
      * Sets the value of the maxX property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setMaxX(String value) {
         this.maxX = value;
@@ -188,11 +188,11 @@ public class CTXYAdjustHandle {
 
     /**
      * Gets the value of the gdRefY property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getGdRefY() {
         return gdRefY;
@@ -200,11 +200,11 @@ public class CTXYAdjustHandle {
 
     /**
      * Sets the value of the gdRefY property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setGdRefY(String value) {
         this.gdRefY = value;
@@ -216,11 +216,11 @@ public class CTXYAdjustHandle {
 
     /**
      * Gets the value of the minY property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getMinY() {
         return minY;
@@ -228,11 +228,11 @@ public class CTXYAdjustHandle {
 
     /**
      * Sets the value of the minY property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setMinY(String value) {
         this.minY = value;
@@ -244,11 +244,11 @@ public class CTXYAdjustHandle {
 
     /**
      * Gets the value of the maxY property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getMaxY() {
         return maxY;
@@ -256,11 +256,11 @@ public class CTXYAdjustHandle {
 
     /**
      * Sets the value of the maxY property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setMaxY(String value) {
         this.maxY = value;

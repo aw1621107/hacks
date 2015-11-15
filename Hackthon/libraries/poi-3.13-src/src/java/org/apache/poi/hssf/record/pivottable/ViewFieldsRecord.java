@@ -25,7 +25,7 @@ import org.apache.poi.util.StringUtil;
 
 /**
  * SXVD - View Fields (0x00B1)<br/>
- * 
+ *
  * @author Patrick Cheng
  */
 public final class ViewFieldsRecord extends StandardRecord {
@@ -40,9 +40,9 @@ public final class ViewFieldsRecord extends StandardRecord {
 	private int _cSub;
 	private int _grbitSub;
 	private int _cItm;
-	
+
 	private String _name;
-	
+
 	/**
 	 * values for the {@link ViewFieldsRecord#_sxaxis} field
 	 */
@@ -59,7 +59,7 @@ public final class ViewFieldsRecord extends StandardRecord {
 		_cSub = in.readShort();
 		_grbitSub = in.readShort();
 		_cItm = in.readShort();
-		
+
 		int cchName = in.readUShort();
 		if (cchName != STRING_NOT_PRESENT_LEN) {
 			int flag = in.readByte();
@@ -70,15 +70,15 @@ public final class ViewFieldsRecord extends StandardRecord {
 			}
 		}
 	}
-	
+
 	@Override
 	protected void serialize(LittleEndianOutput out) {
-		
+
 		out.writeShort(_sxaxis);
 		out.writeShort(_cSub);
 		out.writeShort(_grbitSub);
 		out.writeShort(_cItm);
-		
+
 		if (_name != null) {
 			StringUtil.writeUnicodeString(out, _name);
 		} else {
@@ -91,8 +91,8 @@ public final class ViewFieldsRecord extends StandardRecord {
 		if (_name == null) {
 			return BASE_SIZE;
 		}
-		return BASE_SIZE 
-			+ 1 // unicode flag 
+		return BASE_SIZE
+			+ 1 // unicode flag
 			+ _name.length() * (StringUtil.hasMultibyte(_name) ? 2 : 1);
 	}
 
@@ -110,7 +110,7 @@ public final class ViewFieldsRecord extends StandardRecord {
 		buffer.append("    .grbitSub  = ").append(HexDump.shortToHex(_grbitSub)).append('\n');
 		buffer.append("    .cItm      = ").append(HexDump.shortToHex(_cItm)).append('\n');
 		buffer.append("    .name      = ").append(_name).append('\n');
-		
+
 		buffer.append("[/SXVD]\n");
 		return buffer.toString();
 	}

@@ -25,9 +25,9 @@ public interface StrokeStyle {
         SQUARE(2),
         /** Line ends at end point*/
         FLAT(3);
-        
+
         public final int ooxmlId;
-        
+
         LineCap(int ooxmlId) {
             this.ooxmlId = ooxmlId;
         }
@@ -105,9 +105,9 @@ public interface StrokeStyle {
         THIN_THICK(3),
         /** Three lines, thin, thick, thin - native 4 / ooxml "tri" */
         TRIPLE(4);
-        
+
         public final int nativeId;
-        
+
         LineCompound(int nativeId) {
             this.nativeId = nativeId;
         }

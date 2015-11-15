@@ -40,7 +40,7 @@ public final class HPBFDumper {
 	public HPBFDumper(NPOIFSFileSystem fs) {
 		this.fs = fs;
 	}
-	
+
 	@SuppressWarnings("resource")
     public HPBFDumper(InputStream inp) throws IOException {
 		this(new NPOIFSFileSystem(inp));

@@ -61,7 +61,7 @@ public class ArcToCommand implements PathCommand {
                          x0,
                          y0,
                          2 * rx, 2 * ry,
-                         -start, -extent, 
+                         -start, -extent,
                          Arc2D.OPEN);
 		path.append(arc, true);
     }

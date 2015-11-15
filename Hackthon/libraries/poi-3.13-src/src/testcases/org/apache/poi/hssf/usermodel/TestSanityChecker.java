@@ -43,7 +43,7 @@ public final class TestSanityChecker {
 	private static BoundSheetRecord createBoundSheetRec() {
 		return new BoundSheetRecord("Sheet1");
 	}
-	
+
 	@Test
 	public void testCheckRecordOrder() {
 		final SanityChecker c = new SanityChecker();

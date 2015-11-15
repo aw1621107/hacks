@@ -23,23 +23,23 @@ import org.apache.poi.util.LittleEndian;
 import org.apache.poi.util.POILogger;
 
 /**
- * This class represents the data of a link in the document. 
+ * This class represents the data of a link in the document.
  * @author Nick Burch
  */
 public class ExHyperlink extends RecordContainer {
 	private byte[] _header;
 	private static long _type = 4055;
-	
+
 	// Links to our more interesting children
 	private ExHyperlinkAtom linkAtom;
 	private CString linkDetailsA;
 	private CString linkDetailsB;
-	
-	/** 
+
+	/**
 	 * Returns the ExHyperlinkAtom of this link
-	 */ 
+	 */
 	public ExHyperlinkAtom getExHyperlinkAtom() { return linkAtom; }
-	
+
 	/**
 	 * Returns the URL of the link.
      *
@@ -93,7 +93,7 @@ public class ExHyperlink extends RecordContainer {
 		return linkDetailsB == null ? null : linkDetailsB.getText();
 	}
 
-	/** 
+	/**
 	 * Set things up, and find our more interesting children
 	 */
 	protected ExHyperlink(byte[] source, int start, int len) {
@@ -110,7 +110,7 @@ public class ExHyperlink extends RecordContainer {
 	 * Go through our child records, picking out the ones that are
 	 *  interesting, and saving those for use by the easy helper
 	 *  methods.
-	 */	
+	 */
 	private void findInterestingChildren() {
 
 		// First child should be the ExHyperlinkAtom
@@ -137,11 +137,11 @@ public class ExHyperlink extends RecordContainer {
 	public ExHyperlink() {
 		_header = new byte[8];
 		_children = new Record[3];
-		
+
 		// Setup our header block
 		_header[0] = 0x0f; // We are a container record
 		LittleEndian.putShort(_header, 2, (short)_type);
-		
+
 		// Setup our child records
 		CString csa = new CString();
 		CString csb = new CString();

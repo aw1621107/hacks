@@ -26,7 +26,7 @@ import org.apache.poi.util.Internal;
 
 /**
  * This class holds all the FSPA (File Shape Address) structures.
- * 
+ *
  * @author Squeeself
  */
 @Internal

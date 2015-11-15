@@ -100,7 +100,7 @@ public final class XSSFChart extends POIXMLDocumentPart implements Chart, ChartA
 	protected XSSFChart(PackagePart part, PackageRelationship rel) throws IOException, XmlException {
 		super(part, rel);
 
-		chartSpace = ChartSpaceDocument.Factory.parse(part.getInputStream()).getChartSpace(); 
+		chartSpace = ChartSpaceDocument.Factory.parse(part.getInputStream()).getChartSpace();
 		chart = chartSpace.getChart();
 	}
 
@@ -232,7 +232,7 @@ public final class XSSFChart extends POIXMLDocumentPart implements Chart, ChartA
         }
         return axis;
     }
-	
+
 	public XSSFManualLayout getManualLayout() {
 		return new XSSFManualLayout(this);
 	}

@@ -29,7 +29,7 @@ import algorithm.MajorType;
 import io.SheetData.RowData;
 
 public class Reader {
-	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	private static final String DB_URL = "jdbc:mysql://localhost/";
 	private static final String user = "awang";
 	private static final String pass = "";
@@ -54,13 +54,13 @@ public class Reader {
 			final List<String> rowContents = new ArrayList<>();
 			for (int col = 0; col <= headerRow.getLastCellNum(); col++) {
 				Cell cell = row.getCell(col);
-				rowContents.add(cell == null ? "" : cell.toString());
+				rowContents.add(cell == null ? "" : cell.toString().replaceAll("[^\\x00-\\x7F]", ""));
 			}
 			results.add(new RowData(r, rowContents));
 		}
-		return new SheetData(headers, results);		
+		return new SheetData(headers, results);
 	}
-	
+
 	private static final String[] EMPTY = new String[] {};
 	private String[] cellToStrings(Cell cell) {
 		if (cell == null) {

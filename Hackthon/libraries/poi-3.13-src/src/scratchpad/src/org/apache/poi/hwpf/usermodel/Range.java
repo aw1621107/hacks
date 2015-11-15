@@ -56,7 +56,7 @@ import org.apache.poi.util.POILogger;
 public class Range { // TODO -instantiable superclass
 
     private POILogger logger = POILogFactory.getLogger( Range.class );
-    
+
     @Deprecated
 	public static final int TYPE_PARAGRAPH = 0;
     @Deprecated
@@ -121,7 +121,7 @@ public class Range { // TODO -instantiable superclass
 	protected int _charEnd;
 
 	protected StringBuilder _text;
-	
+
 	// protected Range()
 	// {
 	//
@@ -323,7 +323,7 @@ public class Range { // TODO -instantiable superclass
 
     /**
      * Inserts text into the front of this range.
-     * 
+     *
      * @param text
      *            The text to insert
      * @return The character run that text was inserted into.
@@ -353,7 +353,7 @@ public class Range { // TODO -instantiable superclass
 
     /**
      * Inserts text onto the end of this range
-     * 
+     *
      * @param text
      *            The text to insert
      * @return The character run the text was inserted into.
@@ -588,7 +588,7 @@ public class Range { // TODO -instantiable superclass
     /**
      * Inserts a simple table into the beginning of this range. The number of
      * columns is determined by the TableProperties passed into this function.
-     * 
+     *
      * @param props
      *            The table properties for the table.
      * @param rows
@@ -604,7 +604,7 @@ public class Range { // TODO -instantiable superclass
 		parProps.setItap( 1 );
 
 		final int oldEnd = this._end;
-		
+
 		int columns = props.getItcMac();
         for ( int x = 0; x < rows; x++ )
         {
@@ -628,7 +628,7 @@ public class Range { // TODO -instantiable superclass
 
     /**
      * Inserts a simple table into the beginning of this range.
-     * 
+     *
      * @param columns
      *            The number of columns
      * @param rows
@@ -641,7 +641,7 @@ public class Range { // TODO -instantiable superclass
         parProps.setItap( 1 );
 
         final int oldEnd = this._end;
-        
+
         for ( int x = 0; x < rows; x++ )
         {
             Paragraph cell = this.insertBefore( parProps, StyleSheet.NIL_STYLE );
@@ -661,7 +661,7 @@ public class Range { // TODO -instantiable superclass
 
         return new Table( _start, _start + diff, this, 1 );
 	}
-	
+
 	/**
 	 * Inserts a list into the beginning of this range.
 	 *
@@ -722,7 +722,7 @@ public class Range { // TODO -instantiable superclass
     /**
      * Replace range text with new one, adding it to the range and deleting
      * original text from document
-     * 
+     *
      * @param newText
      *            The text to be replaced with
      * @param addAfter
@@ -1072,7 +1072,7 @@ public class Range { // TODO -instantiable superclass
 
     /**
      * Used to find the list indexes of a particular property.
-     * 
+     *
      * @param rpl
      *            A list of property nodes.
      * @param min
@@ -1120,7 +1120,7 @@ public class Range { // TODO -instantiable superclass
 	 */
 	private int[] findRange(List<? extends PropertyNode<?>> rpl, int min, int start, int end) {
 		int x = min;
-		
+
         if ( rpl.size() == min )
             return new int[] { min, min };
 
@@ -1175,9 +1175,9 @@ public class Range { // TODO -instantiable superclass
     /**
      * Adjust the value of the various FIB character count fields, eg
      * <code>FIB.CCPText</code> after an insert or a delete...
-     * 
+     *
      * Works on all CCP fields from this range onwards
-     * 
+     *
      * @param adjustment
      *            The (signed) value that should be added to the FIB CCP fields
      */

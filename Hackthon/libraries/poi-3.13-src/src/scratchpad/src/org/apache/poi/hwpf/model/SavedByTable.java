@@ -27,7 +27,7 @@ import org.apache.poi.util.Internal;
 /**
  * String table containing the history of the last few revisions ("saves") of
  * the document. Read-only for the time being.
- * 
+ *
  * @author Daniel Noll
  */
 @Internal
@@ -40,7 +40,7 @@ public final class SavedByTable
 
     /**
      * Constructor to read the table from the table stream.
-     * 
+     *
      * @param tableStream
      *            the table stream.
      * @param offset
@@ -61,7 +61,7 @@ public final class SavedByTable
 
     /**
      * Gets the entries. The returned list cannot be modified.
-     * 
+     *
      * @return the list of entries.
      */
     public List<SavedByEntry> getEntries()
@@ -71,7 +71,7 @@ public final class SavedByTable
 
     /**
      * Writes this table to the table stream.
-     * 
+     *
      * @param tableStream
      *            the table stream to write to.
      * @throws IOException

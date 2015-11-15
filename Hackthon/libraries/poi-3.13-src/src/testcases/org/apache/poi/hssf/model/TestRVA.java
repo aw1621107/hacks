@@ -53,7 +53,7 @@ public final class TestRVA {
     private static HSSFWorkbook workbook;
     private static HSSFSheet sheet;
 
-	
+
     @Parameter(value = 0)
     public HSSFCell formulaCell;
     @Parameter(value = 1)
@@ -71,8 +71,8 @@ public final class TestRVA {
         workbook = new HSSFWorkbook(poifs);
         sheet = workbook.getSheetAt(0);
 
-        List<Object[]> data = new ArrayList<Object[]>(); 
-        
+        List<Object[]> data = new ArrayList<Object[]>();
+
         for (int rowIdx = 0; true; rowIdx++) {
             HSSFRow row = sheet.getRow(rowIdx);
             if (row == null) {
@@ -86,10 +86,10 @@ public final class TestRVA {
             String formula = cell.getCellFormula();
             data.add(new Object[]{cell,formula});
         }
-        
+
         return data;
     }
-	
+
     @Test
 	public void confirmCell() {
 		Ptg[] excelPtgs = FormulaExtractor.getPtgs(formulaCell);
@@ -98,7 +98,7 @@ public final class TestRVA {
 		int nPoiTokens = poiPtgs.length;
 		if (nExcelTokens != nPoiTokens) {
 			if (nExcelTokens == nPoiTokens + 1 && excelPtgs[0].getClass() == AttrPtg.class) {
-				// compensate for missing tAttrVolatile, which belongs in any formula 
+				// compensate for missing tAttrVolatile, which belongs in any formula
 				// involving OFFSET() et al. POI currently does not insert where required
 				Ptg[] temp = new Ptg[nExcelTokens];
 				temp[0] = excelPtgs[0];

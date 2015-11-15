@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The units record describes units.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class UnitsRecord extends StandardRecord {
@@ -51,7 +51,7 @@ public final class UnitsRecord extends StandardRecord {
         buffer.append("    .units                = ")
             .append("0x").append(HexDump.toHex(  getUnits ()))
             .append(" (").append( getUnits() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/UNITS]\n");
         return buffer.toString();
@@ -72,7 +72,7 @@ public final class UnitsRecord extends StandardRecord {
 
     public Object clone() {
         UnitsRecord rec = new UnitsRecord();
-    
+
         rec.field_1_units = field_1_units;
         return rec;
     }

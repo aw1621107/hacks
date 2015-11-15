@@ -23,7 +23,7 @@ import org.apache.poi.util.StringUtil;
 
 /**
  * STRING (0x0207)<p/>
- * 
+ *
  * Stores the cached result of a text formula
  *
  * @author Glen Stampoultzis (glens at apache.org)
@@ -46,7 +46,7 @@ public final class StringRecord extends ContinuableRecord {
     public StringRecord( RecordInputStream in) {
         int field_1_string_length           = in.readUShort();
         _is16bitUnicode            = in.readByte() != 0x00;
-        
+
         if (_is16bitUnicode){
             _text = in.readUnicodeLEString(field_1_string_length);
         } else {
@@ -80,7 +80,7 @@ public final class StringRecord extends ContinuableRecord {
      */
     public void setString(String string) {
         _text = string;
-        _is16bitUnicode = StringUtil.hasMultibyte(string);        
+        _is16bitUnicode = StringUtil.hasMultibyte(string);
     }
 
     public String toString()
@@ -93,7 +93,7 @@ public final class StringRecord extends ContinuableRecord {
         buffer.append("[/STRING]\n");
         return buffer.toString();
     }
-    
+
     public Object clone() {
         StringRecord rec = new StringRecord();
         rec._is16bitUnicode= _is16bitUnicode;

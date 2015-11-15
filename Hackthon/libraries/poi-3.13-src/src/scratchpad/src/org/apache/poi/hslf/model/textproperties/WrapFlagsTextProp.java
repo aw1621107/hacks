@@ -21,9 +21,9 @@ public class WrapFlagsTextProp extends BitMaskTextProp {
     public static final int CHAR_WRAP_IDX = 0;
     public static final int WORD_WRAO_IDX = 1;
     public static final int OVERFLOW_IDX = 2;
-    
+
     public static final String NAME = "wrapFlags";
-    
+
     public WrapFlagsTextProp() {
         super(2, 0xE0000, NAME, "charWrap", "wordWrap", "overflow");
     }

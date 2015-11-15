@@ -28,8 +28,8 @@ import org.apache.poi.poifs.filesystem.NPOIFSFileSystem;
 
 public final class TestPublisherTextExtractor extends TestCase {
     private static final POIDataSamples _samples = POIDataSamples.getPublisherInstance();
-    
-    private static final String SAMPLE_TEXT = 
+
+    private static final String SAMPLE_TEXT =
        "This is some text on the first page\n" +
        "It\u2019s in times new roman, font size 10, all normal\n" +
        "" +
@@ -82,7 +82,7 @@ public final class TestPublisherTextExtractor extends TestCase {
 	   PublisherTextExtractor ext;
 	   File sample = _samples.getFile("Sample.pub");
       File simple = _samples.getFile("Simple.pub");
-	   
+
 	   // Check this complicated file using POIFS
 		HPBFDocument docOPOIFS = new HPBFDocument(
 		      new FileInputStream(sample)
@@ -98,7 +98,7 @@ public final class TestPublisherTextExtractor extends TestCase {
 		ext = new PublisherTextExtractor(docNPOIFS);
 		assertEquals( SAMPLE_TEXT, ext.getText() );
 
-		
+
 		// Now a simpler file
 		ext = new PublisherTextExtractor(
 		      new FileInputStream(simple)

@@ -21,8 +21,8 @@ import org.apache.poi.util.CodePageUtil;
 
 /**
  * <p>Defines constants of general use (currently only codepages).</p>
- * 
- * @deprecated Use {@link CodePageUtil} to lookup code pages 
+ *
+ * @deprecated Use {@link CodePageUtil} to lookup code pages
  */
 public class Constants
 {

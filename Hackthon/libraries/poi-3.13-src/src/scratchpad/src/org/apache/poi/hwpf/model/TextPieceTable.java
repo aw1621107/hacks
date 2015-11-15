@@ -33,7 +33,7 @@ import org.apache.poi.util.POILogger;
  * The piece table for matching up character positions to bits of text. This
  * mostly works in bytes, but the TextPieces themselves work in characters. This
  * does the icky convertion.
- * 
+ *
  * @author Ryan Ackley
  */
 @Internal
@@ -131,7 +131,7 @@ public class TextPieceTable implements CharIndexTranslator
 
     /**
      * Adjust all the text piece after inserting some text into one of them
-     * 
+     *
      * @param listIndex
      *            The TextPiece that had characters inserted into
      * @param length

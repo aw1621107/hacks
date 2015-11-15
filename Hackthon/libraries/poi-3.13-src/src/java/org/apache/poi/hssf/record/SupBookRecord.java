@@ -34,7 +34,7 @@ import org.apache.poi.util.StringUtil;
 public final class SupBookRecord extends StandardRecord {
 
     private final static POILogger logger = POILogFactory.getLogger(SupBookRecord.class);
-	
+
     public final static short sid = 0x01AE;
 
     private static final short SMALL_RECORD_SIZE = 4;
@@ -251,9 +251,9 @@ public final class SupBookRecord extends StandardRecord {
     public String[] getSheetNames() {
         return field_3_sheet_names.clone();
     }
-    
+
     public void setURL(String pUrl) {
     	//Keep the first marker character!
-    	field_2_encoded_url = field_2_encoded_url.substring(0, 1) + pUrl; 
+    	field_2_encoded_url = field_2_encoded_url.substring(0, 1) + pUrl;
     }
 }

@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi;
 
@@ -54,7 +54,7 @@ public class TestEmbeded extends TestCase
         );
 		test(doc, 4);
 	}
-	
+
 	private void test(POIXMLDocument doc, int expectedCount) throws Exception {
 		assertNotNull(doc.getAllEmbedds());
 		assertEquals(expectedCount, doc.getAllEmbedds().size());
@@ -62,7 +62,7 @@ public class TestEmbeded extends TestCase
 		for(int i=0; i<doc.getAllEmbedds().size(); i++) {
 			PackagePart pp = doc.getAllEmbedds().get(i);
 			assertNotNull(pp);
-			
+
 			byte[] b = IOUtils.toByteArray(pp.getInputStream());
 			assertTrue(b.length > 0);
 		}

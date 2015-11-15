@@ -23,10 +23,10 @@ import org.apache.poi.util.LittleEndianOutput;
  * While formula tokens are stored in RPN order and thus do not need parenthesis
  * for precedence reasons, Parenthesis tokens ARE written to ensure that user
  * entered parenthesis are displayed as-is on reading back
- * 
+ *
  * Avik Sengupta &lt;lists@aviksengupta.com&gt; Andrew C. Oliver (acoliver at
  * apache dot org)
- * 
+ *
  * @author Jason Height (jheight at chariot dot net dot au)
  */
 public final class ParenthesisPtg extends ControlPtg {

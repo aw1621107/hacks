@@ -36,7 +36,7 @@ import org.apache.poi.ss.usermodel.Color;
  * a reasonable one in this case.
  */
 public class HSSFColor implements Color {
-    private static Map<Integer,HSSFColor> indexHash; 
+    private static Map<Integer,HSSFColor> indexHash;
 
     /** Creates a new instance of HSSFColor */
     public HSSFColor()
@@ -204,7 +204,7 @@ public class HSSFColor implements Color {
     {
         return BLACK.hexString;
     }
-    
+
     public static HSSFColor toHSSFColor(Color color) {
         if (color != null && !(color instanceof HSSFColor)) {
             throw new IllegalArgumentException("Only HSSFColor objects are supported");

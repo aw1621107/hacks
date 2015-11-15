@@ -942,7 +942,7 @@ public abstract class BaseTestBugzillaIssues {
         assertEquals(startingFonts+2, wb.getNumberOfFonts());
         /*Font c =*/ wb.createFont();
         assertEquals(startingFonts+3, wb.getNumberOfFonts());
-        
+
         wb.close();
     }
 
@@ -1104,7 +1104,7 @@ public abstract class BaseTestBugzillaIssues {
             cfs.getNumericCellValue();
             fail();
         } catch(IllegalStateException e) {}
-        
+
         wb.close();
     }
 
@@ -1146,7 +1146,7 @@ public abstract class BaseTestBugzillaIssues {
         value = cell.getStringCellValue();
         assertTrue("HSSF will currently return empty string, XSSF/SXSSF will return null, but had: " + value,
                 value == null || value.length() == 0);
-        
+
         wb.close();
     }
 

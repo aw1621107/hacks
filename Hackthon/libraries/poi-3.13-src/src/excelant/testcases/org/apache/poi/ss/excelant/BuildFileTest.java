@@ -484,7 +484,7 @@ public abstract class BuildFileTest extends TestCase {
         assertNotNull("Could not find resource :" + resource, url);
         return url;
     }
-    
+
     public static String getDataDir() {
         String dataDirName = System.getProperty(POIDataSamples.TEST_PROPERTY);
         return dataDirName == null ? "test-data" : dataDirName;

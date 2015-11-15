@@ -48,7 +48,7 @@ public final class DeletedRef3DPtg extends OperandPtg implements WorkbookDepende
 	}
 
 	public String toFormulaString(FormulaRenderingWorkbook book) {
-		return ExternSheetNameResolver.prependSheetName(book, field_1_index_extern_sheet, 
+		return ExternSheetNameResolver.prependSheetName(book, field_1_index_extern_sheet,
 				ErrorConstants.getText(ErrorConstants.ERROR_REF));
 	}
 	public String toFormulaString() {

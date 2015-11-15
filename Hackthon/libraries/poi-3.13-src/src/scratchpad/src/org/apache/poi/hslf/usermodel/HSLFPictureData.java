@@ -55,10 +55,10 @@ public abstract class HSLFPictureData implements PictureData {
     protected int uidInstanceCount = 1;
 
     /**
-     * The 1-based index within the pictures stream 
+     * The 1-based index within the pictures stream
      */
     protected int index = -1;
-    
+
     /**
      * Blip signature.
      */
@@ -119,7 +119,7 @@ public abstract class HSLFPictureData implements PictureData {
     public byte[] getChecksum() {
         return getChecksum(getData());
     }
-        
+
     /**
      * Compute 16-byte checksum of this picture using MD5 algorithm.
      */
@@ -215,7 +215,7 @@ public abstract class HSLFPictureData implements PictureData {
     public void setIndex(int index) {
         this.index = index;
     }
-    
+
     @Override
     public final String getContentType() {
         return getType().contentType;

@@ -134,7 +134,7 @@ public final class TestColumnInfoRecordsAggregate {
 		confirmCIR(cirs, 2, 13, 15, 1, true, false);
 		confirmCIR(cirs, 3, 16, 16, 0, false, true);
 	}
-	
+
 	private static void confirmCIR(ColumnInfoRecord[] cirs, int ix, int startColIx, int endColIx, int level, boolean isHidden, boolean isCollapsed) {
 		ColumnInfoRecord cir = cirs[ix];
 		assertEquals("startColIx", startColIx, cir.getFirstColumn());

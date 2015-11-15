@@ -50,15 +50,15 @@ public abstract class SlideShowHandler extends POIFSFileHandler {
 
         // write out the file
         ByteArrayOutputStream out = writeToArray(ss);
-        
+
         readContent(ss);
 
         // read in the writen file
         SlideShow<?,?> read = SlideShowFactory.create(new ByteArrayInputStream(out.toByteArray()));
         assertNotNull(read);
-        
+
         readContent(read);
-        
+
     }
 
     private ByteArrayOutputStream writeToArray(SlideShow<?,?> ss) throws IOException {
@@ -68,11 +68,11 @@ public abstract class SlideShowHandler extends POIFSFileHandler {
         } finally {
             stream.close();
         }
-        
+
         return stream;
     }
 
-    
+
     private void readContent(SlideShow<?,?> ss) {
         for (Slide<?,?> s : ss.getSlides()) {
             s.getTitle();
@@ -81,7 +81,7 @@ public abstract class SlideShowHandler extends POIFSFileHandler {
             readText(s.getMasterSheet());
         }
     }
-    
+
     private void readText(ShapeContainer<?,?> sc) {
         if (sc == null) return;
         for (Shape<?,?> s : sc) {
@@ -94,7 +94,7 @@ public abstract class SlideShowHandler extends POIFSFileHandler {
             }
         }
     }
-    
+
     private void readPictures(SlideShow<?,?> ss) {
         for (PictureData pd : ss.getPictureData()) {
             Dimension dim = pd.getImageDimension();
@@ -102,7 +102,7 @@ public abstract class SlideShowHandler extends POIFSFileHandler {
             assertTrue(dim.getWidth() >= 0);
         }
     }
-    
+
     private void renderSlides(SlideShow<?,?> ss) {
         Dimension pgsize = ss.getPageSize();
 
@@ -116,10 +116,10 @@ public abstract class SlideShowHandler extends POIFSFileHandler {
             graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
             graphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
             graphics.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-    
+
             // draw stuff
             s.draw(graphics);
-            
+
             graphics.dispose();
             img.flush();
         }
@@ -132,7 +132,7 @@ public abstract class SlideShowHandler extends POIFSFileHandler {
         if (fontMap == null) fontMap = new HashMap<String,String>();
         fontMap.put("Calibri", "Lucida Sans");
         fontMap.put("Cambria", "Lucida Bright");
-        graphics.setRenderingHint(Drawable.FONT_MAP, fontMap);        
+        graphics.setRenderingHint(Drawable.FONT_MAP, fontMap);
     }
 
 }

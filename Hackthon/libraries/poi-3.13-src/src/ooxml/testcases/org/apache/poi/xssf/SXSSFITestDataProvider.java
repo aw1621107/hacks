@@ -75,7 +75,7 @@ public final class SXSSFITestDataProvider implements ITestDataProvider {
         instances.add(wb);
         return wb;
     }
-    
+
     public FormulaEvaluator createFormulaEvaluator(Workbook wb) {
         return new XSSFFormulaEvaluator(((SXSSFWorkbook) wb).getXSSFWorkbook());
     }

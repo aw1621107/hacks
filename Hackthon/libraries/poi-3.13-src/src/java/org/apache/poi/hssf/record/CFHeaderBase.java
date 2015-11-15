@@ -90,7 +90,7 @@ public abstract class CFHeaderBase extends StandardRecord {
     }
 
     /**
-     * Set cell ranges list to a single cell range and 
+     * Set cell ranges list to a single cell range and
      * modify the enclosing cell range accordingly.
      * @param cellRanges - list of CellRange objects
      */

@@ -233,7 +233,7 @@ public class HSSFSimpleShape extends HSSFShape
         EscherSpRecord spRecord = getEscherContainer().getChildById(EscherSpRecord.RECORD_ID);
         spRecord.setShapeType((short) value);
     }
-    
+
     private TextObjectRecord getOrCreateTextObjRecord(){
         if (getTextObjectRecord() == null){
             _textObjectRecord = createTextObjRecord();

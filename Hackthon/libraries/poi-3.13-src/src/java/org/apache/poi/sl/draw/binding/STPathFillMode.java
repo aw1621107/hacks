@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for ST_PathFillMode.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
- * 
+ *
  */
 @XmlType(name = "ST_PathFillMode", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main")
 @XmlEnum
@@ -48,42 +48,42 @@ public enum STPathFillMode {
 
     /**
      * No Path Fill
-     * 
+     *
      */
     @XmlEnumValue("none")
     NONE("none"),
 
     /**
      * Normal Path Fill
-     * 
+     *
      */
     @XmlEnumValue("norm")
     NORM("norm"),
 
     /**
      * Lighten Path Fill
-     * 
+     *
      */
     @XmlEnumValue("lighten")
     LIGHTEN("lighten"),
 
     /**
      * Lighten Path Fill Less
-     * 
+     *
      */
     @XmlEnumValue("lightenLess")
     LIGHTEN_LESS("lightenLess"),
 
     /**
      * Darken Path Fill
-     * 
+     *
      */
     @XmlEnumValue("darken")
     DARKEN("darken"),
 
     /**
      * Darken Path Fill Less
-     * 
+     *
      */
     @XmlEnumValue("darkenLess")
     DARKEN_LESS("darkenLess");

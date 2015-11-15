@@ -46,7 +46,7 @@ public final class TestXMLPropertiesTextExtractor extends TestCase {
 
 		assertTrue(text.contains("LastModifiedBy = Yury Batrakov"));
 		assertTrue(cText.contains("LastModifiedBy = Yury Batrakov"));
-		
+
 		textExt.close();
 		ext.close();
 	}
@@ -66,7 +66,7 @@ public final class TestXMLPropertiesTextExtractor extends TestCase {
 
 		assertTrue(text.contains("LastModifiedBy = Yury Batrakov"));
 		assertTrue(cText.contains("LastModifiedBy = Yury Batrakov"));
-		
+
 		ext.close();
 	}
 
@@ -103,13 +103,13 @@ public final class TestXMLPropertiesTextExtractor extends TestCase {
       // Now check
       String text = ext.getText();
       String cText = ext.getCustomPropertiesText();
-      
+
       assertTrue(text.contains("description = another value"));
       assertTrue(cText.contains("description = another value"));
 
       ext.close();
 	}
-	
+
 	/**
 	 * Bug #49386 - some properties, especially
 	 *  dates can be null
@@ -119,15 +119,15 @@ public final class TestXMLPropertiesTextExtractor extends TestCase {
             _slSamples.openResourceAsStream("49386-null_dates.pptx")
       );
       XSLFSlideShow sl = new XSLFSlideShow(pkg);
-   
+
       POIXMLPropertiesTextExtractor ext = new POIXMLPropertiesTextExtractor(sl);
       ext.getText();
-      
+
       String text = ext.getText();
       assertFalse(text.contains("Created =")); // With date is null
       assertTrue(text.contains("CreatedString = ")); // Via string is blank
       assertTrue(text.contains("LastModifiedBy = IT Client Services"));
-		
+
       ext.close();
 	}
 }

@@ -34,7 +34,7 @@ public final class HSSFName implements Name {
     private NameRecord _definedNameRec;
     private NameCommentRecord _commentRec;
 
-    /** 
+    /**
      * Creates new HSSFName   - called by HSSFWorkbook to create a name from
      * scratch.
      *
@@ -45,7 +45,7 @@ public final class HSSFName implements Name {
     /* package */ HSSFName(HSSFWorkbook book, NameRecord name) {
       this(book, name, null);
     }
-    /** 
+    /**
      * Creates new HSSFName   - called by HSSFWorkbook to create a name from
      * scratch.
      *
@@ -145,7 +145,7 @@ public final class HSSFName implements Name {
                 }
             }
         }
-        
+
         // Update our comment, if there is one
         if(_commentRec != null) {
            _commentRec.setNameText(nameName);
@@ -199,9 +199,9 @@ public final class HSSFName implements Name {
 
 
     /**
-     * Sets the NameParsedFormula structure that specifies the formula for the 
+     * Sets the NameParsedFormula structure that specifies the formula for the
      * defined name.
-     * 
+     *
      * @param ptgs the sequence of {@link Ptg}s for the formula.
      */
     void setNameDefinition(Ptg[] ptgs) {

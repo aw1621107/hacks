@@ -26,7 +26,7 @@ import org.apache.poi.util.Beta;
 
 /**
  * Specifies a connection shape.
- * 
+ *
  * This is currently only a dummy implementation.
  */
 @Beta

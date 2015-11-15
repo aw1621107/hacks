@@ -48,15 +48,15 @@ public interface SlideShow<
      * @return the page size
      */
     Dimension getPageSize();
-    
+
     /**
      * Returns all Pictures of this slideshow.
-     * The returned {@link List} is unmodifiable. 
+     * The returned {@link List} is unmodifiable.
      * @return a {@link List} of {@link PictureData}.
      */
     List<? extends PictureData> getPictureData();
 
-        
+
     /**
      * Adds a picture to the workbook.
      *

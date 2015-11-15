@@ -30,7 +30,7 @@ import org.apache.poi.hslf.usermodel.HSLFSlideShow;
 public class HeadersFootersDemo {
     public static void main(String[] args) throws Exception {
         HSLFSlideShow ppt = new HSLFSlideShow();
-        
+
         HeadersFooters slideHeaders = ppt.getSlideHeadersFooters();
         slideHeaders.setFootersText("Created by POI-HSLF");
         slideHeaders.setSlideNumberVisible(true);

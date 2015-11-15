@@ -23,7 +23,7 @@ import org.apache.poi.util.CodePageUtil;
 
 
 /**
- * Biff2 - Biff 4 Label Record (0x0007 / 0x0207) - read only support for 
+ * Biff2 - Biff 4 Label Record (0x0007 / 0x0207) - read only support for
  *  formula string results.
  */
 public final class OldStringRecord {
@@ -40,7 +40,7 @@ public final class OldStringRecord {
      */
     public OldStringRecord(RecordInputStream in) {
         sid = in.getSid();
-        
+
         if (in.getSid() == biff2_sid) {
             field_1_string_len  = (short)in.readUByte();
         } else {
@@ -59,7 +59,7 @@ public final class OldStringRecord {
     public short getSid() {
         return sid;
     }
-    
+
     public void setCodePage(CodepageRecord codepage) {
         this.codepage = codepage;
     }
@@ -71,7 +71,7 @@ public final class OldStringRecord {
     {
         return getString(field_2_bytes, codepage);
     }
-    
+
     protected static String getString(byte[] data, CodepageRecord codepage) {
         int cp = CodePageUtil.CP_ISO_8859_1;
         if (codepage != null) {

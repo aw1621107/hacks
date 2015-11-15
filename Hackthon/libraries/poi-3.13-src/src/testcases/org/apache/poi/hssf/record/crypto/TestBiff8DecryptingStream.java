@@ -102,7 +102,7 @@ public final class TestBiff8DecryptingStream {
         public void confirmUShort(int expVal) {
             assertEquals(HexDump.shortToHex(expVal), HexDump.shortToHex(_bds.readUShort()));
         }
-        
+
         public short readShort() {
             return _bds.readShort();
         }
@@ -118,7 +118,7 @@ public final class TestBiff8DecryptingStream {
 		public void confirmLong(long expVal) {
 		    assertEquals(HexDump.longToHex(expVal), HexDump.longToHex(_bds.readLong()));
 		}
-		
+
 		public void confirmData(String expHexData) {
 
 			byte[] expData = HexRead.readFromString(expHexData);

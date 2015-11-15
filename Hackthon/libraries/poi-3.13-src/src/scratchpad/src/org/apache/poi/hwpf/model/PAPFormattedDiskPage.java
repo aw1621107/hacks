@@ -65,7 +65,7 @@ public final class PAPFormattedDiskPage extends FormattedDiskPage {
 
     /**
      * Creates a PAPFormattedDiskPage from a 512 byte array
-     * 
+     *
      * @deprecated Use
      *             {@link #PAPFormattedDiskPage(byte[], byte[], int, CharIndexTranslator)}
      *             instead
@@ -175,9 +175,9 @@ public final class PAPFormattedDiskPage extends FormattedDiskPage {
     /**
      * Creates a byte array representation of this data structure. Suitable for
      * writing to a Word document.
-     * 
+     *
      * @param dataStream required if PAPX is too big to fit in FKP
-     * 
+     *
      * @return A byte array representing this data structure.
      * @throws IOException
      *             if an I/O error occurs.

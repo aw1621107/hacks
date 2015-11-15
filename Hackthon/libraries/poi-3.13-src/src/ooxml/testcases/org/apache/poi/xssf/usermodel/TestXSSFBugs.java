@@ -410,7 +410,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         assertEquals("123", df.formatCellValue(r.getCell(2)));
         assertEquals("123", df.formatRawCellContents(123.0, -1, "@"));
         assertEquals("123", df.formatRawCellContents(123.0, -1, "General"));
-        
+
         wb.close();
     }
 
@@ -454,7 +454,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         assertEquals("sale_1*sale_2", cell.getCellFormula());
         assertEquals(Cell.CELL_TYPE_ERROR, evaluator.evaluateInCell(cell).getCellType());
         assertEquals("#REF!", FormulaError.forInt(cell.getErrorCellValue()).getString());
-        
+
         wb.close();
     }
 
@@ -533,7 +533,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         // Save and check
         XSSFWorkbook wb3 = XSSFTestDataSamples.writeOutAndReadBack(wb2);
         wb2.close();
-        
+
         s = wb3.getSheetAt(0);
         r = s.getRow(0);
         c = r.getCell(0);
@@ -566,7 +566,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
             assertEquals(10, wb2.getStylesSource().getNumCellStyles());
             wb2.close();
         }
-        
+
         wb.close();
     }
 
@@ -639,7 +639,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         validateCells(sheet);
         sheet.getRow(5).removeCell(sheet.getRow(5).getCell(0)); // go
         validateCells(sheet);
-        
+
         wb.close();
     }
 
@@ -689,7 +689,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         formulaEvaluator.evaluateFormulaCell(b3);
         assertEquals("B1+B2", b3.getCellFormula()); // The newline is lost for shared formulas
         assertEquals(3.0, b3.getNumericCellValue(), 0);
-        
+
         wb.close();
     }
 
@@ -716,7 +716,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         // Check we can write it out and read it back as-is
         XSSFWorkbook wb2 = XSSFTestDataSamples.writeOutAndReadBack(wb1);
         wb1.close();
-        
+
         sheet = wb2.getSheetAt(0);
         row = sheet.getRow(0);
         cellWith = row.getCell(0);
@@ -736,7 +736,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         // Write out and re-check
         XSSFWorkbook wb3 = XSSFTestDataSamples.writeOutAndReadBack(wb2);
         wb2.close();
-        
+
         sheet = wb3.getSheetAt(0);
         row = sheet.getRow(0);
 
@@ -748,7 +748,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
 
         comment = cellWithoutComment.getCellComment();
         assertEquals(exp, comment.getString().getString());
-        
+
         wb3.close();
     }
 
@@ -783,7 +783,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         assertEquals(64, s.getRow(0).getCell(8).getCellStyle().getFillBackgroundColor());
         assertEquals(0,  s.getRow(1).getCell(8).getCellStyle().getFillForegroundColor());
         assertEquals(64, s.getRow(1).getCell(8).getCellStyle().getFillBackgroundColor());
-        
+
         wb.close();
     }
 
@@ -934,7 +934,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         // Save and re-check
         XSSFWorkbook wb3 = XSSFTestDataSamples.writeOutAndReadBack(wb2);
         wb2.close();
-        
+
         sheet = wb3.getSheetAt(0);
         row = sheet.getRow(2);
         cell = row.getCell(2);
@@ -989,7 +989,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         // Save and re-load
         XSSFWorkbook wb2 = XSSFTestDataSamples.writeOutAndReadBack(wb1);
         wb1.close();
-        
+
         s1 = wb2.getSheetAt(0);
         s2 = wb2.getSheetAt(1);
         s3 = wb2.getSheetAt(2);
@@ -1255,7 +1255,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         // TODO fix
         // assertEquals("FFEEECE1", cA4_EEECE1.getCellStyle().getFillForegroundXSSFColor().getARGBHex());
         // assertEquals("FF1F497D", cA5_1F497D.getCellStyle().getFillForegroundXSSFColor().getARGBHex());
-        
+
         wb.close();
     }
 
@@ -1980,7 +1980,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         } catch (XLSBUnsupportedException e) {
             // Good, detected and warned
         }
-        
+
         pkg.close();
     }
 
@@ -2104,7 +2104,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
             workbookEvaluator = new WorkbookEvaluator(XSSFEvaluationWorkbook.create(wb), null, null);
             workbookEvaluator.setDebugEvaluationOutputForNextEval(true);
             workbookEvaluator.evaluate(new XSSFEvaluationCell(cell));
-            
+
             wb.close();
         } finally {
             if(previousLogger == null) {
@@ -2190,7 +2190,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         assertEquals(-60, value.getErrorValue());
         assertEquals("~CIRCULAR~REF~", FormulaError.forInt(value.getErrorValue()).getString());
         assertEquals("CIRCULAR_REF", FormulaError.forInt(value.getErrorValue()).toString());
-        
+
         wb.close();
     }
 
@@ -2365,7 +2365,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         assertEquals(3, wbBack.getNumberOfSheets());
         // TODO Re-check sheet contents
         // TODO Re-check formula evaluation
-        
+
         wb.close();
         wbBack.close();
     }
@@ -2410,7 +2410,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         XSSFWorkbook wbBack = XSSFTestDataSamples.writeOutAndReadBack(targetWorkbook);
         XSSFCellStyle styleBack = wbBack.getSheetAt(0).getRow(0).getCell(0).getCellStyle();
         checkStyle(styleBack);
-        
+
         targetWorkbook.close();
         wbBack.close();
     }
@@ -2441,7 +2441,7 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
 
         // No bulleting info included
         assertEquals("test ok", text);
-        
+
         workbook.close();
     }
 
@@ -2791,12 +2791,12 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         Sheet sheet = wb.getSheetAt(0);
         Cell cellA1 = sheet.getRow(0).getCell(0);
         Cell cellA2 = sheet.getRow(1).getCell(0);
-        
+
         assertEquals(0, cellA1.getCellStyle().getFillForegroundColor());
         assertEquals("FFFDFDFD", ((XSSFColor)cellA1.getCellStyle().getFillForegroundColorColor()).getARGBHex());
         assertEquals(0, cellA2.getCellStyle().getFillForegroundColor());
         assertEquals("FFFDFDFD", ((XSSFColor)cellA2.getCellStyle().getFillForegroundColorColor()).getARGBHex());
-        
+
         SheetConditionalFormatting cond = sheet.getSheetConditionalFormatting();
         assertEquals(2, cond.getNumConditionalFormattings());
 
@@ -2806,10 +2806,10 @@ public final class TestXSSFBugs extends BaseTestBugzillaIssues {
         assertNull(((XSSFColor)cond.getConditionalFormattingAt(0).getRule(0).getPatternFormatting().getFillForegroundColorColor()).getARGBHex());
 
         assertEquals(1, cond.getConditionalFormattingAt(1).getNumberOfRules());
-        assertEquals(64, cond.getConditionalFormattingAt(1).getRule(0).getPatternFormatting().getFillForegroundColor()); 
+        assertEquals(64, cond.getConditionalFormattingAt(1).getRule(0).getPatternFormatting().getFillForegroundColor());
         assertEquals("ISEVEN(ROW())", cond.getConditionalFormattingAt(1).getRule(0).getFormula1());
-        assertNull(((XSSFColor)cond.getConditionalFormattingAt(1).getRule(0).getPatternFormatting().getFillForegroundColorColor()).getARGBHex()); 
-        
+        assertNull(((XSSFColor)cond.getConditionalFormattingAt(1).getRule(0).getPatternFormatting().getFillForegroundColorColor()).getARGBHex());
+
         wb.close();
     }
 }

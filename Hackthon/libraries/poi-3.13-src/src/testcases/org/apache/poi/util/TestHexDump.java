@@ -278,7 +278,7 @@ public class TestHexDump {
         for (int j = 0; j < 256; j++) {
             testArray[ j ] = ( byte ) j;
         }
-        
+
         return testArray;
     }
 }

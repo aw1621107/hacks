@@ -36,7 +36,7 @@ import testsuite.BaseTestCase;
 public class CachedRowsetTest extends BaseTestCase {
     /**
      * Creates a new CachedRowsetTest
-     * 
+     *
      * @param name
      *            the name of the test to run
      */
@@ -46,7 +46,7 @@ public class CachedRowsetTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -56,7 +56,7 @@ public class CachedRowsetTest extends BaseTestCase {
     /**
      * Tests fix for BUG#5188, CachedRowSet errors using PreparedStatement. Uses
      * Sun's "com.sun.rowset.CachedRowSetImpl"
-     * 
+     *
      * @throws Exception
      */
     public void testBug5188() throws Exception {

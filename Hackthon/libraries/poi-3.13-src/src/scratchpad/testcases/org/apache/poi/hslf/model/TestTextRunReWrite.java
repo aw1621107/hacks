@@ -66,8 +66,8 @@ public final class TestTextRunReWrite {
         // Grab the first text run on the first sheet
         List<HSLFTextParagraph> tr1 = ss.getSlides().get(0).getTextParagraphs().get(0);
         List<HSLFTextParagraph> tr2 = ss.getSlides().get(0).getTextParagraphs().get(1);
-    	
-    	
+
+
     	assertEquals(30, HSLFTextParagraph.getRawText(tr1).length());
     	assertEquals(179, HSLFTextParagraph.getRawText(tr2).length());
 

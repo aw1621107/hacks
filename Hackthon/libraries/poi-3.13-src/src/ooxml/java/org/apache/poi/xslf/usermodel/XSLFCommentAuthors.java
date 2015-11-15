@@ -31,7 +31,7 @@ import org.openxmlformats.schemas.presentationml.x2006.main.CmAuthorLstDocument;
 @Beta
 public class XSLFCommentAuthors extends POIXMLDocumentPart {
     private final CTCommentAuthorList _authors;
-    
+
     /**
      * Create a new set of slide comments
      */
@@ -56,11 +56,11 @@ public class XSLFCommentAuthors extends POIXMLDocumentPart {
            CmAuthorLstDocument.Factory.parse(getPackagePart().getInputStream());
         _authors = doc.getCmAuthorLst();
     }
-    
+
     public CTCommentAuthorList getCTCommentAuthorsList() {
        return _authors;
     }
-    
+
     @SuppressWarnings("deprecation")
     public CTCommentAuthor getAuthorById(long id) {
        // TODO Have a map

@@ -98,7 +98,7 @@ public class PPTX2PNG {
         if (outdir == null) {
             outdir = file.getParentFile();
         }
-        
+
         if (outdir == null || !outdir.exists() || !outdir.isDirectory()) {
             usage("Output directory doesn't exist");
             return;
@@ -108,24 +108,24 @@ public class PPTX2PNG {
             usage("Invalid scale given");
             return;
         }
-        
+
         if (format == null || !format.matches("^(png|gif|jpg|null)$")) {
             usage("Invalid format given");
             return;
         }
-    
+
         if (!quite) {
             System.out.println("Processing " + file);
         }
         SlideShow<?,?> ss = SlideShowFactory.create(file, null, true);
         List<? extends Slide<?,?>> slides = ss.getSlides();
 
-        
+
         if (slidenum < -1 || slidenum == 0 || slidenum > slides.size()) {
             usage("slidenum must be either -1 (for all) or within range: [1.."+slides.size()+"] for "+file);
             return;
         }
-        
+
         Dimension pgsize = ss.getPageSize();
         int width = (int) (pgsize.width * scale);
         int height = (int) (pgsize.height * scale);
@@ -141,7 +141,7 @@ public class PPTX2PNG {
                 BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
                 Graphics2D graphics = img.createGraphics();
                 fixFonts(graphics);
-            
+
                 // default rendering options
                 graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
@@ -160,10 +160,10 @@ public class PPTX2PNG {
                     File outfile = new File(outdir, outname);
                     ImageIO.write(img, format, outfile);
                 }
-            }                
+            }
             slideNo++;
         }
-        
+
         if (!quite) {
             System.out.println("Done");
         }
@@ -176,6 +176,6 @@ public class PPTX2PNG {
         if (fontMap == null) fontMap = new HashMap<String,String>();
         fontMap.put("Calibri", "Lucida Sans");
         fontMap.put("Cambria", "Lucida Bright");
-        graphics.setRenderingHint(Drawable.FONT_MAP, fontMap);        
+        graphics.setRenderingHint(Drawable.FONT_MAP, fontMap);
     }
 }

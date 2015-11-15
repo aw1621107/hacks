@@ -42,7 +42,7 @@ import org.apache.xmlbeans.XmlException;
 /**
  * Helper class to extract text from an OOXML Excel file
  */
-public class XSSFExcelExtractor extends POIXMLTextExtractor 
+public class XSSFExcelExtractor extends POIXMLTextExtractor
        implements org.apache.poi.ss.extractor.ExcelExtractor {
     public static final XSSFRelation[] SUPPORTED_TYPES = new XSSFRelation[] {
         XSSFRelation.WORKBOOK, XSSFRelation.MACRO_TEMPLATE_WORKBOOK,
@@ -196,7 +196,7 @@ public class XSSFExcelExtractor extends POIXMLTextExtractor
                 }
                 text.append("\n");
             }
-            
+
             // add textboxes
             if (includeTextBoxes){
                 XSSFDrawing drawing = sheet.getDrawingPatriarch();

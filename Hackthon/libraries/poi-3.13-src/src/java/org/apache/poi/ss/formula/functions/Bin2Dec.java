@@ -80,10 +80,10 @@ public class Bin2Dec extends Fixed1ArgFunction implements FreeRefFunction {
                 String inverted = toggleBits(unsigned);
                 // Calculate decimal number
                 int sum = getDecimalValue(inverted);
-    
+
                 //Add 1 to obtained number
                 sum++;
-    
+
                 value = "-" + String.valueOf(sum);
             }
         } catch (NumberFormatException e) {

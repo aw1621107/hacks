@@ -26,28 +26,28 @@ S extends Shape<S,P>,
 P extends TextParagraph<S,P,?>
 > {
     SimpleShape<S,P> getShadowParent();
-    
+
     /**
      * @return the offset of this shadow in points
      */
     double getDistance();
-    
+
     /**
-     * 
+     *
      * @return the direction to offset the shadow in angles
      */
     double getAngle();
 
     /**
-     * 
+     *
      * @return the blur radius of the shadow
-     * TODO: figure out how to make sense of this property when rendering shadows 
+     * TODO: figure out how to make sense of this property when rendering shadows
      */
     double getBlur();
 
     /**
-     * @return the color of this shadow. 
+     * @return the color of this shadow.
      * Depending whether the parent shape is filled or stroked, this color is used to fill or stroke this shadow
      */
-    SolidPaint getFillStyle();    
+    SolidPaint getFillStyle();
 }

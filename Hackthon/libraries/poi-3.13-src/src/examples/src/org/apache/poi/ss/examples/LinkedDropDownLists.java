@@ -33,12 +33,12 @@ import org.apache.poi.ss.util.CellRangeAddressList;
  * case; the data could appear on a separate sheet. If this were done, then the
  * names for the regions would have to be different, they would have to include
  * the name of the sheet.
- * 
- * There are two keys to this technique. The first is the use of named area or 
+ *
+ * There are two keys to this technique. The first is the use of named area or
  * regions of cells to hold the data for the drop down lists and the second is
  * making use of the INDIRECT() function to convert a name into the addresses
  * of the cells it refers to.
- * 
+ *
  * Note that whilst this class builds just two linked drop down lists, there is
  * nothing to prevent more being created. Quite simply, use the value selected
  * by the user in one drop down list to determine what is shown in another and the
@@ -75,9 +75,9 @@ public class LinkedDropDownLists {
             } else {
                 workbook = new HSSFWorkbook();
             }
-            
+
             // Build the sheet that will hold the data for the validations. This
-            // must be done first as it will create names that are referenced 
+            // must be done first as it will create names that are referenced
             // later.
             sheet = workbook.createSheet("Linked Validations");
             LinkedDropDownLists.buildDataSheet(sheet);
@@ -91,7 +91,7 @@ public class LinkedDropDownLists {
             dvConstraint = dvHelper.createFormulaListConstraint("CHOICES");
             validation = dvHelper.createValidation(dvConstraint, addressList);
             sheet.addValidationData(validation);
-            
+
             // Now, build the linked or dependent drop down list that will
             // occupy cell B1. The key to the whole process is the use of the
             // INDIRECT() function. In the buildDataSheet(0 method, a series of
@@ -106,7 +106,7 @@ public class LinkedDropDownLists {
                     "INDIRECT(UPPER($A$1))");
             validation = dvHelper.createValidation(dvConstraint, addressList);
             sheet.addValidationData(validation);
-            
+
             file = new File(workbookName);
             fos = new FileOutputStream(file);
             workbook.write(fos);
@@ -136,16 +136,16 @@ public class LinkedDropDownLists {
      * the cells on rows two, three and four will be used to populate the second
      * drop down list, just which row will be determined by the choice the user
      * makes in the first drop down list.
-     * 
+     *
      * In all cases, the approach is to create a row, create and populate cells
      * with data and then specify a name that identifies those cells. With the
      * exception of the first range, the names that are chosen for each range
-     * of cells are quite important. In short, each of the options the user 
+     * of cells are quite important. In short, each of the options the user
      * could select in the first drop down list is used as the name for another
-     * range of cells. Thus, in this example, the user can select either 
+     * range of cells. Thus, in this example, the user can select either
      * 'Animal', 'Vegetable' or 'Mineral' in the first drop down and so the
      * sheet contains ranges named 'ANIMAL', 'VEGETABLE' and 'MINERAL'.
-     * 
+     *
      * @param dataSheet An instance of a class that implements the Sheet Sheet
      *        interface (HSSFSheet or XSSFSheet).
      */

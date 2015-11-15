@@ -129,8 +129,8 @@ public final class TestCFRuleRecord extends TestCase {
         record.getMultiStateFormatting().getThresholds()[1].setValue(10d);
         record.getMultiStateFormatting().getThresholds()[2].setType(RangeType.NUMBER.id);
         record.getMultiStateFormatting().getThresholds()[2].setValue(-4d);
-        
-        // Check it 
+
+        // Check it
         testCFRule12Record(record);
         assertEquals(IconSet.GREY_5_ARROWS, record.getMultiStateFormatting().getIconSet());
         assertEquals(5, record.getMultiStateFormatting().getThresholds().length);
@@ -144,7 +144,7 @@ public final class TestCFRuleRecord extends TestCase {
 
         // Deserialize
         record = new CFRule12Record(TestcaseRecordInputStream.create(CFRule12Record.sid, recordData));
-        
+
         // Check it has the icon, and the right number of thresholds
         assertEquals(IconSet.GREY_5_ARROWS, record.getMultiStateFormatting().getIconSet());
         assertEquals(5, record.getMultiStateFormatting().getThresholds().length);
@@ -160,10 +160,10 @@ public final class TestCFRuleRecord extends TestCase {
             assertEquals("CFRule12Record doesn't match", recordData[i], output[i+4]);
         }
     }
-    
+
     private void testCFRuleRecord(CFRuleRecord record) {
         testCFRuleBase(record);
-        
+
         assertFalse(record.isLeftBorderModified());
         record.setLeftBorderModified(true);
         assertTrue(record.isLeftBorderModified());
@@ -430,20 +430,20 @@ public final class TestCFRuleRecord extends TestCase {
         byte[] data = rr.serialize();
         TestcaseRecordInputStream.confirmRecordEncoding(CFRuleRecord.sid, DATA_REFN, data);
     }
-    
+
     public void testBug53691() {
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet();
 
         CFRuleRecord record = CFRuleRecord.create(sheet, ComparisonOperator.BETWEEN, "2", "5");
-        
+
         CFRuleRecord clone = (CFRuleRecord) record.clone();
-        
+
         byte [] serializedRecord = record.serialize();
         byte [] serializedClone = clone.serialize();
         assertArrayEquals(serializedRecord, serializedClone);
     }
-    
+
     public void testBug57231_rewrite() {
         HSSFWorkbook wb = HSSFITestDataProvider.instance.openSampleWorkbook("57231_MixedGasReport.xls");
         assertEquals(7, wb.getNumberOfSheets());

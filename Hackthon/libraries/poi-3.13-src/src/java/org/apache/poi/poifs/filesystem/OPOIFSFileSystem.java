@@ -80,7 +80,7 @@ public class OPOIFSFileSystem
      * What big block size the file uses. Most files
      *  use 512 bytes, but a few use 4096
      */
-    private POIFSBigBlockSize bigBlockSize = 
+    private POIFSBigBlockSize bigBlockSize =
        POIFSConstants.SMALLER_BIG_BLOCK_SIZE_DETAILS;
 
     /**

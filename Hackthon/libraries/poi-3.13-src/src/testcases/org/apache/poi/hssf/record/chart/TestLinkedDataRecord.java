@@ -167,7 +167,7 @@ recordid = 0x1051, size =8
 
         Area3DPtg ptgExpected = new Area3DPtg(0, 7936, 0, 0,
                 false, false, false, false, 0);
-        
+
         Ptg ptgActual = record.getFormulaOfLink()[0];
         assertEquals(ptgExpected.toString(),  ptgActual.toString());
 

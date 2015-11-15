@@ -74,7 +74,7 @@ import com.mysql.jdbc.profiler.ProfilerEventHandler;
 
 /**
  * A proxy to a set of MySQL servers managed by MySQL Fabric.
- * 
+ *
  * Limitations:
  * <ul>
  * <li>One shard key can be specified</li>
@@ -423,7 +423,7 @@ public class FabricMySQLConnectionProxy extends ConnectionPropertiesImpl impleme
      * Get the active connection as an object implementing the
      * internal MySQLConnection interface. This should not be used
      * unless a MySQLConnection is required.
-     * 
+     *
      * {@link getActiveConnection()} is provided for the general case.
      * The returned object is not a {@link ReplicationConnection}, but
      * instead the {@link LoadBalancingConnectionProxy} for either the
@@ -917,7 +917,7 @@ public class FabricMySQLConnectionProxy extends ConnectionPropertiesImpl impleme
 
     /**
      * Methods doing essentially nothing
-     * 
+     *
      * @param iface
      */
     public boolean isWrapperFor(Class<?> iface) {
@@ -2746,7 +2746,7 @@ public class FabricMySQLConnectionProxy extends ConnectionPropertiesImpl impleme
         return getActiveConnectionPassive().getSessionMaxRows();
     }
 
-    // MySQLConnection	
+    // MySQLConnection
     public boolean isProxySet() {
         return false;
     }

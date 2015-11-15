@@ -47,7 +47,7 @@ import testsuite.BaseTestCase;
 public class StatementRegressionTest extends BaseTestCase {
     /**
      * Creates a new StatementRegressionTest.
-     * 
+     *
      * @param name
      *            the name of the test
      */
@@ -57,7 +57,7 @@ public class StatementRegressionTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -66,7 +66,7 @@ public class StatementRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#68916 - closeOnCompletion doesn't work.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -1452,9 +1452,9 @@ public class StatementRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for BUG#73163 - IndexOutOfBoundsException thrown preparing statement.
-     * 
+     *
      * This bug occurs only if running with Java6+. Duplicated in testsuite.regression.StatementRegressionTest.testBug73163().
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -1472,9 +1472,9 @@ public class StatementRegressionTest extends BaseTestCase {
 
     /**
      * Tests fix for Bug#21876798 - CONNECTOR/J WITH MYSQL FABRIC AND SPRING PRODUCES PROXY ERROR.
-     * 
+     *
      * Although this is a Fabric related bug we are able reproduce it using a couple of multi-host connections.
-     * 
+     *
      * Duplicated in testsuite.regression.StatementRegressionTest.testBug21876798().
      */
     public void testBug21876798() throws Exception {

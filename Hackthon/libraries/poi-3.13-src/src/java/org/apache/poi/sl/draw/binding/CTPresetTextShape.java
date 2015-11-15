@@ -26,9 +26,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_PresetTextShape complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_PresetTextShape">
  *   &lt;complexContent>
@@ -41,8 +41,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_PresetTextShape", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main", propOrder = {
@@ -57,11 +57,11 @@ public class CTPresetTextShape {
 
     /**
      * Gets the value of the avLst property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link CTGeomGuideList }
-     *     
+     *
      */
     public CTGeomGuideList getAvLst() {
         return avLst;
@@ -69,11 +69,11 @@ public class CTPresetTextShape {
 
     /**
      * Sets the value of the avLst property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link CTGeomGuideList }
-     *     
+     *
      */
     public void setAvLst(CTGeomGuideList value) {
         this.avLst = value;
@@ -85,11 +85,11 @@ public class CTPresetTextShape {
 
     /**
      * Gets the value of the prst property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link STTextShapeType }
-     *     
+     *
      */
     public STTextShapeType getPrst() {
         return prst;
@@ -97,11 +97,11 @@ public class CTPresetTextShape {
 
     /**
      * Sets the value of the prst property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link STTextShapeType }
-     *     
+     *
      */
     public void setPrst(STTextShapeType value) {
         this.prst = value;

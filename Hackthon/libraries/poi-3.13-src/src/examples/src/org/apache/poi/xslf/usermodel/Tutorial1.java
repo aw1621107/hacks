@@ -14,7 +14,7 @@
  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
- * ==================================================================== 
+ * ====================================================================
  */
 
 package org.apache.poi.xslf.usermodel;
@@ -36,7 +36,7 @@ public class Tutorial1 {
         // XSLFSlide#createSlide() with no arguments creates a blank slide
         /*XSLFSlide blankSlide =*/ ppt.createSlide();
 
-        
+
         XSLFSlideMaster master = ppt.getSlideMasters().get(0);
 
         XSLFSlideLayout layout1 = master.getLayout(SlideLayout.TITLE);

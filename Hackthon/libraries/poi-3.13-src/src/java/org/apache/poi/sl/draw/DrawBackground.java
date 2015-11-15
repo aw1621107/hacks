@@ -49,18 +49,18 @@ public class DrawBackground extends DrawShape {
             public boolean getFlipHorizontal() { return false; }
             public boolean getFlipVertical() { return false; }
         };
-        
+
         DrawFactory drawFact = DrawFactory.getInstance(graphics);
         DrawPaint dp = drawFact.getPaint(ps);
         Paint fill = dp.getPaint(graphics, getShape().getFillStyle().getPaint());
         Rectangle2D anchor2 = getAnchor(graphics, anchor);
-        
+
         if(fill != null) {
             graphics.setPaint(fill);
             graphics.fill(anchor2);
         }
     }
-    
+
     protected Background<?,?> getShape() {
         return (Background<?,?>)shape;
     }

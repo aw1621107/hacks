@@ -73,7 +73,7 @@ import com.mysql.jdbc.log.StandardLogger;
 public class ConnectionTest extends BaseTestCase {
     /**
      * Constructor for ConnectionTest.
-     * 
+     *
      * @param name
      *            the name of the test to run
      */
@@ -83,7 +83,7 @@ public class ConnectionTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -92,7 +92,7 @@ public class ConnectionTest extends BaseTestCase {
 
     /**
      * Tests catalog functionality
-     * 
+     *
      * @throws Exception
      *             if an error occurs
      */
@@ -105,7 +105,7 @@ public class ConnectionTest extends BaseTestCase {
     /**
      * Tests a cluster connection for failover, requires a two-node cluster URL
      * specfied in com.mysql.jdbc.testsuite.ClusterUrl system proeprty.
-     * 
+     *
      * @throws Exception
      */
     public void testClusterConnection() throws Exception {
@@ -522,7 +522,7 @@ public class ConnectionTest extends BaseTestCase {
 
     /**
      * Tests isolation level functionality
-     * 
+     *
      * @throws Exception
      *             if an error occurs
      */
@@ -550,7 +550,7 @@ public class ConnectionTest extends BaseTestCase {
 
     /**
      * Tests the savepoint functionality in MySQL.
-     * 
+     *
      * @throws Exception
      *             if an error occurs.
      */
@@ -612,7 +612,7 @@ public class ConnectionTest extends BaseTestCase {
 
     /**
      * Tests the ability to set the connection collation via properties.
-     * 
+     *
      * @throws Exception
      *             if an error occurs or the test fails
      */
@@ -684,7 +684,7 @@ public class ConnectionTest extends BaseTestCase {
 
     /**
      * Tests functionality of the ConnectionPropertiesTransform interface.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -704,7 +704,7 @@ public class ConnectionTest extends BaseTestCase {
 
     /**
      * Tests functionality of using URLs in 'LOAD DATA LOCAL INFILE' statements.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -827,7 +827,7 @@ public class ConnectionTest extends BaseTestCase {
      * Tests whether or not the configuration 'useLocalSessionState' actually
      * prevents non-needed 'set autocommit=', 'set session transaction isolation
      * ...' and 'show variables like tx_isolation' queries.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -856,7 +856,7 @@ public class ConnectionTest extends BaseTestCase {
 
     /**
      * Tests whether re-connect with non-read-only connection can happen.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -961,7 +961,7 @@ public class ConnectionTest extends BaseTestCase {
 
     /**
      * Checks implementation of 'dontTrackOpenResources' property.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */
@@ -1044,7 +1044,7 @@ public class ConnectionTest extends BaseTestCase {
 
     /**
      * Tests setting profileSql on/off in the span of one connection.
-     * 
+     *
      * @throws Exception
      *             if an error occurs.
      */
@@ -1068,7 +1068,7 @@ public class ConnectionTest extends BaseTestCase {
 
     /**
      * Tests if gatherPerfMetrics works.
-     * 
+     *
      * @throws Exception
      *             if the test fails
      */
@@ -1098,7 +1098,7 @@ public class ConnectionTest extends BaseTestCase {
 
     /**
      * Tests if useCompress works.
-     * 
+     *
      * @throws Exception
      *             if the test fails
      */
@@ -1150,7 +1150,7 @@ public class ConnectionTest extends BaseTestCase {
         File testBlobFile = File.createTempFile("cmj-testblob", ".dat");
         testBlobFile.deleteOnExit();
 
-        // TODO: following cleanup doesn't work correctly during concurrent execution of testsuite 
+        // TODO: following cleanup doesn't work correctly during concurrent execution of testsuite
         // cleanupTempFiles(testBlobFile, "cmj-testblob");
 
         BufferedOutputStream bOut = new BufferedOutputStream(new FileOutputStream(testBlobFile));
@@ -1209,7 +1209,7 @@ public class ConnectionTest extends BaseTestCase {
      * we can't set timeouts if we're using localSocketAddress. We try and keep
      * the time down on the testcase by spawning the checking of each interface
      * off into separate threads.
-     * 
+     *
      * @throws Exception
      *             if the test can't use at least one of the local machine's
      *             interfaces to make an outgoing connection to the server.
@@ -1733,7 +1733,7 @@ public class ConnectionTest extends BaseTestCase {
 
     /**
      * IPv6 Connection test.
-     * 
+     *
      * @throws SQLException
      */
     public void testIPv6() throws Exception {
@@ -1770,7 +1770,7 @@ public class ConnectionTest extends BaseTestCase {
 
     /**
      * Test connection property cacheDefaultTimezone.
-     * 
+     *
      * @throws SQLException
      */
     public void testCacheDefaultTimezone() throws Exception {
@@ -1860,7 +1860,7 @@ public class ConnectionTest extends BaseTestCase {
     /**
      * Test the new connection property 'enableEscapeProcessing', as well as the old connection property 'processEscapeCodesForPrepStmts' and interrelation
      * between both.
-     * 
+     *
      * This test uses a StatementInterceptor to capture the query sent to the server and assert whether escape processing has been done in the client side or if
      * the query is sent untouched and escape processing will be done at server side, according to provided connection properties and type of Statement objects
      * in use.

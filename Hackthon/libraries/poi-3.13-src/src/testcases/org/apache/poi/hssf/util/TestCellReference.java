@@ -38,7 +38,7 @@ public final class TestCellReference extends TestCase {
         assertEquals(701, CellReference.convertColStringToIndex("ZZ"));
         assertEquals(702, CellReference.convertColStringToIndex("AAA"));
         assertEquals(18277, CellReference.convertColStringToIndex("ZZZ"));
-        
+
         assertEquals("A", CellReference.convertNumToColString(0));
         assertEquals("B", CellReference.convertNumToColString(1));
         assertEquals("Z", CellReference.convertNumToColString(25));
@@ -46,12 +46,12 @@ public final class TestCellReference extends TestCase {
         assertEquals("ZZ", CellReference.convertNumToColString(701));
         assertEquals("AAA", CellReference.convertNumToColString(702));
         assertEquals("ZZZ", CellReference.convertNumToColString(18277));
-        
+
         // Absolute references are allowed for the string ones
         assertEquals(0, CellReference.convertColStringToIndex("$A"));
         assertEquals(25, CellReference.convertColStringToIndex("$Z"));
         assertEquals(26, CellReference.convertColStringToIndex("$AA"));
-        
+
         // $ sign isn't allowed elsewhere though
         try {
             CellReference.convertColStringToIndex("A$B$");

@@ -36,7 +36,7 @@ import org.apache.poi.POIDataSamples;
 public final class TestFileSystemBugs extends TestCase {
     protected static POIDataSamples _samples = POIDataSamples.getPOIFSInstance();
     protected static POIDataSamples _ssSamples = POIDataSamples.getSpreadSheetInstance();
-    
+
     protected List<NPOIFSFileSystem> openedFSs;
     protected void tearDown() throws Exception {
         if (openedFSs != null && !openedFSs.isEmpty()) {
@@ -66,7 +66,7 @@ public final class TestFileSystemBugs extends TestCase {
         NPOIFSFileSystem nfs = new NPOIFSFileSystem(inps[0]);
         if (openedFSs == null) openedFSs = new ArrayList<NPOIFSFileSystem>();
         openedFSs.add(nfs);
-        
+
         OPOIFSFileSystem ofs = null;
         try {
             ofs = new OPOIFSFileSystem(inps[1]);
@@ -110,7 +110,7 @@ public final class TestFileSystemBugs extends TestCase {
             assertEquals("\u0001CompObj", entry.getName());
         }
     }
-    
+
     /**
      * Ensure that a file with a corrupted property in the
      *  properties table can still be loaded, and the remaining
@@ -123,7 +123,7 @@ public final class TestFileSystemBugs extends TestCase {
             assertEquals(42, root.getEntryCount());
         }
     }
-    
+
     /**
      * With heavily nested documents, ensure we still re-write the same
      */
@@ -132,7 +132,7 @@ public final class TestFileSystemBugs extends TestCase {
             // Record the structure
             Map<String,Integer> entries = new HashMap<String, Integer>();
             fetchSizes("/", root, entries);
-            
+
             // Prepare to copy
             DirectoryNode dest;
             if (root.getNFileSystem() != null) {
@@ -140,10 +140,10 @@ public final class TestFileSystemBugs extends TestCase {
             } else {
                 dest = (new OPOIFSFileSystem()).getRoot();
             }
-            
+
             // Copy over
             EntryUtils.copyNodes(root, dest);
-            
+
             // Re-load, always as NPOIFS
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             if (root.getNFileSystem() != null) {
@@ -153,7 +153,7 @@ public final class TestFileSystemBugs extends TestCase {
             }
             NPOIFSFileSystem read = new NPOIFSFileSystem(
                     new ByteArrayInputStream(baos.toByteArray()));
-            
+
             // Check the structure matches
             checkSizes("/", read.getRoot(), entries);
         }

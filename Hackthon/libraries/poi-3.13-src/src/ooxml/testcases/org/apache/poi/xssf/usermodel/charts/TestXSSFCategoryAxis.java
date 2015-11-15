@@ -23,7 +23,7 @@ import org.apache.poi.ss.usermodel.charts.*;
 import org.apache.poi.xssf.usermodel.*;
 
 public final class TestXSSFCategoryAxis extends TestCase {
- 
+
 	public void testAccessMethods() throws Exception {
 		XSSFWorkbook wb = new XSSFWorkbook();
 		XSSFSheet sheet = wb.createSheet();

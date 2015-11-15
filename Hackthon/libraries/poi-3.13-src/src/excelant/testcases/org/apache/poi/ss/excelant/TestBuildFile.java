@@ -92,27 +92,27 @@ public class TestBuildFile extends BuildFileTest {
         executeTarget("test-udf");
         assertLogContaining("1/1 tests passed");
     }
-    
+
     public void testSetText() {
         executeTarget("test-settext");
         assertLogContaining("1/1 tests passed");
     }
-    
+
     public void testAddHandler() {
         executeTarget("test-addhandler");
         assertLogContaining("Using input file: " + BuildFileTest.getDataDir() + "/spreadsheet/excelant.xls");
         assertLogContaining("Succeeded when evaluating 'MortgageCalculator'!$B$4.");
-        
+
         assertNotNull("The workbook should have been passed to the handler", MockExcelAntWorkbookHandler.workbook);
         assertTrue("The handler should have been executed", MockExcelAntWorkbookHandler.executed);
     }
-    
+
     public void testAddHandlerWrongClass() {
         executeTarget("test-addhandler-wrongclass");
         assertLogContaining("Using input file: " + BuildFileTest.getDataDir() + "/spreadsheet/excelant.xls");
         assertLogContaining("Succeeded when evaluating 'MortgageCalculator'!$B$4.");
     }
-    
+
     public void testAddHandlerFails() {
         expectSpecificBuildException("test-addhandler-fails", "NullPointException", null);
     }

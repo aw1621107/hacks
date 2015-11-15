@@ -29,7 +29,7 @@ import org.apache.poi.hsmf.datatypes.MAPIProperty;
  */
 public class TypesLister {
    public TypesLister() {}
-   
+
    public void listByName(PrintStream out) {
       ArrayList<MAPIProperty> all = new ArrayList<MAPIProperty>(MAPIProperty.getAll());
       Collections.sort(all, new Comparator<MAPIProperty>() {
@@ -54,22 +54,22 @@ public class TypesLister {
       for(MAPIProperty attr : list) {
          String id = Integer.toHexString(attr.id);
          while(id.length() < 4) { id = "0"+id; }
-         
+
          int typeId = attr.usualType.getId();
          String typeIdStr = Integer.toString(typeId);
          if (typeId > 0) {
             typeIdStr = typeIdStr + " / 0x" + Integer.toHexString(typeId);
          }
-         
+
          out.println("0x" + id + " - " + attr.name);
-         out.println("   " + attr.id + " - " + attr.usualType.getName() + 
+         out.println("   " + attr.id + " - " + attr.usualType.getName() +
                      " (" + typeIdStr + ") - " + attr.mapiProperty);
       }
    }
-   
+
    public static void main(String[] args) {
       TypesLister lister = new TypesLister();
-      
+
       lister.listByName(System.out);
       System.out.println();
       lister.listById(System.out);

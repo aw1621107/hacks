@@ -32,7 +32,7 @@ public class DrawFreeformShape extends DrawAutoShape {
     public DrawFreeformShape(FreeformShape<?,?> shape) {
         super(shape);
     }
-    
+
     protected Collection<Outline> computeOutlines(Graphics2D graphics) {
         List<Outline> lst = new ArrayList<Outline>();
         java.awt.Shape sh = getShape().getPath();

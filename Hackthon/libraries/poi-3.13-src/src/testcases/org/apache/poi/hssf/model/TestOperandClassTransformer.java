@@ -27,7 +27,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 /**
  * Tests specific formula examples in <tt>OperandClassTransformer</tt>.
- * 
+ *
  * @author Josh Micich
  */
 public final class TestOperandClassTransformer extends TestCase {
@@ -37,7 +37,7 @@ public final class TestOperandClassTransformer extends TestCase {
 		assertNotNull("Ptg array should not be null", result);
 		return result;
 	}
-	
+
 	public void testMdeterm() {
 		String formula = "MDETERM(ABS(A1))";
 		Ptg[] ptgs = parseFormula(formula);
@@ -49,11 +49,11 @@ public final class TestOperandClassTransformer extends TestCase {
 
 	/**
 	 * In the example: <code>INDEX(PI(),1)</code>, Excel encodes PI() as 'array'.  It is not clear
-	 * what rule justifies this. POI currently encodes it as 'value' which Excel(2007) seems to 
-	 * tolerate. Changing the metadata for INDEX to have first parameter as 'array' class breaks 
-	 * other formulas involving INDEX.  It seems like a special case needs to be made.  Perhaps an 
+	 * what rule justifies this. POI currently encodes it as 'value' which Excel(2007) seems to
+	 * tolerate. Changing the metadata for INDEX to have first parameter as 'array' class breaks
+	 * other formulas involving INDEX.  It seems like a special case needs to be made.  Perhaps an
 	 * important observation is that INDEX is one of very few functions that returns 'reference' type.
-	 * 
+	 *
 	 * This test has been added but disabled in order to document this issue.
 	 */
 	public void DISABLED_testIndexPi1() {
@@ -78,7 +78,7 @@ public final class TestOperandClassTransformer extends TestCase {
 		confirmTokenClass(ptgs, 0, Ptg.CLASS_VALUE);
 		confirmTokenClass(ptgs, 3, Ptg.CLASS_VALUE);
 	}
-	
+
 	/**
 	 * A cell ref passed to a function expecting type V should be converted to type V
 	 */
@@ -88,7 +88,7 @@ public final class TestOperandClassTransformer extends TestCase {
 		Ptg[] ptgs = parseFormula(formula);
 		confirmTokenClass(ptgs, 0, Ptg.CLASS_VALUE);
 	}
-	
+
 	public void testComplexIRR_bug45041() {
 		String formula = "(1+IRR(SUMIF(A:A,ROW(INDIRECT(MIN(A:A)&\":\"&MAX(A:A))),B:B),0))^365-1";
 		Ptg[] ptgs = parseFormula(formula);

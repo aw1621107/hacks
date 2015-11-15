@@ -419,7 +419,7 @@ public class CharsetTest extends BaseTestCase {
 
     /**
      * Prints static mappings for analysis.
-     * 
+     *
      * @throws Exception
      */
     public void testCharsetMapping() throws Exception {
@@ -474,7 +474,7 @@ public class CharsetTest extends BaseTestCase {
 
     /**
      * Test for the gb18030 character set
-     * 
+     *
      * @throws Exception
      */
     public void testGB18030() throws Exception {

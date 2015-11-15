@@ -56,7 +56,7 @@ public class MultiHostConnectionTest extends BaseTestCase {
 
     /**
      * Creates a new MultiHostConnectionTest.
-     * 
+     *
      * @param name
      *            the name of the test
      */
@@ -66,7 +66,7 @@ public class MultiHostConnectionTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -75,7 +75,7 @@ public class MultiHostConnectionTest extends BaseTestCase {
 
     /**
      * Asserts the execution and return for a simple single value query.
-     * 
+     *
      * @param testStmt
      *            The statement instance that runs the query.
      * @param query
@@ -93,7 +93,7 @@ public class MultiHostConnectionTest extends BaseTestCase {
 
     /**
      * Asserts the SQLException thrown for connection commit() or rollback();
-     * 
+     *
      * @param testConn
      *            The connection instance where to issue the command.
      * @param command
@@ -116,7 +116,7 @@ public class MultiHostConnectionTest extends BaseTestCase {
 
     /**
      * Asserts the SQLException thrown for a query execution.
-     * 
+     *
      * @param testStmt
      *            The statement instance that runs the query.
      * @param query
@@ -135,7 +135,7 @@ public class MultiHostConnectionTest extends BaseTestCase {
 
     /**
      * Asserts the most recent history of connection attempts from the global data in UnreliableSocketFactory.
-     * 
+     *
      * @param expectedConnectionsHistory
      *            The list of expected events. Use CO_OK(String) and CO_FAIL(String) to build proper syntax for host identification.
      */
@@ -263,7 +263,7 @@ public class MultiHostConnectionTest extends BaseTestCase {
 
     /**
      * Tests a failover transition.
-     * 
+     *
      * @param fromHost
      *            The host where initially connected to. In order to connect to an host other than the primary all previous hosts must be downed (pinpoint them
      *            in the 'downedHosts' set).
@@ -341,7 +341,7 @@ public class MultiHostConnectionTest extends BaseTestCase {
      * - [/HOST_1 : /HOST_2 : /HOST_3]
      * - [/HOST_1 : /HOST_2 : \HOST_3] --> HOST_2
      * - [/HOST_1 : \HOST_2 : \HOST_3] --> HOST_1
-     * 
+     *
      * [Legend: "/HOST_n" --> HOST_n up; "\HOST_n" --> HOST_n down]
      */
     public void testFailoverDefaultSettings() throws Exception {
@@ -468,7 +468,7 @@ public class MultiHostConnectionTest extends BaseTestCase {
      * - [/HOST_1 : /HOST_2 : /HOST_3]
      * - [/HOST_1 : /HOST_2 : \HOST_3] --> HOST_2
      * - [/HOST_1 : \HOST_2 : \HOST_3] --> HOST_1
-     * 
+     *
      * [Legend: "/HOST_n" --> HOST_n up; "\HOST_n" --> HOST_n down]
      */
     public void testFailoverCombinations() throws Exception {
@@ -622,7 +622,7 @@ public class MultiHostConnectionTest extends BaseTestCase {
      * - [\HOST_1 : /HOST_2 : \HOST_3] --> HOST_2
      * - [/HOST_1 : \HOST_2 : \HOST_3] --> HOST_1
      * - [\HOST_1 : \HOST_2 : /HOST_3] --> HOST_3
-     * 
+     *
      * [Legend: "/HOST_n" --> HOST_n up; "\HOST_n" --> HOST_n down]
      */
     public void testFailoverReadOnly() throws Exception {
@@ -724,7 +724,7 @@ public class MultiHostConnectionTest extends BaseTestCase {
      * - [/HOST_1 : /HOST_2 : /HOST_3] --> HOST_1
      * - [\HOST_1 : \HOST_2 : /HOST_3] --> HOST_3
      * - [/HOST_1 : /HOST_2 : \HOST_3] --> HOST_1 vs HOST_2
-     * 
+     *
      * [Legend: "/HOST_n" --> HOST_n up; "\HOST_n" --> HOST_n down]
      */
     public void testFailoverQueriesBeforeRetryMaster() throws Exception {
@@ -808,7 +808,7 @@ public class MultiHostConnectionTest extends BaseTestCase {
      * - [/HOST_1 : /HOST_2 : /HOST_3] --> HOST_1
      * - [\HOST_1 : \HOST_2 : /HOST_3] --> HOST_3
      * - [/HOST_1 : /HOST_2 : \HOST_3] --> HOST_1 vs HOST_2
-     * 
+     *
      * [Legend: "/HOST_n" --> HOST_n up; "\HOST_n" --> HOST_n down]
      */
     public void testFailoverSecondsBeforeRetryMaster() throws Exception {
@@ -904,7 +904,7 @@ public class MultiHostConnectionTest extends BaseTestCase {
      * - [/HOST_1 : \HOST_2 : /HOST_3] --> HOST_3
      * - [/HOST_1 : /HOST_2 : \HOST_3] --> HOST_1
      * - /HOST_2 & \HOST_3
-     * 
+     *
      * The automatic fall back only happens at transaction boundaries and at least 'queriesBeforeRetryMaster' or 'secondsBeforeRetryMaster' is greater than 0.
      * [Legend: "/HOST_n" --> HOST_n up; "\HOST_n" --> HOST_n down]
      */
@@ -1064,7 +1064,7 @@ public class MultiHostConnectionTest extends BaseTestCase {
      * - [/HOST_1 : \HOST_2 : \HOST_3] --> HOST_1
      * - [/HOST_1 : \HOST_2 : /HOST_3]
      * - [\HOST_1 : \HOST_2 : /HOST_3] --> HOST_3
-     * 
+     *
      * [Legend: "/HOST_n" --> HOST_n up; "\HOST_n" --> HOST_n down]
      */
     public void testFailoverAutoReconnect() throws Exception {
@@ -1194,7 +1194,7 @@ public class MultiHostConnectionTest extends BaseTestCase {
      * - [\HOST_1 : /HOST_2 : \HOST_3] --> HOST_2
      * - [/HOST_1 : \HOST_2 : \HOST_3] --> HOST_1
      * - [\HOST_1 : \HOST_2 : /HOST_3] --> HOST_3
-     * 
+     *
      * [Legend: "/HOST_n" --> HOST_n up; "\HOST_n" --> HOST_n down]
      */
     public void testFailoverConnectionSynchronization() throws Exception {

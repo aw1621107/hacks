@@ -153,7 +153,7 @@ public final class TxMasterStyleAtom extends RecordAtom {
 
             head = LittleEndian.getInt(_data, pos);
             pos += LittleEndian.INT_SIZE;
-            
+
             pos += prprops.buildTextPropList( head, _data, pos);
             paragraphStyles.add(prprops);
 
@@ -187,7 +187,7 @@ public final class TxMasterStyleAtom extends RecordAtom {
      */
 //    protected TextProp[] getCharacterProps(int type, int level){
 //        return StyleTextPropAtom.characterTextPropTypes;
-//        return (level != 0 || type >= MAX_INDENT) 
+//        return (level != 0 || type >= MAX_INDENT)
 //            ? StyleTextPropAtom.characterTextPropTypes
 //            : characterSpecialPropTypes;
 //    }

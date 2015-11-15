@@ -102,7 +102,7 @@ public final class HSSFCellStyle implements CellStyle {
     }
 
     // we keep the cached data in ThreadLocal members in order to
-    // avoid multi-threading issues when different workbooks are accessed in 
+    // avoid multi-threading issues when different workbooks are accessed in
     // multiple threads at the same time
     private static ThreadLocal<Short> lastDateFormat = new ThreadLocal<Short>() {
         protected Short initialValue() {
@@ -315,7 +315,7 @@ public final class HSSFCellStyle implements CellStyle {
     {
       if (rotation == 0xff) {
           // Special cases for vertically aligned text
-      } 
+      }
       else if ((rotation < 0)&&(rotation >= -90)) {
         //Take care of the funny 4th quadrant issue
         //The 4th quadrant (-1 to -90) is stored as (91 to 180)
@@ -737,7 +737,7 @@ public final class HSSFCellStyle implements CellStyle {
 		}
     	return result;
     }
-    
+
     public HSSFColor getFillBackgroundColorColor() {
        HSSFPalette pallette = new HSSFPalette(
              _workbook.getCustomPalette()
@@ -826,7 +826,7 @@ public final class HSSFCellStyle implements CellStyle {
     public boolean getShrinkToFit() {
     	return _format.getShrinkToFit();
     }
-	
+
     /**
      * Get the reading order, for RTL/LTR ordering of
      *  the text.
@@ -849,7 +849,7 @@ public final class HSSFCellStyle implements CellStyle {
     public void setReadingOrder(short order) {
         _format.setReadingOrder(order);
     }
-    
+
     /**
      * Verifies that this style belongs to the supplied Workbook.
      * Will throw an exception if it belongs to a different one.
@@ -894,7 +894,7 @@ public final class HSSFCellStyle implements CellStyle {
             lastDateFormat.set(Short.MIN_VALUE);
             lastFormats.set(null);
             getDataFormatStringCache.set(null);
-    	   
+
 			// Then we need to clone the format string,
 			//  and update the format record for this
     		short fmt = (short)_workbook.createFormat(source.getDataFormatString() );
@@ -941,5 +941,5 @@ public final class HSSFCellStyle implements CellStyle {
 		}
 		return false;
 	}
-	
+
 }

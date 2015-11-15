@@ -31,7 +31,7 @@ import java.sql.SQLException;
 public class Driver extends com.mysql.jdbc.Driver {
     /**
      * Creates a new instance of Driver
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs.
      */

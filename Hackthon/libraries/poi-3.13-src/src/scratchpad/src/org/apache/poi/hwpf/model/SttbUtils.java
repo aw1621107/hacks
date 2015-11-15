@@ -23,7 +23,7 @@ import org.apache.poi.util.Internal;
 
 /**
  * Utils class for storing and reading "STring TaBle stored in File"
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 @Internal

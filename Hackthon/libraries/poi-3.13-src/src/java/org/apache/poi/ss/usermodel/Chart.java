@@ -32,7 +32,7 @@ import org.apache.poi.ss.usermodel.charts.ChartAxisFactory;
  * @author Roman Kashitsyn
  */
 public interface Chart extends ManuallyPositionable {
-	
+
 	/**
 	 * @return an appropriate ChartDataFactory implementation
 	 */

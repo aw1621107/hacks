@@ -38,7 +38,7 @@ public class WorkdayCalculator {
 
     /**
      * Calculate how many workdays are there between a start and an end date, as excel representations, considering a range of holidays.
-     * 
+     *
      * @param start start date.
      * @param end end date.
      * @param holidays an array of holidays.
@@ -53,7 +53,7 @@ public class WorkdayCalculator {
 
     /**
      * Calculate the workday past x workdays from a starting date, considering a range of holidays.
-     * 
+     *
      * @param start start date.
      * @param workdays number of workdays to be past from starting date.
      * @param holidays an array of holidays.
@@ -76,10 +76,10 @@ public class WorkdayCalculator {
 		}
 		return endDate.getTime();
 	}
-    
+
     /**
      * Calculates how many days of week past between a start and an end date.
-     * 
+     *
      * @param start start date.
      * @param end end date.
      * @param dayOfWeek a day of week as represented by {@link Calendar} constants.
@@ -101,7 +101,7 @@ public class WorkdayCalculator {
 
     /**
      * Calculates how many holidays in a list are workdays, considering an interval of dates.
-     * 
+     *
      * @param start start date.
      * @param end end date.
      * @param holidays an array of holidays.

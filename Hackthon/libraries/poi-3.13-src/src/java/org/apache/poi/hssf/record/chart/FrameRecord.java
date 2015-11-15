@@ -26,7 +26,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The frame record indicates whether there is a border around the displayed text of a chart.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class FrameRecord extends StandardRecord {
@@ -60,13 +60,13 @@ public final class FrameRecord extends StandardRecord {
         buffer.append("    .borderType           = ")
             .append("0x").append(HexDump.toHex(  getBorderType ()))
             .append(" (").append( getBorderType() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .options              = ")
             .append("0x").append(HexDump.toHex(  getOptions ()))
             .append(" (").append( getOptions() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
-        buffer.append("         .autoSize                 = ").append(isAutoSize()).append('\n'); 
-        buffer.append("         .autoPosition             = ").append(isAutoPosition()).append('\n'); 
+        buffer.append(System.getProperty("line.separator"));
+        buffer.append("         .autoSize                 = ").append(isAutoSize()).append('\n');
+        buffer.append("         .autoPosition             = ").append(isAutoPosition()).append('\n');
 
         buffer.append("[/FRAME]\n");
         return buffer.toString();
@@ -88,7 +88,7 @@ public final class FrameRecord extends StandardRecord {
 
     public Object clone() {
         FrameRecord rec = new FrameRecord();
-    
+
         rec.field_1_borderType = field_1_borderType;
         rec.field_2_options = field_2_options;
         return rec;
@@ -100,7 +100,7 @@ public final class FrameRecord extends StandardRecord {
     /**
      * Get the border type field for the Frame record.
      *
-     * @return  One of 
+     * @return  One of
      *        BORDER_TYPE_REGULAR
      *        BORDER_TYPE_SHADOW
      */
@@ -113,7 +113,7 @@ public final class FrameRecord extends StandardRecord {
      * Set the border type field for the Frame record.
      *
      * @param field_1_borderType
-     *        One of 
+     *        One of
      *        BORDER_TYPE_REGULAR
      *        BORDER_TYPE_SHADOW
      */

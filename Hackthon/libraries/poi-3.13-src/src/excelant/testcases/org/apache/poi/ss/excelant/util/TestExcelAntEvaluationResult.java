@@ -25,48 +25,48 @@ import org.junit.Test;
 
 public class TestExcelAntEvaluationResult {
 	private ExcelAntEvaluationResult fixture;
-	
+
 	private boolean completedWithError = false;
     private boolean passed = false;
-    private double retValue  = 1.1; 
-    private String errMessage = "error message";  
-    private double delta = 2.2; 
+    private double retValue  = 1.1;
+    private String errMessage = "error message";
+    private double delta = 2.2;
     private String cellId = "testCell!$F$1";
-    
+
     @Before
 	public void setUp() {
 		fixture = new ExcelAntEvaluationResult(completedWithError,
-				                                passed, 
+				                                passed,
 				                                retValue,
-				                                errMessage, 
+				                                errMessage,
 				                                delta,
 				                                cellId);
 	}
-	
+
     @After
 	public void tearDown() {
 		fixture = null;
 	}
-	
+
     @Test
 	public void testCompletedWithErrorMessage() {
 		String errMsg = fixture.getErrorMessage();
  		assertNotNull(errMsg);
  		assertEquals(errMsg, errMessage);
 	}
-	
+
     @Test
 	public void testPassed() {
 		boolean passedValue = fixture.didTestPass();
 		assertEquals(passedValue, passed);
 	}
-	
+
     @Test
 	public void testDelta() {
 		double deltaValue = fixture.getDelta();
 		assertEquals(deltaValue, delta, 0.0);
 	}
-	
+
     @Test
 	public void testCellId() {
 		String cellIdValue = fixture.getCellName();

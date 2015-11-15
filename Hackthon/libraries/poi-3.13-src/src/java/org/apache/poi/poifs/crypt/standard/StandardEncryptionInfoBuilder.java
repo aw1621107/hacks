@@ -27,7 +27,7 @@ import org.apache.poi.poifs.crypt.HashAlgorithm;
 import org.apache.poi.util.LittleEndianInput;
 
 public class StandardEncryptionInfoBuilder implements EncryptionInfoBuilder {
-    
+
     EncryptionInfo info;
     StandardEncryptionHeader header;
     StandardEncryptionVerifier verifier;
@@ -39,7 +39,7 @@ public class StandardEncryptionInfoBuilder implements EncryptionInfoBuilder {
      */
     public void initialize(EncryptionInfo info, LittleEndianInput dis) throws IOException {
         this.info = info;
-        
+
         /* int hSize = */ dis.readInt();
         header = new StandardEncryptionHeader(dis);
         verifier = new StandardEncryptionVerifier(dis, header);
@@ -48,7 +48,7 @@ public class StandardEncryptionInfoBuilder implements EncryptionInfoBuilder {
             decryptor = new StandardDecryptor(this);
         }
     }
-    
+
     /**
      * initialize the builder from scratch
      */
@@ -63,7 +63,7 @@ public class StandardEncryptionInfoBuilder implements EncryptionInfoBuilder {
             cipherAlgorithm != CipherAlgorithm.aes256) {
             throw new EncryptedDocumentException("Standard encryption only supports AES128/192/256.");
         }
-        
+
         if (hashAlgorithm == null) {
             hashAlgorithm = HashAlgorithm.sha1;
         }
@@ -110,7 +110,7 @@ public class StandardEncryptionInfoBuilder implements EncryptionInfoBuilder {
     public StandardEncryptor getEncryptor() {
         return encryptor;
     }
-    
+
     public EncryptionInfo getEncryptionInfo() {
         return info;
     }

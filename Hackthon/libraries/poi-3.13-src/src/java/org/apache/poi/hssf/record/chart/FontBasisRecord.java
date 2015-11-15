@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The font basis record stores various font metrics.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class FontBasisRecord extends StandardRecord {
@@ -58,23 +58,23 @@ public final class FontBasisRecord extends StandardRecord {
         buffer.append("    .xBasis               = ")
             .append("0x").append(HexDump.toHex(  getXBasis ()))
             .append(" (").append( getXBasis() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .yBasis               = ")
             .append("0x").append(HexDump.toHex(  getYBasis ()))
             .append(" (").append( getYBasis() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .heightBasis          = ")
             .append("0x").append(HexDump.toHex(  getHeightBasis ()))
             .append(" (").append( getHeightBasis() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .scale                = ")
             .append("0x").append(HexDump.toHex(  getScale ()))
             .append(" (").append( getScale() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .indexToFontTable     = ")
             .append("0x").append(HexDump.toHex(  getIndexToFontTable ()))
             .append(" (").append( getIndexToFontTable() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/FBI]\n");
         return buffer.toString();
@@ -99,7 +99,7 @@ public final class FontBasisRecord extends StandardRecord {
 
     public Object clone() {
         FontBasisRecord rec = new FontBasisRecord();
-    
+
         rec.field_1_xBasis = field_1_xBasis;
         rec.field_2_yBasis = field_2_yBasis;
         rec.field_3_heightBasis = field_3_heightBasis;

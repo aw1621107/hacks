@@ -34,10 +34,10 @@ import org.apache.poi.xssf.usermodel.XSSFRichTextString;
  */
 public class SXSSFCreationHelper implements CreationHelper {
     private static POILogger logger = POILogFactory.getLogger(SXSSFCreationHelper.class);
-    
+
     private SXSSFWorkbook wb;
     private XSSFCreationHelper helper;
-    
+
     public SXSSFCreationHelper(SXSSFWorkbook workbook) {
         this.helper = new XSSFCreationHelper(workbook.getXSSFWorkbook());
         this.wb = workbook;

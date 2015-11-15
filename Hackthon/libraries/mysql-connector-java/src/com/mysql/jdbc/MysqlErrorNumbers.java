@@ -941,7 +941,7 @@ public final class MysqlErrorNumbers {
     public final static int ER_QUERY_TIMEOUT = 1907; //SQLSTATE: HY000 Message: Query execution was interrupted, max_statement_time exceeded; was introduced in 5.7.4.
     public final static int ER_NON_RO_SELECT_DISABLE_TIMER = 1908; //SQLSTATE: HY000 Message: Select is not a read only statement, disabling timer; was introduced in 5.7.4.
     public final static int ER_DUP_LIST_ENTRY = 1909; //SQLSTATE: HY000 Message: Duplicate entry '%s'.; was introduced in 5.7.4.
-    public final static int ER_SQL_MODE_NO_EFFECT = 1910; //SQLSTATE: HY000 Message: '%s' mode no longer has any effect. Use STRICT_ALL_TABLES or STRICT_TRANS_TABLES instead.; was introduced in 5.7.4. 
+    public final static int ER_SQL_MODE_NO_EFFECT = 1910; //SQLSTATE: HY000 Message: '%s' mode no longer has any effect. Use STRICT_ALL_TABLES or STRICT_TRANS_TABLES instead.; was introduced in 5.7.4.
 
     private MysqlErrorNumbers() {
         // prevent instantiation

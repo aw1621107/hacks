@@ -27,7 +27,7 @@ import org.apache.poi.util.HexRead;
 import org.apache.poi.util.LittleEndianByteArrayOutputStream;
 import org.apache.poi.util.LittleEndianInput;
 /**
- * 
+ *
  * @author Josh Micich
  */
 public final class TestConstantValueParser extends TestCase {
@@ -44,7 +44,7 @@ public final class TestConstantValueParser extends TestCase {
 		"01 9A 99 99 99 99 99 F1 3F " +
 		"02 0B 00 00 53 61 6D 70 6C 65 20 74 65 78 74 " +
 		"10 07 00 00 00 00 00 00 00");
-	
+
 	public void testGetEncodedSize() {
 		int actual = ConstantValueParser.getEncodedSize(SAMPLE_VALUES);
 		assertEquals(51, actual);
@@ -52,16 +52,16 @@ public final class TestConstantValueParser extends TestCase {
 	public void testEncode() {
 		int size = ConstantValueParser.getEncodedSize(SAMPLE_VALUES);
 		byte[] data = new byte[size];
-		
+
 		ConstantValueParser.encode(new LittleEndianByteArrayOutputStream(data, 0), SAMPLE_VALUES);
-		
+
 		if (!Arrays.equals(data, SAMPLE_ENCODING)) {
 			fail("Encoding differs");
 		}
 	}
 	public void testDecode() {
 		LittleEndianInput in = TestcaseRecordInputStream.createLittleEndian(SAMPLE_ENCODING);
-		
+
 		Object[] values = ConstantValueParser.parse(in, 4);
 		for (int i = 0; i < values.length; i++) {
 			if(!isEqual(SAMPLE_VALUES[i], values[i])) {

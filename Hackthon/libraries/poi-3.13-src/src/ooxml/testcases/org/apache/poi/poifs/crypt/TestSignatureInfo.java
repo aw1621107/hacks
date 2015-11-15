@@ -18,9 +18,9 @@
 /* ====================================================================
    This product contains an ASLv2 licensed version of the OOXML signer
    package from the eID Applet project
-   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt  
+   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt
    Copyright (C) 2008-2014 FedICT.
-   ================================================================= */ 
+   ================================================================= */
 package org.apache.poi.poifs.crypt;
 
 import static org.junit.Assert.assertEquals;
@@ -93,24 +93,24 @@ public class TestSignatureInfo {
     private static Calendar cal;
     private KeyPair keyPair = null;
     private X509Certificate x509 = null;
-    
+
     @BeforeClass
     public static void initBouncy() throws IOException {
         CryptoFunctions.registerBouncyCastle();
 
-        /*** TODO : set cal to now ... only set to fixed date for debugging ... */ 
+        /*** TODO : set cal to now ... only set to fixed date for debugging ... */
         cal = LocaleUtil.getLocaleCalendar(LocaleUtil.TIMEZONE_UTC);
 //        cal.set(2014, 7, 6, 21, 42, 12);
 //        cal.clear(Calendar.MILLISECOND);
 
-        // don't run this test when we are using older Xerces as it triggers an XML Parser backwards compatibility issue 
+        // don't run this test when we are using older Xerces as it triggers an XML Parser backwards compatibility issue
         // in the xmlsec jar file
         String additionalJar = System.getProperty("additionaljar");
         //System.out.println("Having: " + additionalJar);
-        Assume.assumeTrue("Not running TestSignatureInfo because we are testing with additionaljar set to " + additionalJar, 
+        Assume.assumeTrue("Not running TestSignatureInfo because we are testing with additionaljar set to " + additionalJar,
                 additionalJar == null || additionalJar.trim().length() == 0);
     }
-    
+
     @Test
     public void office2007prettyPrintedRels() throws Exception {
         OPCPackage pkg = OPCPackage.open(testdata.getFile("office2007prettyPrintedRels.docx"), PackageAccess.READ);
@@ -125,16 +125,16 @@ public class TestSignatureInfo {
             pkg.close();
         }
     }
-    
+
     @Test
     public void getSignerUnsigned() throws Exception {
-        String testFiles[] = { 
+        String testFiles[] = {
             "hello-world-unsigned.docx",
             "hello-world-unsigned.pptx",
             "hello-world-unsigned.xlsx",
             "hello-world-office-2010-technical-preview-unsigned.docx"
         };
-        
+
         for (String testFile : testFiles) {
             OPCPackage pkg = OPCPackage.open(testdata.getFile(testFile), PackageAccess.READ);
             SignatureConfig sic = new SignatureConfig();
@@ -153,10 +153,10 @@ public class TestSignatureInfo {
             assertTrue(result.isEmpty());
         }
     }
-    
+
     @Test
     public void getSigner() throws Exception {
-        String testFiles[] = { 
+        String testFiles[] = {
             "hyperlink-example-signed.docx",
             "hello-world-signed.docx",
             "hello-world-signed.pptx",
@@ -168,7 +168,7 @@ public class TestSignatureInfo {
             "Office2010-SP1-XAdES-X-L.docx",
             "signed.docx",
         };
-        
+
         for (String testFile : testFiles) {
             OPCPackage pkg = OPCPackage.open(testdata.getFile(testFile), PackageAccess.READ);
             try {
@@ -182,12 +182,12 @@ public class TestSignatureInfo {
                         result.add(sp.getSigner());
                     }
                 }
-    
+
                 assertNotNull(result);
                 assertEquals("test-file: "+testFile, 1, result.size());
                 X509Certificate signer = result.get(0);
                 LOG.log(POILogger.DEBUG, "signer: " + signer.getSubjectX500Principal());
-    
+
                 boolean b = si.verifySignature();
                 assertTrue("test-file: "+testFile, b);
                 pkg.revert();
@@ -212,14 +212,14 @@ public class TestSignatureInfo {
                     result.add(sp.getSigner());
                 }
             }
-    
+
             assertNotNull(result);
             assertEquals("test-file: "+testFile, 2, result.size());
             X509Certificate signer1 = result.get(0);
             X509Certificate signer2 = result.get(1);
             LOG.log(POILogger.DEBUG, "signer 1: " + signer1.getSubjectX500Principal());
             LOG.log(POILogger.DEBUG, "signer 2: " + signer2.getSubjectX500Principal());
-    
+
             boolean b = si.verifySignature();
             assertTrue("test-file: "+testFile, b);
             pkg.revert();
@@ -227,7 +227,7 @@ public class TestSignatureInfo {
             pkg.close();
         }
     }
-    
+
     @Test
     public void testSignSpreadsheet() throws Exception {
         String testFile = "hello-world-unsigned.xlsx";
@@ -243,7 +243,7 @@ public class TestSignatureInfo {
         @SuppressWarnings("resource")
         OPCPackage pkg = OPCPackage.open(copy(testdata.getFile(testFile)), PackageAccess.READ_WRITE);
         sign(pkg, "Test", "CN=Test", 1);
-        
+
         // manipulate
         XSSFWorkbook wb = new XSSFWorkbook(pkg);
         wb.setSheetName(0, "manipulated");
@@ -253,8 +253,8 @@ public class TestSignatureInfo {
         m.invoke(wb);
 
         // todo: test a manipulation on a package part, which is not signed
-        // ... maybe in combination with #56164 
-        
+        // ... maybe in combination with #56164
+
         // validate
         SignatureConfig sic = new SignatureConfig();
         sic.setOpcPackage(pkg);
@@ -262,10 +262,10 @@ public class TestSignatureInfo {
         si.setSignatureConfig(sic);
         boolean b = si.verifySignature();
         assertFalse("signature should be broken", b);
-        
+
         wb.close();
     }
-    
+
     @Test
     public void testSignSpreadsheetWithSignatureInfo() throws Exception {
         initKeyPair("Test", "CN=Test");
@@ -297,7 +297,7 @@ public class TestSignatureInfo {
 
         initKeyPair("Test", "CN=Test");
         final X509CRL crl = PkiTestUtils.generateCrl(x509, keyPair.getPrivate());
-        
+
         // setup
         SignatureConfig signatureConfig = new SignatureConfig();
         signatureConfig.setOpcPackage(pkg);
@@ -311,15 +311,15 @@ public class TestSignatureInfo {
         certificateChain.add(x509);
         certificateChain.add(x509);
         signatureConfig.setSigningCertificateChain(certificateChain);
-        
+
         signatureConfig.addSignatureFacet(new EnvelopedSignatureFacet());
         signatureConfig.addSignatureFacet(new KeyInfoSignatureFacet());
         signatureConfig.addSignatureFacet(new XAdESSignatureFacet());
         signatureConfig.addSignatureFacet(new XAdESXLSignatureFacet());
-        
+
         // check for internet, no error means it works
         boolean mockTsp = (getAccessError("http://timestamp.comodoca.com/rfc3161", true, 10000) != null);
-        
+
         // http://timestamping.edelweb.fr/service/tsp
         // http://tsa.belgium.be/connect
         // http://timestamp.comodoca.com/authenticode
@@ -328,7 +328,7 @@ public class TestSignatureInfo {
         signatureConfig.setTspUrl("http://timestamp.comodoca.com/rfc3161");
         signatureConfig.setTspRequestPolicy(null); // comodoca request fails, if default policy is set ...
         signatureConfig.setTspOldProtocol(false);
-        
+
         //set proxy info if any
         String proxy = System.getProperty("http_proxy");
         if (proxy != null && proxy.trim().length() > 0) {
@@ -340,7 +340,7 @@ public class TestSignatureInfo {
                 @Override
                 public byte[] timeStamp(byte[] data, RevocationData revocationData) throws Exception {
                     revocationData.addCRL(crl);
-                    return "time-stamp-token".getBytes();                
+                    return "time-stamp-token".getBytes();
                 }
                 @Override
                 public void setSignatureConfig(SignatureConfig config) {
@@ -362,7 +362,7 @@ public class TestSignatureInfo {
             signatureConfig.setTspValidator(tspValidator);
             signatureConfig.setTspOldProtocol(signatureConfig.getTspUrl().contains("edelweb"));
         }
-        
+
         final RevocationData revocationData = new RevocationData();
         revocationData.addCRL(crl);
         OCSPResp ocspResp = PkiTestUtils.createOcspResp(x509, false,
@@ -392,19 +392,19 @@ public class TestSignatureInfo {
             }
             assertTrue("Only allowing ConnectException with 'timed out' as message here, but had: " + e, e.getCause().getMessage().contains("timed out"));
         }
-        
+
         // verify
         Iterator<SignaturePart> spIter = si.getSignatureParts().iterator();
         assertTrue(spIter.hasNext());
         SignaturePart sp = spIter.next();
         boolean valid = sp.validate();
         assertTrue(valid);
-        
+
         SignatureDocument sigDoc = sp.getSignatureDocument();
-        String declareNS = 
+        String declareNS =
             "declare namespace xades='http://uri.etsi.org/01903/v1.3.2#'; "
           + "declare namespace ds='http://www.w3.org/2000/09/xmldsig#'; ";
-        
+
         String digestValXQuery = declareNS +
             "$this/ds:Signature/ds:SignedInfo/ds:Reference";
         for (ReferenceType rt : (ReferenceType[])sigDoc.selectPath(digestValXQuery)) {
@@ -475,7 +475,7 @@ public class TestSignatureInfo {
             }
         }
     }
-    
+
     @Test
     public void testCertChain() throws Exception {
         KeyStore keystore = KeyStore.getInstance("PKCS12");
@@ -492,7 +492,7 @@ public class TestSignatureInfo {
         }
         x509 = certChain.get(0);
         keyPair = new KeyPair(x509.getPublicKey(), (PrivateKey)key);
-        
+
         String testFile = "hello-world-unsigned.xlsx";
         OPCPackage pkg = OPCPackage.open(copy(testdata.getFile(testFile)), PackageAccess.READ_WRITE);
 
@@ -503,12 +503,12 @@ public class TestSignatureInfo {
         signatureConfig.setExecutionTime(oldCal.getTime());
         signatureConfig.setDigestAlgo(HashAlgorithm.sha1);
         signatureConfig.setOpcPackage(pkg);
-        
+
         SignatureInfo si = new SignatureInfo();
         si.setSignatureConfig(signatureConfig);
 
         si.confirmSignature();
-        
+
         for (SignaturePart sp : si.getSignatureParts()){
             assertTrue("Could not validate", sp.validate());
             X509Certificate signer = sp.getSigner();
@@ -516,7 +516,7 @@ public class TestSignatureInfo {
             List<X509Certificate> certChainRes = sp.getCertChain();
             assertEquals(3, certChainRes.size());
         }
-        
+
         pkg.close();
     }
 
@@ -530,18 +530,18 @@ public class TestSignatureInfo {
         signatureConfig.setSigningCertificateChain(Collections.singletonList(x509));
 
         HashAlgorithm testAlgo[] = { HashAlgorithm.sha224, HashAlgorithm.sha256
-            , HashAlgorithm.sha384, HashAlgorithm.sha512, HashAlgorithm.ripemd160 }; 
-        
+            , HashAlgorithm.sha384, HashAlgorithm.sha512, HashAlgorithm.ripemd160 };
+
         for (HashAlgorithm ha : testAlgo) {
             OPCPackage pkg = null;
             try {
                 signatureConfig.setDigestAlgo(ha);
                 pkg = OPCPackage.open(copy(testdata.getFile(testFile)), PackageAccess.READ_WRITE);
                 signatureConfig.setOpcPackage(pkg);
-                
+
                 SignatureInfo si = new SignatureInfo();
                 si.setSignatureConfig(signatureConfig);
-        
+
                 si.confirmSignature();
                 boolean b = si.verifySignature();
                 assertTrue("Signature not correctly calculated for " + ha, b);
@@ -550,8 +550,8 @@ public class TestSignatureInfo {
             }
         }
     }
-    
-    
+
+
     private void sign(OPCPackage pkgCopy, String alias, String signerDn, int signerCount) throws Exception {
         initKeyPair(alias, signerDn);
 
@@ -561,7 +561,7 @@ public class TestSignatureInfo {
         signatureConfig.setExecutionTime(cal.getTime());
         signatureConfig.setDigestAlgo(HashAlgorithm.sha1);
         signatureConfig.setOpcPackage(pkgCopy);
-        
+
         SignatureInfo si = new SignatureInfo();
         si.setSignatureConfig(signatureConfig);
 
@@ -580,7 +580,7 @@ public class TestSignatureInfo {
 
         // setup: key material, signature value
         byte[] signatureValue = si.signDigest(digestInfo.digestValue);
-        
+
         // operate: postSign
         si.postSign(document, signatureValue);
 
@@ -620,7 +620,7 @@ public class TestSignatureInfo {
             cal2.add(Calendar.YEAR, 1);
             Date notAfter = cal2.getTime();
             KeyUsage keyUsage = new KeyUsage(KeyUsage.digitalSignature);
-            
+
             x509 = PkiTestUtils.generateCertificate(keyPair.getPublic(), subjectDN
                 , notBefore, notAfter, null, keyPair.getPrivate(), true, 0, null, null, keyUsage);
 
@@ -641,7 +641,7 @@ public class TestSignatureInfo {
         // in the Sonar Maven runs where we are at a different source directory
         File buildDir = new File("build");
         if(!buildDir.exists()) {
-            assertTrue("Failed to create " + buildDir.getAbsolutePath(), 
+            assertTrue("Failed to create " + buildDir.getAbsolutePath(),
                     buildDir.mkdirs());
         }
         File tmpFile = new File(buildDir, "sigtest"+extension);

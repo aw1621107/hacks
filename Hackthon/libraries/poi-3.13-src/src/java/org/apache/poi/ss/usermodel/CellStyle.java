@@ -651,13 +651,13 @@ public interface CellStyle {
      * @return fill color index, or 0 if not indexed (XSSF only)
      */
     short getFillBackgroundColor();
-    
+
     /**
      * Gets the color object representing the current
      *  background fill, resolving indexes using
      *  the supplied workbook.
      * This will work for both indexed and rgb
-     *  defined colors. 
+     *  defined colors.
      */
     Color getFillBackgroundColorColor();
 
@@ -669,29 +669,29 @@ public interface CellStyle {
     void setFillForegroundColor(short bg);
 
     /**
-     * get the foreground fill color, if the fill  
+     * get the foreground fill color, if the fill
      *  is defined with an indexed color.
      * @return fill color, or 0 if not indexed (XSSF only)
      */
     short getFillForegroundColor();
-    
+
     /**
      * Gets the color object representing the current
      *  foreground fill, resolving indexes using
      *  the supplied workbook.
      * This will work for both indexed and rgb
-     *  defined colors. 
+     *  defined colors.
      */
     Color getFillForegroundColorColor();
 
     /**
      * Clones all the style information from another
-     *  CellStyle, onto this one. This 
+     *  CellStyle, onto this one. This
      *  CellStyle will then have all the same
      *  properties as the source, but the two may
      *  be edited independently.
-     * Any stylings on this CellStyle will be lost! 
-     *  
+     * Any stylings on this CellStyle will be lost!
+     *
      * The source CellStyle could be from another
      *  Workbook if you like. This allows you to
      *  copy styles from one Workbook to another.
@@ -701,7 +701,7 @@ public interface CellStyle {
      *  XSSFCellStyle)
      */
     public void cloneStyleFrom(CellStyle source);
-    
+
     /**
      * Controls if the Cell should be auto-sized
      *  to shrink to fit if the text is too long

@@ -75,7 +75,7 @@ public final class TestXSSFName extends BaseTestNamedRange {
         // Save and re-open
         XSSFWorkbook nwb = XSSFTestDataSamples.writeOutAndReadBack(wb);
         wb.close();
-        
+
         assertEquals(1, nwb.getNumberOfNames());
         nr1 = nwb.getNameAt(0);
 

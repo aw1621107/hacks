@@ -111,7 +111,7 @@ final class LinkTable {
 			_crnBlocks = new CRNBlock[temp.size()];
 			temp.toArray(_crnBlocks);
 		}
-		
+
        /**
         * Create a new block for external references.
         */
@@ -149,7 +149,7 @@ final class LinkTable {
 		public String getNameText(int definedNameIndex) {
 			return _externalNameRecords[definedNameIndex].getText();
 		}
-		
+
 		public int getNameIx(int definedNameIndex) {
 		   return _externalNameRecords[definedNameIndex].getIx();
 		}
@@ -391,7 +391,7 @@ final class LinkTable {
             };
 		}
 	}
-	
+
 	private int getExternalWorkbookIndex(String workbookName) {
 	    for (int i=0; i<_externalBookBlocks.length; i++) {
 	        SupBookRecord ebr = _externalBookBlocks[i].getExternalBookRecord();
@@ -401,17 +401,17 @@ final class LinkTable {
 	        if (workbookName.equals(ebr.getURL())) { // not sure if 'equals()' works when url has a directory
 	            return i;
 	        }
-	    } 
+	    }
 	    return -1;
 	}
-	
+
 	public int linkExternalWorkbook(String name, Workbook externalWorkbook) {
         int extBookIndex = getExternalWorkbookIndex(name);
         if (extBookIndex != -1) {
             // Already linked!
             return extBookIndex;
         }
-        
+
         // Create a new SupBookRecord
         String[] sheetNames = new String[externalWorkbook.getNumberOfSheets()];
         for (int sn=0; sn<sheetNames.length; sn++) {
@@ -419,7 +419,7 @@ final class LinkTable {
         }
         String url = "\000" + name;
         ExternalBookBlock block = new ExternalBookBlock(url, sheetNames);
-        
+
         // Add it into the list + records
         extBookIndex = extendExternalBookBlocks(block);
 
@@ -429,12 +429,12 @@ final class LinkTable {
             idx = _workbookRecordList.size();
         }
         _workbookRecordList.add(idx, block.getExternalBookRecord());
-        
+
         // Setup links for the sheets
         for (int sn=0; sn<sheetNames.length; sn++) {
             _externSheetRecord.addRef(extBookIndex, sn, sn);
         }
-        
+
         // Report where it went
         return extBookIndex;
 	}
@@ -489,7 +489,7 @@ final class LinkTable {
     }
 
 	/**
-	 * @deprecated Was prevously used for removing sheets, which we now do differently 
+	 * @deprecated Was prevously used for removing sheets, which we now do differently
 	 */
 	@Deprecated
     public void updateIndexToInternalSheet(int extRefIndex, int offset) {
@@ -540,7 +540,7 @@ final class LinkTable {
 		}
 		return -1;
 	}
-	
+
 	public String resolveNameXText(int refIndex, int definedNameIndex, InternalWorkbook workbook) {
         int extBookIndex = _externSheetRecord.getExtbookIndexFromRefIndex(refIndex);
         int firstTabIndex = _externSheetRecord.getFirstSheetIndexFromRefIndex(refIndex);
@@ -548,7 +548,7 @@ final class LinkTable {
 		    // The referenced sheet could not be found
             throw new RuntimeException("Referenced sheet could not be found");
 		}
-		
+
 		// Does it exist via the external book block?
 		ExternalBookBlock externalBook = _externalBookBlocks[extBookIndex];
 		if (externalBook._externalNameRecords.length > definedNameIndex) {
@@ -557,7 +557,7 @@ final class LinkTable {
 		    // Workbook scoped name, not actually external after all
 		    NameRecord nr = getNameRecord(definedNameIndex);
 		    int sheetNumber = nr.getSheetNumber();
-		    
+
 		    StringBuffer text = new StringBuffer();
 		    if (sheetNumber > 0) {
 		        String sheetName = workbook.getSheetName(sheetNumber-1);
@@ -591,7 +591,7 @@ final class LinkTable {
 			if (definedNameIndex < 0) {
 				continue;
 			}
-			
+
 			// Found one
 			int thisSheetRefIndex = findRefIndexFromExtBookIndex(i);
 			if (thisSheetRefIndex >= 0) {
@@ -608,7 +608,7 @@ final class LinkTable {
      * Register an external name in this workbook
      *
      * @param name  the name to register
-     * @return a NameXPtg describing this name 
+     * @return a NameXPtg describing this name
      */
     public NameXPtg addNameXPtg(String name) {
         int extBlockIndex = -1;
@@ -672,10 +672,10 @@ final class LinkTable {
     private int findRefIndexFromExtBookIndex(int extBookIndex) {
 		return _externSheetRecord.findRefIndexFromExtBookIndex(extBookIndex);
 	}
-   
+
 	/**
 	 * Changes an external referenced file to another file.
-	 * A formular in Excel which refers a cell in another file is saved in two parts: 
+	 * A formular in Excel which refers a cell in another file is saved in two parts:
 	 * The referenced file is stored in an reference table. the row/cell information is saved separate.
 	 * This method invokation will only change the reference in the lookup-table itself.
 	 * @param oldUrl The old URL to search for and which is to be replaced
@@ -685,9 +685,9 @@ final class LinkTable {
 	public boolean changeExternalReference(String oldUrl, String newUrl) {
 		for(ExternalBookBlock ex : _externalBookBlocks) {
 			SupBookRecord externalRecord = ex.getExternalBookRecord();
-			if (externalRecord.isExternalReferences() 
+			if (externalRecord.isExternalReferences()
 				&& externalRecord.getURL().equals(oldUrl)) {
-				
+
 				externalRecord.setURL(newUrl);
 				return true;
 			}

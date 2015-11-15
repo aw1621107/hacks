@@ -53,7 +53,7 @@ public final class TestExtractor {
    /** Extractor primed on the 1 page but text-box'd test data */
    private PowerPointExtractor ppe2;
    private static final String expectText2 = "Hello, World!!!\nI am just a poor boy\nThis is Times New Roman\nPlain Text \n";
-   
+
    /** Where our embeded files live */
    private static POIDataSamples slTests = POIDataSamples.getSlideShowInstance();
 
@@ -68,21 +68,21 @@ public final class TestExtractor {
        ppe2.close();
        ppe.close();
    }
-   
+
     @Test
     public void testReadSheetText() {
     	// Basic 2 page example
 		String sheetText = ppe.getText();
 
 		ensureTwoStringsTheSame(expectText, sheetText);
-		
-		
+
+
 		// 1 page example with text boxes
 		sheetText = ppe2.getText();
 
 		ensureTwoStringsTheSame(expectText2, sheetText);
     }
-    
+
     @Test
 	public void testReadNoteText() {
 		// Basic 2 page example
@@ -90,14 +90,14 @@ public final class TestExtractor {
 		String expText = "These are the notes for page 1\nThese are the notes on page two, again lacking formatting\n";
 
 		ensureTwoStringsTheSame(expText, notesText);
-		
+
 		// Other one doesn't have notes
 		notesText = ppe2.getNotes();
 		expText = "";
-		
+
 		ensureTwoStringsTheSame(expText, notesText);
 	}
-	
+
     @Test
 	public void testReadBoth() {
 		String[] slText = new String[] {
@@ -108,15 +108,15 @@ public final class TestExtractor {
 				"These are the notes for page 1\n",
 				"These are the notes on page two, again lacking formatting\n"
 		};
-		
+
 		ppe.setSlidesByDefault(true);
 		ppe.setNotesByDefault(false);
 		assertEquals(slText[0]+slText[1], ppe.getText());
-		
+
 		ppe.setSlidesByDefault(false);
 		ppe.setNotesByDefault(true);
 		assertEquals(ntText[0]+ntText[1], ppe.getText());
-		
+
 		ppe.setSlidesByDefault(true);
 		ppe.setNotesByDefault(true);
 		assertEquals(slText[0]+slText[1]+"\n"+ntText[0]+ntText[1], ppe.getText());
@@ -136,14 +136,14 @@ public final class TestExtractor {
 
 		assertNotNull(text);
 		assertNotNull(nText);
-		
+
 		// Notes record were corrupt, so don't expect any
 		assertEquals(nText.length(), 0);
-		
+
 		// Slide records were fine
 		assertTrue(text.startsWith("Using Disease Surveillance and Response"));
 	}
-	
+
     private void ensureTwoStringsTheSame(String exp, String act) {
 		assertEquals(exp.length(),act.length());
 		char[] expC = exp.toCharArray();
@@ -153,7 +153,7 @@ public final class TestExtractor {
 		}
 		assertEquals(exp,act);
     }
-    
+
     @Test
     public void testExtractFromEmbeded() throws Exception {
          POIFSFileSystem fs = new POIFSFileSystem(
@@ -225,7 +225,7 @@ public final class TestExtractor {
         String path = "badzip.ppt";
         ppe = new PowerPointExtractor(POIDataSamples.getSlideShowInstance().openResourceAsStream(path));
         List<OLEShape> shapes = ppe.getOLEShapes();
-        
+
         for (OLEShape shape : shapes) {
             IOUtils.copy(shape.getObjectData().getData(), new ByteArrayOutputStream());
         }
@@ -240,25 +240,25 @@ public final class TestExtractor {
 
 		String text = ppe.getText();
 		assertFalse("Comments not in by default", text.contains("This is a test comment"));
-		
+
 		ppe.setCommentsByDefault(true);
-		
+
 		text = ppe.getText();
 		assertContains(text, "This is a test comment");
 
-		
+
 		// And another file
 		ppe = new PowerPointExtractor(slTests.openResourceAsStream("45543.ppt"));
 
 		text = ppe.getText();
 		assertFalse("Comments not in by default", text.contains("testdoc"));
-		
+
 		ppe.setCommentsByDefault(true);
-		
+
 		text = ppe.getText();
 		assertContains(text, "testdoc");
     }
-    
+
     /**
      * From bug #45537
      */
@@ -301,7 +301,7 @@ public final class TestExtractor {
        assertContains(text, "testdoc");
        assertContains(text, "test phrase");
     }
-    
+
    @SuppressWarnings("unused")
    @Test
    public void testSlideMasterText() throws Exception {
@@ -309,9 +309,9 @@ public final class TestExtractor {
       String masterRandomText = "This text comes from the Master Slide";
       String masterFooterText = "Footer from the master slide";
       HSLFSlideShowImpl hslf = new HSLFSlideShowImpl(slTests.openResourceAsStream("WithMaster.ppt"));
-      
+
       ppe = new PowerPointExtractor(hslf);
-      
+
       String text = ppe.getText();
       //assertContains(text, masterTitleText); // TODO Is this available in PPT?
       //assertContains(text, masterRandomText); // TODO Extract
@@ -321,11 +321,11 @@ public final class TestExtractor {
    @Test
    public void testMasterText() throws Exception {
        ppe = new PowerPointExtractor(slTests.openResourceAsStream("master_text.ppt"));
-       
+
        // Initially not there
        String text = ppe.getText();
        assertFalse(text.contains("Text that I added to the master slide"));
-       
+
        // Enable, shows up
        ppe.setMasterByDefault(true);
        text = ppe.getText();
@@ -333,14 +333,14 @@ public final class TestExtractor {
 
        // Make sure placeholder text does not come out
        assertFalse(text.contains("Click to edit Master"));
-       
+
        // Now with another file only containing master text
        // Will always show up
        String masterText = "Footer from the master slide";
        HSLFSlideShowImpl hslf = new HSLFSlideShowImpl(slTests.openResourceAsStream("WithMaster.ppt"));
-       
+
        ppe = new PowerPointExtractor(hslf);
-       
+
        text = ppe.getText();
        assertContains(text.toLowerCase(Locale.ROOT), "master");
        assertContains(text, masterText);
@@ -353,22 +353,22 @@ public final class TestExtractor {
     public void testChineseText() throws Exception {
        HSLFSlideShowImpl hslf = new HSLFSlideShowImpl(slTests.openResourceAsStream("54880_chinese.ppt"));
        ppe = new PowerPointExtractor(hslf);
-       
+
        String text = ppe.getText();
-       
+
        // Check for the english text line
        assertContains(text, "Single byte");
-       
+
        // Check for the english text in the mixed line
        assertContains(text, "Mix");
-       
+
        // Check for the chinese text in the mixed line
        assertContains(text, "\u8868");
-       
+
        // Check for the chinese only text line
        assertContains(text, "\uff8a\uff9d\uff76\uff78");
     }
-    
+
     /**
      * Tests that we can work with both {@link POIFSFileSystem}
      *  and {@link NPOIFSFileSystem}
@@ -381,8 +381,8 @@ public final class TestExtractor {
        files[0] = (new POIFSFileSystem(slTests.openResourceAsStream("basic_test_ppt_file.ppt"))).getRoot();
        NPOIFSFileSystem npoifsFileSystem = new NPOIFSFileSystem(slTests.getFile("basic_test_ppt_file.ppt"));
        files[1] = npoifsFileSystem.getRoot();
-       
-       // Open directly 
+
+       // Open directly
        for(DirectoryNode dir : files) {
           PowerPointExtractor extractor = new PowerPointExtractor(dir);
           assertEquals(expectText, extractor.getText());
@@ -394,7 +394,7 @@ public final class TestExtractor {
           PowerPointExtractor extractor = new PowerPointExtractor(slideshow);
           assertEquals(expectText, extractor.getText());
        }
-       
+
        npoifsFileSystem.close();
     }
 
@@ -403,10 +403,10 @@ public final class TestExtractor {
 //        ppe = new PowerPointExtractor(slTests.openResourceAsStream("54111.ppt"));
 //        String text = ppe.getText();
 //        String target = "TH Cell 1\tTH Cell 2\tTH Cell 3\tTH Cell 4\n"+
-//                         "Row 1, Cell 1\tRow 1, Cell 2\tRow 1, Cell 3\tRow 1, Cell 4\n"+   
+//                         "Row 1, Cell 1\tRow 1, Cell 2\tRow 1, Cell 3\tRow 1, Cell 4\n"+
 //                         "Row 2, Cell 1\tRow 2, Cell 2\tRow 2, Cell 3\tRow 2, Cell 4\n"+
 //                         "Row 3, Cell 1\tRow 3, Cell 2\tRow 3, Cell 3\tRow 3, Cell 4\n"+
-//                         "Row 4, Cell 1\tRow 4, Cell 2\tRow 4, Cell 3\tRow 4, Cell 4\n"+ 
+//                         "Row 4, Cell 1\tRow 4, Cell 2\tRow 4, Cell 3\tRow 4, Cell 4\n"+
 //                         "Row 5, Cell 1\tRow 5, Cell 2\tRow 5, Cell 3\tRow 5, Cell 4\n";
 //        assertTrue(text.contains(target));
 
@@ -416,5 +416,5 @@ public final class TestExtractor {
         String target = "this\tText\tis\twithin\ta\n"+
                 "table\t1\t2\t3\t4";
         assertTrue(text.contains(target));
-    }    
+    }
 }

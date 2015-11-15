@@ -37,7 +37,7 @@ public class PropertySetFactory
      * <p>Creates the most specific {@link PropertySet} from an entry
      *  in the specified POIFS Directory. This is preferrably a {@link
      * DocumentSummaryInformation} or a {@link SummaryInformation}. If
-     * the specified entry does not contain a property set stream, an 
+     * the specified entry does not contain a property set stream, an
      * exception is thrown. If no entry is found with the given name,
      * an exception is thrown.</p>
      *

@@ -37,14 +37,14 @@ import org.apache.poi.util.POILogger;
 public final class TNEFDateAttribute extends TNEFAttribute {
    private static POILogger logger = POILogFactory.getLogger(TNEFDateAttribute.class);
    private Date data;
-   
+
    /**
     * Constructs a single new date attribute from the id, type,
     *  and the contents of the stream
     */
    protected TNEFDateAttribute(int id, int type, InputStream inp) throws IOException {
       super(id, type, inp);
-      
+
       byte[] data = getData();
       if(data.length == 8) {
          // The value is a 64 bit Windows Filetime
@@ -71,12 +71,12 @@ public final class TNEFDateAttribute extends TNEFAttribute {
    public Date getDate() {
       return this.data;
    }
-   
+
    public String toString() {
-      return "Attribute " + getProperty().toString() + ", type=" + getType() + 
-             ", date=" + data.toString(); 
+      return "Attribute " + getProperty().toString() + ", type=" + getType() +
+             ", date=" + data.toString();
    }
-   
+
    /**
     * Returns the Date of a Attribute, converting as appropriate
     */
@@ -87,7 +87,7 @@ public final class TNEFDateAttribute extends TNEFAttribute {
       if(attr instanceof TNEFDateAttribute) {
          return ((TNEFDateAttribute)attr).getDate();
       }
-      
+
       logger.log(POILogger.WARN, "Warning, non date property found: " + attr.toString());
       return null;
   }

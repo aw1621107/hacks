@@ -38,12 +38,12 @@ public class TestEncryptionInfo {
         assertEquals(HashAlgorithm.sha1, info.getHeader().getHashAlgorithmEx());
         assertEquals(128, info.getHeader().getKeySize());
         assertEquals(32, info.getVerifier().getEncryptedVerifierHash().length);
-        assertEquals(CipherProvider.aes, info.getHeader().getCipherProvider());                
+        assertEquals(CipherProvider.aes, info.getHeader().getCipherProvider());
         assertEquals("Microsoft Enhanced RSA and AES Cryptographic Provider", info.getHeader().getCspName());
-        
+
         fs.close();
     }
-    
+
     @Test
     public void testEncryptionInfoSHA512() throws Exception {
         POIFSFileSystem fs = new POIFSFileSystem(POIDataSamples.getPOIFSInstance().openResourceAsStream("protected_sha512.xlsx"));
@@ -57,9 +57,9 @@ public class TestEncryptionInfo {
         assertEquals(HashAlgorithm.sha512, info.getHeader().getHashAlgorithmEx());
         assertEquals(256, info.getHeader().getKeySize());
         assertEquals(64, info.getVerifier().getEncryptedVerifierHash().length);
-        assertEquals(CipherProvider.aes, info.getHeader().getCipherProvider());                
+        assertEquals(CipherProvider.aes, info.getHeader().getCipherProvider());
 //        assertEquals("Microsoft Enhanced RSA and AES Cryptographic Provider", info.getHeader().getCspName());
-        
+
         fs.close();
     }
 }

@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi;
 
@@ -39,24 +39,24 @@ public class TestDetectAsOOXML extends TestCase
 	{
         OPCPackage.open(HSSFTestDataSamples.openSampleFileStream("sample.xlsx"));
 	}
-	
+
 	public void testDetectAsPOIFS() throws Exception {
 		InputStream in;
-		
+
 		// ooxml file is
 		in = new PushbackInputStream(
 				HSSFTestDataSamples.openSampleFileStream("SampleSS.xlsx"), 10
 		);
 		assertTrue(POIXMLDocument.hasOOXMLHeader(in));
 		in.close();
-		
+
 		// xls file isn't
 		in = new PushbackInputStream(
 				HSSFTestDataSamples.openSampleFileStream("SampleSS.xls"), 10
 		);
 		assertFalse(POIXMLDocument.hasOOXMLHeader(in));
 		in.close();
-		
+
 		// text file isn't
 		in = new PushbackInputStream(
 				HSSFTestDataSamples.openSampleFileStream("SampleSS.txt"), 10
@@ -64,17 +64,17 @@ public class TestDetectAsOOXML extends TestCase
 		assertFalse(POIXMLDocument.hasOOXMLHeader(in));
 		in.close();
 	}
-    
+
     public void testFileCorruption() throws Exception {
-	    
+
 	    // create test InputStream
 	    byte[] testData = { (byte)1, (byte)2, (byte)3 };
         ByteArrayInputStream testInput = new ByteArrayInputStream(testData);
-        
+
         // detect header
         InputStream in = new PushbackInputStream(testInput, 10);
         assertFalse(POIXMLDocument.hasOOXMLHeader(in));
-        
+
         // check if InputStream is still intact
         byte[] test = new byte[3];
         in.read(test);

@@ -33,7 +33,7 @@ import org.apache.xmlbeans.XmlObject;
 
 public class XSSFPaswordHelper {
     /**
-     * Sets the XORed or hashed password 
+     * Sets the XORed or hashed password
      *
      * @param xobj the xmlbeans object which contains the password attributes
      * @param password the password, if null, the password attributes will be removed
@@ -50,17 +50,17 @@ public class XSSFPaswordHelper {
             cur.removeAttribute(getAttrName(prefix, "saltValue"));
             cur.removeAttribute(getAttrName(prefix, "spinCount"));
             return;
-        } 
-        
+        }
+
         cur.toFirstContentToken();
         if (hashAlgo == null) {
             int hash = CryptoFunctions.createXorVerifier1(password);
-            cur.insertAttributeWithValue(getAttrName(prefix, "password"), 
+            cur.insertAttributeWithValue(getAttrName(prefix, "password"),
                                          Integer.toHexString(hash).toUpperCase(Locale.ROOT));
         } else {
-            SecureRandom random = new SecureRandom(); 
+            SecureRandom random = new SecureRandom();
             byte salt[] = random.generateSeed(16);
-    
+
             // Iterations specifies the number of times the hashing function shall be iteratively run (using each
             // iteration's result as the input for the next iteration).
             int spinCount = 100000;
@@ -69,8 +69,8 @@ public class XSSFPaswordHelper {
             // --> In this third stage, the reversed byte order legacy hash from the second stage shall
             //     be converted to Unicode hex string representation
             byte hash[] = CryptoFunctions.hashPassword(password, hashAlgo, salt, spinCount, false);
-            
-            cur.insertAttributeWithValue(getAttrName(prefix, "algorithmName"), hashAlgo.jceId); 
+
+            cur.insertAttributeWithValue(getAttrName(prefix, "algorithmName"), hashAlgo.jceId);
             cur.insertAttributeWithValue(getAttrName(prefix, "hashValue"), DatatypeConverter.printBase64Binary(hash));
             cur.insertAttributeWithValue(getAttrName(prefix, "saltValue"), DatatypeConverter.printBase64Binary(salt));
             cur.insertAttributeWithValue(getAttrName(prefix, "spinCount"), ""+spinCount);
@@ -86,13 +86,13 @@ public class XSSFPaswordHelper {
      * @param password the password, if null the method will always return false,
      *  even if there's no password set
      * @param prefix the prefix of the password attributes, may be null
-     * 
+     *
      * @return true, if the hashes match
      */
     public static boolean validatePassword(XmlObject xobj, String password, String prefix) {
         // TODO: is "velvetSweatshop" the default password?
         if (password == null) return false;
-        
+
         XmlCursor cur = xobj.newCursor();
         String xorHashVal = cur.getAttributeText(getAttrName(prefix, "password"));
         String algoName = cur.getAttributeText(getAttrName(prefix, "algorithmName"));
@@ -109,7 +109,7 @@ public class XSSFPaswordHelper {
             if (hashVal == null || algoName == null || saltVal == null || spinCount == null) {
                 return false;
             }
-            
+
             byte hash1[] = DatatypeConverter.parseBase64Binary(hashVal);
             HashAlgorithm hashAlgo = HashAlgorithm.fromString(algoName);
             byte salt[] = DatatypeConverter.parseBase64Binary(saltVal);
@@ -118,8 +118,8 @@ public class XSSFPaswordHelper {
             return Arrays.equals(hash1, hash2);
         }
     }
-    
-    
+
+
     private static QName getAttrName(String prefix, String name) {
         if (prefix == null || "".equals(prefix)) {
             return new QName(name);

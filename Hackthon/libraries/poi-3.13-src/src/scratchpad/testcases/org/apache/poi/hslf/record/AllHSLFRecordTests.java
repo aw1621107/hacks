@@ -22,7 +22,7 @@ import org.junit.runners.Suite;
 
 /**
  * Collects all tests from the package <tt>org.apache.poi.hslf.record</tt>.
- * 
+ *
  * @author Josh Micich
  */
 @RunWith(Suite.class)

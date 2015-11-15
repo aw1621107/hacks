@@ -108,7 +108,7 @@ public final class HSSFDataFormat implements DataFormat {
 			}
 			_movedBuiltins = true;
 		}
-		
+
 		// See if we can find it
 		for(int i=0; i<_formats.size(); i++) {
 		   if(format.equals(_formats.get(i))) {
@@ -169,7 +169,7 @@ public final class HSSFDataFormat implements DataFormat {
 	public static int getNumberOfBuiltinBuiltinFormats() {
 		return _builtinFormats.length;
 	}
-	
+
 	/**
 	 * Ensures that the formats list can hold entries
 	 *  up to and including the entry with this index

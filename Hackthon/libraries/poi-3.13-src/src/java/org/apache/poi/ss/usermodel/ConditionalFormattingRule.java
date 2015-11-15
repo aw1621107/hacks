@@ -82,17 +82,17 @@ public interface ConditionalFormattingRule {
      * @return - databar / data-bar formatting object if defined, <code>null</code> otherwise
      */
     DataBarFormatting getDataBarFormatting();
-    
+
     /**
      * @return - icon / multi-state formatting object if defined, <code>null</code> otherwise
      */
     IconMultiStateFormatting getMultiStateFormatting();
-    
+
     /**
      * @return color scale / color grate formatting object if defined, <code>null</code> otherwise
      */
     ColorScaleFormatting getColorScaleFormatting();
-    
+
     /**
      * Type of conditional formatting rule.
      * <p>
@@ -103,7 +103,7 @@ public interface ConditionalFormattingRule {
      * @deprecated Use {@link #getConditionTypeType()}
      */
     byte getConditionType();
-    
+
     /**
      * Type of conditional formatting rule.
      *

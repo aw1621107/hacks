@@ -26,7 +26,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The bar record is used to define a bar chart.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class BarRecord extends StandardRecord {
@@ -62,19 +62,19 @@ public final class BarRecord extends StandardRecord {
         buffer.append("    .barSpace             = ")
             .append("0x").append(HexDump.toHex(  getBarSpace ()))
             .append(" (").append( getBarSpace() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .categorySpace        = ")
             .append("0x").append(HexDump.toHex(  getCategorySpace ()))
             .append(" (").append( getCategorySpace() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .formatFlags          = ")
             .append("0x").append(HexDump.toHex(  getFormatFlags ()))
             .append(" (").append( getFormatFlags() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
-        buffer.append("         .horizontal               = ").append(isHorizontal()).append('\n'); 
-        buffer.append("         .stacked                  = ").append(isStacked()).append('\n'); 
-        buffer.append("         .displayAsPercentage      = ").append(isDisplayAsPercentage()).append('\n'); 
-        buffer.append("         .shadow                   = ").append(isShadow()).append('\n'); 
+        buffer.append(System.getProperty("line.separator"));
+        buffer.append("         .horizontal               = ").append(isHorizontal()).append('\n');
+        buffer.append("         .stacked                  = ").append(isStacked()).append('\n');
+        buffer.append("         .displayAsPercentage      = ").append(isDisplayAsPercentage()).append('\n');
+        buffer.append("         .shadow                   = ").append(isShadow()).append('\n');
 
         buffer.append("[/BAR]\n");
         return buffer.toString();
@@ -97,7 +97,7 @@ public final class BarRecord extends StandardRecord {
 
     public Object clone() {
         BarRecord rec = new BarRecord();
-    
+
         rec.field_1_barSpace = field_1_barSpace;
         rec.field_2_categorySpace = field_2_categorySpace;
         rec.field_3_formatFlags = field_3_formatFlags;

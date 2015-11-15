@@ -21,7 +21,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * Record for the right margin.<p/>
- * 
+ *
  * @author Shawn Laubach (slaubach at apache dot org)
  */
 public final class RightMarginRecord extends StandardRecord implements Margin {

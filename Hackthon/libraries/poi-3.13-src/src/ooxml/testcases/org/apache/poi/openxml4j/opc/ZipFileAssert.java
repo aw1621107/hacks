@@ -33,7 +33,7 @@ import junit.framework.AssertionFailedError;
 
 /**
  * Compare the contents of 2 zip files.
- * 
+ *
  * @author CDubettier
  */
 public class ZipFileAssert {
@@ -136,7 +136,7 @@ public class ZipFileAssert {
 	 * Asserts that two files are equal. Throws an <tt>AssertionFailedError</tt>
 	 * if they are not.
 	 * <p>
-	 * 
+	 *
 	 */
 	public static void assertEquals(File expected, File actual) {
 		Assert.assertNotNull(expected);

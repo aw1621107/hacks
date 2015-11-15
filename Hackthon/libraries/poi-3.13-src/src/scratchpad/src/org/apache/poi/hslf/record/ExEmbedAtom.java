@@ -123,7 +123,7 @@ public class ExEmbedAtom extends RecordAtom {
     public void setCantLockServerB(boolean cantBeLocked) {
     	_data[4] = (byte)(cantBeLocked ? 1 : 0);
     }
-    
+
     /**
      * Gets whether it is not required to send the dimensions to the embedded object.
      *

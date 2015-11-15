@@ -186,7 +186,7 @@ implements HSLFShapeContainer, GroupShape<HSLFShape,HSLFTextParagraph> {
         anchor.translate(dx, dy);
         setAnchor(anchor);
 
-        
+
         for (HSLFShape shape : getShapes()) {
             Rectangle chanchor = shape.getAnchor();
             chanchor.translate(dx, dy);

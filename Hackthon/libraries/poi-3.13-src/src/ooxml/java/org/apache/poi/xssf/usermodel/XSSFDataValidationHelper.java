@@ -36,8 +36,8 @@ import org.openxmlformats.schemas.spreadsheetml.x2006.main.STDataValidationType;
  */
 public class XSSFDataValidationHelper implements DataValidationHelper {
 	private XSSFSheet xssfSheet;
-	
-    
+
+
     public XSSFDataValidationHelper(XSSFSheet xssfSheet) {
 		super();
 		this.xssfSheet = xssfSheet;
@@ -71,8 +71,8 @@ public class XSSFDataValidationHelper implements DataValidationHelper {
 		return new XSSFDataValidationConstraint(ValidationType.LIST, listFormula);
 	}
 
-	
-	
+
+
 	public DataValidationConstraint createNumericConstraint(int validationType, int operatorType, String formula1, String formula2) {
 		if( validationType==ValidationType.INTEGER) {
 			return createIntegerConstraint(operatorType, formula1, formula2);
@@ -120,23 +120,23 @@ public class XSSFDataValidationHelper implements DataValidationHelper {
 		switch(validationType) {
 			case DataValidationConstraint.ValidationType.LIST:
 		    	newDataValidation.setType(STDataValidationType.LIST);
-				newDataValidation.setFormula1(constraint.getFormula1());				
+				newDataValidation.setFormula1(constraint.getFormula1());
 		    	break;
-			case DataValidationConstraint.ValidationType.ANY:				
-				newDataValidation.setType(STDataValidationType.NONE);				
+			case DataValidationConstraint.ValidationType.ANY:
+				newDataValidation.setType(STDataValidationType.NONE);
 				break;
 			case DataValidationConstraint.ValidationType.TEXT_LENGTH:
 				newDataValidation.setType(STDataValidationType.TEXT_LENGTH);
-				break;				
+				break;
 			case DataValidationConstraint.ValidationType.DATE:
 				newDataValidation.setType(STDataValidationType.DATE);
-				break;				
+				break;
 			case DataValidationConstraint.ValidationType.INTEGER:
 				newDataValidation.setType(STDataValidationType.WHOLE);
-				break;				
+				break;
 			case DataValidationConstraint.ValidationType.DECIMAL:
 				newDataValidation.setType(STDataValidationType.DECIMAL);
-				break;				
+				break;
 			case DataValidationConstraint.ValidationType.TIME:
 				newDataValidation.setType(STDataValidationType.TIME);
 				break;
@@ -144,9 +144,9 @@ public class XSSFDataValidationHelper implements DataValidationHelper {
 				newDataValidation.setType(STDataValidationType.CUSTOM);
 				break;
 			default:
-				newDataValidation.setType(STDataValidationType.NONE);				
+				newDataValidation.setType(STDataValidationType.NONE);
 		}
-		
+
 		if (validationType!=ValidationType.ANY && validationType!=ValidationType.LIST) {
             STDataValidationOperator.Enum op = XSSFDataValidation.operatorTypeMappings.get(constraint.getOperator());
 			if(op != null) {
@@ -159,7 +159,7 @@ public class XSSFDataValidationHelper implements DataValidationHelper {
 				newDataValidation.setFormula2(constraint.getFormula2());
 			}
 		}
-		
+
 		CellRangeAddress[] cellRangeAddresses = cellRangeAddressList.getCellRangeAddresses();
 		List<String> sqref = new ArrayList<String>();
 		for (int i = 0; i < cellRangeAddresses.length; i++) {
@@ -169,7 +169,7 @@ public class XSSFDataValidationHelper implements DataValidationHelper {
 		newDataValidation.setSqref(sqref);
 		newDataValidation.setAllowBlank(true);
 		newDataValidation.setErrorStyle(STDataValidationErrorStyle.STOP);
-		
+
 		return new XSSFDataValidation(dataValidationConstraint,cellRangeAddressList,newDataValidation);
 	}
 }

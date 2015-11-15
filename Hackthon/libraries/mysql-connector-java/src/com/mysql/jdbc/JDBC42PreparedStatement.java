@@ -57,7 +57,7 @@ public class JDBC42PreparedStatement extends JDBC4PreparedStatement {
 
     /**
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param parameterIndex
      * @param x
      * @throws SQLException
@@ -71,7 +71,7 @@ public class JDBC42PreparedStatement extends JDBC4PreparedStatement {
 
     /**
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param parameterIndex
      * @param x
      * @param targetSqlType
@@ -86,7 +86,7 @@ public class JDBC42PreparedStatement extends JDBC4PreparedStatement {
 
     /**
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param parameterIndex
      * @param x
      * @param targetSqlType
@@ -103,7 +103,7 @@ public class JDBC42PreparedStatement extends JDBC4PreparedStatement {
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param parameterIndex
      * @param x
      * @param targetSqlType
@@ -118,7 +118,7 @@ public class JDBC42PreparedStatement extends JDBC4PreparedStatement {
     /**
      * Support for java.sql.JDBCType/java.sql.SQLType.
      * Support for java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, java.time.OffsetTime and java.time.OffsetDateTime.
-     * 
+     *
      * @param parameterIndex
      * @param x
      * @param targetSqlType

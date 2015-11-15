@@ -71,7 +71,7 @@ public final class LineSpacingDescriptor
   {
     _dyaLine = dyaLine;
   }
-  
+
   @Override
   public boolean equals(Object o)
   {
@@ -86,7 +86,7 @@ public final class LineSpacingDescriptor
       assert false : "hashCode not designed";
       return 42; // any arbitrary constant will do
   }
-  
+
     public boolean isEmpty()
     {
         return _dyaLine == 0 && _fMultiLinespace == 0;

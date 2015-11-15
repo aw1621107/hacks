@@ -36,7 +36,7 @@ public class ServerControllerTest extends BaseTestCase {
 
     /**
      * Creates a ServerControllerTest testcase.
-     * 
+     *
      * @param name
      *            the name of the test to run.
      */
@@ -48,7 +48,7 @@ public class ServerControllerTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -57,10 +57,10 @@ public class ServerControllerTest extends BaseTestCase {
 
     /**
      * Demonstrates usage of the ServerController class.
-     * 
+     *
      * This test is only run if the property
      * 'com.mysql.jdbc.test.ServerController.basedir' is set.
-     * 
+     *
      * @throws Exception
      *             if an error occurs.
      */

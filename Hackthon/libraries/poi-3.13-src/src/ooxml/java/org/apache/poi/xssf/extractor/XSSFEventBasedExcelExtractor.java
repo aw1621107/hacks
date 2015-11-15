@@ -53,7 +53,7 @@ import org.xml.sax.XMLReader;
  * Implementation of a text extractor from OOXML Excel
  *  files that uses SAX event based parsing.
  */
-public class XSSFEventBasedExcelExtractor extends POIXMLTextExtractor 
+public class XSSFEventBasedExcelExtractor extends POIXMLTextExtractor
        implements org.apache.poi.ss.extractor.ExcelExtractor {
     private OPCPackage container;
     private POIXMLProperties properties;
@@ -171,7 +171,7 @@ public class XSSFEventBasedExcelExtractor extends POIXMLTextExtractor
        } else  {
           formatter = new DataFormatter(locale);
        }
-      
+
        InputSource sheetSource = new InputSource(sheetInputStream);
        try {
           XMLReader sheetParser = SAXHelper.newXMLReader();
@@ -193,10 +193,10 @@ public class XSSFEventBasedExcelExtractor extends POIXMLTextExtractor
           XSSFReader xssfReader = new XSSFReader(container);
           StylesTable styles = xssfReader.getStylesTable();
           XSSFReader.SheetIterator iter = (XSSFReader.SheetIterator) xssfReader.getSheetsData();
-   
+
           StringBuffer text = new StringBuffer();
           SheetTextExtractor sheetExtractor = new SheetTextExtractor();
-          
+
           while (iter.hasNext()) {
               InputStream stream = iter.next();
               if(includeSheetNames) {
@@ -218,7 +218,7 @@ public class XSSFEventBasedExcelExtractor extends POIXMLTextExtractor
               sheetExtractor.reset();
               stream.close();
           }
-          
+
           return text.toString();
        } catch(IOException e) {
           System.err.println(e);
@@ -231,7 +231,7 @@ public class XSSFEventBasedExcelExtractor extends POIXMLTextExtractor
           return null;
        }
    }
-   
+
     private void processShapes(List<XSSFShape> shapes, StringBuffer text) {
         if (shapes == null){
             return;

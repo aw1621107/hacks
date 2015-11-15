@@ -37,7 +37,7 @@ import com.mysql.fabric.proto.xmlrpc.ResultSetParser;
  */
 public class TestResultSetParser extends TestCase {
     // Example response data represented in tests:
-    // [1, 5ca1ab1e-a007-feed-f00d-cab3fe13249e, 0, , 
+    // [1, 5ca1ab1e-a007-feed-f00d-cab3fe13249e, 0, ,
     // [
     //  {rows=
     //        [[5e26a7ab-de84-11e2-a885-df73a3d95316, fabric_test1_global, 127.0.0.1, 3401, 3, 3, 1.0],

@@ -79,7 +79,7 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
         _shape = shape;
         _sheet = sheet;
     }
-    
+
     /**
      * @return the xml bean holding this shape's data
      */
@@ -88,11 +88,11 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
         // the (not existing) xmlbeans hierarchy and subclasses shouldn't narrow it's return value
         return _shape;
     }
-    
+
     public XSLFSheet getSheet() {
         return _sheet;
     }
-    
+
     /**
      * @return human-readable name of this shape, e.g. "Rectange 3"
      */
@@ -133,18 +133,18 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
             PlaceableShape<?,?> ps = (PlaceableShape<?,?>)this;
             ps.setAnchor(((PlaceableShape<?,?>)sh).getAnchor());
         }
-        
-        
+
+
     }
-    
+
     public void setParent(XSLFShapeContainer parent) {
         this._parent = parent;
     }
-    
+
     public XSLFShapeContainer getParent() {
         return this._parent;
     }
-    
+
     protected PaintStyle getFillPaint() {
         PropertyFetcher<PaintStyle> fetcher = new PropertyFetcher<PaintStyle>() {
             public boolean fetch(XSLFShape shape) {
@@ -154,7 +154,7 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
                     if (((CTShapeProperties)pr).isSetNoFill()) {
                         setValue(null);
                         return true;
-                    }                    
+                    }
                 } catch (IllegalStateException e) {}
                 // trying background properties now
                 if (pr == null) {
@@ -168,9 +168,9 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
                         pr = shape.getXmlObject();
                     }
                 }
-                
+
                 if (pr == null) return false;
-                
+
                 PaintStyle paint = null;
                 PackagePart pp = getSheet().getPackagePart();
                 for (XmlObject obj : pr.selectPath("*")) {
@@ -180,7 +180,7 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
                         return true;
                     };
                 }
-                
+
                 return false;
             }
         };
@@ -188,7 +188,7 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
 
         PaintStyle paint = fetcher.getValue();
         if (paint != null) return paint;
-        
+
         // fill color was not found, check if it is defined in the theme
         // get a reference to a fill style within the style matrix.
         CTStyleMatrixReference fillRef = null;
@@ -208,17 +208,17 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
         String xquery = "declare namespace p='http://schemas.openxmlformats.org/presentationml/2006/main' p:bgPr";
         return selectProperty(CTBackgroundProperties.class, xquery);
     }
-    
+
     protected CTStyleMatrixReference getBgRef() {
         String xquery = "declare namespace p='http://schemas.openxmlformats.org/presentationml/2006/main' p:bgRef";
         return selectProperty(CTStyleMatrixReference.class, xquery);
     }
-    
+
     protected CTGroupShapeProperties getGrpSpPr() {
         String xquery = "declare namespace p='http://schemas.openxmlformats.org/presentationml/2006/main' p:grpSpPr";
         return selectProperty(CTGroupShapeProperties.class, xquery);
     }
-    
+
     protected CTNonVisualDrawingProps getCNvPr() {
         if (_nvPr == null) {
             String xquery = "declare namespace p='http://schemas.openxmlformats.org/presentationml/2006/main' .//*/p:cNvPr";
@@ -274,8 +274,8 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
             nv.addNewPh().setType(STPlaceholderType.Enum.forInt(placeholder.ordinal() + 1));
         }
     }
-    
-    
+
+
     /**
      * As there's no xmlbeans hierarchy, but XSLF works with subclassing, not all
      * child classes work with a {@link CTShape} object, but often contain the same
@@ -360,7 +360,7 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
         }
         return paint;
     }
-    
+
     /**
      * Convert shape fill into java.awt.Paint. The result is either Color or
      * TexturePaint or GradientPaint or null
@@ -404,7 +404,7 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
         final XSLFColor c = new XSLFColor(solidFill, theme, phClr);
         return DrawPaint.createSolidPaint(c.getColorStyle());
     }
-    
+
     protected PaintStyle selectPaint(final CTBlipFillProperties blipFill, final PackagePart parentPart) {
         final CTBlip blip = blipFill.getBlip();
         return new TexturePaint() {
@@ -417,7 +417,7 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
                     throw new RuntimeException(e);
                 }
             }
-            
+
             public InputStream getImageData() {
                 try {
                     return getPart().getInputStream();
@@ -436,9 +436,9 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
                     ? blip.getAlphaModFixArray(0).getAmt()
                     : 100000;
             }
-        };        
+        };
     }
-    
+
     protected PaintStyle selectPaint(final CTGradientFillProperties gradFill, CTSchemeColor phClr) {
 
         @SuppressWarnings("deprecation")
@@ -455,7 +455,7 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
         final ColorStyle cs[] = new ColorStyle[gs.length];
         final float fractions[] = new float[gs.length];
         XSLFTheme theme = getSheet().getTheme();
-        
+
         int i=0;
         for (CTGradientStop cgs : gs) {
             CTSchemeColor phClrCgs = phClr;
@@ -466,7 +466,7 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
             fractions[i] = cgs.getPos() / 100000.f;
             i++;
         }
-        
+
         return new GradientPaint() {
 
             public double getGradientAngle() {
@@ -492,7 +492,7 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
                 if (gradFill.isSetLin()) {
                     return GradientType.linear;
                 }
-                
+
                 if (gradFill.isSetPath()) {
                     /* TODO: handle rect path */
                     STPathShadeType.Enum ps = gradFill.getPath().getPath();
@@ -502,15 +502,15 @@ public abstract class XSLFShape implements Shape<XSLFShape,XSLFTextParagraph> {
                         return GradientType.shape;
                     }
                 }
-                
+
                 return GradientType.linear;
             }
-        };        
+        };
     }
-    
+
     protected PaintStyle selectPaint(CTStyleMatrixReference fillRef) {
         if (fillRef == null) return null;
-        
+
         // The idx attribute refers to the index of a fill style or
         // background fill style within the presentation's style matrix, defined by the fmtScheme element.
         // value of 0 or 1000 indicates no background,

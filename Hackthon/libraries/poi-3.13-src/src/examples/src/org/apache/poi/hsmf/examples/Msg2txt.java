@@ -31,22 +31,22 @@ import org.apache.poi.hsmf.exceptions.ChunkNotFoundException;
  * Reads one or several Outlook MSG files and for each of them creates
  * a text file from available chunks and a directory that contains
  * attachments.
- * 
+ *
  * @author Bruno Girin
  */
 public class Msg2txt {
-	
+
 	/**
 	 * The stem used to create file names for the text file and the directory
 	 * that contains the attachments.
 	 */
 	private String fileNameStem;
-	
+
 	/**
 	 * The Outlook MSG file being processed.
 	 */
 	private MAPIMessage msg;
-	
+
 	public Msg2txt(String fileName) throws IOException {
 		fileNameStem = fileName;
 		if(fileNameStem.endsWith(".msg") || fileNameStem.endsWith(".MSG")) {
@@ -54,10 +54,10 @@ public class Msg2txt {
 		}
 		msg = new MAPIMessage(fileName);
 	}
-	
+
 	/**
 	 * Processes the message.
-	 * 
+	 *
 	 * @throws IOException if an exception occurs while writing the message out
 	 */
 	public void processMessage() throws IOException {
@@ -102,7 +102,7 @@ public class Msg2txt {
 			} catch (ChunkNotFoundException e) {
 				System.err.println("No message body");
 			}
-			
+
 			AttachmentChunks[] attachments = msg.getAttachmentFiles();
 			if(attachments.length > 0) {
 				File d = new File(attDirName);
@@ -120,7 +120,7 @@ public class Msg2txt {
 			}
 		}
 	}
-	
+
 	/**
 	 * Processes a single attachment: reads it from the Outlook MSG file and
 	 * writes it to disk as an individual file.
@@ -129,13 +129,13 @@ public class Msg2txt {
 	 * @param dir the directory in which to write the attachment file
 	 * @throws IOException when any of the file operations fails
 	 */
-	public void processAttachment(AttachmentChunks attachment, 
+	public void processAttachment(AttachmentChunks attachment,
 	      File dir) throws IOException {
 	   String fileName = attachment.attachFileName.toString();
 	   if(attachment.attachLongFileName != null) {
 	      fileName = attachment.attachLongFileName.toString();
 	   }
-	   
+
 		File f = new File(dir, fileName);
 		OutputStream fileOut = null;
 		try {
@@ -147,10 +147,10 @@ public class Msg2txt {
 			}
 		}
 	}
-	
+
 	/**
 	 * Processes the list of arguments as a list of names of Outlook MSG files.
-	 * 
+	 *
 	 * @param args the list of MSG files to process
 	 */
 	public static void main(String[] args) {

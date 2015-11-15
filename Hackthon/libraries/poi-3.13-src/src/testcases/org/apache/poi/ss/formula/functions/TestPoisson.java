@@ -59,7 +59,7 @@ public class TestPoisson extends TestCase {
         double x = 0;
         double mean = 0.2;
         double result = 0.8187307530779818; // known result
-        
+
         NumberEval myResult = (NumberEval)invokePoisson(x,mean,false);
 
         assertEquals(myResult.getNumberValue(), result, DELTA);
@@ -82,7 +82,7 @@ public class TestPoisson extends TestCase {
 
         ErrorEval myResult = (ErrorEval)invokePoisson(x,mean,false);
 
-        assertEquals(ErrorEval.NUM_ERROR.getErrorCode(), myResult.getErrorCode());    
+        assertEquals(ErrorEval.NUM_ERROR.getErrorCode(), myResult.getErrorCode());
     }
 
 

@@ -39,14 +39,14 @@ public final class HMEFDumper {
       if(args.length < 1) {
          throw new IllegalArgumentException("Filename must be given");
       }
-      
+
       boolean truncatePropData = true;
       for(int i=0; i<args.length; i++) {
          if(args[i].equalsIgnoreCase("--full")) {
             truncatePropData = false;
             continue;
          }
-         
+
          HMEFDumper dumper = new HMEFDumper(
                new FileInputStream(args[i])
          );
@@ -54,80 +54,80 @@ public final class HMEFDumper {
          dumper.dump();
       }
    }
-   
+
    private InputStream inp;
    private boolean truncatePropertyData;
-   
+
    public HMEFDumper(InputStream inp) throws IOException {
       this.inp = inp;
-      
+
       // Check the signature matches
       int sig = LittleEndian.readInt(inp);
       if(sig != HMEFMessage.HEADER_SIGNATURE) {
          throw new IllegalArgumentException(
                "TNEF signature not detected in file, " +
-               "expected " + HMEFMessage.HEADER_SIGNATURE + 
+               "expected " + HMEFMessage.HEADER_SIGNATURE +
                " but got " + sig
          );
       }
-      
+
       // Skip over the File ID
       LittleEndian.readUShort(inp);
    }
-   
+
    public void setTruncatePropertyData(boolean truncate) {
       truncatePropertyData = truncate;
    }
-   
+
    private void dump() throws IOException {
       int level;
       int attachments = 0;
-      
+
       while(true) {
          // Fetch the level
          level = inp.read();
          if(level == TNEFProperty.LEVEL_END_OF_FILE) {
             break;
          }
-       
+
          // Build the attribute
          TNEFAttribute attr = TNEFAttribute.create(inp);
-         
+
          // Is it a new attachment?
-         if(level == TNEFProperty.LEVEL_ATTACHMENT && 
+         if(level == TNEFProperty.LEVEL_ATTACHMENT &&
                attr.getProperty() == TNEFProperty.ID_ATTACHRENDERDATA) {
             attachments++;
             System.out.println();
             System.out.println("Attachment # " + attachments);
             System.out.println();
          }
-         
+
          // Print the attribute into
          System.out.println(
                "Level " + level + " : Type " + attr.getType() +
                " : ID " + attr.getProperty().toString()
          );
-         
+
          // Print the contents
          String indent = "  ";
-         
+
          if(attr instanceof TNEFStringAttribute) {
             System.out.println(indent + indent + indent + ((TNEFStringAttribute)attr).getString());
          }
          if(attr instanceof TNEFDateAttribute) {
             System.out.println(indent + indent + indent + ((TNEFDateAttribute)attr).getDate());
          }
-         
+
          System.out.println(indent + "Data of length " + attr.getData().length);
          if(attr.getData().length > 0) {
             int len = attr.getData().length;
             if(truncatePropertyData) {
                len = Math.min( attr.getData().length, 48 );
             }
-            
+
             int loops = len/16;
             if(loops == 0) loops = 1;
-            
+
             for(int i=0; i<loops; i++) {
                int thisLen = 16;
                int offset = i*16;
@@ -137,14 +137,14 @@ public final class HMEFDumper {
 
                byte data[] = new byte[thisLen];
                System.arraycopy(attr.getData(), offset, data, 0, thisLen);
-               
+
                System.out.print(
                      indent + HexDump.dump(data, 0, 0)
                );
             }
          }
          System.out.println();
-         
+
          if(attr.getProperty() == TNEFProperty.ID_MAPIPROPERTIES ||
                attr.getProperty() == TNEFProperty.ID_ATTACHMENT) {
             List<MAPIAttribute> attrs = MAPIAttribute.create(attr);

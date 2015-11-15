@@ -29,7 +29,7 @@ import org.junit.Test;
 
 /**
  * Test that checks numbered list functionality.
- * 
+ *
  * @author Alex Nikiforov [mailto:anikif@gmail.com]
  */
 public class TestTable {
@@ -44,7 +44,7 @@ public class TestTable {
 		assertEquals(1, slides.size());
 		checkSlide(slides.get(0));
 	}
-	
+
 	private void checkSlide(final HSLFSlide s) {
 		List<List<HSLFTextParagraph>> textRuns = s.getTextParagraphs();
 		assertEquals(2, textRuns.size());
@@ -55,7 +55,7 @@ public class TestTable {
 		assertFalse(textRun.getTextParagraph().isBullet());
 
 		assertEquals("Dummy text", HSLFTextParagraph.getRawText(textRuns.get(1)));
-		
+
 		List<HSLFShape> shapes = s.getShapes();
 		assertNotNull(shapes);
 		assertEquals(3, shapes.size());

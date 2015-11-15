@@ -14,7 +14,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.util;
 
@@ -30,7 +30,7 @@ import java.util.TimeZone;
  * the locale/time zone specific handling of certain office documents -
  * maybe for different time zones / locales ... - shouldn't affect
  * other java components.
- * 
+ *
  * The settings are saved in a {@link java.lang.ThreadLocal},
  * so they only apply to the current thread and can't be set globally.
  */
@@ -40,7 +40,7 @@ public class LocaleUtil {
      *  use UTC to perform calculations
      */
     public static final TimeZone TIMEZONE_UTC = TimeZone.getTimeZone("UTC");
-    
+
     /**
      * Default encoding for unknown byte encodings of native files
      * (at least it's better than to rely on a platform dependent encoding
@@ -63,7 +63,7 @@ public class LocaleUtil {
             return Locale.getDefault();
         }
     };
-    
+
     /**
      * As time zone information is not stored in any format, it can be
      * set before any date calculations take place.
@@ -74,7 +74,7 @@ public class LocaleUtil {
     public static void setUserTimeZone(TimeZone timezone) {
         userTimeZone.set(timezone);
     }
-    
+
     /**
      * @return the time zone which is used for date calculations, defaults to UTC
      */
@@ -101,7 +101,7 @@ public class LocaleUtil {
      * @return a calendar for the user locale and time zone
      */
     public static Calendar getLocaleCalendar() {
-        return getLocaleCalendar(getUserTimeZone());        
+        return getLocaleCalendar(getUserTimeZone());
     }
 
     /**
@@ -133,12 +133,12 @@ public class LocaleUtil {
         cal.clear(Calendar.MILLISECOND);
         return cal;
     }
-    
+
     /**
      * @return a calendar for the user locale and time zone
      */
     public static Calendar getLocaleCalendar(TimeZone timeZone) {
-        return Calendar.getInstance(timeZone, getUserLocale());        
+        return Calendar.getInstance(timeZone, getUserLocale());
     }
 }
 

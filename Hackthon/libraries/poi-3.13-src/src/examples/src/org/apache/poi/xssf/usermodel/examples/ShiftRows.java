@@ -25,7 +25,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
- * How to shift rows up or down 
+ * How to shift rows up or down
  */
 public class ShiftRows {
 

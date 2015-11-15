@@ -75,7 +75,7 @@ public final class TestSlideAtom extends TestCase {
 			assertEquals(data_a[i],b[i]);
 		}
 	}
-	
+
 	public void testSSSlideInfoAtom() throws Exception {
 		HSLFSlideShow ss = new HSLFSlideShow();
 		org.apache.poi.hslf.usermodel.HSLFSlide	slide1 = ss.createSlide(), slide2 = ss.createSlide();

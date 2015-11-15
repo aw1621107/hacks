@@ -272,10 +272,10 @@ public enum ShapeType {
 
     /** Preset-ID for XML-based shapes */
     public final int ooxmlId;
-    
+
     /** Preset-ID for binary-based shapes */
     public final int nativeId;
-    
+
     /** POI-specific name for the binary-based type */
     public final String nativeName;
 
@@ -291,7 +291,7 @@ public enum ShapeType {
         if (ooxmlId == -1) {
             return (name().startsWith("TEXT")) ? RECT.getOoxmlName() : null;
         }
-        
+
         StringBuilder sb = new StringBuilder();
         boolean toLower = true;
         for (char ch : name().toCharArray()) {
@@ -302,10 +302,10 @@ public enum ShapeType {
             sb.append(toLower ? Character.toLowerCase(ch) : Character.toUpperCase(ch));
             toLower = true;
         }
-        
+
         return sb.toString();
     }
-    
+
     public static ShapeType forId(int id, boolean isOoxmlId){
         for(ShapeType t : values()){
             if((isOoxmlId && t.ooxmlId == id) ||

@@ -93,7 +93,7 @@ public final class XSSFRowShifter {
                 removedIndices.add(i);
             }
         }
-        
+
         if(!removedIndices.isEmpty()) {
             sheet.removeMergedRegions(removedIndices);
         }
@@ -207,7 +207,7 @@ public final class XSSFRowShifter {
         XSSFWorkbook wb = sheet.getWorkbook();
         int sheetIndex = wb.getSheetIndex(sheet);
         XSSFEvaluationWorkbook fpb = XSSFEvaluationWorkbook.create(wb);
-        
+
         try {
             Ptg[] ptgs = FormulaParser.parse(formula, fpb, FormulaType.CELL, sheetIndex);
             String shiftedFmla = null;

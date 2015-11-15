@@ -25,12 +25,12 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * SERIESLIST (0x1016)<p/>
- * 
+ *
  * The series list record defines the series displayed as an overlay to the main chart record.<br/>
- * 
+ *
  * (As with all chart related records, documentation is lacking.
  * See {@link ChartRecord} for more details)
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class SeriesListRecord extends StandardRecord {
@@ -46,17 +46,17 @@ public final class SeriesListRecord extends StandardRecord {
     	short[] ss = new short[nItems];
     	for (int i = 0; i < nItems; i++) {
 			ss[i] = in.readShort();
-			
+
 		}
         field_1_seriesNumbers = ss;
     }
 
     public String toString() {
         StringBuffer buffer = new StringBuffer();
-        
+
         buffer.append("[SERIESLIST]\n");
         buffer.append("    .seriesNumbers= ").append(" (").append( Arrays.toString(getSeriesNumbers()) ).append(" )");
-        buffer.append("\n"); 
+        buffer.append("\n");
 
         buffer.append("[/SERIESLIST]\n");
         return buffer.toString();

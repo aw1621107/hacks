@@ -19,29 +19,29 @@ package org.apache.poi.ss.excelant;
 import junit.framework.TestCase;
 
 public class TestExcelAntPrecision extends TestCase {
-	
+
 	private ExcelAntPrecision fixture ;
 
     @Override
 	public void setUp() {
 		fixture = new ExcelAntPrecision() ;
 	}
-	
+
     @Override
 	public void tearDown() {
 		fixture = null ;
 	}
-	
+
 	public void testVerifyPrecision() {
-		
+
 		double value = 1.0E-1 ;
-		
+
 		fixture.setValue( value ) ;
-		
+
 		double result = fixture.getValue() ;
-		
+
 		assertTrue( result > 0 ) ;
-		
+
 		assertEquals( value, result, 0.0 ) ;
 	}
 

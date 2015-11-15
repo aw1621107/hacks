@@ -124,7 +124,7 @@ public final class HSLFFill {
                     case FILL_PICTURE: {
                         final HSLFPictureData pd = getPictureData();
                         if (pd == null) break;
-                        
+
                         return new TexturePaint() {
                             public InputStream getImageData() {
                                 return new ByteArrayInputStream(pd.getData());
@@ -147,7 +147,7 @@ public final class HSLFFill {
             }
         };
     }
-    
+
     /**
      * Returns fill type.
      * Must be one of the <code>FILL_*</code> constants defined in this class.

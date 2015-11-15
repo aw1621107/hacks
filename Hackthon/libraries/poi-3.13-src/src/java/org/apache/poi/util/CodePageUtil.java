@@ -21,7 +21,7 @@ import java.io.UnsupportedEncodingException;
 
 /**
  * Utilities for working with Microsoft CodePages.
- * 
+ *
  * <p>Provides constants for understanding numeric codepages,
  *  along with utilities to translate these into Java Character Sets.</p>
  */
@@ -195,15 +195,15 @@ public class CodePageUtil
 
     /** <p>Codepage for Unicode</p> */
     public static final int CP_UNICODE = CP_UTF16;
-    
+
     /**
      * Converts a string into bytes, in the equivalent character encoding
      *  to the supplied codepage number.
      * @param string The string to convert
      * @param codepage The codepage number
      */
-    public static byte[] getBytesInCodePage(final String string, final int codepage) 
-    throws UnsupportedEncodingException 
+    public static byte[] getBytesInCodePage(final String string, final int codepage)
+    throws UnsupportedEncodingException
     {
         String encoding = codepageToEncoding(codepage);
         return string.getBytes(encoding);
@@ -216,24 +216,24 @@ public class CodePageUtil
      * @param codepage The codepage number
      */
     public static String getStringFromCodePage(final byte[] string, final int codepage)
-    throws UnsupportedEncodingException 
+    throws UnsupportedEncodingException
     {
         return getStringFromCodePage(string, 0, string.length, codepage);
     }
-    
+
     /**
      * Converts the bytes into a String, based on the equivalent character encoding
      *  to the supplied codepage number.
      * @param string The byte of the string to convert
      * @param codepage The codepage number
      */
-    public static String getStringFromCodePage(final byte[] string, final int offset, 
-            final int length, final int codepage) throws UnsupportedEncodingException 
+    public static String getStringFromCodePage(final byte[] string, final int offset,
+            final int length, final int codepage) throws UnsupportedEncodingException
     {
         String encoding = codepageToEncoding(codepage);
         return new String(string, offset, length, encoding);
     }
-    
+
     /**
      * <p>Turns a codepage number into the equivalent character encoding's
      * name (in Java NIO canonical naming format).</p>
@@ -242,8 +242,8 @@ public class CodePageUtil
      *
      * @return The character encoding's name. If the codepage number is 65001,
      * the encoding name is "UTF-8". All other positive numbers are mapped to
-     * their Java NIO names, normally either "windows-" followed by the number, 
-     * eg "windows-1251", or "cp" followed by the number, e.g. if the codepage 
+     * their Java NIO names, normally either "windows-" followed by the number,
+     * eg "windows-1251", or "cp" followed by the number, e.g. if the codepage
      * number is 1252 the returned character encoding name will be "cp1252".
      *
      * @exception UnsupportedEncodingException if the specified codepage is
@@ -254,7 +254,7 @@ public class CodePageUtil
     {
         return codepageToEncoding(codepage, false);
     }
-    
+
     /**
      * <p>Turns a codepage number into the equivalent character encoding's
      * name, in either Java NIO or Java Lang canonical naming.</p>
@@ -262,9 +262,9 @@ public class CodePageUtil
      * @param codepage The codepage number
      * @param javaLangFormat Should Java Lang or Java NIO naming be used?
      *
-     * @return The character encoding's name, in either Java Lang format 
+     * @return The character encoding's name, in either Java Lang format
      *  (eg Cp1251, ISO8859_5) or Java NIO format (eg windows-1252, ISO-8859-9)
-     *  
+     *
      * @see <a href="http://docs.oracle.com/javase/6/docs/technotes/guides/intl/encoding.doc.html">Supported Encodings</a>
      *
      * @exception UnsupportedEncodingException if the specified codepage is
@@ -275,7 +275,7 @@ public class CodePageUtil
     {
         if (codepage <= 0)
             throw new UnsupportedEncodingException("Codepage number may not be " + codepage);
-        
+
         switch (codepage) {
             case CP_UTF16:
                 return "UTF-16";

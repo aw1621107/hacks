@@ -31,7 +31,7 @@ public class XWPFFileHandler extends AbstractFileHandler {
         if (POIXMLDocumentHandler.isEncrypted(stream)) return;
 
         XWPFDocument doc = new XWPFDocument(stream);
-		
+
 		new POIXMLDocumentHandler().handlePOIXMLDocument(doc);
 	}
 
@@ -46,8 +46,8 @@ public class XWPFFileHandler extends AbstractFileHandler {
 		} finally {
 			stream.close();
 		}
-		
+
 		handleExtracting(file);
 	}
-	
+
 }

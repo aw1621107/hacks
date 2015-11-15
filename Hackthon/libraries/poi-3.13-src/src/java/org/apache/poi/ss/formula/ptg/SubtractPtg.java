@@ -30,7 +30,7 @@ public final class SubtractPtg extends ValueOperatorPtg {
     private SubtractPtg() {
     	// enforce singleton
     }
-    
+
     protected byte getSid() {
     	return sid;
     }
@@ -38,7 +38,7 @@ public final class SubtractPtg extends ValueOperatorPtg {
     public int getNumberOfOperands() {
         return 2;
     }
-       
+
     public String toFormulaString(String[] operands) {
         StringBuffer buffer = new StringBuffer();
 

@@ -58,7 +58,7 @@ public final class HeaderFooterRecord extends StandardRecord {
 	protected int getDataSize() {
 		return _rawData.length;
 	}
-    
+
     public short getSid()
     {
         return sid;
@@ -79,7 +79,7 @@ public final class HeaderFooterRecord extends StandardRecord {
     }
 
     /**
-     * @return whether this record belongs to the current sheet 
+     * @return whether this record belongs to the current sheet
      */
     public boolean isCurrentSheet(){
         return Arrays.equals(getGuid(), BLANK_GUID);
@@ -99,6 +99,6 @@ public final class HeaderFooterRecord extends StandardRecord {
     public Object clone() {
                 return cloneViaReserialise();
     }
-    
- 
+
+
 }

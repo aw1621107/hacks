@@ -34,11 +34,11 @@ class LicenseConfiguration {
     /**
      * Used in commercially-licensed clients that require connections to
      * commercially-licensed servers as part of the licensing terms.
-     * 
+     *
      * @param serverVariables
      *            a Map of the output of 'show variables' from the server we're
      *            connecting to.
-     * 
+     *
      * @throws SQLException
      *             if commercial license is required, but not found
      */

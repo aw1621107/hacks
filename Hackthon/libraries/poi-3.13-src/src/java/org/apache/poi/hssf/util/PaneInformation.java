@@ -31,14 +31,14 @@ public class PaneInformation
     public static final byte PANE_LOWER_LEFT = (byte)2;
     /** Constant for active pane being the upper left*/
     public static final byte PANE_UPPER_LEFT = (byte)3;
-    
+
 	private short x;
 	private short y;
 	private short topRow;
 	private short leftColumn;
 	private byte activePane;
 	private boolean frozen = false;
-	
+
 	public PaneInformation(short x, short y, short top, short left, byte active, boolean frozen) {
 		this.x = x;
 		this.y = y;
@@ -58,7 +58,7 @@ public class PaneInformation
 	public short getVerticalSplitPosition() {
 	  return x;
 	}
-	
+
 	/**
 	 * Returns the horizontal position of the split.
 	 * @return 0 if there is no horizontal spilt,
@@ -68,7 +68,7 @@ public class PaneInformation
 	public short getHorizontalSplitPosition() {
 	  return y;
 	}
-	
+
 	/**
 	 * For a horizontal split returns the top row in the BOTTOM pane.
 	 * @return 0 if there is no horizontal split, or the top row of the bottom pane.
@@ -76,7 +76,7 @@ public class PaneInformation
 	public short getHorizontalSplitTopRow() {
 	  return topRow;
 	}
-	
+
 	/**
 	 * For a vertical split returns the left column in the RIGHT pane.
 	 * @return 0 if there is no vertical split, or the left column in the RIGHT pane.
@@ -84,7 +84,7 @@ public class PaneInformation
 	public short getVerticalSplitLeftColumn() {
 	  return leftColumn;
 	}
-	
+
 	/**
 	 * Returns the active pane
 	 * @see #PANE_LOWER_RIGHT
@@ -96,7 +96,7 @@ public class PaneInformation
 	public byte getActivePane() {
 	  return activePane;
 	}
-	
+
 	/** Returns true if this is a Freeze pane, false if it is a split pane.
 	 */
 	public boolean isFreezePane() {

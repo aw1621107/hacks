@@ -84,7 +84,7 @@ public final class HSSFSheet implements org.apache.poi.ss.usermodel.Sheet {
      */
     private static final float PX_MODIFIED = 36.56f;
 
-    
+
     /**
      * Used for compile-time optimization.  This is the initial size for the collection of
      * rows.  It is currently set to 20.  If you generate larger sheets you may benefit
@@ -571,7 +571,7 @@ public final class HSSFSheet implements org.apache.poi.ss.usermodel.Sheet {
 
         return cw/px;
     }
-    
+
     /**
      * get the default column width for the sheet (if the columns do not define their own width) in
      * characters
@@ -1315,7 +1315,7 @@ public final class HSSFSheet implements org.apache.poi.ss.usermodel.Sheet {
     public void showInPane(int toprow, int leftcol) {
         int maxrow = SpreadsheetVersion.EXCEL97.getLastRowIndex();
         if (toprow > maxrow) throw new IllegalArgumentException("Maximum row number is " + maxrow);
-        
+
         showInPane((short)toprow, (short)leftcol);
     }
     /**
@@ -1872,9 +1872,9 @@ public final class HSSFSheet implements org.apache.poi.ss.usermodel.Sheet {
     }
 
     /**
-     * Creates the top-level drawing patriarch. 
+     * Creates the top-level drawing patriarch.
      * <p>This may then be used to add graphics or charts.</p>
-     * <p>Note that this will normally have the effect of removing 
+     * <p>Note that this will normally have the effect of removing
      *  any existing drawings on this sheet.</p>
      *
      * @return The new patriarch.
@@ -2137,7 +2137,7 @@ public final class HSSFSheet implements org.apache.poi.ss.usermodel.Sheet {
         }
 
         int firstRow = range.getFirstRow();
-        
+
         // if row was not given when constructing the range...
         if(firstRow == -1) {
             firstRow = 0;
@@ -2347,7 +2347,7 @@ public final class HSSFSheet implements org.apache.poi.ss.usermodel.Sheet {
         }
         return _workbook.getNameRecord(recIndex);
     }
-    
+
     /**
      * Returns the column outline level. Increased as you
      *  put it into more groups (outlines), reduced as

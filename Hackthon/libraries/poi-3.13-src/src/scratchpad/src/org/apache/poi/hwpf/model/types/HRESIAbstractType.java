@@ -24,10 +24,10 @@ import org.apache.poi.util.Internal;
  * <p>
  * Class and fields descriptions are quoted from Microsoft Office Word 97-2007
  * Binary File Format (.doc) Specification
- * 
+ *
  * NOTE: This source is automatically generated please do not modify this file.
  * Either subclass or remove the record in src/types/definitions.
- * 
+ *
  * @author Sergey Vladimirov; according to Microsoft Office Word 97-2007 Binary
  *         File Format (.doc) Specification
  */
@@ -85,7 +85,7 @@ public abstract class HRESIAbstractType
     /**
      * Hyphenation rule.
      *
-     * @return One of 
+     * @return One of
      * <li>{@link #HRES_NO}
      * <li>{@link #HRES_NORMAL}
      * <li>{@link #HRES_ADD_LETTER_BEFORE}
@@ -103,7 +103,7 @@ public abstract class HRESIAbstractType
      * Hyphenation rule.
      *
      * @param field_1_hres
-     *        One of 
+     *        One of
      * <li>{@link #HRES_NO}
      * <li>{@link #HRES_NORMAL}
      * <li>{@link #HRES_ADD_LETTER_BEFORE}

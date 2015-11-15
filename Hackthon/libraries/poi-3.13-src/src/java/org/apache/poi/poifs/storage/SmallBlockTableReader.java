@@ -34,9 +34,9 @@ public final class SmallBlockTableReader {
         throws IOException
     {
         // Fetch the blocks which hold the Small Blocks stream
-        ListManagedBlock [] smallBlockBlocks = 
+        ListManagedBlock [] smallBlockBlocks =
                 blockList.fetchBlocks(root.getStartBlock(), -1);
-        
+
        // Turn that into a list
         BlockList list =new SmallDocumentBlockList(
                 SmallDocumentBlock.extract(bigBlockSize, smallBlockBlocks));
@@ -45,7 +45,7 @@ public final class SmallBlockTableReader {
     }
     private static BlockAllocationTableReader prepareReader(
             final POIFSBigBlockSize bigBlockSize,
-            final RawDataBlockList blockList, final BlockList list, 
+            final RawDataBlockList blockList, final BlockList list,
             final RootProperty root, final int sbatStart)
         throws IOException
     {
@@ -54,7 +54,7 @@ public final class SmallBlockTableReader {
                 blockList.fetchBlocks(sbatStart, -1),
                 list);
     }
-            
+
     /**
      * Fetch the small document block reader from an existing file, normally
      *  needed for debugging and low level dumping. You should typically call

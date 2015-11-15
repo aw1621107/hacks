@@ -181,7 +181,7 @@ public final class LocalRawDataBlockList extends RawDataBlockList {
             _array = _list.toArray(new RawDataBlock[ 0 ]);
         }
     }
-    
+
     public int blockCount() {
        return _list.size();
     }

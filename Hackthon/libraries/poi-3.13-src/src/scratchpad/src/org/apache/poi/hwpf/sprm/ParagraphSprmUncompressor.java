@@ -343,8 +343,8 @@ public final class ParagraphSprmUncompressor
           newPAP.setDttmPropRMark (new DateAndTime(varParam, offset + 3));
         break;
       case 0x40:
-        // This condition commented out, as Word seems to set outline levels even for 
-        //  paragraph with other styles than Heading 1..9, even though specification 
+        // This condition commented out, as Word seems to set outline levels even for
+        //  paragraph with other styles than Heading 1..9, even though specification
         //  does not say so. See bug 49820 for discussion.
         //if (newPAP.getIstd () < 1 && newPAP.getIstd () > 9)
         {
@@ -352,7 +352,7 @@ public final class ParagraphSprmUncompressor
         }
         break;
       case 0x41:
-        // sprmPFBiDi 
+        // sprmPFBiDi
         newPAP.setFBiDi(sprm.getOperand() != 0);
         break;
       case 0x43:
@@ -418,11 +418,11 @@ public final class ParagraphSprmUncompressor
             newPAP.setDxaLeft1( sprm.getOperand() );
             break;
       case 0x61:
-        // sprmPJc 
+        // sprmPJc
         newPAP.setJustificationLogical((byte) sprm.getOperand());
         break;
       case 0x67:
-          // sprmPRsid -- 0x6467 
+          // sprmPRsid -- 0x6467
           newPAP.setRsid( sprm.getOperand() );
           break;
         default:
@@ -463,7 +463,7 @@ public final class ParagraphSprmUncompressor
 
     tabPositions = new int[tabMap.size()];
     tabDescriptors = new TabDescriptor[tabPositions.length];
-    
+
     List<Integer> list = new ArrayList<Integer>(tabMap.keySet());
     Collections.sort(list);
 

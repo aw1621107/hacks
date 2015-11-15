@@ -22,7 +22,7 @@ package org.apache.poi.hpsf;
  * information stream. The difference to normal properties is that custom
  * properties have an optional name. If the name is not <code>null</code> it
  * will be maintained in the section's dictionary.</p>
- * 
+ *
  * @author Rainer Klute <a
  *         href="mailto:klute@rainer-klute.de">&lt;klute@rainer-klute.de&gt;</a>
  */
@@ -43,7 +43,7 @@ public class CustomProperty extends MutableProperty
     /**
      * <p>Creates a {@link CustomProperty} without a name by copying the
      * underlying {@link Property}' attributes.</p>
-     * 
+     *
      * @param property the property to copy
      */
     public CustomProperty(final Property property)
@@ -53,7 +53,7 @@ public class CustomProperty extends MutableProperty
 
     /**
      * <p>Creates a {@link CustomProperty} with a name.</p>
-     * 
+     *
      * @param property This property's attributes are copied to the new custom
      *        property.
      * @param name The new custom property's name.
@@ -89,11 +89,11 @@ public class CustomProperty extends MutableProperty
      * <p>Compares two custom properties for equality. The method returns
      * <code>true</code> if all attributes of the two custom properties are
      * equal.</p>
-     * 
+     *
      * @param o The custom property to compare with.
      * @return <code>true</code> if both custom properties are equal, else
      *         <code>false</code>.
-     * 
+     *
      * @see java.util.AbstractSet#equals(java.lang.Object)
      */
     public boolean equalsContents(final Object o)

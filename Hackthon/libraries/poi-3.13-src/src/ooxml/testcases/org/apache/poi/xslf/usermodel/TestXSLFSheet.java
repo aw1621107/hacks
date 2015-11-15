@@ -29,7 +29,7 @@ import org.junit.Test;
  * @author Yegor Kozlov
  */
 public class TestXSLFSheet {
-    
+
     @Test
     public void testCreateShapes(){
         XMLSlideShow ppt = new XMLSlideShow();

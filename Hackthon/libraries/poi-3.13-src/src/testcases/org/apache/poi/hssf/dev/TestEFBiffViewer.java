@@ -25,8 +25,8 @@ import org.apache.poi.util.LocaleUtil;
 public class TestEFBiffViewer extends BaseXLSIteratingTest {
 	static {
 		// these are likely ok to fail
-		EXCLUDED.add("XRefCalc.xls"); 
-		EXCLUDED.add("password.xls"); 
+		EXCLUDED.add("XRefCalc.xls");
+		EXCLUDED.add("password.xls");
 		EXCLUDED.add("51832.xls"); 		// password
 		EXCLUDED.add("xor-encryption-abc.xls");    // password, ty again later!
 		EXCLUDED.add("43493.xls");	// HSSFWorkbook cannot open it as well
@@ -39,7 +39,7 @@ public class TestEFBiffViewer extends BaseXLSIteratingTest {
 		EXCLUDED.add("testEXCEL_95.xls");   // old unsupported format
 		EXCLUDED.add("35897-type4.xls");   // unsupported encryption
 	}
-	
+
 	@Override
 	void runOneFile(File fileIn) throws IOException {
 		PrintStream save = System.out;

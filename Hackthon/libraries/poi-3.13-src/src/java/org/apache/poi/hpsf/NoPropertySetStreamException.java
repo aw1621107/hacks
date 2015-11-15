@@ -20,7 +20,7 @@ package org.apache.poi.hpsf;
 /**
  * <p>This exception is thrown if a format error in a property set stream is
  * detected or when the input data do not constitute a property set stream.</p>
- * 
+ *
  * <p>The constructors of this class are analogous to those of its superclass
  * and are documented there.</p>
  *
@@ -42,7 +42,7 @@ public class NoPropertySetStreamException extends HPSFException
 
     /**
      * <p>Constructor</p>
-     * 
+     *
      * @param msg The exception's message string
      */
     public NoPropertySetStreamException(final String msg)
@@ -54,7 +54,7 @@ public class NoPropertySetStreamException extends HPSFException
 
     /**
      * <p>Constructor</p>
-     * 
+     *
      * @param reason This exception's underlying reason
      */
     public NoPropertySetStreamException(final Throwable reason)
@@ -66,7 +66,7 @@ public class NoPropertySetStreamException extends HPSFException
 
     /**
      * <p>Constructor</p>
-     * 
+     *
      * @param msg The exception's message string
      * @param reason This exception's underlying reason
      */

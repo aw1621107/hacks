@@ -59,14 +59,14 @@ public final class TestReadOnlySharedStringsTable extends TestCase {
         }
 
 	}
-    
+
     public void testEmptySSTOnPackageObtainedViaWorkbook() throws Exception {
         XSSFWorkbook wb = new XSSFWorkbook(_ssTests.openResourceAsStream("noSharedStringTable.xlsx"));
         OPCPackage pkg = wb.getPackage();
         assertEmptySST(pkg);
         wb.close();
     }
-    
+
     public void testEmptySSTOnPackageDirect() throws Exception {
         OPCPackage pkg = OPCPackage.open(_ssTests.openResourceAsStream("noSharedStringTable.xlsx"));
         assertEmptySST(pkg);
@@ -78,5 +78,5 @@ public final class TestReadOnlySharedStringsTable extends TestCase {
         assertEquals(0, sst.getUniqueCount());
         assertNull(sst.getItems()); // same state it's left in if fed a package which has no SST part.
     }
-    
+
 }

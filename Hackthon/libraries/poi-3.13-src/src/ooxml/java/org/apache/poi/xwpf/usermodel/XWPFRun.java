@@ -918,7 +918,7 @@ public class XWPFRun implements ISDTContents, IRunElement, CharacterRun {
             throws InvalidFormatException, IOException {
         String relationId;
         XWPFPictureData picData;
-        
+
         // Work out what to add the picture to, then add both the
         //  picture and the relationship for it
         // TODO Should we have an interface for this sort of thing?

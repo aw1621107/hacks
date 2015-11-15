@@ -58,7 +58,7 @@ final class FunctionMetadataReader {
     		if (is == null) {
     			throw new RuntimeException("resource '" + METADATA_FILE_NAME + "' not found");
     		}
-    
+
     		try {
         		BufferedReader br;
         		try {
@@ -66,10 +66,10 @@ final class FunctionMetadataReader {
         		} catch(UnsupportedEncodingException e) {
         			throw new RuntimeException(e);
         		}
-        		
+
         		try {
         		    FunctionDataBuilder fdb = new FunctionDataBuilder(400);
-        
+
         			while (true) {
         				String line = br.readLine();
         				if (line == null) {
@@ -94,7 +94,7 @@ final class FunctionMetadataReader {
     		}
         } catch (IOException e) {
             throw new RuntimeException(e);
-	    } 
+	    }
 	}
 
 	private static void processLine(FunctionDataBuilder fdb, String line) {

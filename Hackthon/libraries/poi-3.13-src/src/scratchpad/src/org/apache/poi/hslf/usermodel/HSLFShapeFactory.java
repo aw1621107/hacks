@@ -64,11 +64,11 @@ public final class HSLFShapeFactory {
                 }
             }
         }
-        
+
         HSLFGroupShape group = (isTable)
             ? new HSLFTable(spContainer, parent)
             : new HSLFGroupShape(spContainer, parent);
-        
+
         return group;
      }
 

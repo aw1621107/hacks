@@ -20,7 +20,7 @@ package org.apache.poi.sl.usermodel;
 
 /**
  * Specifies a list of available anchoring types for text
- * 
+ *
  * @author Yegor Kozlov
  */
 public enum VerticalAlignment {

@@ -143,15 +143,15 @@ public final class WMF extends Metafile {
         /**
          * The number of logical units per inch used to represent the image.
          * This value can be used to scale an image. By convention, an image is
-         * considered to be recorded at 1440 logical units (twips) per inch. 
+         * considered to be recorded at 1440 logical units (twips) per inch.
          * Thus, a value of 720 specifies that the image SHOULD be rendered at
          * twice its normal size, and a value of 2880 specifies that the image
          * SHOULD be rendered at half its normal size.
          */
-        private final int inch; 
+        private final int inch;
         private final int reserved;
         private int checksum;
-        
+
         public NativeHeader(Rectangle dim) {
             handle = 0;
             left = dim.x;
@@ -230,7 +230,7 @@ public final class WMF extends Metafile {
             double coeff = ((double)Units.POINT_DPI)/inch;
             return new Dimension((int)Math.round((right-left)*coeff), (int)Math.round((bottom-top)*coeff));
         }
-        
+
         public int getLength(){
             return 22;
         }

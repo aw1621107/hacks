@@ -390,7 +390,7 @@ public final class TestBlockAllocationTableReader extends TestCase {
 		int BLOCK_SIZE = 512;
 		POIFSBigBlockSize bigBlockSize = POIFSConstants.SMALLER_BIG_BLOCK_SIZE_DETAILS;
 		assertEquals(BLOCK_SIZE, bigBlockSize.getBigBlockSize());
-		
+
 		// 512 bytes take from the start of bugzilla attachment 24444
 		byte[] initData = HexRead.readFromString(
 
@@ -414,7 +414,7 @@ public final class TestBlockAllocationTableReader extends TestCase {
 			throw new RuntimeException(e);
 		}
 		try {
-			new BlockAllocationTableReader(POIFSConstants.SMALLER_BIG_BLOCK_SIZE_DETAILS, 
+			new BlockAllocationTableReader(POIFSConstants.SMALLER_BIG_BLOCK_SIZE_DETAILS,
 			      hb.getBATCount(), hb.getBATArray(), hb.getXBATCount(),
 					hb.getXBATIndex(), dataBlocks);
 		} catch (IOException e) {

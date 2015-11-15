@@ -22,7 +22,7 @@ import org.apache.poi.util.LittleEndian;
 
 /**
  * Section Descriptor (SED)
- * 
+ *
  * See page 186 for details.
  */
 @Internal
@@ -40,7 +40,7 @@ public final class SectionDescriptor
      * to the standard SEP (see SEP definition)."
      */
     private int fcSepx;
-    
+
     /**
      * "Used internally by Word"
      */
@@ -90,7 +90,7 @@ public final class SectionDescriptor
       assert false : "hashCode not designed";
       return 42; // any arbitrary constant will do
   }
-  
+
   public byte[] toByteArray()
   {
     int offset = 0;

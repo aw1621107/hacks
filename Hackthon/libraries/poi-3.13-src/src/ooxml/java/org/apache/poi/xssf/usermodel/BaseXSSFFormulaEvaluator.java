@@ -180,7 +180,7 @@ public abstract class BaseXSSFFormulaEvaluator implements FormulaEvaluator, Work
      * Turns a XSSFCell / SXSSFCell into a XSSFEvaluationCell
      */
     protected abstract EvaluationCell toEvaluationCell(Cell cell);
-    
+
     /**
      * Returns a CellValue wrapper around the supplied ValueEval instance.
      */

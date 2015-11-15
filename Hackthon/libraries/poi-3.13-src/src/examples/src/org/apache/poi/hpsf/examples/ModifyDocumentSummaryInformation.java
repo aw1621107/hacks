@@ -168,7 +168,7 @@ public class ModifyDocumentSummaryInformation {
         dsi.write(dir, DocumentSummaryInformation.DEFAULT_STREAM_NAME);
 
         /* Write the POI filesystem back to the original file. Please note that
-         * in production code you should take care when write directly to the 
+         * in production code you should take care when write directly to the
          * origin, to make sure you don't loose things on error */
         poifs.writeFilesystem();
         poifs.close();

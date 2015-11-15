@@ -50,11 +50,11 @@ public final class FormulaShifter {
 	 */
 	private final int _externSheetIndex;
 	/**
-	 * Sheet name of the sheet where moving is occurring, 
+	 * Sheet name of the sheet where moving is occurring,
 	 *  used for updating XSSF style 3D references on row shifts.
 	 */
 	private final String _sheetName;
-	
+
 	private final int _firstMovedIndex;
 	private final int _lastMovedIndex;
 	private final int _amountToMove;
@@ -89,7 +89,7 @@ public final class FormulaShifter {
     /**
      * Create an instance for shifting sheets.
      *
-     * For example, this will be called on {@link org.apache.poi.hssf.usermodel.HSSFWorkbook#setSheetOrder(String, int)}  
+     * For example, this will be called on {@link org.apache.poi.hssf.usermodel.HSSFWorkbook#setSheetOrder(String, int)}
      */
     private FormulaShifter(int srcSheetIndex, int dstSheetIndex) {
         _externSheetIndex = _firstMovedIndex = _lastMovedIndex = _amountToMove = -1;

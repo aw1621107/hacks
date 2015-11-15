@@ -37,7 +37,7 @@ public interface HeaderBlockConstants
     //  BAT ~= FAT
     //  SBAT ~= MiniFAT
     //  XBAT ~= DIFat
-    
+
     // useful offsets
     public static final int  _signature_offset        = 0;
     public static final int  _bat_count_offset        = 0x2C;

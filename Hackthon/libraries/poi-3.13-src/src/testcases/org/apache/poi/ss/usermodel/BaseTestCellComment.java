@@ -266,14 +266,14 @@ public abstract class BaseTestCellComment {
     @Test
     public void getClientAnchor() throws IOException {
         Workbook wb = _testDataProvider.createWorkbook();
-        
+
         Sheet sheet = wb.createSheet();
         Row row = sheet.createRow(10);
         Cell cell = row.createCell(5);
         CreationHelper factory = wb.getCreationHelper();
-        
+
         Drawing drawing = sheet.createDrawingPatriarch();
-        
+
         double r_mul, c_mul;
         if (sheet instanceof HSSFSheet) {
             double rowheight = Units.toEMU(row.getHeightInPoints())/EMU_PER_PIXEL;
@@ -292,12 +292,12 @@ public abstract class BaseTestCellComment {
         int row1 = row.getRowNum();
         int col2 = cell.getColumnIndex()+2;
         int row2 = row.getRowNum()+1;
-        
+
         ClientAnchor anchor = drawing.createAnchor(dx1, dy1, dx2, dy2, col1, row1, col2, row2);
         Comment comment = drawing.createCellComment(anchor);
         comment.setVisible(true);
         cell.setCellComment(comment);
-        
+
         anchor = comment.getClientAnchor();
         assertEquals(dx1, anchor.getDx1());
         assertEquals(dy1, anchor.getDy1());
@@ -312,7 +312,7 @@ public abstract class BaseTestCellComment {
         comment = drawing.createCellComment(anchor);
         cell.setCellComment(comment);
         anchor = comment.getClientAnchor();
-        
+
         if (sheet instanceof HSSFSheet) {
             assertEquals(0, anchor.getCol1());
             assertEquals(0, anchor.getDx1());
@@ -321,7 +321,7 @@ public abstract class BaseTestCellComment {
             assertEquals(0, anchor.getCol2());
             assertEquals(0, anchor.getDx2());
             assertEquals(0, anchor.getRow2());
-            assertEquals(0, anchor.getDy2());            
+            assertEquals(0, anchor.getDy2());
         } else {
             // when anchor is initialized without parameters, the comment anchor attributes default to
             // "1, 15, 0, 2, 3, 15, 3, 16" ... see XSSFVMLDrawing.newCommentShape()

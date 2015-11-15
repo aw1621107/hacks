@@ -20,9 +20,9 @@ package org.apache.poi.ss.formula;
 /**
  * Abstracts a cell for the purpose of formula evaluation.  This interface represents both formula
  * and non-formula cells.<br/>
- * 
+ *
  * For POI internal use only
- * 
+ *
  * @author Josh Micich
  */
 public interface EvaluationCell {

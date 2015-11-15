@@ -28,20 +28,20 @@ import org.apache.poi.util.POILogFactory;
 import org.apache.poi.util.POILogger;
 
 /**
- * A pure-MAPI attribute holding a Date, which applies 
+ * A pure-MAPI attribute holding a Date, which applies
  *  to a {@link HMEFMessage} or one of its {@link Attachment}s.
  */
 public final class MAPIDateAttribute extends MAPIAttribute {
    private static POILogger logger = POILogFactory.getLogger(MAPIDateAttribute.class);
    private Date data;
-   
+
    /**
     * Constructs a single new date attribute from the id, type,
     *  and the contents of the stream
     */
    protected MAPIDateAttribute(MAPIProperty property, int type, byte[] data) {
       super(property, type, data);
-      
+
       // The value is a 64 bit Windows Filetime
       this.data = Util.filetimeToDate(
             LittleEndian.getLong(data, 0)
@@ -51,11 +51,11 @@ public final class MAPIDateAttribute extends MAPIAttribute {
    public Date getDate() {
       return this.data;
    }
-   
+
    public String toString() {
       return getProperty().toString() + " " + data.toString();
    }
-   
+
    /**
     * Returns the Date of a Attribute, converting as appropriate
     */
@@ -66,7 +66,7 @@ public final class MAPIDateAttribute extends MAPIAttribute {
       if(attr instanceof MAPIDateAttribute) {
          return ((MAPIDateAttribute)attr).getDate();
       }
-      
+
       logger.log(POILogger.WARN, "Warning, non date property found: " + attr.toString());
       return null;
   }

@@ -42,26 +42,26 @@ import org.junit.runners.Parameterized.Parameters;
 
 /**
  *  This is an integration test which performs various actions on all stored test-files and tries
- *  to reveal problems which are introduced, but not covered (yet) by unit tests. 
- * 
- *  This test looks for any file under the test-data directory and tries to do some useful 
+ *  to reveal problems which are introduced, but not covered (yet) by unit tests.
+ *
+ *  This test looks for any file under the test-data directory and tries to do some useful
  *  processing with it based on it's type.
- * 
+ *
  *  The test is implemented as a junit {@link Parameterized} test, which leads
- *  to one test-method call for each file (currently around 950 files are handled). 
- * 
- *  There is a a mapping of extension to implementations of the interface 
- *  {@link FileHandler} which defines how the file is loaded and which actions are 
- *  tried with the file. 
- *  
+ *  to one test-method call for each file (currently around 950 files are handled).
+ *
+ *  There is a a mapping of extension to implementations of the interface
+ *  {@link FileHandler} which defines how the file is loaded and which actions are
+ *  tried with the file.
+ *
  *  The test can be expanded by adding more actions to the FileHandlers, this automatically
  *  applies the action to any such file in our test-data repository.
- *  
+ *
  *  There is also a list of files that should actually fail.
- *    
- *  Note: It is also a test-failure if a file that is expected to fail now actually works, 
- *  i.e. if a bug was fixed in POI itself, the file should be removed from the expected-failures 
- *  here as well! This is to ensure that files that should not work really do not work, e.g.  
+ *
+ *  Note: It is also a test-failure if a file that is expected to fail now actually works,
+ *  i.e. if a bug was fixed in POI itself, the file should be removed from the expected-failures
+ *  here as well! This is to ensure that files that should not work really do not work, e.g.
  *  that we do not remove expected sanity checks.
  */
 @RunWith(Parameterized.class)
@@ -104,7 +104,7 @@ public class TestAllFiles {
 
         // Visio - binary
         HANDLERS.put(".vsd", new HDGFFileHandler());
-        
+
         // Visio - ooxml (currently unsupported)
         HANDLERS.put(".vsdm", new XDGFFileHandler());
         HANDLERS.put(".vsdx", new XDGFFileHandler());
@@ -234,14 +234,14 @@ public class TestAllFiles {
         EXPECTED_FAILURES.add("spreadsheet/Simple.xlsb");
         EXPECTED_FAILURES.add("poifs/unknown_properties.msg"); // POIFS properties corrupted
         EXPECTED_FAILURES.add("poifs/only-zero-byte-streams.ole2"); // No actual contents
-        
+
         // old Excel files, which we only support simple text extraction of
         EXPECTED_FAILURES.add("spreadsheet/testEXCEL_2.xls");
         EXPECTED_FAILURES.add("spreadsheet/testEXCEL_3.xls");
         EXPECTED_FAILURES.add("spreadsheet/testEXCEL_4.xls");
         EXPECTED_FAILURES.add("spreadsheet/testEXCEL_5.xls");
         EXPECTED_FAILURES.add("spreadsheet/testEXCEL_95.xls");
-        
+
         // OOXML Strict is not yet supported, see bug #57699
         EXPECTED_FAILURES.add("spreadsheet/SampleSS.strict.xlsx");
         EXPECTED_FAILURES.add("spreadsheet/SimpleStrict.xlsx");
@@ -257,7 +257,7 @@ public class TestAllFiles {
         // need JDK8+ - https://bugs.openjdk.java.net/browse/JDK-8038081
         IGNORED.add("slideshow/42474-2.ppt");
     }
-    
+
     @Parameters(name="{index}: {0} using {1}")
     public static Iterable<Object[]> files() {
         DirectoryScanner scanner = new DirectoryScanner();
@@ -274,7 +274,7 @@ public class TestAllFiles {
             if (IGNORED.contains(file)) continue;
             FileHandler handler = HANDLERS.get(getExtension(file));
             files.add(new Object[] { file, handler });
-            
+
             // for some file-types also run OPCFileHandler
             if(handler instanceof XSSFFileHandler ||
                 handler instanceof XWPFFileHandler ||
@@ -303,7 +303,7 @@ public class TestAllFiles {
             try {
                 handler.handleFile(stream);
 
-                assertFalse("Expected to fail for file " + file + " and handler " + handler + ", but did not fail!", 
+                assertFalse("Expected to fail for file " + file + " and handler " + handler + ", but did not fail!",
                         OLD_FILES.contains(file));
             } finally {
                 stream.close();
@@ -312,10 +312,10 @@ public class TestAllFiles {
             handler.handleExtracting(inputFile);
 
             // special cases where docx-handling breaks, but OPCPackage handling works
-            boolean ignoredOPC = (file.endsWith(".docx") || file.endsWith(".xlsx") || file.endsWith(".xlsb")) && 
+            boolean ignoredOPC = (file.endsWith(".docx") || file.endsWith(".xlsx") || file.endsWith(".xlsb")) &&
                     handler instanceof OPCFileHandler;
 
-            assertFalse("Expected to fail for file " + file + " and handler " + handler + ", but did not fail!", 
+            assertFalse("Expected to fail for file " + file + " and handler " + handler + ", but did not fail!",
                 EXPECTED_FAILURES.contains(file) && !ignoredOPC);
         } catch (OldWordFileFormatException e) {
             // for old word files we should still support extracting text

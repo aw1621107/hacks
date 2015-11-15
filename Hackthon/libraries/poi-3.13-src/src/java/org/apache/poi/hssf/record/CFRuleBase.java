@@ -33,8 +33,8 @@ import org.apache.poi.util.POILogger;
 
 /**
  * Conditional Formatting Rules. This can hold old-style rules
- *   
- * 
+ *
+ *
  * <p>This is for the older-style Excel conditional formattings,
  *  new-style (Excel 2007+) also make use of {@link CFRule12Record}
  *  and {@link CFExRuleRecord} for their rules.
@@ -93,7 +93,7 @@ public abstract class CFRuleBase extends StandardRecord {
     public static final int TEMPLATE_DUPLICATE_VALUES = 0x001B;
     public static final int TEMPLATE_ABOVE_OR_EQUAL_TO_AVERAGE = 0x001D;
     public static final int TEMPLATE_BELOW_OR_EQUAL_TO_AVERAGE = 0x001E;
-    
+
     static final BitField modificationBits = bf(0x003FFFFF); // Bits: font,align,bord,patt,prot
     static final BitField alignHor         = bf(0x00000001); // 0 = Horizontal alignment modified
     static final BitField alignVer         = bf(0x00000002); // 0 = Vertical alignment modified
@@ -134,7 +134,7 @@ public abstract class CFRuleBase extends StandardRecord {
     protected FontFormatting _fontFormatting;
     protected BorderFormatting _borderFormatting;
     protected PatternFormatting _patternFormatting;
-    
+
     private Formula formula1;
     private Formula formula2;
 
@@ -151,13 +151,13 @@ public abstract class CFRuleBase extends StandardRecord {
         this.formula2 = Formula.create(formula2);
     }
     protected CFRuleBase() {}
-    
+
     protected int readFormatOptions(RecordInputStream in) {
         formatting_options = in.readInt();
         formatting_not_used = in.readShort();
 
         int len = 6;
-        
+
         if (containsFontFormattingBlock()) {
             _fontFormatting = new FontFormatting(in);
             len += _fontFormatting.getDataLength();
@@ -172,7 +172,7 @@ public abstract class CFRuleBase extends StandardRecord {
             _patternFormatting = new PatternFormatting(in);
             len += _patternFormatting.getDataLength();
         }
-        
+
         return len;
     }
 
@@ -195,7 +195,7 @@ public abstract class CFRuleBase extends StandardRecord {
         if (operation < 0 || operation > ComparisonOperator.max_operator)
             throw new IllegalArgumentException(
                     "Valid operators are only in the range 0 to " +ComparisonOperator.max_operator);
-        
+
         this.comparison_operator = operation;
     }
     public byte getComparisonOperation() {
@@ -345,7 +345,7 @@ public abstract class CFRuleBase extends StandardRecord {
     private void setOptionFlag(boolean flag, BitField field) {
         formatting_options = field.setBoolean(formatting_options, flag);
     }
-    
+
     protected int getFormattingBlockSize() {
         return 6 +
           (containsFontFormattingBlock()?_fontFormatting.getRawRecord().length:0)+
@@ -369,7 +369,7 @@ public abstract class CFRuleBase extends StandardRecord {
             _patternFormatting.serialize(out);
         }
     }
-    
+
     /**
      * get the stack of the 1st expression as a list
      *
@@ -432,11 +432,11 @@ public abstract class CFRuleBase extends StandardRecord {
         int sheetIndex = sheet.getWorkbook().getSheetIndex(sheet);
         return HSSFFormulaParser.parse(formula, sheet.getWorkbook(), FormulaType.CELL, sheetIndex);
     }
-    
+
     protected void copyTo(CFRuleBase rec) {
         rec.condition_type = condition_type;
         rec.comparison_operator = comparison_operator;
-        
+
         rec.formatting_options = formatting_options;
         rec.formatting_not_used = formatting_not_used;
         if (containsFontFormattingBlock()) {
@@ -448,7 +448,7 @@ public abstract class CFRuleBase extends StandardRecord {
         if (containsPatternFormattingBlock()) {
             rec._patternFormatting = (PatternFormatting) _patternFormatting.clone();
         }
-        
+
         rec.setFormula1(getFormula1().copy());
         rec.setFormula2(getFormula2().copy());
     }

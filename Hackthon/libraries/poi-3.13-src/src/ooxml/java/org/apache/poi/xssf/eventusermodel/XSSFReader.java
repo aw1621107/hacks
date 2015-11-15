@@ -89,7 +89,7 @@ public class XSSFReader {
     public StylesTable getStylesTable() throws IOException, InvalidFormatException {
         ArrayList<PackagePart> parts = pkg.getPartsByContentType( XSSFRelation.STYLES.getContentType());
         if(parts.size() == 0) return null;
-        
+
         // Create the Styles Table, and associate the Themes if present
         StylesTable styles = new StylesTable(parts.get(0), null);
         parts = pkg.getPartsByContentType( XSSFRelation.THEME.getContentType());
@@ -178,7 +178,7 @@ public class XSSFReader {
          * Current CTSheet bean
          */
         private CTSheet ctSheet;
-        
+
         /**
          * Iterator over CTSheet objects, returns sheets in <tt>logical</tt> order.
          * We can't rely on the Ooxml4J's relationship iterator because it returns objects in physical order,
@@ -209,7 +209,7 @@ public class XSSFReader {
                 //step 2. Read array of CTSheet elements, wrap it in a ArayList and construct an iterator
                 //Note, using XMLBeans might be expensive, consider refactoring to use SAX or a plain regexp search
                 CTWorkbook wbBean = WorkbookDocument.Factory.parse(wb.getInputStream()).getWorkbook();
-                sheetIterator = wbBean.getSheets().getSheetList().iterator(); 
+                sheetIterator = wbBean.getSheets().getSheetList().iterator();
             } catch (InvalidFormatException e){
                 throw new POIXMLException(e);
             } catch (XmlException e){
@@ -251,17 +251,17 @@ public class XSSFReader {
         public String getSheetName() {
             return ctSheet.getName();
         }
-        
+
         /**
          * Returns the comments associated with this sheet,
          *  or null if there aren't any
          */
         public CommentsTable getSheetComments() {
            PackagePart sheetPkg = getSheetPart();
-           
+
            // Do we have a comments relationship? (Only ever one if so)
            try {
-              PackageRelationshipCollection commentsList = 
+              PackageRelationshipCollection commentsList =
                    sheetPkg.getRelationshipsByType(XSSFRelation.SHEET_COMMENTS.getRelation());
               if(commentsList.size() > 0) {
                  PackageRelationship comments = commentsList.getRelationship(0);
@@ -276,7 +276,7 @@ public class XSSFReader {
            }
            return null;
         }
-        
+
         /**
          * Returns the shapes associated with this sheet,
          * an empty list or null if there is an exception
@@ -298,14 +298,14 @@ public class XSSFReader {
               }
            } catch (XmlException e){
                return null;
-           } catch (InvalidFormatException e) {  
+           } catch (InvalidFormatException e) {
               return null;
            } catch (IOException e) {
               return null;
            }
            return shapes;
         }
-        
+
         public PackagePart getSheetPart() {
            String sheetId = ctSheet.getId();
            return sheetMap.get(sheetId);

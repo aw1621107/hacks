@@ -61,27 +61,27 @@ public class ByteChunk extends Chunk {
    public void setValue(byte[] value) {
       this.value = value;
    }
-   
+
    /**
     * Returns the data in a debug-friendly string format
     */
    public String toString() {
        return toDebugFriendlyString(value);
    }
-   
+
    /**
     * Formats the byte array in a debug-friendly way,
-    *  showing all of a short array, and the start of a 
+    *  showing all of a short array, and the start of a
     *  longer one.
     */
    protected static String toDebugFriendlyString(byte[] value) {
       if (value == null)
          return "(Null Byte Array)";
-          
+
       StringBuffer text = new StringBuffer();
       text.append("Bytes len=").append(value.length);
       text.append(" [");
-      
+
       int limit = Math.min(value.length, 16);
       if (value.length > 16) {
           limit = 12;
@@ -97,13 +97,13 @@ public class ByteChunk extends Chunk {
       text.append("]");
       return text.toString();
    }
-   
+
    /**
     * Returns the data, formatted as a string assuming it
     *  was a non-unicode string.
     * If your data isn't in fact stored as basically
     *  ASCII, don't expect this to return much of any
-    *  sense.... 
+    *  sense....
     * @return  the data formatted as a string
     */
    public String getAs7bitString() {

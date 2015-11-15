@@ -38,10 +38,10 @@ public final class TestChartTitleFormatRecord {
     public void testRecord() throws Exception {
 		NPOIFSFileSystem fs = new NPOIFSFileSystem(
 				HSSFTestDataSamples.getSampleFile("WithFormattedGraphTitle.xls"));
-		
+
 		// Check we can open the file via usermodel
 		HSSFWorkbook hssf = new HSSFWorkbook(fs);
-		
+
 		// Now process it through eventusermodel, and
 		//  look out for the title records
 		ChartTitleFormatRecordGrabber grabber = new ChartTitleFormatRecordGrabber();
@@ -51,21 +51,21 @@ public final class TestChartTitleFormatRecord {
 		HSSFEventFactory factory = new HSSFEventFactory();
 		factory.processEvents(req, din);
 		din.close();
-		
+
 		// Should've found one
 		assertEquals(1, grabber.chartTitleFormatRecords.size());
 		// And it should be of something interesting
 		ChartTitleFormatRecord r = grabber.chartTitleFormatRecords.get(0);
 		assertEquals(3, r.getFormatCount());
-		
+
 		hssf.close();
 		fs.close();
-		
+
 	}
-	
+
 	private static final class ChartTitleFormatRecordGrabber implements HSSFListener {
 		private final List<ChartTitleFormatRecord> chartTitleFormatRecords;
-		
+
 		public ChartTitleFormatRecordGrabber() {
 			chartTitleFormatRecords = new ArrayList<ChartTitleFormatRecord>();
 		}
@@ -75,6 +75,6 @@ public final class TestChartTitleFormatRecord {
 				chartTitleFormatRecords.add((ChartTitleFormatRecord)record);
 			}
 		}
-		
+
 	}
 }

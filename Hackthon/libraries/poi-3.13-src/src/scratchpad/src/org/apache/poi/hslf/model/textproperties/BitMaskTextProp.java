@@ -21,16 +21,16 @@ import org.apache.poi.hslf.record.Record;
 import org.apache.poi.util.POILogFactory;
 import org.apache.poi.util.POILogger;
 
-/** 
- * Definition of a special kind of property of some text, or its 
- *  paragraph. For these properties, a flag in the "contains" header 
+/**
+ * Definition of a special kind of property of some text, or its
+ *  paragraph. For these properties, a flag in the "contains" header
  *  field tells you the data property family will exist. The value
  *  of the property is itself a mask, encoding several different
  *  (but related) properties
  */
 public abstract class BitMaskTextProp extends TextProp implements Cloneable {
     protected static final POILogger logger = POILogFactory.getLogger(BitMaskTextProp.class);
-    
+
     private String[] subPropNames;
 	private int[] subPropMasks;
 	private boolean[] subPropMatches;
@@ -46,15 +46,15 @@ public abstract class BitMaskTextProp extends TextProp implements Cloneable {
 		this.propName = overallName;
 		subPropMasks = new int[subPropNames.length];
 		subPropMatches = new boolean[subPropNames.length];
-		
+
 		int LSB = Integer.lowestOneBit(maskInHeader);
-		
+
 		// Initialise the masks list
 		for(int i=0; i<subPropMasks.length; i++) {
 			subPropMasks[i] = (LSB << i);
 		}
 	}
-	
+
 	/**
 	 * Calculate mask from the subPropMatches.
 	 */
@@ -64,7 +64,7 @@ public abstract class BitMaskTextProp extends TextProp implements Cloneable {
 	     * The dataValue can't be taken as a mask, as sometimes certain properties
 	     * are explicitly set to false, i.e. the mask says the property is defined
 	     * but in the actually nibble the property is set to false
-	     */ 
+	     */
 	    int mask = 0, i = 0;
 	    for (int subMask : subPropMasks) {
 	        if (subPropMatches[i++]) mask |= subMask;
@@ -87,7 +87,7 @@ public abstract class BitMaskTextProp extends TextProp implements Cloneable {
 	/**
 	 * Return the text property value.
 	 * Clears all bits of the value, which are marked as unset.
-	 * 
+	 *
 	 * @return the text property value.
 	 */
 	@Override
@@ -100,15 +100,15 @@ public abstract class BitMaskTextProp extends TextProp implements Cloneable {
 	    }
 	    return val;
 	}
-	
-	
+
+
 	/**
 	 * Set the value of the text property, and recompute the sub
 	 * properties based on it, i.e. all unset subvalues will be cleared.
-	 * Use {@link #setSubValue(boolean, int)} to explicitly set subvalues to {@code false}. 
+	 * Use {@link #setSubValue(boolean, int)} to explicitly set subvalues to {@code false}.
 	 */
 	@Override
-	public void setValue(int val) { 
+	public void setValue(int val) {
 		dataValue = val;
 
 		// Figure out the values of the sub properties
@@ -143,7 +143,7 @@ public abstract class BitMaskTextProp extends TextProp implements Cloneable {
 	        }
 	    }
 	}
-	
+
 	/**
 	 * Fetch the true/false status of the subproperty with the given index
 	 */
@@ -162,19 +162,19 @@ public abstract class BitMaskTextProp extends TextProp implements Cloneable {
             dataValue &= ~subPropMasks[idx];
         }
 	}
-	
+
 	@Override
 	public BitMaskTextProp clone(){
 		BitMaskTextProp newObj = (BitMaskTextProp)super.clone();
-		
-		// Don't carry over matches, but keep everything 
+
+		// Don't carry over matches, but keep everything
 		//  else as it was
 		newObj.subPropMatches = new boolean[subPropMatches.length];
-		
+
 		return newObj;
 	}
-	
+
     public BitMaskTextProp cloneAll(){
         return (BitMaskTextProp)super.clone();
-    }	
+    }
 }

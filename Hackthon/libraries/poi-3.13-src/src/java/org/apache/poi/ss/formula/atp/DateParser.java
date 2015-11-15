@@ -36,7 +36,7 @@ public class DateParser {
 
     /**
      * Parses a date from a string.
-     * 
+     *
      * @param strVal a string with a date pattern.
      * @return a date parsed from argument.
      * @throws EvaluationException exception upon parsing.

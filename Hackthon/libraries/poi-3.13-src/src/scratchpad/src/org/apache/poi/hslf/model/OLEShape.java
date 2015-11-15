@@ -78,12 +78,12 @@ public final class OLEShape extends HSLFPictureShape {
     /**
      * Set the unique identifier for the OLE object and
      * register it in the necessary structures
-     * 
+     *
      * @param objectId the unique identifier for the OLE object
      */
     public void setObjectID(int objectId){
     	setEscherProperty(EscherProperties.BLIP__PICTUREID, objectId);
-    	
+
     	EscherContainerRecord ecr = getSpContainer();
     	EscherSpRecord spRecord = ecr.getChildById(EscherSpRecord.RECORD_ID);
         spRecord.setFlags(spRecord.getFlags()|EscherSpRecord.FLAG_OLESHAPE);
@@ -101,16 +101,16 @@ public final class OLEShape extends HSLFPictureShape {
         	uer = new UnknownEscherRecord();
         	uerCont.addChildRecord(uer);
         }
-        
+
         byte uerData[] = new byte[12];
         LittleEndian.putShort( uerData, 0, (short)0 ); // options = 0
         LittleEndian.putShort( uerData, 2, (short)RecordTypes.ExObjRefAtom.typeID); // recordId
         LittleEndian.putInt( uerData, 4, 4 ); // remaining bytes
         LittleEndian.putInt( uerData, 8, objectId ); // the data
-        uer.fillFields(uerData, 0, null);        
+        uer.fillFields(uerData, 0, null);
     }
-    
-    
+
+
     /**
      * Returns unique identifier for the OLE object.
      *

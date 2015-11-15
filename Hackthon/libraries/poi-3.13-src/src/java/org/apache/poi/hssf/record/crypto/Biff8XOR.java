@@ -34,13 +34,13 @@ public class Biff8XOR implements Biff8Cipher {
     private final int _initialOffset;
     private int _dataLength = 0;
     private int _xorArrayIndex = 0;
-    
+
     public Biff8XOR(int initialOffset, Biff8XORKey key) {
         _key = key;
         _initialOffset = initialOffset;
 
     }
-    
+
     public void startRecord(int currentSid) {
         _shouldSkipEncryptionOnCurrentRecord = isNeverEncryptedRecord(currentSid);
     }
@@ -48,18 +48,18 @@ public class Biff8XOR implements Biff8Cipher {
     public void setNextRecordSize(int recordSize) {
         /*
          * From: http://social.msdn.microsoft.com/Forums/en-US/3dadbed3-0e68-4f11-8b43-3a2328d9ebd5
-         * 
+         *
          * The initial value for XorArrayIndex is as follows:
          * XorArrayIndex = (FileOffset + Data.Length) % 16
-         * 
+         *
          * The FileOffset variable in this context is the stream offset into the Workbook stream at
          * the time we are about to write each of the bytes of the record data.
-         * This (the value) is then incremented after each byte is written. 
+         * This (the value) is then incremented after each byte is written.
          */
         _xorArrayIndex = (_initialOffset+_dataLength+recordSize) % 16;
     }
-    
-    
+
+
     /**
      * TODO: Additionally, the lbPlyPos (position_of_BOF) field of the BoundSheet8 record MUST NOT be encrypted.
      *
@@ -98,7 +98,7 @@ public class Biff8XOR implements Biff8Cipher {
     /**
      * Decrypts a xor obfuscated byte array.
      * The data is decrypted in-place
-     * 
+     *
      * @see <a href="http://msdn.microsoft.com/en-us/library/dd908506.aspx">2.3.7.3 Binary Document XOR Data Transformation Method 1</a>
      */
     public void xor(byte[] buf, int pOffset, int pLen) {
@@ -106,13 +106,13 @@ public class Biff8XOR implements Biff8Cipher {
             _dataLength += pLen;
             return;
         }
-        
+
         // The following is taken from the Libre Office implementation
         // It seems that the encrypt and decrypt method is mixed up
         // in the MS-OFFCRYPTO docs
 
         byte xorArray[] = _key._secretKey.getEncoded();
-        
+
         for (int i=0; i<pLen; i++) {
             byte value = buf[pOffset+i];
             value = rotateLeft(value, 3);
@@ -122,11 +122,11 @@ public class Biff8XOR implements Biff8Cipher {
             _dataLength++;
         }
     }
-    
+
     private static byte rotateLeft(byte bits, int shift) {
         return (byte)(((bits & 0xff) << shift) | ((bits & 0xff) >>> (8 - shift)));
     }
-    
+
     public int xorByte(int rawVal) {
         _buffer.put(0, (byte)rawVal);
         xor(_buffer.array(), 0, 1);

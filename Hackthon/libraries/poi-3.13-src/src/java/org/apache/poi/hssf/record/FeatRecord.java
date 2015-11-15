@@ -39,13 +39,13 @@ public final class FeatRecord extends StandardRecord  {
     // SIDs from newer versions
     public final static short v11_sid = 0x0872;
     public final static short v12_sid = 0x0878;
-	
+
 	private FtrHeader futureHeader;
-	
+
 	/**
 	 * See SHAREDFEATURES_* on {@link FeatHdrRecord}
 	 */
-	private int isf_sharedFeatureType; 
+	private int isf_sharedFeatureType;
 	private byte reserved1; // Should always be zero
 	private long reserved2; // Should always be zero
 	/** Only matters if type is ISFFEC2 */
@@ -55,12 +55,12 @@ public final class FeatRecord extends StandardRecord  {
 
 	/**
 	 * Contents depends on isf_sharedFeatureType :
-	 *  ISFPROTECTION -> FeatProtection 
+	 *  ISFPROTECTION -> FeatProtection
 	 *  ISFFEC2       -> FeatFormulaErr2
 	 *  ISFFACTOID    -> FeatSmartTag
 	 */
-	private SharedFeature sharedFeature; 
-	
+	private SharedFeature sharedFeature;
+
 	public FeatRecord() {
 		futureHeader = new FtrHeader();
 		futureHeader.setRecordType(sid);
@@ -72,7 +72,7 @@ public final class FeatRecord extends StandardRecord  {
 
 	public FeatRecord(RecordInputStream in) {
 		futureHeader = new FtrHeader(in);
-		
+
 		isf_sharedFeatureType = in.readShort();
 		reserved1 = in.readByte();
 		reserved2 = in.readInt();
@@ -84,7 +84,7 @@ public final class FeatRecord extends StandardRecord  {
 		for(int i=0; i<cellRefs.length; i++) {
 			cellRefs[i] = new CellRangeAddress(in);
 		}
-		
+
 		switch(isf_sharedFeatureType) {
 		case FeatHdrRecord.SHAREDFEATURES_ISFPROTECTION:
 			sharedFeature = new FeatProtection(in);
@@ -103,27 +103,27 @@ public final class FeatRecord extends StandardRecord  {
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("[SHARED FEATURE]\n");
-		
+
 		// TODO ...
-		
+
 		buffer.append("[/SHARED FEATURE]\n");
 		return buffer.toString();
 	}
 
 	public void serialize(LittleEndianOutput out) {
 		futureHeader.serialize(out);
-		
+
 		out.writeShort(isf_sharedFeatureType);
 		out.writeByte(reserved1);
 		out.writeInt((int)reserved2);
 		out.writeShort(cellRefs.length);
 		out.writeInt((int)cbFeatData);
 		out.writeShort(reserved3);
-		
+
 		for(int i=0; i<cellRefs.length; i++) {
 			cellRefs[i].serialize(out);
 		}
-		
+
 		sharedFeature.serialize(out);
 	}
 
@@ -156,7 +156,7 @@ public final class FeatRecord extends StandardRecord  {
 	}
 	public void setSharedFeature(SharedFeature feature) {
 		this.sharedFeature = feature;
-		
+
 		if(feature instanceof FeatProtection) {
 			isf_sharedFeatureType = FeatHdrRecord.SHAREDFEATURES_ISFPROTECTION;
 		}
@@ -166,7 +166,7 @@ public final class FeatRecord extends StandardRecord  {
 		if(feature instanceof FeatSmartTag) {
 			isf_sharedFeatureType = FeatHdrRecord.SHAREDFEATURES_ISFFACTOID;
 		}
-		
+
 		if(isf_sharedFeatureType == FeatHdrRecord.SHAREDFEATURES_ISFFEC2) {
 			cbFeatData = sharedFeature.getDataSize();
 		} else {
@@ -174,11 +174,11 @@ public final class FeatRecord extends StandardRecord  {
 		}
 	}
 
-    
+
     //HACK: do a "cheat" clone, see Record.java for more information
     public Object clone() {
         return cloneViaReserialise();
     }
 
-    
+
 }

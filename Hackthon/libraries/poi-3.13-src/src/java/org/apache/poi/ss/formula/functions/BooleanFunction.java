@@ -91,7 +91,7 @@ public abstract class BooleanFunction implements Function {
                 }
                 continue;
             }
-			
+
 			if (arg == MissingArgEval.instance) {
 				tempVe = null;		// you can leave out parameters, they are simply ignored
 			} else {

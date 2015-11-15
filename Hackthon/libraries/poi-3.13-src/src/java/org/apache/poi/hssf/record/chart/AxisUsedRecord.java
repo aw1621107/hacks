@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The number of axes used on a chart.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class AxisUsedRecord extends StandardRecord {
@@ -50,7 +50,7 @@ public final class AxisUsedRecord extends StandardRecord {
         buffer.append("    .numAxis              = ")
             .append("0x").append(HexDump.toHex(  getNumAxis ()))
             .append(" (").append( getNumAxis() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/AXISUSED]\n");
         return buffer.toString();
@@ -71,7 +71,7 @@ public final class AxisUsedRecord extends StandardRecord {
 
     public Object clone() {
         AxisUsedRecord rec = new AxisUsedRecord();
-    
+
         rec.field_1_numAxis = field_1_numAxis;
         return rec;
     }

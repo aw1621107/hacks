@@ -915,7 +915,7 @@ public final class HSSFWorkbook extends POIDocument implements org.apache.poi.ss
         sheet.setActive(isOnlySheet);
         return sheet;
     }
-    
+
     /**
      *  Returns an iterator of the sheets in the workbook
      *  in sheet order. Includes hidden and very hidden sheets.
@@ -934,7 +934,7 @@ public final class HSSFWorkbook extends POIDocument implements org.apache.poi.ss
     public Iterator<Sheet> iterator() {
         return sheetIterator();
     }
-    
+
     private final class SheetIterator<T extends Sheet> implements Iterator<T> {
         final private Iterator<T> it;
         private T cursor = null;

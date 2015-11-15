@@ -144,7 +144,7 @@ final class LookupUtils {
 		}
 		return null;
 	}
-	
+
 	public static ValueVector createVector(RefEval re) {
 	    return new SheetVector(re);
 	}
@@ -280,7 +280,7 @@ final class LookupUtils {
 
 
     private static final class StringLookupComparer extends LookupValueComparerBase {
-		
+
         private String _value;
         private final Pattern _wildCardPattern;
         private boolean _matchExact;

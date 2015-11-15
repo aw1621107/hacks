@@ -42,7 +42,7 @@ public final class TestBug42464 {
 		process(wb);
 		wb.close();
 	}
-    
+
     @Test
 	public void testExpSharedBadFile() throws Exception {
 		HSSFWorkbook wb = HSSFTestDataSamples.openSampleWorkbook("42464-ExpPtg-bad.xls");

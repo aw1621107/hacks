@@ -213,7 +213,7 @@ public class EscherSpRecord
     /**
      * Returns shape type. Must be one of MSOSPT values (see [MS-ODRAW] for
      * details).
-     * 
+     *
      * @return shape type
      */
     public short getShapeType()
@@ -224,7 +224,7 @@ public class EscherSpRecord
     /**
      * Sets shape type. Must be one of MSOSPT values (see [MS-ODRAW] for
      * details).
-     * 
+     *
      * @param value
      *            new shape type
      */

@@ -47,7 +47,7 @@ public class TestDrawingShapes extends TestCase {
     static {
         //System.setProperty("poi.deserialize.escher", "true");
     }
-    
+
     /**
      * HSSFShape tree bust be built correctly
      * Check file with such records structure:
@@ -344,7 +344,7 @@ public class TestDrawingShapes extends TestCase {
             // create a sheet with a text box
             HSSFSheet sheet = wb.createSheet();
             HSSFPatriarch patriarch = sheet.createDrawingPatriarch();
-    
+
             HSSFTextbox textbox = patriarch.createTextbox(new HSSFClientAnchor());
             EscherOptRecord opt1 = HSSFTestHelper.getOptRecord(textbox);
             EscherOptRecord opt2 = HSSFTestHelper.getEscherContainer(textbox).getChildById(EscherOptRecord.RECORD_ID);
@@ -353,19 +353,19 @@ public class TestDrawingShapes extends TestCase {
             wb.close();
         }
     }
-    
+
     public void testCorrectOrderInOptRecord() throws IOException{
         HSSFWorkbook wb = new HSSFWorkbook();
-        
+
         try {
             HSSFSheet sheet = wb.createSheet();
             HSSFPatriarch patriarch = sheet.createDrawingPatriarch();
-    
+
             HSSFTextbox textbox = patriarch.createTextbox(new HSSFClientAnchor());
             EscherOptRecord opt = HSSFTestHelper.getOptRecord(textbox);
-            
+
             String opt1Str = opt.toXml();
-    
+
             textbox.setFillColor(textbox.getFillColor());
             EscherContainerRecord container = HSSFTestHelper.getEscherContainer(textbox);
             EscherOptRecord optRecord = container.getChildById(EscherOptRecord.RECORD_ID);
@@ -386,7 +386,7 @@ public class TestDrawingShapes extends TestCase {
         try {
             HSSFSheet sheet = wb.createSheet();
             HSSFPatriarch patriarch = sheet.createDrawingPatriarch();
-    
+
             EscherAggregate aggregate = HSSFTestHelper.getEscherAggregate(patriarch);
             EscherDgRecord dgRecord = (EscherDgRecord) aggregate.getEscherRecord(0).getChild(0);
             assertEquals(dgRecord.getNumShapes(), 1);
@@ -642,16 +642,16 @@ public class TestDrawingShapes extends TestCase {
 
     public void testShapeContainerImplementsIterable() throws IOException{
         HSSFWorkbook wb = new HSSFWorkbook();
-        
+
         try {
             HSSFSheet sheet = wb.createSheet();
             HSSFPatriarch patriarch = sheet.createDrawingPatriarch();
-    
+
             patriarch.createSimpleShape(new HSSFClientAnchor());
             patriarch.createSimpleShape(new HSSFClientAnchor());
-    
+
             int i=2;
-    
+
             for (HSSFShape shape: patriarch){
                 i--;
             }
@@ -690,13 +690,13 @@ public class TestDrawingShapes extends TestCase {
         assertEquals(agg.getTailRecords().size(), 0);
         assertEquals(patriarch.getChildren().size(), 0);
     }
-    
+
     public void testBug45312() throws Exception {
         HSSFWorkbook wb = new HSSFWorkbook();
         try {
             HSSFSheet sheet = wb.createSheet();
             HSSFPatriarch patriarch = sheet.createDrawingPatriarch();
-    
+
             {
                 HSSFClientAnchor a1 = new HSSFClientAnchor();
                 a1.setAnchor( (short)1, 1, 0, 0, (short) 1, 1, 512, 100);
@@ -724,14 +724,14 @@ public class TestDrawingShapes extends TestCase {
                 shape1.setFlipHorizontal(true);
                 shape1.setShapeType(HSSFSimpleShape.OBJECT_TYPE_LINE);
             }
-            
+
             /*OutputStream stream = new FileOutputStream("/tmp/45312.xls");
             try {
                 wb.write(stream);
             } finally {
                 stream.close();
             }*/
-            
+
             checkWorkbookBack(wb);
         } finally {
             wb.close();
@@ -741,13 +741,13 @@ public class TestDrawingShapes extends TestCase {
     private void checkWorkbookBack(HSSFWorkbook wb) {
         HSSFWorkbook wbBack = HSSFTestDataSamples.writeOutAndReadBack(wb);
         assertNotNull(wbBack);
-        
+
         HSSFSheet sheetBack = wbBack.getSheetAt(0);
         assertNotNull(sheetBack);
-        
+
         HSSFPatriarch patriarchBack = sheetBack.getDrawingPatriarch();
         assertNotNull(patriarchBack);
-        
+
         List<HSSFShape> children = patriarchBack.getChildren();
         assertEquals(4, children.size());
         HSSFShape hssfShape = children.get(0);

@@ -307,7 +307,7 @@ public final class Countif extends Fixed2ArgFunction {
 			}
 			return false;
 		}
-		
+
 		public int getValue() {
 		    return _value;
 		}

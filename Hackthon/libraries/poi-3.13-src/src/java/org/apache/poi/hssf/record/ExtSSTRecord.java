@@ -39,8 +39,8 @@ public final class ExtSSTRecord extends ContinuableRecord {
     //Can't seem to find this documented but from the biffviewer it is clear that
     //Excel only records the indexes for the first 128 buckets.
     public static final int MAX_BUCKETS = 128;
-    
-    
+
+
     public static final class InfoSubRecord {
     	public static final int ENCODED_SIZE = 8;
         private int field_1_stream_pos;          // stream pointer to the SST record
@@ -76,8 +76,8 @@ public final class ExtSSTRecord extends ContinuableRecord {
             out.writeShort(field_3_zero);
         }
     }
-    
-    
+
+
     private short _stringsPerBucket;
     private InfoSubRecord[] _sstInfos;
 

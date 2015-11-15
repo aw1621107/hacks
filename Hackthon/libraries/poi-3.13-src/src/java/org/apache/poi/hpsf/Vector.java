@@ -21,7 +21,7 @@ import org.apache.poi.util.LittleEndian;
 
 /**
  * Holder for vector-type properties
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 @Internal

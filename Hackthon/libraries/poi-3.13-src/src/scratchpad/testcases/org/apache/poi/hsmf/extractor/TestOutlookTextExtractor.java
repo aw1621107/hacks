@@ -40,28 +40,28 @@ import org.junit.Test;
  */
 public final class TestOutlookTextExtractor {
    private POIDataSamples samples = POIDataSamples.getHSMFInstance();
-	
+
    private static TimeZone userTZ;
-   
+
    @BeforeClass
    public static void initTimeZone() {
        userTZ = LocaleUtil.getUserTimeZone();
        LocaleUtil.setUserTimeZone(LocaleUtil.TIMEZONE_UTC);
    }
-   
+
    @AfterClass
    public static void resetTimeZone() {
        LocaleUtil.setUserTimeZone(userTZ);
    }
-   
+
    @Test
    public void testQuick() throws Exception {
       NPOIFSFileSystem poifs = new NPOIFSFileSystem(samples.getFile("quick.msg"), true);
       MAPIMessage msg = new MAPIMessage(poifs);
-      
+
       OutlookTextExtactor ext = new OutlookTextExtactor(msg);
       String text = ext.getText();
-      
+
       assertContains(text, "From: Kevin Roast\n");
       assertContains(text, "To: Kevin Roast <kevin.roast@alfresco.org>\n");
       assertEquals(-1, text.indexOf("CC:"));
@@ -78,15 +78,15 @@ public final class TestOutlookTextExtractor {
       ext.close();
       poifs.close();
    }
-   
+
    @Test
    public void testSimple() throws Exception {
       NPOIFSFileSystem poifs = new NPOIFSFileSystem(samples.getFile("simple_test_msg.msg"), true);
       MAPIMessage msg = new MAPIMessage(poifs);
-      
+
       OutlookTextExtactor ext = new OutlookTextExtactor(msg);
       String text = ext.getText();
-      
+
       assertContains(text, "From: Travis Ferguson\n");
       assertContains(text, "To: travis@overwrittenstack.com\n");
       assertEquals(-1, text.indexOf("CC:"));
@@ -122,7 +122,7 @@ public final class TestOutlookTextExtractor {
         assertEquals(inp, poifsTxt);
         assertEquals(inp, mapi);
    }
-   
+
    /**
     * Test that we correctly handle multiple To+CC+BCC
     *  recipients in an email we sent.
@@ -136,17 +136,17 @@ public final class TestOutlookTextExtractor {
       //   'Roy Wetherall' <roy.wetherall@alfresco.com>
       // Bcc: 'David Caruana' <dave.caruana@alfresco.com>,
       //   'Vonka Jan' <roy.wetherall@alfresco.com>
-      
+
       String[] files = new String[] {
             "example_sent_regular.msg", "example_sent_unicode.msg"
       };
       for(String file : files) {
          NPOIFSFileSystem poifs = new NPOIFSFileSystem(samples.getFile(file), true);
          MAPIMessage msg = new MAPIMessage(poifs);
-         
+
          OutlookTextExtactor ext = new OutlookTextExtactor(msg);
          String text = ext.getText();
-         
+
          assertContains(text, "From: Mike Farman\n");
          assertContains(text, "To: 'Ashutosh Dandavate' <ashutosh.dandavate@alfresco.com>; " +
          		"'Paul Holmes-Higgin' <paul.hh@alfresco.com>; 'Mike Farman' <mikef@alfresco.com>\n");
@@ -162,7 +162,7 @@ public final class TestOutlookTextExtractor {
          poifs.close();
       }
    }
-   
+
    /**
     * Test that we correctly handle multiple To+CC
     *  recipients in an email we received.
@@ -174,9 +174,9 @@ public final class TestOutlookTextExtractor {
       //   'Mike Farman' <mikef@alfresco.com>
       // Cc: nickb@alfresco.com, nick.burch@alfresco.com,
       //   'Roy Wetherall' <roy.wetherall@alfresco.com>
-      // (No BCC shown) 
-      
-      
+      // (No BCC shown)
+
+
       String[] files = new String[] {
             "example_received_regular.msg", "example_received_unicode.msg"
       };
@@ -184,10 +184,10 @@ public final class TestOutlookTextExtractor {
           NPOIFSFileSystem poifs = new NPOIFSFileSystem(samples.getFile(file), true);
           MAPIMessage msg = new MAPIMessage(poifs);
 
-         
+
          OutlookTextExtactor ext = new OutlookTextExtactor(msg);
          String text = ext.getText();
-         
+
          assertContains(text, "From: Mike Farman\n");
          assertContains(text, "To: 'Ashutosh Dandavate' <ashutosh.dandavate@alfresco.com>; " +
                "'Paul Holmes-Higgin' <paul.hh@alfresco.com>; 'Mike Farman' <mikef@alfresco.com>\n");
@@ -202,7 +202,7 @@ public final class TestOutlookTextExtractor {
          poifs.close();
       }
    }
-   
+
    /**
     * See also {@link org.apache.poi.extractor.TestExtractorFactory#testEmbeded()}
     */
@@ -210,10 +210,10 @@ public final class TestOutlookTextExtractor {
       NPOIFSFileSystem poifs = new NPOIFSFileSystem(samples.getFile("attachment_test_msg.msg"), true);
       MAPIMessage msg = new MAPIMessage(poifs);
       OutlookTextExtactor ext = new OutlookTextExtactor(msg);
-      
+
       // Check the normal bits
       String text = ext.getText();
-      
+
       assertContains(text, "From: Nicolas1");
       assertContains(text, "To: 'nicolas1.23456@free.fr'");
       assertEquals(-1, text.indexOf("CC:"));
@@ -223,42 +223,42 @@ public final class TestOutlookTextExtractor {
       assertContains(text, "Attachment: test-unicode.doc\n");
       assertContains(text, "Attachment: pj1.txt\n");
       assertContains(text, "contenu");
-      
+
       // Embeded bits are checked in
       //  TestExtractorFactory
 
       ext.close();
       poifs.close();
    }
-   
+
    public void testWithAttachedMessage() throws Exception {
        NPOIFSFileSystem poifs = new NPOIFSFileSystem(samples.getFile("58214_with_attachment.msg"), true);
          MAPIMessage msg = new MAPIMessage(poifs);
          OutlookTextExtactor ext = new OutlookTextExtactor(msg);
          String text = ext.getText();
-         
+
          // Check we got bits from the main message
          assertContains(text, "Master mail");
          assertContains(text, "ante in lacinia euismod");
-         
+
          // But not the attached message
          assertNotContained(text, "Test mail attachment");
          assertNotContained(text, "Lorem ipsum dolor sit");
-         
+
          ext.close();
          poifs.close();
    }
-   
+
    public void testEncodings() throws Exception {
       NPOIFSFileSystem poifs = new NPOIFSFileSystem(samples.getFile("chinese-traditional.msg"), true);
       MAPIMessage msg = new MAPIMessage(poifs);
       OutlookTextExtactor ext = new OutlookTextExtactor(msg);
       String text = ext.getText();
-      
+
       // Check the english bits
       assertContains(text, "From: Tests Chang@FT");
       assertContains(text, "tests.chang@fengttt.com");
-      
+
       // And check some chinese bits
       assertContains(text, "(\u5f35\u6bd3\u502b)");
       assertContains(text, "( MSG \u683c\u5f0f\u6e2c\u8a66 )");

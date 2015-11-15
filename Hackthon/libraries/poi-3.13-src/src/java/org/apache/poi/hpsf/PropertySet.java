@@ -110,7 +110,7 @@ public class PropertySet
     }
 
 
- 
+
     /**
      * <p>Specifies the version of the operating system that created
      * this {@link PropertySet}. See the HPFS documentation for
@@ -263,7 +263,7 @@ public class PropertySet
      * @param length The length of the stream data.
      * @throws NoPropertySetStreamException if the byte array is not a
      * property set stream.
-     * 
+     *
      * @exception UnsupportedEncodingException if the codepage is not supported.
      */
     public PropertySet(final byte[] stream, final int offset, final int length)
@@ -286,7 +286,7 @@ public class PropertySet
      * complete byte array contents is the stream data.
      * @throws NoPropertySetStreamException if the byte array is not a
      * property set stream.
-     * 
+     *
      * @exception UnsupportedEncodingException if the codepage is not supported.
      */
     public PropertySet(final byte[] stream)
@@ -408,7 +408,7 @@ public class PropertySet
     throws UnsupportedEncodingException
     {
         /* FIXME (3): Ensure that at most "length" bytes are read. */
-        
+
         /*
          * Read the stream's header fields.
          */
@@ -627,7 +627,7 @@ public class PropertySet
      * to the specified parameter, else <code>false</code>.</p>
      *
      * @param o the object to compare this <code>PropertySet</code> with
-     * 
+     *
      * @return <code>true</code> if the objects are equal, <code>false</code>
      * if not
      */

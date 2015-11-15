@@ -35,7 +35,7 @@ import org.openxmlformats.schemas.spreadsheetml.x2006.main.*;
 public class XSSFConditionalFormattingRule implements ConditionalFormattingRule {
     private final CTCfRule _cfRule;
     private XSSFSheet _sh;
-    
+
     private static Map<STCfType.Enum, ConditionType> typeLookup = new HashMap<STCfType.Enum, ConditionType>();
     static {
         typeLookup.put(STCfType.CELL_IS, ConditionType.CELL_VALUE_IS);
@@ -43,7 +43,7 @@ public class XSSFConditionalFormattingRule implements ConditionalFormattingRule 
         typeLookup.put(STCfType.COLOR_SCALE, ConditionType.COLOR_SCALE);
         typeLookup.put(STCfType.DATA_BAR, ConditionType.DATA_BAR);
         typeLookup.put(STCfType.ICON_SET, ConditionType.ICON_SET);
-        
+
         // These are all subtypes of Filter, we think...
         typeLookup.put(STCfType.TOP_10, ConditionType.FILTER);
         typeLookup.put(STCfType.UNIQUE_VALUES, ConditionType.FILTER);
@@ -59,7 +59,7 @@ public class XSSFConditionalFormattingRule implements ConditionalFormattingRule 
         typeLookup.put(STCfType.TIME_PERIOD, ConditionType.FILTER);
         typeLookup.put(STCfType.ABOVE_AVERAGE, ConditionType.FILTER);
     }
-    
+
     /*package*/ XSSFConditionalFormattingRule(XSSFSheet sh){
         _cfRule = CTCfRule.Factory.newInstance();
         _sh = sh;
@@ -172,12 +172,12 @@ public class XSSFConditionalFormattingRule implements ConditionalFormattingRule 
 
         return new XSSFPatternFormatting(dxf.getFill());
     }
-    
+
     public XSSFDataBarFormatting createDataBarFormatting(XSSFColor color) {
         // Is it already there?
         if (_cfRule.isSetDataBar() && _cfRule.getType() == STCfType.DATA_BAR)
             return getDataBarFormatting();
-        
+
         // Mark it as being a Data Bar
         _cfRule.setType(STCfType.DATA_BAR);
 
@@ -190,13 +190,13 @@ public class XSSFConditionalFormattingRule implements ConditionalFormattingRule 
         }
         // Set the color
         bar.setColor(color.getCTColor());
-        
+
         // Add the default thresholds
         CTCfvo min = bar.addNewCfvo();
         min.setType(STCfvoType.Enum.forString(RangeType.MIN.name));
         CTCfvo max = bar.addNewCfvo();
         max.setType(STCfvoType.Enum.forString(RangeType.MAX.name));
-        
+
         // Wrap and return
         return new XSSFDataBarFormatting(bar);
     }
@@ -208,12 +208,12 @@ public class XSSFConditionalFormattingRule implements ConditionalFormattingRule 
             return null;
         }
     }
-    
+
     public XSSFIconMultiStateFormatting createMultiStateFormatting(IconSet iconSet) {
         // Is it already there?
         if (_cfRule.isSetIconSet() && _cfRule.getType() == STCfType.ICON_SET)
             return getMultiStateFormatting();
-        
+
         // Mark it as being an Icon Set
         _cfRule.setType(STCfType.ICON_SET);
 
@@ -229,7 +229,7 @@ public class XSSFConditionalFormattingRule implements ConditionalFormattingRule 
             STIconSetType.Enum xIconSet = STIconSetType.Enum.forString(iconSet.name);
             icons.setIconSet(xIconSet);
         }
-        
+
         // Add a default set of thresholds
         int jump = 100 / iconSet.num;
         STCfvoType.Enum type = STCfvoType.Enum.forString(RangeType.PERCENT.name);
@@ -238,7 +238,7 @@ public class XSSFConditionalFormattingRule implements ConditionalFormattingRule 
             cfvo.setType(type);
             cfvo.setVal(Integer.toString(i*jump));
         }
-        
+
         // Wrap and return
         return new XSSFIconMultiStateFormatting(icons);
     }
@@ -250,12 +250,12 @@ public class XSSFConditionalFormattingRule implements ConditionalFormattingRule 
             return null;
         }
     }
-    
+
     public XSSFColorScaleFormatting createColorScaleFormatting() {
         // Is it already there?
         if (_cfRule.isSetColorScale() && _cfRule.getType() == STCfType.COLOR_SCALE)
             return getColorScaleFormatting();
-        
+
         // Mark it as being a Color Scale
         _cfRule.setType(STCfType.COLOR_SCALE);
 
@@ -266,7 +266,7 @@ public class XSSFConditionalFormattingRule implements ConditionalFormattingRule 
         } else {
             scale = _cfRule.addNewColorScale();
         }
-        
+
         // Add a default set of thresholds and colors
         if (scale.sizeOfCfvoArray() == 0) {
             CTCfvo cfvo;
@@ -277,12 +277,12 @@ public class XSSFConditionalFormattingRule implements ConditionalFormattingRule 
             cfvo.setVal("50");
             cfvo = scale.addNewCfvo();
             cfvo.setType(STCfvoType.Enum.forString(RangeType.MAX.name));
-            
+
             for (int i=0; i<3; i++) {
                 scale.addNewColor();
             }
         }
-        
+
         // Wrap and return
         return new XSSFColorScaleFormatting(scale);
     }
@@ -308,7 +308,7 @@ public class XSSFConditionalFormattingRule implements ConditionalFormattingRule 
         if (type != null) return type.id;
         return 0;
     }
-    
+
     /**
      * Type of conditional formatting rule.
      */
@@ -328,7 +328,7 @@ public class XSSFConditionalFormattingRule implements ConditionalFormattingRule 
     public byte getComparisonOperation(){
         STConditionalFormattingOperator.Enum op = _cfRule.getOperator();
         if(op == null) return ComparisonOperator.NO_COMPARISON;
-        
+
         switch(op.intValue()){
             case STConditionalFormattingOperator.INT_LESS_THAN: return ComparisonOperator.LT;
             case STConditionalFormattingOperator.INT_LESS_THAN_OR_EQUAL: return ComparisonOperator.LE;

@@ -69,7 +69,7 @@ import org.openxmlformats.schemas.presentationml.x2006.main.NotesMasterDocument;
         InputStream is = XSLFNotesMaster.class.getResourceAsStream("notesMaster.xml");
         if (is == null) {
             throw new POIXMLException("Missing resource 'notesMaster.xml'");
-        }        
+        }
 
         try {
             try {
@@ -78,12 +78,12 @@ import org.openxmlformats.schemas.presentationml.x2006.main.NotesMasterDocument;
                 return slide;
             } finally {
                 is.close();
-            }            
+            }
         } catch (Exception e) {
             throw new POIXMLException("Can't initialize NotesMaster", e);
         }
     }
-    
+
     @Override
     public CTNotesMaster getXmlObject() {
        return _slide;
@@ -98,7 +98,7 @@ import org.openxmlformats.schemas.presentationml.x2006.main.NotesMasterDocument;
     public MasterSheet<XSLFShape,XSLFTextParagraph> getMasterSheet() {
         return null;
     }
-    
+
     @Override
     public XSLFTheme getTheme() {
         if (_theme == null) {
@@ -114,5 +114,5 @@ import org.openxmlformats.schemas.presentationml.x2006.main.NotesMasterDocument;
             }
         }
         return _theme;
-    }    
+    }
 }

@@ -335,7 +335,7 @@ public class JDBC4CallableStatementWrapper extends CallableStatementWrapper {
      * expensive <code>unwrap</code> calls that may fail. If this method
      * returns true then calling <code>unwrap</code> with the same argument
      * should succeed.
-     * 
+     *
      * @param interfaces
      *            a Class defining an interface.
      * @return true if this implements the interface or directly or indirectly
@@ -369,7 +369,7 @@ public class JDBC4CallableStatementWrapper extends CallableStatementWrapper {
      * the result of calling <code>unwrap</code> recursively on the wrapped
      * object. If the receiver is not a wrapper and does not implement the
      * interface, then an <code>SQLException</code> is thrown.
-     * 
+     *
      * @param iface
      *            A Class defining an interface that the result must implement.
      * @return an object that implements the interface. May be a proxy for the

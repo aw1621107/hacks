@@ -62,11 +62,11 @@ public final class TestPictures {
         Dimension nDim = nHeader.getSize();
         assertEquals(expWidth, nDim.getWidth(), 0);
         assertEquals(expHeight, nDim.getHeight(), 0);
-        
+
         Dimension dim = data.getImageDimensionInPixels();
         assertEquals(Units.pointsToPixel(expWidth), dim.getWidth(), 0);
         assertEquals(Units.pointsToPixel(expHeight), dim.getHeight(), 0);
-        
+
         HSLFPictureShape pict = new HSLFPictureShape(data);
         assertEquals(data.getIndex(), pict.getPictureIndex());
         slide.addShape(pict);
@@ -87,12 +87,12 @@ public final class TestPictures {
         //check picture data
         List<HSLFPictureData> pictures = ppt.getPictureData();
         assertEquals(1, pictures.size());
-        
+
         HSLFPictureData pd = pictures.get(0);
         dim = pd.getImageDimension();
         assertEquals(expWidth, dim.width);
         assertEquals(expHeight, dim.height);
-        
+
         //the Picture shape refers to the PictureData object in the Presentation
         assertEquals(pict.getPictureData(), pd);
 
@@ -129,7 +129,7 @@ public final class TestPictures {
         Dimension dim = data.getImageDimensionInPixels();
         assertEquals(Units.pointsToPixel(expWidth), dim.getWidth(), 0);
         assertEquals(Units.pointsToPixel(expHeight), dim.getHeight(), 0);
-        
+
         HSLFPictureShape pict = new HSLFPictureShape(data);
         assertEquals(data.getIndex(), pict.getPictureIndex());
         slide.addShape(pict);
@@ -155,10 +155,10 @@ public final class TestPictures {
         dim = pd.getImageDimension();
         assertEquals(expWidth, dim.width);
         assertEquals(expHeight, dim.height);
-        
+
         //the Picture shape refers to the PictureData object in the Presentation
         assertEquals(pict.getPictureData(), pd);
-        
+
         assertEquals(PictureType.WMF, pd.getType());
         assertTrue(pd instanceof WMF);
         //compare the content of the initial file with what is stored in the PictureData
@@ -191,7 +191,7 @@ public final class TestPictures {
         Dimension dim = data.getImageDimensionInPixels();
         assertEquals(Units.pointsToPixel(expWidth), dim.getWidth(), 0);
         assertEquals(Units.pointsToPixel(expHeight), dim.getHeight(), 0);
-        
+
         HSLFPictureShape pict = new HSLFPictureShape(data);
         assertEquals(data.getIndex(), pict.getPictureIndex());
         slide.addShape(pict);
@@ -212,12 +212,12 @@ public final class TestPictures {
         //check picture data
         List<HSLFPictureData> pictures = ppt.getPictureData();
         assertEquals(1, pictures.size());
-        
+
         HSLFPictureData pd = pictures.get(0);
         dim = pd.getImageDimension();
         assertEquals(expWidth, dim.width);
         assertEquals(expHeight, dim.height);
-        
+
         //the Picture shape refers to the PictureData object in the Presentation
         assertEquals(pict.getPictureData(), pd);
 

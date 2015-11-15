@@ -120,7 +120,7 @@ public final class TestXSSFPictureData extends TestCase {
         List<XSSFShape> shapes1 = sheet1.createDrawingPatriarch().getShapes();
         assertNotNull(shapes1);
         assertEquals(5, shapes1.size());
-        
+
         for(int i = 0; i < wb.getNumberOfSheets(); i++){
             XSSFSheet sheet = wb.getSheetAt(i);
             XSSFDrawing drawing = sheet.createDrawingPatriarch();

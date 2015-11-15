@@ -170,7 +170,7 @@ public final class TestMultiSheetEval extends TestCase {
 		int rowIndex = startRowIndex;
 		while (true) {
 			Row r = sheet.getRow(rowIndex);
-			
+
 			// only evaluate non empty row
 			if( r != null )
 			{
@@ -192,10 +192,10 @@ public final class TestMultiSheetEval extends TestCase {
 					if(expectedValueCell == null) {
 						int missingRowNum = rowIndex + 1;
 						throw new AssertionFailedError("Missing expected values cell for function '"
-								+ targetFunctionName + ", test" + targetTestName + " (row " + 
+								+ targetFunctionName + ", test" + targetTestName + " (row " +
 								missingRowNum + ")");
 					}
-					
+
 					switch(processFunctionRow(evaluator, targetFunctionName, targetTestName, r, expectedValueCell)) {
 						case Result.ALL_EVALUATIONS_SUCCEEDED: _functionSuccessCount++; break;
 						case Result.SOME_EVALUATIONS_FAILED: _functionFailureCount++; break;
@@ -220,7 +220,7 @@ public final class TestMultiSheetEval extends TestCase {
 	 * @return a constant from the local Result class denoting whether there were any evaluation
 	 * cases, and whether they all succeeded.
 	 */
-	private int processFunctionRow(HSSFFormulaEvaluator evaluator, String targetFunctionName, 
+	private int processFunctionRow(HSSFFormulaEvaluator evaluator, String targetFunctionName,
 			String targetTestName, Row formulasRow, Cell expectedValueCell) {
 
 		int result = Result.NO_EVALUATIONS_FOUND; // so far
@@ -233,7 +233,7 @@ public final class TestMultiSheetEval extends TestCase {
 		CellValue actualValue = evaluator.evaluate(c);
 
 		try {
-			confirmExpectedResult("Function '" + targetFunctionName + "': Test: '" + targetTestName + "' Formula: " + c.getCellFormula() 
+			confirmExpectedResult("Function '" + targetFunctionName + "': Test: '" + targetTestName + "' Formula: " + c.getCellFormula()
 			+ " @ " + formulasRow.getRowNum() + ":" + SS.COLUMN_INDEX_ACTUAL_VALUE,
 					expectedValueCell, actualValue);
 			_evaluationSuccessCount ++;
@@ -245,7 +245,7 @@ public final class TestMultiSheetEval extends TestCase {
 			printShortStackTrace(System.err, e);
 			result = Result.SOME_EVALUATIONS_FAILED;
 		}
-	
+
 		return result;
 	}
 
@@ -328,5 +328,5 @@ public final class TestMultiSheetEval extends TestCase {
 		throw new AssertionFailedError("Bad cell type for 'test name' column: ("
 				+ cell.getCellType() + ") row (" + (r.getRowNum() +1) + ")");
 	}
-	
+
 }

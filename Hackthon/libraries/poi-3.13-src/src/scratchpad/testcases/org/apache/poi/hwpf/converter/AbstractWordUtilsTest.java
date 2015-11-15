@@ -25,7 +25,7 @@ import org.apache.poi.hwpf.usermodel.Table;
 
 /**
  * Test cases for {@link AbstractWordUtils}
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 public class AbstractWordUtilsTest extends TestCase

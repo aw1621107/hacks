@@ -33,7 +33,7 @@ import org.apache.poi.hwpf.model.StyleSheet;
  */
 public final class TestProblems extends HWPFTestCase {
 
-    
+
    /**
     * ListEntry passed no ListTable
     */
@@ -197,7 +197,7 @@ public final class TestProblems extends HWPFTestCase {
    }
 
    /**
-    * Test for reading paragraphs from Range after replacing some 
+    * Test for reading paragraphs from Range after replacing some
     * text in this Range.
     * Bug #45269
     */
@@ -232,7 +232,7 @@ public final class TestProblems extends HWPFTestCase {
          }
       }
    }
-   
+
    /**
     * Bug #49936 - Problems with reading the header out of
     *  the Header Stories
@@ -240,27 +240,27 @@ public final class TestProblems extends HWPFTestCase {
    public void testProblemHeaderStories49936() throws Exception {
       HWPFDocument doc = HWPFTestDataSamples.openSampleFile("HeaderFooterProblematic.doc");
       HeaderStories hs = new HeaderStories(doc);
-      
+
       assertEquals("", hs.getFirstHeader());
       assertEquals("\r", hs.getEvenHeader());
       assertEquals("", hs.getOddHeader());
-      
+
       assertEquals("", hs.getFirstFooter());
       assertEquals("", hs.getEvenFooter());
       assertEquals("", hs.getOddFooter());
-      
+
       WordExtractor ext = new WordExtractor(doc);
       assertEquals("\n", ext.getHeaderText());
       assertEquals("", ext.getFooterText());
    }
-   
+
    /**
     * Bug #45877 - problematic PAPX with no parent set
     */
    public void testParagraphPAPXNoParent45877() throws Exception {
       HWPFDocument doc = HWPFTestDataSamples.openSampleFile("Bug45877.doc");
       assertEquals(17, doc.getRange().numParagraphs());
-      
+
       assertEquals("First paragraph\r", doc.getRange().getParagraph(0).text());
       assertEquals("After Crashing Part\r", doc.getRange().getParagraph(13).text());
    }

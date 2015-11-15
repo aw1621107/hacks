@@ -117,7 +117,7 @@ public final class TestHSSFRow extends BaseTestRow {
         assertEquals(5, cellB2.getColumnIndex());
         assertEquals(2, row.getFirstCellNum());
         assertEquals(6, row.getLastCellNum());
-        
+
         workbook.close();
     }
 
@@ -136,7 +136,7 @@ public final class TestHSSFRow extends BaseTestRow {
         row.setHeight((short) -1);
         assertEquals(row.getHeight(), sheet.getDefaultRowHeight());
         assertEquals(row.getRowRecord().getBadFontHeight(), false);
-        
+
         workbook.close();
     }
 }

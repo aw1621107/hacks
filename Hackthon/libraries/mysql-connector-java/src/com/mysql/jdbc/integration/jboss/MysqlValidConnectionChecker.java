@@ -42,7 +42,7 @@ public final class MysqlValidConnectionChecker implements ValidConnectionChecker
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.jboss.resource.adapter.jdbc.ValidConnectionChecker#isValidConnection(java.sql.Connection)
      */
     public SQLException isValidConnection(Connection conn) {

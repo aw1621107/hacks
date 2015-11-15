@@ -40,7 +40,7 @@ public class RowDataStatic implements RowData {
 
     /**
      * Creates a new RowDataStatic object.
-     * 
+     *
      * @param rows
      */
     public RowDataStatic(List<ResultSetRow> rows) {

@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for CT_EmbeddedWAVAudioFile complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="CT_EmbeddedWAVAudioFile">
  *   &lt;complexContent>
@@ -39,8 +39,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CT_EmbeddedWAVAudioFile", namespace = "http://schemas.openxmlformats.org/drawingml/2006/main")
@@ -55,11 +55,11 @@ public class CTEmbeddedWAVAudioFile {
 
     /**
      * Embedded Audio File Relationship ID
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getEmbed() {
         return embed;
@@ -67,11 +67,11 @@ public class CTEmbeddedWAVAudioFile {
 
     /**
      * Sets the value of the embed property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setEmbed(String value) {
         this.embed = value;
@@ -83,11 +83,11 @@ public class CTEmbeddedWAVAudioFile {
 
     /**
      * Gets the value of the name property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getName() {
         if (name == null) {
@@ -99,11 +99,11 @@ public class CTEmbeddedWAVAudioFile {
 
     /**
      * Sets the value of the name property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setName(String value) {
         this.name = value;
@@ -115,11 +115,11 @@ public class CTEmbeddedWAVAudioFile {
 
     /**
      * Gets the value of the builtIn property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Boolean }
-     *     
+     *
      */
     public boolean isBuiltIn() {
         if (builtIn == null) {
@@ -131,11 +131,11 @@ public class CTEmbeddedWAVAudioFile {
 
     /**
      * Sets the value of the builtIn property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Boolean }
-     *     
+     *
      */
     public void setBuiltIn(boolean value) {
         this.builtIn = value;

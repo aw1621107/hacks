@@ -37,7 +37,7 @@ public class HSMFDump {
    public HSMFDump(NPOIFSFileSystem fs) {
       this.fs = fs;
    }
-   
+
    public void dump() throws IOException {
       dump(System.out);
    }
@@ -47,13 +47,13 @@ public class HSMFDump {
          out.println(chunks.getClass().getSimpleName());
          for(Chunk chunk : chunks.getChunks()) {
             MAPIProperty attr = MAPIProperty.get(chunk.getChunkId());
-            
+
             if (chunk instanceof PropertiesChunk) {
                PropertiesChunk props = (PropertiesChunk)chunk;
                out.println(
                      "   Properties - " + props.getProperties().size() + ":"
                );
-               
+
                for (MAPIProperty prop : props.getProperties().keySet()) {
                   out.println(
                         "       * " + prop
@@ -69,7 +69,7 @@ public class HSMFDump {
                if(attr == MAPIProperty.UNKNOWN) {
                   idName = chunk.getChunkId() + " - (unknown)";
                }
-               
+
                out.println(
                      "   " + idName + " - " + chunk.getType().getName()
                );
@@ -81,7 +81,7 @@ public class HSMFDump {
          out.println();
       }
    }
-   
+
    public static void main(String[] args) throws Exception {
       for(String file : args) {
          NPOIFSFileSystem fs = new NPOIFSFileSystem(new File(file), true);

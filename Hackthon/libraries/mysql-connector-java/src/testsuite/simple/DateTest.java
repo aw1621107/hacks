@@ -44,7 +44,7 @@ import com.mysql.jdbc.SQLError;
 public class DateTest extends BaseTestCase {
     /**
      * Creates a new DateTest object.
-     * 
+     *
      * @param name
      */
     public DateTest(String name) {
@@ -53,7 +53,7 @@ public class DateTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -169,7 +169,7 @@ public class DateTest extends BaseTestCase {
 
     /**
      * Tests the configurability of all-zero date/datetime/timestamp handling in the driver.
-     * 
+     *
      * @throws Exception
      *             if the test fails.
      */

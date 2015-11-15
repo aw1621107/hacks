@@ -81,7 +81,7 @@ public abstract class BaseTestFunctionsFromSpreadsheet {
     public HSSFFormulaEvaluator evaluator;
 
 
-    
+
     protected static Collection<Object[]> data(Class<? extends BaseTestFunctionsFromSpreadsheet> clazz, String filename) throws Exception {
         HSSFWorkbook workbook = HSSFTestDataSamples.openSampleWorkbook(filename);
         confirmReadMeSheet(workbook, clazz);
@@ -93,9 +93,9 @@ public abstract class BaseTestFunctionsFromSpreadsheet {
             HSSFSheet sheet = workbook.getSheetAt(sheetIdx);
             processFunctionGroup(data, sheet, SS.START_TEST_CASES_ROW_INDEX, null, filename);
         }
-        
+
         workbook.close();
-        
+
         return data;
     }
 
@@ -109,7 +109,7 @@ public abstract class BaseTestFunctionsFromSpreadsheet {
             if(r == null) {
                 continue;
             }
-            String newMarkerValue = getCellTextValue(r, SS.COLUMN_INDEX_MARKER, "marker");                    
+            String newMarkerValue = getCellTextValue(r, SS.COLUMN_INDEX_MARKER, "marker");
             if(SS.TEST_CASES_END_MARKER.equalsIgnoreCase(newMarkerValue)) {
                 // normal exit point
                 return;
@@ -131,7 +131,7 @@ public abstract class BaseTestFunctionsFromSpreadsheet {
             if ("".equals(testName)) {
                 testName = evalCell.getCellFormula();
             }
-            
+
             data.add(new Object[]{testName, filename, sheet, rowIndex, evaluator});
         }
         fail("Missing end marker '" + SS.TEST_CASES_END_MARKER + "' on sheet '" + sheet.getSheetName() + "'");
@@ -142,7 +142,7 @@ public abstract class BaseTestFunctionsFromSpreadsheet {
         HSSFRow r = sheet.getRow(formulasRowIdx);
         HSSFCell evalCell = r.getCell(SS.COLUMN_INDEX_EVALUATION);
         HSSFCell expectedCell = r.getCell(SS.COLUMN_INDEX_EXPECTED_RESULT);
-        
+
         CellReference cr = new CellReference(sheet.getSheetName(), formulasRowIdx, evalCell.getColumnIndex(), false, false);
         String msg = String.format(Locale.ROOT, "In %s %s {=%s} '%s'"
             , filename, cr.formatAsString(), evalCell.getCellFormula(), testName);

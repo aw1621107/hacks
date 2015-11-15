@@ -87,13 +87,13 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
         } catch (NullPointerException npe) {
             fail("WindowOneRecord in Workbook is probably not initialized");
         }
-        
+
         b.close();
     }
 
     /**
      * Tests for {@link HSSFWorkbook#isHidden()} etc
-     * @throws IOException 
+     * @throws IOException
      */
     @Test
     public void hidden() throws IOException {
@@ -118,7 +118,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
         wbBack.setHidden(false);
         assertEquals(false, wbBack.isHidden());
         assertEquals(false, w1.getHidden());
-        
+
         wbBack.close();
         wb.close();
     }
@@ -140,7 +140,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
         assertEquals(1, bBack.getNumberOfSheets());
         bBack.cloneSheet(0);
         assertEquals(2, bBack.getNumberOfSheets());
-        
+
         bBack.close();
         b.close();
     }
@@ -239,7 +239,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
         confirmActiveSelected(sheet2, true);
         confirmActiveSelected(sheet3, false);
         confirmActiveSelected(sheet4, false);
-        
+
         wb.close();
     }
 
@@ -297,7 +297,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
                 throw new RuntimeException(e);
             }
         }
-        
+
         wb.close();
     }
 
@@ -363,7 +363,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
         // The last remaining sheet should always be active+selected
         wb.removeSheetAt(1);
         confirmActiveSelected(sheet0, true,  true);
-        
+
         wb.close();
     }
 
@@ -383,7 +383,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
      * records to be written with invalid offset indexes.  Excel does not like this, and such
      * errors are particularly hard to track down.  This test ensures that HSSFWorkbook throws
      * a specific exception as soon as the situation is detected. See bugzilla 45066
-     * @throws IOException 
+     * @throws IOException
      */
     @Test
     public void sheetSerializeSizeMismatch_bug45066() throws IOException {
@@ -400,7 +400,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
             // Expected badly behaved sheet record to cause exception
             assertTrue(e.getMessage().startsWith("Actual serialized sheet size"));
         }
-        
+
         wb.close();
     }
 
@@ -572,11 +572,11 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
         ClassID clsid2 = fs2.getRoot().getStorageClsid();
 
         assertTrue(clsid1.equals(clsid2));
-        
+
         fs2.close();
         wb.close();
     }
-    
+
     /**
      * If we try to open an old (pre-97) workbook, we get a helpful
      *  Exception give to explain what we've done wrong
@@ -591,7 +591,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
             assertContains(e.getMessage(), "BIFF4");
         }
         excel4.close();
-        
+
         InputStream excel5 = POIDataSamples.getSpreadSheetInstance().openResourceAsStream("testEXCEL_5.xls");
         try {
             new HSSFWorkbook(excel5).close();
@@ -600,7 +600,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
             assertContains(e.getMessage(), "BIFF5");
         }
         excel5.close();
-        
+
         InputStream excel95 = POIDataSamples.getSpreadSheetInstance().openResourceAsStream("testEXCEL_95.xls");
         try {
             new HSSFWorkbook(excel95).close();
@@ -625,24 +625,24 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
            NPOIFSFileSystem npoifsFileSystem = new NPOIFSFileSystem(HSSFTestDataSamples.getSampleFile("Simple.xls"));
            try {
                files[1] = npoifsFileSystem.getRoot();
-               
-               // Open without preserving nodes 
+
+               // Open without preserving nodes
                for(DirectoryNode dir : files) {
                   HSSFWorkbook workbook = new HSSFWorkbook(dir, false);
                   HSSFSheet sheet = workbook.getSheetAt(0);
                   HSSFCell cell = sheet.getRow(0).getCell(0);
                   assertEquals("replaceMe", cell .getRichStringCellValue().getString());
-                  
+
                   workbook.close();
                }
-        
+
                // Now re-check with preserving
                for(DirectoryNode dir : files) {
                   HSSFWorkbook workbook = new HSSFWorkbook(dir, true);
                   HSSFSheet sheet = workbook.getSheetAt(0);
                   HSSFCell cell = sheet.getRow(0).getCell(0);
                   assertEquals("replaceMe", cell .getRichStringCellValue().getString());
-                  
+
                   workbook.close();
                }
            } finally {
@@ -663,7 +663,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
            NPOIFSFileSystem npoifsFileSystem = new NPOIFSFileSystem(HSSFTestDataSamples.getSampleFile("WithEmbeddedObjects.xls"));
            try {
                files[1] = npoifsFileSystem.getRoot();
-               
+
                // Check the embedded parts
                for(DirectoryNode root : files) {
                   HSSFWorkbook hw = new HSSFWorkbook(root, true);
@@ -682,7 +682,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
                      }
                   }
                   assertTrue(found);
-                  
+
                   hw.close();
                }
            } finally {
@@ -714,7 +714,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
                assertEquals(3, wbBack.getNumberOfSheets());
                assertEquals("Root xls", wbBack.getSheetAt(0).getRow(0).getCell(0).getStringCellValue());
                wbBack.close();
-               
+
                wb.close();
            } finally {
         	   fs.close();
@@ -743,7 +743,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
                     "You can define up to 4000 styles in a .xls workbook", e.getMessage());
         }
         assertEquals(MAX_STYLES, wb.getNumCellStyles());
-        
+
         wb.close();
     }
 
@@ -802,7 +802,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
         HSSFConditionalFormatting cf = sheetCF.getConditionalFormattingAt(0);
         assertEquals("'first sheet'!D1", cf.getRule(0).getFormula1());
         assertEquals("'other sheet'!D1", cf.getRule(0).getFormula2());
-        
+
         wb.close();
     }
 
@@ -858,7 +858,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
     @Test
     public void selectedSheetShort() throws IOException {
         HSSFWorkbook wb=new HSSFWorkbook();
-        
+
         HSSFSheet sheet1 = wb.createSheet("Sheet1");
         HSSFSheet sheet2 = wb.createSheet("Sheet2");
         HSSFSheet sheet3 = wb.createSheet("Sheet3");
@@ -904,7 +904,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
         } catch (IllegalArgumentException e) {
             assertTrue(e.getMessage(), e.getMessage().contains("already contains a sheet of this name"));
         }
-        
+
         wb.close();
     }
 
@@ -930,7 +930,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
         assertEquals(0, wb.getSheetIndex(sheet2));
         assertEquals(1, wb.getSheetIndex(sheet3));
         assertEquals(-1, wb.getSheetIndex(sheet4));
-        
+
         wb.close();
     }
 
@@ -952,7 +952,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
         assertEquals(1, wb.getSheetIndexFromExternSheetIndex(1));
         assertEquals(-1, wb.getSheetIndexFromExternSheetIndex(2));
         assertEquals(-1, wb.getSheetIndexFromExternSheetIndex(100));
-        
+
         wb.close();
     }
 
@@ -964,7 +964,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
         int sst = wb.addSSTString("somestring");
         assertEquals("somestring", wb.getSSTString(sst));
         //assertNull(wb.getSSTString(sst+1));
-        
+
         wb.close();
     }
 
@@ -1003,7 +1003,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
         } catch (IllegalArgumentException e) {
             assertTrue(e.getMessage(), e.getMessage().contains("outside the allowable range"));
         }
-        
+
         wb.close();
     }
 
@@ -1013,7 +1013,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
         wb.insertChartRecord();
         //wb.dumpDrawingGroupRecords(true);
         //wb.dumpDrawingGroupRecords(false);
-        
+
         wb.close();
     }
 
@@ -1025,7 +1025,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
 
         wb.writeProtectWorkbook("mypassword", "myuser");
         assertTrue(wb.isWriteProtected());
-        
+
 //        OutputStream os = new FileOutputStream("/tmp/protected.xls");
 //        try {
 //            wb.write(os);
@@ -1112,7 +1112,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
 		HSSFWorkbook read = HSSFTestDataSamples.writeOutAndReadBack(wb);
 		assertSheetOrder(read, "Invoice", "Deferred", "Received", "Digest");
 	}
-	
+
     @Test
 	public void bug54500() throws Exception {
 		String nameName = "AName";
@@ -1120,7 +1120,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
 		HSSFWorkbook wb = HSSFTestDataSamples.openSampleWorkbook("54500.xls");
 
 		assertSheetOrder(wb, "Sheet1", "Sheet2", "Sheet3");
-		
+
 		wb.createSheet(sheetName);
 
 		assertSheetOrder(wb, "Sheet1", "Sheet2", "Sheet3", "ASheet");
@@ -1132,7 +1132,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
 
 		assertSheetOrder(wb, "Sheet1", "Sheet2", "Sheet3", "ASheet");
 		assertEquals("ASheet!A1", wb.getName(nameName).getRefersToFormula());
-		
+
 		ByteArrayOutputStream stream = new ByteArrayOutputStream();
 		wb.write(stream);
 
@@ -1167,7 +1167,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
 	public void test49423() throws Exception
     {
 		HSSFWorkbook workbook = HSSFTestDataSamples.openSampleWorkbook("49423.xls");
-		
+
 		boolean found = false;
         int numSheets = workbook.getNumberOfSheets();
         for (int i = 0; i < numSheets; i++) {
@@ -1175,7 +1175,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
             List<HSSFShape> shapes = sheet.getDrawingPatriarch().getChildren();
             for(HSSFShape shape : shapes){
                 HSSFAnchor anchor = shape.getAnchor();
-    
+
                 if(anchor instanceof HSSFClientAnchor){
                     // absolute coordinates
                     HSSFClientAnchor clientAnchor = (HSSFClientAnchor)anchor;
@@ -1183,7 +1183,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
                     //System.out.println(clientAnchor.getRow1() + "," + clientAnchor.getRow2());
                     found = true;
                 } else if (anchor instanceof HSSFChildAnchor){
-                    // shape is grouped and the anchor is expressed in the coordinate system of the group 
+                    // shape is grouped and the anchor is expressed in the coordinate system of the group
                     HSSFChildAnchor childAnchor = (HSSFChildAnchor)anchor;
                     assertNotNull(childAnchor);
                     //System.out.println(childAnchor.getDy1() + "," + childAnchor.getDy2());
@@ -1191,7 +1191,7 @@ public final class TestHSSFWorkbook extends BaseTestWorkbook {
                 }
             }
         }
-        
+
         assertTrue("Should find some images via Client or Child anchors, but did not find any at all", found);
     }
 }

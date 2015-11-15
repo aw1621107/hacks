@@ -160,7 +160,7 @@ public final class WorkbookRecordList implements Iterable<Record> {
 		this.palettepos = palettepos;
 	}
 
-	
+
 	/**
 	 * Returns the namepos.
 	 * @return int

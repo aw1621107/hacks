@@ -22,7 +22,7 @@ import org.apache.poi.ss.formula.SheetNameFormatter;
 
 /**
  * Tests for {@link SheetNameFormatter}
- * 
+ *
  * @author Josh Micich
  */
 public final class TestSheetNameFormatter extends TestCase {
@@ -32,46 +32,46 @@ public final class TestSheetNameFormatter extends TestCase {
 	}
 
 	/**
-	 * Tests main public method 'format' 
+	 * Tests main public method 'format'
 	 */
 	public void testFormat() {
-		
+
 		confirmFormat("abc", "abc");
 		confirmFormat("123", "'123'");
-		
+
 		confirmFormat("my sheet", "'my sheet'"); // space
 		confirmFormat("A:MEM", "'A:MEM'"); // colon
 
 		confirmFormat("O'Brian", "'O''Brian'"); // single quote gets doubled
-		
-		
+
+
 		confirmFormat("3rdTimeLucky", "'3rdTimeLucky'"); // digit in first pos
 		confirmFormat("_", "_"); // plain underscore OK
 		confirmFormat("my_3rd_sheet", "my_3rd_sheet"); // underscores and digits OK
-		confirmFormat("A12220", "'A12220'"); 
-		confirmFormat("TAXRETURN19980415", "TAXRETURN19980415"); 
+		confirmFormat("A12220", "'A12220'");
+		confirmFormat("TAXRETURN19980415", "TAXRETURN19980415");
 	}
-	
+
 	public void testBooleanLiterals() {
 		confirmFormat("TRUE", "'TRUE'");
 		confirmFormat("FALSE", "'FALSE'");
 		confirmFormat("True", "'True'");
 		confirmFormat("fAlse", "'fAlse'");
-		
+
 		confirmFormat("Yes", "Yes");
 		confirmFormat("No", "No");
 	}
-	
+
 	private static void confirmCellNameMatch(String rawSheetName, boolean expected) {
 		assertEquals(expected, SheetNameFormatter.nameLooksLikePlainCellReference(rawSheetName));
 	}
-	
+
 	/**
 	 * Tests functionality to determine whether a sheet name containing only letters and digits
 	 * would look (to Excel) like a cell name.
 	 */
 	public void testLooksLikePlainCellReference() {
-		
+
 		confirmCellNameMatch("A1", true);
 		confirmCellNameMatch("a111", true);
 		confirmCellNameMatch("AA", false);
@@ -81,13 +81,13 @@ public final class TestSheetNameFormatter extends TestCase {
 		confirmCellNameMatch("Sh3", false);
 		confirmCellNameMatch("SALES20080101", false); // out of range
 	}
-	
+
 	private static void confirmCellRange(String text, int numberOfPrefixLetters, boolean expected) {
 		String prefix = text.substring(0, numberOfPrefixLetters);
 		String suffix = text.substring(numberOfPrefixLetters);
 		assertEquals(expected, SheetNameFormatter.cellReferenceIsWithinRange(prefix, suffix));
 	}
-	
+
 	/**
 	 * Tests exact boundaries for names that look very close to cell names (i.e. contain 1 or more
 	 * letters followed by one or more digits).

@@ -79,14 +79,14 @@ public class JDBC4ServerPreparedStatement extends ServerPreparedStatement {
 
     /**
      * JDBC 4.0 Set a NCLOB parameter.
-     * 
+     *
      * @param parameterIndex
      *            the first parameter is 1, the second is 2, ...
      * @param reader
      *            the java reader which contains the UNICODE data
      * @param length
      *            the number of characters in the stream
-     * 
+     *
      * @throws SQLException
      *             if a database error occurs
      */

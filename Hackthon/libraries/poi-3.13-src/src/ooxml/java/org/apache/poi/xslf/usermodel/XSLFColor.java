@@ -111,7 +111,7 @@ public class XSLFColor {
             }
         };
     }
-    
+
     Color toColor(XmlObject obj, XSLFTheme theme) {
         Color color = null;
         for (XmlObject ch : obj.selectPath("*")) {
@@ -190,9 +190,9 @@ public class XSLFColor {
             }
         }
 
-        return -1;        
+        return -1;
     }
-    
+
     /**
      * Read a perecentage value from the supplied xml bean.
      * Example:
@@ -219,7 +219,7 @@ public class XSLFColor {
      * or -1 if the value is not set
      */
     int getAlpha(){
-        return getPercentageValue("alpha");        
+        return getPercentageValue("alpha");
     }
 
     /**
@@ -322,7 +322,7 @@ public class XSLFColor {
     /**
      * specifies the input color with the specific red component, but with the blue and green color
      * components unchanged
-     * 
+     *
      * @return the value of the red component specified as a
      * percentage with 0% indicating minimal blue and 100% indicating maximum
      * or -1 if the value is not set
@@ -382,7 +382,7 @@ public class XSLFColor {
     /**
      * specifies a darker version of its input color.
      * A 10% shade is 10% of the input color combined with 90% black.
-     * 
+     *
      * @return the value of the shade specified as a
      * percentage with 0% indicating minimal shade and 100% indicating maximum
      * or -1 if the value is not set
@@ -410,7 +410,7 @@ public class XSLFColor {
     static final Map<String, Color> presetColors;
 
     static {
-        presetColors = new HashMap<String, Color>();    
+        presetColors = new HashMap<String, Color>();
         presetColors.put("aliceBlue", new Color(240, 248, 255));
         presetColors.put("antiqueWhite", new Color(250, 235, 215));
         presetColors.put("aqua", new Color(0, 255, 255));

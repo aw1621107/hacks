@@ -37,10 +37,10 @@ public final class DataBarFormatting implements Cloneable {
     private ExtendedColor color;
     private DataBarThreshold thresholdMin;
     private DataBarThreshold thresholdMax;
-    
+
     private static BitField iconOnly = BitFieldFactory.getInstance(0x01);
     private static BitField reversed = BitFieldFactory.getInstance(0x04);
-    
+
     public DataBarFormatting() {
         options = 2;
     }
@@ -48,33 +48,33 @@ public final class DataBarFormatting implements Cloneable {
         in.readShort(); // Ignored
         in.readByte();  // Reserved
         options = in.readByte();
-        
+
         percentMin = in.readByte();
         percentMax = in.readByte();
         if (percentMin < 0 || percentMin > 100)
             log.log(POILogger.WARN, "Inconsistent Minimum Percentage found " + percentMin);
         if (percentMax < 0 || percentMax > 100)
             log.log(POILogger.WARN, "Inconsistent Minimum Percentage found " + percentMin);
-        
+
         color = new ExtendedColor(in);
         thresholdMin = new DataBarThreshold(in);
         thresholdMax = new DataBarThreshold(in);
     }
-    
+
     public boolean isIconOnly() {
         return getOptionFlag(iconOnly);
     }
     public void setIconOnly(boolean only) {
         setOptionFlag(only, iconOnly);
     }
-    
+
     public boolean isReversed() {
         return getOptionFlag(reversed);
     }
     public void setReversed(boolean rev) {
         setOptionFlag(rev, reversed);
     }
-    
+
     private boolean getOptionFlag(BitField field) {
         int value = field.getValue(options);
         return value==0 ? false : true;
@@ -89,35 +89,35 @@ public final class DataBarFormatting implements Cloneable {
     public void setPercentMin(byte percentMin) {
         this.percentMin = percentMin;
     }
-    
+
     public byte getPercentMax() {
         return percentMax;
     }
     public void setPercentMax(byte percentMax) {
         this.percentMax = percentMax;
     }
-    
+
     public ExtendedColor getColor() {
         return color;
     }
     public void setColor(ExtendedColor color) {
         this.color = color;
     }
-    
+
     public DataBarThreshold getThresholdMin() {
         return thresholdMin;
     }
     public void setThresholdMin(DataBarThreshold thresholdMin) {
         this.thresholdMin = thresholdMin;
     }
-    
+
     public DataBarThreshold getThresholdMax() {
         return thresholdMax;
     }
     public void setThresholdMax(DataBarThreshold thresholdMax) {
         this.thresholdMax = thresholdMax;
     }
-    
+
     public String toString() {
         StringBuffer buffer = new StringBuffer();
         buffer.append("    [Data Bar Formatting]\n");
@@ -129,7 +129,7 @@ public final class DataBarFormatting implements Cloneable {
         buffer.append("    [/Data Bar Formatting]\n");
         return buffer.toString();
     }
-    
+
     public Object clone()  {
       DataBarFormatting rec = new DataBarFormatting();
       rec.options = options;
@@ -140,10 +140,10 @@ public final class DataBarFormatting implements Cloneable {
       rec.thresholdMax = (DataBarThreshold)thresholdMax.clone();
       return rec;
     }
-    
+
     public int getDataLength() {
         return 6 + color.getDataLength() +
-               thresholdMin.getDataLength() + 
+               thresholdMin.getDataLength() +
                thresholdMax.getDataLength();
     }
 

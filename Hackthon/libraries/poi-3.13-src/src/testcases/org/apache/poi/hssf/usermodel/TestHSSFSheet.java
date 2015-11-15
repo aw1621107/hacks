@@ -85,7 +85,7 @@ public final class TestHSSFSheet extends BaseTestSheet {
     public TestHSSFSheet() {
         super(HSSFITestDataProvider.instance);
     }
-    
+
     @Test
     public void createRowAfterLastRow() {
         createRowAfterLastRow(SpreadsheetVersion.EXCEL97);
@@ -505,7 +505,7 @@ public final class TestHSSFSheet extends BaseTestSheet {
         int sclLoc = sheet.getSheet().findFirstRecordLocBySid(SCLRecord.sid);
         int window2Loc = sheet.getSheet().findFirstRecordLocBySid(WindowTwoRecord.sid);
         assertTrue(sclLoc == window2Loc + 1);
-        
+
         // verify limits
         try {
         	sheet.setZoom(0, 2);
@@ -657,7 +657,7 @@ public final class TestHSSFSheet extends BaseTestSheet {
         assertTrue(sheet3.getColumnWidth(0) >= minWithRow1And2);
         assertTrue(sheet3.getColumnWidth(0) <= maxWithRow1And2);
     }
-    
+
     @Test
     public void autoSizeDate() throws Exception {
        HSSFWorkbook wb = new HSSFWorkbook();
@@ -665,35 +665,35 @@ public final class TestHSSFSheet extends BaseTestSheet {
        HSSFRow r = s.createRow(0);
        r.createCell(0).setCellValue(1);
        r.createCell(1).setCellValue(123456);
-       
+
        // Will be sized fairly small
        s.autoSizeColumn((short)0);
        s.autoSizeColumn((short)1);
-       
+
        // Size ranges due to different fonts on different machines
-       assertTrue("Single number column too small: " + s.getColumnWidth(0), s.getColumnWidth(0) > 350); 
-       assertTrue("Single number column too big: " + s.getColumnWidth(0),   s.getColumnWidth(0) < 550); 
-       assertTrue("6 digit number column too small: " + s.getColumnWidth(1), s.getColumnWidth(1) > 1500); 
+       assertTrue("Single number column too small: " + s.getColumnWidth(0), s.getColumnWidth(0) > 350);
+       assertTrue("Single number column too big: " + s.getColumnWidth(0),   s.getColumnWidth(0) < 550);
+       assertTrue("6 digit number column too small: " + s.getColumnWidth(1), s.getColumnWidth(1) > 1500);
        assertTrue("6 digit number column too big: " + s.getColumnWidth(1),   s.getColumnWidth(1) < 2000);
-       
+
        // Set a date format
        HSSFCellStyle cs = wb.createCellStyle();
        HSSFDataFormat f = wb.createDataFormat();
        cs.setDataFormat(f.getFormat("yyyy-mm-dd MMMM hh:mm:ss"));
        r.getCell(0).setCellStyle(cs);
        r.getCell(1).setCellStyle(cs);
-       
+
        assertTrue(DateUtil.isCellDateFormatted(r.getCell(0)));
        assertTrue(DateUtil.isCellDateFormatted(r.getCell(1)));
-       
+
        // Should get much bigger now
        s.autoSizeColumn((short)0);
        s.autoSizeColumn((short)1);
 
-       assertTrue("Date column too small: " + s.getColumnWidth(0), s.getColumnWidth(0) > 4750); 
-       assertTrue("Date column too small: " + s.getColumnWidth(1), s.getColumnWidth(1) > 4750); 
-       assertTrue("Date column too big: " + s.getColumnWidth(0), s.getColumnWidth(0) < 6500); 
-       assertTrue("Date column too big: " + s.getColumnWidth(0), s.getColumnWidth(0) < 6500); 
+       assertTrue("Date column too small: " + s.getColumnWidth(0), s.getColumnWidth(0) > 4750);
+       assertTrue("Date column too small: " + s.getColumnWidth(1), s.getColumnWidth(1) > 4750);
+       assertTrue("Date column too big: " + s.getColumnWidth(0), s.getColumnWidth(0) < 6500);
+       assertTrue("Date column too big: " + s.getColumnWidth(0), s.getColumnWidth(0) < 6500);
     }
 
     /**
@@ -1106,12 +1106,12 @@ public final class TestHSSFSheet extends BaseTestSheet {
         Workbook wb = new HSSFWorkbook();
         Sheet sheet = wb.createSheet();
         sheet.showInPane(2, 3);
-        
+
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Maximum row number is 65535");
     	sheet.showInPane(Integer.MAX_VALUE, 3);
     }
-    
+
     @Test
     public void drawingRecords() {
         HSSFWorkbook wb = new HSSFWorkbook();
@@ -1134,7 +1134,7 @@ public final class TestHSSFSheet extends BaseTestSheet {
         CellRangeAddress range = CellRangeAddress.valueOf("A:B");
         AutoFilter filter = sheet.setAutoFilter(range);
         assertNotNull(filter);
-        
+
         // stored with a special name
         NameRecord record = wb.getWorkbook().getSpecificBuiltinRecord(NameRecord.BUILTIN_FILTER_DB, 1);
         assertNotNull(record);

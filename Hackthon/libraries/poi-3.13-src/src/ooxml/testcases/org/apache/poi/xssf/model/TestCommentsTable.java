@@ -253,12 +253,12 @@ public class TestCommentsTable {
         //Cell A1 = getCell(sheet, 2, 2);
         Drawing drawing = sheet.createDrawingPatriarch();
         setComment(sheet, A1, drawing, "for A1", helper, anchor);
-        
+
         // find comment in A1 before we set the comment in B2
         Comment commentA1 = A1.getCellComment();
         assertNotNull("Should still find the previous comment in A1, but had null", commentA1);
         assertEquals("should find correct comment in A1, but had null: " + commentA1, "for A1", commentA1.getString().getString());
-        
+
         // place comment in B2, according to Bug 54920 this removes the comment in A1!
         Cell B2 = getCell(sheet, 1, 1);
         setComment(sheet, B2, drawing, "for B2", helper, anchor);
@@ -266,15 +266,15 @@ public class TestCommentsTable {
         // find comment in A1
         Comment commentB2 = B2.getCellComment();
         assertEquals("should find correct comment in B2, but had null: " + commentB2, "for B2", commentB2.getString().getString());
-        
+
         // find comment in A1
         commentA1 = A1.getCellComment();
         assertNotNull("Should still find the previous comment in A1, but had null", commentA1);
         assertEquals("should find correct comment in A1, but had null: " + commentA1, "for A1", commentA1.getString().getString());
-        
+
         workbook.close();
     }
-    
+
     // Set the comment on a sheet
     //
     private static void setComment(Sheet sheet, Cell cell, Drawing drawing, String commentText, CreationHelper helper, ClientAnchor anchor) {
@@ -283,7 +283,7 @@ public class TestCommentsTable {
         anchor.setCol2(cell.getColumnIndex());
         anchor.setRow1(cell.getRowIndex());
         anchor.setRow2(cell.getRowIndex());
-        
+
         // get comment, or create if it does not exist
         // NOTE - only occurs if getCellComment is called first
         Comment comment = cell.getCellComment();
@@ -292,12 +292,12 @@ public class TestCommentsTable {
             comment = drawing.createCellComment(anchor);
         }
         comment.setAuthor("Test");
-        
+
         // attach the comment to the cell
         comment.setString(helper.createRichTextString(commentText));
         cell.setCellComment(comment);
     }
-    
+
     // Get a cell, create as needed
     //
     private static Cell getCell(Sheet sheet, int rowIndex, int colIndex) {
@@ -305,12 +305,12 @@ public class TestCommentsTable {
         if (row == null) {
             row = sheet.createRow(rowIndex);
         }
-        
+
         Cell cell = row.getCell(colIndex);
         if (cell == null) {
             cell = row.createCell(colIndex);
         }
-        
+
         return cell;
     }
 }

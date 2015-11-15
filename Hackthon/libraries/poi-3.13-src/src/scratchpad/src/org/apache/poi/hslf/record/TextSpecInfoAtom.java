@@ -32,7 +32,7 @@ import org.apache.poi.util.LittleEndianByteArrayInputStream;
  */
 public final class TextSpecInfoAtom extends RecordAtom {
     private static final long _type = RecordTypes.TextSpecInfoAtom.typeID;
-    
+
     /**
      * Record header.
      */
@@ -44,14 +44,14 @@ public final class TextSpecInfoAtom extends RecordAtom {
     private byte[] _data;
 
     /**
-     * Constructs an empty atom, with a default run of size 1 
+     * Constructs an empty atom, with a default run of size 1
      */
     public TextSpecInfoAtom() {
         _header = new byte[8];
         LittleEndian.putUInt(_header, 4, _type);
         reset(1);
     }
-    
+
     /**
      * Constructs the link related atom record from its
      *  source data.
@@ -144,7 +144,7 @@ public final class TextSpecInfoAtom extends RecordAtom {
         // Update the size (header bytes 5-8)
         LittleEndian.putInt(_header, 4, _data.length);
     }
-    
+
     /**
      * Get the number of characters covered by this records
      *

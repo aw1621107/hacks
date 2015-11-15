@@ -36,7 +36,7 @@ public final class ExtendedMysqlExceptionSorter extends MySQLExceptionSorter {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.jboss.resource.adapter.jdbc.ExceptionSorter#isExceptionFatal(java.sql.SQLException)
      */
     @Override

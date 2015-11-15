@@ -76,7 +76,7 @@ implements Notes<XSLFShape,XSLFTextParagraph> {
 
     @Override
     protected String getRootElementName(){
-        return "notes";        
+        return "notes";
     }
 
     @Override

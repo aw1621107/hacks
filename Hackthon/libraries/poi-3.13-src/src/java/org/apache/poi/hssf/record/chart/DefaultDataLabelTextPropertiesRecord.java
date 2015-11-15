@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The default data label text properties record identifies the text characteristics of the preceding text record.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class DefaultDataLabelTextPropertiesRecord extends StandardRecord {
@@ -53,7 +53,7 @@ public final class DefaultDataLabelTextPropertiesRecord extends StandardRecord {
         buffer.append("    .categoryDataType     = ")
             .append("0x").append(HexDump.toHex(  getCategoryDataType ()))
             .append(" (").append( getCategoryDataType() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/DEFAULTTEXT]\n");
         return buffer.toString();
@@ -74,7 +74,7 @@ public final class DefaultDataLabelTextPropertiesRecord extends StandardRecord {
 
     public Object clone() {
         DefaultDataLabelTextPropertiesRecord rec = new DefaultDataLabelTextPropertiesRecord();
-    
+
         rec.field_1_categoryDataType = field_1_categoryDataType;
         return rec;
     }
@@ -85,7 +85,7 @@ public final class DefaultDataLabelTextPropertiesRecord extends StandardRecord {
     /**
      * Get the category data type field for the DefaultDataLabelTextProperties record.
      *
-     * @return  One of 
+     * @return  One of
      *        CATEGORY_DATA_TYPE_SHOW_LABELS_CHARACTERISTIC
      *        CATEGORY_DATA_TYPE_VALUE_AND_PERCENTAGE_CHARACTERISTIC
      *        CATEGORY_DATA_TYPE_ALL_TEXT_CHARACTERISTIC
@@ -99,7 +99,7 @@ public final class DefaultDataLabelTextPropertiesRecord extends StandardRecord {
      * Set the category data type field for the DefaultDataLabelTextProperties record.
      *
      * @param field_1_categoryDataType
-     *        One of 
+     *        One of
      *        CATEGORY_DATA_TYPE_SHOW_LABELS_CHARACTERISTIC
      *        CATEGORY_DATA_TYPE_VALUE_AND_PERCENTAGE_CHARACTERISTIC
      *        CATEGORY_DATA_TYPE_ALL_TEXT_CHARACTERISTIC

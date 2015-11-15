@@ -30,7 +30,7 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 public abstract class Encryptor {
     protected static final String DEFAULT_POIFS_ENTRY = Decryptor.DEFAULT_POIFS_ENTRY;
     private SecretKey secretKey;
-    
+
     /**
      * Return a output stream for encrypted data.
      *
@@ -42,9 +42,9 @@ public abstract class Encryptor {
 
     // for tests
     public abstract void confirmPassword(String password, byte keySpec[], byte keySalt[], byte verifier[], byte verifierSalt[], byte integritySalt[]);
-    
+
     public abstract void confirmPassword(String password);
-	
+
 	public static Encryptor getInstance(EncryptionInfo info) {
 	    return info.getEncryptor();
     }

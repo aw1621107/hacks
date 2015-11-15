@@ -83,7 +83,7 @@ public final class TestXWPFSDT extends TestCase {
      * POI-54771 and TIKA-1317
      */
     public void testSDTAsCell() throws Exception {
-        //Bug54771a.docx and Bug54771b.docx test slightly 
+        //Bug54771a.docx and Bug54771b.docx test slightly
         //different recursion patterns. Keep both!
         XWPFDocument doc = XWPFTestDataSamples.openSampleDocument("Bug54771a.docx");
         List<AbstractXWPFSDT> sdts = extractAllSDTs(doc);

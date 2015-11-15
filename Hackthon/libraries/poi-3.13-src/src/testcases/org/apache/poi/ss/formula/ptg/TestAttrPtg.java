@@ -26,7 +26,7 @@ import org.apache.poi.util.LittleEndianInput;
 
 /**
  * Tests for {@link AttrPtg}.
- * 
+ *
  * @author Josh Micich
  */
 public final class TestAttrPtg extends AbstractPtgTestCase {

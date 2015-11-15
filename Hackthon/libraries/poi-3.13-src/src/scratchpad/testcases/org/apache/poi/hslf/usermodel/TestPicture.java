@@ -103,7 +103,7 @@ public final class TestPicture {
         HSLFSlideShow ppt = new HSLFSlideShow();
         HSLFSlide slide = ppt.createSlide();
         HSLFPictureData pd = HSLFPictureData.create(PictureType.PNG);
-        
+
         HSLFPictureShape pict = new HSLFPictureShape(pd); //index to non-existing picture data
         pict.setSheet(slide);
         HSLFPictureData data = pict.getPictureData();
@@ -167,10 +167,10 @@ public final class TestPicture {
             "alterman_security.ppt",
 //            "alterman_security3.pptx",
         };
-        
+
         BitSet pages = new BitSet();
         pages.set(2);
-        
+
         for (String file : files) {
             InputStream is = _slTests.openResourceAsStream(file);
             SlideShow<?,?> ss;
@@ -182,7 +182,7 @@ public final class TestPicture {
                 ss = new HSLFSlideShow(is);
             }
             is.close();
-            
+
             boolean debugOut = false;
             Dimension pg = ss.getPageSize();
             for (Slide<?,?> slide : ss.getSlides()) {
@@ -206,7 +206,7 @@ public final class TestPicture {
             }
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     private void fixFonts(Graphics2D graphics) {
         if (!JvmBugs.hasLineBreakMeasurerBug()) return;
@@ -214,6 +214,6 @@ public final class TestPicture {
         if (fontMap == null) fontMap = new HashMap<String,String>();
         fontMap.put("Calibri", "Lucida Sans");
         fontMap.put("Cambria", "Lucida Bright");
-        graphics.setRenderingHint(Drawable.FONT_MAP, fontMap);        
+        graphics.setRenderingHint(Drawable.FONT_MAP, fontMap);
     }
 }

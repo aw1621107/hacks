@@ -34,10 +34,10 @@ public class MiniAdmin {
 
     /**
      * Create a new MiniAdmin using the given connection
-     * 
+     *
      * @param conn
      *            the existing connection to use.
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -56,10 +56,10 @@ public class MiniAdmin {
 
     /**
      * Create a new MiniAdmin, connecting using the given JDBC URL.
-     * 
+     *
      * @param jdbcUrl
      *            the JDBC URL to use
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -70,12 +70,12 @@ public class MiniAdmin {
     /**
      * Create a new MiniAdmin, connecting using the given JDBC URL and
      * properties
-     * 
+     *
      * @param jdbcUrl
      *            the JDBC URL to use
      * @param props
      *            the properties to use when connecting
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -86,7 +86,7 @@ public class MiniAdmin {
     /**
      * Shuts down the MySQL server at the other end of the connection that this
      * MiniAdmin was created from/for.
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */

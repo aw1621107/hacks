@@ -27,7 +27,7 @@ import org.apache.poi.util.StringUtil;
 
 /**
  * Test cases for {@link OfficeDrawing} and {@link OfficeDrawingsImpl} classes.
- * 
+ *
  * @author Sergey Vladimirov (vlsergey {at} gmail {dot} com)
  */
 public class TestOfficeDrawings extends TestCase

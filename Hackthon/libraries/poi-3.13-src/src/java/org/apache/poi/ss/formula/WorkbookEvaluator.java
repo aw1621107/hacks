@@ -53,7 +53,7 @@ import org.apache.poi.util.POILogger;
  * @author Thies Wellpott (debug output enhancements)
  */
 public final class WorkbookEvaluator {
-	
+
 	private static final POILogger LOG = POILogFactory.getLogger(WorkbookEvaluator.class);
 
     private final EvaluationWorkbook _workbook;
@@ -105,7 +105,7 @@ public final class WorkbookEvaluator {
 	/* package */ EvaluationSheet getSheet(int sheetIndex) {
 		return _workbook.getSheet(sheetIndex);
 	}
-	
+
 	/* package */ EvaluationWorkbook getWorkbook() {
 		return _workbook;
 	}
@@ -186,7 +186,7 @@ public final class WorkbookEvaluator {
 		int sheetIndex = getSheetIndex(cell.getSheet());
 		_cache.notifyDeleteCell(_workbookIx, sheetIndex, cell);
 	}
-	
+
 	private int getSheetIndex(EvaluationSheet sheet) {
 		Integer result = _sheetIndexesBySheet.get(sheet);
 		if (result == null) {
@@ -221,7 +221,7 @@ public final class WorkbookEvaluator {
 		}
 		return result.intValue();
 	}
-	
+
 	/* package */ int getSheetIndexByExternIndex(int externSheetIndex) {
 	   return _workbook.convertFromExternSheetIndex(externSheetIndex);
 	}
@@ -451,8 +451,8 @@ public final class WorkbookEvaluator {
 						int dist = attrPtg.getData();
 						i+= countTokensToBeSkipped(ptgs, i, dist);
 						Ptg nextPtg = ptgs[i+1];
-						if (ptgs[i] instanceof AttrPtg && nextPtg instanceof FuncVarPtg && 
-						        // in order to verify that there is no third param, we need to check 
+						if (ptgs[i] instanceof AttrPtg && nextPtg instanceof FuncVarPtg &&
+						        // in order to verify that there is no third param, we need to check
 						        // if we really have the IF next or some other FuncVarPtg as third param, e.g. ROW()/COLUMN()!
 						        ((FuncVarPtg)nextPtg).getFunctionIndex() == FunctionMetadataRegistry.FUNCTION_INDEX_IF) {
 							// this is an if statement without a false param (as opposed to MissingArgPtg as the false param)
@@ -662,7 +662,7 @@ public final class WorkbookEvaluator {
 
        throw new RuntimeException("Unexpected ptg class (" + ptg.getClass().getName() + ")");
     }
-   
+
    private ValueEval processNameEval(ValueEval eval, OperationEvaluationContext ec) {
        if (eval instanceof ExternalNameEval) {
            EvaluationName name = ((ExternalNameEval)eval).getName();
@@ -670,7 +670,7 @@ public final class WorkbookEvaluator {
        }
        return eval;
    }
-	
+
     private ValueEval getEvalForNameRecord(EvaluationName nameRecord, OperationEvaluationContext ec) {
         if (nameRecord.isFunctionName()) {
             return new FunctionNameEval(nameRecord.getNameText());
@@ -681,7 +681,7 @@ public final class WorkbookEvaluator {
 
         throw new RuntimeException("Don't now how to evalate name '" + nameRecord.getNameText() + "'");
     }
-    
+
     /**
      * YK: Used by OperationEvaluationContext to resolve indirect names.
      */

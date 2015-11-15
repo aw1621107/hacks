@@ -43,10 +43,10 @@ import org.apache.poi.ss.usermodel.Cell;
 
 /**
  * A text extractor for old Excel files, which are too old for
- *  HSSFWorkbook to handle. This includes Excel 95, and very old 
+ *  HSSFWorkbook to handle. This includes Excel 95, and very old
  *  (pre-OLE2) Excel files, such as Excel 4 files.
  * <p>
- * Returns much (but not all) of the textual content of the file, 
+ * Returns much (but not all) of the textual content of the file,
  *  suitable for indexing by something like Apache Lucene, or used
  *  by Apache Tika, but not really intended for display to the user.
  * </p>
@@ -95,7 +95,7 @@ public class OldExcelExtractor {
         if (book == null) {
             throw new IOException("No Excel 5/95 Book stream found");
         }
-        
+
         ris = new RecordInputStream(directory.createDocumentInputStream(book));
         prepare();
     }
@@ -109,12 +109,12 @@ public class OldExcelExtractor {
         OldExcelExtractor extractor = new OldExcelExtractor(new File(args[0]));
         System.out.println(extractor.getText());
     }
-    
+
     private void prepare() {
         if (! ris.hasNextRecord())
-            throw new IllegalArgumentException("File contains no records!"); 
+            throw new IllegalArgumentException("File contains no records!");
         ris.nextRecord();
-        
+
         // Work out what version we're dealing with
         int bofSid = ris.getSid();
         switch (bofSid) {
@@ -131,9 +131,9 @@ public class OldExcelExtractor {
                 biffVersion = 5;
                 break;
             default:
-                throw new IllegalArgumentException("File does not begin with a BOF, found sid of " + bofSid); 
+                throw new IllegalArgumentException("File does not begin with a BOF, found sid of " + bofSid);
         }
-        
+
         // Get the type
         BOFRecord bof = new BOFRecord(ris);
         fileType = bof.getType();
@@ -160,7 +160,7 @@ public class OldExcelExtractor {
      */
     public String getText() {
         StringBuffer text = new StringBuffer();
-        
+
         // To track formats and encodings
         CodepageRecord codepage = null;
         // TODO track the XFs and Format Strings
@@ -179,7 +179,7 @@ public class OldExcelExtractor {
                     text.append(shr.getSheetname());
                     text.append('\n');
                     break;
-            
+
                 case OldLabelRecord.biff2_sid:
                 case OldLabelRecord.biff345_sid:
                     OldLabelRecord lr = new OldLabelRecord(ris);
@@ -194,7 +194,7 @@ public class OldExcelExtractor {
                     text.append(sr.getString());
                     text.append('\n');
                     break;
-                    
+
                 case NumberRecord.sid:
                     NumberRecord nr = new NumberRecord(ris);
                     handleNumericCell(text, nr.getValue());
@@ -219,16 +219,16 @@ public class OldExcelExtractor {
                     RKRecord rr = new RKRecord(ris);
                     handleNumericCell(text, rr.getRKNumber());
                     break;
-                    
+
                 case CodepageRecord.sid:
                     codepage = new CodepageRecord(ris);
                     break;
-                    
+
                 default:
                     ris.readFully(new byte[ris.remaining()]);
             }
         }
-        
+
         if (input != null) {
             try {
                 input.close();
@@ -239,7 +239,7 @@ public class OldExcelExtractor {
 
         return text.toString();
     }
-    
+
     protected void handleNumericCell(StringBuffer text, double value) {
         // TODO Need to fetch / use format strings
         text.append(value);

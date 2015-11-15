@@ -52,16 +52,16 @@ import org.apache.poi.util.StringUtil;
 public class CryptoAPIDecryptor extends Decryptor {
 
     private long _length;
-    
+
     private class SeekableByteArrayInputStream extends ByteArrayInputStream {
         Cipher cipher;
         byte oneByte[] = { 0 };
-        
+
         public void seek(int pos) {
             if (pos > count) {
                 throw new ArrayIndexOutOfBoundsException(pos);
             }
-            
+
             this.pos = pos;
             mark = pos;
         }
@@ -102,7 +102,7 @@ public class CryptoAPIDecryptor extends Decryptor {
 
     static class StreamDescriptorEntry {
         static BitField flagStream = BitFieldFactory.getInstance(1);
-        
+
         int streamOffset;
         int streamSize;
         int block;
@@ -194,7 +194,7 @@ public class CryptoAPIDecryptor extends Decryptor {
      * Decrypt the Document-/SummaryInformation and other optionally streams.
      * Opposed to other crypto modes, cryptoapi is record based and can't be used
      * to stream-decrypt a whole file
-     * 
+     *
      * @see <a href="http://msdn.microsoft.com/en-us/library/dd943321(v=office.12).aspx">2.3.5.4 RC4 CryptoAPI Encrypted Summary Stream</a>
      */
     public InputStream getDataStream(DirectoryNode dir)

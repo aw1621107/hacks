@@ -87,7 +87,7 @@ public class XSSFFont implements Font {
         setFontName(DEFAULT_FONT_NAME);
         setFontHeight((double)DEFAULT_FONT_SIZE);
     }
-    
+
     /**
      * get the underlying CTFont font
      */
@@ -198,7 +198,7 @@ public class XSSFFont implements Font {
     public short getFontHeightInPoints() {
         return (short)getFontHeightRaw();
     }
-    
+
     /**
      * Return the raw font height, in points, but also
      *  including fractions.
@@ -544,7 +544,7 @@ public class XSSFFont implements Font {
 
 
     /**
-     * Perform a registration of ourselves 
+     * Perform a registration of ourselves
      *  to the style table
      */
     public long registerTo(StylesTable styles) {

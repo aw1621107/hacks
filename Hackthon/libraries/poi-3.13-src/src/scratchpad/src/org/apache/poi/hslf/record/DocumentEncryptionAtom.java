@@ -61,10 +61,10 @@ public final class DocumentEncryptionAtom extends PositionDependentRecordAtom {
 	    LittleEndian.putShort(_header, 0, (short)0x000F);
 	    LittleEndian.putShort(_header, 2, (short)_type);
 	    // record length not yet known ...
-	    
+
 	    ei = new EncryptionInfo(EncryptionMode.cryptoAPI);
 	}
-	
+
 	/**
 	 * Initializes the encryption settings
 	 *
@@ -73,7 +73,7 @@ public final class DocumentEncryptionAtom extends PositionDependentRecordAtom {
 	public void initializeEncryptionInfo(int keyBits) {
 	    ei = new EncryptionInfo(EncryptionMode.cryptoAPI, CipherAlgorithm.rc4, HashAlgorithm.sha1, keyBits, -1, null);
 	}
-	
+
 	/**
 	 * Return the length of the encryption key, in bits
 	 */
@@ -94,8 +94,8 @@ public final class DocumentEncryptionAtom extends PositionDependentRecordAtom {
 	public EncryptionInfo getEncryptionInfo() {
 	    return ei;
 	}
-	
-	
+
+
 	/**
 	 * We are of type 12052
 	 */
@@ -113,10 +113,10 @@ public final class DocumentEncryptionAtom extends PositionDependentRecordAtom {
 		bos.writeShort(ei.getVersionMajor());
 		bos.writeShort(ei.getVersionMinor());
 		bos.writeInt(ei.getEncryptionFlags());
-		
+
 		((CryptoAPIEncryptionHeader)ei.getHeader()).write(bos);
 		((CryptoAPIEncryptionVerifier)ei.getVerifier()).write(bos);
-		
+
         // Header
 		LittleEndian.putInt(_header, 4, bos.getWriteIndex());
         out.write(_header);
@@ -124,6 +124,6 @@ public final class DocumentEncryptionAtom extends PositionDependentRecordAtom {
 	}
 
     public void updateOtherRecordReferences(Hashtable<Integer,Integer> oldToNewReferencesLookup) {
-        
+
     }
 }

@@ -353,7 +353,7 @@ public class Field {
      * Used by prepared statements to re-use result set data conversion methods
      * when generating bound parmeter retrieval instance for statement
      * interceptors.
-     * 
+     *
      * @param tableName
      *            not used
      * @param columnName
@@ -392,7 +392,7 @@ public class Field {
 
     /**
      * Returns the Java encoding (if known) for this field.
-     * 
+     *
      * @return the Java encoding
      */
     public String getEncoding() throws SQLException {
@@ -588,9 +588,9 @@ public class Field {
     /**
      * Returns amount of correction that should be applied to the precision
      * value.
-     * 
+     *
      * Different versions of MySQL report different precision values.
-     * 
+     *
      * @return the amount to adjust precision value by.
      */
     public int getPrecisionAdjustFactor() {
@@ -728,7 +728,7 @@ public class Field {
 
     /**
      * Is this field _definitely_ not writable?
-     * 
+     *
      * @return true if this field can not be written to in an INSERT/UPDATE
      *         statement.
      */

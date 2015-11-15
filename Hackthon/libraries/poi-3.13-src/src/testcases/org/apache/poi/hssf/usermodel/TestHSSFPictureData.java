@@ -71,7 +71,7 @@ public final class TestHSSFPictureData extends TestCase{
             }
         }
     }
-	
+
 	public void testMacPicture() throws IOException {
         HSSFWorkbook wb = HSSFTestDataSamples.openSampleWorkbook("53446.xls");
 

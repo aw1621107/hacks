@@ -39,12 +39,12 @@ import org.apache.poi.util.POILogFactory;
 import org.apache.poi.util.POILogger;
 
 /**
- * 
+ *
  */
 public class PresetGeometries extends LinkedHashMap<String, CustomGeometry> {
     private final static POILogger LOG = POILogFactory.getLogger(PresetGeometries.class);
     protected final static String BINDING_PACKAGE = "org.apache.poi.sl.draw.binding";
-    
+
     protected static PresetGeometries _inst;
 
     protected PresetGeometries(){}
@@ -58,7 +58,7 @@ public class PresetGeometries extends LinkedHashMap<String, CustomGeometry> {
                 return event.isStartElement();
             }
         };
-        
+
         XMLInputFactory staxFactory = XMLInputFactory.newFactory();
         XMLEventReader staxReader = staxFactory.createXMLEventReader(is);
         XMLEventReader staxFiltRd = staxFactory.createFilteredReader(staxReader, startElementFilter);
@@ -75,14 +75,14 @@ public class PresetGeometries extends LinkedHashMap<String, CustomGeometry> {
             JAXBElement<CTCustomGeometry2D> el = unmarshaller.unmarshal(staxReader, CTCustomGeometry2D.class);
             CTCustomGeometry2D cus = el.getValue();
             cntElem++;
-            
+
             if(containsKey(name)) {
                 LOG.log(POILogger.WARN, "Duplicate definition of " + name);
             }
             put(name, new CustomGeometry(cus));
-        }       
+        }
     }
-    
+
     /**
      * Convert a single CustomGeometry object, i.e. from xmlbeans
      */

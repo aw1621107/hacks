@@ -22,7 +22,7 @@ import org.apache.poi.util.Internal;
 /**
  * Provides access to a {@link WorkbookEvaluator}, eg for use with
  *  {@link CollaboratingWorkbooksEnvironment}
- * 
+ *
  * <p>For POI internal use only
  */
 @Internal

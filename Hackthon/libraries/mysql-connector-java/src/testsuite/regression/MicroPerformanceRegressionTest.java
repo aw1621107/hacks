@@ -93,7 +93,7 @@ public class MicroPerformanceRegressionTest extends BaseTestCase {
 
     /**
      * Runs all test cases in this test suite
-     * 
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -102,7 +102,7 @@ public class MicroPerformanceRegressionTest extends BaseTestCase {
 
     /**
      * Tests result set accessors performance.
-     * 
+     *
      * @throws Exception
      *             if the performance of these methods does not meet
      *             expectations.
@@ -348,7 +348,7 @@ public class MicroPerformanceRegressionTest extends BaseTestCase {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see junit.framework.TestCase#setUp()
      */
     @Override

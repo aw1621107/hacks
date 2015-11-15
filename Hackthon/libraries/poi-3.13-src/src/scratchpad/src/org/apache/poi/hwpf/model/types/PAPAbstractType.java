@@ -35,7 +35,7 @@ import org.apache.poi.util.Internal;
  * NOTE: This source is automatically generated please do not modify this file.  Either subclass or
  *       remove the record in src/types/definitions.
  * <p>
- * This class is internal. It content or properties may change without notice 
+ * This class is internal. It content or properties may change without notice
  * due to changes in our knowledge of internal Microsoft Word binary structures.
 
  * @author S. Ryan Ackley
@@ -430,7 +430,7 @@ public abstract class PAPAbstractType
     /**
      * Border line style.
      *
-     * @return One of 
+     * @return One of
      * <li>{@link #BRCL_SINGLE}
      * <li>{@link #BRCL_THICK}
      * <li>{@link #BRCL_DOUBLE}
@@ -446,7 +446,7 @@ public abstract class PAPAbstractType
      * Border line style.
      *
      * @param field_6_brcl
-     *        One of 
+     *        One of
      * <li>{@link #BRCL_SINGLE}
      * <li>{@link #BRCL_THICK}
      * <li>{@link #BRCL_DOUBLE}
@@ -461,7 +461,7 @@ public abstract class PAPAbstractType
     /**
      * Rectangle border codes.
      *
-     * @return One of 
+     * @return One of
      * <li>{@link #BRCP_NONE}
      * <li>{@link #BRCP_BORDER_ABOVE}
      * <li>{@link #BRCP_BORDER_BELOW}
@@ -478,7 +478,7 @@ public abstract class PAPAbstractType
      * Rectangle border codes.
      *
      * @param field_7_brcp
-     *        One of 
+     *        One of
      * <li>{@link #BRCP_NONE}
      * <li>{@link #BRCP_BORDER_ABOVE}
      * <li>{@link #BRCP_BORDER_BELOW}
@@ -512,23 +512,23 @@ public abstract class PAPAbstractType
     /**
      * "A 16-bit signed integer value that is used to determine which list
      * contains the paragraph. This value MUST be one of the following:
-     * 
+     *
      * 0x0000 -- This paragraph is not in a list, and any list formatting on the
      * paragraph is removed.
-     * 
+     *
      * 0x0001 - 0x07FE -- The value is a 1-based index into PlfLfo.rgLfo. The
      * LFO at this index defines the list that this paragraph is in.
-     * 
+     *
      * 0xF801 -- This paragraph is not in a list.
-     * 
+     *
      * 0xF802 - 0xFFFF -- The value is the negation of a 1-based index into
      * PlfLfo.rgLfo. The LFO at this index defines the list that this paragraph
      * is in. The logical left indentation (see sprmPDxaLeft) and the logical
      * left first line indentation (see sprmPDxaLeft1) of the paragraph MUST be
      * preserved despite any list formatting.
-     * 
+     *
      * By default, a paragraph is not in a list."
-     * 
+     *
      * Quote from [MS-DOC] -- v20110315, page 125
      */
     @Internal
@@ -540,22 +540,22 @@ public abstract class PAPAbstractType
     /**
      * "A 16-bit signed integer value that is used to determine which list
      * contains the paragraph. This value MUST be one of the following:
-     * 
+     *
      * 0x0000 -- This paragraph is not in a list, and any list formatting on the
      * paragraph is removed.
-     * 
+     *
      * 0x0001 - 0x07FE -- The value is a 1-based index into PlfLfo.rgLfo. The
      * LFO at this index defines the list that this paragraph is in.
-     * 
+     *
      * 0xF801 -- This paragraph is not in a list.
-     * 
+     *
      * 0xF802 - 0xFFFF -- The value is the negation of a 1-based index into
      * PlfLfo.rgLfo. The LFO at this index defines the list that this paragraph
      * is in. The logical left indentation (see sprmPDxaLeft) and the logical
      * left first line indentation (see sprmPDxaLeft1) of the paragraph MUST be
      * preserved despite any list formatting. By default, a paragraph is not in
      * a list."
-     * 
+     *
      * Quote from [MS-DOC] -- v20110315, page 125
      */
     @Internal
@@ -873,7 +873,7 @@ public abstract class PAPAbstractType
     /**
      * Minimum height is exact or auto.
      *
-     * @return One of 
+     * @return One of
      * <li>{@link #FMINHEIGHT_EXACT}
      * <li>{@link #FMINHEIGHT_AT_LEAST}
      */
@@ -887,7 +887,7 @@ public abstract class PAPAbstractType
      * Minimum height is exact or auto.
      *
      * @param field_27_fMinHeight
-     *        One of 
+     *        One of
      * <li>{@link #FMINHEIGHT_EXACT}
      * <li>{@link #FMINHEIGHT_AT_LEAST}
      */
@@ -1098,7 +1098,7 @@ public abstract class PAPAbstractType
     /**
      * Get the wAlignFont field for the PAP record.
      *
-     * @return One of 
+     * @return One of
      * <li>{@link #WALIGNFONT_HANGING}
      * <li>{@link #WALIGNFONT_CENTERED}
      * <li>{@link #WALIGNFONT_ROMAN}
@@ -1115,7 +1115,7 @@ public abstract class PAPAbstractType
      * Set the wAlignFont field for the PAP record.
      *
      * @param field_39_wAlignFont
-     *        One of 
+     *        One of
      * <li>{@link #WALIGNFONT_HANGING}
      * <li>{@link #WALIGNFONT_CENTERED}
      * <li>{@link #WALIGNFONT_ROMAN}
@@ -1850,7 +1850,7 @@ public abstract class PAPAbstractType
 
     /**
      * Sets the fVertical field value.
-     * 
+     *
      */
     @Internal
     public void setFVertical( boolean value )
@@ -1859,7 +1859,7 @@ public abstract class PAPAbstractType
     }
 
     /**
-     * 
+     *
      * @return  the fVertical field value.
      */
     @Internal
@@ -1870,7 +1870,7 @@ public abstract class PAPAbstractType
 
     /**
      * Sets the fBackward field value.
-     * 
+     *
      */
     @Internal
     public void setFBackward( boolean value )
@@ -1879,7 +1879,7 @@ public abstract class PAPAbstractType
     }
 
     /**
-     * 
+     *
      * @return  the fBackward field value.
      */
     @Internal
@@ -1890,7 +1890,7 @@ public abstract class PAPAbstractType
 
     /**
      * Sets the fRotateFont field value.
-     * 
+     *
      */
     @Internal
     public void setFRotateFont( boolean value )
@@ -1899,7 +1899,7 @@ public abstract class PAPAbstractType
     }
 
     /**
-     * 
+     *
      * @return  the fRotateFont field value.
      */
     @Internal

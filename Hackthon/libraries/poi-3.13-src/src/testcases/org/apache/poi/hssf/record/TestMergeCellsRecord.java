@@ -35,7 +35,7 @@ import org.apache.poi.ss.util.CellRangeAddress;
  *
  */
 public final class TestMergeCellsRecord extends TestCase {
-   
+
 	/**
 	 * Make sure when a clone is called, we actually clone it.
 	 */
@@ -52,11 +52,11 @@ public final class TestMergeCellsRecord extends TestCase {
 		assertEquals("New Clone Row From doesnt match", mergeRegion.getFirstRow(), cloneRegion.getFirstRow());
 		assertEquals("New Clone Row To doesnt match", mergeRegion.getLastRow(), cloneRegion.getLastRow());
 		assertEquals("New Clone Col From doesnt match", mergeRegion.getFirstColumn(), cloneRegion.getFirstColumn());
-		assertEquals("New Clone Col To doesnt match", mergeRegion.getLastColumn(), cloneRegion.getLastColumn());      
-      
+		assertEquals("New Clone Col To doesnt match", mergeRegion.getLastColumn(), cloneRegion.getLastColumn());
+
 		assertFalse(merge.getAreaAt(0) == clone.getAreaAt(0));
 	}
-   
+
 	private static final RecordVisitor dummyRecordVisitor = new RecordVisitor() {
 		public void visitRecord(Record r) {
 			// do nothing
@@ -66,7 +66,7 @@ public final class TestMergeCellsRecord extends TestCase {
 		MergedCellsTable mct = new MergedCellsTable();
 		List<Record> recList = new ArrayList<Record>();
 		CellRangeAddress[] cras = new CellRangeAddress[] {
-				new CellRangeAddress(0, 0, 0, 3), 
+				new CellRangeAddress(0, 0, 0, 3),
 		};
 		recList.add(new MergeCellsRecord(cras, 0, 1));
 		RecordStream rs = new RecordStream(recList, 0);

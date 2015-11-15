@@ -85,7 +85,7 @@ public class HSSFHyperlink implements Hyperlink {
     protected HSSFHyperlink( HyperlinkRecord record )
     {
         this.record = record;
-        
+
         // Figure out the type
         if(record.isFileLink()) {
            link_type = LINK_FILE;

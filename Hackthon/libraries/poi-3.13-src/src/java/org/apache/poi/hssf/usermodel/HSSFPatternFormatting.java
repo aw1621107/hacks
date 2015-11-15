@@ -32,7 +32,7 @@ public class HSSFPatternFormatting implements org.apache.poi.ss.usermodel.Patter
 
     protected HSSFPatternFormatting(CFRuleBase cfRuleRecord, HSSFWorkbook workbook) {
         this.workbook = workbook;
-        this.cfRuleRecord = cfRuleRecord; 
+        this.cfRuleRecord = cfRuleRecord;
         this.patternFormatting = cfRuleRecord.getPatternFormatting();
     }
 

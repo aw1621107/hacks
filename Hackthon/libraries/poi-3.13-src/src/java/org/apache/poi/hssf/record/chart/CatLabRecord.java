@@ -24,26 +24,26 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * CATLAB - Category Labels (0x0856)<br/>
- * 
+ *
  * @author Patrick Cheng
  */
 public final class CatLabRecord extends StandardRecord {
 	public static final short sid = 0x0856;
-	
+
 	private short rt;
 	private short grbitFrt;
 	private short wOffset;
 	private short at;
 	private short grbit;
 	private Short unused;
-	
+
 	public CatLabRecord(RecordInputStream in) {
 		rt = in.readShort();
 		grbitFrt = in.readShort();
 		wOffset = in.readShort();
 		at = in.readShort();
 		grbit = in.readShort();
-		
+
 		// Often, but not always has an unused short at the end
 		if(in.available() == 0) {
 			unused = null;
@@ -51,7 +51,7 @@ public final class CatLabRecord extends StandardRecord {
 			unused = in.readShort();
 		}
 	}
-	
+
 	@Override
 	protected int getDataSize() {
 		return 2 + 2 + 2 + 2 + 2 + (unused==null? 0:2);

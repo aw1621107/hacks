@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * links a series to its position in the series list.<p/>
- * 
+ *
  * @author Andrew C. Oliver (acoliver at apache.org)
  */
 public final class SeriesIndexRecord extends StandardRecord {
@@ -50,7 +50,7 @@ public final class SeriesIndexRecord extends StandardRecord {
         buffer.append("    .index                = ")
             .append("0x").append(HexDump.toHex(  getIndex ()))
             .append(" (").append( getIndex() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
 
         buffer.append("[/SINDEX]\n");
         return buffer.toString();
@@ -71,7 +71,7 @@ public final class SeriesIndexRecord extends StandardRecord {
 
     public Object clone() {
         SeriesIndexRecord rec = new SeriesIndexRecord();
-    
+
         rec.field_1_index = field_1_index;
         return rec;
     }

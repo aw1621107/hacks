@@ -38,7 +38,7 @@ public class EncryptionInfo {
     private final int versionMajor;
     private final int versionMinor;
     private final int encryptionFlags;
-    
+
     private final EncryptionHeader header;
     private final EncryptionVerifier verifier;
     private final Decryptor decryptor;
@@ -55,20 +55,20 @@ public class EncryptionInfo {
      * The encryption of document properties is specified in section 2.3.5.4.
      */
     public static final BitField flagDocProps = BitFieldFactory.getInstance(0x08);
-    
+
     /**
      * A value that MUST be 1 if extensible encryption is used. If this value is 1,
      * the value of every other field in this structure MUST be 0.
      */
     public static final BitField flagExternal = BitFieldFactory.getInstance(0x10);
-    
+
     /**
      * A value that MUST be 1 if the protected content is an ECMA-376 document
      * ECMA-376. If the fAES bit is 1, the fCryptoAPI bit MUST also be 1.
      */
     public static final BitField flagAES = BitFieldFactory.getInstance(0x20);
-    
-    
+
+
     /**
      * Opens for decryption
      */
@@ -129,7 +129,7 @@ public class EncryptionInfo {
                 " / fDocProps: "+flagDocProps.isSet(encryptionFlags)+
                 " / fAES: "+flagAES.isSet(encryptionFlags));
         }
-        
+
         EncryptionInfoBuilder eib;
         try {
             eib = getBuilder(encryptionMode);
@@ -143,7 +143,7 @@ public class EncryptionInfo {
         decryptor = eib.getDecryptor();
         encryptor = eib.getEncryptor();
     }
-    
+
     /**
      * @deprecated Use {@link #EncryptionInfo(EncryptionMode)} (fs parameter no longer required)
      */
@@ -151,7 +151,7 @@ public class EncryptionInfo {
     public EncryptionInfo(POIFSFileSystem fs, EncryptionMode encryptionMode) {
         this(encryptionMode);
     }
-     
+
     /**
      * @deprecated Use {@link #EncryptionInfo(EncryptionMode)} (fs parameter no longer required)
      */
@@ -159,7 +159,7 @@ public class EncryptionInfo {
     public EncryptionInfo(NPOIFSFileSystem fs, EncryptionMode encryptionMode) {
         this(encryptionMode);
     }
-     
+
     /**
      * @deprecated Use {@link #EncryptionInfo(EncryptionMode)} (dir parameter no longer required)
      */
@@ -167,7 +167,7 @@ public class EncryptionInfo {
     public EncryptionInfo(DirectoryNode dir, EncryptionMode encryptionMode) {
         this(encryptionMode);
     }
-    
+
     /**
      * @deprecated use {@link #EncryptionInfo(EncryptionMode, CipherAlgorithm, HashAlgorithm, int, int, ChainingMode)}
      */
@@ -183,7 +183,7 @@ public class EncryptionInfo {
     ) {
         this(encryptionMode, cipherAlgorithm, hashAlgorithm, keyBits, blockSize, chainingMode);
     }
-    
+
     /**
      * @deprecated use {@link #EncryptionInfo(EncryptionMode, CipherAlgorithm, HashAlgorithm, int, int, ChainingMode)}
      */
@@ -199,7 +199,7 @@ public class EncryptionInfo {
     ) {
         this(encryptionMode, cipherAlgorithm, hashAlgorithm, keyBits, blockSize, chainingMode);
     }
-        
+
     /**
      * @deprecated use {@link #EncryptionInfo(EncryptionMode, CipherAlgorithm, HashAlgorithm, int, int, ChainingMode)}
      */
@@ -214,7 +214,7 @@ public class EncryptionInfo {
         , ChainingMode chainingMode
     ) {
         this(encryptionMode, cipherAlgorithm, hashAlgorithm, keyBits, blockSize, chainingMode);
-    }        
+    }
 
     /**
      * Prepares for encryption, using the given Encryption Mode, and
@@ -224,7 +224,7 @@ public class EncryptionInfo {
     public EncryptionInfo(EncryptionMode encryptionMode) {
         this(encryptionMode, null, null, -1, -1, null);
     }
-    
+
     /**
      * Constructs an EncryptionInfo from scratch
      *
@@ -235,7 +235,7 @@ public class EncryptionInfo {
      * @param keyBits
      * @param blockSize
      * @param chainingMode
-     * 
+     *
      * @throws EncryptedDocumentException if the given parameters mismatch, e.g. only certain combinations
      *   of keyBits, blockSize are allowed for a given {@link CipherAlgorithm}
      */
@@ -257,9 +257,9 @@ public class EncryptionInfo {
         } catch (Exception e) {
             throw new EncryptedDocumentException(e);
         }
-        
+
         eib.initialize(this, cipherAlgorithm, hashAlgorithm, keyBits, blockSize, chainingMode);
-        
+
         header = eib.getHeader();
         verifier = eib.getVerifier();
         decryptor = eib.getDecryptor();
@@ -273,7 +273,7 @@ public class EncryptionInfo {
         eib = (EncryptionInfoBuilder)cl.loadClass(encryptionMode.builder).newInstance();
         return eib;
     }
-    
+
     public int getVersionMajor() {
         return versionMajor;
     }
@@ -293,7 +293,7 @@ public class EncryptionInfo {
     public EncryptionVerifier getVerifier() {
         return verifier;
     }
-    
+
     public Decryptor getDecryptor() {
         return decryptor;
     }

@@ -18,9 +18,9 @@
 /* ====================================================================
    This product contains an ASLv2 licensed version of the OOXML signer
    package from the eID Applet project
-   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt  
+   http://code.google.com/p/eid-applet/source/browse/trunk/README.txt
    Copyright (C) 2008-2014 FedICT.
-   ================================================================= */ 
+   ================================================================= */
 
 package org.apache.poi.poifs.crypt.dsig.facets;
 
@@ -36,12 +36,12 @@ import org.w3c.dom.NodeList;
 
 /**
  * Work-around for Office2010 to accept the XAdES-BES/EPES signature.
- * 
+ *
  * xades:UnsignedProperties/xades:UnsignedSignatureProperties needs to be
  * present.
- * 
+ *
  * @author Frank Cornelis
- * 
+ *
  */
 public class Office2010SignatureFacet extends SignatureFacet {
 
@@ -60,7 +60,7 @@ public class Office2010SignatureFacet extends SignatureFacet {
         } catch (XmlException e) {
             throw new MarshalException(e);
         }
-        
+
         // create basic XML container structure
         UnsignedPropertiesType unsignedProps = qualProps.getUnsignedProperties();
         if (unsignedProps == null) {
@@ -70,7 +70,7 @@ public class Office2010SignatureFacet extends SignatureFacet {
         if (unsignedSigProps == null) {
             /* unsignedSigProps = */ unsignedProps.addNewUnsignedSignatureProperties();
         }
-        
+
         Node n = document.importNode(qualProps.getDomNode().getFirstChild(), true);
         nl.item(0).getParentNode().replaceChild(n, nl.item(0));
     }

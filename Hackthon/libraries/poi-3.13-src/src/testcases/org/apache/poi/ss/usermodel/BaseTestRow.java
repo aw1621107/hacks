@@ -138,7 +138,7 @@ public abstract class BaseTestRow extends TestCase {
             fail("expected exception");
         } catch (IllegalArgumentException e) {
             // expected during successful test
-            assertTrue("Did not find expected error message, had: " + e, 
+            assertTrue("Did not find expected error message, had: " + e,
                     e.getMessage().startsWith("Invalid row number (-1)"));
         }
 

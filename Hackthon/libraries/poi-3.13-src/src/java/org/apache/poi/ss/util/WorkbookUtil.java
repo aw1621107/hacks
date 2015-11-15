@@ -24,10 +24,10 @@ import org.apache.poi.ss.usermodel.Workbook;
  * Helper methods for when working with Usermodel Workbooks
  */
 public class WorkbookUtil {
-	
+
 	/**
 	 * Creates a valid sheet name, which is conform to the rules.
-	 * In any case, the result safely can be used for 
+	 * In any case, the result safely can be used for
 	 * {@link org.apache.poi.ss.usermodel.Workbook#setSheetName(int, String)}.
 	 * <br>
 	 * Rules:
@@ -39,10 +39,10 @@ public class WorkbookUtil {
 	 * <li>Sheet names must not begin or end with ' (apostrophe)</li>
 	 * </ul>
 	 * Invalid characters are replaced by one space character ' '.
-	 * 
+	 *
 	 * @param nameProposal can be any string, will be truncated if necessary,
 	 *        allowed to be null
-	 * @return a valid string, "empty" if to short, "null" if null         
+	 * @return a valid string, "empty" if to short, "null" if null
 	 */
 	public final static String createSafeSheetName(final String nameProposal) {
 		return createSafeSheetName(nameProposal, ' ');
@@ -178,5 +178,5 @@ public class WorkbookUtil {
             default: throw new IllegalArgumentException("Ivalid sheet state : " + state + "\n" +
                             "Sheet state must beone of the Workbook.SHEET_STATE_* constants");
         }
-    }    
+    }
 }

@@ -50,7 +50,7 @@ public class JDBC4DatabaseMetaData extends DatabaseMetaData {
      * This method should be implemented as a low-cost operation compared to <code>unwrap</code> so that
      * callers can use this method to avoid expensive <code>unwrap</code> calls that may fail. If this method
      * returns true then calling <code>unwrap</code> with the same argument should succeed.
-     * 
+     *
      * @param interfaces
      *            a Class defining an interface.
      * @return true if this implements the interface or directly or indirectly wraps an object that does.
@@ -72,7 +72,7 @@ public class JDBC4DatabaseMetaData extends DatabaseMetaData {
      * and the wrapped object implements the interface then that is the object. Otherwise the object is
      * the result of calling <code>unwrap</code> recursively on the wrapped object. If the receiver is not a
      * wrapper and does not implement the interface, then an <code>SQLException</code> is thrown.
-     * 
+     *
      * @param iface
      *            A Class defining an interface that the result must implement.
      * @return an object that implements the interface. May be a proxy for the actual implementing object.
@@ -97,7 +97,7 @@ public class JDBC4DatabaseMetaData extends DatabaseMetaData {
     /**
      * Changes in behavior introduced in JDBC4 when #getFunctionColumns became available. Overrides
      * DatabaseMetaData#getProcedureColumns
-     * 
+     *
      * @see DatabaseMetaData#getProcedureColumns
      * @since 1.6
      */
@@ -112,7 +112,7 @@ public class JDBC4DatabaseMetaData extends DatabaseMetaData {
     /**
      * Changes in behavior introduced in JDBC4 when #getFunctions became available. Overrides
      * DatabaseMetaData#getProcedures.
-     * 
+     *
      * @see DatabaseMetaData#getProcedures
      * @since 1.6
      */
@@ -124,7 +124,7 @@ public class JDBC4DatabaseMetaData extends DatabaseMetaData {
 
     /**
      * Overrides DatabaseMetaData#getJDBC4FunctionNoTableConstant.
-     * 
+     *
      * @return java.sql.DatabaseMetaData#functionNoTable
      */
     protected int getJDBC4FunctionNoTableConstant() {
@@ -133,7 +133,7 @@ public class JDBC4DatabaseMetaData extends DatabaseMetaData {
 
     /**
      * This method overrides DatabaseMetaData#getColumnType(boolean, boolean, boolean, boolean).
-     * 
+     *
      * @see JDBC4DatabaseMetaData#getProcedureOrFunctionColumnType(boolean, boolean, boolean, boolean)
      */
     protected int getColumnType(boolean isOutParam, boolean isInParam, boolean isReturnParam, boolean forGetFunctionColumns) {
@@ -142,7 +142,7 @@ public class JDBC4DatabaseMetaData extends DatabaseMetaData {
 
     /**
      * Determines the COLUMN_TYPE information based on parameter type (IN, OUT or INOUT) or function return parameter.
-     * 
+     *
      * @param isOutParam
      *            Indicates whether it's an output parameter.
      * @param isInParam
@@ -151,7 +151,7 @@ public class JDBC4DatabaseMetaData extends DatabaseMetaData {
      *            Indicates whether it's a function return parameter.
      * @param forGetFunctionColumns
      *            Indicates whether the column belong to a function.
-     * 
+     *
      * @return The corresponding COLUMN_TYPE as in java.sql.getProcedureColumns API.
      */
     protected static int getProcedureOrFunctionColumnType(boolean isOutParam, boolean isInParam, boolean isReturnParam, boolean forGetFunctionColumns) {

@@ -26,12 +26,12 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * The value range record defines the range of the value axis.<p/>
- * 
+ *
  * @author Glen Stampoultzis (glens at apache.org)
  */
 public final class ValueRangeRecord extends StandardRecord {
     public final static short sid = 0x101f;
-    
+
     private static final BitField automaticMinimum           = BitFieldFactory.getInstance(0x0001);
     private static final BitField automaticMaximum           = BitFieldFactory.getInstance(0x0002);
     private static final BitField automaticMajor             = BitFieldFactory.getInstance(0x0004);
@@ -41,7 +41,7 @@ public final class ValueRangeRecord extends StandardRecord {
     private static final BitField valuesInReverse            = BitFieldFactory.getInstance(0x0040);
     private static final BitField crossCategoryAxisAtMaximum = BitFieldFactory.getInstance(0x0080);
     private static final BitField reserved                   = BitFieldFactory.getInstance(0x0100);
-    
+
     private  double     field_1_minimumAxisValue;
     private  double     field_2_maximumAxisValue;
     private  double     field_3_majorIncrement;
@@ -73,32 +73,32 @@ public final class ValueRangeRecord extends StandardRecord {
         buffer.append("[VALUERANGE]\n");
         buffer.append("    .minimumAxisValue     = ")
             .append(" (").append( getMinimumAxisValue() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .maximumAxisValue     = ")
             .append(" (").append( getMaximumAxisValue() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .majorIncrement       = ")
             .append(" (").append( getMajorIncrement() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .minorIncrement       = ")
             .append(" (").append( getMinorIncrement() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .categoryAxisCross    = ")
             .append(" (").append( getCategoryAxisCross() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
+        buffer.append(System.getProperty("line.separator"));
         buffer.append("    .options              = ")
             .append("0x").append(HexDump.toHex(  getOptions ()))
             .append(" (").append( getOptions() ).append(" )");
-        buffer.append(System.getProperty("line.separator")); 
-        buffer.append("         .automaticMinimum         = ").append(isAutomaticMinimum()).append('\n'); 
-        buffer.append("         .automaticMaximum         = ").append(isAutomaticMaximum()).append('\n'); 
-        buffer.append("         .automaticMajor           = ").append(isAutomaticMajor()).append('\n'); 
-        buffer.append("         .automaticMinor           = ").append(isAutomaticMinor()).append('\n'); 
-        buffer.append("         .automaticCategoryCrossing     = ").append(isAutomaticCategoryCrossing()).append('\n'); 
-        buffer.append("         .logarithmicScale         = ").append(isLogarithmicScale()).append('\n'); 
-        buffer.append("         .valuesInReverse          = ").append(isValuesInReverse()).append('\n'); 
-        buffer.append("         .crossCategoryAxisAtMaximum     = ").append(isCrossCategoryAxisAtMaximum()).append('\n'); 
-        buffer.append("         .reserved                 = ").append(isReserved()).append('\n'); 
+        buffer.append(System.getProperty("line.separator"));
+        buffer.append("         .automaticMinimum         = ").append(isAutomaticMinimum()).append('\n');
+        buffer.append("         .automaticMaximum         = ").append(isAutomaticMaximum()).append('\n');
+        buffer.append("         .automaticMajor           = ").append(isAutomaticMajor()).append('\n');
+        buffer.append("         .automaticMinor           = ").append(isAutomaticMinor()).append('\n');
+        buffer.append("         .automaticCategoryCrossing     = ").append(isAutomaticCategoryCrossing()).append('\n');
+        buffer.append("         .logarithmicScale         = ").append(isLogarithmicScale()).append('\n');
+        buffer.append("         .valuesInReverse          = ").append(isValuesInReverse()).append('\n');
+        buffer.append("         .crossCategoryAxisAtMaximum     = ").append(isCrossCategoryAxisAtMaximum()).append('\n');
+        buffer.append("         .reserved                 = ").append(isReserved()).append('\n');
 
         buffer.append("[/VALUERANGE]\n");
         return buffer.toString();
@@ -124,7 +124,7 @@ public final class ValueRangeRecord extends StandardRecord {
 
     public Object clone() {
         ValueRangeRecord rec = new ValueRangeRecord();
-    
+
         rec.field_1_minimumAxisValue = field_1_minimumAxisValue;
         rec.field_2_maximumAxisValue = field_2_maximumAxisValue;
         rec.field_3_majorIncrement = field_3_majorIncrement;

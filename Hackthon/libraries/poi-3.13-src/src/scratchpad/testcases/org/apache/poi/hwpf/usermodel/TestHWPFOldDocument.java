@@ -35,21 +35,21 @@ public final class TestHWPFOldDocument extends HWPFTestCase {
          HWPFTestDataSamples.openSampleFile("Word6.doc");
          fail("Shouldn't be openable");
       } catch(OldFileFormatException e) {}
-      
+
       // Open
       HWPFOldDocument doc = HWPFTestDataSamples.openOldSampleFile("Word6.doc");
-      
+
       // Check
       assertEquals(1, doc.getRange().numSections());
       assertEquals(1, doc.getRange().numParagraphs());
       assertEquals(1, doc.getRange().numCharacterRuns());
-      
+
       assertEquals(
             "The quick brown fox jumps over the lazy dog\r",
             doc.getRange().getParagraph(0).text()
       );
    }
-   
+
    /**
     * Test a simple Word 95 document
     */
@@ -59,14 +59,14 @@ public final class TestHWPFOldDocument extends HWPFTestCase {
          HWPFTestDataSamples.openSampleFile("Word95.doc");
          fail("Shouldn't be openable");
       } catch(OldFileFormatException e) {}
-      
+
       // Open
       HWPFOldDocument doc = HWPFTestDataSamples.openOldSampleFile("Word95.doc");
-      
+
       // Check
       assertEquals(1, doc.getRange().numSections());
       assertEquals(7, doc.getRange().numParagraphs());
-      
+
       assertEquals(
             "The quick brown fox jumps over the lazy dog\r",
             doc.getRange().getParagraph(0).text()
@@ -87,7 +87,7 @@ public final class TestHWPFOldDocument extends HWPFTestCase {
             "Last (4th) paragraph.\r",
             doc.getRange().getParagraph(6).text()
       );
-      
+
       assertEquals(1, doc.getRange().getParagraph(0).numCharacterRuns());
       assertEquals(1, doc.getRange().getParagraph(1).numCharacterRuns());
       assertEquals(1, doc.getRange().getParagraph(2).numCharacterRuns());
@@ -98,17 +98,17 @@ public final class TestHWPFOldDocument extends HWPFTestCase {
       // Normal, superscript for 4th, normal
       assertEquals(3, doc.getRange().getParagraph(6).numCharacterRuns());
    }
-   
+
    /**
     * Test a word document that has sections,
     *  as well as the usual paragraph stuff.
     */
    public void testWord6Sections() throws Exception {
       HWPFOldDocument doc = HWPFTestDataSamples.openOldSampleFile("Word6_sections.doc");
-      
+
       assertEquals(3, doc.getRange().numSections());
       assertEquals(6, doc.getRange().numParagraphs());
-      
+
       assertEquals(
             "This is a test.\r",
             doc.getRange().getParagraph(0).text()
@@ -119,17 +119,17 @@ public final class TestHWPFOldDocument extends HWPFTestCase {
       assertEquals("\u000c", doc.getRange().getParagraph(4).text()); // Section line?
       assertEquals("\r", doc.getRange().getParagraph(5).text());
    }
-   
+
    /**
-    * Another word document with sections, this time with a 
+    * Another word document with sections, this time with a
     *  few more section properties set on it
     */
    public void testWord6Sections2() throws Exception {
       HWPFOldDocument doc = HWPFTestDataSamples.openOldSampleFile("Word6_sections2.doc");
-      
+
       assertEquals(1, doc.getRange().numSections());
       assertEquals(57, doc.getRange().numParagraphs());
-      
+
       assertEquals(
             "\r",
             doc.getRange().getParagraph(0).text()

@@ -32,14 +32,14 @@ public class HSLFEscherRecordFactory extends DefaultEscherRecordFactory {
     private static Class<?>[] escherRecordClasses = { EscherPlaceholder.class };
     private static Map<Short, Constructor<? extends EscherRecord>> recordsMap = recordsToMap( escherRecordClasses );
 
-    
+
     /**
      * Creates an instance of the escher record factory
      */
     public HSLFEscherRecordFactory() {
         // no instance initialisation
     }
-    
+
     /**
      * Generates an escher record including the any children contained under that record.
      * An exception is thrown if the record could not be generated.

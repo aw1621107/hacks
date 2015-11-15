@@ -62,14 +62,14 @@ public abstract class XYNumericFunction extends Fixed2ArgFunction {
 	private static final class RefValueArray extends ValueArray {
 		private final RefEval _ref;
         private final int _width;
-        
+
 		public RefValueArray(RefEval ref) {
 			super(ref.getNumberOfSheets());
 			_ref = ref;
 			_width = ref.getNumberOfSheets();
 		}
 		protected ValueEval getItemInternal(int index) {
-		    int sIx = (index % _width) + _ref.getFirstSheetIndex(); 
+		    int sIx = (index % _width) + _ref.getFirstSheetIndex();
 			return _ref.getInnerValueEval(sIx);
 		}
 	}

@@ -32,11 +32,11 @@ class PathGradientPaint implements Paint {
     protected final int joinStyle;
     protected final int transparency;
 
-    
+
     public PathGradientPaint(Color colors[], float fractions[]) {
         this(colors,fractions,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND);
     }
-    
+
     public PathGradientPaint(Color colors[], float fractions[], int capStyle, int joinStyle) {
         this.colors = colors;
         this.fractions = fractions;
@@ -50,7 +50,7 @@ class PathGradientPaint implements Paint {
         }
         this.transparency = opaque ? OPAQUE : TRANSLUCENT;
     }
-    
+
     public PaintContext createContext(ColorModel cm,
         Rectangle deviceBounds,
         Rectangle2D userBounds,
@@ -58,7 +58,7 @@ class PathGradientPaint implements Paint {
         RenderingHints hints) {
         return new PathGradientContext(cm, deviceBounds, userBounds, transform, hints);
     }
-    
+
     public int getTransparency() {
         return transparency;
     }
@@ -70,7 +70,7 @@ class PathGradientPaint implements Paint {
         protected final RenderingHints hints;
 
         /**
-         * for POI: the shape will be only known when the subclasses determines the concrete implementation 
+         * for POI: the shape will be only known when the subclasses determines the concrete implementation
          * in the draw/-content method, so we need to postpone the setting/creation as long as possible
          **/
         protected final Shape shape;
@@ -100,7 +100,7 @@ class PathGradientPaint implements Paint {
             Point2D start = new Point2D.Double(0, 0);
             Point2D end = new Point2D.Double(gradientSteps, 0);
             LinearGradientPaint gradientPaint = new LinearGradientPaint(start, end, fractions, colors, CycleMethod.NO_CYCLE, ColorSpaceType.SRGB, new AffineTransform());
-            
+
             Rectangle bounds = new Rectangle(0, 0, gradientSteps, 1);
             pCtx = gradientPaint.createContext(cm, bounds, bounds, new AffineTransform(), hints);
         }
@@ -122,7 +122,7 @@ class PathGradientPaint implements Paint {
                 // usually doesn't happen ...
                 return childRaster;
             }
-            
+
             Rectangle2D destRect = new Rectangle2D.Double();
             Rectangle2D.intersect(childRect, deviceBounds, destRect);
             int dx = (int)(destRect.getX()-deviceBounds.getX());
@@ -133,7 +133,7 @@ class PathGradientPaint implements Paint {
             dx = (int)(destRect.getX()-childRect.getX());
             dy = (int)(destRect.getY()-childRect.getY());
             childRaster.setDataElements(dx, dy, dw, dh, data);
-            
+
             return childRaster;
         }
 
@@ -153,9 +153,9 @@ class PathGradientPaint implements Paint {
             }
             return upper;
         }
-        
-        
-        
+
+
+
         protected void createRaster() {
             ColorModel cm = getColorModel();
             raster = cm.createCompatibleWritableRaster((int)deviceBounds.getWidth(), (int)deviceBounds.getHeight());
@@ -173,13 +173,13 @@ class PathGradientPaint implements Paint {
                 Color c = new Color(rgb[0],rgb[1],rgb[2]);
                 if (rgb.length == 4) {
                     // it doesn't work to use just a color with transparency ...
-                    graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC, rgb[3]/255.0f));                           
+                    graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC, rgb[3]/255.0f));
                 }
                 graphics.setStroke(new BasicStroke(i+1, capStyle, joinStyle));
                 graphics.setColor(c);
                 graphics.draw(shape);
             }
-            
+
             graphics.dispose();
         }
     }

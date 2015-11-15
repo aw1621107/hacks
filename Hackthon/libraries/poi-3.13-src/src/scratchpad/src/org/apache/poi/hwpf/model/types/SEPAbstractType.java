@@ -270,7 +270,7 @@ public abstract class SEPAbstractType
     /**
      * Break code.
      *
-     * @return One of 
+     * @return One of
      * <li>{@link #BKC_NO_BREAK}
      * <li>{@link #BKC_NEW_COLUMN}
      * <li>{@link #BKC_NEW_PAGE}
@@ -286,7 +286,7 @@ public abstract class SEPAbstractType
      * Break code.
      *
      * @param field_1_bkc
-     *        One of 
+     *        One of
      * <li>{@link #BKC_NO_BREAK}
      * <li>{@link #BKC_NEW_COLUMN}
      * <li>{@link #BKC_NEW_PAGE}
@@ -333,7 +333,7 @@ public abstract class SEPAbstractType
     /**
      * Page number format code.
      *
-     * @return One of 
+     * @return One of
      * <li>{@link #NFCPGN_ARABIC}
      * <li>{@link #NFCPGN_ROMAN_UPPER_CASE}
      * <li>{@link #NFCPGN_ROMAN_LOWER_CASE}
@@ -349,7 +349,7 @@ public abstract class SEPAbstractType
      * Page number format code.
      *
      * @param field_4_nfcPgn
-     *        One of 
+     *        One of
      * <li>{@link #NFCPGN_ARABIC}
      * <li>{@link #NFCPGN_ROMAN_UPPER_CASE}
      * <li>{@link #NFCPGN_ROMAN_LOWER_CASE}
@@ -780,7 +780,7 @@ public abstract class SEPAbstractType
     /**
      * Get the dmOrientPage field for the SEP record.
      *
-     * @return One of 
+     * @return One of
      * <li>{@link #DMORIENTPAGE_LANDSCAPE}
      * <li>{@link #DMORIENTPAGE_PORTRAIT}
      */
@@ -793,7 +793,7 @@ public abstract class SEPAbstractType
      * Set the dmOrientPage field for the SEP record.
      *
      * @param field_31_dmOrientPage
-     *        One of 
+     *        One of
      * <li>{@link #DMORIENTPAGE_LANDSCAPE}
      * <li>{@link #DMORIENTPAGE_PORTRAIT}
      */

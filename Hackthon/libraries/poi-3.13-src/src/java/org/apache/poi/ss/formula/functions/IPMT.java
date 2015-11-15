@@ -28,16 +28,16 @@ public class IPMT extends NumericFunction {
 
 	@Override
 	public double eval(ValueEval[] args, int srcCellRow, int srcCellCol) throws EvaluationException {
-   		
+
 		if(args.length != 4)
         		throw new EvaluationException(ErrorEval.VALUE_INVALID);
 
 		double result;
 
-		ValueEval v1 = OperandResolver.getSingleValue(args[0], srcCellRow, srcCellCol); 
-		ValueEval v2 = OperandResolver.getSingleValue(args[1], srcCellRow, srcCellCol); 
-		ValueEval v3 = OperandResolver.getSingleValue(args[2], srcCellRow, srcCellCol); 
-		ValueEval v4 = OperandResolver.getSingleValue(args[3], srcCellRow, srcCellCol); 
+		ValueEval v1 = OperandResolver.getSingleValue(args[0], srcCellRow, srcCellCol);
+		ValueEval v2 = OperandResolver.getSingleValue(args[1], srcCellRow, srcCellCol);
+		ValueEval v3 = OperandResolver.getSingleValue(args[2], srcCellRow, srcCellCol);
+		ValueEval v4 = OperandResolver.getSingleValue(args[3], srcCellRow, srcCellCol);
 
 		double interestRate = OperandResolver.coerceValueToDouble(v1);
 		int period = OperandResolver.coerceValueToInt(v2);
@@ -47,10 +47,10 @@ public class IPMT extends NumericFunction {
 		result = Finance.ipmt(interestRate, period, numberPayments, PV) ;
 
 		checkValue(result);
-		
+
 		return result;
 	}
 
-	
+
 
 }

@@ -79,18 +79,18 @@ public final class BlockAllocationTableReader {
     public BlockAllocationTableReader(POIFSBigBlockSize bigBlockSize, int block_count, int [] block_array,
             int xbat_count, int xbat_index, BlockList raw_block_list) throws IOException {
         this(bigBlockSize);
-        
+
         sanityCheckBlockCount(block_count);
 
         // We want to get the whole of the FAT table
         // To do this:
-        //  * Work through raw_block_list, which points to the 
+        //  * Work through raw_block_list, which points to the
         //     first (up to) 109 BAT blocks
         //  * Jump to the XBAT offset, and read in XBATs which
         //     point to more BAT blocks
         int          limit    = Math.min(block_count, block_array.length);
         int          block_index;
-        
+
         // This will hold all of the BAT blocks in order
         RawDataBlock blocks[] = new RawDataBlock[ block_count ];
 
@@ -100,16 +100,16 @@ public final class BlockAllocationTableReader {
             // Check that the sector number of the BAT block is a valid one
             int nextOffset = block_array[ block_index ];
             if(nextOffset > raw_block_list.blockCount()) {
-               throw new IOException("Your file contains " + raw_block_list.blockCount() + 
+               throw new IOException("Your file contains " + raw_block_list.blockCount() +
                      " sectors, but the initial DIFAT array at index " + block_index +
                      " referenced block # " + nextOffset + ". This isn't allowed and " +
                      " your file is corrupt");
             }
-            // Record the sector number of this BAT block 
+            // Record the sector number of this BAT block
             blocks[ block_index ] =
                 ( RawDataBlock ) raw_block_list.remove(nextOffset);
         }
-        
+
         // Process additional BAT blocks via the XBATs
         if (block_index < block_count)
         {
@@ -121,8 +121,8 @@ public final class BlockAllocationTableReader {
                     "BAT count exceeds limit, yet XBAT index indicates no valid entries");
             }
             int chain_index           = xbat_index;
-            int max_entries_per_block = bigBlockSize.getXBATEntriesPerBlock(); 
-            int chain_index_offset    = bigBlockSize.getNextXBATChainOffset(); 
+            int max_entries_per_block = bigBlockSize.getXBATEntriesPerBlock();
+            int chain_index_offset    = bigBlockSize.getNextXBATChainOffset();
 
             // Each XBAT block contains either:
             //  (maximum number of sector indexes) + index of next XBAT
@@ -176,17 +176,17 @@ public final class BlockAllocationTableReader {
         this.bigBlockSize = bigBlockSize;
         _entries = new IntList();
     }
-    
+
     public static void sanityCheckBlockCount(int block_count) throws IOException {
        if (block_count <= 0) {
           throw new IOException(
-                "Illegal block count; minimum count is 1, got " + 
+                "Illegal block count; minimum count is 1, got " +
                 block_count + " instead"
           );
        }
        if (block_count > MAX_BLOCK_COUNT) {
           throw new IOException(
-                "Block count " + block_count + 
+                "Block count " + block_count +
                 " is too high. POI maximum is " + MAX_BLOCK_COUNT + "."
           );
        }
@@ -288,7 +288,7 @@ public final class BlockAllocationTableReader {
      *                   blocks will be eliminated from the list
      */
     private void setEntries(ListManagedBlock[] blocks, BlockList raw_blocks) throws IOException {
-        int limit = bigBlockSize.getBATEntriesPerBlock(); 
+        int limit = bigBlockSize.getBATEntriesPerBlock();
 
         for (int block_index = 0; block_index < blocks.length; block_index++)
         {

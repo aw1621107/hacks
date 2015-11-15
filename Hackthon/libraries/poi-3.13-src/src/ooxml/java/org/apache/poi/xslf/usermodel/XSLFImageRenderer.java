@@ -36,7 +36,7 @@ import org.apache.poi.util.Beta;
  * For now this class renders only images supported by the javax.imageio.ImageIO
  * framework. Subclasses can override this class to support other formats, for
  * example, Use Apache batik to render WMF:
- * 
+ *
  * <pre>
  * <code>
  * public class MyImageRendener extends XSLFImageRendener{
@@ -49,22 +49,22 @@ import org.apache.poi.util.Beta;
  * 			// use Apache Batik to handle WMF
  * 			// see http://xmlgraphics.apache.org/batik/
  * 		}
- * 		
+ *
  * 	}
  * 	return ok;
  * }
  * }
  * </code>
  * </pre>
- * 
+ *
  * and then pass this class to your instance of java.awt.Graphics2D:
- * 
+ *
  * <pre>
  * <code>
  * graphics.setRenderingHint(XSLFRenderingHint.IMAGE_RENDERER, new MyImageRendener());
  * </code>
  * </pre>
- * 
+ *
  * @author Yegor Kozlov
  */
 @Beta
@@ -72,17 +72,17 @@ public class XSLFImageRenderer {
 
 	/**
 	 * Render picture data into the supplied graphics
-	 * 
+	 *
 	 * @return true if the picture data was successfully rendered
 	 */
     public boolean drawImage(Graphics2D graphics, XSLFPictureData data,
             Rectangle2D anchor) {
         return drawImage(graphics, data, anchor, null);
     }
-    
+
     /**
      * Render picture data into the supplied graphics
-     * 
+     *
      * @return true if the picture data was successfully rendered
      */
     public boolean drawImage(Graphics2D graphics, XSLFPictureData data,
@@ -92,14 +92,14 @@ public class XSLFImageRenderer {
             isClipped = false;
             clip = new Insets(0,0,0,0);
         }
-        
+
         BufferedImage img;
         try {
             img = ImageIO.read(data.getPackagePart().getInputStream());
         } catch (Exception e) {
             return false;
         }
-        
+
         if(img == null) {
         	return false;
         }

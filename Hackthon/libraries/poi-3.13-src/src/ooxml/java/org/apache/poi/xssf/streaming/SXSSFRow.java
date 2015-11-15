@@ -40,10 +40,10 @@ public class SXSSFRow implements Row
     short _height=-1;
     boolean _zHeight = false;
     int _outlineLevel = 0;   // Outlining level of the row, when outlining is on
-    // use Boolean to have a tri-state for on/off/undefined 
+    // use Boolean to have a tri-state for on/off/undefined
     Boolean _hidden;
     Boolean _collapsed;
-	
+
     public SXSSFRow(SXSSFSheet sheet, int initialSize)
     {
         _sheet=sheet;
@@ -64,7 +64,7 @@ public class SXSSFRow implements Row
     void setOutlineLevel(int level){
         _outlineLevel = level;
     }
-    
+
     public Boolean getHidden() {
         return _hidden;
     }
@@ -374,7 +374,7 @@ public class SXSSFRow implements Row
     {
         return (float)(_height==-1?getSheet().getDefaultRowHeightInPoints():(float)_height/20.0);
     }
-    
+
     /**
      * Is this row formatted? Most aren't, but some rows
      *  do have whole-row styles. For those that do, you
@@ -390,10 +390,10 @@ public class SXSSFRow implements Row
      */
     public CellStyle getRowStyle() {
        if(!isFormatted()) return null;
-       
+
        return getSheet().getWorkbook().getCellStyleAt(_style);
     }
-    
+
     /**
      * Applies a whole-row cell styling to the row.
      */

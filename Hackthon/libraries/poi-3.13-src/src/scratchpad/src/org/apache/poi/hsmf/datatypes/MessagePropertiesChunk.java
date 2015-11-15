@@ -36,7 +36,7 @@ public class MessagePropertiesChunk extends PropertiesChunk {
    public MessagePropertiesChunk(ChunkGroup parentGroup) {
       super(parentGroup);
    }
-   
+
    public long getNextRecipientId() {
       return nextRecipientId;
    }
@@ -55,16 +55,16 @@ public class MessagePropertiesChunk extends PropertiesChunk {
    public void readValue(InputStream stream) throws IOException {
       // 8 bytes of reserved zeros
       LittleEndian.readLong(stream);
-      
+
       // Nexts and counts
       nextRecipientId = LittleEndian.readUInt(stream);
       nextAttachmentId = LittleEndian.readUInt(stream);
       recipientCount = LittleEndian.readUInt(stream);
       attachmentCount = LittleEndian.readUInt(stream);
-      
+
       // 8 bytes of reserved zeros
       LittleEndian.readLong(stream);
-      
+
       // Now properties
       readProperties(stream);
    }
@@ -73,16 +73,16 @@ public class MessagePropertiesChunk extends PropertiesChunk {
    public void writeValue(OutputStream out) throws IOException {
       // 8 bytes of reserved zeros
       out.write(new byte[8]);
-      
+
       // Nexts and counts
       LittleEndian.putUInt(nextRecipientId, out);
       LittleEndian.putUInt(nextAttachmentId, out);
       LittleEndian.putUInt(recipientCount, out);
       LittleEndian.putUInt(attachmentCount, out);
-      
+
       // 8 bytes of reserved zeros
       out.write(new byte[8]);
-      
+
       // Now properties
       writeProperties(out);
    }

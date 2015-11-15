@@ -642,7 +642,7 @@ public final class FileInformationBlock implements Cloneable
     {
       _fieldHandler.setFieldSize(FIBFieldHandler.STTBFFFN, lcbSttbFffn);
     }
-    
+
     public int getFcSttbfRMark()
     {
       return _fieldHandler.getFieldOffset(FIBFieldHandler.STTBFRMARK);
@@ -652,7 +652,7 @@ public final class FileInformationBlock implements Cloneable
     {
       return _fieldHandler.getFieldSize(FIBFieldHandler.STTBFRMARK);
     }
-    
+
     public void setFcSttbfRMark(int fcSttbfRMark)
     {
       _fieldHandler.setFieldOffset(FIBFieldHandler.STTBFRMARK, fcSttbfRMark);
@@ -723,7 +723,7 @@ public final class FileInformationBlock implements Cloneable
     {
       _fieldHandler.setFieldSize(FIBFieldHandler.PLFLFO, modifiedHigh);
     }
-    
+
     /**
      * How many bytes of the main stream contain real data.
      */

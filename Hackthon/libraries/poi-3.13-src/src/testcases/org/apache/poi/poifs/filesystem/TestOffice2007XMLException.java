@@ -50,15 +50,15 @@ public class TestOffice2007XMLException extends TestCase {
 			assertTrue(e.getMessage().indexOf("You are calling the part of POI that deals with OLE2 Office Documents") > -1);
 		}
 	}
-	
+
 	public void testDetectAsPOIFS() throws IOException {
-		
+
 		// ooxml file isn't
 		confirmIsPOIFS("SampleSS.xlsx", false);
-		
+
 		// xls file is
 		confirmIsPOIFS("SampleSS.xls", true);
-		
+
 		// text file isn't
 		confirmIsPOIFS("SampleSS.txt", false);
 	}
@@ -76,17 +76,17 @@ public class TestOffice2007XMLException extends TestCase {
 		    in.close();
 		}
 	}
-    
+
     public void testFileCorruption() throws Exception {
-        
+
         // create test InputStream
         byte[] testData = { (byte)1, (byte)2, (byte)3 };
         InputStream testInput = new ByteArrayInputStream(testData);
-        
+
         // detect header
         InputStream in = new PushbackInputStream(testInput, 10);
         assertFalse(POIFSFileSystem.hasPOIFSHeader(in));
-        
+
         // check if InputStream is still intact
         byte[] test = new byte[3];
         in.read(test);
@@ -96,11 +96,11 @@ public class TestOffice2007XMLException extends TestCase {
 
 
     public void testFileCorruptionOPOIFS() throws Exception {
-        
+
         // create test InputStream
         byte[] testData = { (byte)1, (byte)2, (byte)3 };
         InputStream testInput = new ByteArrayInputStream(testData);
-        
+
         // detect header
         InputStream in = new PushbackInputStream(testInput, 10);
         assertFalse(OPOIFSFileSystem.hasPOIFSHeader(in));

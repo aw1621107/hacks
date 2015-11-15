@@ -58,7 +58,7 @@ public class TextPropCollection {
         new TextProp(0, 0x2000000, "hasBulletScheme"), // TODO: check size
         // 0xFC000000 MUST be zero and MUST be ignored
     };
-    
+
     /** All the different kinds of character properties we might handle */
     public static final TextProp[] characterTextPropTypes = new TextProp[] {
         new TextProp(0, 0x100000, "pp10ext"),
@@ -78,16 +78,16 @@ public class TextPropCollection {
     public enum TextPropType {
         paragraph, character;
     }
-    
+
     private int charactersCovered;
-	
+
     // indentLevel is only valid for paragraph collection
     // if it's set to -1, it must be omitted - see 2.9.36 TextMasterStyleLevel
     private short indentLevel = 0;
 	private final List<TextProp> textPropList = new ArrayList<TextProp>();
     private int maskSpecial = 0;
     private final TextPropType textPropType;
-    
+
     /**
      * Create a new collection of text properties (be they paragraph
      *  or character) which will be groked via a subsequent call to
@@ -104,7 +104,7 @@ public class TextPropCollection {
 	public int getCharactersCovered() { return charactersCovered; }
 	/** Fetch the TextProps that define this styling */
 	public List<TextProp> getTextPropList() { return textPropList; }
-	
+
 	/** Fetch the TextProp with this name, or null if it isn't present */
 	public TextProp findByName(String textPropName) {
 		for(TextProp prop : textPropList) {
@@ -127,13 +127,13 @@ public class TextPropCollection {
 	    }
 	    return tp;
 	}
-	
+
 	/** Add the TextProp with this name to the list */
 	public TextProp addWithName(String name) {
 		// Find the base TextProp to base on
 		TextProp existing = findByName(name);
 		if (existing != null) return existing;
-		
+
 		TextProp base = null;
 		for (TextProp tp : getPotentialProperties()) {
 		    if (tp.getName().equals(name)) {
@@ -141,12 +141,12 @@ public class TextPropCollection {
 		        break;
 		    }
 		}
-		
+
 		if(base == null) {
 			throw new IllegalArgumentException("No TextProp with name " + name + " is defined to add from. "
 		        + "Character and paragraphs have their own properties/names.");
 		}
-		
+
 		// Add a copy of this property, in the right place to the list
 		TextProp textProp = base.clone();
 		addProp(textProp);
@@ -156,11 +156,11 @@ public class TextPropCollection {
 	public TextPropType getTextPropType() {
 	    return textPropType;
 	}
-	
+
 	private TextProp[] getPotentialProperties() {
 	    return (textPropType == TextPropType.paragraph) ? paragraphTextPropTypes : characterTextPropTypes;
 	}
-	
+
 	/**
 	 * Add the property at the correct position. Replaces an existing property with the same name.
 	 *
@@ -168,7 +168,7 @@ public class TextPropCollection {
 	 */
 	public void addProp(TextProp textProp) {
 	    assert(textProp != null);
-	    
+
         int pos = 0;
         boolean found = false;
         for (TextProp curProp : getPotentialProperties()) {
@@ -183,7 +183,7 @@ public class TextPropCollection {
                 found = true;
                 break;
             }
-            
+
             if (potName.equals(textPropList.get(pos).getName())) {
                 pos++;
             }
@@ -196,7 +196,7 @@ public class TextPropCollection {
 	}
 
 	/**
-	 * For an existing set of text properties, build the list of 
+	 * For an existing set of text properties, build the list of
 	 *  properties coded for in a given run of properties.
 	 * @return the number of bytes that were used encoding the properties list
 	 */
@@ -231,7 +231,7 @@ public class TextPropCollection {
                     maskSpecial |= tp.getMask();
                     continue;
                 }
-				
+
 				if (prop instanceof BitMaskTextProp) {
 				    ((BitMaskTextProp)prop).setValueWithMask(val, containsField);
 				} else {
@@ -262,10 +262,10 @@ public class TextPropCollection {
             addProp(tpCopy);
         }
 	}
-	
+
 	/**
 	 * Update the size of the text that this set of properties
-	 *  applies to 
+	 *  applies to
 	 */
 	public void updateTextSize(int textSize) {
 		charactersCovered = textSize;
@@ -317,7 +317,7 @@ public class TextPropCollection {
         }
         this.indentLevel = indentLevel;
     }
-    
+
     public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -334,7 +334,7 @@ public class TextPropCollection {
         if (this == other) return true;
         if (other == null) return false;
         if (getClass() != other.getClass()) return false;
-        
+
         TextPropCollection o = (TextPropCollection)other;
         if (o.maskSpecial != this.maskSpecial || o.indentLevel != this.indentLevel) {
             return false;
@@ -342,18 +342,18 @@ public class TextPropCollection {
 
         if (textPropList == null) {
             return (o.textPropList == null);
-        }        
-        
+        }
+
         Map<String,TextProp> m = new HashMap<String,TextProp>();
         for (TextProp tp : o.textPropList) {
             m.put(tp.getName(), tp);
         }
-        
+
         for (TextProp tp : this.textPropList) {
             TextProp otp = m.get(tp.getName());
             if (!tp.equals(otp)) return false;
         }
-        
+
         return true;
     }
 
@@ -389,7 +389,7 @@ public class TextPropCollection {
         } catch (Exception e ) {
             e.printStackTrace();
         }
-        
+
         return out.toString();
     }
 }

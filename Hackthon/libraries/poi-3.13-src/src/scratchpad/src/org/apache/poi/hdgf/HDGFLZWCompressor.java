@@ -26,9 +26,9 @@ import java.io.OutputStream;
  *  streaming LZW compression.
  * Need our own class to handle keeping track of the
  *  code buffer, pending bytes to write out etc.
- *  
+ *
  * TODO Fix this, as it starts to go wrong on
- *  large streams 
+ *  large streams
  */
 final class HDGFLZWCompressor {
 	// We use 12 bit codes:
@@ -61,7 +61,7 @@ final class HDGFLZWCompressor {
 	int maskBitsSet = 0;
 
 	public HDGFLZWCompressor() {}
-	
+
 /**
  * Returns the last place that the bytes from rawCode are found
  *  at in the buffer, or -1 if they can't be found
@@ -104,7 +104,7 @@ private void outputCompressed(OutputStream res) throws IOException {
 		}
 		return;
 	}
-	
+
 	// Grab where the data lives
 	int codesAt = findRawCodeInBuffer();
    codesAt -= 18;
@@ -114,7 +114,7 @@ private void outputCompressed(OutputStream res) throws IOException {
 
 	// Increment the mask bit count, we've done another code
 	maskBitsSet++;
-	
+
 	// Add the length+code to the buffer
 	// (The position is the first 12 bits, the
 	//  length is the last 4 bits)
@@ -124,11 +124,11 @@ private void outputCompressed(OutputStream res) throws IOException {
 	bufferLen++;
    buffer[bufferLen] = HDGFLZW.fromInt(bp2);
    bufferLen++;
-   
+
    // Copy the data to the dictionary in the new place
    for(int i=0; i<rawCodeLen; i++) {
       dict[(posOut&4095)] = rawCode[i];
-      posOut++; 
+      posOut++;
    }
 
 	// If we're now at 8 codes, output
@@ -210,7 +210,7 @@ public void compress(InputStream src, OutputStream res) throws IOException {
 		rawCode[rawCodeLen] = dataB;
 		rawCodeLen++;
 		int rawAt = findRawCodeInBuffer();
-		
+
 		// If we found it and are now at 18 bytes,
 		//  we need to output our pending code block
 		if(rawCodeLen == 18 && rawAt > -1) {

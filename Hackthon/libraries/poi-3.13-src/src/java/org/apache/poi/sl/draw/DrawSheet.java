@@ -29,30 +29,30 @@ import org.apache.poi.sl.usermodel.*;
 public class DrawSheet implements Drawable {
 
     protected final Sheet<?,?> sheet;
-    
+
     public DrawSheet(Sheet<?,?> sheet) {
         this.sheet = sheet;
     }
-    
+
     public void draw(Graphics2D graphics) {
         Dimension dim = sheet.getSlideShow().getPageSize();
         Color whiteTrans = new Color(1f,1f,1f,0f);
         graphics.setColor(whiteTrans);
         graphics.fillRect(0, 0, (int)dim.getWidth(), (int)dim.getHeight());
-        
+
         DrawFactory drawFact = DrawFactory.getInstance(graphics);
         MasterSheet<?,?> master = sheet.getMasterSheet();
-        
+
         if(sheet.getFollowMasterGraphics() && master != null) {
             Drawable drawer = drawFact.getDrawable(master);
             drawer.draw(graphics);
         }
-        
+
         graphics.setRenderingHint(Drawable.GROUP_TRANSFORM, new AffineTransform());
 
         for (Shape<?,?> shape : sheet.getShapes()) {
             if(!canDraw(shape)) continue;
-            
+
             // remember the initial transform and restore it after we are done with drawing
             AffineTransform at = graphics.getTransform();
 

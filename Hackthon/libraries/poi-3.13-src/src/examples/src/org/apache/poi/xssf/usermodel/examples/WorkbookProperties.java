@@ -49,7 +49,7 @@ public class WorkbookProperties {
         /**
          * Custom properties enable users to define custom metadata properties.
          */
-        
+
         POIXMLProperties.CustomProperties cust =  props.getCustomProperties();
         cust.addProperty("Author", "John Smith");
         cust.addProperty("Year", 2009);

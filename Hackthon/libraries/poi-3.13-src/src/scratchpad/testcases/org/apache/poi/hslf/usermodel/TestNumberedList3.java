@@ -36,7 +36,7 @@ import org.junit.Test;
  * if a paragraph has autonumber ()
  * @see <a href="http://social.msdn.microsoft.com/Forums/mr-IN/os_binaryfile/thread/650888db-fabd-4b95-88dc-f0455f6e2d28">
  *     PPT: Missing TextAutoNumberScheme structure providing the style of the number bullets</a>
- * 
+ *
  * @author Alex Nikiforov [mailto:anikif@gmail.com]
  */
 public final class TestNumberedList3 {
@@ -60,9 +60,9 @@ public final class TestNumberedList3 {
 		assertNotNull(numberedListInfoForTextBox);
 		final TextPFException9[] autoNumbersOfTextBox0 = numberedListInfoForTextBox.getAutoNumberTypes();
 		assertEquals(Short.valueOf((short)1), autoNumbersOfTextBox0[0].getfBulletHasAutoNumber());
-		assertEquals(Short.valueOf((short)1), autoNumbersOfTextBox0[0].getAutoNumberStartNumber());//Default value = 1 will be used 
+		assertEquals(Short.valueOf((short)1), autoNumbersOfTextBox0[0].getAutoNumberStartNumber());//Default value = 1 will be used
 		assertTrue(AutoNumberingScheme.arabicPeriod == autoNumbersOfTextBox0[0].getAutoNumberScheme());
-		
+
 		final List<List<HSLFTextParagraph>> textParass = s.getTextParagraphs();
 		assertEquals(3, textParass.size());
 		assertEquals("Bulleted list\rMore bullets\rNo bullets here", HSLFTextParagraph.getRawText(textParass.get(0)));
@@ -77,9 +77,9 @@ public final class TestNumberedList3 {
 		final TextPFException9[] autoNumbers = textParass.get(1).get(0).getStyleTextProp9Atom().getAutoNumberTypes();
 		assertEquals(1, autoNumbers.length);
 		assertEquals(Short.valueOf((short)1), autoNumbers[0].getfBulletHasAutoNumber());
-		assertEquals(Short.valueOf((short)1), autoNumbers[0].getAutoNumberStartNumber());//Default value = 1 will be used 
+		assertEquals(Short.valueOf((short)1), autoNumbers[0].getAutoNumberStartNumber());//Default value = 1 will be used
 		assertTrue(AutoNumberingScheme.arabicPeriod == autoNumbersOfTextBox0[0].getAutoNumberScheme());
-		
+
 		int chCovered = 0;
 		for (HSLFTextParagraph htp : textParass.get(1)) {
     		for (HSLFTextRun htr : htp.getTextRuns()) {
@@ -88,9 +88,9 @@ public final class TestNumberedList3 {
     		}
 		}
 		assertEquals(67, chCovered);
-		
+
 		assertTrue(textParass.get(0).get(0).isBullet());
-		
+
 		final EscherTextboxWrapper[] styleAtoms = s.getTextboxWrappers();
 		assertEquals(textParass.size(), styleAtoms.length);
 		checkSingleRunWrapper(43, styleAtoms[0]);

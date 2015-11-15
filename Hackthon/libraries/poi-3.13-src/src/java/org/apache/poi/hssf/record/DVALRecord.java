@@ -52,7 +52,7 @@ public final class DVALRecord extends StandardRecord {
 		field_1_options = in.readShort();
 		field_2_horiz_pos = in.readInt();
 		field_3_vert_pos = in.readInt();
-        field_cbo_id    = in.readInt(); 
+        field_cbo_id    = in.readInt();
         field_5_dv_no   = in.readInt();
 	}
 
@@ -143,7 +143,7 @@ public final class DVALRecord extends StandardRecord {
 	}
 
     public void serialize(LittleEndianOutput out) {
- 		
+
 		out.writeShort(getOptions());
 		out.writeInt(getHorizontalPos());
 		out.writeInt(getVerticalPos());

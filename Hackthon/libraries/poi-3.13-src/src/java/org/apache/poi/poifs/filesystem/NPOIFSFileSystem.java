@@ -75,21 +75,21 @@ public class NPOIFSFileSystem extends BlockStore
     public static InputStream createNonClosingInputStream(InputStream is) {
        return new CloseIgnoringInputStream(is);
     }
-   
+
     private NPOIFSMiniStore _mini_store;
     private NPropertyTable  _property_table;
     private List<BATBlock>  _xbat_blocks;
     private List<BATBlock>  _bat_blocks;
     private HeaderBlock     _header;
     private DirectoryNode   _root;
-    
+
     private DataSource _data;
-    
+
     /**
      * What big block size the file uses. Most files
      *  use 512 bytes, but a few use 4096
      */
-    private POIFSBigBlockSize bigBlockSize = 
+    private POIFSBigBlockSize bigBlockSize =
        POIFSConstants.SMALLER_BIG_BLOCK_SIZE_DETAILS;
 
     private NPOIFSFileSystem(boolean newFS)
@@ -100,21 +100,21 @@ public class NPOIFSFileSystem extends BlockStore
         _xbat_blocks    = new ArrayList<BATBlock>();
         _bat_blocks     = new ArrayList<BATBlock>();
         _root           = null;
-        
+
         if(newFS) {
            // Data needs to initially hold just the header block,
            //  a single bat block, and an empty properties section
            _data        = new ByteArrayBackedDataSource(new byte[bigBlockSize.getBigBlockSize()*3]);
         }
     }
-    
+
     /**
      * Constructor, intended for writing
      */
     public NPOIFSFileSystem()
     {
        this(true);
-       
+
         // Reserve block 0 for the start of the Properties Table
         // Create a single empty BAT, at pop that at offset 1
         _header.setBATCount(1);
@@ -132,11 +132,11 @@ public class NPOIFSFileSystem extends BlockStore
     /**
      * <p>Creates a POIFSFileSystem from a <tt>File</tt>. This uses less memory than
      *  creating from an <tt>InputStream</tt>. The File will be opened read-only</p>
-     *  
+     *
      * <p>Note that with this constructor, you will need to call {@link #close()}
      *  when you're done to have the underlying file closed, as the file is
-     *  kept open during normal operation to read the data out.</p> 
-     *  
+     *  kept open during normal operation to read the data out.</p>
+     *
      * @param file the File from which to read the data
      *
      * @exception IOException on errors reading, or on invalid data
@@ -146,15 +146,15 @@ public class NPOIFSFileSystem extends BlockStore
     {
        this(file, true);
     }
-    
+
     /**
      * <p>Creates a POIFSFileSystem from a <tt>File</tt>. This uses less memory than
      *  creating from an <tt>InputStream</tt>.</p>
-     *  
+     *
      * <p>Note that with this constructor, you will need to call {@link #close()}
      *  when you're done to have the underlying file closed, as the file is
-     *  kept open during normal operation to read the data out.</p> 
-     *  
+     *  kept open during normal operation to read the data out.</p>
+     *
      * @param file the File from which to read or read/write the data
      * @param readOnly whether the POIFileSystem will only be used in read-only mode
      *
@@ -165,16 +165,16 @@ public class NPOIFSFileSystem extends BlockStore
     {
        this(null, file, readOnly, true);
     }
-    
+
     /**
-     * <p>Creates a POIFSFileSystem from an open <tt>FileChannel</tt>. This uses 
+     * <p>Creates a POIFSFileSystem from an open <tt>FileChannel</tt>. This uses
      *  less memory than creating from an <tt>InputStream</tt>. The stream will
      *  be used in read-only mode.</p>
-     *  
+     *
      * <p>Note that with this constructor, you will need to call {@link #close()}
      *  when you're done to have the underlying Channel closed, as the channel is
-     *  kept open during normal operation to read the data out.</p> 
-     *  
+     *  kept open during normal operation to read the data out.</p>
+     *
      * @param channel the FileChannel from which to read the data
      *
      * @exception IOException on errors reading, or on invalid data
@@ -184,15 +184,15 @@ public class NPOIFSFileSystem extends BlockStore
     {
        this(channel, true);
     }
-    
+
     /**
-     * <p>Creates a POIFSFileSystem from an open <tt>FileChannel</tt>. This uses 
+     * <p>Creates a POIFSFileSystem from an open <tt>FileChannel</tt>. This uses
      *  less memory than creating from an <tt>InputStream</tt>.</p>
-     *  
+     *
      * <p>Note that with this constructor, you will need to call {@link #close()}
      *  when you're done to have the underlying Channel closed, as the channel is
-     *  kept open during normal operation to read the data out.</p> 
-     *  
+     *  kept open during normal operation to read the data out.</p>
+     *
      * @param channel the FileChannel from which to read or read/write the data
      * @param readOnly whether the POIFileSystem will only be used in read-only mode
      *
@@ -203,7 +203,7 @@ public class NPOIFSFileSystem extends BlockStore
     {
        this(channel, null, readOnly, false);
     }
-    
+
     private NPOIFSFileSystem(FileChannel channel, File srcFile, boolean readOnly, boolean closeChannelOnError)
          throws IOException
     {
@@ -214,25 +214,25 @@ public class NPOIFSFileSystem extends BlockStore
           if (srcFile != null) {
               if (srcFile.length() == 0)
                   throw new EmptyFileException();
-              
+
               FileBackedDataSource d = new FileBackedDataSource(srcFile, readOnly);
               channel = d.getChannel();
               _data = d;
           } else {
               _data = new FileBackedDataSource(channel, readOnly);
           }
-           
+
           // Get the header
           ByteBuffer headerBuffer = ByteBuffer.allocate(POIFSConstants.SMALLER_BIG_BLOCK_SIZE);
           IOUtils.readFully(channel, headerBuffer);
-          
+
           // Have the header processed
           _header = new HeaderBlock(headerBuffer);
-          
+
           // Now process the various entries
           readCoreContents();
        } catch(IOException e) {
-          // Until we upgrade to Java 7, and can do a MultiCatch, we 
+          // Until we upgrade to Java 7, and can do a MultiCatch, we
           //  need to keep these two catch blocks in sync on their cleanup
           if (closeChannelOnError && channel != null) {
               channel.close();
@@ -250,7 +250,7 @@ public class NPOIFSFileSystem extends BlockStore
           throw e;
        }
     }
-    
+
     /**
      * Create a POIFSFileSystem from an <tt>InputStream</tt>.  Normally the stream is read until
      * EOF.  The stream is always closed.<p/>
@@ -284,42 +284,42 @@ public class NPOIFSFileSystem extends BlockStore
         throws IOException
     {
         this(false);
-        
+
         ReadableByteChannel channel = null;
         boolean success = false;
-        
+
         try {
            // Turn our InputStream into something NIO based
            channel = Channels.newChannel(stream);
-           
+
            // Get the header
            ByteBuffer headerBuffer = ByteBuffer.allocate(POIFSConstants.SMALLER_BIG_BLOCK_SIZE);
            IOUtils.readFully(channel, headerBuffer);
-           
+
            // Have the header processed
            _header = new HeaderBlock(headerBuffer);
-           
+
            // Sanity check the block count
            BlockAllocationTableReader.sanityCheckBlockCount(_header.getBATCount());
-   
+
            // We need to buffer the whole file into memory when
            //  working with an InputStream.
            // The max possible size is when each BAT block entry is used
-           long maxSize = BATBlock.calculateMaximumSize(_header); 
+           long maxSize = BATBlock.calculateMaximumSize(_header);
            if (maxSize > Integer.MAX_VALUE) {
                throw new IllegalArgumentException("Unable read a >2gb file via an InputStream");
            }
            ByteBuffer data = ByteBuffer.allocate((int)maxSize);
-           
+
            // Copy in the header
            headerBuffer.position(0);
            data.put(headerBuffer);
            data.position(headerBuffer.capacity());
-           
+
            // Now read the rest of the stream
            IOUtils.readFully(channel, data);
            success = true;
-           
+
            // Turn it into a DataSource
            _data = new ByteArrayBackedDataSource(data.array(), data.position());
         } finally {
@@ -328,7 +328,7 @@ public class NPOIFSFileSystem extends BlockStore
               channel.close();
            closeInputStream(stream, success);
         }
-        
+
         // Now process the various entries
         readCoreContents();
     }
@@ -356,10 +356,10 @@ public class NPOIFSFileSystem extends BlockStore
      * If your InputStream does not support mark / reset,
      *  then wrap it in a PushBackInputStream, then be
      *  sure to always use that and not the original!
-     *  
+     *
      *  After the method call, the InputStream is at the
      *  same position as of the time of entering the method.
-     *  
+     *
      * @param inp An InputStream which supports either mark/reset, or is a PushbackInputStream
      */
     public static boolean hasPOIFSHeader(InputStream inp) throws IOException {
@@ -381,7 +381,7 @@ public class NPOIFSFileSystem extends BlockStore
         // Did it match the signature?
         return (signature.get() == HeaderBlockConstants._signature);
     }
-    
+
     /**
      * Checks if the supplied first 8 bytes of a stream / file
      *  has a POIFS (OLE2) header.
@@ -390,7 +390,7 @@ public class NPOIFSFileSystem extends BlockStore
         LongField signature = new LongField(HeaderBlockConstants._signature_offset, header8Bytes);
         return (signature.get() == HeaderBlockConstants._signature);
     }
-    
+
     /**
      * Read and process the PropertiesTable and the
      *  FAT / XFAT blocks, so that we're ready to
@@ -399,21 +399,21 @@ public class NPOIFSFileSystem extends BlockStore
     private void readCoreContents() throws IOException {
        // Grab the block size
        bigBlockSize = _header.getBigBlockSize();
-       
+
        // Each block should only ever be used by one of the
        //  FAT, XFAT or Property Table. Ensure it does
        ChainLoopDetector loopDetector = getChainLoopDetector();
-       
+
        // Read the FAT blocks
        for(int fatAt : _header.getBATArray()) {
           readBAT(fatAt, loopDetector);
        }
-       
+
        // Work out how many FAT blocks remain in the XFATs
        int remainingFATs = _header.getBATCount() - _header.getBATArray().length;
-       
+
        // Now read the XFAT blocks, and the FATs within them
-       BATBlock xfat; 
+       BATBlock xfat;
        int nextAt = _header.getXBATIndex();
        for(int i=0; i<_header.getXBATCount(); i++) {
           loopDetector.claim(nextAt);
@@ -422,7 +422,7 @@ public class NPOIFSFileSystem extends BlockStore
           xfat.setOurBlockIndex(nextAt);
           nextAt = xfat.getValueAt(bigBlockSize.getXBATEntriesPerBlock());
           _xbat_blocks.add(xfat);
-          
+
           // Process all the (used) FATs from this XFAT
           int xbatFATs = Math.min(remainingFATs, bigBlockSize.getXBATEntriesPerBlock());
           for(int j=0; j<xbatFATs; j++) {
@@ -432,11 +432,11 @@ public class NPOIFSFileSystem extends BlockStore
           }
           remainingFATs -= xbatFATs;
        }
-       
+
        // We're now able to load steams
        // Use this to read in the properties
        _property_table = new NPropertyTable(_header, this);
-       
+
        // Finally read the Small Stream FAT (SBAT) blocks
        BATBlock sfat;
        List<BATBlock> sbats = new ArrayList<BATBlock>();
@@ -448,7 +448,7 @@ public class NPOIFSFileSystem extends BlockStore
           sfat = BATBlock.createBATBlock(bigBlockSize, fatData);
           sfat.setOurBlockIndex(nextAt);
           sbats.add(sfat);
-          nextAt = getNextBlock(nextAt);  
+          nextAt = getNextBlock(nextAt);
        }
     }
     private void readBAT(int batAt, ChainLoopDetector loopDetector) throws IOException {
@@ -469,7 +469,7 @@ public class NPOIFSFileSystem extends BlockStore
        // All done
        return newBAT;
     }
-    
+
     /**
      * Load the block at the given offset.
      */
@@ -484,9 +484,9 @@ public class NPOIFSFileSystem extends BlockStore
            throw new IndexOutOfBoundsException("Block " + offset + " not found - " + e);
        }
     }
-    
+
     /**
-     * Load the block at the given offset, 
+     * Load the block at the given offset,
      *  extending the file if needed
      */
     @Override
@@ -503,7 +503,7 @@ public class NPOIFSFileSystem extends BlockStore
           return getBlockAt(offset);
        }
     }
-    
+
     /**
      * Returns the BATBlock that handles the specified offset,
      *  and the relative index within it
@@ -514,7 +514,7 @@ public class NPOIFSFileSystem extends BlockStore
              offset, _header, _bat_blocks
        );
     }
-    
+
     /**
      * Works out what block follows the specified one.
      */
@@ -523,7 +523,7 @@ public class NPOIFSFileSystem extends BlockStore
        BATBlockAndIndex bai = getBATBlockAndIndex(offset);
        return bai.getBlock().getValueAt( bai.getIndex() );
     }
-    
+
     /**
      * Changes the record of what block follows the specified one.
      */
@@ -534,7 +534,7 @@ public class NPOIFSFileSystem extends BlockStore
              bai.getIndex(), nextBlock
        );
     }
-    
+
     /**
      * Finds a free block, and returns its offset.
      * This method will extend the file if needed, and if doing
@@ -557,18 +557,18 @@ public class NPOIFSFileSystem extends BlockStore
                 }
              }
           }
-          
+
           // Move onto the next BAT
           offset += numSectors;
        }
-       
+
        // If we get here, then there aren't any free sectors
        //  in any of the BATs, so we need another BAT
        BATBlock bat = createBAT(offset, true);
        bat.setValueAt(0, POIFSConstants.FAT_SECTOR_BLOCK);
        _bat_blocks.add(bat);
-       
-       // Now store a reference to the BAT in the required place 
+
+       // Now store a reference to the BAT in the required place
        if(_header.getBATCount() >= 109) {
           // Needs to come from an XBAT
           BATBlock xbat = null;
@@ -585,10 +585,10 @@ public class NPOIFSFileSystem extends BlockStore
              xbat.setValueAt(0, offset);
              // And allocate the XBAT in the BAT
              bat.setValueAt(1, POIFSConstants.DIFAT_SECTOR_BLOCK);
-             
+
              // Will go one place higher as XBAT added in
              offset++;
-             
+
              // Chain it
              if(_xbat_blocks.size() == 0) {
                 _header.setXBATStart(offset);
@@ -616,15 +616,15 @@ public class NPOIFSFileSystem extends BlockStore
           _header.setBATArray(newBATs);
        }
        _header.setBATCount(_bat_blocks.size());
-       
+
        // The current offset stores us, but the next one is free
        return offset+1;
     }
-    
+
     protected long size() throws IOException {
         return _data.size();
     }
-    
+
     @Override
     protected ChainLoopDetector getChainLoopDetector() throws IOException {
       return new ChainLoopDetector(_data.size());
@@ -637,7 +637,7 @@ public class NPOIFSFileSystem extends BlockStore
     NPropertyTable _get_property_table() {
       return _property_table;
     }
-    
+
     /**
      * Returns the MiniStore, which performs a similar low
      *  level function to this, except for the small blocks.
@@ -647,7 +647,7 @@ public class NPOIFSFileSystem extends BlockStore
     }
 
     /**
-     * add a new POIFSDocument to the FileSytem 
+     * add a new POIFSDocument to the FileSytem
      *
      * @param document the POIFSDocument being added
      */
@@ -720,12 +720,12 @@ public class NPOIFSFileSystem extends BlockStore
     {
         return getRoot().createDirectory(name);
     }
-    
+
     /**
      * Write the filesystem out to the open file. Will thrown an
-     *  {@link IllegalArgumentException} if opened from an 
+     *  {@link IllegalArgumentException} if opened from an
      *  {@link InputStream}.
-     * 
+     *
      * @exception IOException thrown on errors writing to the stream
      */
     public void writeFilesystem() throws IOException
@@ -761,30 +761,30 @@ public class NPOIFSFileSystem extends BlockStore
     {
        // Have the datasource updated
        syncWithDataSource();
-       
+
        // Now copy the contents to the stream
        _data.copyTo(stream);
     }
-    
+
     /**
      * Has our in-memory objects write their state
-     *  to their backing blocks 
+     *  to their backing blocks
      */
     private void syncWithDataSource() throws IOException {
         // Mini Stream + SBATs first, as mini-stream details have
         //  to be stored in the Root Property
         _mini_store.syncWithDataSource();
-        
+
         // Properties
         NPOIFSStream propStream = new NPOIFSStream(this, _header.getPropertyStart());
         _property_table.preWrite();
         _property_table.write(propStream);
         // _header.setPropertyStart has been updated on write ...
-        
+
        // HeaderBlock
        HeaderBlockWriter hbw = new HeaderBlockWriter(_header);
        hbw.writeBlock( getBlockAt(-1) );
-       
+
        // BATs
        for(BATBlock bat : _bat_blocks) {
           ByteBuffer block = getBlockAt(bat.getOurBlockIndex());
@@ -796,10 +796,10 @@ public class NPOIFSFileSystem extends BlockStore
            BlockAllocationTableWriter.writeBlock(bat, block);
         }
     }
-    
+
     /**
      * Closes the FileSystem, freeing any underlying files, streams
-     *  and buffers. After this, you will be unable to read or 
+     *  and buffers. After this, you will be unable to read or
      *  write from the FileSystem.
      */
     public void close() throws IOException {
@@ -885,11 +885,11 @@ public class NPOIFSFileSystem extends BlockStore
             NPOIFSDocument doc = new NPOIFSDocument((DocumentProperty)entry.getProperty(), this);
             doc.free();
         }
-        
+
         // Now zap it from the properties list
         _property_table.removeProperty(entry.getProperty());
     }
-    
+
     /* ********** START begin implementation of POIFSViewable ********** */
 
     /**

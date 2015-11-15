@@ -55,12 +55,12 @@ final class CountUtils {
             for (int rrIx=0; rrIx<height; rrIx++) {
                 for (int rcIx=0; rcIx<width; rcIx++) {
                     ValueEval ve = areaEval.getValue(sIx, rrIx, rcIx);
-    
+
                     if(criteriaPredicate instanceof I_MatchAreaPredicate){
                         I_MatchAreaPredicate areaPredicate = (I_MatchAreaPredicate)criteriaPredicate;
                         if(!areaPredicate.matches(areaEval, rrIx, rcIx)) continue;
                     }
-    
+
                     if(criteriaPredicate.matches(ve)) {
                         result++;
                     }
@@ -74,7 +74,7 @@ final class CountUtils {
 	 */
 	public static int countMatchingCellsInRef(RefEval refEval, I_MatchPredicate criteriaPredicate) {
 	    int result = 0;
-	    
+
 	    for (int sIx = refEval.getFirstSheetIndex(); sIx <= refEval.getLastSheetIndex(); sIx++) {
 	        ValueEval ve = refEval.getInnerValueEval(sIx);
             if(criteriaPredicate.matches(ve)) {

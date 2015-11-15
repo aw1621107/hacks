@@ -60,7 +60,7 @@ public class TestDocumentEncryption {
     public void resetPassword() {
         Biff8EncryptionKey.setCurrentUserPassword(null);
     }
-    
+
     @Test
     public void cryptoAPIDecryptionOther() throws Exception {
         Biff8EncryptionKey.setCurrentUserPassword("hello");
@@ -69,7 +69,7 @@ public class TestDocumentEncryption {
             "Password_Protected-hello.ppt",
             "Password_Protected-np-hello.ppt",
         };
-        
+
         for (String pptFile : encPpts) {
             try {
                 NPOIFSFileSystem fs = new NPOIFSFileSystem(slTests.getFile(pptFile), true);
@@ -93,16 +93,16 @@ public class TestDocumentEncryption {
         hss.getDocumentSummaryInformation();
         EncryptionInfo ei = hss.getDocumentEncryptionAtom().getEncryptionInfo();
         ((CryptoAPIEncryptionHeader)ei.getHeader()).setKeySize(0x78);
-        
+
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         hss.write(bos);
         fs.close();
-        
+
         fs = new NPOIFSFileSystem(new ByteArrayInputStream(bos.toByteArray()));
         hss = new HSLFSlideShowImpl(fs);
         List<HSLFPictureData> picsActual = hss.getPictureData();
         fs.close();
-        
+
         assertEquals(picsExpected.size(), picsActual.size());
         for (int i=0; i<picsExpected.size(); i++) {
             assertArrayEquals(picsExpected.get(i).getRawData(), picsActual.get(i).getRawData());
@@ -116,11 +116,11 @@ public class TestDocumentEncryption {
         NPOIFSFileSystem fs = new NPOIFSFileSystem(slTests.getFile(pptFile), true);
         HSLFSlideShowImpl hss = new HSLFSlideShowImpl(fs);
         hss.normalizeRecords();
-        
+
         // normalized ppt
         ByteArrayOutputStream expected = new ByteArrayOutputStream();
         hss.write(expected);
-        
+
         // encrypted
         Biff8EncryptionKey.setCurrentUserPassword("hello");
         ByteArrayOutputStream encrypted = new ByteArrayOutputStream();
@@ -135,10 +135,10 @@ public class TestDocumentEncryption {
         ByteArrayOutputStream actual = new ByteArrayOutputStream();
         hss.write(actual);
         fs.close();
-        
+
         assertArrayEquals(expected.toByteArray(), actual.toByteArray());
-    }    
-    
+    }
+
     @Test
     public void cryptoAPIDecryption() throws Exception {
         // taken from a msdn blog:
@@ -147,7 +147,7 @@ public class TestDocumentEncryption {
         NPOIFSFileSystem fs = new NPOIFSFileSystem(slTests.getFile("cryptoapi-proc2356.ppt"));
         HSLFSlideShowImpl hss = new HSLFSlideShowImpl(fs);
         HSLFSlideShow ss = new HSLFSlideShow(hss);
-        
+
         HSLFSlide slide = ss.getSlides().get(0);
         String rawText = HSLFTextParagraph.getRawText(slide.getTextParagraphs().get(0));
         assertEquals("Dominic Salemno", rawText);
@@ -159,9 +159,9 @@ public class TestDocumentEncryption {
             {"714114","8pdst9NjBGSfWezSZE8+aVhIRe0="},
             {"723752","go6xqW7lvkCtlOO5tYLiMfb4oxw="},
             {"770128","gZUM8YqRNL5kGNfyyYvEEernvCc="},
-            {"957958","CNU2iiqUFAnk3TDXsXV1ihH9eRM="},                
+            {"957958","CNU2iiqUFAnk3TDXsXV1ihH9eRM="},
         };
-        
+
         MessageDigest md = CryptoFunctions.getMessageDigest(HashAlgorithm.sha1);
         List<HSLFPictureData> pd = hss.getPictureData();
         int i = 0;
@@ -171,9 +171,9 @@ public class TestDocumentEncryption {
             assertEquals(picCmp[i][1], Base64.encodeBase64String(hash));
             i++;
         }
-        
+
         DocumentEncryptionAtom dea = hss.getDocumentEncryptionAtom();
-        
+
         POIFSFileSystem fs2 = new POIFSFileSystem(dea.getEncryptionInfo().getDecryptor().getDataStream(fs));
         PropertySet ps = PropertySetFactory.create(fs2.getRoot(), SummaryInformation.DEFAULT_STREAM_NAME);
         assertTrue(ps.isSummaryInformation());

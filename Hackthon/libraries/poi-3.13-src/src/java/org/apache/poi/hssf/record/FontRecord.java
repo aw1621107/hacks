@@ -482,7 +482,7 @@ public final class FontRecord extends StandardRecord {
     public boolean equals(Object o) {
         return (o instanceof FontRecord) ? sameProperties((FontRecord)o) : false;
     }
-    
+
     private static boolean stringEquals(String s1, String s2) {
         return (s1 == s2 || (s1 != null && s1.equals(s2)));
     }

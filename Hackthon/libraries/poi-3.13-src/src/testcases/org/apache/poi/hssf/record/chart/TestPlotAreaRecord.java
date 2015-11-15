@@ -32,7 +32,7 @@ import junit.framework.TestCase;
  */
 public final class TestPlotAreaRecord extends TestCase {
     byte[] data = new byte[] {
-	
+
     };
 
     public void testLoad() {

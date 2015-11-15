@@ -23,7 +23,7 @@ import org.apache.poi.ss.formula.ptg.Ptg;
 
 /**
  * Test utility class to get <tt>Ptg</tt> arrays out of formula cells
- * 
+ *
  * @author Josh Micich
  */
 public final class FormulaExtractor {
@@ -31,7 +31,7 @@ public final class FormulaExtractor {
 	private FormulaExtractor() {
 		// no instances of this class
 	}
-	
+
 	public static Ptg[] getPtgs(HSSFCell cell) {
 		CellValueRecordInterface vr = cell.getCellValueRecord();
 		if (!(vr instanceof FormulaRecordAggregate)) {

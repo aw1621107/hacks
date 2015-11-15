@@ -642,15 +642,15 @@ public class SQLError {
 
     /**
      * Turns output of 'SHOW WARNINGS' into JDBC SQLWarning instances.
-     * 
+     *
      * If 'forTruncationOnly' is true, only looks for truncation warnings, and
      * actually throws DataTruncation as an exception.
-     * 
+     *
      * @param connection
      *            the connection to use for getting warnings.
-     * 
+     *
      * @return the SQLWarning chain (or null if no warnings)
-     * 
+     *
      * @throws SQLException
      *             if the warnings could not be retrieved
      */
@@ -660,19 +660,19 @@ public class SQLError {
 
     /**
      * Turns output of 'SHOW WARNINGS' into JDBC SQLWarning instances.
-     * 
+     *
      * If 'forTruncationOnly' is true, only looks for truncation warnings, and
      * actually throws DataTruncation as an exception.
-     * 
+     *
      * @param connection
      *            the connection to use for getting warnings.
      * @param warningCountIfKnown
      *            the warning count (if known), otherwise set it to 0.
      * @param forTruncationOnly
      *            if this method should only scan for data truncation warnings
-     * 
+     *
      * @return the SQLWarning chain (or null if no warnings)
-     * 
+     *
      * @throws SQLException
      *             if the warnings could not be retrieved, or if data truncation
      *             is being scanned for and truncations were found.
@@ -719,7 +719,7 @@ public class SQLError {
                         }
                     }
                 } else {
-                    //String level = warnRs.getString("Level"); 
+                    //String level = warnRs.getString("Level");
                     String message = warnRs.getString("Message");
 
                     SQLWarning newWarning = new SQLWarning(message, SQLError.mysqlToSqlState(code, connection.getUseSqlStateCodes()), code);
@@ -769,7 +769,7 @@ public class SQLError {
 
         //		Integer errorNumber = null;
 
-        // 
+        //
         // First create a list of all 'known' error numbers that are mapped.
         //
         for (Integer errorNumber : mysqlToSql99State.keySet()) {
@@ -823,10 +823,10 @@ public class SQLError {
 
     /**
      * Map MySQL error codes to X/Open or SQL-92 error codes
-     * 
+     *
      * @param errno
      *            the MySQL error code
-     * 
+     *
      * @return the corresponding X/Open or SQL-92 error code
      */
     static String mysqlToSqlState(int errno, boolean useSql92States) {
@@ -852,7 +852,7 @@ public class SQLError {
      * SQLNonTransientConnectionException 22 SQLDataException 23
      * SQLIntegrityConstraintViolationException N/A
      * SQLInvalidAuthorizationException 42 SQLSyntaxErrorException
-     * 
+     *
      * SQL State Class SQLTransientException Subclass 08
      * SQLTransientConnectionException 40 SQLTransactionRollbackException N/A
      * SQLTimeoutException
@@ -996,7 +996,7 @@ public class SQLError {
      * Creates a communications link failure message to be used
      * in CommunicationsException that (hopefully) has some better
      * information and suggestions based on heuristics.
-     * 
+     *
      * @param conn
      * @param lastPacketSentTimeMs
      * @param underlyingException
@@ -1128,7 +1128,7 @@ public class SQLError {
 
     /**
      * Run exception through an ExceptionInterceptor chain.
-     * 
+     *
      * @param exInterceptor
      * @param sqlEx
      * @param conn
@@ -1148,7 +1148,7 @@ public class SQLError {
     /**
      * Create a BatchUpdateException taking in consideration the JDBC version in use. For JDBC version prior to 4.2 the updates count array has int elements
      * while JDBC 4.2 and beyond uses long values.
-     * 
+     *
      * @param underlyingEx
      * @param updateCounts
      * @param interceptor
@@ -1185,7 +1185,7 @@ public class SQLError {
 
     /**
      * Create a SQLFeatureNotSupportedException or a NotImplemented exception according to the JDBC version in use.
-     * 
+     *
      * @param message
      * @param sqlState
      * @param interceptor

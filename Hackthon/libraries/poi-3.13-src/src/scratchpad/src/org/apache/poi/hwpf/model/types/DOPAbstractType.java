@@ -1474,7 +1474,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fFacingPages field value.
-     * 
+     *
      */
     @Internal
     public void setFFacingPages( boolean value )
@@ -1483,7 +1483,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fFacingPages field value.
      */
     @Internal
@@ -1494,7 +1494,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fWidowControl field value.
-     * 
+     *
      */
     @Internal
     public void setFWidowControl( boolean value )
@@ -1503,7 +1503,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fWidowControl field value.
      */
     @Internal
@@ -1514,7 +1514,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fPMHMainDoc field value.
-     * 
+     *
      */
     @Internal
     public void setFPMHMainDoc( boolean value )
@@ -1523,7 +1523,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fPMHMainDoc field value.
      */
     @Internal
@@ -1534,7 +1534,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the grfSupression field value.
-     * 
+     *
      */
     @Internal
     public void setGrfSupression( byte value )
@@ -1543,7 +1543,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the grfSupression field value.
      */
     @Internal
@@ -1554,7 +1554,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fpc field value.
-     * 
+     *
      */
     @Internal
     public void setFpc( byte value )
@@ -1563,7 +1563,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fpc field value.
      */
     @Internal
@@ -1574,7 +1574,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the unused1 field value.
-     * 
+     *
      */
     @Internal
     public void setUnused1( boolean value )
@@ -1583,7 +1583,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the unused1 field value.
      */
     @Internal
@@ -1594,7 +1594,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the rncFtn field value.
-     * 
+     *
      */
     @Internal
     public void setRncFtn( byte value )
@@ -1603,7 +1603,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the rncFtn field value.
      */
     @Internal
@@ -1614,7 +1614,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the nFtn field value.
-     * 
+     *
      */
     @Internal
     public void setNFtn( short value )
@@ -1623,7 +1623,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the nFtn field value.
      */
     @Internal
@@ -1634,7 +1634,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fOnlyMacPics field value.
-     * 
+     *
      */
     @Internal
     public void setFOnlyMacPics( boolean value )
@@ -1643,7 +1643,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fOnlyMacPics field value.
      */
     @Internal
@@ -1654,7 +1654,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fOnlyWinPics field value.
-     * 
+     *
      */
     @Internal
     public void setFOnlyWinPics( boolean value )
@@ -1663,7 +1663,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fOnlyWinPics field value.
      */
     @Internal
@@ -1674,7 +1674,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fLabelDoc field value.
-     * 
+     *
      */
     @Internal
     public void setFLabelDoc( boolean value )
@@ -1683,7 +1683,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fLabelDoc field value.
      */
     @Internal
@@ -1694,7 +1694,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fHyphCapitals field value.
-     * 
+     *
      */
     @Internal
     public void setFHyphCapitals( boolean value )
@@ -1703,7 +1703,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fHyphCapitals field value.
      */
     @Internal
@@ -1714,7 +1714,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fAutoHyphen field value.
-     * 
+     *
      */
     @Internal
     public void setFAutoHyphen( boolean value )
@@ -1723,7 +1723,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fAutoHyphen field value.
      */
     @Internal
@@ -1734,7 +1734,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fFormNoFields field value.
-     * 
+     *
      */
     @Internal
     public void setFFormNoFields( boolean value )
@@ -1743,7 +1743,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fFormNoFields field value.
      */
     @Internal
@@ -1754,7 +1754,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fLinkStyles field value.
-     * 
+     *
      */
     @Internal
     public void setFLinkStyles( boolean value )
@@ -1763,7 +1763,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fLinkStyles field value.
      */
     @Internal
@@ -1774,7 +1774,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fRevMarking field value.
-     * 
+     *
      */
     @Internal
     public void setFRevMarking( boolean value )
@@ -1783,7 +1783,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fRevMarking field value.
      */
     @Internal
@@ -1794,7 +1794,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fBackup field value.
-     * 
+     *
      */
     @Internal
     public void setFBackup( boolean value )
@@ -1803,7 +1803,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fBackup field value.
      */
     @Internal
@@ -1814,7 +1814,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fExactCWords field value.
-     * 
+     *
      */
     @Internal
     public void setFExactCWords( boolean value )
@@ -1823,7 +1823,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fExactCWords field value.
      */
     @Internal
@@ -1834,7 +1834,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fPagHidden field value.
-     * 
+     *
      */
     @Internal
     public void setFPagHidden( boolean value )
@@ -1843,7 +1843,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fPagHidden field value.
      */
     @Internal
@@ -1854,7 +1854,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fPagResults field value.
-     * 
+     *
      */
     @Internal
     public void setFPagResults( boolean value )
@@ -1863,7 +1863,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fPagResults field value.
      */
     @Internal
@@ -1874,7 +1874,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fLockAtn field value.
-     * 
+     *
      */
     @Internal
     public void setFLockAtn( boolean value )
@@ -1883,7 +1883,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fLockAtn field value.
      */
     @Internal
@@ -1894,7 +1894,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fMirrorMargins field value.
-     * 
+     *
      */
     @Internal
     public void setFMirrorMargins( boolean value )
@@ -1903,7 +1903,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fMirrorMargins field value.
      */
     @Internal
@@ -1914,7 +1914,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the unused3 field value.
-     * 
+     *
      */
     @Internal
     public void setUnused3( boolean value )
@@ -1923,7 +1923,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the unused3 field value.
      */
     @Internal
@@ -1934,7 +1934,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fDfltTrueType field value.
-     * 
+     *
      */
     @Internal
     public void setFDfltTrueType( boolean value )
@@ -1943,7 +1943,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fDfltTrueType field value.
      */
     @Internal
@@ -1954,7 +1954,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fPagSupressTopSpacing field value.
-     * 
+     *
      */
     @Internal
     public void setFPagSupressTopSpacing( boolean value )
@@ -1963,7 +1963,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fPagSupressTopSpacing field value.
      */
     @Internal
@@ -1974,7 +1974,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fProtEnabled field value.
-     * 
+     *
      */
     @Internal
     public void setFProtEnabled( boolean value )
@@ -1983,7 +1983,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fProtEnabled field value.
      */
     @Internal
@@ -1994,7 +1994,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fDispFormFldSel field value.
-     * 
+     *
      */
     @Internal
     public void setFDispFormFldSel( boolean value )
@@ -2003,7 +2003,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fDispFormFldSel field value.
      */
     @Internal
@@ -2014,7 +2014,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fRMView field value.
-     * 
+     *
      */
     @Internal
     public void setFRMView( boolean value )
@@ -2023,7 +2023,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fRMView field value.
      */
     @Internal
@@ -2034,7 +2034,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fRMPrint field value.
-     * 
+     *
      */
     @Internal
     public void setFRMPrint( boolean value )
@@ -2043,7 +2043,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fRMPrint field value.
      */
     @Internal
@@ -2054,7 +2054,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the unused4 field value.
-     * 
+     *
      */
     @Internal
     public void setUnused4( boolean value )
@@ -2063,7 +2063,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the unused4 field value.
      */
     @Internal
@@ -2074,7 +2074,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fLockRev field value.
-     * 
+     *
      */
     @Internal
     public void setFLockRev( boolean value )
@@ -2083,7 +2083,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fLockRev field value.
      */
     @Internal
@@ -2094,7 +2094,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fEmbedFonts field value.
-     * 
+     *
      */
     @Internal
     public void setFEmbedFonts( boolean value )
@@ -2103,7 +2103,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fEmbedFonts field value.
      */
     @Internal
@@ -2114,7 +2114,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the oldfNoTabForInd field value.
-     * 
+     *
      */
     @Internal
     public void setOldfNoTabForInd( boolean value )
@@ -2123,7 +2123,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the oldfNoTabForInd field value.
      */
     @Internal
@@ -2134,7 +2134,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the oldfNoSpaceRaiseLower field value.
-     * 
+     *
      */
     @Internal
     public void setOldfNoSpaceRaiseLower( boolean value )
@@ -2143,7 +2143,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the oldfNoSpaceRaiseLower field value.
      */
     @Internal
@@ -2154,7 +2154,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the oldfSuppressSpbfAfterPageBreak field value.
-     * 
+     *
      */
     @Internal
     public void setOldfSuppressSpbfAfterPageBreak( boolean value )
@@ -2163,7 +2163,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the oldfSuppressSpbfAfterPageBreak field value.
      */
     @Internal
@@ -2174,7 +2174,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the oldfWrapTrailSpaces field value.
-     * 
+     *
      */
     @Internal
     public void setOldfWrapTrailSpaces( boolean value )
@@ -2183,7 +2183,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the oldfWrapTrailSpaces field value.
      */
     @Internal
@@ -2194,7 +2194,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the oldfMapPrintTextColor field value.
-     * 
+     *
      */
     @Internal
     public void setOldfMapPrintTextColor( boolean value )
@@ -2203,7 +2203,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the oldfMapPrintTextColor field value.
      */
     @Internal
@@ -2214,7 +2214,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the oldfNoColumnBalance field value.
-     * 
+     *
      */
     @Internal
     public void setOldfNoColumnBalance( boolean value )
@@ -2223,7 +2223,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the oldfNoColumnBalance field value.
      */
     @Internal
@@ -2234,7 +2234,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the oldfConvMailMergeEsc field value.
-     * 
+     *
      */
     @Internal
     public void setOldfConvMailMergeEsc( boolean value )
@@ -2243,7 +2243,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the oldfConvMailMergeEsc field value.
      */
     @Internal
@@ -2254,7 +2254,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the oldfSupressTopSpacing field value.
-     * 
+     *
      */
     @Internal
     public void setOldfSupressTopSpacing( boolean value )
@@ -2263,7 +2263,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the oldfSupressTopSpacing field value.
      */
     @Internal
@@ -2274,7 +2274,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the oldfOrigWordTableRules field value.
-     * 
+     *
      */
     @Internal
     public void setOldfOrigWordTableRules( boolean value )
@@ -2283,7 +2283,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the oldfOrigWordTableRules field value.
      */
     @Internal
@@ -2294,7 +2294,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the oldfTransparentMetafiles field value.
-     * 
+     *
      */
     @Internal
     public void setOldfTransparentMetafiles( boolean value )
@@ -2303,7 +2303,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the oldfTransparentMetafiles field value.
      */
     @Internal
@@ -2314,7 +2314,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the oldfShowBreaksInFrames field value.
-     * 
+     *
      */
     @Internal
     public void setOldfShowBreaksInFrames( boolean value )
@@ -2323,7 +2323,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the oldfShowBreaksInFrames field value.
      */
     @Internal
@@ -2334,7 +2334,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the oldfSwapBordersFacingPgs field value.
-     * 
+     *
      */
     @Internal
     public void setOldfSwapBordersFacingPgs( boolean value )
@@ -2343,7 +2343,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the oldfSwapBordersFacingPgs field value.
      */
     @Internal
@@ -2354,7 +2354,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the unused5 field value.
-     * 
+     *
      */
     @Internal
     public void setUnused5( byte value )
@@ -2363,7 +2363,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the unused5 field value.
      */
     @Internal
@@ -2374,7 +2374,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the rncEdn field value.
-     * 
+     *
      */
     @Internal
     public void setRncEdn( byte value )
@@ -2383,7 +2383,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the rncEdn field value.
      */
     @Internal
@@ -2394,7 +2394,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the nEdn field value.
-     * 
+     *
      */
     @Internal
     public void setNEdn( short value )
@@ -2403,7 +2403,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the nEdn field value.
      */
     @Internal
@@ -2414,7 +2414,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the epc field value.
-     * 
+     *
      */
     @Internal
     public void setEpc( byte value )
@@ -2423,7 +2423,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the epc field value.
      */
     @Internal
@@ -2434,7 +2434,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the nfcFtnRef1 field value.
-     * 
+     *
      */
     @Internal
     public void setNfcFtnRef1( byte value )
@@ -2443,7 +2443,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the nfcFtnRef1 field value.
      */
     @Internal
@@ -2454,7 +2454,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the nfcEdnRef1 field value.
-     * 
+     *
      */
     @Internal
     public void setNfcEdnRef1( byte value )
@@ -2463,7 +2463,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the nfcEdnRef1 field value.
      */
     @Internal
@@ -2474,7 +2474,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fPrintFormData field value.
-     * 
+     *
      */
     @Internal
     public void setFPrintFormData( boolean value )
@@ -2483,7 +2483,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fPrintFormData field value.
      */
     @Internal
@@ -2494,7 +2494,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fSaveFormData field value.
-     * 
+     *
      */
     @Internal
     public void setFSaveFormData( boolean value )
@@ -2503,7 +2503,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fSaveFormData field value.
      */
     @Internal
@@ -2514,7 +2514,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fShadeFormData field value.
-     * 
+     *
      */
     @Internal
     public void setFShadeFormData( boolean value )
@@ -2523,7 +2523,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fShadeFormData field value.
      */
     @Internal
@@ -2534,7 +2534,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fWCFtnEdn field value.
-     * 
+     *
      */
     @Internal
     public void setFWCFtnEdn( boolean value )
@@ -2543,7 +2543,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fWCFtnEdn field value.
      */
     @Internal
@@ -2554,7 +2554,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the wvkSaved field value.
-     * 
+     *
      */
     @Internal
     public void setWvkSaved( byte value )
@@ -2563,7 +2563,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the wvkSaved field value.
      */
     @Internal
@@ -2574,7 +2574,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the wScaleSaved field value.
-     * 
+     *
      */
     @Internal
     public void setWScaleSaved( short value )
@@ -2583,7 +2583,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the wScaleSaved field value.
      */
     @Internal
@@ -2594,7 +2594,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the zkSaved field value.
-     * 
+     *
      */
     @Internal
     public void setZkSaved( byte value )
@@ -2603,7 +2603,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the zkSaved field value.
      */
     @Internal
@@ -2614,7 +2614,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fRotateFontW6 field value.
-     * 
+     *
      */
     @Internal
     public void setFRotateFontW6( boolean value )
@@ -2623,7 +2623,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fRotateFontW6 field value.
      */
     @Internal
@@ -2634,7 +2634,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the iGutterPos field value.
-     * 
+     *
      */
     @Internal
     public void setIGutterPos( boolean value )
@@ -2643,7 +2643,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the iGutterPos field value.
      */
     @Internal
@@ -2654,7 +2654,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fNoTabForInd field value.
-     * 
+     *
      */
     @Internal
     public void setFNoTabForInd( boolean value )
@@ -2663,7 +2663,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fNoTabForInd field value.
      */
     @Internal
@@ -2674,7 +2674,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fNoSpaceRaiseLower field value.
-     * 
+     *
      */
     @Internal
     public void setFNoSpaceRaiseLower( boolean value )
@@ -2683,7 +2683,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fNoSpaceRaiseLower field value.
      */
     @Internal
@@ -2694,7 +2694,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fSupressSpdfAfterPageBreak field value.
-     * 
+     *
      */
     @Internal
     public void setFSupressSpdfAfterPageBreak( boolean value )
@@ -2703,7 +2703,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fSupressSpdfAfterPageBreak field value.
      */
     @Internal
@@ -2714,7 +2714,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fWrapTrailSpaces field value.
-     * 
+     *
      */
     @Internal
     public void setFWrapTrailSpaces( boolean value )
@@ -2723,7 +2723,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fWrapTrailSpaces field value.
      */
     @Internal
@@ -2734,7 +2734,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fMapPrintTextColor field value.
-     * 
+     *
      */
     @Internal
     public void setFMapPrintTextColor( boolean value )
@@ -2743,7 +2743,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fMapPrintTextColor field value.
      */
     @Internal
@@ -2754,7 +2754,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fNoColumnBalance field value.
-     * 
+     *
      */
     @Internal
     public void setFNoColumnBalance( boolean value )
@@ -2763,7 +2763,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fNoColumnBalance field value.
      */
     @Internal
@@ -2774,7 +2774,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fConvMailMergeEsc field value.
-     * 
+     *
      */
     @Internal
     public void setFConvMailMergeEsc( boolean value )
@@ -2783,7 +2783,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fConvMailMergeEsc field value.
      */
     @Internal
@@ -2794,7 +2794,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fSupressTopSpacing field value.
-     * 
+     *
      */
     @Internal
     public void setFSupressTopSpacing( boolean value )
@@ -2803,7 +2803,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fSupressTopSpacing field value.
      */
     @Internal
@@ -2814,7 +2814,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fOrigWordTableRules field value.
-     * 
+     *
      */
     @Internal
     public void setFOrigWordTableRules( boolean value )
@@ -2823,7 +2823,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fOrigWordTableRules field value.
      */
     @Internal
@@ -2834,7 +2834,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fTransparentMetafiles field value.
-     * 
+     *
      */
     @Internal
     public void setFTransparentMetafiles( boolean value )
@@ -2843,7 +2843,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fTransparentMetafiles field value.
      */
     @Internal
@@ -2854,7 +2854,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fShowBreaksInFrames field value.
-     * 
+     *
      */
     @Internal
     public void setFShowBreaksInFrames( boolean value )
@@ -2863,7 +2863,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fShowBreaksInFrames field value.
      */
     @Internal
@@ -2874,7 +2874,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fSwapBordersFacingPgs field value.
-     * 
+     *
      */
     @Internal
     public void setFSwapBordersFacingPgs( boolean value )
@@ -2883,7 +2883,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fSwapBordersFacingPgs field value.
      */
     @Internal
@@ -2894,7 +2894,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fSuppressTopSPacingMac5 field value.
-     * 
+     *
      */
     @Internal
     public void setFSuppressTopSPacingMac5( boolean value )
@@ -2903,7 +2903,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fSuppressTopSPacingMac5 field value.
      */
     @Internal
@@ -2914,7 +2914,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fTruncDxaExpand field value.
-     * 
+     *
      */
     @Internal
     public void setFTruncDxaExpand( boolean value )
@@ -2923,7 +2923,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fTruncDxaExpand field value.
      */
     @Internal
@@ -2934,7 +2934,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fPrintBodyBeforeHdr field value.
-     * 
+     *
      */
     @Internal
     public void setFPrintBodyBeforeHdr( boolean value )
@@ -2943,7 +2943,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fPrintBodyBeforeHdr field value.
      */
     @Internal
@@ -2954,7 +2954,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fNoLeading field value.
-     * 
+     *
      */
     @Internal
     public void setFNoLeading( boolean value )
@@ -2963,7 +2963,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fNoLeading field value.
      */
     @Internal
@@ -2974,7 +2974,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fMWSmallCaps field value.
-     * 
+     *
      */
     @Internal
     public void setFMWSmallCaps( boolean value )
@@ -2983,7 +2983,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fMWSmallCaps field value.
      */
     @Internal
@@ -2994,7 +2994,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the lvl field value.
-     * 
+     *
      */
     @Internal
     public void setLvl( byte value )
@@ -3003,7 +3003,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the lvl field value.
      */
     @Internal
@@ -3014,7 +3014,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fGramAllDone field value.
-     * 
+     *
      */
     @Internal
     public void setFGramAllDone( boolean value )
@@ -3023,7 +3023,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fGramAllDone field value.
      */
     @Internal
@@ -3034,7 +3034,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fGramAllClean field value.
-     * 
+     *
      */
     @Internal
     public void setFGramAllClean( boolean value )
@@ -3043,7 +3043,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fGramAllClean field value.
      */
     @Internal
@@ -3054,7 +3054,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fSubsetFonts field value.
-     * 
+     *
      */
     @Internal
     public void setFSubsetFonts( boolean value )
@@ -3063,7 +3063,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fSubsetFonts field value.
      */
     @Internal
@@ -3074,7 +3074,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fHideLastVersion field value.
-     * 
+     *
      */
     @Internal
     public void setFHideLastVersion( boolean value )
@@ -3083,7 +3083,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fHideLastVersion field value.
      */
     @Internal
@@ -3094,7 +3094,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fHtmlDoc field value.
-     * 
+     *
      */
     @Internal
     public void setFHtmlDoc( boolean value )
@@ -3103,7 +3103,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fHtmlDoc field value.
      */
     @Internal
@@ -3114,7 +3114,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fSnapBorder field value.
-     * 
+     *
      */
     @Internal
     public void setFSnapBorder( boolean value )
@@ -3123,7 +3123,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fSnapBorder field value.
      */
     @Internal
@@ -3134,7 +3134,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fIncludeHeader field value.
-     * 
+     *
      */
     @Internal
     public void setFIncludeHeader( boolean value )
@@ -3143,7 +3143,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fIncludeHeader field value.
      */
     @Internal
@@ -3154,7 +3154,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fIncludeFooter field value.
-     * 
+     *
      */
     @Internal
     public void setFIncludeFooter( boolean value )
@@ -3163,7 +3163,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fIncludeFooter field value.
      */
     @Internal
@@ -3174,7 +3174,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fForcePageSizePag field value.
-     * 
+     *
      */
     @Internal
     public void setFForcePageSizePag( boolean value )
@@ -3183,7 +3183,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fForcePageSizePag field value.
      */
     @Internal
@@ -3194,7 +3194,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fMinFontSizePag field value.
-     * 
+     *
      */
     @Internal
     public void setFMinFontSizePag( boolean value )
@@ -3203,7 +3203,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fMinFontSizePag field value.
      */
     @Internal
@@ -3214,7 +3214,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fHaveVersions field value.
-     * 
+     *
      */
     @Internal
     public void setFHaveVersions( boolean value )
@@ -3223,7 +3223,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fHaveVersions field value.
      */
     @Internal
@@ -3234,7 +3234,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fAutoVersions field value.
-     * 
+     *
      */
     @Internal
     public void setFAutoVersions( boolean value )
@@ -3243,7 +3243,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fAutoVersions field value.
      */
     @Internal
@@ -3254,7 +3254,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fVirusPrompted field value.
-     * 
+     *
      */
     @Internal
     public void setFVirusPrompted( boolean value )
@@ -3263,7 +3263,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fVirusPrompted field value.
      */
     @Internal
@@ -3274,7 +3274,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the fVirusLoadSafe field value.
-     * 
+     *
      */
     @Internal
     public void setFVirusLoadSafe( boolean value )
@@ -3283,7 +3283,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the fVirusLoadSafe field value.
      */
     @Internal
@@ -3294,7 +3294,7 @@ public abstract class DOPAbstractType implements HDFType {
 
     /**
      * Sets the KeyVirusSession30 field value.
-     * 
+     *
      */
     @Internal
     public void setKeyVirusSession30( int value )
@@ -3303,7 +3303,7 @@ public abstract class DOPAbstractType implements HDFType {
     }
 
     /**
-     * 
+     *
      * @return  the KeyVirusSession30 field value.
      */
     @Internal

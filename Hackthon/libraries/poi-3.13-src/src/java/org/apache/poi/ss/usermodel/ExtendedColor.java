@@ -24,7 +24,7 @@ import org.apache.poi.ss.usermodel.Color;
 /**
  * Represents a XSSF-style color (based on either a
  *  {@link org.apache.poi.xssf.usermodel.XSSFColor} or a
- *  {@link org.apache.poi.hssf.record.common.ExtendedColor} 
+ *  {@link org.apache.poi.hssf.record.common.ExtendedColor}
  */
 public abstract class ExtendedColor implements Color {
     protected void setColor(java.awt.Color clr) {
@@ -45,17 +45,17 @@ public abstract class ExtendedColor implements Color {
      * A boolean value indicating the color is RGB / ARGB
      */
     public abstract boolean isRGB();
-    
+
     /**
      * A boolean value indicating the color is from a Theme
      */
     public abstract boolean isThemed();
-    
+
     /**
      * Indexed Color value, if {@link #isIndexed()} is true
      */
     public abstract short getIndex();
-    
+
     /**
      * Index of Theme color, if {@link #isThemed()} is true
      */
@@ -75,12 +75,12 @@ public abstract class ExtendedColor implements Color {
      * RGB or ARGB or null
      */
     protected abstract byte[] getStoredRBG();
-    
+
     /**
      * Sets the Red Green Blue or Alpha Red Green Blue
      */
     public abstract void setRGB(byte[] rgb);
-   
+
     protected byte[] getRGBOrARGB() {
         byte[] rgb = null;
 
@@ -140,7 +140,7 @@ public abstract class ExtendedColor implements Color {
        }
        return sb.toString().toUpperCase(Locale.ROOT);
     }
-    
+
     /**
      * Sets the ARGB value from hex format, eg FF0077FF.
      * Only works for regular (non-indexed) colours

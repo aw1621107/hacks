@@ -190,14 +190,14 @@ public class JDBC4UpdatableResultSet extends UpdatableResultSet {
      * insert row. The updateXXX() methods do not update the underlying
      * database, instead the updateRow() or insertRow() methods are called to
      * update the database.
-     * 
+     *
      * @param columnIndex
      *            the first column is 1, the second is 2, ...
      * @param x
      *            the new column value
      * @param length
      *            the length of the stream
-     * 
+     *
      * @exception SQLException
      *                if a database-access error occurs
      */
@@ -231,14 +231,14 @@ public class JDBC4UpdatableResultSet extends UpdatableResultSet {
      * insert row. The updateXXX() methods do not update the underlying
      * database, instead the updateRow() or insertRow() methods are called to
      * update the database.
-     * 
+     *
      * @param columnName
      *            the name of the column
      * @param reader
      *            the new column value
      * @param length
      *            of the stream
-     * 
+     *
      * @exception SQLException
      *                if a database-access error occurs
      */
@@ -274,12 +274,12 @@ public class JDBC4UpdatableResultSet extends UpdatableResultSet {
      * are used to update column values in the current row, or the insert row.
      * The updateXXX() methods do not update the underlying database, instead
      * the updateRow() or insertRow() methods are called to update the database.
-     * 
+     *
      * @param columnIndex
      *            the first column is 1, the second is 2, ...
      * @param x
      *            the new column value
-     * 
+     *
      * @exception SQLException
      *                if a database-access error occurs
      */
@@ -313,12 +313,12 @@ public class JDBC4UpdatableResultSet extends UpdatableResultSet {
      * are used to update column values in the current row, or the insert row.
      * The updateXXX() methods do not update the underlying database, instead
      * the updateRow() or insertRow() methods are called to update the database.
-     * 
+     *
      * @param columnName
      *            the name of the column
      * @param x
      *            the new column value
-     * 
+     *
      * @exception SQLException
      *                if a database-access error occurs
      */
@@ -332,12 +332,12 @@ public class JDBC4UpdatableResultSet extends UpdatableResultSet {
 
     /**
      * JDBC 4.0 Get a NCLOB column.
-     * 
+     *
      * @param columnIndex
      *            the first column is 1, the second is 2, ...
-     * 
+     *
      * @return an object representing a NCLOB
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -353,16 +353,16 @@ public class JDBC4UpdatableResultSet extends UpdatableResultSet {
 
     /**
      * JDBC 4.0
-     * 
+     *
      * <p>
      * Get the value of a column in the current row as a java.io.Reader.
      * </p>
-     * 
+     *
      * @param columnIndex
      *            the column to get the value from
-     * 
+     *
      * @return the value in the column as a java.io.Reader.
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -377,16 +377,16 @@ public class JDBC4UpdatableResultSet extends UpdatableResultSet {
 
     /**
      * JDBC 4.0
-     * 
+     *
      * <p>
      * Get the value of a column in the current row as a java.io.Reader.
      * </p>
-     * 
+     *
      * @param columnName
      *            the column name to retrieve the value from
-     * 
+     *
      * @return the value as a java.io.Reader
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -396,12 +396,12 @@ public class JDBC4UpdatableResultSet extends UpdatableResultSet {
 
     /**
      * JDBC 4.0 Get a NCLOB column.
-     * 
+     *
      * @param i
      *            the first column is 1, the second is 2, ...
-     * 
+     *
      * @return an object representing a NCLOB
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -427,12 +427,12 @@ public class JDBC4UpdatableResultSet extends UpdatableResultSet {
 
     /**
      * JDBC 4.0 Get a NCLOB column.
-     * 
+     *
      * @param colName
      *            the column name
-     * 
+     *
      * @return an object representing a NCLOB
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */
@@ -446,14 +446,14 @@ public class JDBC4UpdatableResultSet extends UpdatableResultSet {
 
     /**
      * JDBC 4.0
-     * 
+     *
      * Get the value of a column in the current row as a Java String
-     * 
+     *
      * @param columnIndex
      *            the first column is 1, the second is 2...
-     * 
+     *
      * @return the column value, null for SQL NULL
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -469,15 +469,15 @@ public class JDBC4UpdatableResultSet extends UpdatableResultSet {
 
     /**
      * JDBC 4.0
-     * 
+     *
      * The following routines simply convert the columnName into a columnIndex
      * and then call the appropriate routine above.
-     * 
+     *
      * @param columnName
      *            is the SQL name of the column
-     * 
+     *
      * @return the column value
-     * 
+     *
      * @exception SQLException
      *                if a database access error occurs
      */
@@ -540,7 +540,7 @@ public class JDBC4UpdatableResultSet extends UpdatableResultSet {
      * expensive <code>unwrap</code> calls that may fail. If this method
      * returns true then calling <code>unwrap</code> with the same argument
      * should succeed.
-     * 
+     *
      * @param interfaces
      *            a Class defining an interface.
      * @return true if this implements the interface or directly or indirectly
@@ -567,7 +567,7 @@ public class JDBC4UpdatableResultSet extends UpdatableResultSet {
      * the result of calling <code>unwrap</code> recursively on the wrapped
      * object. If the receiver is not a wrapper and does not implement the
      * interface, then an <code>SQLException</code> is thrown.
-     * 
+     *
      * @param iface
      *            A Class defining an interface that the result must implement.
      * @return an object that implements the interface. May be a proxy for the

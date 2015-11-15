@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-        
+
 
 package org.apache.poi.util;
 
@@ -39,12 +39,12 @@ public class CommonsLogger extends POILogger
     private static LogFactory   _creator = LogFactory.getFactory();
     private Log             log   = null;
 
-   
+
     public void initialize(final String cat)
     {
         this.log = _creator.getInstance(cat);
-    }   
-     
+    }
+
     /**
      * Log a message
      *
@@ -96,7 +96,7 @@ public class CommonsLogger extends POILogger
           }
         }
     }
-    
+
     /**
      * Log a message
      *
@@ -105,7 +105,7 @@ public class CommonsLogger extends POILogger
      * @param exception An exception to be logged
      */
     public void log(final int level, final Object obj1,
-                    final Throwable exception) 
+                    final Throwable exception)
     {
         if(level==FATAL)
         {
@@ -218,6 +218,6 @@ public class CommonsLogger extends POILogger
 
     }
 
- 
+
 }   // end package scope class POILogger
 

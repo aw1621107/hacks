@@ -89,7 +89,7 @@ public interface TextShape<
          */
         SHAPE
     }
-    
+
     /**
      * @return the TextParagraphs for this text box
      */

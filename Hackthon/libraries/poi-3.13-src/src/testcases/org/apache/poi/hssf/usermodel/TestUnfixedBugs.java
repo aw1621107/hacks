@@ -33,7 +33,7 @@ import org.junit.Test;
 
 /**
  * @author aviks
- * 
+ *
  * This testcase contains tests for bugs that are yet to be fixed. Therefore,
  * the standard ant test target does not run these tests. Run this testcase with
  * the single-test target. The names of the tests usually correspond to the
@@ -77,7 +77,7 @@ public final class TestUnfixedBugs extends TestCase {
         //Expected :SUM('49612.xls'!BOB+'49612.xls'!JIM)
         //Actual   :SUM(BOB+JIM)
         assertEquals("SUM('49612.xls'!BOB+'49612.xls'!JIM)", e1.getCellFormula());
-        
+
         // Problem 3 - fixed and transfered
     }
 
@@ -90,7 +90,7 @@ public final class TestUnfixedBugs extends TestCase {
             sheet.groupColumn((short) 4, (short) 5);
             sheet.setColumnGroupCollapsed(4, true);
             sheet.setColumnGroupCollapsed(4, false);
-            
+
             for(Row row : sheet) {
                 for(Cell cell : row) {
                     try {
@@ -112,7 +112,7 @@ public final class TestUnfixedBugs extends TestCase {
             sheet.groupColumn((short) 4, (short) 5);
             sheet.setColumnGroupCollapsed(4, true);
             sheet.setColumnGroupCollapsed(4, false);
-            
+
             for(Row row : sheet) {
                 for(Cell cell : row) {
                     try {
@@ -131,7 +131,7 @@ public final class TestUnfixedBugs extends TestCase {
         Sheet sheet = wb.getSheet("Sheet1");
         Row row = sheet.getRow(0);
         Cell cell = row.getCell(0);
-        
+
         HSSFColor bgColor = (HSSFColor) cell.getCellStyle().getFillBackgroundColorColor();
         String bgColorStr = bgColor.getTriplet()[0]+", "+bgColor.getTriplet()[1]+", "+bgColor.getTriplet()[2];
         //System.out.println(bgColorStr);

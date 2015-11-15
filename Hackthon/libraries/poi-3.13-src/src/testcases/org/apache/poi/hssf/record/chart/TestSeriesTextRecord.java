@@ -28,8 +28,8 @@ import org.apache.poi.util.HexRead;
 /**
  * Tests the serialization and deserialization of the SeriesTextRecord class
  * works correctly. Test data taken directly from a real Excel file.
- * 
- * 
+ *
+ *
  * @author Andrew C. Oliver (acoliver at apache.org)
  */
 public final class TestSeriesTextRecord extends TestCase {

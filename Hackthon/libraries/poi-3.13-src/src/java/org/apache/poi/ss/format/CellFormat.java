@@ -67,7 +67,7 @@ import org.apache.poi.ss.usermodel.DateUtil;
  * In addition to these, there is a general format that is used when no format
  * is specified.  This formatting is presented by the {@link #GENERAL_FORMAT}
  * object.
- * 
+ *
  * TODO Merge this with {@link DataFormatter} so we only have one set of
  *  code for formatting numbers.
  * TODO Re-use parts of this logic with {@link ConditionalFormatting} /
@@ -163,9 +163,9 @@ public class CellFormat {
                 parts.add(null);
             }
         }
-        
+
         formatPartCount = parts.size();
-        
+
         switch (formatPartCount) {
         case 1:
             posNumFmt = parts.get(0);
@@ -353,16 +353,16 @@ public class CellFormat {
      * Returns the {@link CellFormatPart} that applies to the value.  Result
      * depends on how many parts the cell format has, the cell value and any
      * conditions.  The value must be a {@link Number}.
-     * 
+     *
      * @param value The value.
      * @return The {@link CellFormatPart} that applies to the value.
      */
     private CellFormatPart getApplicableFormatPart(Object value) {
-        
+
         if (value instanceof Number) {
-            
+
             double val = ((Number) value).doubleValue();
-            
+
             if (formatPartCount == 1) {
                 if (!posNumFmt.hasCondition()
                         || (posNumFmt.hasCondition() && posNumFmt.applies(val))) {
@@ -396,7 +396,7 @@ public class CellFormat {
         } else {
             throw new IllegalArgumentException("value must be a Number");
         }
-        
+
     }
 
     /**

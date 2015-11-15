@@ -23,7 +23,7 @@ import org.apache.poi.ss.usermodel.*;
 
 /**
  * Testcase for 'Analysis Toolpak' function MROUND()
- * 
+ *
  * @author Yegor Kozlov
  */
 public class TestMRound extends TestCase {

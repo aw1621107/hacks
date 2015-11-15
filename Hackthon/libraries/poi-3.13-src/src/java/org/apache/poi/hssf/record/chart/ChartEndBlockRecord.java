@@ -24,7 +24,7 @@ import org.apache.poi.util.LittleEndianOutput;
 
 /**
  * ENDBLOCK - Chart Future Record Type End Block (0x0853)<br/>
- * 
+ *
  * @author Patrick Cheng
  */
 public final class ChartEndBlockRecord extends StandardRecord {
@@ -37,7 +37,7 @@ public final class ChartEndBlockRecord extends StandardRecord {
 
 	public ChartEndBlockRecord() {
 	}
-	
+
 	public ChartEndBlockRecord(RecordInputStream in) {
 		rt = in.readShort();
 		grbitFrt = in.readShort();
@@ -83,16 +83,16 @@ public final class ChartEndBlockRecord extends StandardRecord {
 		buffer.append("[/ENDBLOCK]\n");
 		return buffer.toString();
 	}
-	
+
 	@Override
 	public ChartEndBlockRecord clone() {
 		ChartEndBlockRecord record = new ChartEndBlockRecord();
-		
+
 		record.rt = rt ;
 		record.grbitFrt = grbitFrt ;
 		record.iObjectKind = iObjectKind ;
 		record.unused = unused.clone() ;
-		
+
 		return record;
 	}
 }

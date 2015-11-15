@@ -54,12 +54,12 @@ public class FabricMySQLDataSource extends MysqlDataSource implements FabricMySQ
      * copied directly from MysqlDataSource.getConnection().
      * No easy way to override the static `mysqlDriver' without
      * globally affecting the driver.
-     * 
+     *
      * @param props
      *            the properties to connect with
-     * 
+     *
      * @return a connection to the database
-     * 
+     *
      * @throws SQLException
      *             if an error occurs
      */

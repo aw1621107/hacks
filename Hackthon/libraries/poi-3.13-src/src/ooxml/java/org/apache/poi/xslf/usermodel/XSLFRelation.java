@@ -31,63 +31,63 @@ public class XSLFRelation extends POIXMLRelation {
     * A map to lookup POIXMLRelation by its relation type
     */
    protected static final Map<String, XSLFRelation> _table = new HashMap<String, XSLFRelation>();
-   
+
    public static final XSLFRelation MAIN = new XSLFRelation(
            "application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml",
            null, null, null
    );
-   
+
    public static final XSLFRelation MACRO = new XSLFRelation(
            "application/vnd.ms-powerpoint.slideshow.macroEnabled.main+xml",
            null, null, null
    );
-   
+
    public static final XSLFRelation MACRO_TEMPLATE = new XSLFRelation(
            "application/vnd.ms-powerpoint.template.macroEnabled.main+xml",
            null, null, null
    );
-   
+
    public static final XSLFRelation PRESENTATIONML = new XSLFRelation(
            "application/vnd.openxmlformats-officedocument.presentationml.slideshow.main+xml",
            null, null, null
    );
-   
+
    public static final XSLFRelation PRESENTATIONML_TEMPLATE = new XSLFRelation(
            "application/vnd.openxmlformats-officedocument.presentationml.template.main+xml",
            null, null, null
    );
-   
+
    public static final XSLFRelation PRESENTATION_MACRO = new XSLFRelation(
            "application/vnd.ms-powerpoint.presentation.macroEnabled.main+xml",
            null, null, null
    );
-   
+
    public static final XSLFRelation THEME_MANAGER = new XSLFRelation(
            "application/vnd.openxmlformats-officedocument.themeManager+xml",
            null, null, null
    );
-   
+
    public static final XSLFRelation NOTES = new XSLFRelation(
            "application/vnd.openxmlformats-officedocument.presentationml.notesSlide+xml",
-           "http://schemas.openxmlformats.org/officeDocument/2006/relationships/notesSlide", 
+           "http://schemas.openxmlformats.org/officeDocument/2006/relationships/notesSlide",
            "/ppt/notesSlides/notesSlide#.xml",
            XSLFNotes.class
    );
-   
+
    public static final XSLFRelation SLIDE = new XSLFRelation(
            "application/vnd.openxmlformats-officedocument.presentationml.slide+xml",
-           "http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide", 
-           "/ppt/slides/slide#.xml", 
+           "http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide",
+           "/ppt/slides/slide#.xml",
            XSLFSlide.class
    );
-   
+
    public static final XSLFRelation SLIDE_LAYOUT = new XSLFRelation(
          "application/vnd.openxmlformats-officedocument.presentationml.slideLayout+xml",
          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout",
-         "/ppt/slideLayouts/slideLayout#.xml", 
+         "/ppt/slideLayouts/slideLayout#.xml",
          XSLFSlideLayout.class
    );
-   
+
    public static final XSLFRelation SLIDE_MASTER = new XSLFRelation(
          "application/vnd.openxmlformats-officedocument.presentationml.slideMaster+xml",
          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideMaster",
@@ -108,14 +108,14 @@ public class XSLFRelation extends POIXMLRelation {
          "/ppt/comments/comment#.xml",
          XSLFComments.class
    );
-   
+
    public static final XSLFRelation COMMENT_AUTHORS = new XSLFRelation(
          "application/vnd.openxmlformats-officedocument.presentationml.commentAuthors+xml",
          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/commentAuthors",
          "/ppt/commentAuthors.xml",
          XSLFCommentAuthors.class
    );
-   
+
     public static final XSLFRelation HYPERLINK = new XSLFRelation(
             null,
             "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
@@ -126,14 +126,14 @@ public class XSLFRelation extends POIXMLRelation {
    public static final XSLFRelation THEME = new XSLFRelation(
          "application/vnd.openxmlformats-officedocument.theme+xml",
          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme",
-         "/ppt/theme/theme#.xml", 
+         "/ppt/theme/theme#.xml",
          XSLFTheme.class
    );
-   
+
    public static final XSLFRelation VML_DRAWING = new XSLFRelation(
          "application/vnd.openxmlformats-officedocument.vmlDrawing",
          "http://schemas.openxmlformats.org/officeDocument/2006/relationships/vmlDrawing",
-         "/ppt/drawings/vmlDrawing#.vml", 
+         "/ppt/drawings/vmlDrawing#.vml",
          null
    );
 

@@ -26,7 +26,7 @@ public abstract class EncryptionHeader {
     public static final int ALGORITHM_AES_128 = CipherAlgorithm.aes128.ecmaId;
     public static final int ALGORITHM_AES_192 = CipherAlgorithm.aes192.ecmaId;
     public static final int ALGORITHM_AES_256 = CipherAlgorithm.aes256.ecmaId;
-    
+
     public static final int HASH_NONE   = HashAlgorithm.none.ecmaId;
     public static final int HASH_SHA1   = HashAlgorithm.sha1.ecmaId;
     public static final int HASH_SHA256 = HashAlgorithm.sha256.ecmaId;
@@ -39,7 +39,7 @@ public abstract class EncryptionHeader {
     public static final int MODE_ECB = ChainingMode.ecb.ecmaId;
     public static final int MODE_CBC = ChainingMode.cbc.ecmaId;
     public static final int MODE_CFB = ChainingMode.cfb.ecmaId;
-    
+
     private int flags;
     private int sizeExtra;
     private CipherAlgorithm cipherAlgorithm;
@@ -50,7 +50,7 @@ public abstract class EncryptionHeader {
     private ChainingMode chainingMode;
     private byte[] keySalt;
     private String cspName;
-    
+
     protected EncryptionHeader() {}
 
     /**
@@ -59,11 +59,11 @@ public abstract class EncryptionHeader {
     public int getCipherMode() {
         return chainingMode.ecmaId;
     }
-    
+
     public ChainingMode getChainingMode() {
         return chainingMode;
     }
-    
+
     protected void setChainingMode(ChainingMode chainingMode) {
         this.chainingMode = chainingMode;
     }
@@ -71,7 +71,7 @@ public abstract class EncryptionHeader {
     public int getFlags() {
         return flags;
     }
-    
+
     protected void setFlags(int flags) {
         this.flags = flags;
     }
@@ -79,7 +79,7 @@ public abstract class EncryptionHeader {
     public int getSizeExtra() {
         return sizeExtra;
     }
-    
+
     protected void setSizeExtra(int sizeExtra) {
         this.sizeExtra = sizeExtra;
     }
@@ -94,22 +94,22 @@ public abstract class EncryptionHeader {
     public CipherAlgorithm getCipherAlgorithm() {
         return cipherAlgorithm;
     }
-    
+
     protected void setCipherAlgorithm(CipherAlgorithm cipherAlgorithm) {
         this.cipherAlgorithm = cipherAlgorithm;
     }
-    
+
     /**
      * @deprecated use getHashAlgorithmEx()
      */
     public int getHashAlgorithm() {
         return hashAlgorithm.ecmaId;
     }
-    
+
     public HashAlgorithm getHashAlgorithmEx() {
         return hashAlgorithm;
     }
-    
+
     protected void setHashAlgorithm(HashAlgorithm hashAlgorithm) {
         this.hashAlgorithm = hashAlgorithm;
     }
@@ -117,7 +117,7 @@ public abstract class EncryptionHeader {
     public int getKeySize() {
         return keyBits;
     }
-    
+
     protected void setKeySize(int keyBits) {
         this.keyBits = keyBits;
     }
@@ -125,15 +125,15 @@ public abstract class EncryptionHeader {
     public int getBlockSize() {
     	return blockSize;
     }
-    
+
     protected void setBlockSize(int blockSize) {
         this.blockSize = blockSize;
     }
-    
+
     public byte[] getKeySalt() {
         return keySalt;
     }
-    
+
     protected void setKeySalt(byte salt[]) {
         this.keySalt = salt;
     }
@@ -147,16 +147,16 @@ public abstract class EncryptionHeader {
 
     public CipherProvider getCipherProvider() {
         return providerType;
-    }    
+    }
 
     protected void setCipherProvider(CipherProvider providerType) {
         this.providerType = providerType;
     }
-    
+
     public String getCspName() {
         return cspName;
     }
-    
+
     protected void setCspName(String cspName) {
         this.cspName = cspName;
     }
