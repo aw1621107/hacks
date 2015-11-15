@@ -28,10 +28,11 @@ public class Sorter {
 		input = "DONT_CARE";
 		finddegree();
 		System.out.println(compatdegree);
-		skills required vs needed
 		
-		grad date
-		expirence
+		
+		//skills required vs needed
+		//grad date
+		//expirence
 		
 	}
 
