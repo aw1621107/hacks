@@ -5,14 +5,14 @@ import java.util.Collection;
 import java.util.Set;
 
 public class Applicant {
-	final MajorType major;
+	final Set<MajorType> majors;
 	final Set<MajorType> minors;
 	final YearMonth gradDate;
 	final Set<Degree> priorDegrees;
 	final Collection<PreviousEmployment> previousEmployment;
 	final Set<SkillType> skills;
 
-	public Applicant(MajorType major,
+	public Applicant(Set<MajorType> major,
 	                 Set<MajorType> minors,
 	                 YearMonth gradDate,
 	                 Set<Degree> priorDegrees,

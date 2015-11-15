@@ -3,9 +3,15 @@ package io;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -44,32 +50,28 @@ public class Reader {
 		int max = -1;
 		for (int r = 1; r <= sheet.getLastRowNum(); r++) {
 			final Row row = sheet.getRow(r);
-			String majorString = cellToString(row.getCell(0));
-			String minorString = cellToString(row.getCell(1));
-			String gradYearString = cellToString(row.getCell(2));
-			String priorDegreesString = cellToString(row.getCell(3));
-			String prevEmploy1TitleString = cellToString(row.getCell(4));
-			String prevEmploy1DescString = cellToString(row.getCell(5));
-			String prevEmploy2TitleString = cellToString(row.getCell(6));
-			String prevEmploy2DescString = cellToString(row.getCell(7));
-			String prevEmploy3TitleString = cellToString(row.getCell(8));
-			String prevEmploy3DescString = cellToString(row.getCell(9));
-			String computerSkillsString = cellToString(row.getCell(10));
-			String languageSkillsString = cellToString(row.getCell(11));
-			String personalSkillsString = cellToString(row.getCell(12));
-			String coursesString = cellToString(row.getCell(13));
-			String projectsString = cellToString(row.getCell(14));
-			
-			MajorType major = MajorType.valueOf(majorString.trim().toUpperCase());
-			System.out.println(major);
+			String[] majorString = cellToStrings(row.getCell(0));
+			Cell gradDateCell = row.getCell(2);
+			String gradDateString = gradDateCell == null ? "" : gradDateCell.toString().trim();
+
+			Set<MajorType> majors = Arrays.stream(majorString)
+					.map(String::toUpperCase)
+					.map(String::trim)
+					.filter(s -> !s.isEmpty())
+					.map(s -> s.replaceAll("\\s+", "_"))
+					.map(MajorType::valueOf)
+					.collect(Collectors.toSet());
+			YearMonth gradDate = YearMonth.parse(gradDateString, DateTimeFormatter.ofPattern("", Locale.US));
+			System.out.println(majors);
 		}
 	}
 	
-	private String cellToString(Cell cell) {
+	private static final String[] EMPTY = new String[] {};
+	private String[] cellToStrings(Cell cell) {
 		if (cell == null) {
-			return "";
+			return EMPTY;
 		} else {
-			return cell.toString();
+			return cell.toString().split("\\s*,\\s*|\\s*;\\s*");
 		}
 	}
 }
