@@ -19,11 +19,24 @@ public class Companysorter {
 	public static String cell4;
 	public static String cell5;
 	
-	private static int tempscore = 0;
+	private static String tempscore = 0;
 	// ideal job
 
 	public String bestjob;
 	static String[] companyscorse;	
+	
+	
+	//list of jobs (requirments)
+	
+	public static String jobname = "";
+	public static String[] jobnames;
+	public static String envirment = "";
+	public static String[] envirments;
+	public static String mayjor = "";
+	public static String[] mayjors;
+	public static String skill = "";
+	public static String[] skills;
+	
 	public static void main(String[] args) throws EncryptedDocumentException, InvalidFormatException, IOException {
 
 		Reader inputer = new Reader();
@@ -33,15 +46,16 @@ public class Companysorter {
 		for (int i = 1; i < 262; i++) {
 			row = data.rows.get(i).row;
 			cell1 = data.rows.get(i).cellContents.get(1);
+			jobname += cell1 + ";";
 			cell2 = data.rows.get(i).cellContents.get(2);
 			cell3 = data.rows.get(i).cellContents.get(3);
 			cell4 = data.rows.get(i).cellContents.get(4);
 			cell5 = data.rows.get(i).cellContents.get(5);
 			
-			//companyscorse[i] = tempscore;
-			tempscore = 0;
+			companyscorse[i] = tempscore;
+			tempscore = "";
 		}
-
+		jobnames = jobname.split(";");
 	}
 
 }
