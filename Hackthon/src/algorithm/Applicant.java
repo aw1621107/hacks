@@ -4,6 +4,11 @@ import java.time.YearMonth;
 import java.util.Collection;
 import java.util.Set;
 
+import algorithm.Degree;
+import algorithm.MajorType;
+import algorithm.PreviousEmployment;
+import algorithm.SkillType;
+
 public class Applicant {
 	final Set<MajorType> majors;
 	final Set<MajorType> minors;
