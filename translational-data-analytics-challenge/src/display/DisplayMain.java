@@ -23,7 +23,7 @@ public class DisplayMain extends JFrame/* implements ActionListener */ {
 	public static int HEIGHT = 800;
 	public static int WIDTH = 720;
 	private static JFrame frame = new JFrame();
-	public static int percenofkeyords =7;
+	public static int percenofkeyords = 7;
 
 	public static int bwidth = 170;
 	public static int bheight = 50;
@@ -32,17 +32,13 @@ public class DisplayMain extends JFrame/* implements ActionListener */ {
 	// private static JButton button2 = new JButton("5 (LINE_END)");
 
 	// private JButton button = new JButton();
-private static Container pane = frame.getContentPane();
-private static		JScrollPane  panil = new JScrollPane ();
+	private static Container pane = frame.getContentPane();
+	private static JScrollPane panil = new JScrollPane();
+
 	public static void main(String[] args) {
 
-		
-		
-		
-		
-		
 		JScrollBar vbar = new JScrollBar(JScrollBar.VERTICAL, 30, 40, 0, 300);
-		
+
 		//panil.setLayout(new FlowLayout());
 		frame.setSize(HEIGHT, WIDTH);
 		frame.setTitle(TITLE);
@@ -51,16 +47,13 @@ private static		JScrollPane  panil = new JScrollPane ();
 		frame.setResizable(false);
 		frame.setVisible(true);
 
-		
 		JLabel lable = new JLabel("the percen of applicants who used key words are " + percenofkeyords + "%");
 		lable.setPreferredSize(new Dimension(800, bheight));
-					frame.add(lable, BorderLayout.PAGE_START);
-				frame.add(panil);	
-				
-
+		frame.add(lable, BorderLayout.PAGE_START);
+		frame.add(panil);
 
 		for (int i = tickcount; i <= tickcount && i >= 0; i--) {
-			
+
 			JButton button = new JButton("Button 1)");
 			button.setPreferredSize(new Dimension(bwidth, bheight));
 			panil.add(button, BorderLayout.PAGE_START);
@@ -134,7 +127,6 @@ private static		JScrollPane  panil = new JScrollPane ();
 							public void actionPerformed(ActionEvent e) {
 								System.out.println("this is from button four");
 
-								
 							};
 						});
 
