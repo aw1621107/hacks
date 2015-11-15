@@ -33,14 +33,7 @@ public class Reader {
 	private static final String DB_URL = "jdbc:mysql://localhost/";
 	private static final String user = "awang";
 	private static final String pass = "";
-	
-	static {
-		try {
-			Class.forName(JDBC_DRIVER);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
+
 	public static void main(String[] args) throws EncryptedDocumentException, InvalidFormatException, IOException, SQLException {
 		final Path path = Paths.get("/Users", "awang", "Downloads", "TDA Students Test.xlsx");
 		new Reader().readToStructs(path);
