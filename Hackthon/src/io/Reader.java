@@ -61,7 +61,7 @@ public class Reader {
 			final List<String> rowContents = new ArrayList<>();
 			for (int col = 0; col <= headerRow.getLastCellNum(); col++) {
 				Cell cell = row.getCell(col);
-				rowContents.add(cell == null ? "" : cell.toString());
+				rowContents.add(cell == null ? "" : cell.toString().replaceAll("[^\\x00-\\x7F]", ""));
 			}
 			results.add(new RowData(r, rowContents));
 		}
