@@ -83,7 +83,7 @@ public class Companysorter {
 			cell1 = "";
 			cell2 = "";
 			cell3 = "";
-			cell4 = "";
+			cell4 = "";	
 			cell5 = "";
 			tempscore = "";
 		}
@@ -97,7 +97,7 @@ public class Companysorter {
 	}
 
 	private static void secondcell(){
-		boolean keytest = true;
+		boolean keytest = true;  
 		while (keytest){
 			int temp = cell2.indexOf(" ");
 			if (temp<0){
